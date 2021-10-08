@@ -1,0 +1,90 @@
+header img {
+    width: 60px;
+    height: auto;
+}
+
+header .col-md-10 h5,
+header .col-md-10 p {
+    text-align: left;
+}
+
+header .col-2 {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.card-header {
+    padding: 10px 0 !important;
+}
+
+.card-header hr {
+    margin: 2px !important;
+}
+
+.row.identitaspeserta {
+    padding-top: 1.5rem;
+}
+
+
+/* Section */
+
+section img {
+    width: 150px;
+}
+
+section h5 {
+    text-align: left;
+}
+
+table.table.tabelidentitas td {
+    padding: 5px !important;
+    text-align: left;
+    border: 0 !important;
+}
+
+table.table.tabelidentitas td:first-child {
+    min-width: 150px;
+    padding-left: 0 !important;
+}
+
+table.table.tabelidentitas td:last-child {
+    min-width: 500px;
+}
+
+section.tandatangan {
+    margin-top: 5rem;
+}
+
+.row.daftarhadir {
+    display: flex;
+    justify-content: center;
+}
+
+.row.tandatangan .col-md-12 p {
+    text-align: right;
+    padding-right: 30px;
+}
+
+.col-md-6.ttpeserta {
+    text-align: left;
+    padding-left: 47px;
+}
+
+.col-md-6.ttpetugas {
+    text-align: right;
+    padding-right: 47px;
+}
+
+table.table.table-bordered th,
+table.table.table-bordered td {
+    text-align: left;
+}
+
+.card-header .row {
+    padding: 20px;
+}
+
+.col-md-12 p {
+    text-align: left;
+}

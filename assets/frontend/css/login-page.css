@@ -1,0 +1,369 @@
+      body {
+          color: #000;
+          overflow-x: hidden;
+          height: 100%;
+          background-color: #B0BEC5;
+          background-repeat: no-repeat
+      }
+      
+      .card0 {
+          box-shadow: 0px 4px 8px 0px #757575;
+          border-radius: 0px
+      }
+      
+      .card2 {
+          margin: 0px 40px
+      }
+      
+      .logo {
+          width: 200px;
+          height: 100px;
+          margin-top: 20px;
+          margin-left: 35px
+      }
+      
+      .image {
+          width: 360px;
+          height: 280px
+      }
+      
+      .border-line {
+          border-right: 1px solid #EEEEEE
+      }
+      
+      .facebook {
+          background-color: #3b5998;
+          color: #fff;
+          font-size: 18px;
+          padding-top: 5px;
+          border-radius: 50%;
+          width: 35px;
+          height: 35px;
+          cursor: pointer
+      }
+      
+      .twitter {
+          background-color: #1DA1F2;
+          color: #fff;
+          font-size: 18px;
+          padding-top: 5px;
+          border-radius: 50%;
+          width: 35px;
+          height: 35px;
+          cursor: pointer
+      }
+      
+      .linkedin {
+          background-color: #2867B2;
+          color: #fff;
+          font-size: 18px;
+          padding-top: 5px;
+          border-radius: 50%;
+          width: 35px;
+          height: 35px;
+          cursor: pointer
+      }
+      
+      .line {
+          height: 1px;
+          width: 45%;
+          background-color: #E0E0E0;
+          margin-top: 10px
+      }
+      
+      .or {
+          width: 10%;
+          font-weight: bold
+      }
+      
+      .text-sm {
+          font-size: 14px !important
+      }
+      
+       ::placeholder {
+          color: #BDBDBD;
+          opacity: 1;
+          font-weight: 300
+      }
+      
+       :-ms-input-placeholder {
+          color: #BDBDBD;
+          font-weight: 300
+      }
+      
+       ::-ms-input-placeholder {
+          color: #BDBDBD;
+          font-weight: 300
+      }
+      
+      input,
+      textarea {
+          padding: 10px 12px 10px 12px;
+          border-bottom: 1px solid #1a237e !important;
+          border-radius: 0;
+          margin-bottom: 5px;
+          margin-top: 2px;
+          width: 100%;
+          box-sizing: border-box;
+          color: #2C3E50;
+          font-size: 14px;
+          border: 0;
+      }
+      
+      input:focus,
+      textarea:focus {
+          -moz-box-shadow: none !important;
+          -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+          border: 1px solid #304FFE;
+          outline-width: 0
+      }
+      
+      input:focus {
+          border: 0 !important;
+          border-bottom: 1px solid #1a237e !important;
+      }
+      
+      button:focus {
+          -moz-box-shadow: none !important;
+          -webkit-box-shadow: none !important;
+          box-shadow: none !important;
+          outline-width: 0
+      }
+      
+      a {
+          color: inherit;
+          cursor: pointer
+      }
+      
+      .btn-blue {
+          background-color: #1A237E;
+          width: 150px;
+          color: #fff;
+          border-radius: 2px
+      }
+      
+      .btn-blue:hover {
+          background-color: #000;
+          cursor: pointer
+      }
+      
+      .bg-blue {
+          color: #fff;
+          background-color: #1A237E
+      }
+      
+      @media screen and (max-width: 991px) {
+          .logo {
+              margin-left: 0px
+          }
+          .image {
+              width: 300px;
+              height: 220px
+          }
+          .border-line {
+              border-right: none
+          }
+          .card2 {
+              border-top: 1px solid #EEEEEE !important;
+              margin: 0px 15px
+          }
+      }
+      /* Tambahan Baru */
+      /* Atur bagian gamabar UNIPA */
+      
+      .row.px-3.justify-content-center.mt-4.mb-5.border-line {
+          padding: 0 !important;
+          margin: 0 !important;
+          height: 100%;
+          object-fit: cover !important;
+          border: 0;
+      }
+      /* gambar UNIPA */
+      
+      .image {
+          width: 100%;
+          height: auto;
+          padding: 0 !important;
+          margin: 0 !important;
+          /*border-radius: 10px;*/
+      }
+      /* Button Masuk login page */
+      
+      button.btn.btn-blue.text-center {
+          background-color: #673ab7;
+      }
+      /* Bagian Footer */
+      
+      .bg-blue.py-4.bagianfoter {
+          background-color: #673ab7;
+      }
+      /* Bagian Agenda dan Informasi */
+      
+      .agendaInformasi {
+          width: 100%;
+          margin: 20px 0 0 0 !important;
+      }
+      
+      .agendaInformasi .col-md-6 {
+          /* background-color: #673ab7; */
+          margin: 0;
+          padding: 1rem 0 0 0 !important;
+      }
+      /* Card Agenda dan Informasi */
+      
+      .card2.card.border-0.px-4.py-5.agenda {
+          padding-top: 0 !important;
+          margin: 0 10px 10px 10px;
+          margin-left: 10px;
+          height: auto;
+          box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%);
+      }
+      
+      .card2.card.border-0.px-4.py-5.informasiTerbaru {
+          padding-top: 0 !important;
+          margin: 0 10px 10px 10px;
+          margin-right: 10px;
+          height: auto;
+          box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%);
+      }
+      /* tombol Login */
+      
+      .row.mb-3.px-3.loginRegister {
+          display: flex;
+          align-items: center;
+          margin-top: 3rem;
+      }
+      
+      .row.px-3.loginRegister {
+          justify-content: space-between;
+          align-items: center;
+      }
+      
+      .loginRegister {
+          margin-top: 2.5rem;
+      }
+      
+      .card2.card.border-0.px-4.py-5.gambarSlider {
+          padding: 3rem 0 0 0 !important;
+          margin: 0 !important;
+      }
+      /* SLIDER GOES HERE */
+      
+      #demo {
+          background: linear-gradient(112deg, #ffffff 50%, antiquewhite 50%);
+          max-width: 900px;
+          margin: 0;
+      }
+      
+      .carousel-caption {
+          position: initial;
+          z-index: 10;
+          padding: 0;
+          color: rgba(78, 77, 77, 0.856);
+          text-align: center;
+          font-size: 1.2rem;
+          font-style: italic;
+          font-weight: bold;
+          line-height: 2rem;
+      }
+      
+      @media(max-width:767px) {
+          .carousel-caption {
+              /* position: initial;
+              z-index: 10;
+              padding: 3rem 2rem;
+              color: rgba(78, 77, 77, 0.856);
+              text-align: center;
+              font-size: 0.7rem;
+              font-style: italic;
+              font-weight: bold;
+              line-height: 1.5rem; */
+              padding: 5px;
+          }
+      }
+      
+      .carousel-caption img {
+          width: 100%;
+          border-radius: 0;
+          margin-top: 0;
+          height: 23rem;
+          object-fit: cover;
+          border-radius: 0 5px 5px 0;
+      }
+      
+      @media(max-width:767px) {
+          .carousel-caption img {
+              /* width: 4rem;
+              border-radius: 4rem;
+              margin-top: 1rem; */
+              border-radius: 5px;
+              height: 200px !important;
+              object-fit: cover;
+          }
+          .card2.card.border-0.px-4.py-5.loginPage {
+              padding-bottom: 0 !important;
+              padding: 0 !important;
+          }
+          .row.px-3.loginRegister button.btn.btn-blue.text-center {
+              margin-bottom: 1rem;
+          }
+          .row.px-3.loginRegister {
+              justify-content: center;
+          }
+          .row.px-3.loginRegister button.btn.btn-blue.text-center {
+              width: 100%;
+          }
+          div#demo i {
+              background-color: transparent !important;
+              padding: 16px 20px;
+          }
+      }
+      
+      #image-caption {
+          font-style: normal;
+          font-size: 1rem;
+          margin-top: 0.5rem;
+      }
+      /* @media(max-width:767px) {
+          #image-caption {
+              font-style: normal;
+              font-size: 0.6rem;
+              margin-top: 0.5rem;
+          }
+      } */
+      
+      div#demo i {
+          background-color: #673ab7;
+          padding: 16px 20px;
+      }
+      
+      @media(max-width:767px) {
+          i {
+              padding: 0.8rem;
+          }
+      }
+      
+      .carousel-control-prev {
+          justify-content: flex-start;
+      }
+      
+      .carousel-control-next {
+          justify-content: flex-end;
+      }
+      
+      .carousel-control-prev,
+      .carousel-control-next {
+          transition: none;
+          opacity: unset;
+      }
+      
+      .card2.card.border-0.px-4.py-5.loginPage {
+          padding-bottom: 0 !important;
+      }
+      
+      @media(max-width: 991px) {
+          .carousel-caption img {
+              border-radius: 0;
+          }
+      }
