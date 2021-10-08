@@ -605,17 +605,11 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Pendidikan Ayah *</label>
-                                                <select name="pendidikanayah" id="pendidikanayah" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['pendidikan_ayah'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <option value="1" <?= $row['pendidikan_ayah'] == '1' ? ' selected="selected"' : ''; ?>>Tidak Tamat SD</option>
-                                                    <option value="2" <?= $row['pendidikan_ayah'] == '2' ? ' selected="selected"' : ''; ?>>Tamat SD</option>
-                                                    <option value="3" <?= $row['pendidikan_ayah'] == '3' ? ' selected="selected"' : ''; ?>>Tamat SMTP</option>
-                                                    <option value="4" <?= $row['pendidikan_ayah'] == '4' ? ' selected="selected"' : ''; ?>>Tamat SMTA</option>
-                                                    <option value="5" <?= $row['pendidikan_ayah'] == '5' ? ' selected="selected"' : ''; ?>>Sarjana MUDA</option>
-                                                    <option value="6" <?= $row['pendidikan_ayah'] == '6' ? ' selected="selected"' : ''; ?>>Sarjana</option>
-                                                    <option value="7" <?= $row['pendidikan_ayah'] == '7' ? ' selected="selected"' : ''; ?>>Pascasarjana (S2)</option>
-                                                    <option value="8" <?= $row['pendidikan_ayah'] == '8' ? ' selected="selected"' : ''; ?>>Doktor (S3)</option>
-                                                    <option value="9" <?= $row['pendidikan_ayah'] == '9' ? ' selected="selected"' : ''; ?>>Lainnya</option>
+                                                <select name="pendidikanortu" id="pendidikanortu" class="form-select" aria-label="Default select example">
+                                                    <option <?php echo ($row['pendidikanortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <?php foreach ($pendidikanortu as $pd) : ?>
+                                                        <option value="<?php echo $pd['idpendidikan']; ?>" <?php echo ($row['pendidikanortu'] == $pd['idpendidikan']) ? 'selected' : ''; ?>><?php echo $pd['namajenjang']; ?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
                                                 <small>Pendidikan terakhir</small>
                                             </div>
@@ -702,24 +696,24 @@
                                                 <label>Pekerjaan Ibu *</label>
                                                 <select name="pekerjaanibu" id="pekerjaanibu" class="form-select" aria-label="Default select example">
                                                     <option <?php echo ($row['pekerjaan_ibu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <option value="1" <?= $row['pekerjaan_ibu'] == '1' ? ' selected="selected"' : ''; ?>>Pegawai Negeri</option>
-                                                    <option value="2" <?= $row['pekerjaan_ibu'] == '2' ? ' selected="selected"' : ''; ?>>Karyawan Swasta</option>
-                                                    <option value="3" <?= $row['pekerjaan_ibu'] == '3' ? ' selected="selected"' : ''; ?>>POLRI</option>
-                                                    <option value="4" <?= $row['pekerjaan_ibu'] == '4' ? ' selected="selected"' : ''; ?>>Petani/Nelayan</option>
-                                                    <option value="5" <?= $row['pekerjaan_ibu'] == '5' ? ' selected="selected"' : ''; ?>>Wiraswasta</option>
-                                                    <option value="6" <?= $row['pekerjaan_ibu'] == '6' ? ' selected="selected"' : ''; ?>>Pensiunan</option>
-                                                    <option value="7" <?= $row['pekerjaan_ibu'] == '7' ? ' selected="selected"' : ''; ?>>Guru/Dosen Negeri</option>
-                                                    <option value="8" <?= $row['pekerjaan_ibu'] == '8' ? ' selected="selected"' : ''; ?>>PNS Non-Guru/Dosen</option>
-                                                    <option value="9" <?= $row['pekerjaan_ibu'] == '9' ? ' selected="selected"' : ''; ?>>TNI</option>
-                                                    <option value="10" <?= $row['pekerjaan_ibu'] == '10' ? ' selected="selected"' : ''; ?>>Guru/Dosen Swasta</option>
-                                                    <option value="11" <?= $row['pekerjaan_ibu'] == '11' ? ' selected="selected"' : ''; ?>>Pegawai Swasta Non-Guru/Dosen</option>
-                                                    <option value="12" <?= $row['pekerjaan_ibu'] == '12' ? ' selected="selected"' : ''; ?>>Pedagang/Wiraswasta</option>
-                                                    <option value="13" <?= $row['pekerjaan_ibu'] == '13' ? ' selected="selected"' : ''; ?>>Ahli/Prof. Bekekrja Perorangan</option>
-                                                    <option value="14" <?= $row['pekerjaan_ibu'] == '14' ? ' selected="selected"' : ''; ?>>Buruh</option>
-                                                    <option value="15" <?= $row['pekerjaan_ibu'] == '15' ? ' selected="selected"' : ''; ?>>Pensiunan TNI/POLRI</option>
-                                                    <option value="16" <?= $row['pekerjaan_ibu'] == '16' ? ' selected="selected"' : ''; ?>>Pensiunan Pegawai Swasta</option>
-                                                    <option value="17" <?= $row['pekerjaan_ibu'] == '17' ? ' selected="selected"' : ''; ?>>Ibu Rumah Tangga</option>
-                                                    <option value="17" <?= $row['pekerjaan_ibu'] == '18' ? ' selected="selected"' : ''; ?>>Lain-Lain</option>
+                                                    <option value="1" <?= $row['pekerjaan_ibu'] == 'Pegawai Negeri' ? ' selected="selected"' : ''; ?>>Pegawai Negeri</option>
+                                                    <option value="2" <?= $row['pekerjaan_ibu'] == 'Karyawan Swasta' ? ' selected="selected"' : ''; ?>>Karyawan Swasta</option>
+                                                    <option value="3" <?= $row['pekerjaan_ibu'] == 'POLRI' ? ' selected="selected"' : ''; ?>>POLRI</option>
+                                                    <option value="4" <?= $row['pekerjaan_ibu'] == 'Petani/Nelayan' ? ' selected="selected"' : ''; ?>>Petani/Nelayan</option>
+                                                    <option value="5" <?= $row['pekerjaan_ibu'] == 'Wiraswasta' ? ' selected="selected"' : ''; ?>>Wiraswasta</option>
+                                                    <option value="6" <?= $row['pekerjaan_ibu'] == 'Pensiunan' ? ' selected="selected"' : ''; ?>>Pensiunan</option>
+                                                    <option value="7" <?= $row['pekerjaan_ibu'] == 'Guru/Dosen Negeri' ? ' selected="selected"' : ''; ?>>Guru/Dosen Negeri</option>
+                                                    <option value="8" <?= $row['pekerjaan_ibu'] == 'PNS Non-Guru/Dosen' ? ' selected="selected"' : ''; ?>>PNS Non-Guru/Dosen</option>
+                                                    <option value="9" <?= $row['pekerjaan_ibu'] == 'TNI' ? ' selected="selected"' : ''; ?>>TNI</option>
+                                                    <option value="10" <?= $row['pekerjaan_ibu'] == 'Guru/Dosen Swasta' ? ' selected="selected"' : ''; ?>>Guru/Dosen Swasta</option>
+                                                    <option value="11" <?= $row['pekerjaan_ibu'] == 'Pegawai Swasta Non-Guru/Dosen' ? ' selected="selected"' : ''; ?>>Pegawai Swasta Non-Guru/Dosen</option>
+                                                    <option value="12" <?= $row['pekerjaan_ibu'] == 'Pedagang/Wiraswasta' ? ' selected="selected"' : ''; ?>>Pedagang/Wiraswasta</option>
+                                                    <option value="13" <?= $row['pekerjaan_ibu'] == 'Ahli/Prof. Bekekrja Perorangan' ? ' selected="selected"' : ''; ?>>Ahli/Prof. Bekekrja Perorangan</option>
+                                                    <option value="14" <?= $row['pekerjaan_ibu'] == 'Buruh' ? ' selected="selected"' : ''; ?>>Buruh</option>
+                                                    <option value="15" <?= $row['pekerjaan_ibu'] == 'Pensiunan TNI/POLRI' ? ' selected="selected"' : ''; ?>>Pensiunan TNI/POLRI</option>
+                                                    <option value="16" <?= $row['pekerjaan_ibu'] == 'Pensiunan Pegawai Swasta' ? ' selected="selected"' : ''; ?>>Pensiunan Pegawai Swasta</option>
+                                                    <option value="17" <?= $row['pekerjaan_ibu'] == 'Ibu Rumah Tangga' ? ' selected="selected"' : ''; ?>>Ibu Rumah Tangga</option>
+                                                    <option value="17" <?= $row['pekerjaan_ibu'] == 'Lain-Lain' ? ' selected="selected"' : ''; ?>>Lain-Lain</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -1246,7 +1240,7 @@
                 $("#next3").attr("disabled", "disabled");
                 var nik_ayah = $("input[name='nikayah']").val();
                 var nama_ayah = $("input[name='namaayah']").val();
-                var pendidikan_ayah = $("select[name='pendidikanayah']").val();
+                var pendidikanortu = $("select[name='pendidikanortu']").val();
                 var pekerjaan_ayah = $("select[name='pekerjaanayah']").val();
                 var alamatkantor_ayah = $("input[name='alamatkantorayah']").val();
                 var nik_ibu = $("input[name='nikibu']").val();
@@ -1268,7 +1262,7 @@
                     data: {
                         nik_ayah: nik_ayah,
                         nama_ayah: nama_ayah,
-                        pendidikan_ayah: pendidikan_ayah,
+                        pendidikanortu: pendidikanortu,
                         pekerjaan_ayah: pekerjaan_ayah,
                         alamatkantor_ayah: alamatkantor_ayah,
                         nik_ibu: nik_ibu,
