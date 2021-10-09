@@ -32,11 +32,11 @@ class Auth extends CI_Controller
 			// redirect them to the login page
 			redirect('auth/login', 'refresh');
 		}
-		else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
-		{
-			// redirect them to the home page because they must be an administrator to view this
-			show_error('You must be an administrator to view this page.');
-		}
+		// else if (!$this->ion_auth->is_admin()) // remove this elseif if you want to enable this for non-admins
+		// {
+		// 	// redirect them to the home page because they must be an administrator to view this
+		// 	show_error('You must be an administrator to view this page.');
+		// }
 		else
 		{
 			$this->data['title'] = $this->lang->line('index_heading');
@@ -80,10 +80,17 @@ class Auth extends CI_Controller
 			{
 				//if the login is successful
 				//redirect them back to the home page
-				
-				$this->session->set_flashdata('message', $this->ion_auth->messages());
-				//redirect('/', 'refresh');
-				redirect('register/isibiodata');
+				if ($this->ion_auth->is_admin())
+				{
+					$this->session->set_flashdata('message', $this->ion_auth->messages());
+					//redirect('/', 'refresh');
+					redirect('administrator');
+				} else {
+					$this->session->set_flashdata('message', $this->ion_auth->messages());
+					//redirect('/', 'refresh');
+					redirect('register/isibiodata');
+				}
+					
 			}
 			else
 			{
