@@ -19,6 +19,7 @@ class Register extends CI_Controller
 		$this->load->model('M_jenissmta');
 		$this->load->model('M_pendidikanortu');
 		$this->load->model('M_pekerjaanortu');
+		$this->load->model('M_penghasilanortu');
 	}
 
 	function generateRandomString($length)
@@ -94,6 +95,9 @@ class Register extends CI_Controller
 			'provinsi' => $this->M_wilayah->get_all_provinsi(),
 			'jurusansmta' => $this->M_jurusansmta->get_all(),
 			'jenissmta' => $this->M_jenissmta->get_all(),
+			'pendidikanortu' => $this->M_pendidikanortu->get_all(),
+			'pekerjaanortu' => $this->M_pekerjaanortu->get_all(),
+			'penghasilanortu' => $this->M_penghasilanortu->get_all(),
 
 
 		);
@@ -165,14 +169,14 @@ class Register extends CI_Controller
 		$params3 = array(
 			'nik_ayah' => $this->input->post('nik_ayah'),
 			'nama_ayah' => $this->input->post('nama_ayah'),
-			'pendidikanortu' => $this->input->post('pendidikanayah'),
-			'pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
+			'pendidikan_ayah' => $this->input->post('pendidikanayah'),
+			'pekerjaan_ayah' => $this->input->post('pekerjaanayah'),
 			'alamatkantor_ayah' => $this->input->post('alamatkantor_ayah'),
 			'nik_ibu' => $this->input->post('nik_ibu'),
 			'nama_ibu' => $this->input->post('nama_ibu'),
-			'pendidikan_ibu' => $this->input->post('pendidikan_ibu'),
-			'pekerjaan_ibu' => $this->input->post('pekerjaan_ibu'),
-			'penghasilan_ortu' => $this->input->post('penghasilan_ortu'),
+			'pendidikan_ibu' => $this->input->post('pendidikanibu'),
+			'pekerjaan_ibu' => $this->input->post('pekerjaanibu'),
+			'penghasilan_ortu' => $this->input->post('penghasilanortu'),
 			'alamat_ortu' => $this->input->post('alamat_ortu'),
 			'provinsi_tempattinggalortu' => $this->input->post('provinsi_ortu'),
 			'kab_tempattinggalortu' => $this->input->post('kabupaten_ortu'),
@@ -191,8 +195,8 @@ class Register extends CI_Controller
 		$user = $this->ion_auth->user()->row();
 		$params4 = array(
 			'nama_wali' => $this->input->post('nama_wali'),
-			'pekerjaan_wali' => $this->input->post('pekerjaan_wali'),
-			'penghasilan_wali' => $this->input->post('penghasilan_wali'),
+			'pekerjaan_wali' => $this->input->post('pekerjaanwali'),
+			'penghasilan_wali' => $this->input->post('penghasilanwali'),
 			'alamat_wali' => $this->input->post('alamat_wali'),
 		);
 		$this->M_register->update_biodata($user->username, $params4);

@@ -128,6 +128,13 @@
                     <span>Pekerjaan Orang Tua</span></a>
             </li>
 
+            <!-- Nav Item - Tables -->
+            <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_penghasilanortu") ? "active" : ""; ?>">
+                <a class="nav-link" href="<?php echo site_url('administrator/ref_penghasilanortu'); ?>">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Penghasilan Orang Tua</span></a>
+            </li>
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 
