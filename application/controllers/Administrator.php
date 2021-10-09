@@ -214,4 +214,38 @@ class Administrator extends CI_Controller
 		$data['_view'] = 'admin/ref_pendidikanortu';
 		$this->load->view('admin/layout', $data);
 	}
+
+	public function ref_penghasilanortu()
+	{
+		$this->load->model('M_penghasilanortu');
+
+		if ($this->uri->segment(3) == "") {
+			$data['linkform'] = "administrator/ref_penghasilanortu/add";
+			$data['penghasilanortu'] = $this->M_penghasilanortu->get_all();
+		} else if ($this->uri->segment(3) == "add") {
+			$data = array(
+				'penghasilan'  => $this->input->post('penghasilanortu'),
+			);
+
+			$this->M_penghasilanortu->add($data);
+
+			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			redirect('administrator/ref_penghasilanortu');
+		} else if ($this->uri->segment(3) == "edit") {
+			$id = $this->input->post('idpenghasilan');
+			$data = array(
+				'penghasilan'  => $this->input->post('penghasilanortu')
+			);
+			$this->M_penghasilanortu->edit($data, $id);
+			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			redirect('administrator/ref_penghasilanortu');
+		} else if ($this->uri->segment(3) == "delete") {
+			$id = $this->input->post('idpenghasilan');
+			$this->M_penghasilanortu->delete($id);
+			redirect('administrator/ref_penghasilanortu');
+		}
+
+		$data['_view'] = 'admin/ref_penghasilanortu';
+		$this->load->view('admin/layout', $data);
+	}
 }
