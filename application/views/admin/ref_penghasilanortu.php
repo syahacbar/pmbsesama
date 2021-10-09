@@ -78,7 +78,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var table = $('#dataTable').DataTable();
-        $("a.editform").click(function(event) {
+        $("#dataTable").on("click", ".editform", function(){
             event.preventDefault();
             $("input#txtPenghasilanortu").val($(this).data('penghasilanortu'));
             $("input#idpenghasilan").val($(this).data('idpenghasilan'));

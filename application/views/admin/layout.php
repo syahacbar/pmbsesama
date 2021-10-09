@@ -73,10 +73,20 @@
             </div>
 
             <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="<?php echo site_url('administrator/ref_prodi'); ?>">
+
+             <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_fakultas" || $this->uri->segment(2) == "ref_prodi") ? "active" : ""; ?>">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
                     <i class="fas fa-fw fa-building"></i>
-                    <span>Fakultas dan Prodi</span></a>
+                    <span>Fakultas dan Prodi</span>
+                </a>
+                <div id="collapseUtilities" class="collapse <?php echo ($this->uri->segment(2) == "ref_fakultas" || $this->uri->segment(2) == "ref_prodi") ? "show" : ""; ?>" aria-labelledby="headingUtilities"
+                    data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_fakultas") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_fakultas'); ?>">Data Fakultas</a>
+                        <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_prodi") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_prodi'); ?>">Data Prodi</a>
+                    </div>
+                </div>
             </li>
 
             <!-- Nav Item - Tables -->
