@@ -17,6 +17,8 @@ class Register extends CI_Controller
 		$this->load->model('Ion_auth_model');
 		$this->load->model('M_jurusansmta');
 		$this->load->model('M_jenissmta');
+		$this->load->model('M_pendidikanortu');
+		$this->load->model('M_pekerjaanortu');
 	}
 
 	function generateRandomString($length)
@@ -163,7 +165,7 @@ class Register extends CI_Controller
 		$params3 = array(
 			'nik_ayah' => $this->input->post('nik_ayah'),
 			'nama_ayah' => $this->input->post('nama_ayah'),
-			'pendidikan_ayah' => $this->input->post('pendidikan_ayah'),
+			'pendidikanortu' => $this->input->post('pendidikanayah'),
 			'pekerjaan_ayah' => $this->input->post('pekerjaan_ayah'),
 			'alamatkantor_ayah' => $this->input->post('alamatkantor_ayah'),
 			'nik_ibu' => $this->input->post('nik_ibu'),
