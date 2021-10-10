@@ -7,9 +7,7 @@
     <title>Formulir - Portal PMB Oline UNIPA</title>
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
-    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-
+    <!-- <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
@@ -981,7 +979,7 @@
 
     <!-- Date Picker - Tanggal lahir -->
     <script>
-        $('datepicker').datepicker({
+        $('.datepicker').datepicker({
             uiLibrary: 'bootstrap4'
         });
     </script>
@@ -1015,7 +1013,6 @@
                 $(".BoxLulus").hide();
                 $(".BoxBelumLulus").hide();
             }
-
 
             $("#provtempatlahir").change(function() {
                 var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();

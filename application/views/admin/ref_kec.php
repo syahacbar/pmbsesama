@@ -135,7 +135,7 @@
 
         $("#tableKecamatan").on("click", ".editdata", function(){
         	$("select#optProvinsi").val($(this).data('kodeprovinsi')).change();
-        	//$("select#optKabupaten").val($(this).data('kodekabupaten')).change();
+        	$("select#optKabupaten").val($(this).data('kodekabupaten')).change();
         	$("span#kodekabupaten").html($(this).data('kodekabupaten')+".");
         	$("input#txtKodeKecamatan").val($(this).data('kodekecamatan')); 
 		 	$("input#txtNamaKecamatan").val($(this).data('namakecamatan'));

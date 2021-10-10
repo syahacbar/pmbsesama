@@ -64,7 +64,7 @@
                 <li class="nav-item <?php echo ($this->uri->segment(2) == "datapendaftar" || $this->uri->segment(2) == "ref_slider" || $this->uri->segment(2) == "ref_agenda" || $this->uri->segment(2) == "ref_informasi") ? "active" : ""; ?>">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePendaftaran"
                     aria-expanded="true" aria-controls="collapsePendaftaran">
-                    <i class="fas fa-fw fa-building"></i>
+                    <i class="fas fa-fw fa-users"></i>
                     <span>Pendaftaran</span>
                 </a>
                 <div id="collapsePendaftaran" class="collapse <?php echo ($this->uri->segment(2) == "datapendaftar" || $this->uri->segment(2) == "ref_slider" || $this->uri->segment(2) == "ref_agenda" || $this->uri->segment(2) == "ref_informasi") ? "show" : ""; ?>" aria-labelledby="headingPendaftaran"
@@ -90,7 +90,7 @@
             <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_agama" || $this->uri->segment(2) == "ref_statusmenikah") ? "active" : ""; ?>">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDatapribadi"
                 aria-expanded="true" aria-controls="collapseDatapribadi">
-                <i class="fas fa-fw fa-building"></i>
+                <i class="fas fa-fw fa-user"></i>
                 <span>Data Pribadi</span>
             </a>
             <div id="collapseDatapribadi" class="collapse <?php echo ($this->uri->segment(2) == "ref_agama" || $this->uri->segment(2) == "ref_statusmenikah") ? "show" : ""; ?>" aria-labelledby="headingDatapribadi"
@@ -123,7 +123,7 @@
     <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_prov" || $this->uri->segment(2) == "ref_kab" || $this->uri->segment(2) == "ref_kec" || $this->uri->segment(2) == "ref_des") ? "active" : ""; ?>">
         <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDatawiayah"
         aria-expanded="true" aria-controls="collapseDatawiayah">
-        <i class="fas fa-fw fa-building"></i>
+        <i class="fas fa-fw fa-map-marked"></i>
         <span>Data Wilayah</span>
     </a>
     <div id="collapseDatawiayah" class="collapse <?php echo ($this->uri->segment(2) == "ref_prov" || $this->uri->segment(2) == "ref_kab" || $this->uri->segment(2) == "ref_kec" || $this->uri->segment(2) == "ref_des") ? "show" : ""; ?>" aria-labelledby="headingDatawiayah"
@@ -141,7 +141,7 @@
 <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_jenissmta" || $this->uri->segment(2) == "ref_jurusansmta") ? "active" : ""; ?>">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIdentitasSekolah"
     aria-expanded="true" aria-controls="collapseIdentitasSekolah">
-    <i class="fas fa-fw fa-building"></i>
+    <i class="fas fa-fw fa-school"></i>
     <span>Identitas Sekolah</span>
 </a>
 <div id="collapseIdentitasSekolah" class="collapse <?php echo ($this->uri->segment(2) == "ref_jenissmta" || $this->uri->segment(2) == "ref_jurusansmta") ? "show" : ""; ?>" aria-labelledby="headingIdentitasSekolah"
@@ -157,7 +157,7 @@
 <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_pendidikanortu" || $this->uri->segment(2) == "ref_pekerjaanortu" || $this->uri->segment(2) == "ref_penghasilanortu") ? "active" : ""; ?>">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrangtua"
     aria-expanded="true" aria-controls="collapseOrangtua">
-    <i class="fas fa-fw fa-building"></i>
+    <i class="fas fa-fw fa-user-friends"></i>
     <span>Data Orang Tua / Wali</span>
 </a>
 <div id="collapseOrangtua" class="collapse <?php echo ($this->uri->segment(2) == "ref_pendidikanortu" || $this->uri->segment(2) == "ref_pekerjaanortu" || $this->uri->segment(2) == "ref_penghasilanortu") ? "show" : ""; ?>" aria-labelledby="headingOrangtua"
