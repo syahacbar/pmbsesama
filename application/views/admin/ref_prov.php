@@ -88,6 +88,7 @@
             },
 
         });
+        
 
         $("form#formprovinsi").submit(function (event) {
 		    var kodeprov = $('input#txtKodeProvinsi').val();

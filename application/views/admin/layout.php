@@ -61,16 +61,16 @@
                     Pendaftaran
                 </div>
                 <!-- Data Pendaftar -->
-                <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_pendaftar" || $this->uri->segment(2) == "ref_slider" || $this->uri->segment(2) == "ref_agenda" || $this->uri->segment(2) == "ref_informasi") ? "active" : ""; ?>">
+                <li class="nav-item <?php echo ($this->uri->segment(2) == "datapendaftar" || $this->uri->segment(2) == "ref_slider" || $this->uri->segment(2) == "ref_agenda" || $this->uri->segment(2) == "ref_informasi") ? "active" : ""; ?>">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePendaftaran"
                     aria-expanded="true" aria-controls="collapsePendaftaran">
                     <i class="fas fa-fw fa-building"></i>
                     <span>Pendaftaran</span>
                 </a>
-                <div id="collapsePendaftaran" class="collapse <?php echo ($this->uri->segment(2) == "ref_pendaftar" || $this->uri->segment(2) == "ref_slider" || $this->uri->segment(2) == "ref_agenda" || $this->uri->segment(2) == "ref_informasi") ? "show" : ""; ?>" aria-labelledby="headingPendaftaran"
+                <div id="collapsePendaftaran" class="collapse <?php echo ($this->uri->segment(2) == "datapendaftar" || $this->uri->segment(2) == "ref_slider" || $this->uri->segment(2) == "ref_agenda" || $this->uri->segment(2) == "ref_informasi") ? "show" : ""; ?>" aria-labelledby="headingPendaftaran"
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_pendaftar") ? "active" : ""; ?>" href="#">Data Pendaftar</a>
+                        <a class="collapse-item <?php echo ($this->uri->segment(2) == "datapendaftar") ? "active" : ""; ?>" href="<?php echo site_url('administrator/datapendaftar'); ?>">Data Pendaftar</a>
                         <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_slider") ? "active" : ""; ?>" href="#">Slider Depan</a>
                         <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_agenda") ? "active" : ""; ?>" href="#">Agenda Penerimaan</a>
                         <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_informasi") ? "active" : ""; ?>" href="#">Informasi</a>
@@ -422,7 +422,7 @@
             <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
             <div class="modal-footer">
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" href="login.html">Logout</a>
+                <a class="btn btn-primary" href="<?php echo site_url('auth/logout');?>">Logout</a>
             </div>
         </div>
     </div>

@@ -357,4 +357,10 @@ class Administrator extends CI_Controller
 		$data['_view'] = 'admin/ref_des';
 		$this->load->view('admin/layout', $data);
 	}
+
+	public function datapendaftar()
+	{		
+		$data['_view'] = 'admin/data_pendaftar';
+		$this->load->view('admin/layout', $data);
+	}
 }

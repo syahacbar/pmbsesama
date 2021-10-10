@@ -30,15 +30,15 @@
 							<label for="txtKodeKabupaten" class="form-label">Kode Kecamatan/Distrik</label>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
-									<span id="kodekecamatan" class="input-group-text"></span>
-									<input type="hidden" id="kodekecamatan" name="kodekecamatan">
+									<span id="kodekabupaten" class="input-group-text"></span>
+									<input type="hidden" id="kodekabupaten" name="kodekabupaten">
 								</div>
-								<input id="txtKodeKabupaten" type="text" class="form-control" name="kodekabupaten" placeholder="Kode Kecamatan/Distrik" required>
+								<input id="txtKodeKecamatan" type="text" class="form-control" name="txtKodeKecamatan" placeholder="Kode Kecamatan/Distrik" required>
 							</div>
 						</div>
 						<div class="col-md-3">
 							<label for="txtKabupaten" class="form-label">Kecamatan/Distrik</label>
-							<input id="txtKabupaten" type="text" class="form-control" name="wilayah" placeholder="Kecamatan/Distrik" required>
+							<input id="txtNamaKecamatan" type="text" class="form-control" name="txtNamaKecamatan" placeholder="Kecamatan/Distrik" required>
 						</div>      
 							<input type="hidden" id="kodewilayah" name="kodewilayah">                 
 							<button type="reset" class="btn btn-secondary">Reset</button>&nbsp;&nbsp;&nbsp;
@@ -113,15 +113,34 @@
 
         });
 
-        $("#dataTable").on("click", ".editform", function(){
-			event.preventDefault();
-			$("input#kodewilayah").val($(this).data('kodewilayah'));
-			$("span#kodeprovinsi").html($(this).data('kodeprovinsi')+"."); 
-			$("input#txtKodeKabupaten").val($(this).data('kodekabupaten')); 
-			$("input#txtKabupaten").val($(this).data('wilayah'));
-            $("select#optProvinsi").val($(this).data('kodeprovinsi')).change();
-		  	$("input#kodeprovinsi").val($('select#optProvinsi').val());
-			$('#formkecamatan').attr('action', '<?php echo site_url('administrator/ref_kab/edit');?>');
+        $("form#formkecamatan").submit(function (event) {
+        	var kodekab = $('input#kodekabupaten').val();
+		    var kodekec = $('input#txtKodeKecamatan').val();
+            var namakec = $('input#txtNamaKecamatan').val();
+		    var kodewilayah = $('input#kodewilayah').val();
+
+		    $.ajax({
+		      type: "POST",
+		      url: "<?php echo site_url() ?>Datatables/kecamatan_save/"+kodewilayah,
+		      data: {kodekab:kodekab,kodekec:kodekec,namakec:namakec,kodewilayah:kodewilayah},
+		      dataType: "json",
+		      encode: true,
+		      success:function(data)
+		      {
+		      	tableKecamatan.ajax.reload(null,false);
+		      }
+		    });
+		});
+
+
+        $("#tableKecamatan").on("click", ".editdata", function(){
+        	$("select#optProvinsi").val($(this).data('kodeprovinsi')).change();
+        	//$("select#optKabupaten").val($(this).data('kodekabupaten')).change();
+        	$("span#kodekabupaten").html($(this).data('kodekabupaten')+".");
+        	$("input#txtKodeKecamatan").val($(this).data('kodekecamatan')); 
+		 	$("input#txtNamaKecamatan").val($(this).data('namakecamatan'));
+		 	$("input#kodewilayah").val($(this).data('kodewilayah'));
+
 		});
 
 		$('select#optProvinsi').on('change', function() {
@@ -131,21 +150,25 @@
 		});
 
 		$('select#optKabupaten').on('change', function() {
-		  $("span#kodekecamatan").html($('select#optKabupaten').val()+".");
-		  $("input#kodekecamatan").val($('select#optKabupaten').val());
+		  $("span#kodekabupaten").html($('select#optKabupaten').val()+".");
+		  $("input#kodekabupaten").val($('select#optKabupaten').val());
 		});
 
-		$(document).on('click', '.deletedata', function(){  
-			var kode = $(this).data("kodewilayah");  
+		$("#tableKecamatan").on('click', '.deletedata', function(){    
+			var kodekec = $(this).data("kodekecamatan");  
 			if(confirm("Are you sure you want to delete this?"))  
 			{  
 				$.ajax({  
-					url:"<?php echo site_url(); ?>administrator/ref_kab/delete",  
+					url:"<?php echo site_url(); ?>Datatables/kecamatan_delete",  
 					method:"POST",  
-					data:{kode:kode},  
+					data:{kodekec:kodekec},  
 					success:function(data)  
 					{  
-						alert("Data Berhasil Dihapus");   
+						$('#alert').html('<div class="alert alert-warning alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Data berhasil dihapus.</div>');
+						tableKecamatan.ajax.reload(null,false);
+						$(".alert").fadeTo(5000, 0).slideUp(100, function(){
+			                $(this).remove();
+			            });      
 					}  
 				});  
 			}  

@@ -136,7 +136,7 @@
 			$("span#kodeprovinsi").html($(this).data('kodeprovinsi')+".");
 			$("input#kodeprovinsi").val($(this).data('kodeprovinsi'));
         	$("input#txtKodeKabupaten").val($(this).data('kodekabupaten')); 
-		 	$("input#txtNamaKabupaten").val($(this).data('namaprovinsi'));
+		 	$("input#txtNamaKabupaten").val($(this).data('namakabupaten'));
 		 	$("input#kodewilayah").val($(this).data('kodewilayah'));
         });
 
