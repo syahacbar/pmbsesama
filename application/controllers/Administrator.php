@@ -10,6 +10,7 @@ class Administrator extends CI_Controller
 		{
 			redirect('auth/login', 'refresh');
 		}
+		$this->load->model('M_wilayah');
 	}
 
 	public function index()
@@ -324,6 +325,36 @@ class Administrator extends CI_Controller
 		}
 
 		$data['_view'] = 'admin/ref_prodi';
+		$this->load->view('admin/layout', $data);
+	}
+
+	public function ref_prov()
+	{
+		$data['_view'] = 'admin/ref_prov';
+		$this->load->view('admin/layout', $data);
+	}
+
+	public function ref_kab()
+	{
+		$data['provinsi'] = $this->M_wilayah->get_all_provinsi();
+		$data['_view'] = 'admin/ref_kab';
+		$this->load->view('admin/layout', $data);
+	}
+
+	public function ref_kec()
+	{
+		$data['kabupaten'] = $this->M_wilayah->get_all_kabupaten();
+		$data['provinsi'] = $this->M_wilayah->get_all_provinsi();
+		$data['_view'] = 'admin/ref_kec';
+		$this->load->view('admin/layout', $data);
+	}
+
+	public function ref_des()
+	{
+		$data['kecamatan'] = $this->M_wilayah->get_all_kecamatan();
+		$data['kabupaten'] = $this->M_wilayah->get_all_kabupaten();
+		$data['provinsi'] = $this->M_wilayah->get_all_provinsi();
+		$data['_view'] = 'admin/ref_des';
 		$this->load->view('admin/layout', $data);
 	}
 }

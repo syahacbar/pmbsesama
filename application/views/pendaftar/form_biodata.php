@@ -800,7 +800,8 @@
                                                 </select>
                                             </div>
                                         </div>
-
+                                    </div>
+                                    <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Penghasilan Wali *</label>
@@ -809,7 +810,7 @@
                                                     <?php foreach ($penghasilanortu as $ph) : ?>
                                                         <option value="<?php echo $ph['idpenghasilan']; ?>" <?php echo ($row['penghasilan_wali'] == $ph['idpenghasilan']) ? 'selected' : ''; ?>><?php echo $ph['penghasilan']; ?></option>
                                                     <?php endforeach; ?>
-                                                    <small>Penghasilan Wali</small>
+                                                </select>
                                             </div>
                                         </div>
 

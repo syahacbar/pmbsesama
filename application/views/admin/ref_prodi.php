@@ -1,7 +1,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
@@ -49,7 +49,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
 

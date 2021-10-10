@@ -9,8 +9,9 @@
 					<h6 class="m-0 font-weight-bold text-primary">Referensi Data Agama</h6>
 				</div>
 				<div class="card-body">
+					<div id="alert"></div>
 					<div class="table-responsive">
-						<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+						<table class="table table-bordered" id="tableAgama" width="100%" cellspacing="0">
 							<thead>
 								<tr>
 									<th width="10">No.</th>
@@ -77,15 +78,15 @@
 
 <script type="text/javascript">
 	$(document).ready(function(){
-		var table = $('#dataTable').DataTable();
-        $("#dataTable").on("click", ".editform", function(){
+		var tableAgama = $('#tableAgama').DataTable();
+        $("#tableAgama").on("click", ".editform", function(){
 			event.preventDefault();
 			$("input#txtAgama").val($(this).data('agama')); 
 			$("input#idagama").val($(this).data('idagama')); 
 			$('#formagama').attr('action', '<?php echo site_url('administrator/ref_agama/edit');?>');
 		});
 
-		$(document).on('click', '.deletedata', function(){  
+		$("#tableAgama").on('click', '.deletedata', function(){ 
 			var idagama = $(this).data("idagama");  
 			if(confirm("Are you sure you want to delete this?"))  
 			{  
@@ -95,7 +96,10 @@
 					data:{idagama:idagama},  
 					success:function(data)  
 					{  
-						alert("Data Berhasil Dihapus");  
+						$('#alert').html('<div class="alert alert-warning alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Data berhasil dihapus.</div>');
+						$(".alert").fadeTo(5000, 0).slideUp(100, function(){
+			                $(this).remove();
+			            });
 						location.reload();
 					}  
 				});  
@@ -104,7 +108,12 @@
 			{  
 				return false;       
 			}  
-		});   
+		});  
+		window.setTimeout(function() {
+            $(".alert").fadeTo(5000, 0).slideUp(100, function(){
+                $(this).remove();
+            });
+        }, 4000);  
 	});
 
 </script>
