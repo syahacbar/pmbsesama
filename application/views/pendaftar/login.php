@@ -71,7 +71,7 @@
 
                         <div class="row px-3 loginRegister">
                             <button type="submit" class="btn btn-blue text-center">MASUK</button>
-                            <small class="font-weight-bold">Belum punya akun? <a href="<?php echo base_url('register');?>" class="text-danger ">DAFTAR DI SINI</a></small>
+                            <small class="font-weight-bold">Belum punya akun? <a href="<?php echo site_url('register');?>" class="text-danger ">DAFTAR DI SINI</a></small>
                         </div>
                         <?php echo form_close();?>
 

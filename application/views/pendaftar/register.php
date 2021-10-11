@@ -125,21 +125,21 @@
             <div id="demo" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
                 <div class="carousel-item active">
-                  <div class="carousel-caption">
-                    <img src="http://simunipa.unipa.ac.id/gtadmisi/file/slideshow/rektorat2_40982.jpg" alt="login">
-                  </div>
+                    <div class="carousel-caption">
+                        <img src="<?php echo base_url();?>/assets/upload/slider/ecampuz_default_slideshow_82305.jpg" alt="login">
+                    </div>
                 </div>
 
                 <div class="carousel-item">
-                  <div class="carousel-caption">
-                    <img src="http://simunipa.unipa.ac.id/gtadmisi/file/slideshow/rektorat_89137.jpg" alt="login1">
-                  </div>
+                    <div class="carousel-caption">
+                        <img src="<?php echo base_url();?>/assets/upload/slider/rektorat_89137.jpg" alt="login1">
+                    </div>
                 </div>
 
                 <div class="carousel-item">
-                  <div class="carousel-caption">
-                    <img src="https://images.pexels.com/photos/267885/pexels-photo-267885.jpeg" alt="login2">
-                  </div>
+                    <div class="carousel-caption">
+                        <img src="<?php echo base_url();?>/assets/upload/slider/rektorat2_40982.jpg" alt="login2">
+                    </div>
                 </div>
               </div>
 
