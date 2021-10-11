@@ -113,7 +113,7 @@
                   <button type="submit" class="btn btn-blue text-center">DAFTAR</button>
                 </div>
                 <div class="">
-                  <small class="font-weight-bold">Sudah punya akun? <a href="<?php echo base_url('auth'); ?>" class="text-danger ">LOGIN</a></small>
+                  <small class="font-weight-bold">Sudah punya akun? <a href="<?php echo site_url('auth'); ?>" class="text-danger ">LOGIN</a></small>
                 </div>
               </div>
           </div>
