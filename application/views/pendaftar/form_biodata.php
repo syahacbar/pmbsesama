@@ -1,22 +1,22 @@
 <!doctype html>
-<html>
+    <html>
 
-<head>
-    <meta charset='utf-8'>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Formulir - Portal PMB Oline UNIPA</title>
-    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
-    <!-- <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+    <head>
+        <meta charset='utf-8'>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+        <title>Formulir - Portal PMB Oline UNIPA</title>
+        <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+        <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+        <!-- <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-
-    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/form-pendaftaran.css">
+        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
-    <style>
+        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/form-pendaftaran.css">
+
+
+        <style>
         img.img-profile {
             width: 75px;
             display: flex;
@@ -416,9 +416,9 @@
                                                     <?php
                                                     $thn_skr = date('Y');
                                                     for ($x = $thn_skr; $x >= 2000; $x--) {
-                                                    ?>
+                                                        ?>
                                                         <option value="<?php echo $x ?>" <?php echo ($row['tahunlulus_smta'] == $x) ? 'selected' : ''; ?>><?php echo $x ?></option>
-                                                    <?php
+                                                        <?php
                                                     }
                                                     ?>
                                                 </select>
@@ -633,281 +633,281 @@
                                                 <small>Alamat kantor Ayah, maksimal 50 karakter.</small>
                                             </div>
                                         </div>
-                                        </select>
+                                    </select>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4>Biodata Ibu</h4>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <h4>Biodata Ibu</h4>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>NIK/No. KTP Ibu</label>
-                                                <input name="nikibu" type="text" class="form-control" placeholder="" value="<?php echo $row['nik_ibu']; ?>" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Nama Ibu *</label>
-                                                <input name="namaibu" id="namaibu" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_ibu']; ?>" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Pendidikan Ibu *</label>
-                                                <select name="pendidikanibu" id="pendidikanibu" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['pendidikan_ibu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($pendidikanortu as $pd) : ?>
-                                                        <option value="<?php echo $pd['idpendidikan']; ?>" <?php echo ($row['pendidikan_ibu'] == $pd['idpendidikan']) ? 'selected' : ''; ?>><?php echo $pd['namajenjang']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                                <small>Pendidikan terakhir</small>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Pekerjaan Ibu *</label>
-                                                <select name="pekerjaanibu" id="pekerjaanibu" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['pekerjaan_ibu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($pekerjaanortu as $pk) : ?>
-                                                        <option value="<?php echo $pk['idpekerjaan']; ?>" <?php echo ($row['pekerjaan_ibu'] == $pk['idpekerjaan']) ? 'selected' : ''; ?>><?php echo $pk['namapekerjaan']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Penghasilan Orang Tua*</label>
-                                                <select name="penghasilanortu" id="penghasilanortu" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['penghasilan_ortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($penghasilanortu as $ph) : ?>
-                                                        <option value="<?php echo $ph['idpenghasilan']; ?>" <?php echo ($row['penghasilan_ortu'] == $ph['idpenghasilan']) ? 'selected' : ''; ?>><?php echo $ph['penghasilan']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                                <small>Penghasilan Orang Tua Per Bulan</small>
-                                            </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>NIK/No. KTP Ibu</label>
+                                            <input name="nikibu" type="text" class="form-control" placeholder="" value="<?php echo $row['nik_ibu']; ?>" required>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col-sm-12">
-                                            <h4>Alamat Orang Tua</h4>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Nama Ibu *</label>
+                                            <input name="namaibu" id="namaibu" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_ibu']; ?>" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Pendidikan Ibu *</label>
+                                            <select name="pendidikanibu" id="pendidikanibu" class="form-select" aria-label="Default select example">
+                                                <option <?php echo ($row['pendidikan_ibu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                <?php foreach ($pendidikanortu as $pd) : ?>
+                                                    <option value="<?php echo $pd['idpendidikan']; ?>" <?php echo ($row['pendidikan_ibu'] == $pd['idpendidikan']) ? 'selected' : ''; ?>><?php echo $pd['namajenjang']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <small>Pendidikan terakhir</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Pekerjaan Ibu *</label>
+                                            <select name="pekerjaanibu" id="pekerjaanibu" class="form-select" aria-label="Default select example">
+                                                <option <?php echo ($row['pekerjaan_ibu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                <?php foreach ($pekerjaanortu as $pk) : ?>
+                                                    <option value="<?php echo $pk['idpekerjaan']; ?>" <?php echo ($row['pekerjaan_ibu'] == $pk['idpekerjaan']) ? 'selected' : ''; ?>><?php echo $pk['namapekerjaan']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Penghasilan Orang Tua*</label>
+                                            <select name="penghasilanortu" id="penghasilanortu" class="form-select" aria-label="Default select example">
+                                                <option <?php echo ($row['penghasilan_ortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                <?php foreach ($penghasilanortu as $ph) : ?>
+                                                    <option value="<?php echo $ph['idpenghasilan']; ?>" <?php echo ($row['penghasilan_ortu'] == $ph['idpenghasilan']) ? 'selected' : ''; ?>><?php echo $ph['penghasilan']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                            <small>Penghasilan Orang Tua Per Bulan</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <h4>Alamat Orang Tua</h4>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Alamat Orang Tua *</label>
+                                            <input name="alamatortu" id="alamatortu" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_ortu']; ?>" required>
+                                            <small>Alamat tinggal orang tua saat ini. Maksimal 50 karakter.</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Provinsi *</label>
+                                            <select name="provortu" id="provortu" class="form-select" aria-label="Default select example">
+                                                <option <?php echo ($row['provinsi_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                <?php foreach ($provinsi as $prov) : ?>
+                                                    <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['provinsi_tempattinggalortu'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Kabupaten/Kota *</label>
+                                            <select name="kabupatenortu" id="kabupatenortu" class="form-select" aria-label="Default select example">
+                                                <option <?php echo ($row['kab_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                <?php foreach ($kabupaten as $kab) : ?>
+                                                    <option value="<?php echo $kab['kode']; ?>" <?php echo ($row['kab_tempattinggalortu'] == $kab['kode']) ? 'selected' : ''; ?>><?php echo $kab['nama']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Kecamatan/Distrik *</label>
+                                            <select name="kecamatanortu" id="kecamatanortu" class="form-select" aria-label="Default select example">
+                                                <option <?php echo ($row['kec_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                <?php foreach ($kecamatan as $kec) : ?>
+                                                    <option value="<?php echo $kec['kode']; ?>" <?php echo ($row['kec_tempattinggalortu'] == $kec['kode']) ? 'selected' : ''; ?>><?php echo $kec['nama']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Kode Pos *</label>
+                                            <input name="kodeposortu" id="kodeposortu" type="text" class="form-control" placeholder="" value="<?php echo $row['kodepost_tempattinggalortu']; ?>" required>
+                                            <small>Kode pos tempat tinggal orang tua saat ini</small>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>No. Telp./HP *</label>
+                                            <input name="nohportu" id="nohportu" type="text" class="form-control" placeholder="" value="<?php echo $row['nohp_ortu']; ?>" required>
+                                            <small>Nomor telp atau handphone orang tua yang bisa dihubungi</small>
+                                        </div>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <input type="button" name="next3" id="next3" class="next action-button" value="Lanjut" />
+                            <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
+                        </fieldset>
+
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2 class="fs-title">Biodata Wali</h2>
+                                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                            Silakan isi data wali Anda sesuai dengan bidang-bidang yang diminta.
+                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                    </div>
+
+
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Nama Wali</label>
+                                            <input name="namawali" id="namawali" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_wali']; ?>" required>
                                         </div>
 
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Alamat Orang Tua *</label>
-                                                <input name="alamatortu" id="alamatortu" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_ortu']; ?>" required>
-                                                <small>Alamat tinggal orang tua saat ini. Maksimal 50 karakter.</small>
-                                            </div>
-                                        </div>
+                                    </div>
 
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Provinsi *</label>
-                                                <select name="provortu" id="provortu" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['provinsi_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($provinsi as $prov) : ?>
-                                                        <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['provinsi_tempattinggalortu'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Pekerjaan Wali *</label>
+                                            <select name="pekerjaanwali" id="pekerjaanwali" class="form-select" aria-label="Default select example">
+                                                <option <?php echo ($row['pekerjaan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                <?php foreach ($pekerjaanortu as $pk) : ?>
+                                                    <option value="<?php echo $pk['idpekerjaan']; ?>" <?php echo ($row['pekerjaan_wali'] == $pk['idpekerjaan']) ? 'selected' : ''; ?>><?php echo $pk['namapekerjaan']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Kabupaten/Kota *</label>
-                                                <select name="kabupatenortu" id="kabupatenortu" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['kab_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($kabupaten as $kab) : ?>
-                                                        <option value="<?php echo $kab['kode']; ?>" <?php echo ($row['kab_tempattinggalortu'] == $kab['kode']) ? 'selected' : ''; ?>><?php echo $kab['nama']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Penghasilan Wali *</label>
+                                            <select name="penghasilanwali" id="penghasilanwali" class="form-select" aria-label="Default select example">
+                                                <option <?php echo ($row['penghasilan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                <?php foreach ($penghasilanortu as $ph) : ?>
+                                                    <option value="<?php echo $ph['idpenghasilan']; ?>" <?php echo ($row['penghasilan_wali'] == $ph['idpenghasilan']) ? 'selected' : ''; ?>><?php echo $ph['penghasilan']; ?></option>
+                                                <?php endforeach; ?>
+                                            </select>
                                         </div>
+                                    </div>
 
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Kecamatan/Distrik *</label>
-                                                <select name="kecamatanortu" id="kecamatanortu" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['kec_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($kecamatan as $kec) : ?>
-                                                        <option value="<?php echo $kec['kode']; ?>" <?php echo ($row['kec_tempattinggalortu'] == $kec['kode']) ? 'selected' : ''; ?>><?php echo $kec['nama']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Kode Pos *</label>
-                                                <input name="kodeposortu" id="kodeposortu" type="text" class="form-control" placeholder="" value="<?php echo $row['kodepost_tempattinggalortu']; ?>" required>
-                                                <small>Kode pos tempat tinggal orang tua saat ini</small>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>No. Telp./HP *</label>
-                                                <input name="nohportu" id="nohportu" type="text" class="form-control" placeholder="" value="<?php echo $row['nohp_ortu']; ?>" required>
-                                                <small>Nomor telp atau handphone orang tua yang bisa dihubungi</small>
-                                            </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>Alamat Wali *</label>
+                                            <input name="alamatwali" id="alamatwali" type="text" class="form-control" placeholder="" required>
+                                            <small>Alamat wali saat ini. Maksimal 50 karakter.</small>
                                         </div>
                                     </div>
 
                                 </div>
-                                <input type="button" name="next3" id="next3" class="next action-button" value="Lanjut" />
-                                <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
-                            </fieldset>
+                            </div>
+                            <input type="button" name="next4" id="next4" class="next action-button" value="Lanjut" />
+                            <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
+                        </fieldset>
 
-                            <fieldset>
-                                <div class="form-card">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h2 class="fs-title">Biodata Wali</h2>
-                                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                                Silakan isi data wali Anda sesuai dengan bidang-bidang yang diminta.
-                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                    <span aria-hidden="true">&times;</span>
-                                                </button>
-                                            </div>
-                                        </div>
-
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Nama Wali</label>
-                                                <input name="namawali" id="namawali" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_wali']; ?>" required>
-                                            </div>
-
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Pekerjaan Wali *</label>
-                                                <select name="pekerjaanwali" id="pekerjaanwali" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['pekerjaan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($pekerjaanortu as $pk) : ?>
-                                                        <option value="<?php echo $pk['idpekerjaan']; ?>" <?php echo ($row['pekerjaan_wali'] == $pk['idpekerjaan']) ? 'selected' : ''; ?>><?php echo $pk['namapekerjaan']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div>
+                        <fieldset>
+                            <div class="form-card">
+                                <div class="row">
+                                    <div class="col-12">
+                                        <h2 class="fs-title">Konfirmasi</h2>
                                     </div>
-                                    <div class="row">
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Penghasilan Wali *</label>
-                                                <select name="penghasilanwali" id="penghasilanwali" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['penghasilan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($penghasilanortu as $ph) : ?>
-                                                        <option value="<?php echo $ph['idpenghasilan']; ?>" <?php echo ($row['penghasilan_wali'] == $ph['idpenghasilan']) ? 'selected' : ''; ?>><?php echo $ph['penghasilan']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div>
 
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Alamat Wali *</label>
-                                                <input name="alamatwali" id="alamatwali" type="text" class="form-control" placeholder="" required>
-                                                <small>Alamat wali saat ini. Maksimal 50 karakter.</small>
-                                            </div>
-                                        </div>
-
-                                    </div>
+                                    <table class="table tabelkonfirmasi">
+                                        <tbody>
+                                            <tr>
+                                                <td>Tanggal Pendaftaran</td>
+                                                <td>:</td>
+                                                <td><?php echo date("d-F-Y"); ?></td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kode Verifikasi</td>
+                                                <td>:</td>
+                                                <td>
+                                                    <input type="text" name="kodeverifikasi">
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>Syarat Pendaftaran</td>
+                                                <td>:</td>
+                                                <td>1</td>
+                                            </tr>
+                                            <tr>
+                                                <td>Kebijakan</td>
+                                                <td>:</td>
+                                                <td>
+                                                    <div class="custom-control custom-checkbox custom-control-inline">
+                                                        <input id="chk1" type="checkbox" name="chk" class="custom-control-input">
+                                                        <label for="chk1" class="custom-control-label text-sm">Dengan ini saya menyatakan bahwa data yang saya isikan adalah data yang sebenarnya, jika di kemudian hari ternyata data yang saya isikan terbukti tidak benar maka saya bersedia digugurkan dan diproses sesuai aturan perundang-undangan.</label>
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
                                 </div>
-                                <input type="button" name="next4" id="next4" class="next action-button" value="Lanjut" />
-                                <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
-                            </fieldset>
 
-                            <fieldset>
-                                <div class="form-card">
-                                    <div class="row">
-                                        <div class="col-12">
-                                            <h2 class="fs-title">Konfirmasi</h2>
-                                        </div>
+                            </div>
+                            <input type="button" name="next" class="next action-button" value="Simpan" />
+                            <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
+                        </fieldset>
+                    <?php endforeach; ?>
 
-                                        <table class="table tabelkonfirmasi">
-                                            <tbody>
-                                                <tr>
-                                                    <td>Tanggal Pendaftaran</td>
-                                                    <td>:</td>
-                                                    <td><?php echo date("d-F-Y"); ?></td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Kode Verifikasi</td>
-                                                    <td>:</td>
-                                                    <td>
-                                                        <input type="text" name="kodeverifikasi">
-                                                    </td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Syarat Pendaftaran</td>
-                                                    <td>:</td>
-                                                    <td>1</td>
-                                                </tr>
-                                                <tr>
-                                                    <td>Kebijakan</td>
-                                                    <td>:</td>
-                                                    <td>
-                                                        <div class="custom-control custom-checkbox custom-control-inline">
-                                                            <input id="chk1" type="checkbox" name="chk" class="custom-control-input">
-                                                            <label for="chk1" class="custom-control-label text-sm">Dengan ini saya menyatakan bahwa data yang saya isikan adalah data yang sebenarnya, jika di kemudian hari ternyata data yang saya isikan terbukti tidak benar maka saya bersedia digugurkan dan diproses sesuai aturan perundang-undangan.</label>
-                                                        </div>
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                    </div>
-
-                                </div>
-                                <input type="button" name="next" class="next action-button" value="Simpan" />
-                                <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
-                            </fieldset>
-                        <?php endforeach; ?>
-
-                    </form>
-                </div>
+                </form>
             </div>
         </div>
     </div>
+</div>
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Unggah Foto</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form>
-                        <div class="form-group">
-                            <label for="exampleFormControlFile1">Foto Pas</label>
-                            <input type="file" class="form-control-file" id="exampleFormControlFile1">
-                        </div>
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Unggah Foto</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-group">
+                        <label for="exampleFormControlFile1">Foto Pas</label>
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                    </div>
 
-                        <small>Rasio Foto : 4 x 6, atau max resolusi 300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg, png</small>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button> -->
-                    <button type="button" class="btn btn-primary">Upload</button>
-                </div>
+                    <small>Rasio Foto : 4 x 6, atau max resolusi 300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg, png</small>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button> -->
+                <button type="button" class="btn btn-primary">Upload</button>
             </div>
         </div>
     </div>
-    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
-    <script type='text/javascript'>
-        $(document).ready(function() {
+</div>
+<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+<script type='text/javascript'>
+    $(document).ready(function() {
             var current_fs, next_fs, previous_fs; //fieldsets
             var opacity;
             var current = 1;
@@ -1024,6 +1024,18 @@
                 $('#kabtempattinggal').load(url);
                 return false;
             });
+
+            $("#provortu").change(function() {
+                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+                $('#kabupatenortu').load(url);
+                return false;
+            });
+            $("#kabupatenortu").change(function() {
+                var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
+                $('#kecamatanortu').load(url);
+                return false;
+            });
+
             $("#kabtempattinggal").change(function() {
                 var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
                 $('#kectempattinggal').load(url);
