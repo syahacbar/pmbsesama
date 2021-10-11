@@ -21,28 +21,7 @@
 									<th>Nama Lengkap</th>
 									<th>NIK/No.KTP</th>
 									<th>Jenis Kelamin</th>
-									<th>Agama</th>
-									<th>Suku</th>
-									<th>Status Menikah</th>
-									<th>Prodi Pilihan 1</th>
-									<th>Prodi Pilihan 2</th>
-									<th>Prodi Pilihan 3</th>
-									<th>Prov. Tempat Lahir</th>
-									<th>Kab/Kota. Tempat Lahir</th>
-									<th>Tempat Lahir</th>
-									<th>Tanggal Lahir</th>
-									<th>Negara Tempat Tinggal</th>
-									<th>Prov. Tempat Tinggal</th>
-									<th>Kab/Kota Tempat Tinggal</th>
-									<th>Kec/Dis. Tempat Tinggal</th>
-									<th>Kel/Desa Tempat Tinggal</th>
-									<th>Kode Pos Tempat Tinggal</th>
-									<th>Alamat Tempat Tinggal</th>
-									<th>Alamat Lain Tempat Tinggal</th>
-									<th>No. Telp/HP</th>
-									<th>Email</th>
-									<th>Tinggi Badan</th>
-									<th>Berat Badan</th>
+									<th>Tempat Tanggal Lahir</th>
 									<th width="150">Aksi</th>
 								</tr>
 							</thead>
