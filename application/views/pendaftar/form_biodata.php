@@ -7,17 +7,11 @@
     <title>Formulir - Portal PMB Oline UNIPA</title>
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
-    <!-- <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-
     <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/form-pendaftaran.css">
-
-    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
-    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
-    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
     <link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
@@ -165,10 +159,15 @@
             }
         }
 
-        .navbar-dark .navbar-toggler-icon {
+        .navbar-light .navbar-toggler-icon {
             background-image: url(../assets/frontend/img/nav-button.png) !important;
             font-size: 24px;
 
+        }
+
+        .navbar-light .navbar-toggler {
+            border: 2px solid #673ab7 !important;
+            padding: 2px 8px !important;
         }
 
         .row.px-3.remember-password {
@@ -353,6 +352,42 @@
             color: rgba(0, 0, 0, .9);
             font-weight: bold;
             padding: 14px 15px !important;
+        }
+
+        .modal-backdrop.show {
+            opacity: 0;
+        }
+
+        /* Modal Logout */
+        .modal-backdrop.fade {
+            opacity: 0;
+        }
+
+        .modal-backdrop {
+            position: initial;
+            top: 0;
+            left: 0;
+            z-index: 999 !important;
+            width: 100vw;
+            height: 100vh;
+        }
+
+        .card.px-0.pt-4.pb-0.mt-3.mb-3 {
+            position: inherit;
+            z-index: -99;
+        }
+
+        div#logoutModal {
+            backdrop-filter: brightness(0.5);
+        }
+
+        button.navbar-toggler.navbar-toggler-right.collapsed {
+            border: 2px solid #fd7e14 !important;
+            outline: none !important;
+        }
+
+        button.navbar-toggler.navbar-toggler-right.collapsed:focus {
+            border: 0 !important;
         }
     </style>
 </head>
@@ -806,21 +841,21 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Nilai Rapor Terakhir Matematika</label>
-                                                <input name="nilairapormtk" id="nilairapormtk" type="text" class="form-control" placeholder="" value="<?php echo $row['nilairapor_mtk']; ?>" required></input>
+                                                <input name="nilairapormtk" id="nilairapormtk" type="text" class="form-control" placeholder="" value="<?php echo $row['rapor_mtk']; ?>" required></input>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Nilai Rapor Terakhir Bahasa Inggris</label>
-                                                <input name="nilairaporbing" id="nilairaporbing" type="text" class="form-control" placeholder="" value="<?php echo $row['nilairapor_bing']; ?>" required></input>
+                                                <input name="nilairaporbing" id="nilairaporbing" type="text" class="form-control" placeholder="" value="<?php echo $row['rapor_bing']; ?>" required></input>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Nilai Rapor Terakhir Bahasa Indonesia</label>
-                                                <input name="nilairaporbind" id="nilairaporbind" type="text" class="form-control" placeholder="" value="<?php echo $row['nilairapor_bind']; ?>" required></input>
+                                                <input name="nilairaporbind" id="nilairaporbind" type="text" class="form-control" placeholder="" value="<?php echo $row['rapor_bind']; ?>" required></input>
                                             </div>
                                         </div>
 
@@ -1279,15 +1314,8 @@
 
 
         <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
-        <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- SimpleLightbox plugin JS-->
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-        <!-- Core theme JS-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-        <!-- * *                               SB Forms JS                               * *-->
-        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
 
