@@ -102,6 +102,7 @@ class Register extends MY_Controller
 
 		);
 
+		$data['_view'] = 'pendaftar/navbar';
 		$this->load->view('pendaftar/form_biodata', $data);
 	}
 
@@ -148,14 +149,14 @@ class Register extends MY_Controller
 			'nama_smta' => $this->input->post('namasmta'),
 			'prov_smta' => $this->input->post('provinsismta'),
 			'alamat_smta' => $this->input->post('alamatsmta'),
-			'lulus_smta' => $this->input->post('lulussmta'),
-			'nomor_ijazah' => $this->input->post('nomorijazah'),
-			'uan_mtk' => $this->input->post('uanmtk'),
-			'uan_bing' => $this->input->post('uanbing'),
-			'uan_bind' => $this->input->post('uanbind'),
-			'rapor_mtk' => $this->input->post('rapormtk'),
-			'rapor_bing' => $this->input->post('raporbing'),
-			'rapor_bind' => $this->input->post('raporbind'),
+			// 'lulus_smta' => $this->input->post('lulussmta'),
+			// 'nomor_ijazah' => $this->input->post('nomorijazah'),
+			// 'uan_mtk' => $this->input->post('uanmtk'),
+			// 'uan_bing' => $this->input->post('uanbing'),
+			// 'uan_bind' => $this->input->post('uanbind'),
+			'nilairapor_mtk' => $this->input->post('nilairapormtk'),
+			'nilairapor_bing' => $this->input->post('nilairaporbing'),
+			'nilairapor_bind' => $this->input->post('nilairaporbind'),
 
 		);
 		$this->M_register->update_biodata($user->username, $params2);
@@ -201,5 +202,32 @@ class Register extends MY_Controller
 		);
 		$this->M_register->update_biodata($user->username, $params4);
 		echo json_encode(array("statusCode" => 1));
+	}
+
+
+	//Untuk proses upload foto
+	function uploadfotopas()
+	{
+		$config['upload_path']   = FCPATH . '/assets/upload/fotopas/';
+		$config['allowed_types'] = 'gif|jpg|png|ico';
+
+		$this->load->library('upload', $config);
+		if ($this->upload->do_upload('fotopas')) {
+			$nama = $this->upload->data('file_name');
+			$this->db->insert('upload', array('namafile' => $nama));
+
+			if ($this->upload->do_upload('image')) {
+
+				$old_image = $config['user']['image'];
+				if ($old_image != 'profil.svg') {
+					unlink(FCPATH . 'assets/img/profile/' . $old_image);
+				}
+
+				$new_image =  $this->upload->data('file_name');
+				$this->db->set('image', $new_image);
+			} else {
+				echo $this->upload->display_errors();
+			}
+		}
 	}
 }

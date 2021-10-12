@@ -192,6 +192,7 @@
       
       button.btn.btn-blue.text-center {
           background-color: #673ab7;
+          color: #fff;
       }
       /* Bagian Footer */
       
@@ -214,16 +215,14 @@
       
       .card2.card.border-0.px-4.py-5.agenda {
           padding-top: 0 !important;
-          margin: 0 10px 10px 10px;
-          margin-left: 10px;
+          margin: 0 10px 0 0 !important;
           height: auto;
           box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%);
       }
       
       .card2.card.border-0.px-4.py-5.informasiTerbaru {
           padding-top: 0 !important;
-          margin: 0 10px 10px 10px;
-          margin-right: 10px;
+          margin: 0 0 10px 10px !important;
           height: auto;
           box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%);
       }
@@ -245,21 +244,22 @@
       }
       
       .card2.card.border-0.px-4.py-5.gambarSlider {
-          padding: 3rem 0 0 0 !important;
+          padding: 1.5rem 0 0 0 !important;
           margin: 0 !important;
       }
       /* SLIDER GOES HERE */
       
       #demo {
           background: linear-gradient(112deg, #ffffff 50%, antiquewhite 50%);
-          max-width: 900px;
+          max-width: 100% !important;
+          width: 100%;
           margin: 0;
       }
       
       .carousel-caption {
           position: initial;
           z-index: 10;
-          padding: 0;
+          padding: 0 !important;
           color: rgba(78, 77, 77, 0.856);
           text-align: center;
           font-size: 1.2rem;
@@ -270,15 +270,6 @@
       
       @media(max-width:767px) {
           .carousel-caption {
-              /* position: initial;
-              z-index: 10;
-              padding: 3rem 2rem;
-              color: rgba(78, 77, 77, 0.856);
-              text-align: center;
-              font-size: 0.7rem;
-              font-style: italic;
-              font-weight: bold;
-              line-height: 1.5rem; */
               padding: 5px;
           }
       }
@@ -294,9 +285,6 @@
       
       @media(max-width:767px) {
           .carousel-caption img {
-              /* width: 4rem;
-              border-radius: 4rem;
-              margin-top: 1rem; */
               border-radius: 5px;
               height: 200px !important;
               object-fit: cover;
@@ -325,13 +313,6 @@
           font-size: 1rem;
           margin-top: 0.5rem;
       }
-      /* @media(max-width:767px) {
-          #image-caption {
-              font-style: normal;
-              font-size: 0.6rem;
-              margin-top: 0.5rem;
-          }
-      } */
       
       div#demo i {
           background-color: #673ab7;
@@ -365,5 +346,238 @@
       @media(max-width: 991px) {
           .carousel-caption img {
               border-radius: 0;
+          }
+      }
+      /* CSS NAVIGATION BAR */
+      /* .navbar-brand {
+          padding: 14px 20px;
+          font-size: 16px
+      }
+      
+      .navbar-nav {
+          width: 100%
+      }
+      
+      .nav-item {
+          padding: 0 10px;
+          text-align: center
+      }
+      
+      .nav-link {
+          padding-bottom: 10px
+      }
+      
+      .v-line {
+          background-color: gray;
+          width: 1px;
+          height: 20px
+      }
+      
+      .navbar-collapse.collapse.in {
+          display: block !important
+      }
+      
+      @media (max-width: 576px) {
+          .nav-item {
+              width: 100%;
+              text-align: left
+          }
+          .v-line {
+              display: none
+          }
+      }
+      
+      div#navbarNav ul {
+          right: 0 !important;
+          display: flex;
+          justify-content: end;
+      }
+      
+      
+
+      
+      div#navbarNav a.nav-link i {
+          margin-right: 5px;
+          color: #000;
+          font-size: 16px;
+      }
+      
+      div#navbarNav a.nav-link {
+          color: #000;
+          font-size: 16px;
+      }
+      
+      li.nav-item.active a {
+          color: #673ab7 !important;
+      }
+      
+      li.nav-item.active a i {
+          color: #673ab7 !important;
+      }
+      
+      @media (min-width: 886px) {
+          .navbar-expand-sm .navbar-toggler {
+              display: none !important;
+          }
+      }
+      
+      .navbar-toggler {
+          padding: 0 !important;
+          font-size: 1.25rem;
+          line-height: 1;
+          background-color: transparent;
+          border: 1px solid transparent;
+          border-radius: .25rem;
+          margin: 0 !important;
+      }
+      
+      @media (min-width: 886px) {
+          .navbar-expand-sm .navbar-collapse {
+              display: -ms-flexbox !important;
+              display: flex !important;
+              -ms-flex-preferred-size: auto;
+              flex-basis: auto;
+          }
+      }
+      
+      .navbar-dark .navbar-toggler-icon {
+          background-image: url(../../frontend/img/nav-button.png) !important;
+          font-size: 20px;
+      }
+      
+      .row.px-3.remember-password {
+          margin-top: 15px;
+      }
+      
+      .navbar-dark .navbar-brand {
+          color: #000 !important;
+          font-weight: bold;
+          padding: 0;
+      }
+      
+      .bg-black {
+          background-color: #ffffff;
+      }
+      
+      #logo {
+          width: 50px;
+          height: auto;
+          border-radius: 4px;
+      }
+      
+      .container-fluid.px-1.px-md-5.px-lg-1.px-xl-5.py-5.mx-auto {
+          background-image: url(../../frontend/img/pmb-bg.jpg) !important;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+          padding-top: 0 !important;
+      }
+      
+
+      
+      @media (min-width: 1200px) {
+          .pl-xl-5,
+          .px-xl-5 {
+              padding: 0 10rem !important;
+          }
+      }
+      
+      .navbar-dark .navbar-brand:focus,
+      .navbar-dark .navbar-brand:hover {
+          color: #000;
+      } */
+      
+      .carousel-caption {
+          position: initial !important;
+          z-index: 10;
+          padding: 0;
+          color: rgba(78, 77, 77, 0.856);
+          text-align: center;
+          font-size: 1.2rem;
+          font-style: italic;
+          font-weight: bold;
+          line-height: 2rem;
+      }
+      
+      .container-fluid.px-1.px-md-5.px-lg-1.px-xl-5.mx-auto .card.card0.border-0 {
+          box-shadow: none;
+          width: 80%;
+          margin: 0 10%;
+          padding-top: 25px;
+      }
+      
+      .navbar-collapse.collapse.show li.nav-item {
+          width: 100%;
+          /* text-align: right; */
+          padding: 10px 0;
+      }
+      
+      .social-contact.ml-4.ml-sm-auto a {
+          color: #fff;
+      }
+      
+      @media (min-width: 992px) {
+          .navbar-expand-lg .navbar-collapse {
+              display: -ms-flexbox!important;
+              display: flex!important;
+              -ms-flex-preferred-size: auto;
+              flex-basis: auto;
+              justify-content: end;
+          }
+      }
+      
+      div#navbarResponsive i {
+          margin-right: 5px;
+          color: #673ab7;
+      }
+      
+      div#navbarResponsive a {
+          color: #673ab7;
+      }
+      
+      .container-fluid.nav-unipa {
+          padding: 0 !important;
+      }
+      
+      nav#mainNav {
+          padding: 0 !important;
+      }
+      
+      .collapse.navbar-collapse a.nav-link {
+          padding: 0 20px !important;
+      }
+      
+      .card2.card.border-0.px-4.py-5.loginPage {
+          padding: 10px 0 !important;
+          margin: 10px 10px 10px 15px;
+      }
+      
+      .navbar-collapse.collapse.show a.nav-link {
+          padding: 0 !important;
+      }
+      /* .row.d-flex.agendaInformasi {
+          box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%);
+      } */
+      
+      @media (max-width: 670px) {
+          .container-fluid.px-1.px-md-5.px-lg-1.px-xl-5.mx-auto .card.card0.border-0 {
+              box-shadow: none;
+              width: 90%;
+              margin: 0 5%;
+              padding-top: 25px;
+          }
+      }
+      
+      nav.navbar.navbar-expand-lg.navbar-light.fixed-top.py-3.navbar-shrink {
+          background-color: #fff;
+      }
+      
+      nav.navbar.navbar-expand-lg.navbar-light.fixed-top.py-3 {
+          background-color: #fff;
+      }
+      
+      @media (max-width: 386px) {
+          a.navbar-brand {
+              display: none;
           }
       }
