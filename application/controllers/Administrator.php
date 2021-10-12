@@ -6,8 +6,7 @@ class Administrator extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		if (!$this->ion_auth->is_admin())
-		{
+		if (!$this->ion_auth->is_admin()) {
 			redirect('auth/login', 'refresh');
 		}
 		$this->load->model('M_wilayah');
@@ -359,7 +358,7 @@ class Administrator extends CI_Controller
 	}
 
 	public function datapendaftar()
-	{		
+	{
 		$data['_view'] = 'admin/data_pendaftar';
 		$this->load->view('admin/layout', $data);
 	}
@@ -393,7 +392,7 @@ class Administrator extends CI_Controller
 			$this->M_slider->delete($id);
 			redirect('administrator/slider');
 		}
-		$data['slider'] = $this->M_slider->get_all();		
+		$data['slider'] = $this->M_slider->get_all();
 		$data['_view'] = 'admin/slider';
 		$this->load->view('admin/layout', $data);
 	}
@@ -477,6 +476,4 @@ class Administrator extends CI_Controller
 		$data['_view'] = 'admin/pengaturan';
 		$this->load->view('admin/layout', $data);
 	}
-
-
 }

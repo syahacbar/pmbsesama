@@ -1,22 +1,28 @@
 <!doctype html>
-    <html>
+<html>
 
-    <head>
-        <meta charset='utf-8'>
-        <meta name='viewport' content='width=device-width, initial-scale=1'>
-        <title>Formulir - Portal PMB Oline UNIPA</title>
-        <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
-        <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
-        <!-- <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
+<head>
+    <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <title>Formulir - Portal PMB Oline UNIPA</title>
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+    <!-- <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
-
-        <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/form-pendaftaran.css">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
 
-        <style>
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/form-pendaftaran.css">
+
+    <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+    <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
+
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
+
+    <style>
         img.img-profile {
             width: 75px;
             display: flex;
@@ -36,6 +42,318 @@
                 width: 50%;
             }
         }
+
+        /* NAVIGATION BAR */
+        .navbar-brand {
+            padding: 14px 20px;
+            font-size: 16px
+        }
+
+        .navbar-nav {
+            width: 100%
+        }
+
+        .nav-item {
+            padding: 0;
+            text-align: center
+        }
+
+        .nav-link {
+            padding-bottom: 10px
+        }
+
+        .v-line {
+            background-color: gray;
+            width: 1px;
+            height: 20px
+        }
+
+        .navbar-collapse.collapse.in {
+            display: block !important
+        }
+
+        @media (max-width: 576px) {
+            .nav-item {
+                width: 100%;
+                text-align: left
+            }
+
+            .v-line {
+                display: none
+            }
+        }
+
+        div#navbarNav ul {
+            right: 0 !important;
+            margin-right: 0;
+            display: flex;
+            justify-content: end;
+        }
+
+        .dropdown-item {
+            display: block;
+            width: 100%;
+            clear: both;
+            font-weight: 400;
+            color: #212529;
+            text-align: inherit;
+            white-space: nowrap;
+            background-color: transparent;
+            border: 0;
+            padding: 10px 15px;
+            text-align: right;
+        }
+
+        .carousel-caption {
+            position: initial !important;
+            z-index: 10;
+            padding: 0;
+            color: rgba(78, 77, 77, 0.856);
+            text-align: center;
+            font-size: 1.2rem;
+            font-style: italic;
+            font-weight: bold;
+            line-height: 2rem;
+        }
+
+        .social-contact.ml-4.ml-sm-auto a {
+            color: #fff;
+        }
+
+        div#navbarNav a.nav-link i {
+            margin-right: 5px;
+            color: #000;
+            font-size: 16px;
+        }
+
+        div#navbarNav a.nav-link {
+            color: #000;
+            font-size: 16px;
+        }
+
+        li.nav-item.active a {
+            color: #673ab7 !important;
+
+        }
+
+        li.nav-item.active a i {
+            color: #673ab7 !important;
+        }
+
+        @media (min-width: 886px) {
+            .navbar-expand-sm .navbar-toggler {
+                display: none !important;
+            }
+        }
+
+        .navbar-toggler {
+            padding: 0 !important;
+            font-size: 1.25rem;
+            line-height: 1;
+            background-color: transparent;
+            border: 1px solid transparent;
+            border-radius: .25rem;
+            margin: 0 !important;
+        }
+
+        @media (min-width: 886px) {
+            .navbar-expand-sm .navbar-collapse {
+                display: -ms-flexbox !important;
+                display: flex !important;
+                -ms-flex-preferred-size: auto;
+                flex-basis: auto;
+            }
+        }
+
+        .navbar-dark .navbar-toggler-icon {
+            background-image: url(../assets/frontend/img/nav-button.png) !important;
+            font-size: 24px;
+
+        }
+
+        .row.px-3.remember-password {
+            margin-top: 15px;
+        }
+
+        .navbar-dark .navbar-brand {
+            color: #000;
+            font-weight: bold;
+            padding: 0;
+        }
+
+        .bg-black {
+            background-color: #ffffff;
+        }
+
+        #logo {
+            width: 50px;
+            height: auto;
+            border-radius: 4px;
+        }
+
+        .container-fluid.px-1.px-md-5.px-lg-1.px-xl-5.py-5.mx-auto {
+            background-image: url(http://simunipa.unipa.ac.id/gtadmisi/assets/versi_3.0/img/background.jpg);
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center;
+        }
+
+        .container-fluid.px-1.px-md-5.px-lg-1.px-xl-5.py-5.mx-auto .card.card0.border-0 {
+            box-shadow: none;
+            width: 90%;
+            margin: 0 5%;
+            padding-top: 25px;
+        }
+
+        @media (min-width: 1200px) {
+
+            .pl-xl-5,
+            .px-xl-5 {
+                padding: 0 10rem !important;
+            }
+        }
+
+        .navbar-dark .navbar-brand:focus,
+        .navbar-dark .navbar-brand:hover {
+            color: #000;
+        }
+
+        .container-fluid {
+            margin-top: 20px;
+        }
+
+        .card.px-0.pt-4.pb-0.mt-3.mb-3 {
+            border: 0;
+        }
+
+        div#navbarNav ul a.nav-link svg {
+            margin-right: 5px;
+        }
+
+        @media (min-width: 1032px) {
+            .navbar-expand-sm .navbar-toggler {
+                display: none;
+            }
+        }
+
+        .container-fluid.px-1.px-md-5.px-lg-1.px-xl-5.mx-auto .card.card0.border-0 {
+            box-shadow: none;
+            width: 80%;
+            margin: 0 10%;
+            padding-top: 25px;
+        }
+
+        .navbar-collapse.collapse.show li.nav-item {
+            width: 100%;
+            /* text-align: right; */
+            padding: 10px 0;
+        }
+
+        .social-contact.ml-4.ml-sm-auto a {
+            color: #fff;
+        }
+
+        @media (min-width: 992px) {
+            .navbar-expand-lg .navbar-collapse {
+                display: -ms-flexbox !important;
+                display: flex !important;
+                -ms-flex-preferred-size: auto;
+                flex-basis: auto;
+                justify-content: end;
+            }
+        }
+
+        div#navbarResponsive i {
+            margin-right: 5px;
+            color: #673ab7;
+        }
+
+        div#navbarResponsive a {
+            color: #673ab7;
+        }
+
+        .navbar-collapse.collapse.show a {
+            text-align: left;
+            padding: 10px 0 !important;
+        }
+
+        .container-fluid.nav-unipa {
+            padding: 0 !important;
+        }
+
+        nav#mainNav {
+            padding: 0 !important;
+        }
+
+        .collapse.navbar-collapse a.nav-link {
+            padding: 0 20px !important;
+        }
+
+        .card2.card.border-0.px-4.py-5.loginPage {
+            padding: 10px 0 !important;
+            margin: 10px 10px 10px 15px;
+        }
+
+        .navbar-collapse.collapse.show a.nav-link {
+            padding: 0 !important;
+        }
+
+        @media (max-width: 670px) {
+            .container-fluid.px-1.px-md-5.px-lg-1.px-xl-5.mx-auto .card.card0.border-0 {
+                box-shadow: none;
+                width: 90%;
+                margin: 0 5%;
+                padding-top: 25px;
+            }
+        }
+
+        nav.navbar.navbar-expand-lg.navbar-light.fixed-top.py-3.navbar-shrink {
+            background-color: #fff;
+        }
+
+        nav.navbar.navbar-expand-lg.navbar-light.fixed-top.py-3 {
+            background-color: #fff;
+        }
+
+        @media (max-width: 386px) {
+            a.navbar-brand {
+                display: none;
+            }
+        }
+
+        .card.px-0.pb-0.mb-3 {
+            border: 0;
+        }
+
+        .collapse.navbar-collapse ul.navbar-nav.ms-auto.my-2.my-lg-0 li {
+            display: flex;
+            justify-content: center !important;
+            align-items: center;
+        }
+
+        .collapse.navbar-collapse.show ul.navbar-nav.ms-auto.my-2.my-lg-0 li {
+            display: flex;
+            justify-content: start !important;
+            align-items: center;
+        }
+
+        .collapse.navbar-collapse ul.navbar-nav.ms-auto.my-2.my-lg-0 {
+            display: flex;
+            justify-content: end !important;
+            align-items: center;
+        }
+
+        .navbar-collapse.collapse.show ul.navbar-nav.ms-auto.my-2.my-lg-0 {
+            display: flex;
+            justify-content: start !important;
+            align-items: center;
+        }
+
+        .navbar-light .navbar-brand {
+            color: rgba(0, 0, 0, .9);
+            font-weight: bold;
+            padding: 14px 15px !important;
+        }
     </style>
 </head>
 
@@ -43,6 +361,14 @@
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-11 col-sm-9 col-md-10 col-lg-10 col-xl-8 text-center p-0 mt-3 mb-2">
+                <div class="card px-0 pb-0 mb-3">
+                    <!-- Navigation-->
+                    <?php
+                    if (isset($_view) && $_view)
+                        $this->load->view($_view);
+                    ?>
+                </div>
+
                 <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                     <h2 id="heading">FORMULIR BIODATA MAHASISWA BARU <?php echo $username; ?></h2>
                     <p>Lengkapi data di bawah ini dengan benar</p>
@@ -94,7 +420,7 @@
                                                 </div>
                                                 <div class="col-sm-6 profile">
                                                     <?php form_open_multipart('user/next1') ?>
-                                                    <img class="img-profile" src="<?php echo base_url('assets/img/profile/profil_default.svg') ?>">
+                                                    <img class="img-profile" src="<?php echo base_url('assets/upload/fotopas/profile_default.svg'); ?>">
                                                 </div>
 
                                             </div>
@@ -416,9 +742,9 @@
                                                     <?php
                                                     $thn_skr = date('Y');
                                                     for ($x = $thn_skr; $x >= 2000; $x--) {
-                                                        ?>
+                                                    ?>
                                                         <option value="<?php echo $x ?>" <?php echo ($row['tahunlulus_smta'] == $x) ? 'selected' : ''; ?>><?php echo $x ?></option>
-                                                        <?php
+                                                    <?php
                                                     }
                                                     ?>
                                                 </select>
@@ -469,7 +795,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-12">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat SMTA</label>
                                                 <input name="alamatsmta" id="alamatsmta" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_smta']; ?>" required></input>
@@ -477,8 +803,50 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-12 pilihanamat">
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Nilai Rapor Terakhir Matematika</label>
+                                                <input name="nilairapormtk" id="nilairapormtk" type="text" class="form-control" placeholder="" value="<?php echo $row['nilairapor_mtk']; ?>" required></input>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Nilai Rapor Terakhir Bahasa Inggris</label>
+                                                <input name="nilairaporbing" id="nilairaporbing" type="text" class="form-control" placeholder="" value="<?php echo $row['nilairapor_bing']; ?>" required></input>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Nilai Rapor Terakhir Bahasa Indonesia</label>
+                                                <input name="nilairaporbind" id="nilairaporbind" type="text" class="form-control" placeholder="" value="<?php echo $row['nilairapor_bind']; ?>" required></input>
+                                            </div>
+                                        </div>
+
+
+                                        <!-- <div class="col-sm-12 pilihanamat">
                                             <label>Lulus SMTA</label>
+                                            <div class="row">
+                                                <div class="col-sm-4">
+                                                    <div class="form-check">
+                                                        <input type="radio" name="lulussmta" class="lulussmta" id="lulussmta" value="Lulus" <?php // echo ($row['lulus_smta'] == "Lulus") ? "Checked" : ""; 
+                                                                                                                                            ?>>
+                                                        <label class="form-check-label" for="exampleRadios1">Sudah</label>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-4">
+                                                    <div class="form-check">
+                                                        <input type="radio" name="lulussmta" class="lulussmta" id="lulussmta" value="Belum Lulus" <?php // echo ($row['lulus_smta'] == "Belum Lulus") ? "Checked" : ""; 
+                                                                                                                                                    ?>>
+                                                        <label class="form-check-label" for="exampleRadios2">Belum</label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div> -->
+
+                                        <!-- <label>Nilai SMTA</label>
                                             <div class="row">
                                                 <div class="col-sm-4">
                                                     <div class="form-check">
@@ -494,37 +862,38 @@
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
-
-
                                         <div class="row BoxLulus">
                                             <div class="col-sm-12">
                                                 <div class="row">
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <label>Nomor Ijazah</label>
-                                                            <input name="nomorijazah" id="nomorijazah" type="text" class="form-control" placeholder="" value="<?php echo $row['nomor_ijazah']; ?>" required>
+                                                            <input name="nomorijazah" id="nomorijazah" type="text" class="form-control" placeholder="" value="<?php //echo $row['nomor_ijazah']; 
+                                                                                                                                                                ?>" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <label>Nilai UAN Matematika</label>
-                                                            <input name="uanmtk" id="uanmtk" type="text" class="form-control" placeholder="" value="<?php echo $row['uan_mtk']; ?>" required>
+                                                            <input name="uanmtk" id="uanmtk" type="text" class="form-control" placeholder="" value="<?php //echo $row['uan_mtk']; 
+                                                                                                                                                    ?>" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <label>Nilai UAN Bahasa Inggris</label>
-                                                            <input name="uanbing" id="uanbing" type="text" class="form-control" placeholder="" value="<?php echo $row['uan_bing']; ?>" required>
+                                                            <input name="uanbing" id="uanbing" type="text" class="form-control" placeholder="" value="<?php //echo $row['uan_bing']; 
+                                                                                                                                                        ?>" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-sm-3">
                                                         <div class="form-group">
                                                             <label>Nilai UAN Bahasa Indonesia</label>
-                                                            <input name="uanbind" id="uanbind" type="text" class="form-control" placeholder="" value="<?php echo $row['uan_bind']; ?>" required>
+                                                            <input name="uanbind" id="uanbind" type="text" class="form-control" placeholder="" value="<?php //echo $row['uan_bind']; 
+                                                                                                                                                        ?>" required>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -539,14 +908,16 @@
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <label>Nilai Rapor Terakhir Matematika</label>
-                                                            <input name="rapormtk" id="rapormtk" type="text" class="form-control" placeholder="" value="<?php echo $row['rapor_mtk']; ?>" required>
+                                                            <input name="rapormtk" id="rapormtk" type="text" class="form-control" placeholder="" value="<?php //echo $row['rapor_mtk']; 
+                                                                                                                                                        ?>" required>
                                                         </div>
                                                     </div>
 
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <label>Nilai Rapor Terakhir Inggris</label>
-                                                            <input name="raporbing" id="raporbing" type="text" class="form-control" placeholder="" value="<?php echo $row['rapor_bing']; ?>" required>
+                                                            <input name="raporbing" id="raporbing" type="text" class="form-control" placeholder="" value="<?php //echo $row['rapor_bing']; 
+                                                                                                                                                            ?>" required>
                                                         </div>
                                                     </div>
 
@@ -554,14 +925,15 @@
                                                     <div class="col-sm-4">
                                                         <div class="form-group">
                                                             <label>Nilai Rapor Terakhir Indonesia</label>
-                                                            <input name="raporbind" id="raporbind" type="text" class="form-control" placeholder="" value="<?php echo $row['rapor_bind']; ?>" required>
+                                                            <input name="raporbind" id="raporbind" type="text" class="form-control" placeholder="" value="<?php //echo $row['rapor_bind']; 
+                                                                                                                                                            ?>" required>
                                                         </div>
                                                     </div>
 
                                                 </div>
                                             </div>
 
-                                        </div>
+                                        </div> -->
 
                                     </div>
                                 </div>
@@ -633,668 +1005,725 @@
                                                 <small>Alamat kantor Ayah, maksimal 50 karakter.</small>
                                             </div>
                                         </div>
-                                    </select>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <h4>Biodata Ibu</h4>
+                                        </select>
                                     </div>
 
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>NIK/No. KTP Ibu</label>
-                                            <input name="nikibu" type="text" class="form-control" placeholder="" value="<?php echo $row['nik_ibu']; ?>" required>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4>Biodata Ibu</h4>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>NIK/No. KTP Ibu</label>
+                                                <input name="nikibu" type="text" class="form-control" placeholder="" value="<?php echo $row['nik_ibu']; ?>" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Nama Ibu *</label>
+                                                <input name="namaibu" id="namaibu" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_ibu']; ?>" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Pendidikan Ibu *</label>
+                                                <select name="pendidikanibu" id="pendidikanibu" class="form-select" aria-label="Default select example">
+                                                    <option <?php echo ($row['pendidikan_ibu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <?php foreach ($pendidikanortu as $pd) : ?>
+                                                        <option value="<?php echo $pd['idpendidikan']; ?>" <?php echo ($row['pendidikan_ibu'] == $pd['idpendidikan']) ? 'selected' : ''; ?>><?php echo $pd['namajenjang']; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                                <small>Pendidikan terakhir</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Pekerjaan Ibu *</label>
+                                                <select name="pekerjaanibu" id="pekerjaanibu" class="form-select" aria-label="Default select example">
+                                                    <option <?php echo ($row['pekerjaan_ibu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <?php foreach ($pekerjaanortu as $pk) : ?>
+                                                        <option value="<?php echo $pk['idpekerjaan']; ?>" <?php echo ($row['pekerjaan_ibu'] == $pk['idpekerjaan']) ? 'selected' : ''; ?>><?php echo $pk['namapekerjaan']; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Penghasilan Orang Tua*</label>
+                                                <select name="penghasilanortu" id="penghasilanortu" class="form-select" aria-label="Default select example">
+                                                    <option <?php echo ($row['penghasilan_ortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <?php foreach ($penghasilanortu as $ph) : ?>
+                                                        <option value="<?php echo $ph['idpenghasilan']; ?>" <?php echo ($row['penghasilan_ortu'] == $ph['idpenghasilan']) ? 'selected' : ''; ?>><?php echo $ph['penghasilan']; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                                <small>Penghasilan Orang Tua Per Bulan</small>
+                                            </div>
                                         </div>
                                     </div>
 
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Nama Ibu *</label>
-                                            <input name="namaibu" id="namaibu" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_ibu']; ?>" required>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Pendidikan Ibu *</label>
-                                            <select name="pendidikanibu" id="pendidikanibu" class="form-select" aria-label="Default select example">
-                                                <option <?php echo ($row['pendidikan_ibu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                <?php foreach ($pendidikanortu as $pd) : ?>
-                                                    <option value="<?php echo $pd['idpendidikan']; ?>" <?php echo ($row['pendidikan_ibu'] == $pd['idpendidikan']) ? 'selected' : ''; ?>><?php echo $pd['namajenjang']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                            <small>Pendidikan terakhir</small>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Pekerjaan Ibu *</label>
-                                            <select name="pekerjaanibu" id="pekerjaanibu" class="form-select" aria-label="Default select example">
-                                                <option <?php echo ($row['pekerjaan_ibu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                <?php foreach ($pekerjaanortu as $pk) : ?>
-                                                    <option value="<?php echo $pk['idpekerjaan']; ?>" <?php echo ($row['pekerjaan_ibu'] == $pk['idpekerjaan']) ? 'selected' : ''; ?>><?php echo $pk['namapekerjaan']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Penghasilan Orang Tua*</label>
-                                            <select name="penghasilanortu" id="penghasilanortu" class="form-select" aria-label="Default select example">
-                                                <option <?php echo ($row['penghasilan_ortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                <?php foreach ($penghasilanortu as $ph) : ?>
-                                                    <option value="<?php echo $ph['idpenghasilan']; ?>" <?php echo ($row['penghasilan_ortu'] == $ph['idpenghasilan']) ? 'selected' : ''; ?>><?php echo $ph['penghasilan']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                            <small>Penghasilan Orang Tua Per Bulan</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="row">
-                                    <div class="col-sm-12">
-                                        <h4>Alamat Orang Tua</h4>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Alamat Orang Tua *</label>
-                                            <input name="alamatortu" id="alamatortu" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_ortu']; ?>" required>
-                                            <small>Alamat tinggal orang tua saat ini. Maksimal 50 karakter.</small>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Provinsi *</label>
-                                            <select name="provortu" id="provortu" class="form-select" aria-label="Default select example">
-                                                <option <?php echo ($row['provinsi_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                <?php foreach ($provinsi as $prov) : ?>
-                                                    <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['provinsi_tempattinggalortu'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Kabupaten/Kota *</label>
-                                            <select name="kabupatenortu" id="kabupatenortu" class="form-select" aria-label="Default select example">
-                                                <option <?php echo ($row['kab_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                <?php foreach ($kabupaten as $kab) : ?>
-                                                    <option value="<?php echo $kab['kode']; ?>" <?php echo ($row['kab_tempattinggalortu'] == $kab['kode']) ? 'selected' : ''; ?>><?php echo $kab['nama']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Kecamatan/Distrik *</label>
-                                            <select name="kecamatanortu" id="kecamatanortu" class="form-select" aria-label="Default select example">
-                                                <option <?php echo ($row['kec_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                <?php foreach ($kecamatan as $kec) : ?>
-                                                    <option value="<?php echo $kec['kode']; ?>" <?php echo ($row['kec_tempattinggalortu'] == $kec['kode']) ? 'selected' : ''; ?>><?php echo $kec['nama']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Kode Pos *</label>
-                                            <input name="kodeposortu" id="kodeposortu" type="text" class="form-control" placeholder="" value="<?php echo $row['kodepost_tempattinggalortu']; ?>" required>
-                                            <small>Kode pos tempat tinggal orang tua saat ini</small>
-                                        </div>
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>No. Telp./HP *</label>
-                                            <input name="nohportu" id="nohportu" type="text" class="form-control" placeholder="" value="<?php echo $row['nohp_ortu']; ?>" required>
-                                            <small>Nomor telp atau handphone orang tua yang bisa dihubungi</small>
-                                        </div>
-                                    </div>
-                                </div>
-
-                            </div>
-                            <input type="button" name="next3" id="next3" class="next action-button" value="Lanjut" />
-                            <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
-                        </fieldset>
-
-                        <fieldset>
-                            <div class="form-card">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h2 class="fs-title">Biodata Wali</h2>
-                                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                            Silakan isi data wali Anda sesuai dengan bidang-bidang yang diminta.
-                                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                    </div>
-
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Nama Wali</label>
-                                            <input name="namawali" id="namawali" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_wali']; ?>" required>
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <h4>Alamat Orang Tua</h4>
                                         </div>
 
-                                    </div>
-
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Pekerjaan Wali *</label>
-                                            <select name="pekerjaanwali" id="pekerjaanwali" class="form-select" aria-label="Default select example">
-                                                <option <?php echo ($row['pekerjaan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                <?php foreach ($pekerjaanortu as $pk) : ?>
-                                                    <option value="<?php echo $pk['idpekerjaan']; ?>" <?php echo ($row['pekerjaan_wali'] == $pk['idpekerjaan']) ? 'selected' : ''; ?>><?php echo $pk['namapekerjaan']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Alamat Orang Tua *</label>
+                                                <input name="alamatortu" id="alamatortu" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_ortu']; ?>" required>
+                                                <small>Alamat tinggal orang tua saat ini. Maksimal 50 karakter.</small>
+                                            </div>
                                         </div>
-                                    </div>
-                                </div>
-                                <div class="row">
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Penghasilan Wali *</label>
-                                            <select name="penghasilanwali" id="penghasilanwali" class="form-select" aria-label="Default select example">
-                                                <option <?php echo ($row['penghasilan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                <?php foreach ($penghasilanortu as $ph) : ?>
-                                                    <option value="<?php echo $ph['idpenghasilan']; ?>" <?php echo ($row['penghasilan_wali'] == $ph['idpenghasilan']) ? 'selected' : ''; ?>><?php echo $ph['penghasilan']; ?></option>
-                                                <?php endforeach; ?>
-                                            </select>
-                                        </div>
-                                    </div>
 
-                                    <div class="col-sm-6">
-                                        <div class="form-group">
-                                            <label>Alamat Wali *</label>
-                                            <input name="alamatwali" id="alamatwali" type="text" class="form-control" placeholder="" required>
-                                            <small>Alamat wali saat ini. Maksimal 50 karakter.</small>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Provinsi *</label>
+                                                <select name="provortu" id="provortu" class="form-select" aria-label="Default select example">
+                                                    <option <?php echo ($row['provinsi_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <?php foreach ($provinsi as $prov) : ?>
+                                                        <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['provinsi_tempattinggalortu'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Kabupaten/Kota *</label>
+                                                <select name="kabupatenortu" id="kabupatenortu" class="form-select" aria-label="Default select example">
+                                                    <option <?php echo ($row['kab_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <?php foreach ($kabupaten as $kab) : ?>
+                                                        <option value="<?php echo $kab['kode']; ?>" <?php echo ($row['kab_tempattinggalortu'] == $kab['kode']) ? 'selected' : ''; ?>><?php echo $kab['nama']; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Kecamatan/Distrik *</label>
+                                                <select name="kecamatanortu" id="kecamatanortu" class="form-select" aria-label="Default select example">
+                                                    <option <?php echo ($row['kec_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <?php foreach ($kecamatan as $kec) : ?>
+                                                        <option value="<?php echo $kec['kode']; ?>" <?php echo ($row['kec_tempattinggalortu'] == $kec['kode']) ? 'selected' : ''; ?>><?php echo $kec['nama']; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Kode Pos *</label>
+                                                <input name="kodeposortu" id="kodeposortu" type="text" class="form-control" placeholder="" value="<?php echo $row['kodepost_tempattinggalortu']; ?>" required>
+                                                <small>Kode pos tempat tinggal orang tua saat ini</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>No. Telp./HP *</label>
+                                                <input name="nohportu" id="nohportu" type="text" class="form-control" placeholder="" value="<?php echo $row['nohp_ortu']; ?>" required>
+                                                <small>Nomor telp atau handphone orang tua yang bisa dihubungi</small>
+                                            </div>
                                         </div>
                                     </div>
 
                                 </div>
-                            </div>
-                            <input type="button" name="next4" id="next4" class="next action-button" value="Lanjut" />
-                            <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
-                        </fieldset>
+                                <input type="button" name="next3" id="next3" class="next action-button" value="Lanjut" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
+                            </fieldset>
 
-                        <fieldset>
-                            <div class="form-card">
-                                <div class="row">
-                                    <div class="col-12">
-                                        <h2 class="fs-title">Konfirmasi</h2>
+                            <fieldset>
+                                <div class="form-card">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h2 class="fs-title">Biodata Wali</h2>
+                                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                                Silakan isi data wali Anda sesuai dengan bidang-bidang yang diminta.
+                                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                    <span aria-hidden="true">&times;</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Nama Wali</label>
+                                                <input name="namawali" id="namawali" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_wali']; ?>" required>
+                                            </div>
+
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Pekerjaan Wali *</label>
+                                                <select name="pekerjaanwali" id="pekerjaanwali" class="form-select" aria-label="Default select example">
+                                                    <option <?php echo ($row['pekerjaan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <?php foreach ($pekerjaanortu as $pk) : ?>
+                                                        <option value="<?php echo $pk['idpekerjaan']; ?>" <?php echo ($row['pekerjaan_wali'] == $pk['idpekerjaan']) ? 'selected' : ''; ?>><?php echo $pk['namapekerjaan']; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Penghasilan Wali *</label>
+                                                <select name="penghasilanwali" id="penghasilanwali" class="form-select" aria-label="Default select example">
+                                                    <option <?php echo ($row['penghasilan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <?php foreach ($penghasilanortu as $ph) : ?>
+                                                        <option value="<?php echo $ph['idpenghasilan']; ?>" <?php echo ($row['penghasilan_wali'] == $ph['idpenghasilan']) ? 'selected' : ''; ?>><?php echo $ph['penghasilan']; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Alamat Wali *</label>
+                                                <input name="alamatwali" id="alamatwali" type="text" class="form-control" placeholder="" required>
+                                                <small>Alamat wali saat ini. Maksimal 50 karakter.</small>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <input type="button" name="next4" id="next4" class="next action-button" value="Lanjut" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
+                            </fieldset>
+
+                            <fieldset>
+                                <div class="form-card">
+                                    <div class="row">
+                                        <div class="col-12">
+                                            <h2 class="fs-title">Konfirmasi</h2>
+                                        </div>
+
+                                        <table class="table tabelkonfirmasi">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Tanggal Pendaftaran</td>
+                                                    <td>:</td>
+                                                    <td><?php echo date("d-F-Y"); ?></td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Kode Verifikasi</td>
+                                                    <td>:</td>
+                                                    <td>
+                                                        <input type="text" name="kodeverifikasi">
+                                                    </td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Syarat Pendaftaran</td>
+                                                    <td>:</td>
+                                                    <td>1</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Kebijakan</td>
+                                                    <td>:</td>
+                                                    <td>
+                                                        <div class="custom-control custom-checkbox custom-control-inline">
+                                                            <input id="chk1" type="checkbox" name="chk" class="custom-control-input">
+                                                            <label for="chk1" class="custom-control-label text-sm">Dengan ini saya menyatakan bahwa data yang saya isikan adalah data yang sebenarnya, jika di kemudian hari ternyata data yang saya isikan terbukti tidak benar maka saya bersedia digugurkan dan diproses sesuai aturan perundang-undangan.</label>
+                                                        </div>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
                                     </div>
 
-                                    <table class="table tabelkonfirmasi">
-                                        <tbody>
-                                            <tr>
-                                                <td>Tanggal Pendaftaran</td>
-                                                <td>:</td>
-                                                <td><?php echo date("d-F-Y"); ?></td>
-                                            </tr>
-                                            <tr>
-                                                <td>Kode Verifikasi</td>
-                                                <td>:</td>
-                                                <td>
-                                                    <input type="text" name="kodeverifikasi">
-                                                </td>
-                                            </tr>
-                                            <tr>
-                                                <td>Syarat Pendaftaran</td>
-                                                <td>:</td>
-                                                <td>1</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Kebijakan</td>
-                                                <td>:</td>
-                                                <td>
-                                                    <div class="custom-control custom-checkbox custom-control-inline">
-                                                        <input id="chk1" type="checkbox" name="chk" class="custom-control-input">
-                                                        <label for="chk1" class="custom-control-label text-sm">Dengan ini saya menyatakan bahwa data yang saya isikan adalah data yang sebenarnya, jika di kemudian hari ternyata data yang saya isikan terbukti tidak benar maka saya bersedia digugurkan dan diproses sesuai aturan perundang-undangan.</label>
-                                                    </div>
-                                                </td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
                                 </div>
+                                <input type="button" name="next" class="next action-button" value="Simpan" />
+                                <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
+                            </fieldset>
+                        <?php endforeach; ?>
 
-                            </div>
-                            <input type="button" name="next" class="next action-button" value="Simpan" />
-                            <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
-                        </fieldset>
-                    <?php endforeach; ?>
-
-                </form>
+                    </form>
+                </div>
             </div>
         </div>
-    </div>
-</div>
 
-<!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Unggah Foto</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group">
-                        <label for="exampleFormControlFile1">Foto Pas</label>
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1">
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Unggah Foto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    <div class="modal-body">
+                        <form class="dropzone" id="image-upload">
+                            <div class="dz-message">
+                                <h6> Klik atau Drop gambar ke sini</h6>
+                            </div>
 
-                    <small>Rasio Foto : 4 x 6, atau max resolusi 300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg, png</small>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button> -->
-                <button type="button" class="btn btn-primary">Upload</button>
+                            <small>Rasio Foto : 4 x 6, atau max resolusi 300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg, png</small>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="uploadFile" type="button" class="btn btn-primary">Upload</button>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
-<script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
-<script type='text/javascript'>
-    $(document).ready(function() {
-            var current_fs, next_fs, previous_fs; //fieldsets
-            var opacity;
-            var current = 1;
-            var steps = $("fieldset").length;
-            setProgressBar(current);
-            $(".next").click(function() {
-                current_fs = $(this).parent();
-                next_fs = $(this).parent().next();
-                //Add Class Active
-                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-                //show the next fieldset
-                next_fs.show();
-                //hide the current fieldset with style
-                current_fs.animate({
-                    opacity: 0
-                }, {
-                    step: function(now) {
-                        // for making fielset appear animation
-                        opacity = 1 - now;
-                        current_fs.css({
-                            'display': 'none',
-                            'position': 'relative'
-                        });
-                        next_fs.css({
-                            'opacity': opacity
-                        });
-                    },
-                    duration: 500
+
+
+
+        <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- SimpleLightbox plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+        <!-- Core theme JS-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+
+
+        <script type='text/javascript'>
+            $(document).ready(function() {
+                var current_fs, next_fs, previous_fs; //fieldsets
+                var opacity;
+                var current = 1;
+                var steps = $("fieldset").length;
+                setProgressBar(current);
+                $(".next").click(function() {
+                    current_fs = $(this).parent();
+                    next_fs = $(this).parent().next();
+                    //Add Class Active
+                    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                    //show the next fieldset
+                    next_fs.show();
+                    //hide the current fieldset with style
+                    current_fs.animate({
+                        opacity: 0
+                    }, {
+                        step: function(now) {
+                            // for making fielset appear animation
+                            opacity = 1 - now;
+                            current_fs.css({
+                                'display': 'none',
+                                'position': 'relative'
+                            });
+                            next_fs.css({
+                                'opacity': opacity
+                            });
+                        },
+                        duration: 500
+                    });
+                    setProgressBar(++current);
                 });
-                setProgressBar(++current);
-            });
-            $(".previous").click(function() {
-                current_fs = $(this).parent();
-                previous_fs = $(this).parent().prev();
-                //Remove class active
-                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-                //show the previous fieldset
-                previous_fs.show();
-                //hide the current fieldset with style
-                current_fs.animate({
-                    opacity: 0
-                }, {
-                    step: function(now) {
-                        // for making fielset appear animation
-                        opacity = 1 - now;
-                        current_fs.css({
-                            'display': 'none',
-                            'position': 'relative'
-                        });
-                        previous_fs.css({
-                            'opacity': opacity
-                        });
-                    },
-                    duration: 500
+                $(".previous").click(function() {
+                    current_fs = $(this).parent();
+                    previous_fs = $(this).parent().prev();
+                    //Remove class active
+                    $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+                    //show the previous fieldset
+                    previous_fs.show();
+                    //hide the current fieldset with style
+                    current_fs.animate({
+                        opacity: 0
+                    }, {
+                        step: function(now) {
+                            // for making fielset appear animation
+                            opacity = 1 - now;
+                            current_fs.css({
+                                'display': 'none',
+                                'position': 'relative'
+                            });
+                            previous_fs.css({
+                                'opacity': opacity
+                            });
+                        },
+                        duration: 500
+                    });
+                    setProgressBar(--current);
                 });
-                setProgressBar(--current);
+
+                function setProgressBar(curStep) {
+                    var percent = parseFloat(100 / steps) * curStep;
+                    percent = percent.toFixed();
+                    $(".progress-bar").css("width", percent + "%")
+                }
+                $(".submit").click(function() {
+                    return false;
+                })
             });
+        </script>
 
-            function setProgressBar(curStep) {
-                var percent = parseFloat(100 / steps) * curStep;
-                percent = percent.toFixed();
-                $(".progress-bar").css("width", percent + "%")
-            }
-            $(".submit").click(function() {
-                return false;
-            })
-        });
-    </script>
-
-    <!-- Date Picker - Tanggal lahir -->
-    <script>
-        $('.datepicker').datepicker({
-            uiLibrary: 'bootstrap4'
-        });
-    </script>
-
-    <!-- Munculkan input ketika radio diklik -->
-    <script>
-        $('input[name="lulussmta"]').click(function() {
-            var inputValue = $(this).attr("value");
-            if (inputValue == "Lulus") {
-                $(".BoxBelumLulus").hide();
-                $(".BoxLulus").show();
-            } else if (inputValue == "Belum Lulus") {
-                $(".BoxLulus").hide();
-                $(".BoxBelumLulus").show();
-            } else {
-                $(".BoxLulus").hide();
-                $(".BoxBelumLulus").hide();
-            }
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            if ($(".lulussmta:checked").val() == "Lulus") {
-                $(".BoxLulus").show();
-                $(".BoxBelumLulus").hide();
-            } else if ($(".lulussmta:checked").val() == "Belum Lulus") {
-                $(".BoxLulus").hide();
-                $(".BoxBelumLulus").show();
-            } else {
-                $(".BoxLulus").hide();
-                $(".BoxBelumLulus").hide();
-            }
-
-            $("#provtempatlahir").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
-                $('#kabtempatlahir').load(url);
-                return false;
+        <!-- Date Picker - Tanggal lahir -->
+        <script>
+            $('.datepicker').datepicker({
+                uiLibrary: 'bootstrap4'
             });
-            $("#provtempattinggal").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
-                $('#kabtempattinggal').load(url);
-                return false;
-            });
+        </script>
 
-            $("#provortu").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
-                $('#kabupatenortu').load(url);
-                return false;
-            });
-            $("#kabupatenortu").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
-                $('#kecamatanortu').load(url);
-                return false;
-            });
-
-            $("#kabtempattinggal").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
-                $('#kectempattinggal').load(url);
-                return false;
-            });
-            $("#kectempattinggal").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_des'); ?>/" + $(this).val();
-                $('#destempattinggal').load(url);
-                return false;
-            });
-
-            $('#next1').on('click', function() {
-                $("#next1").attr("disabled", "disabled");
-                var jenkel = $(".jenkel:checked").val();
-                var nik = $("input[name='nik']").val();
-                var agama = $("select[name='agama']").val();
-                var suku = $("input[name='suku']").val();
-                var statusmenikah = $("select[name='statusmenikah']").val();
-                var prodipilihan1 = $("select[name='prodipilihan1']").val();
-                var prodipilihan2 = $("select[name='prodipilihan2']").val();
-                var prodipilihan3 = $("select[name='prodipilihan3']").val();
-                var prov_tempatlahir = $("select[name='provtempatlahir']").val();
-                var kab_tempatlahir = $("select[name='kabtempatlahir']").val();
-                var lokasi_tempatlahir = $("input[name='tempatlahir']").val();
-                var tgl_lahir = $("input[name='tanggallahir']").val();
-                var negara_tempattinggal = $("input[name='negaratinggal']").val();
-                var prov_tempattinggal = $("select[name='provtempattinggal']").val();
-                var kab_tempattinggal = $("select[name='kabtempattinggal']").val();
-                var kec_tempattinggal = $("select[name='kectempattinggal']").val();
-                var des_tempattinggal = $("select[name='destempattinggal']").val();
-                var kodepos_tempattinggal = $("input[name='kodepos']").val();
-                var alamat_tempattinggal = $("input[name='alamattempattinggal']").val();
-                var alamatlain_tempattinggal = $("input[name='alamatlaintempattinggal']").val();
-                var tinggibadan = $("input[name='tinggibadan']").val();
-                var beratbadan = $("input[name='beratbadan']").val();
-
-
-                $.ajax({
-                    url: "<?php echo site_url('register/next1'); ?>",
-                    type: "POST",
-                    data: {
-                        jenkel: jenkel,
-                        nik: nik,
-                        agama: agama,
-                        suku: suku,
-                        statusmenikah: statusmenikah,
-                        prodipilihan1: prodipilihan1,
-                        prodipilihan2: prodipilihan2,
-                        prodipilihan3: prodipilihan3,
-                        prov_tempatlahir: prov_tempatlahir,
-                        kab_tempatlahir: kab_tempatlahir,
-                        lokasi_tempatlahir: lokasi_tempatlahir,
-                        tgl_lahir: tgl_lahir,
-                        negara_tempattinggal: negara_tempattinggal,
-                        prov_tempattinggal: prov_tempattinggal,
-                        kab_tempattinggal: kab_tempattinggal,
-                        kec_tempattinggal: kec_tempattinggal,
-                        des_tempattinggal: des_tempattinggal,
-                        kodepos_tempattinggal: kodepos_tempattinggal,
-                        alamat_tempattinggal: alamat_tempattinggal,
-                        alamatlain_tempattinggal: alamatlain_tempattinggal,
-                        tinggibadan: tinggibadan,
-                        beratbadan: beratbadan,
-
-
-
-                    },
-                    //cache: false,
-                    success: function(dataResult) {
-                        var dataResult = JSON.parse(dataResult);
-                        if (dataResult.statusCode == 1) {
-                            $("#next1").removeAttr("disabled");
-                            $('#fupForm').find('input:text').val('');
-                            $("#success").show();
-                            $('#success').html('Data added successfully !');
-
-                            $(".BoxLulus").hide();
-                            $(".BoxBelumLulus").hide();
-                        } else {
-                            alert("Error occured !");
-                        }
-
-                    }
-                });
-            });
-
-
-            $('#next2').on('click', function() {
-                $("#next2").attr("disabled", "disabled");
-                var tahunlulussmta = $("select[name='tahunlulussmta']").val();
-                var jurusansmta = $("select[name='jurusansmta']").val();
-                var jenissmta = $("select[name='jenissmta']").val();
-                var namasmta = $("input[name='namasmta']").val();
-                var provinsismta = $("select[name='provinsismta']").val();
-                var alamatsmta = $("input[name='alamatsmta']").val();
-                var lulussmta = $(".lulussmta:checked").val();
-
-                if (lulussmta == 'Lulus') {
-                    var nomorijazah = $("input[name='nomorijazah']").val();
-                    var uanmtk = $("input[name='uanmtk']").val();
-                    var uanbing = $("input[name='uanbing']").val();
-                    var uanbind = $("input[name='uanbind']").val();
-                    var rapormtk = "";
-                    var raporbing = "";
-                    var raporbind = "";
-                } else if (lulussmta == 'Belum Lulus') {
-                    var nomorijazah = "";
-                    var uanmtk = "";
-                    var uanbing = "";
-                    var uanbind = "";
-                    var rapormtk = $("input[name='rapormtk']").val();
-                    var raporbing = $("input[name='raporbing']").val();
-                    var raporbind = $("input[name='raporbind']").val();
-
+        <!-- Munculkan input ketika radio diklik -->
+        <script>
+            $('input[name="lulussmta"]').click(function() {
+                var inputValue = $(this).attr("value");
+                if (inputValue == "Lulus") {
+                    $(".BoxBelumLulus").hide();
+                    $(".BoxLulus").show();
+                } else if (inputValue == "Belum Lulus") {
+                    $(".BoxLulus").hide();
+                    $(".BoxBelumLulus").show();
                 } else {
-                    var nomorijazah = "";
-                    var uanmtk = "";
-                    var uanbing = "";
-                    var uanbind = "";
-                    var rapormtk = "";
-                    var raporbing = "";
-                    var raporbind = "";
-                };
+                    $(".BoxLulus").hide();
+                    $(".BoxBelumLulus").hide();
+                }
+            });
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                if ($(".lulussmta:checked").val() == "Lulus") {
+                    $(".BoxLulus").show();
+                    $(".BoxBelumLulus").hide();
+                } else if ($(".lulussmta:checked").val() == "Belum Lulus") {
+                    $(".BoxLulus").hide();
+                    $(".BoxBelumLulus").show();
+                } else {
+                    $(".BoxLulus").hide();
+                    $(".BoxBelumLulus").hide();
+                }
+
+                $("#provtempatlahir").change(function() {
+                    var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+                    $('#kabtempatlahir').load(url);
+                    return false;
+                });
+                $("#provtempattinggal").change(function() {
+                    var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+                    $('#kabtempattinggal').load(url);
+                    return false;
+                });
+
+                $("#provortu").change(function() {
+                    var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+                    $('#kabupatenortu').load(url);
+                    return false;
+                });
+                $("#kabupatenortu").change(function() {
+                    var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
+                    $('#kecamatanortu').load(url);
+                    return false;
+                });
+
+                $("#kabtempattinggal").change(function() {
+                    var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
+                    $('#kectempattinggal').load(url);
+                    return false;
+                });
+                $("#kectempattinggal").change(function() {
+                    var url = "<?php echo site_url('register/add_ajax_des'); ?>/" + $(this).val();
+                    $('#destempattinggal').load(url);
+                    return false;
+                });
+
+                $('#next1').on('click', function() {
+                    $("#next1").attr("disabled", "disabled");
+                    var jenkel = $(".jenkel:checked").val();
+                    var nik = $("input[name='nik']").val();
+                    var agama = $("select[name='agama']").val();
+                    var suku = $("input[name='suku']").val();
+                    var statusmenikah = $("select[name='statusmenikah']").val();
+                    var prodipilihan1 = $("select[name='prodipilihan1']").val();
+                    var prodipilihan2 = $("select[name='prodipilihan2']").val();
+                    var prodipilihan3 = $("select[name='prodipilihan3']").val();
+                    var prov_tempatlahir = $("select[name='provtempatlahir']").val();
+                    var kab_tempatlahir = $("select[name='kabtempatlahir']").val();
+                    var lokasi_tempatlahir = $("input[name='tempatlahir']").val();
+                    var tgl_lahir = $("input[name='tanggallahir']").val();
+                    var negara_tempattinggal = $("input[name='negaratinggal']").val();
+                    var prov_tempattinggal = $("select[name='provtempattinggal']").val();
+                    var kab_tempattinggal = $("select[name='kabtempattinggal']").val();
+                    var kec_tempattinggal = $("select[name='kectempattinggal']").val();
+                    var des_tempattinggal = $("select[name='destempattinggal']").val();
+                    var kodepos_tempattinggal = $("input[name='kodepos']").val();
+                    var alamat_tempattinggal = $("input[name='alamattempattinggal']").val();
+                    var alamatlain_tempattinggal = $("input[name='alamatlaintempattinggal']").val();
+                    var tinggibadan = $("input[name='tinggibadan']").val();
+                    var beratbadan = $("input[name='beratbadan']").val();
+
+
+                    $.ajax({
+                        url: "<?php echo site_url('register/next1'); ?>",
+                        type: "POST",
+                        data: {
+                            jenkel: jenkel,
+                            nik: nik,
+                            agama: agama,
+                            suku: suku,
+                            statusmenikah: statusmenikah,
+                            prodipilihan1: prodipilihan1,
+                            prodipilihan2: prodipilihan2,
+                            prodipilihan3: prodipilihan3,
+                            prov_tempatlahir: prov_tempatlahir,
+                            kab_tempatlahir: kab_tempatlahir,
+                            lokasi_tempatlahir: lokasi_tempatlahir,
+                            tgl_lahir: tgl_lahir,
+                            negara_tempattinggal: negara_tempattinggal,
+                            prov_tempattinggal: prov_tempattinggal,
+                            kab_tempattinggal: kab_tempattinggal,
+                            kec_tempattinggal: kec_tempattinggal,
+                            des_tempattinggal: des_tempattinggal,
+                            kodepos_tempattinggal: kodepos_tempattinggal,
+                            alamat_tempattinggal: alamat_tempattinggal,
+                            alamatlain_tempattinggal: alamatlain_tempattinggal,
+                            tinggibadan: tinggibadan,
+                            beratbadan: beratbadan,
 
 
 
+                        },
+                        //cache: false,
+                        success: function(dataResult) {
+                            var dataResult = JSON.parse(dataResult);
+                            if (dataResult.statusCode == 1) {
+                                $("#next1").removeAttr("disabled");
+                                $('#fupForm').find('input:text').val('');
+                                $("#success").show();
+                                $('#success').html('Data added successfully !');
 
-                $.ajax({
-                    url: "<?php echo site_url('register/next2'); ?>",
-                    type: "POST",
-                    data: {
-                        tahunlulussmta: tahunlulussmta,
-                        jurusansmta: jurusansmta,
-                        jenissmta: jenissmta,
-                        namasmta: namasmta,
-                        provinsismta: provinsismta,
-                        alamatsmta: alamatsmta,
-                        lulussmta: lulussmta,
-                        nomorijazah: nomorijazah,
-                        uanmtk: uanmtk,
-                        uanbing: uanbing,
-                        uanbind: uanbind,
-                        rapormtk: rapormtk,
-                        raporbing: raporbing,
-                        raporbind: raporbind,
+                                $(".BoxLulus").hide();
+                                $(".BoxBelumLulus").hide();
+                            } else {
+                                alert("Error occured !");
+                            }
 
-
-                    },
-                    //cache: false,
-                    success: function(dataResult) {
-                        var dataResult = JSON.parse(dataResult);
-                        if (dataResult.statusCode == 1) {
-                            $("#next2").removeAttr("disabled");
-                            $('#fupForm').find('input:text').val('');
-                            $("#success").show();
-                            $('#success').html('Data added successfully !');
-                        } else {
-                            alert("Error occured !");
                         }
+                    });
+                });
+
+
+                $('#next2').on('click', function() {
+                    $("#next2").attr("disabled", "disabled");
+                    var tahunlulussmta = $("select[name='tahunlulussmta']").val();
+                    var jurusansmta = $("select[name='jurusansmta']").val();
+                    var jenissmta = $("select[name='jenissmta']").val();
+                    var namasmta = $("input[name='namasmta']").val();
+                    var provinsismta = $("select[name='provinsismta']").val();
+                    var alamatsmta = $("input[name='alamatsmta']").val();
+                    var nilairapormtk = $("input[name='nilairapormtk']").val();
+                    var nilairaporbing = $("input[name='nilairaporbing']").val();
+                    var nilairaporbind = $("input[name='nilairaporbind']").val();
+
+                    var lulussmta = $(".lulussmta:checked").val();
+
+                    if (lulussmta == 'Lulus') {
+                        var nomorijazah = $("input[name='nomorijazah']").val();
+                        var uanmtk = $("input[name='uanmtk']").val();
+                        var uanbing = $("input[name='uanbing']").val();
+                        var uanbind = $("input[name='uanbind']").val();
+                        var rapormtk = "";
+                        var raporbing = "";
+                        var raporbind = "";
+                    } else if (lulussmta == 'Belum Lulus') {
+                        var nomorijazah = "";
+                        var uanmtk = "";
+                        var uanbing = "";
+                        var uanbind = "";
+                        var rapormtk = $("input[name='rapormtk']").val();
+                        var raporbing = $("input[name='raporbing']").val();
+                        var raporbind = $("input[name='raporbind']").val();
+
+                    } else {
+                        var nomorijazah = "";
+                        var uanmtk = "";
+                        var uanbing = "";
+                        var uanbind = "";
+                        var rapormtk = "";
+                        var raporbing = "";
+                        var raporbind = "";
+                    };
+
+
+
+
+                    $.ajax({
+                        url: "<?php echo site_url('register/next2'); ?>",
+                        type: "POST",
+                        data: {
+                            tahunlulussmta: tahunlulussmta,
+                            jurusansmta: jurusansmta,
+                            jenissmta: jenissmta,
+                            namasmta: namasmta,
+                            provinsismta: provinsismta,
+                            alamatsmta: alamatsmta,
+                            // lulussmta: lulussmta,
+                            // nomorijazah: nomorijazah,
+                            // uanmtk: uanmtk,
+                            // uanbing: uanbing,
+                            // uanbind: uanbind,
+                            nilairapormtk: nilairapormtk,
+                            nilairaporbing: nilairaporbing,
+                            nilairaporbind: nilairaporbind,
+
+
+                        },
+                        //cache: false,
+                        success: function(dataResult) {
+                            var dataResult = JSON.parse(dataResult);
+                            if (dataResult.statusCode == 1) {
+                                $("#next2").removeAttr("disabled");
+                                $('#fupForm').find('input:text').val('');
+                                $("#success").show();
+                                $('#success').html('Data added successfully !');
+                            } else {
+                                alert("Error occured !");
+                            }
+
+                        }
+                    });
+                });
+
+
+                $('#next3').on('click', function() {
+                    $("#next3").attr("disabled", "disabled");
+                    var nik_ayah = $("input[name='nikayah']").val();
+                    var nama_ayah = $("input[name='namaayah']").val();
+                    var pendidikanayah = $("select[name='pendidikanayah']").val();
+                    var pekerjaanayah = $("select[name='pekerjaanayah']").val();
+                    var alamatkantor_ayah = $("input[name='alamatkantorayah']").val();
+                    var nik_ibu = $("input[name='nikibu']").val();
+                    var nama_ibu = $("input[name='namaibu']").val();
+                    var pendidikanibu = $("select[name='pendidikanibu']").val();
+                    var pekerjaanibu = $("select[name='pekerjaanibu']").val();
+                    var penghasilanortu = $("select[name='penghasilanortu']").val();
+                    var alamat_ortu = $("input[name='alamatortu']").val();
+                    var provinsi_ortu = $("select[name='provortu']").val();
+                    var kabupaten_ortu = $("select[name='kabupatenortu']").val();
+                    var kecamatan_ortu = $("select[name='kecamatanortu']").val();
+                    var kodepos_ortu = $("input[name='kodeposortu']").val();
+                    var nohp_ortu = $("input[name='nohportu']").val();
+
+
+                    $.ajax({
+                        url: "<?php echo site_url('register/next3'); ?>",
+                        type: "POST",
+                        data: {
+                            nik_ayah: nik_ayah,
+                            nama_ayah: nama_ayah,
+                            pendidikanayah: pendidikanayah,
+                            pekerjaanayah: pekerjaanayah,
+                            alamatkantor_ayah: alamatkantor_ayah,
+                            nik_ibu: nik_ibu,
+                            nama_ibu: nama_ibu,
+                            pendidikanibu: pendidikanibu,
+                            pekerjaanibu: pekerjaanibu,
+                            penghasilanortu: penghasilanortu,
+                            alamat_ortu: alamat_ortu,
+                            provinsi_ortu: provinsi_ortu,
+                            kabupaten_ortu: kabupaten_ortu,
+                            kecamatan_ortu: kecamatan_ortu,
+                            kodepos_ortu: kodepos_ortu,
+                            nohp_ortu: nohp_ortu,
+
+
+                        },
+                        //cache: false,
+                        success: function(dataResult) {
+                            var dataResult = JSON.parse(dataResult);
+                            if (dataResult.statusCode == 1) {
+                                $("#next3").removeAttr("disabled");
+                                $('#fupForm').find('input:text').val('');
+                                $("#success").show();
+                                $('#success').html('Data added successfully !');
+                            } else {
+                                alert("Error occured !");
+                            }
+
+                        }
+                    });
+                });
+
+                $('#next4').on('click', function() {
+                    $("#next4").attr("disabled", "disabled");
+                    var nama_wali = $("input[name='namawali']").val();
+                    var pekerjaanwali = $("select[name='pekerjaanwali']").val();
+                    var penghasilanwali = $("select[name='penghasilanwali']").val();
+                    var alamat_wali = $("input[name='alamatwali']").val();
+
+
+                    $.ajax({
+                        url: "<?php echo site_url('register/next4'); ?>",
+                        type: "POST",
+                        data: {
+                            nama_wali: nama_wali,
+                            pekerjaanwali: pekerjaanwali,
+                            penghasilanwali: penghasilanwali,
+                            alamat_wali: alamat_wali,
+
+                        },
+                        //cache: false,
+                        success: function(dataResult) {
+                            var dataResult = JSON.parse(dataResult);
+                            if (dataResult.statusCode == 1) {
+                                $("#next4").removeAttr("disabled");
+                                $('#fupForm').find('input:text').val('');
+                                $("#success").show();
+                                $('#success').html('Data added successfully !');
+                            } else {
+                                alert("Error occured !");
+                            }
+
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <script type="text/javascript">
+            Dropzone.autoDiscover = false;
+
+            var foto_upload = new Dropzone(".dropzone", {
+                url: "<?php echo base_url('register/uploadfotopas') ?>",
+                maxFilesize: 1,
+                autoProcessQueue: false,
+                method: "post",
+                acceptedFiles: ".jpeg,.jpg,.png,.gif",
+                paramName: "fotopas",
+                dictInvalidFileType: "Type file ini tidak dizinkan",
+                addRemoveLinks: true,
+            });
+
+            $('#uploadFile').click(function() {
+                foto_upload.processQueue();
+            });
+
+            //Event ketika foto dihapus
+            foto_upload.on("removedfile", function(a) {
+                var token = a.token;
+                $.ajax({
+                    type: "post",
+                    data: {
+                        token: token
+                    },
+                    cache: false,
+                    dataType: 'json',
+                    success: function() {
+                        console.log("Foto terhapus");
+                    },
+                    error: function() {
+                        console.log("Error");
 
                     }
                 });
             });
+        </script>
 
-
-            $('#next3').on('click', function() {
-                $("#next3").attr("disabled", "disabled");
-                var nik_ayah = $("input[name='nikayah']").val();
-                var nama_ayah = $("input[name='namaayah']").val();
-                var pendidikanayah = $("select[name='pendidikanayah']").val();
-                var pekerjaanayah = $("select[name='pekerjaanayah']").val();
-                var alamatkantor_ayah = $("input[name='alamatkantorayah']").val();
-                var nik_ibu = $("input[name='nikibu']").val();
-                var nama_ibu = $("input[name='namaibu']").val();
-                var pendidikanibu = $("select[name='pendidikanibu']").val();
-                var pekerjaanibu = $("select[name='pekerjaanibu']").val();
-                var penghasilanortu = $("select[name='penghasilanortu']").val();
-                var alamat_ortu = $("input[name='alamatortu']").val();
-                var provinsi_ortu = $("select[name='provortu']").val();
-                var kabupaten_ortu = $("select[name='kabupatenortu']").val();
-                var kecamatan_ortu = $("select[name='kecamatanortu']").val();
-                var kodepos_ortu = $("input[name='kodeposortu']").val();
-                var nohp_ortu = $("input[name='nohportu']").val();
-
-
-                $.ajax({
-                    url: "<?php echo site_url('register/next3'); ?>",
-                    type: "POST",
-                    data: {
-                        nik_ayah: nik_ayah,
-                        nama_ayah: nama_ayah,
-                        pendidikanayah: pendidikanayah,
-                        pekerjaanayah: pekerjaanayah,
-                        alamatkantor_ayah: alamatkantor_ayah,
-                        nik_ibu: nik_ibu,
-                        nama_ibu: nama_ibu,
-                        pendidikanibu: pendidikanibu,
-                        pekerjaanibu: pekerjaanibu,
-                        penghasilanortu: penghasilanortu,
-                        alamat_ortu: alamat_ortu,
-                        provinsi_ortu: provinsi_ortu,
-                        kabupaten_ortu: kabupaten_ortu,
-                        kecamatan_ortu: kecamatan_ortu,
-                        kodepos_ortu: kodepos_ortu,
-                        nohp_ortu: nohp_ortu,
-
-
-                    },
-                    //cache: false,
-                    success: function(dataResult) {
-                        var dataResult = JSON.parse(dataResult);
-                        if (dataResult.statusCode == 1) {
-                            $("#next3").removeAttr("disabled");
-                            $('#fupForm').find('input:text').val('');
-                            $("#success").show();
-                            $('#success').html('Data added successfully !');
-                        } else {
-                            alert("Error occured !");
-                        }
-
-                    }
-                });
-            });
-
-            $('#next4').on('click', function() {
-                $("#next4").attr("disabled", "disabled");
-                var nama_wali = $("input[name='namawali']").val();
-                var pekerjaanwali = $("select[name='pekerjaanwali']").val();
-                var penghasilanwali = $("select[name='penghasilanwali']").val();
-                var alamat_wali = $("input[name='alamatwali']").val();
-
-
-                $.ajax({
-                    url: "<?php echo site_url('register/next4'); ?>",
-                    type: "POST",
-                    data: {
-                        nama_wali: nama_wali,
-                        pekerjaanwali: pekerjaanwali,
-                        penghasilanwali: penghasilanwali,
-                        alamat_wali: alamat_wali,
-
-                    },
-                    //cache: false,
-                    success: function(dataResult) {
-                        var dataResult = JSON.parse(dataResult);
-                        if (dataResult.statusCode == 1) {
-                            $("#next4").removeAttr("disabled");
-                            $('#fupForm').find('input:text').val('');
-                            $("#success").show();
-                            $('#success').html('Data added successfully !');
-                        } else {
-                            alert("Error occured !");
-                        }
-
-                    }
-                });
-            });
-        });
-    </script>
 </body>
 
 </html>
