@@ -9,8 +9,6 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
     <!-- <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script> -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
-    <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
-
 
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
@@ -1250,470 +1248,481 @@
                 </div>
             </div>
         </div>
-    </div>
 
 
-    <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Unggah Foto</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <form class="dropzone" id="image-upload">
-                        <div class="dz-message">
-                            <h6> Klik atau Drop gambar ke sini</h6>
-                        </div>
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Unggah Foto</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form class="dropzone" id="image-upload">
+                            <div class="dz-message">
+                                <h6> Klik atau Drop gambar ke sini</h6>
+                            </div>
 
-                        <small>Rasio Foto : 4 x 6, atau max resolusi 300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg, png</small>
-                    </form>
-                </div>
-                <div class="modal-footer">
-                    <button id="uploadFile" type="button" class="btn btn-primary">Upload</button>
+                            <small>Rasio Foto : 4 x 6, atau max resolusi 300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg, png</small>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="uploadFile" type="button" class="btn btn-primary">Upload</button>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
 
 
 
-    <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- SimpleLightbox plugin JS-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-    <!-- Core theme JS-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <!-- * *                               SB Forms JS                               * *-->
-    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+        <!-- Bootstrap core JS-->
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+        <!-- SimpleLightbox plugin JS-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+        <!-- Core theme JS-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <!-- * *                               SB Forms JS                               * *-->
+        <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+        <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+        <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 
 
-    <script type='text/javascript'>
-        $(document).ready(function() {
-            var current_fs, next_fs, previous_fs; //fieldsets
-            var opacity;
-            var current = 1;
-            var steps = $("fieldset").length;
-            setProgressBar(current);
-            $(".next").click(function() {
-                current_fs = $(this).parent();
-                next_fs = $(this).parent().next();
-                //Add Class Active
-                $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-                //show the next fieldset
-                next_fs.show();
-                //hide the current fieldset with style
-                current_fs.animate({
-                    opacity: 0
-                }, {
-                    step: function(now) {
-                        // for making fielset appear animation
-                        opacity = 1 - now;
-                        current_fs.css({
-                            'display': 'none',
-                            'position': 'relative'
-                        });
-                        next_fs.css({
-                            'opacity': opacity
-                        });
-                    },
-                    duration: 500
+        <script type='text/javascript'>
+            $(document).ready(function() {
+                var current_fs, next_fs, previous_fs; //fieldsets
+                var opacity;
+                var current = 1;
+                var steps = $("fieldset").length;
+                setProgressBar(current);
+                $(".next").click(function() {
+                    current_fs = $(this).parent();
+                    next_fs = $(this).parent().next();
+                    //Add Class Active
+                    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                    //show the next fieldset
+                    next_fs.show();
+                    //hide the current fieldset with style
+                    current_fs.animate({
+                        opacity: 0
+                    }, {
+                        step: function(now) {
+                            // for making fielset appear animation
+                            opacity = 1 - now;
+                            current_fs.css({
+                                'display': 'none',
+                                'position': 'relative'
+                            });
+                            next_fs.css({
+                                'opacity': opacity
+                            });
+                        },
+                        duration: 500
+                    });
+                    setProgressBar(++current);
                 });
-                setProgressBar(++current);
-            });
-            $(".previous").click(function() {
-                current_fs = $(this).parent();
-                previous_fs = $(this).parent().prev();
-                //Remove class active
-                $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
-                //show the previous fieldset
-                previous_fs.show();
-                //hide the current fieldset with style
-                current_fs.animate({
-                    opacity: 0
-                }, {
-                    step: function(now) {
-                        // for making fielset appear animation
-                        opacity = 1 - now;
-                        current_fs.css({
-                            'display': 'none',
-                            'position': 'relative'
-                        });
-                        previous_fs.css({
-                            'opacity': opacity
-                        });
-                    },
-                    duration: 500
+                $(".previous").click(function() {
+                    current_fs = $(this).parent();
+                    previous_fs = $(this).parent().prev();
+                    //Remove class active
+                    $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+                    //show the previous fieldset
+                    previous_fs.show();
+                    //hide the current fieldset with style
+                    current_fs.animate({
+                        opacity: 0
+                    }, {
+                        step: function(now) {
+                            // for making fielset appear animation
+                            opacity = 1 - now;
+                            current_fs.css({
+                                'display': 'none',
+                                'position': 'relative'
+                            });
+                            previous_fs.css({
+                                'opacity': opacity
+                            });
+                        },
+                        duration: 500
+                    });
+                    setProgressBar(--current);
                 });
-                setProgressBar(--current);
+
+                function setProgressBar(curStep) {
+                    var percent = parseFloat(100 / steps) * curStep;
+                    percent = percent.toFixed();
+                    $(".progress-bar").css("width", percent + "%")
+                }
+                $(".submit").click(function() {
+                    return false;
+                })
             });
+        </script>
 
-            function setProgressBar(curStep) {
-                var percent = parseFloat(100 / steps) * curStep;
-                percent = percent.toFixed();
-                $(".progress-bar").css("width", percent + "%")
-            }
-            $(".submit").click(function() {
-                return false;
-            })
-        });
-    </script>
-
-    <!-- Date Picker - Tanggal lahir -->
-    <script>
-        $('.datepicker').datepicker({
-            uiLibrary: 'bootstrap4'
-        });
-    </script>
-
-    <!-- Munculkan input ketika radio diklik -->
-    <script>
-        $('input[name="lulussmta"]').click(function() {
-            var inputValue = $(this).attr("value");
-            if (inputValue == "Lulus") {
-                $(".BoxBelumLulus").hide();
-                $(".BoxLulus").show();
-            } else if (inputValue == "Belum Lulus") {
-                $(".BoxLulus").hide();
-                $(".BoxBelumLulus").show();
-            } else {
-                $(".BoxLulus").hide();
-                $(".BoxBelumLulus").hide();
-            }
-        });
-    </script>
-
-    <script>
-        $(document).ready(function() {
-            if ($(".lulussmta:checked").val() == "Lulus") {
-                $(".BoxLulus").show();
-                $(".BoxBelumLulus").hide();
-            } else if ($(".lulussmta:checked").val() == "Belum Lulus") {
-                $(".BoxLulus").hide();
-                $(".BoxBelumLulus").show();
-            } else {
-                $(".BoxLulus").hide();
-                $(".BoxBelumLulus").hide();
-            }
-
-            $("#provtempatlahir").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
-                $('#kabtempatlahir').load(url);
-                return false;
+        <!-- Date Picker - Tanggal lahir -->
+        <script>
+            $('.datepicker').datepicker({
+                uiLibrary: 'bootstrap4'
             });
-            $("#provtempattinggal").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
-                $('#kabtempattinggal').load(url);
-                return false;
-            });
-            $("#kabtempattinggal").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
-                $('#kectempattinggal').load(url);
-                return false;
-            });
-            $("#kectempattinggal").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_des'); ?>/" + $(this).val();
-                $('#destempattinggal').load(url);
-                return false;
-            });
+        </script>
 
-            $('#next1').on('click', function() {
-                $("#next1").attr("disabled", "disabled");
-                var jenkel = $(".jenkel:checked").val();
-                var nik = $("input[name='nik']").val();
-                var agama = $("select[name='agama']").val();
-                var suku = $("input[name='suku']").val();
-                var statusmenikah = $("select[name='statusmenikah']").val();
-                var prodipilihan1 = $("select[name='prodipilihan1']").val();
-                var prodipilihan2 = $("select[name='prodipilihan2']").val();
-                var prodipilihan3 = $("select[name='prodipilihan3']").val();
-                var prov_tempatlahir = $("select[name='provtempatlahir']").val();
-                var kab_tempatlahir = $("select[name='kabtempatlahir']").val();
-                var lokasi_tempatlahir = $("input[name='tempatlahir']").val();
-                var tgl_lahir = $("input[name='tanggallahir']").val();
-                var negara_tempattinggal = $("input[name='negaratinggal']").val();
-                var prov_tempattinggal = $("select[name='provtempattinggal']").val();
-                var kab_tempattinggal = $("select[name='kabtempattinggal']").val();
-                var kec_tempattinggal = $("select[name='kectempattinggal']").val();
-                var des_tempattinggal = $("select[name='destempattinggal']").val();
-                var kodepos_tempattinggal = $("input[name='kodepos']").val();
-                var alamat_tempattinggal = $("input[name='alamattempattinggal']").val();
-                var alamatlain_tempattinggal = $("input[name='alamatlaintempattinggal']").val();
-                var tinggibadan = $("input[name='tinggibadan']").val();
-                var beratbadan = $("input[name='beratbadan']").val();
-
-
-                $.ajax({
-                    url: "<?php echo site_url('register/next1'); ?>",
-                    type: "POST",
-                    data: {
-                        jenkel: jenkel,
-                        nik: nik,
-                        agama: agama,
-                        suku: suku,
-                        statusmenikah: statusmenikah,
-                        prodipilihan1: prodipilihan1,
-                        prodipilihan2: prodipilihan2,
-                        prodipilihan3: prodipilihan3,
-                        prov_tempatlahir: prov_tempatlahir,
-                        kab_tempatlahir: kab_tempatlahir,
-                        lokasi_tempatlahir: lokasi_tempatlahir,
-                        tgl_lahir: tgl_lahir,
-                        negara_tempattinggal: negara_tempattinggal,
-                        prov_tempattinggal: prov_tempattinggal,
-                        kab_tempattinggal: kab_tempattinggal,
-                        kec_tempattinggal: kec_tempattinggal,
-                        des_tempattinggal: des_tempattinggal,
-                        kodepos_tempattinggal: kodepos_tempattinggal,
-                        alamat_tempattinggal: alamat_tempattinggal,
-                        alamatlain_tempattinggal: alamatlain_tempattinggal,
-                        tinggibadan: tinggibadan,
-                        beratbadan: beratbadan,
-
-
-
-                    },
-                    //cache: false,
-                    success: function(dataResult) {
-                        var dataResult = JSON.parse(dataResult);
-                        if (dataResult.statusCode == 1) {
-                            $("#next1").removeAttr("disabled");
-                            $('#fupForm').find('input:text').val('');
-                            $("#success").show();
-                            $('#success').html('Data added successfully !');
-
-                            $(".BoxLulus").hide();
-                            $(".BoxBelumLulus").hide();
-                        } else {
-                            alert("Error occured !");
-                        }
-
-                    }
-                });
-            });
-
-
-            $('#next2').on('click', function() {
-                $("#next2").attr("disabled", "disabled");
-                var tahunlulussmta = $("select[name='tahunlulussmta']").val();
-                var jurusansmta = $("select[name='jurusansmta']").val();
-                var jenissmta = $("select[name='jenissmta']").val();
-                var namasmta = $("input[name='namasmta']").val();
-                var provinsismta = $("select[name='provinsismta']").val();
-                var alamatsmta = $("input[name='alamatsmta']").val();
-                var nilairapormtk = $("input[name='nilairapormtk']").val();
-                var nilairaporbing = $("input[name='nilairaporbing']").val();
-                var nilairaporbind = $("input[name='nilairaporbind']").val();
-
-                var lulussmta = $(".lulussmta:checked").val();
-
-                if (lulussmta == 'Lulus') {
-                    var nomorijazah = $("input[name='nomorijazah']").val();
-                    var uanmtk = $("input[name='uanmtk']").val();
-                    var uanbing = $("input[name='uanbing']").val();
-                    var uanbind = $("input[name='uanbind']").val();
-                    var rapormtk = "";
-                    var raporbing = "";
-                    var raporbind = "";
-                } else if (lulussmta == 'Belum Lulus') {
-                    var nomorijazah = "";
-                    var uanmtk = "";
-                    var uanbing = "";
-                    var uanbind = "";
-                    var rapormtk = $("input[name='rapormtk']").val();
-                    var raporbing = $("input[name='raporbing']").val();
-                    var raporbind = $("input[name='raporbind']").val();
-
+        <!-- Munculkan input ketika radio diklik -->
+        <script>
+            $('input[name="lulussmta"]').click(function() {
+                var inputValue = $(this).attr("value");
+                if (inputValue == "Lulus") {
+                    $(".BoxBelumLulus").hide();
+                    $(".BoxLulus").show();
+                } else if (inputValue == "Belum Lulus") {
+                    $(".BoxLulus").hide();
+                    $(".BoxBelumLulus").show();
                 } else {
-                    var nomorijazah = "";
-                    var uanmtk = "";
-                    var uanbing = "";
-                    var uanbind = "";
-                    var rapormtk = "";
-                    var raporbing = "";
-                    var raporbind = "";
-                };
-
-
-
-
-                $.ajax({
-                    url: "<?php echo site_url('register/next2'); ?>",
-                    type: "POST",
-                    data: {
-                        tahunlulussmta: tahunlulussmta,
-                        jurusansmta: jurusansmta,
-                        jenissmta: jenissmta,
-                        namasmta: namasmta,
-                        provinsismta: provinsismta,
-                        alamatsmta: alamatsmta,
-                        // lulussmta: lulussmta,
-                        // nomorijazah: nomorijazah,
-                        // uanmtk: uanmtk,
-                        // uanbing: uanbing,
-                        // uanbind: uanbind,
-                        nilairapormtk: nilairapormtk,
-                        nilairaporbing: nilairaporbing,
-                        nilairaporbind: nilairaporbind,
-
-
-                    },
-                    //cache: false,
-                    success: function(dataResult) {
-                        var dataResult = JSON.parse(dataResult);
-                        if (dataResult.statusCode == 1) {
-                            $("#next2").removeAttr("disabled");
-                            $('#fupForm').find('input:text').val('');
-                            $("#success").show();
-                            $('#success').html('Data added successfully !');
-                        } else {
-                            alert("Error occured !");
-                        }
-
-                    }
-                });
-            });
-
-
-            $('#next3').on('click', function() {
-                $("#next3").attr("disabled", "disabled");
-                var nik_ayah = $("input[name='nikayah']").val();
-                var nama_ayah = $("input[name='namaayah']").val();
-                var pendidikanayah = $("select[name='pendidikanayah']").val();
-                var pekerjaanayah = $("select[name='pekerjaanayah']").val();
-                var alamatkantor_ayah = $("input[name='alamatkantorayah']").val();
-                var nik_ibu = $("input[name='nikibu']").val();
-                var nama_ibu = $("input[name='namaibu']").val();
-                var pendidikanibu = $("select[name='pendidikanibu']").val();
-                var pekerjaanibu = $("select[name='pekerjaanibu']").val();
-                var penghasilanortu = $("select[name='penghasilanortu']").val();
-                var alamat_ortu = $("input[name='alamatortu']").val();
-                var provinsi_ortu = $("select[name='provortu']").val();
-                var kabupaten_ortu = $("select[name='kabupatenortu']").val();
-                var kecamatan_ortu = $("select[name='kecamatanortu']").val();
-                var kodepos_ortu = $("input[name='kodeposortu']").val();
-                var nohp_ortu = $("input[name='nohportu']").val();
-
-
-                $.ajax({
-                    url: "<?php echo site_url('register/next3'); ?>",
-                    type: "POST",
-                    data: {
-                        nik_ayah: nik_ayah,
-                        nama_ayah: nama_ayah,
-                        pendidikanayah: pendidikanayah,
-                        pekerjaanayah: pekerjaanayah,
-                        alamatkantor_ayah: alamatkantor_ayah,
-                        nik_ibu: nik_ibu,
-                        nama_ibu: nama_ibu,
-                        pendidikanibu: pendidikanibu,
-                        pekerjaanibu: pekerjaanibu,
-                        penghasilanortu: penghasilanortu,
-                        alamat_ortu: alamat_ortu,
-                        provinsi_ortu: provinsi_ortu,
-                        kabupaten_ortu: kabupaten_ortu,
-                        kecamatan_ortu: kecamatan_ortu,
-                        kodepos_ortu: kodepos_ortu,
-                        nohp_ortu: nohp_ortu,
-
-
-                    },
-                    //cache: false,
-                    success: function(dataResult) {
-                        var dataResult = JSON.parse(dataResult);
-                        if (dataResult.statusCode == 1) {
-                            $("#next3").removeAttr("disabled");
-                            $('#fupForm').find('input:text').val('');
-                            $("#success").show();
-                            $('#success').html('Data added successfully !');
-                        } else {
-                            alert("Error occured !");
-                        }
-
-                    }
-                });
-            });
-
-            $('#next4').on('click', function() {
-                $("#next4").attr("disabled", "disabled");
-                var nama_wali = $("input[name='namawali']").val();
-                var pekerjaanwali = $("select[name='pekerjaanwali']").val();
-                var penghasilanwali = $("select[name='penghasilanwali']").val();
-                var alamat_wali = $("input[name='alamatwali']").val();
-
-
-                $.ajax({
-                    url: "<?php echo site_url('register/next4'); ?>",
-                    type: "POST",
-                    data: {
-                        nama_wali: nama_wali,
-                        pekerjaanwali: pekerjaanwali,
-                        penghasilanwali: penghasilanwali,
-                        alamat_wali: alamat_wali,
-
-                    },
-                    //cache: false,
-                    success: function(dataResult) {
-                        var dataResult = JSON.parse(dataResult);
-                        if (dataResult.statusCode == 1) {
-                            $("#next4").removeAttr("disabled");
-                            $('#fupForm').find('input:text').val('');
-                            $("#success").show();
-                            $('#success').html('Data added successfully !');
-                        } else {
-                            alert("Error occured !");
-                        }
-
-                    }
-                });
-            });
-        });
-    </script>
-
-    <script type="text/javascript">
-        Dropzone.autoDiscover = false;
-
-        var foto_upload = new Dropzone(".dropzone", {
-            url: "<?php echo base_url('register/uploadfotopas') ?>",
-            maxFilesize: 1,
-            autoProcessQueue: false,
-            method: "post",
-            acceptedFiles: ".jpeg,.jpg,.png,.gif",
-            paramName: "fotopas",
-            dictInvalidFileType: "Type file ini tidak dizinkan",
-            addRemoveLinks: true,
-        });
-
-        $('#uploadFile').click(function() {
-            foto_upload.processQueue();
-        });
-
-        //Event ketika foto dihapus
-        foto_upload.on("removedfile", function(a) {
-            var token = a.token;
-            $.ajax({
-                type: "post",
-                data: {
-                    token: token
-                },
-                cache: false,
-                dataType: 'json',
-                success: function() {
-                    console.log("Foto terhapus");
-                },
-                error: function() {
-                    console.log("Error");
-
+                    $(".BoxLulus").hide();
+                    $(".BoxBelumLulus").hide();
                 }
             });
-        });
-    </script>
+        </script>
+
+        <script>
+            $(document).ready(function() {
+                if ($(".lulussmta:checked").val() == "Lulus") {
+                    $(".BoxLulus").show();
+                    $(".BoxBelumLulus").hide();
+                } else if ($(".lulussmta:checked").val() == "Belum Lulus") {
+                    $(".BoxLulus").hide();
+                    $(".BoxBelumLulus").show();
+                } else {
+                    $(".BoxLulus").hide();
+                    $(".BoxBelumLulus").hide();
+                }
+
+                $("#provtempatlahir").change(function() {
+                    var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+                    $('#kabtempatlahir').load(url);
+                    return false;
+                });
+                $("#provtempattinggal").change(function() {
+                    var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+                    $('#kabtempattinggal').load(url);
+                    return false;
+                });
+
+                $("#provortu").change(function() {
+                    var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+                    $('#kabupatenortu').load(url);
+                    return false;
+                });
+                $("#kabupatenortu").change(function() {
+                    var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
+                    $('#kecamatanortu').load(url);
+                    return false;
+                });
+
+                $("#kabtempattinggal").change(function() {
+                    var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
+                    $('#kectempattinggal').load(url);
+                    return false;
+                });
+                $("#kectempattinggal").change(function() {
+                    var url = "<?php echo site_url('register/add_ajax_des'); ?>/" + $(this).val();
+                    $('#destempattinggal').load(url);
+                    return false;
+                });
+
+                $('#next1').on('click', function() {
+                    $("#next1").attr("disabled", "disabled");
+                    var jenkel = $(".jenkel:checked").val();
+                    var nik = $("input[name='nik']").val();
+                    var agama = $("select[name='agama']").val();
+                    var suku = $("input[name='suku']").val();
+                    var statusmenikah = $("select[name='statusmenikah']").val();
+                    var prodipilihan1 = $("select[name='prodipilihan1']").val();
+                    var prodipilihan2 = $("select[name='prodipilihan2']").val();
+                    var prodipilihan3 = $("select[name='prodipilihan3']").val();
+                    var prov_tempatlahir = $("select[name='provtempatlahir']").val();
+                    var kab_tempatlahir = $("select[name='kabtempatlahir']").val();
+                    var lokasi_tempatlahir = $("input[name='tempatlahir']").val();
+                    var tgl_lahir = $("input[name='tanggallahir']").val();
+                    var negara_tempattinggal = $("input[name='negaratinggal']").val();
+                    var prov_tempattinggal = $("select[name='provtempattinggal']").val();
+                    var kab_tempattinggal = $("select[name='kabtempattinggal']").val();
+                    var kec_tempattinggal = $("select[name='kectempattinggal']").val();
+                    var des_tempattinggal = $("select[name='destempattinggal']").val();
+                    var kodepos_tempattinggal = $("input[name='kodepos']").val();
+                    var alamat_tempattinggal = $("input[name='alamattempattinggal']").val();
+                    var alamatlain_tempattinggal = $("input[name='alamatlaintempattinggal']").val();
+                    var tinggibadan = $("input[name='tinggibadan']").val();
+                    var beratbadan = $("input[name='beratbadan']").val();
+
+
+                    $.ajax({
+                        url: "<?php echo site_url('register/next1'); ?>",
+                        type: "POST",
+                        data: {
+                            jenkel: jenkel,
+                            nik: nik,
+                            agama: agama,
+                            suku: suku,
+                            statusmenikah: statusmenikah,
+                            prodipilihan1: prodipilihan1,
+                            prodipilihan2: prodipilihan2,
+                            prodipilihan3: prodipilihan3,
+                            prov_tempatlahir: prov_tempatlahir,
+                            kab_tempatlahir: kab_tempatlahir,
+                            lokasi_tempatlahir: lokasi_tempatlahir,
+                            tgl_lahir: tgl_lahir,
+                            negara_tempattinggal: negara_tempattinggal,
+                            prov_tempattinggal: prov_tempattinggal,
+                            kab_tempattinggal: kab_tempattinggal,
+                            kec_tempattinggal: kec_tempattinggal,
+                            des_tempattinggal: des_tempattinggal,
+                            kodepos_tempattinggal: kodepos_tempattinggal,
+                            alamat_tempattinggal: alamat_tempattinggal,
+                            alamatlain_tempattinggal: alamatlain_tempattinggal,
+                            tinggibadan: tinggibadan,
+                            beratbadan: beratbadan,
+
+
+
+                        },
+                        //cache: false,
+                        success: function(dataResult) {
+                            var dataResult = JSON.parse(dataResult);
+                            if (dataResult.statusCode == 1) {
+                                $("#next1").removeAttr("disabled");
+                                $('#fupForm').find('input:text').val('');
+                                $("#success").show();
+                                $('#success').html('Data added successfully !');
+
+                                $(".BoxLulus").hide();
+                                $(".BoxBelumLulus").hide();
+                            } else {
+                                alert("Error occured !");
+                            }
+
+                        }
+                    });
+                });
+
+
+                $('#next2').on('click', function() {
+                    $("#next2").attr("disabled", "disabled");
+                    var tahunlulussmta = $("select[name='tahunlulussmta']").val();
+                    var jurusansmta = $("select[name='jurusansmta']").val();
+                    var jenissmta = $("select[name='jenissmta']").val();
+                    var namasmta = $("input[name='namasmta']").val();
+                    var provinsismta = $("select[name='provinsismta']").val();
+                    var alamatsmta = $("input[name='alamatsmta']").val();
+                    var nilairapormtk = $("input[name='nilairapormtk']").val();
+                    var nilairaporbing = $("input[name='nilairaporbing']").val();
+                    var nilairaporbind = $("input[name='nilairaporbind']").val();
+
+                    var lulussmta = $(".lulussmta:checked").val();
+
+                    if (lulussmta == 'Lulus') {
+                        var nomorijazah = $("input[name='nomorijazah']").val();
+                        var uanmtk = $("input[name='uanmtk']").val();
+                        var uanbing = $("input[name='uanbing']").val();
+                        var uanbind = $("input[name='uanbind']").val();
+                        var rapormtk = "";
+                        var raporbing = "";
+                        var raporbind = "";
+                    } else if (lulussmta == 'Belum Lulus') {
+                        var nomorijazah = "";
+                        var uanmtk = "";
+                        var uanbing = "";
+                        var uanbind = "";
+                        var rapormtk = $("input[name='rapormtk']").val();
+                        var raporbing = $("input[name='raporbing']").val();
+                        var raporbind = $("input[name='raporbind']").val();
+
+                    } else {
+                        var nomorijazah = "";
+                        var uanmtk = "";
+                        var uanbing = "";
+                        var uanbind = "";
+                        var rapormtk = "";
+                        var raporbing = "";
+                        var raporbind = "";
+                    };
+
+
+
+
+                    $.ajax({
+                        url: "<?php echo site_url('register/next2'); ?>",
+                        type: "POST",
+                        data: {
+                            tahunlulussmta: tahunlulussmta,
+                            jurusansmta: jurusansmta,
+                            jenissmta: jenissmta,
+                            namasmta: namasmta,
+                            provinsismta: provinsismta,
+                            alamatsmta: alamatsmta,
+                            // lulussmta: lulussmta,
+                            // nomorijazah: nomorijazah,
+                            // uanmtk: uanmtk,
+                            // uanbing: uanbing,
+                            // uanbind: uanbind,
+                            nilairapormtk: nilairapormtk,
+                            nilairaporbing: nilairaporbing,
+                            nilairaporbind: nilairaporbind,
+
+
+                        },
+                        //cache: false,
+                        success: function(dataResult) {
+                            var dataResult = JSON.parse(dataResult);
+                            if (dataResult.statusCode == 1) {
+                                $("#next2").removeAttr("disabled");
+                                $('#fupForm').find('input:text').val('');
+                                $("#success").show();
+                                $('#success').html('Data added successfully !');
+                            } else {
+                                alert("Error occured !");
+                            }
+
+                        }
+                    });
+                });
+
+
+                $('#next3').on('click', function() {
+                    $("#next3").attr("disabled", "disabled");
+                    var nik_ayah = $("input[name='nikayah']").val();
+                    var nama_ayah = $("input[name='namaayah']").val();
+                    var pendidikanayah = $("select[name='pendidikanayah']").val();
+                    var pekerjaanayah = $("select[name='pekerjaanayah']").val();
+                    var alamatkantor_ayah = $("input[name='alamatkantorayah']").val();
+                    var nik_ibu = $("input[name='nikibu']").val();
+                    var nama_ibu = $("input[name='namaibu']").val();
+                    var pendidikanibu = $("select[name='pendidikanibu']").val();
+                    var pekerjaanibu = $("select[name='pekerjaanibu']").val();
+                    var penghasilanortu = $("select[name='penghasilanortu']").val();
+                    var alamat_ortu = $("input[name='alamatortu']").val();
+                    var provinsi_ortu = $("select[name='provortu']").val();
+                    var kabupaten_ortu = $("select[name='kabupatenortu']").val();
+                    var kecamatan_ortu = $("select[name='kecamatanortu']").val();
+                    var kodepos_ortu = $("input[name='kodeposortu']").val();
+                    var nohp_ortu = $("input[name='nohportu']").val();
+
+
+                    $.ajax({
+                        url: "<?php echo site_url('register/next3'); ?>",
+                        type: "POST",
+                        data: {
+                            nik_ayah: nik_ayah,
+                            nama_ayah: nama_ayah,
+                            pendidikanayah: pendidikanayah,
+                            pekerjaanayah: pekerjaanayah,
+                            alamatkantor_ayah: alamatkantor_ayah,
+                            nik_ibu: nik_ibu,
+                            nama_ibu: nama_ibu,
+                            pendidikanibu: pendidikanibu,
+                            pekerjaanibu: pekerjaanibu,
+                            penghasilanortu: penghasilanortu,
+                            alamat_ortu: alamat_ortu,
+                            provinsi_ortu: provinsi_ortu,
+                            kabupaten_ortu: kabupaten_ortu,
+                            kecamatan_ortu: kecamatan_ortu,
+                            kodepos_ortu: kodepos_ortu,
+                            nohp_ortu: nohp_ortu,
+
+
+                        },
+                        //cache: false,
+                        success: function(dataResult) {
+                            var dataResult = JSON.parse(dataResult);
+                            if (dataResult.statusCode == 1) {
+                                $("#next3").removeAttr("disabled");
+                                $('#fupForm').find('input:text').val('');
+                                $("#success").show();
+                                $('#success').html('Data added successfully !');
+                            } else {
+                                alert("Error occured !");
+                            }
+
+                        }
+                    });
+                });
+
+                $('#next4').on('click', function() {
+                    $("#next4").attr("disabled", "disabled");
+                    var nama_wali = $("input[name='namawali']").val();
+                    var pekerjaanwali = $("select[name='pekerjaanwali']").val();
+                    var penghasilanwali = $("select[name='penghasilanwali']").val();
+                    var alamat_wali = $("input[name='alamatwali']").val();
+
+
+                    $.ajax({
+                        url: "<?php echo site_url('register/next4'); ?>",
+                        type: "POST",
+                        data: {
+                            nama_wali: nama_wali,
+                            pekerjaanwali: pekerjaanwali,
+                            penghasilanwali: penghasilanwali,
+                            alamat_wali: alamat_wali,
+
+                        },
+                        //cache: false,
+                        success: function(dataResult) {
+                            var dataResult = JSON.parse(dataResult);
+                            if (dataResult.statusCode == 1) {
+                                $("#next4").removeAttr("disabled");
+                                $('#fupForm').find('input:text').val('');
+                                $("#success").show();
+                                $('#success').html('Data added successfully !');
+                            } else {
+                                alert("Error occured !");
+                            }
+
+                        }
+                    });
+                });
+            });
+        </script>
+
+        <script type="text/javascript">
+            Dropzone.autoDiscover = false;
+
+            var foto_upload = new Dropzone(".dropzone", {
+                url: "<?php echo base_url('register/uploadfotopas') ?>",
+                maxFilesize: 1,
+                autoProcessQueue: false,
+                method: "post",
+                acceptedFiles: ".jpeg,.jpg,.png,.gif",
+                paramName: "fotopas",
+                dictInvalidFileType: "Type file ini tidak dizinkan",
+                addRemoveLinks: true,
+            });
+
+            $('#uploadFile').click(function() {
+                foto_upload.processQueue();
+            });
+
+            //Event ketika foto dihapus
+            foto_upload.on("removedfile", function(a) {
+                var token = a.token;
+                $.ajax({
+                    type: "post",
+                    data: {
+                        token: token
+                    },
+                    cache: false,
+                    dataType: 'json',
+                    success: function() {
+                        console.log("Foto terhapus");
+                    },
+                    error: function() {
+                        console.log("Error");
+
+                    }
+                });
+            });
+        </script>
 
 </body>
 
