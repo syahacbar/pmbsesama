@@ -484,10 +484,24 @@ class Auth extends CI_Controller
 
 		// if ($this->form_validation->run() === TRUE)
 		// {
+<<<<<<< Updated upstream
 		$email = strtolower($this->input->post('email'));
 		$identity = ($identity_column === 'email') ? $email : $username;
 		$password = $this->generateRandomString(10);
 		//$password = $this->input->post('password');
+=======
+			$email = strtolower($this->input->post('email'));
+			$identity = ($identity_column === 'email') ? $email : $username;
+			$password = $this->generateRandomString(10);
+			//$password = $this->input->post('password');		
+
+			$additional_data = [
+				'first_name' => $this->input->post('first_name'),
+				'last_name' => $this->input->post('last_name'),
+				'company' => $this->input->post('company'),
+				'phone' => $this->input->post('nohpregister'),
+			];
+>>>>>>> Stashed changes
 
 
 
