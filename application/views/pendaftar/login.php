@@ -138,9 +138,14 @@
                             <div class="row mb-4 px-3">
                                 <h4 class="mb-0 mr-4 mt-2">Portal PMB Online</h4>
                             </div>
-
+                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                Sesi login Anda belum berakhir. Pastikan semua data telah terisi dengan benar.
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                             <div class="row px-3 loginRegister">
-                                <small class="font-weight-bold">Silakan Lengkapi Biodata <a href="<?php echo site_url('register/isibiodata'); ?>" class="text-danger ">DI SINI</a></small>
+                                <small class="font-weight-bold">Silakan Cek/Lengkapi Biodata <a href="<?php echo site_url('register/isibiodata'); ?>" class="text-danger ">DI SINI</a></small>
                             </div>
 
                         </div>

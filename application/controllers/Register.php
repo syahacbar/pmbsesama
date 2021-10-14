@@ -154,9 +154,9 @@ class Register extends CI_Controller
 			// 'uan_mtk' => $this->input->post('uanmtk'),
 			// 'uan_bing' => $this->input->post('uanbing'),
 			// 'uan_bind' => $this->input->post('uanbind'),
-			'nilairapor_mtk' => $this->input->post('nilairapormtk'),
-			'nilairapor_bing' => $this->input->post('nilairaporbing'),
-			'nilairapor_bind' => $this->input->post('nilairaporbind'),
+			'rapor_mtk' => $this->input->post('nilairapormtk'),
+			'rapor_bing' => $this->input->post('nilairaporbing'),
+			'rapor_bind' => $this->input->post('nilairaporbind'),
 
 		);
 		$this->M_register->update_biodata($user->username, $params2);
@@ -216,18 +216,22 @@ class Register extends CI_Controller
 			$nama = $this->upload->data('file_name');
 			$this->db->insert('upload', array('namafile' => $nama));
 
-			if ($this->upload->do_upload('image')) {
+			if ($this->upload->do_upload('namafile')) {
 
-				$old_image = $config['user']['image'];
-				if ($old_image != 'profil.svg') {
-					unlink(FCPATH . 'assets/img/profile/' . $old_image);
+				$old_image = $config['upload']['namafile'];
+				if ($old_image != 'profile_default.svg') {
+					unlink(FCPATH . 'assets/upload/fotopas/' . $old_image);
 				}
 
 				$new_image =  $this->upload->data('file_name');
-				$this->db->set('image', $new_image);
+				$this->db->set('namafile', $new_image);
 			} else {
 				echo $this->upload->display_errors();
 			}
 		}
+
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your profile has been updated!</div>');
+		redirect('user');
 	}
 }

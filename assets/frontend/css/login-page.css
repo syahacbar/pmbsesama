@@ -302,10 +302,10 @@
           .row.px-3.loginRegister button.btn.btn-blue.text-center {
               width: 100%;
           }
-          div#demo i {
+          /* div#demo i {
               background-color: transparent !important;
               padding: 16px 20px;
-          }
+          } */
       }
       
       #image-caption {
@@ -326,11 +326,11 @@
       }
       
       .carousel-control-prev {
-          justify-content: flex-start;
+          justify-content: start !important;
       }
       
       .carousel-control-next {
-          justify-content: flex-end;
+          justify-content: end !important;
       }
       
       .carousel-control-prev,
@@ -349,143 +349,6 @@
           }
       }
       /* CSS NAVIGATION BAR */
-      /* .navbar-brand {
-          padding: 14px 20px;
-          font-size: 16px
-      }
-      
-      .navbar-nav {
-          width: 100%
-      }
-      
-      .nav-item {
-          padding: 0 10px;
-          text-align: center
-      }
-      
-      .nav-link {
-          padding-bottom: 10px
-      }
-      
-      .v-line {
-          background-color: gray;
-          width: 1px;
-          height: 20px
-      }
-      
-      .navbar-collapse.collapse.in {
-          display: block !important
-      }
-      
-      @media (max-width: 576px) {
-          .nav-item {
-              width: 100%;
-              text-align: left
-          }
-          .v-line {
-              display: none
-          }
-      }
-      
-      div#navbarNav ul {
-          right: 0 !important;
-          display: flex;
-          justify-content: end;
-      }
-      
-      
-
-      
-      div#navbarNav a.nav-link i {
-          margin-right: 5px;
-          color: #000;
-          font-size: 16px;
-      }
-      
-      div#navbarNav a.nav-link {
-          color: #000;
-          font-size: 16px;
-      }
-      
-      li.nav-item.active a {
-          color: #673ab7 !important;
-      }
-      
-      li.nav-item.active a i {
-          color: #673ab7 !important;
-      }
-      
-      @media (min-width: 886px) {
-          .navbar-expand-sm .navbar-toggler {
-              display: none !important;
-          }
-      }
-      
-      .navbar-toggler {
-          padding: 0 !important;
-          font-size: 1.25rem;
-          line-height: 1;
-          background-color: transparent;
-          border: 1px solid transparent;
-          border-radius: .25rem;
-          margin: 0 !important;
-      }
-      
-      @media (min-width: 886px) {
-          .navbar-expand-sm .navbar-collapse {
-              display: -ms-flexbox !important;
-              display: flex !important;
-              -ms-flex-preferred-size: auto;
-              flex-basis: auto;
-          }
-      }
-      
-      .navbar-dark .navbar-toggler-icon {
-          background-image: url(../../frontend/img/nav-button.png) !important;
-          font-size: 20px;
-      }
-      
-      .row.px-3.remember-password {
-          margin-top: 15px;
-      }
-      
-      .navbar-dark .navbar-brand {
-          color: #000 !important;
-          font-weight: bold;
-          padding: 0;
-      }
-      
-      .bg-black {
-          background-color: #ffffff;
-      }
-      
-      #logo {
-          width: 50px;
-          height: auto;
-          border-radius: 4px;
-      }
-      
-      .container-fluid.px-1.px-md-5.px-lg-1.px-xl-5.py-5.mx-auto {
-          background-image: url(../../frontend/img/pmb-bg.jpg) !important;
-          background-size: cover;
-          background-repeat: no-repeat;
-          background-position: center;
-          padding-top: 0 !important;
-      }
-      
-
-      
-      @media (min-width: 1200px) {
-          .pl-xl-5,
-          .px-xl-5 {
-              padding: 0 10rem !important;
-          }
-      }
-      
-      .navbar-dark .navbar-brand:focus,
-      .navbar-dark .navbar-brand:hover {
-          color: #000;
-      } */
       
       .carousel-caption {
           position: initial !important;
@@ -508,7 +371,6 @@
       
       .navbar-collapse.collapse.show li.nav-item {
           width: 100%;
-          /* text-align: right; */
           padding: 10px 0;
       }
       
@@ -555,9 +417,6 @@
       .navbar-collapse.collapse.show a.nav-link {
           padding: 0 !important;
       }
-      /* .row.d-flex.agendaInformasi {
-          box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%);
-      } */
       
       @media (max-width: 670px) {
           .container-fluid.px-1.px-md-5.px-lg-1.px-xl-5.mx-auto .card.card0.border-0 {
@@ -579,5 +438,22 @@
       @media (max-width: 386px) {
           a.navbar-brand {
               display: none;
+          }
+      }
+      
+      .navbar-light .navbar-toggler-icon {
+          background-image: url(../../frontend/img/nav-button.png) !important;
+          font-size: 24px;
+      }
+      
+      .navbar-light .navbar-toggler {
+          border: 2px solid #673ab7 !important;
+          padding: 2px 8px !important;
+      }
+      
+      @media (max-width: 766px) {
+          .navbar-collapse.collapse.show li.nav-item {
+              width: 100%;
+              padding: 0px 0;
           }
       }
