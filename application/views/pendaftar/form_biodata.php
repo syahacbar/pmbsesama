@@ -478,18 +478,22 @@
                                                 <div class="col-sm-6">
                                                     <div class="form-group">
                                                         <label>Pas Foto</label><br>
-                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">Unggah Foto</button>
+                                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modaluploadfoto">Unggah Foto</button>
                                                     </div>
                                                 </div>
                                                 <div class="col-sm-6 profile">
                                                     <?php form_open_multipart('user/next1') ?>
-                                                    <img class="img-profile" src="<?php echo base_url('assets/upload/fotopas/profile_default.svg') ?>">
+                                                    <?php if ($row['fotoprofil'] == NULL) { ?>
+                                                        <img class="img-profile" src="<?php echo base_url('assets/upload/fotopas/profile_default.svg'); ?>">
+                                                    <?php } else { ?>
+                                                        <img class="img-profile" src="<?php echo base_url('assets/upload/fotopas/') . $row['fotoprofil']; ?>">
+                                                    <?php } ?>
                                                 </div>
 
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6">
+                                        <div class=" col-sm-6">
                                             <div class="form-group">
                                                 <label>Nama Lengkap *</label>
                                                 <input name="namalengkap" type="text" class="form-control" placeholder="" value="<?php echo strtoupper($row['namalengkap']); ?>" readonly>
@@ -536,8 +540,12 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Suku</label>
-                                                <input id="suku" name="suku" type="text" class="form-control" placeholder="" required value="<?php echo $row['suku']; ?>">
+                                                <label>Suku *</label>
+                                                <select name="suku" id="suku" class="form-select" aria-label="Default select example">
+                                                    <option <?php echo ($row['suku'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <option value="Papua" <?= $row['suku'] == 'Papua' ? ' selected="selected"' : ''; ?>>Papua</option>
+                                                    <option value="Non Papua" <?= $row['suku'] == 'Non Papua' ? ' selected="selected"' : ''; ?>>Non Papua</option>
+                                                </select>
                                             </div>
                                         </div>
 
@@ -848,6 +856,14 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
+                                                <label>NISN SMTA *</label>
+                                                <input name="nisnsmta" id="nisnsmta" type="text" class="form-control" placeholder="" value="<?php echo $row['nisn_smta']; ?>" required>
+                                                <small>Ketik NISN SMTA Anda.</small>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
                                                 <label>Provinsi SMTA *</label>
                                                 <select name="provinsismta" id="provinsismta" class="form-select" aria-label="Default select example">
                                                     <option <?php echo ($row['prov_smta'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
@@ -866,24 +882,46 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-4">
+                                        <div class="col-sm-12">
                                             <div class="form-group">
-                                                <label>Nilai Rapor Terakhir Matematika</label>
-                                                <input name="nilairapormtk" id="nilairapormtk" type="text" class="form-control" placeholder="" value="<?php echo $row['rapor_mtk']; ?>" required></input>
+                                                <h4 class="fs-title">Nilai Rata-Rata Rapor</h4>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Nilai Rapor Terakhir Bahasa Inggris</label>
-                                                <input name="nilairaporbing" id="nilairaporbing" type="text" class="form-control" placeholder="" value="<?php echo $row['rapor_bing']; ?>" required></input>
+                                                <label>Kelas XI semeseter 1</label>
+                                                <input name="nrapor1" id="nrapor1" type="text" class="form-control" placeholder="" value="<?php echo $row['nrapor1']; ?>" required></input>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-sm-4">
+                                            <div class="form-group">
+                                                <label>Kelas XI semeseter 2</label>
+                                                <input name="nrapor2" id="nrapor2" type="text" class="form-control" placeholder="" value="<?php echo $row['nrapor2']; ?>" required></input>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Nilai Rapor Terakhir Bahasa Indonesia</label>
-                                                <input name="nilairaporbind" id="nilairaporbind" type="text" class="form-control" placeholder="" value="<?php echo $row['rapor_bind']; ?>" required></input>
+                                                <label>Kelas XII semeseter 1</label>
+                                                <input name="nrapor3" id="nrapor3" type="text" class="form-control" placeholder="" value="<?php echo $row['nrapor3']; ?>" required></input>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="dropzone col-sm-12 mb-5" id="upload-dokumen">
+                                            <div class="form">
+                                                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                                    <small>Unggah file rapor dalam bentuk .pdf dengan ukuran maksimal 500kb</small>
+                                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="dz-message">
+                                                    <h6> Klik atau Drop file ke sini</h6>
+                                                </div>
                                             </div>
                                         </div>
 
@@ -1000,6 +1038,7 @@
 
                                     </div>
                                 </div>
+
                                 <input type="button" name="next2" id="next2" class="next action-button" value="Lanjut" />
                                 <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
                             </fieldset>
@@ -1314,17 +1353,17 @@
 
 
         <!-- Modal -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal" id="modaluploadfoto" tabindex="-1" role="dialog" aria-labelledby="modaluploadfotolabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Unggah Foto</h5>
+                        <h5 class="modal-title" id="modaluploadfotolabel">Unggah Foto</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
                     <div class="modal-body">
-                        <form class="dropzone" id="image-upload">
+                        <form class="dropzone uploadfoto" id="image-upload">
                             <div class="alert alert-primary alert-dismissible fade show" role="alert">
                                 <small>Rasio Foto : 4 x 6, atau max resolusi 300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg, png.</small>
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -1338,6 +1377,7 @@
                     </div>
                     <div class="modal-footer">
                         <button id="uploadFile" type="button" class="btn btn-primary">Upload</button>
+                        <button id="closeModal" type="button" class="btn btn-default">Kembali</button>
                     </div>
                 </div>
             </div>
@@ -1423,41 +1463,16 @@
         </script>
 
         <!-- Date Picker - Tanggal lahir -->
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
         <script>
             $('.datepicker').datepicker({
                 uiLibrary: 'bootstrap4'
             });
         </script>
 
-        <!-- Munculkan input ketika radio diklik -->
-        <script>
-            $('input[name="lulussmta"]').click(function() {
-                var inputValue = $(this).attr("value");
-                if (inputValue == "Lulus") {
-                    $(".BoxBelumLulus").hide();
-                    $(".BoxLulus").show();
-                } else if (inputValue == "Belum Lulus") {
-                    $(".BoxLulus").hide();
-                    $(".BoxBelumLulus").show();
-                } else {
-                    $(".BoxLulus").hide();
-                    $(".BoxBelumLulus").hide();
-                }
-            });
-        </script>
 
         <script>
             $(document).ready(function() {
-                if ($(".lulussmta:checked").val() == "Lulus") {
-                    $(".BoxLulus").show();
-                    $(".BoxBelumLulus").hide();
-                } else if ($(".lulussmta:checked").val() == "Belum Lulus") {
-                    $(".BoxLulus").hide();
-                    $(".BoxBelumLulus").show();
-                } else {
-                    $(".BoxLulus").hide();
-                    $(".BoxBelumLulus").hide();
-                }
 
                 $("#provtempatlahir").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
@@ -1497,7 +1512,7 @@
                     var jenkel = $(".jenkel:checked").val();
                     var nik = $("input[name='nik']").val();
                     var agama = $("select[name='agama']").val();
-                    var suku = $("input[name='suku']").val();
+                    var suku = $("select[name='suku']").val();
                     var statusmenikah = $("select[name='statusmenikah']").val();
                     var prodipilihan1 = $("select[name='prodipilihan1']").val();
                     var prodipilihan2 = $("select[name='prodipilihan2']").val();
@@ -1574,42 +1589,12 @@
                     var jurusansmta = $("select[name='jurusansmta']").val();
                     var jenissmta = $("select[name='jenissmta']").val();
                     var namasmta = $("input[name='namasmta']").val();
+                    var nisnsmta = $("input[name='nisnsmta']").val();
                     var provinsismta = $("select[name='provinsismta']").val();
                     var alamatsmta = $("input[name='alamatsmta']").val();
-                    var nilairapormtk = $("input[name='nilairapormtk']").val();
-                    var nilairaporbing = $("input[name='nilairaporbing']").val();
-                    var nilairaporbind = $("input[name='nilairaporbind']").val();
-
-                    var lulussmta = $(".lulussmta:checked").val();
-
-                    if (lulussmta == 'Lulus') {
-                        var nomorijazah = $("input[name='nomorijazah']").val();
-                        var uanmtk = $("input[name='uanmtk']").val();
-                        var uanbing = $("input[name='uanbing']").val();
-                        var uanbind = $("input[name='uanbind']").val();
-                        var rapormtk = "";
-                        var raporbing = "";
-                        var raporbind = "";
-                    } else if (lulussmta == 'Belum Lulus') {
-                        var nomorijazah = "";
-                        var uanmtk = "";
-                        var uanbing = "";
-                        var uanbind = "";
-                        var rapormtk = $("input[name='rapormtk']").val();
-                        var raporbing = $("input[name='raporbing']").val();
-                        var raporbind = $("input[name='raporbind']").val();
-
-                    } else {
-                        var nomorijazah = "";
-                        var uanmtk = "";
-                        var uanbing = "";
-                        var uanbind = "";
-                        var rapormtk = "";
-                        var raporbing = "";
-                        var raporbind = "";
-                    };
-
-
+                    var nrapor1 = $("input[name='nrapor1']").val();
+                    var nrapor2 = $("input[name='nrapor2']").val();
+                    var nrapor3 = $("input[name='nrapor3']").val();
 
 
                     $.ajax({
@@ -1620,6 +1605,7 @@
                             jurusansmta: jurusansmta,
                             jenissmta: jenissmta,
                             namasmta: namasmta,
+                            nisnsmta: nisnsmta,
                             provinsismta: provinsismta,
                             alamatsmta: alamatsmta,
                             // lulussmta: lulussmta,
@@ -1627,9 +1613,9 @@
                             // uanmtk: uanmtk,
                             // uanbing: uanbing,
                             // uanbind: uanbind,
-                            nilairapormtk: nilairapormtk,
-                            nilairaporbing: nilairaporbing,
-                            nilairaporbind: nilairaporbind,
+                            nrapor1: nrapor1,
+                            nrapor2: nrapor2,
+                            nrapor3: nrapor3,
 
 
                         },
@@ -1742,13 +1728,17 @@
                         }
                     });
                 });
+
+                $('#closeModal').click(function() {
+                    $('.modal').modal('hide');
+                });
             });
         </script>
 
         <script type="text/javascript">
             Dropzone.autoDiscover = false;
 
-            var foto_upload = new Dropzone(".dropzone", {
+            var foto_upload = new Dropzone(".uploadfoto", {
                 url: "<?php echo base_url('register/uploadfotopas') ?>",
                 maxFilesize: 1,
                 autoProcessQueue: false,
@@ -1763,24 +1753,14 @@
                 foto_upload.processQueue();
             });
 
-            //Event ketika foto dihapus
-            foto_upload.on("removedfile", function(a) {
-                var token = a.token;
-                $.ajax({
-                    type: "post",
-                    data: {
-                        token: token
-                    },
-                    cache: false,
-                    dataType: 'json',
-                    success: function() {
-                        console.log("Foto terhapus");
-                    },
-                    error: function() {
-                        console.log("Error");
+            foto_upload.on("sending", function(file, xhr, formData) {
+                // Will send the filesize along with the file as POST data.
+                // formData.append("filesize", file.size);
+                formData.append("username", "<?php echo $row['username']; ?>");
+            });
 
-                    }
-                });
+            foto_upload.on("complete", function(file) {
+                window.location.href = "<?php echo site_url('register/isibiodata') ?>";
             });
         </script>
 

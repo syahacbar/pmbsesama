@@ -454,21 +454,21 @@
 
             <form method="post" action="<?php echo site_url('auth/create_user'); ?>">
               <div class="row px-3">
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                   <div class="form-group">
                     <label>Nama Lengkap *</label>
                     <input name="namalengkap" type="text" class="form-control" placeholder="Ketikkan nama lengkap Anda di sini" required>
                   </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                   <div class="form-group">
                     <label>Nomor Telp./HP *</label>
                     <input name="nohpregister" type="text" class="form-control" placeholder="Ketikkan nomor HP Anda di sini" required>
                   </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                   <div class="form-group">
                     <label>Email *</label>
                     <input name="email" type="text" class="form-control" placeholder="Ketikkan email Anda di sini" required>
@@ -476,26 +476,37 @@
                   </div>
                 </div>
 
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                   <label>Jalur Masuk</label>
                   <div class="form-group">
-                    <select name="jalurmasuk" class="form-select" aria-label="Default select example" required>
+                    <select name="jalurmasuk" class="form-select" aria-label="Default select example" disabled>
                       <option value=""> -- Pilih -- </option>
-                      <?php foreach ($jalurmasuk as $j) { ?>
-                        <option value="<?php echo $j['id']; ?>"><?php echo $j['jalurmasuk']; ?></option>
+                      <?php
+                      $selectjalurmasuk = 'SESAMA';
+
+                      foreach ($jalurmasuk as $j) { ?>
+                        <option value="<?php echo $j['id']; ?>" <?php echo ($j['jalurmasuk'] == $selectjalurmasuk) ? 'selected' : ''; ?>><?php echo $j['jalurmasuk']; ?></option>
                       <?php } ?>
                     </select>
                   </div>
                 </div>
 
-                <div class="col-sm-4">
+                <input type="hidden" name="jalurmasuk" value="3">
+                <input type="hidden" name="gelombang" value="1">
+                <input type="hidden" name="kelompokujian" value="1">
+
+                <!-- <div class="col-sm-4">
                   <label>Gelombang</label>
                   <div class="form-group">
                     <select name="gelombang" class="form-select" aria-label="Default select example" required>
                       <option value=""> -- Pilih -- </option>
-                      <?php foreach ($gelombang as $g) { ?>
-                        <option value="<?php echo $g['id']; ?>"><?php echo $g['gelombang']; ?></option>
-                      <?php } ?>
+                      <?php //foreach ($gelombang as $g) { 
+                      ?>
+                        <option value="<?php //echo $g['id']; 
+                                        ?>"><?php //echo $g['gelombang']; 
+                                            ?></option>
+                      <?php // } 
+                      ?>
                     </select>
                   </div>
                 </div>
@@ -506,12 +517,16 @@
                   <div class="form-group">
                     <select name="kelompokujian" class="form-select" aria-label="Default select example" required>
                       <option value=""> -- Pilih -- </option>
-                      <?php foreach ($kelompokujian as $k) { ?>
-                        <option value="<?php echo $k['id']; ?>"><?php echo $k['kelompokujian']; ?></option>
-                      <?php } ?>
+                      <?php // foreach ($kelompokujian as $k) { 
+                      ?>
+                        <option value="<?php // echo $k['id']; 
+                                        ?>"><?php // echo $k['kelompokujian']; 
+                                            ?></option>
+                      <?php //} 
+                      ?>
                     </select>
                   </div>
-                </div>
+                </div> -->
 
                 <div class="col-sm-12">
                   <div class="form-group">
