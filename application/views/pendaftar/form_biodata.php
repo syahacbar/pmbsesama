@@ -372,14 +372,9 @@
             height: 100vh;
         }
 
-        .card.px-0.pt-4.pb-0.mt-3.mb-3 {
-            position: inherit;
-            z-index: -99;
-        }
-
-        div#logoutModal {
+        /* div#logoutModal {
             backdrop-filter: brightness(0.5);
-        }
+        } */
 
         button.navbar-toggler.navbar-toggler-right.collapsed {
             border: 2px solid #fd7e14 !important;
@@ -388,6 +383,39 @@
 
         button.navbar-toggler.navbar-toggler-right.collapsed:focus {
             border: 0 !important;
+        }
+
+        /* Dropzone */
+        .dropzone {
+            min-height: 150px;
+            border: 0;
+            background: white;
+            padding: 0;
+            border-radius: 5px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+
+        div#exampleModal {
+            backdrop-filter: brightness(0.5);
+        }
+
+        .dz-message:before {
+            content: " ";
+            background-image: url(../assets/upload/fotopas/profile_default.svg) !important;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: contain;
+            display: block;
+            height: 80px;
+            margin: 10px 0;
+        }
+
+        .dropzone .dz-message {
+            text-align: center;
+            margin: 0;
         }
     </style>
 </head>
@@ -455,7 +483,7 @@
                                                 </div>
                                                 <div class="col-sm-6 profile">
                                                     <?php form_open_multipart('user/next1') ?>
-                                                    <img class="img-profile" src="<?php echo base_url('assets/upload/fotopas/profile_default.svg'); ?>">
+                                                    <img class="img-profile" src="<?php echo base_url('assets/upload/fotopas/profile_default.svg') ?>">
                                                 </div>
 
                                             </div>
@@ -1297,11 +1325,15 @@
                     </div>
                     <div class="modal-body">
                         <form class="dropzone" id="image-upload">
+                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                <small>Rasio Foto : 4 x 6, atau max resolusi 300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg, png.</small>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
                             <div class="dz-message">
                                 <h6> Klik atau Drop gambar ke sini</h6>
                             </div>
-
-                            <small>Rasio Foto : 4 x 6, atau max resolusi 300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg, png</small>
                         </form>
                     </div>
                     <div class="modal-footer">

@@ -457,3 +457,11 @@
               padding: 0px 0;
           }
       }
+      
+      body.snippet-body {
+          background-color: transparent;
+          background-image: url(../../frontend/img/pmb-bg.jpg) !important;
+          background-size: cover;
+          background-repeat: no-repeat;
+          background-position: center;
+      }

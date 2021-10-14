@@ -139,7 +139,7 @@
                                 <h4 class="mb-0 mr-4 mt-2">Portal PMB Online</h4>
                             </div>
                             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                Sesi login Anda belum berakhir. Pastikan semua data telah terisi dengan benar.
+                                Sesi login Anda belum berakhir. Pastikan semua data telah diisi dengan benar.
                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>

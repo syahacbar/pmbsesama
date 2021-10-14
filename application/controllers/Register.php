@@ -206,10 +206,10 @@ class Register extends CI_Controller
 
 
 	//Untuk proses upload foto
-	function uploadfotopas()
+	public function uploadfotopas()
 	{
 		$config['upload_path']   = FCPATH . '/assets/upload/fotopas/';
-		$config['allowed_types'] = 'gif|jpg|png|ico';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png|ico';
 
 		$this->load->library('upload', $config);
 		if ($this->upload->do_upload('fotopas')) {
@@ -217,21 +217,10 @@ class Register extends CI_Controller
 			$this->db->insert('upload', array('namafile' => $nama));
 
 			if ($this->upload->do_upload('namafile')) {
-
-				$old_image = $config['upload']['namafile'];
-				if ($old_image != 'profile_default.svg') {
-					unlink(FCPATH . 'assets/upload/fotopas/' . $old_image);
-				}
-
-				$new_image =  $this->upload->data('file_name');
-				$this->db->set('namafile', $new_image);
-			} else {
-				echo $this->upload->display_errors();
+				$this->session->set_flashdata('msg', $this->upload->display_errors('', ''));
+				redirect('register/isibiodata');
 			}
+			return $this->upload->data('file_name');
 		}
-
-
-		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your profile has been updated!</div>');
-		redirect('user');
 	}
 }
