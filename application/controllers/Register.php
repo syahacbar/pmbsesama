@@ -147,6 +147,7 @@ class Register extends CI_Controller
 			'jurusansmta' => $this->input->post('jurusansmta'),
 			'jenissmta' => $this->input->post('jenissmta'),
 			'nama_smta' => $this->input->post('namasmta'),
+			'nisn_smta' => $this->input->post('nisnsmta'),
 			'prov_smta' => $this->input->post('provinsismta'),
 			'alamat_smta' => $this->input->post('alamatsmta'),
 			// 'lulus_smta' => $this->input->post('lulussmta'),
@@ -154,9 +155,9 @@ class Register extends CI_Controller
 			// 'uan_mtk' => $this->input->post('uanmtk'),
 			// 'uan_bing' => $this->input->post('uanbing'),
 			// 'uan_bind' => $this->input->post('uanbind'),
-			'rapor_mtk' => $this->input->post('nilairapormtk'),
-			'rapor_bing' => $this->input->post('nilairaporbing'),
-			'rapor_bind' => $this->input->post('nilairaporbind'),
+			'nrapor1' => $this->input->post('nrapor1'),
+			'nrapor2' => $this->input->post('nrapor2'),
+			'nrapor3' => $this->input->post('nrapor3'),
 
 		);
 		$this->M_register->update_biodata($user->username, $params2);
@@ -206,32 +207,22 @@ class Register extends CI_Controller
 
 
 	//Untuk proses upload foto
-	function uploadfotopas()
+	public function uploadfotopas()
 	{
 		$config['upload_path']   = FCPATH . '/assets/upload/fotopas/';
-		$config['allowed_types'] = 'gif|jpg|png|ico';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png|ico';
 
 		$this->load->library('upload', $config);
 		if ($this->upload->do_upload('fotopas')) {
 			$nama = $this->upload->data('file_name');
-			$this->db->insert('upload', array('namafile' => $nama));
+			$username = $this->input->post('username');
+			$this->db->insert('upload', array('namafile' => $nama, 'username' => $username));
 
 			if ($this->upload->do_upload('namafile')) {
-
-				$old_image = $config['upload']['namafile'];
-				if ($old_image != 'profile_default.svg') {
-					unlink(FCPATH . 'assets/upload/fotopas/' . $old_image);
-				}
-
-				$new_image =  $this->upload->data('file_name');
-				$this->db->set('namafile', $new_image);
-			} else {
-				echo $this->upload->display_errors();
+				$this->session->set_flashdata('msg', $this->upload->display_errors('', ''));
+				redirect('register/isibiodata');
 			}
+			return $this->upload->data('file_name');
 		}
-
-
-		$this->session->set_flashdata('message', '<div class="alert alert-success" role="alert">Your profile has been updated!</div>');
-		redirect('user');
 	}
 }

@@ -36,15 +36,22 @@ class M_register extends CI_Model
         return $query;
     }
 
-    function get_biodata_by_username($username)
-    {
-        $query = $this->db->get_where('t_biodata', array('username' => $username));
-        return $query;
-    }
+    // function get_biodata_by_username($username)
+    // {
+    //     $query = $this->db->get_where('t_biodata', array('username' => $username));
+    //     return $query;
+    // }
 
     function update_biodata($username, $params)
     {
         $this->db->where('username', $username);
         $this->db->update('t_biodata', $params);
+    }
+
+
+    function get_biodata_by_username($username)
+    {
+        $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil FROM t_biodata tb LEFT JOIN upload u ON u.username=tb.username WHERE tb.username=$username ORDER BY u.id DESC LIMIT 1");
+        return $query;
     }
 }

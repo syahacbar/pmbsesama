@@ -8,7 +8,7 @@
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
     <!-- Custom CSS -->
-    <link href="<?php echo base_url();?>assets/frontend/css/konfirmasi-regis.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/frontend/css/konfirmasi-regis.css" rel="stylesheet" />
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
 </head>
@@ -48,35 +48,35 @@
                                     <tr>
                                         <td>Nama Lengkap</td>
                                         <td>:</td>
-                                        <td><?php echo $namalengkap;?></td>
+                                        <td><?php echo $namalengkap; ?></td>
                                     </tr>
                                     <tr>
                                         <td>Username</td>
                                         <td>:</td>
-                                        <td><strong><?php echo $username;?></strong></td>
+                                        <td><strong><?php echo $username; ?></strong></td>
                                     </tr>
                                     <tr>
                                         <td>Password</td>
                                         <td>:</td>
-                                        <td><strong><?php echo $password;?></strong></td>
+                                        <td><strong><?php echo $password; ?></strong></td>
                                     </tr>
                                     <tr>
                                         <td>Email</td>
                                         <td>:</td>
-                                        <td><?php echo $email;?></td>
+                                        <td><?php echo $email; ?></td>
                                     </tr>
                                     <tr>
                                         <td>Nomor HP</td>
                                         <td>:</td>
-                                        <td><?php echo $nohp;?></td>
+                                        <td><?php echo $nohp; ?></td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
                         <div class="col-md-12">
-                            <p>Untuk kenyamanan anda, mohon dapat melakukan pembayaran sebelum waktu jatuh tempo pada tanggal 14 Juni 2021</p>
-                            <h5>Nominal Pembayaran : Rp 1,00</h5>
+                            <p>Silakan akses <a href="https://bpak.unipa.ac.id/pmbsesama" class="text-danger ">https://bpak.unipa.ac.id/pmbsesama</a> untuk login. Gunakan username dan password di atas.</p>
+                            <h5></h5>
                             <p>Informasi lebih lanjut silahkan menghubungi panitia PMB UNIVERSITAS PAPUA. Terimakasih.</p>
                         </div>
 
