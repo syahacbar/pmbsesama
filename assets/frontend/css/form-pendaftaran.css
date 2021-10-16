@@ -313,11 +313,26 @@ p {
 /* CSS unggah dokumen rapor */
 
 div#upload-dokumen .form {
-    border: 1px solid #cce5ff;
+    border: 0;
     width: 100%;
     padding: 10px;
 }
 
 div#upload-dokumen {
     padding: 0 15px;
+    border: 1px solid #cce5ff;
+    margin: 0 2% !important;
+    width: 96% !important;
+    max-width: 96%;
+}
+
+div#upload-dokumen .dz-message:before {
+    content: " ";
+    background-image: url(../../upload/pdf-icon.png) !important;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    display: block;
+    height: 80px;
+    margin: 10px 0;
 }
