@@ -14,7 +14,7 @@
   <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
-  <script src='https://www.google.com/recaptcha/api.js?hl=id'></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
   <!-- Custom CSS -->
@@ -407,6 +407,10 @@
     .register-card {
       margin: 30px 0 0 0 !important;
     }
+
+.card2.card.border-0.px-0.py-0 {
+    padding: 2rem 0 10px 0 !important;
+}
   </style>
 
 </head>
@@ -414,6 +418,7 @@
 <body class='snippet-body'>
   <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
     <div class="card card0 border-0">
+
       <!-- Navigation-->
       <div class="container-fluid nav-unipa">
         <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav">
@@ -444,151 +449,38 @@
       </div>
 
       <div class="row d-flex">
-        <div class="col-lg-6">
-          <div class="card2 card border-0 px-4 py-5 register-card">
-            <div class="row mb-4 px-3">
-              <h4 class="mb-0 mr-4 mt-2">Pendaftaran Calon Mahasiswa</h4>
-            </div>
-            <div class="row px-3 mb-4">
-              <small class="text-left">Bidang/isian yang bertanda bintang (*) wajib untuk diisi. Pastikan semua data yang Anda isi sudah benar karena tidak dapat diubah setelah terkirim.</small>
+        <div class="col-lg-12">
+          <div class="card2 card border-0 px-0 py-0">
+            <div class="row mb-2">
+              <h4 class="mb-0 mr-4 mt-2">Pengumuman Test Penerimaan Mahasiswa Baru (PMB)</h4>
             </div>
 
-            <form method="post" action="<?php echo site_url('auth/create_user'); ?>">
-              <div class="row px-3">
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label>Nama Lengkap *</label>
-                    <input name="namalengkap" type="text" class="form-control" placeholder="Ketikkan nama lengkap Anda di sini" value="<?php echo ($nama_lengkap) ? $nama_lengkap : ''; ?>" required>
-                  </div>
-                </div>
-
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label>Nomor Telp./HP *</label>
-                    <input name="nohpregister" type="text" class="form-control" placeholder="Ketikkan nomor HP Anda di sini" value="<?php echo ($nohpregister) ? $nohpregister : ''; ?>" required>
-                  </div>
-                </div>
-
-                <div class="col-sm-6">
-                  <div class="form-group">
-                    <label>Email *</label>
-                    <input name="email" type="text" class="form-control" placeholder="Ketikkan email Anda di sini" value="<?php echo ($email) ? $email : ''; ?>" required>
-                    <small>Isi dengan email aktif.</small>
-                  </div>
-                </div>
-
-                <div class="col-sm-6">
-                  <label>Jalur Masuk</label>
-                  <div class="form-group">
-                    <select name="jalurmasuk" class="form-select" aria-label="Default select example" disabled>
-                      <option value=""> -- Pilih -- </option>
-                      <?php
-                      $selectjalurmasuk = 'SESAMA';
-
-                      foreach ($jalurmasuk as $j) { ?>
-                        <option value="<?php echo $j['id']; ?>" <?php echo ($j['jalurmasuk'] == $selectjalurmasuk) ? 'selected' : ''; ?>><?php echo $j['jalurmasuk']; ?></option>
-                      <?php } ?>
-                    </select>
-                  </div>
-                </div>
-
-                <input type="hidden" name="jalurmasuk" value="3">
-                <input type="hidden" name="gelombang" value="1">
-                <input type="hidden" name="kelompokujian" value="1">
-
-                <!-- <div class="col-sm-4">
-                  <label>Gelombang</label>
-                  <div class="form-group">
-                    <select name="gelombang" class="form-select" aria-label="Default select example" required>
-                      <option value=""> -- Pilih -- </option>
-                      <?php //foreach ($gelombang as $g) { 
-                      ?>
-                        <option value="<?php //echo $g['id']; 
-                                        ?>"><?php //echo $g['gelombang']; 
-                                            ?></option>
-                      <?php // } 
-                      ?>
-                    </select>
-                  </div>
-                </div>
-
-
-                <div class="col-sm-4">
-                  <label>Kelompok Ujian</label>
-                  <div class="form-group">
-                    <select name="kelompokujian" class="form-select" aria-label="Default select example" required>
-                      <option value=""> -- Pilih -- </option>
-                      <?php // foreach ($kelompokujian as $k) { 
-                      ?>
-                        <option value="<?php // echo $k['id']; 
-                                        ?>"><?php // echo $k['kelompokujian']; 
-                                            ?></option>
-                      <?php //} 
-                      ?>
-                    </select>
-                  </div>
-                </div> -->
-
-                <div class="col-sm-12">
-                  <div class="form-group">
-                    <label>Kode Verifikasi</label>
-                    <?php echo $recaptcha; ?>
-                      <small id="captchahelp" class="form-text text-danger" ><?php echo ($errorcaptcha != NULL) ? $errorcaptcha : ""; ?></small>
-                  </div>
-                </div>
-
-                <div class="col-sm-12">
-                  <label>Konfirmasi *</label>
-                  <div class="row px-3 mb-4">
-                    <div class="custom-control custom-checkbox custom-control-inline">
-                      <input id="chk1" type="checkbox" name="chk" class="custom-control-input" required>
-                      <label for="chk1" class="custom-control-label text-sm">Dengan ini menyatakan bahwa semua data yang diisikan adalah benar serta menyetujui semua syarat dan ketentuan.</label>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="row mb-3 px-3 loginRegister">
-                <div class="col-sm-4">
-                  <button type="submit" class="btn btn-blue text-center">DAFTAR</button>
-                </div>
-                <div class="">
-                  <small class="font-weight-bold">Sudah punya akun? <a href="<?php echo site_url('auth'); ?>" class="text-danger ">LOGIN</a></small>
-                </div>
-              </div>
-          </div>
-          </form>
-        </div>
-
-        <div class="col-lg-6 slider">
-          <div class="card2 card border-0 px-4 py-5 gambarSlider">
-            <div id="demo" class="carousel slide" data-ride="carousel">
-              <div class="carousel-inner">
-                <div class="carousel-item active">
-                  <div class="carousel-caption">
-                    <img src="<?php echo base_url(); ?>/assets/upload/slider/ecampuz_default_slideshow_82305.jpg" alt="login">
-                  </div>
-                </div>
-
-                <div class="carousel-item">
-                  <div class="carousel-caption">
-                    <img src="<?php echo base_url(); ?>/assets/upload/slider/rektorat_89137.jpg" alt="login1">
-                  </div>
-                </div>
-
-                <div class="carousel-item">
-                  <div class="carousel-caption">
-                    <img src="<?php echo base_url(); ?>/assets/upload/slider/rektorat2_40982.jpg" alt="login2">
-                  </div>
-                </div>
-              </div>
-
-              <a class="carousel-control-prev" href="#demo" data-slide="prev"><i class='fas fa-arrow-left'></i></a>
-              <a class="carousel-control-next" href="#demo" data-slide="next"><i class='fas fa-arrow-right'></i></a>
-            </div>
+<!--             <div class="row ">
+              <p class="text-left">Berikut adalah file-file panduan yang bisa Anda download:</p>
+            </div> -->
           </div>
         </div>
       </div>
+
+<div class="row d-flex">
+  <div class="col-lg-6">
+    <div class="card alert alert-primary px-0 py-0">
+      <div class="card-body px-2 py-2">
+        <strong class="card-title">Pengumuman Hasil Test PMB untuk Periode Ganjil - 2021/2022</strong>
+        <p class="card-text">Jalur Masuk</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-lg-6">
+    <div class="card px-0 py-0">
+      <div class="card-body px-2 py-2">
+        <label class="card-title strong">No. Tes</label>
+        <input type="text" name="nomortes" class="nomortes">
+      </div>
+    </div>
+  </div>
+
+</div>
 
       <div class="bg-blue py-4 bagianfoter">
         <div class="row px-3"><small class="ml-4 ml-sm-5 mb-2">Copyright &copy; 2021. Portal PMB Online</small>
@@ -600,6 +492,7 @@
           </div>
         </div>
       </div>
+
     </div>
   </div>
 
@@ -607,7 +500,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
   <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
-
 </body>
 
 </html>

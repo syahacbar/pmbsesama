@@ -20,6 +20,7 @@ class Register extends CI_Controller
 		$this->load->model('M_pendidikanortu');
 		$this->load->model('M_pekerjaanortu');
 		$this->load->model('M_penghasilanortu');
+		$this->load->library('recaptcha');
 	}
 
 	function generateRandomString($length)
@@ -71,6 +72,11 @@ class Register extends CI_Controller
 			'jalurmasuk' => $this->M_jalurmasuk->get_all(),
 			'gelombang' => $this->M_gelombang->get_all(),
 			'kelompokujian' => $this->M_kelompokujian->get_all(),
+			'recaptcha' => $this->recaptcha->create_box(),
+			'errorcaptcha' => '',
+			'nama_lengkap' => '',
+			'nohpregister' => '',
+			'email' => '',
 		);
 		$this->load->view('pendaftar/register', $data);
 	}
@@ -236,15 +242,31 @@ public function uploadrapor()
 
       	$this->load->library('upload', $config);
 
-        if($this->upload->do_upload('userfile')){
+        if($this->upload->do_upload('userfile')) {
         	$token = $this->input->post('token_dok');
         	$nama = $this->upload->data('file_name');
         	$this->db->insert('rapor',array('nama_dok'=>$nama,'token'=>$token));
 
-        	// 6LfMmtUcAAAAADUWfzimej8QJfsOJIqZABX4jy5q : SITE KEY
-        	// 6LfMmtUcAAAAADl7KUUxYhmza0-RNxUw0Dxet9Zc : SECRET KEY
-
+		}
 	}
-}
+
+
+	public function informasi()
+	{
+		$data['_view'] = 'pendaftar/navbar';
+		$this->load->view('pendaftar/informasi', $data);
+	}
+
+	public function agenda()
+	{
+		$data['_view'] = 'pendaftar/navbar';
+		$this->load->view('pendaftar/agenda', $data);
+	}
+
+	public function pengumuman()
+	{
+		$data['_view'] = 'pendaftar/navbar';
+		$this->load->view('pendaftar/pengumuman', $data);
+	}
 
 }
