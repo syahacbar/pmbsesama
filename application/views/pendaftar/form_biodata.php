@@ -402,7 +402,7 @@
             backdrop-filter: brightness(0.5);
         }
 
-        .dz-message:before {
+        form#image-upload .dz-message:before {
             content: " ";
             background-image: url(../assets/upload/fotopas/profile_default.svg) !important;
             background-position: center;
@@ -417,6 +417,7 @@
             text-align: center;
             margin: 0;
         }
+
     </style>
 </head>
 
@@ -911,130 +912,20 @@
                                         </div>
 
 
-                                        <div class="dropzone col-sm-12 mb-5" id="upload-dokumen">
+                                        <div class="dropzone dokrapor col-sm-12 mb-5" id="upload-dokumen">
                                             <div class="form">
                                                 <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                                    <small>Unggah file rapor dalam bentuk .pdf dengan ukuran maksimal 500kb</small>
+                                                    <small>Unggah file rapor dalam bentuk .pdf dengan ukuran maksimal 500kb. Format nama file <b>Rapor Blabla</b> </small>
                                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
                                                 </div>
-                                                <div class="dz-message">
+                                                <div name="userfile" class="dz-message">
                                                     <h6> Klik atau Drop file ke sini</h6>
                                                 </div>
+
                                             </div>
                                         </div>
-
-
-                                        <!-- <div class="col-sm-12 pilihanamat">
-                                            <label>Lulus SMTA</label>
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="form-check">
-                                                        <input type="radio" name="lulussmta" class="lulussmta" id="lulussmta" value="Lulus" <?php // echo ($row['lulus_smta'] == "Lulus") ? "Checked" : ""; 
-                                                                                                                                            ?>>
-                                                        <label class="form-check-label" for="exampleRadios1">Sudah</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                    <div class="form-check">
-                                                        <input type="radio" name="lulussmta" class="lulussmta" id="lulussmta" value="Belum Lulus" <?php // echo ($row['lulus_smta'] == "Belum Lulus") ? "Checked" : ""; 
-                                                                                                                                                    ?>>
-                                                        <label class="form-check-label" for="exampleRadios2">Belum</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div> -->
-
-                                        <!-- <label>Nilai SMTA</label>
-                                            <div class="row">
-                                                <div class="col-sm-4">
-                                                    <div class="form-check">
-                                                        <input type="radio" name="lulussmta" class="lulussmta" id="lulussmta" value="Lulus" <?php echo ($row['lulus_smta'] == "Lulus") ? "Checked" : ""; ?>>
-                                                        <label class="form-check-label" for="exampleRadios1">Sudah</label>
-                                                    </div>
-                                                </div>
-
-                                                <div class="col-sm-4">
-                                                    <div class="form-check">
-                                                        <input type="radio" name="lulussmta" class="lulussmta" id="lulussmta" value="Belum Lulus" <?php echo ($row['lulus_smta'] == "Belum Lulus") ? "Checked" : ""; ?>>
-                                                        <label class="form-check-label" for="exampleRadios2">Belum</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        <div class="row BoxLulus">
-                                            <div class="col-sm-12">
-                                                <div class="row">
-                                                    <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <label>Nomor Ijazah</label>
-                                                            <input name="nomorijazah" id="nomorijazah" type="text" class="form-control" placeholder="" value="<?php //echo $row['nomor_ijazah']; 
-                                                                                                                                                                ?>" required>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <label>Nilai UAN Matematika</label>
-                                                            <input name="uanmtk" id="uanmtk" type="text" class="form-control" placeholder="" value="<?php //echo $row['uan_mtk']; 
-                                                                                                                                                    ?>" required>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <label>Nilai UAN Bahasa Inggris</label>
-                                                            <input name="uanbing" id="uanbing" type="text" class="form-control" placeholder="" value="<?php //echo $row['uan_bing']; 
-                                                                                                                                                        ?>" required>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-sm-3">
-                                                        <div class="form-group">
-                                                            <label>Nilai UAN Bahasa Indonesia</label>
-                                                            <input name="uanbind" id="uanbind" type="text" class="form-control" placeholder="" value="<?php //echo $row['uan_bind']; 
-                                                                                                                                                        ?>" required>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-
-
-                                        <div class="row BoxBelumLulus">
-                                            <div class="col-sm-12">
-                                                <div class="row">
-                                                    <div class="col-sm-4">
-                                                        <div class="form-group">
-                                                            <label>Nilai Rapor Terakhir Matematika</label>
-                                                            <input name="rapormtk" id="rapormtk" type="text" class="form-control" placeholder="" value="<?php //echo $row['rapor_mtk']; 
-                                                                                                                                                        ?>" required>
-                                                        </div>
-                                                    </div>
-
-                                                    <div class="col-sm-4">
-                                                        <div class="form-group">
-                                                            <label>Nilai Rapor Terakhir Inggris</label>
-                                                            <input name="raporbing" id="raporbing" type="text" class="form-control" placeholder="" value="<?php //echo $row['rapor_bing']; 
-                                                                                                                                                            ?>" required>
-                                                        </div>
-                                                    </div>
-
-
-                                                    <div class="col-sm-4">
-                                                        <div class="form-group">
-                                                            <label>Nilai Rapor Terakhir Indonesia</label>
-                                                            <input name="raporbind" id="raporbind" type="text" class="form-control" placeholder="" value="<?php //echo $row['rapor_bind']; 
-                                                                                                                                                            ?>" required>
-                                                        </div>
-                                                    </div>
-
-                                                </div>
-                                            </div>
-
-                                        </div> -->
 
                                     </div>
                                 </div>
@@ -1762,6 +1653,35 @@
             foto_upload.on("complete", function(file) {
                 window.location.href = "<?php echo site_url('register/isibiodata') ?>";
             });
+
+
+
+
+        </script>
+
+
+        <script type="text/javascript">
+            Dropzone.autoDiscover = false;
+
+            var dok_rapor= new Dropzone(".dokrapor",{
+            url: "<?php echo base_url('register/uploadrapor') ?>",
+            maxFilesize: 2,
+            method:"post",
+            acceptedFiles:".pdf",
+            paramName:"userfile",
+            dictInvalidFileType:"Type file ini tidak dizinkan",
+            addRemoveLinks:true,
+            });
+
+            //Event ketika Memulai mengupload
+            dok_rapor.on("sending",function(a,b,c){
+                a.token=Math.random();
+                c.append("token_dok",a.token);
+            });
+
+            // dok_rapor.on("complete", function(file) {
+            //     window.location.href = "<?php // echo site_url('register/isibiodata') ?>";
+            // });
         </script>
 
 </body>

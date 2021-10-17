@@ -14,6 +14,7 @@
   <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
+<script src='https://www.google.com/recaptcha/api.js'></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 
   <!-- Custom CSS -->
@@ -531,7 +532,7 @@
                 <div class="col-sm-12">
                   <div class="form-group">
                     <label>Kode Verifikasi</label>
-                    <input name="captcha" type="text" class="form-control" placeholder="" required>
+                    <input name="captcha" class="g-recaptcha" data-sitekey="6LfMmtUcAAAAADUWfzimej8QJfsOJIqZABX4jy5q" placeholder="" required>
                   </div>
                 </div>
 
