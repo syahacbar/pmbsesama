@@ -68,7 +68,7 @@
                     <div class="col-lg-6">
                         <div class="card2 card border-0 px-4 py-5 loginPage">
                             <div class="row mb-4 px-3">
-                                <h4 class="mb-0 mr-4 mt-2">Portal PMB Online</h4>
+                                <h4 class="mb-0 mr-4 mt-2">Portal PMB Online UNIPA</h4>
                             </div>
                             <?php echo form_open("auth/login"); ?>
                             <div class="row px-3 mb-4">
