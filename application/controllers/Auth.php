@@ -15,6 +15,8 @@ class Auth extends CI_Controller
 		$this->load->database();
 		$this->load->library(['ion_auth', 'form_validation']);
 		$this->load->helper(['url', 'language']);
+		$this->load->library(['recaptcha']);
+
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
 
@@ -503,8 +505,12 @@ class Auth extends CI_Controller
 			't_gelombang_id' => $this->input->post('gelombang'),
 		];
 		//}
-		//if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
-		if ($this->ion_auth->register($identity, $password, $email, $additional_data)) {
+		$is_valid = $this->recaptcha->is_valid();
+
+
+		// if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
+
+		if ($is_valid['success'] && $this->ion_auth->register($identity, $password, $email, $additional_data)) {
 			// check to see if we are creating the user
 			// redirect them back to the admin page
 			//$this->M_register->update_username($this->db->insert_id());
@@ -513,61 +519,77 @@ class Auth extends CI_Controller
 			$this->registration_confirm($identity, $password, $this->input->post('namalengkap'), $this->input->post('email'), $this->input->post('nohpregister'));
 			//redirect("auth", 'refresh');
 		} else {
+			$this->load->model('M_jalurmasuk');
+			$this->load->model('M_gelombang');
+			$this->load->model('M_kelompokujian');
+			$this->data['errorcaptcha'] = "Captcha wajib dicentang";
+
 			// display the create user form
 			// set the flash data error message if there is one
 			$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
 
-			$this->data['first_name'] = [
-				'name' => 'first_name',
-				'id' => 'first_name',
-				'type' => 'text',
-				'value' => $this->form_validation->set_value('first_name'),
-			];
-			$this->data['last_name'] = [
-				'name' => 'last_name',
-				'id' => 'last_name',
-				'type' => 'text',
-				'value' => $this->form_validation->set_value('last_name'),
-			];
-			$this->data['identity'] = [
-				'name' => 'identity',
-				'id' => 'identity',
-				'type' => 'text',
-				'value' => $this->form_validation->set_value('identity'),
-			];
-			$this->data['email'] = [
-				'name' => 'email',
-				'id' => 'email',
-				'type' => 'text',
-				'value' => $this->form_validation->set_value('email'),
-			];
-			$this->data['company'] = [
-				'name' => 'company',
-				'id' => 'company',
-				'type' => 'text',
-				'value' => $this->form_validation->set_value('company'),
-			];
-			$this->data['phone'] = [
-				'name' => 'phone',
-				'id' => 'phone',
-				'type' => 'text',
-				'value' => $this->form_validation->set_value('phone'),
-			];
-			$this->data['password'] = [
-				'name' => 'password',
-				'id' => 'password',
-				'type' => 'password',
-				'value' => $this->form_validation->set_value('password'),
-			];
-			$this->data['password_confirm'] = [
-				'name' => 'password_confirm',
-				'id' => 'password_confirm',
-				'type' => 'password',
-				'value' => $this->form_validation->set_value('password_confirm'),
-			];
+			$this->data['jalurmasuk'] = $this->M_jalurmasuk->get_all();
+			$this->data['gelombang'] = $this->M_gelombang->get_all();
+			$this->data['kelompokujian'] = $this->M_kelompokujian->get_all();
+			$this->data['recaptcha'] = $this->recaptcha->create_box();
+			$this->data['nama_lengkap'] = $this->input->post('namalengkap');
+			$this->data['nohpregister'] = $this->input->post('nohpregister');
+			$this->data['email'] = $this->input->post('email');
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
+			$this->load->view('pendaftar/register', $this->data);
+
+			// $this->data['first_name'] = [
+			// 	'name' => 'first_name',
+			// 	'id' => 'first_name',
+			// 	'type' => 'text',
+			// 	'value' => $this->form_validation->set_value('first_name'),
+			// ];
+			// $this->data['last_name'] = [
+			// 	'name' => 'last_name',
+			// 	'id' => 'last_name',
+			// 	'type' => 'text',
+			// 	'value' => $this->form_validation->set_value('last_name'),
+			// ];
+			// $this->data['identity'] = [
+			// 	'name' => 'identity',
+			// 	'id' => 'identity',
+			// 	'type' => 'text',
+			// 	'value' => $this->form_validation->set_value('identity'),
+			// ];
+			// $this->data['email'] = [
+			// 	'name' => 'email',
+			// 	'id' => 'email',
+			// 	'type' => 'text',
+			// 	'value' => $this->form_validation->set_value('email'),
+			// ];
+			// $this->data['company'] = [
+			// 	'name' => 'company',
+			// 	'id' => 'company',
+			// 	'type' => 'text',
+			// 	'value' => $this->form_validation->set_value('company'),
+			// ];
+			// $this->data['phone'] = [
+			// 	'name' => 'phone',
+			// 	'id' => 'phone',
+			// 	'type' => 'text',
+			// 	'value' => $this->form_validation->set_value('phone'),
+			// ];
+			// $this->data['password'] = [
+			// 	'name' => 'password',
+			// 	'id' => 'password',
+			// 	'type' => 'password',
+			// 	'value' => $this->form_validation->set_value('password'),
+			// ];
+			// $this->data['password_confirm'] = [
+			// 	'name' => 'password_confirm',
+			// 	'id' => 'password_confirm',
+			// 	'type' => 'password',
+			// 	'value' => $this->form_validation->set_value('password_confirm'),
+			// ];
+
+			// $this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
 		}
+
 	}
 
 	public function registration_confirm($username, $password, $namalengkap, $email, $nohp)
@@ -875,41 +897,4 @@ class Auth extends CI_Controller
 		}
 	}
 
-
-	public function googleCaptachStore(){
-       
-      $data = array('name' => $this->input->post('name'),
-                    'email' => $this->input->post('email'), 
-                    'mobile_number' => $this->input->post('mobile_number'), 
-                   );
-       
-      $recaptchaResponse = trim($this->input->post('g-recaptcha-response'));
-       
-      $userIp=$this->input->ip_address();
-         
-      $secret='6LfMmtUcAAAAADl7KUUxYhmza0-RNxUw0Dxet9Zc';
-       
-      $credential = array(
-            'secret' => $secret,
-            'response' => $this->input->post('g-recaptcha-response')
-        );
- 
-      $verify = curl_init();
-      curl_setopt($verify, CURLOPT_URL, "https://www.google.com/recaptcha/api/siteverify");
-      curl_setopt($verify, CURLOPT_POST, true);
-      curl_setopt($verify, CURLOPT_POSTFIELDS, http_build_query($credential));
-      curl_setopt($verify, CURLOPT_SSL_VERIFYPEER, false);
-      curl_setopt($verify, CURLOPT_RETURNTRANSFER, true);
-      $response = curl_exec($verify);
- 
-      $status= json_decode($response, true);
-       
-      if($status['success']){ 
-       $this->db->insert('users',$data); 
-       $this->session->set_flashdata('message', 'Google Recaptcha Successful');
-      }else{
-       $this->session->set_flashdata('message', 'Sorry Google Recaptcha Unsuccessful!!');
-      }
-      redirect(base_url('google'));
-     }
 }

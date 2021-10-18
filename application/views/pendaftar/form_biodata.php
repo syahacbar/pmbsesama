@@ -1180,7 +1180,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat Wali *</label>
-                                                <input name="alamatwali" id="alamatwali" type="text" class="form-control" placeholder="" required>
+                                                <input name="alamatwali" id="alamatwali" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_wali']; ?>" required>
                                                 <small>Alamat wali saat ini. Maksimal 50 karakter.</small>
                                             </div>
                                         </div>
