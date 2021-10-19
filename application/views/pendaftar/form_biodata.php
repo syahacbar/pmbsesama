@@ -417,7 +417,6 @@
             text-align: center;
             margin: 0;
         }
-
     </style>
 </head>
 
@@ -427,13 +426,41 @@
             <div class="col-11 col-sm-9 col-md-10 col-lg-10 col-xl-8 text-center p-0 mt-3 mb-2">
                 <div class="card px-0 pb-0 mb-3">
                     <!-- Navigation-->
-                    <?php
-                    if (isset($_view) && $_view)
-                        $this->load->view($_view);
-                    ?>
+                    <!-- <?php
+                            // if (isset($_view) && $_view)
+                            //   $this->load->view($_view);
+                            ?> -->
+
+                    <div class="container-fluid nav-unipa">
+                        <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav">
+                            <div class="logo-nama">
+                                <img src="<?php echo base_url('assets/frontend/img/logo_unipa.png') ?>" alt=""><a class="navbar-brand" href="<?php echo base_url('') ?>">&nbsp; UNIVERSITAS PAPUA</a>
+                            </div>
+                            <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                            <div class="collapse navbar-collapse" id="navbarResponsive">
+                                <ul class="navbar-nav ms-auto my-2 my-lg-0">
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo base_url('auth/login'); ?>"><i class="fa fa-home"></i> Beranda</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('agenda'); ?>"><i class="fa fa-calendar-o"></i> Agenda</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('informasi'); ?>"><i class="fa fa-info-circle"></i> Informasi</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('pengumuman'); ?>"><i class="fa fa-bullhorn"></i> Pengumuman</a></li>
+
+                                    <?php if ($this->ion_auth->logged_in()) { ?>
+
+                                        <li class="nav-item">
+                                            <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
+                                                <i class="fas fa-sign-out-alt fa-sm fa-fw text-gray-400"></i>
+                                                Keluar
+                                            </a>
+                                        </li>
+                                    <?php }  ?>
+
+                                </ul>
+                            </div>
+                        </nav>
+                    </div>
                 </div>
 
-                <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
+                <div class="card px-0 pt-4 pb-0 mt-3 mb-3 form-wizard">
                     <h2 id="heading">FORMULIR BIODATA MAHASISWA BARU <?php echo $username; ?></h2>
                     <p>Lengkapi data di bawah ini dengan benar</p>
                     <form id="msform">
@@ -1275,7 +1302,24 @@
         </div>
 
 
-
+        <!-- Modal Logout -->
+        <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="logoutModalLabel">Info</h5>
+                        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">×</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">Yakin ingin keluar? Pilih "Ya" jika ingin keluar.</div>
+                    <div class="modal-footer">
+                        <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
+                        <a class="btn btn-primary" href="<?php echo site_url('auth/logout'); ?>">Ya</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
@@ -1653,34 +1697,31 @@
             foto_upload.on("complete", function(file) {
                 window.location.href = "<?php echo site_url('register/isibiodata') ?>";
             });
-
-
-
-
         </script>
 
 
         <script type="text/javascript">
             Dropzone.autoDiscover = false;
 
-            var dok_rapor= new Dropzone(".dokrapor",{
-            url: "<?php echo base_url('register/uploadrapor') ?>",
-            maxFilesize: 2,
-            method:"post",
-            acceptedFiles:".pdf",
-            paramName:"userfile",
-            dictInvalidFileType:"Type file ini tidak dizinkan",
-            addRemoveLinks:true,
+            var dok_rapor = new Dropzone(".dokrapor", {
+                url: "<?php echo base_url('register/uploadrapor') ?>",
+                maxFilesize: 2,
+                method: "post",
+                acceptedFiles: ".pdf",
+                paramName: "userfile",
+                dictInvalidFileType: "Type file ini tidak dizinkan",
+                addRemoveLinks: true,
             });
 
             //Event ketika Memulai mengupload
-            dok_rapor.on("sending",function(a,b,c){
-                a.token=Math.random();
-                c.append("token_dok",a.token);
+            dok_rapor.on("sending", function(a, b, c) {
+                a.token = Math.random();
+                c.append("token_dok", a.token);
             });
 
             // dok_rapor.on("complete", function(file) {
-            //     window.location.href = "<?php // echo site_url('register/isibiodata') ?>";
+            //     window.location.href = "<?php // echo site_url('register/isibiodata') 
+                                            ?>";
             // });
         </script>
 

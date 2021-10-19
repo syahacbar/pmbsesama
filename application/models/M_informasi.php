@@ -2,9 +2,10 @@
 
 class M_informasi extends CI_Model
 {
+
     function get_all()
     {
-        $query = $this->db->get('informasi');  
+        $query = $this->db->get('informasi');
         return $query->result_array();
     }
 
@@ -14,8 +15,9 @@ class M_informasi extends CI_Model
         return TRUE;
     }
 
-    function edit($data, $id){
-        $this->db->where('id',$id);
+    function edit($data, $id)
+    {
+        $this->db->where('id', $id);
         $this->db->update('informasi', $data);
         return TRUE;
     }

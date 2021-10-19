@@ -205,9 +205,9 @@
                         <table class="table">
                             <tbody>
                                 <tr>
-                                    <!-- <th width="20px" scope="row">1</th> -->
+                                    <th width="20px" scope="row">1</th>
                                     <td>Informasi Panduan Penerimaan Mahasiswa Baru (PMB)</td>
-                                    <td width="100px">
+                                    <td width="110px">
                                         <a href="#" class="btn btn-info btn-icon-split btn-sm downloadform">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-download"></i>
@@ -217,9 +217,9 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <!-- <th width="20px" scope="row">2</th> -->
+                                    <th width="20px" scope="row">2</th>
                                     <td>Informasi Panduan Penerimaan Mahasiswa Baru (PMB)</td>
-                                    <td width="100px">
+                                    <td width="110px">
                                         <a href="#" class="btn btn-info btn-icon-split btn-sm downloadform">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-download"></i>
@@ -229,9 +229,9 @@
                                     </td>
                                 </tr>
                                 <tr>
-                                    <!-- <th width="20px" scope="row">3</th> -->
+                                    <th width="20px" scope="row">3</th>
                                     <td>Informasi Panduan Penerimaan Mahasiswa Baru (PMB)</td>
-                                    <td width="100px">
+                                    <td width="110px">
                                         <a href="#" class="btn btn-info btn-icon-split btn-sm downloadform">
                                             <span class="icon text-white-50">
                                                 <i class="fas fa-download"></i>
@@ -268,7 +268,14 @@
 
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- SimpleLightbox plugin JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
+    <!-- Core theme JS-->
+    <script src="js/scripts.js"></script>
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+    <!-- * *                               SB Forms JS                               * *-->
+    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 
