@@ -399,6 +399,7 @@ class Administrator extends CI_Controller
 
 	public function agenda()
 	{
+
 		$this->load->model('M_agenda');
 
 		if ($this->uri->segment(3) == "") {
@@ -406,9 +407,10 @@ class Administrator extends CI_Controller
 			$data['slider'] = $this->M_agenda->get_all();
 		} else if ($this->uri->segment(3) == "add") {
 			$data = array(
-				'judul'  => $this->input->post('judul'),
-				'isi'  => $this->input->post('isi'),
-				'waktu'  => $this->input->post('waktu'),
+				'judul'  => $this->input->post('agenda'),
+				'isi_agenda'  => $this->input->post('agenda'),
+				// 'gambar'  => $this->input->post('gambar'),
+				'waktu'  => $this->input->post('agenda'),
 			);
 
 			$this->M_agenda->add($data);
@@ -419,7 +421,8 @@ class Administrator extends CI_Controller
 			$id = $this->input->post('id');
 			$data = array(
 				'judul'  => $this->input->post('judul'),
-				'isi'  => $this->input->post('isi'),
+				'isi_agenda'  => $this->input->post('isi_agenda'),
+				// 'gambar'  => $this->input->post('gambar'),
 				'waktu'  => $this->input->post('waktu'),
 			);
 			$this->M_agenda->edit($data, $id);
@@ -430,6 +433,8 @@ class Administrator extends CI_Controller
 			$this->M_agenda->delete($id);
 			redirect('administrator/agenda');
 		}
+
+		$data['agenda'] = $this->M_agenda->get_all();
 
 		$data['_view'] = 'admin/agenda';
 		$this->load->view('admin/layout', $data);

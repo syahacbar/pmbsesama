@@ -536,7 +536,11 @@ class Auth extends CI_Controller
 			$this->data['nohpregister'] = $this->input->post('nohpregister');
 			$this->data['email'] = $this->input->post('email');
 
+
 			$this->load->view('pendaftar/register', $this->data);
+
+			// Jikan daftar berhasil, muncul pesan ini
+			// $this->session->set_flashdata('message', '<div class="alert alert-info alert-dismissible fade show" role="alert">Anda telah berhasil membuat akun. Silakan Login!</div>');
 
 			// $this->data['first_name'] = [
 			// 	'name' => 'first_name',
@@ -589,7 +593,6 @@ class Auth extends CI_Controller
 
 			// $this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
 		}
-
 	}
 
 	public function registration_confirm($username, $password, $namalengkap, $email, $nohp)
@@ -896,5 +899,4 @@ class Auth extends CI_Controller
 			return $view_html;
 		}
 	}
-
 }

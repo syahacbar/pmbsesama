@@ -233,40 +233,19 @@ class Register extends CI_Controller
 	}
 
 
-public function uploadrapor()
+	public function uploadrapor()
 	{
-		$config['upload_path']   = FCPATH . '/assets/upload/rapor/'; 
-		$config['allowed_types'] = 'pdf'; 
+		$config['upload_path']   = FCPATH . '/assets/upload/rapor/';
+		$config['allowed_types'] = 'pdf';
 		// $config['max_size']      = 1024;
 
 
-      	$this->load->library('upload', $config);
+		$this->load->library('upload', $config);
 
-        if($this->upload->do_upload('userfile')) {
-        	$token = $this->input->post('token_dok');
-        	$nama = $this->upload->data('file_name');
-        	$this->db->insert('rapor',array('nama_dok'=>$nama,'token'=>$token));
-
+		if ($this->upload->do_upload('userfile')) {
+			$token = $this->input->post('token_dok');
+			$nama = $this->upload->data('file_name');
+			$this->db->insert('rapor', array('nama_dok' => $nama, 'token' => $token));
 		}
 	}
-
-
-	public function informasi()
-	{
-		$data['_view'] = 'pendaftar/navbar';
-		$this->load->view('pendaftar/informasi', $data);
-	}
-
-	public function agenda()
-	{
-		$data['_view'] = 'pendaftar/navbar';
-		$this->load->view('pendaftar/agenda', $data);
-	}
-
-	public function pengumuman()
-	{
-		$data['_view'] = 'pendaftar/navbar';
-		$this->load->view('pendaftar/pengumuman', $data);
-	}
-
 }

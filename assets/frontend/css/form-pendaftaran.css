@@ -93,7 +93,7 @@ p {
 
 #msform {
     text-align: center;
-    position: relative;
+    /* position: relative; */
     margin-top: 20px
 }
 
@@ -178,7 +178,6 @@ p {
 .card {
     z-index: 0;
     border: none;
-    position: relative
 }
 
 .fs-title {
@@ -335,4 +334,12 @@ div#upload-dokumen .dz-message:before {
     display: block;
     height: 80px;
     margin: 10px 0;
+}
+
+
+/* Modal */
+
+.bg-blue.py-4.bagianfoter {
+    background-color: #673ab7;
+    box-shadow: 0px 4px 8px 0px #757575;
 }
