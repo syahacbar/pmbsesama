@@ -75,8 +75,10 @@
 
                                     <div class="row px-3 loginRegister">
                                           <button type="submit" class="btn btn-blue text-center">Reset Kata Sandi</button>
-                                          <small class="font-weight-bold">Kembali ke halaman <a href="<?php echo site_url('register'); ?>" class="text-danger" target="_blank
-                                ">DI SINI</a></small>
+                                          <small class="font-weight-bold">
+                                                <a href="<?php echo site_url('auth/login'); ?>" class="text-danger" target="_blank
+                                ">Kembali ke halaman Login</a>
+                                          </small>
                                     </div>
                                     <?php echo form_close(); ?>
 
@@ -118,33 +120,6 @@
             </div>
       </div>
 </body>
-<!-- <h1><?php // echo lang('forgot_password_heading'); 
-            ?></h1>
-<p><?php // echo sprintf(lang('forgot_password_subheading'), $identity_label); 
-      ?></p>
-
-<div id="infoMessage"><?php //echo $message; 
-                        ?></div>
-
-
-<?php //echo form_open("auth/forgot_password"); 
-?>
-
-<p>
-      <label for="identity"><?php // echo (($type == 'email') ? sprintf(lang('forgot_password_email_label'), $identity_label) : sprintf(lang('forgot_password_identity_label'), $identity_label)); 
-                              ?></label> <br />
-      <?php //echo form_input($identity); 
-      ?>
-</p> -->
-
-<!-- Navigation-->
-
-
-<!-- <p><?php //echo form_submit('submit', lang('forgot_password_submit_btn')); 
-            ?></p>
-
-<?php // echo form_close(); 
-?> -->
 
 <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
 

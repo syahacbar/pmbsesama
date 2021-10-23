@@ -19,10 +19,6 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
-    <style>
-
-
-    </style>
 </head>
 
 <body class='snippet-body'>
@@ -162,12 +158,22 @@
                 <div class="col-md-6">
                     <div class="card2 card border-0 px-4 py-5 agenda">
                         <div class="row mb-4 px-3">
-                            <h4 class="mb-0 mr-4 mt-2">Agenda Penerimaan Mahasiswa Baru</h4>
+                            <h4 class="mb-0 mr-4 mt-2">Agenda</h4>
                         </div>
                         <div class="row px-3 mb-4">
                             <p class="textmuted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                <a href="#" class="text-danger">Selengkapnya</a>
+                                <a href="#" class="text-danger">Baca Selengkapnya</a>
                             </p>
+                        </div>
+                        <div class="row px-3 mb-4">
+                            <p class="textmuted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                                <a href="#" class="text-danger">Baca Selengkapnya</a>
+                            </p>
+                        </div>
+                        <div class="row px-3 mb-4">
+                            <div>
+                                <a href="<?php echo base_url('informasi') ?>">Informasi Lainnya ...</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -204,47 +210,25 @@
                         </div>
                         <table class="table">
                             <tbody>
-                                <tr>
-                                    <!-- <th width="20px" scope="row">1</th> -->
-                                    <td>Informasi Panduan Penerimaan Mahasiswa Baru (PMB)</td>
-                                    <td width="100px">
-                                        <a href="#" class="btn btn-info btn-icon-split btn-sm downloadform">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-download"></i>
-                                            </span>
-                                            <span class="text">Unduh</span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <!-- <th width="20px" scope="row">2</th> -->
-                                    <td>Informasi Panduan Penerimaan Mahasiswa Baru (PMB)</td>
-                                    <td width="100px">
-                                        <a href="#" class="btn btn-info btn-icon-split btn-sm downloadform">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-download"></i>
-                                            </span>
-                                            <span class="text">Unduh</span>
-                                        </a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <!-- <th width="20px" scope="row">3</th> -->
-                                    <td>Informasi Panduan Penerimaan Mahasiswa Baru (PMB)</td>
-                                    <td width="100px">
-                                        <a href="#" class="btn btn-info btn-icon-split btn-sm downloadform">
-                                            <span class="icon text-white-50">
-                                                <i class="fas fa-download"></i>
-                                            </span>
-                                            <span class="text">Unduh</span>
-                                        </a>
-                                    </td>
-                                </tr>
+                                <?php foreach ($informasi as $in) : ?>
+                                    <tr>
+                                        <!-- <th width="20px" scope="row">1</th> -->
+                                        <td><?php echo $in['judul']; ?></td>
+                                        <td width="100px">
+                                            <a href="<?php echo base_url('assets/upload/informasi/') . $in['file']; ?>" class="btn btn-info btn-icon-split btn-sm downloadform">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-download"></i>
+                                                </span>
+                                                <span class="text">Unduh</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
                         </table>
                         <div class="row px-3 mb-4">
                             <div>
-                                <a href="<?php echo base_url('informasi') ?>">Selengkapnya ...</a>
+                                <a href="<?php echo base_url('informasi') ?>">Informasi Lainnya ...</a>
                             </div>
                         </div>
                     </div>

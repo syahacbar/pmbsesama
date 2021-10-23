@@ -3,9 +3,13 @@
 class M_informasi extends CI_Model
 {
 
-    function get_all()
+    function get_all($limit = NULL)
     {
-        $query = $this->db->get('informasi');
+        if ($limit == NULL) {
+            $query = $this->db->get('informasi');
+        } else {
+            $query = $this->db->query("SELECT * FROM informasi ORDER BY id LIMIT $limit");
+        }
         return $query->result_array();
     }
 

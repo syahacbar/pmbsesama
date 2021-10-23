@@ -75,7 +75,7 @@
               <?php $no = 1;
               foreach ($informasi as $in) { ?>
                 <tr>
-                  <td><?php echo $no++; ?></td>
+                  <td width="20px"><?php echo $no++; ?></td>
                   <td><?php echo $in['judul']; ?></td>
                   <td width="110px">
                     <a href="<?php echo base_url('assets/upload/informasi/') . $in['file']; ?>" target="_blank" class="btn btn-info btn-icon-split btn-sm downloadform">

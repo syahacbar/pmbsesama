@@ -1,4 +1,3 @@
-
 <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
 <!-- Begin Page Content -->
@@ -13,7 +12,7 @@
                 </div>
                 <div class="card-body">
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="tableSlider" width="100%" cellspacing="0">
+                        <table class="table table-bordered" id="tableInformasi" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th width="10">No.</th>
@@ -23,12 +22,42 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                <?php $no = 1;
+                                foreach ($informasi as $in) { ?>
+                                    <tr>
+                                        <td><?php echo $no++; ?></td>
+                                        <td><?php echo $in['judul']; ?></td>
+                                        <td><?php echo $in['file']; ?></td>
+                                        <!-- <td>
+                                            <img src="<?php // echo base_url('assets/upload/agenda/') . $in['gambar'];
+                                                        ?>">
+                                        </td> -->
+
+                                        <td>
+                                            <!-- data-fileinformasi="<?php // echo $in['file'] 
+                                                                        ?>" -->
+                                            <a class="btn btn-info btn-icon-split btn-sm editform" data-judulinformasi="<?php echo $in['judul'] ?>" data-id="<?php echo $in['id'] ?>">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-edit"></i>
+                                                </span>
+                                                <span class="text">Edit</span>
+                                            </a>
+                                            <a class="btn btn-danger btn-icon-split btn-sm deletedata" data-id="<?php echo $in['id'] ?>">
+                                                <span class="icon text-white-50">
+                                                    <i class="fas fa-trash"></i>
+                                                </span>
+                                                <span class="text">Hapus</span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
                             </tbody>
                         </table>
                     </div>
                 </div>
             </div>
-        </div>        
+        </div>
+
         <div class="col-lg-6">
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -38,16 +67,21 @@
                 </div>
                 <div class="card-body">
                     <?php echo $this->session->flashdata('notif'); ?>
-                    <form id="formagama" action="<?php echo site_url($linkform);?>" method="post">
+                    <form id="forminformasi" method="post">
                         <div class="form-group">
                             <label>Judul</label>
-                            <input id="txtInformasi" type="text" class="form-control" name="txtInformasi" placeholder="Judul Informasi" required>
+                            <input id="judulinformasi" type="text" class="form-control" name="judulinformasi" placeholder="Judul Informasi" required>
                         </div>
                         <div class="form-group">
                             <label>File</label>
-                            <div class="dropzone" id="image-upload"></div>
+                            <div class="dropzone informasi" id="file">
+                                <div class="dz-message">
+                                    <h3> Klik atau Drop file PDF disini</h3>
+                                </div>
+                            </div>
                         </div>
-                        <input type="hidden" id="idagenda" name="idagenda">
+                        <input type="hidden" id="idinformasi" name="idinformasi">
+                        <input type="hidden" id="aksi" name="aksi" value="add">
                         <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
                         <button type="submit" class="btn btn-primary">Save</button>
                     </form>
@@ -57,18 +91,80 @@
     </div>
 </div>
 
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
 <script type="text/javascript">
-  
     Dropzone.autoDiscover = false;
-  
-    var myDropzone = new Dropzone(".dropzone", { 
-       autoProcessQueue: false,
-       maxFilesize: 1,
-       acceptedFiles: ".jpeg,.jpg,.png,.gif"
+
+    $(document).ready(function() {
+        // var table = $('#dataTable').DataTable();
+        // $("#dataTable").on("click", ".editform", function() {
+        //     event.preventDefault();
+        //     $("input#judulinformasi").val($(this).data('judul'));
+        //     $("#file").val($(this).data('file'));
+        //     // $("#userFile").val($(this).data('userfile'));
+        //     $("input#idinformasi").val($(this).data('id'));
+
+        //     $('#forminformasi').attr('action', '<?php // echo site_url('administrator/informasi/edit'); 
+                                                    ?>');
+        // });
+
+        $(document).on('click', '.deletedata', function() {
+            var id = $(this).data("id");
+            if (confirm("Are you sure you want to delete this?")) {
+                $.ajax({
+                    url: "<?php echo site_url(); ?>administrator/informasi/delete",
+                    method: "POST",
+                    data: {
+                        id: id
+                    },
+                    success: function(data) {
+                        alert("Data Berhasil Dihapus");
+                        location.reload();
+                    }
+                });
+            } else {
+                return false;
+            }
+        });
+
+        var informasi_upload = new Dropzone(".informasi", {
+            autoProcessQueue: false,
+            url: "<?php echo site_url('administrator/informasi') ?>",
+            maxFilesize: 50,
+            maxFiles: 1,
+            method: "post",
+            acceptedFiles: "application/pdf",
+            paramName: "fileinformasi",
+            dictInvalidFileType: "Type file ini tidak dizinkan",
+            addRemoveLinks: true,
+        });
+
+        informasi_upload.on("sending", function(a, b, c) {
+            c.append("judulinformasi", $("input#judulinformasi").val());
+            c.append("aksi", $("input#aksi").val());
+            c.append("idinformasi", $("input#idinformasi").val());
+        });
+
+        $('#forminformasi').submit(function(e) {
+            e.preventDefault();
+            informasi_upload.processQueue();
+            //location.reload();
+        });
+
+        $("#tableInformasi").on("click", ".editform", function() {
+            $("input#idinformasi").val($(this).data('id'));
+            $("input#judulinformasi").val($(this).data('judulinformasi'));
+            $("input#aksi").val('edit');
+            //console.log('klik editform ' + judulinformasi);
+        });
+
+
     });
-  
-    $('#uploadFile').click(function(){
-       myDropzone.processQueue();
-    });
-      
+</script>
+
+<script>
+    // informasi_upload.on('complete', function() {
+    //     location.reload();
+    // });
 </script>

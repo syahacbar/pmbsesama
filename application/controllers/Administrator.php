@@ -365,6 +365,18 @@ class Administrator extends CI_Controller
 
 	public function slider()
 	{
+
+		$config['upload_path']   = FCPATH . '/assets/upload/slider/';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png|ico';
+
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('slider')) {
+			$nama = $this->upload->data('file_name');
+			$this->db->insert('slider', array('gambar' => $nama));
+		}
+
 		$this->load->model('M_slider');
 
 		if ($this->uri->segment(3) == "") {
@@ -402,37 +414,38 @@ class Administrator extends CI_Controller
 
 		$this->load->model('M_agenda');
 
-		if ($this->uri->segment(3) == "") {
-			$data['linkform'] = "administrator/agenda/add";
-			$data['slider'] = $this->M_agenda->get_all();
-		} else if ($this->uri->segment(3) == "add") {
-			$data = array(
-				'judul'  => $this->input->post('agenda'),
-				'isi_agenda'  => $this->input->post('agenda'),
-				// 'gambar'  => $this->input->post('gambar'),
-				'waktu'  => $this->input->post('agenda'),
-			);
+		// if ($this->uri->segment(3) == "") {
+		// 	$data['linkform'] = "administrator/agenda/add";
+		// 	$data['slider'] = $this->M_agenda->get_all();
+		// } else if ($this->uri->segment(3) == "add") {
 
-			$this->M_agenda->add($data);
+		// 	$data = array(
+		// 		'judul'  => $this->input->post('judulagenda'),
+		// 		'isi_agenda'  => $this->input->post('isiagenda'),
+		// 		// 'gambar'  => $this->input->post('userfile'),
+		// 		'waktu'  => $this->input->post('waktu'),
+		// 	);
 
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/agenda');
-		} else if ($this->uri->segment(3) == "edit") {
-			$id = $this->input->post('id');
-			$data = array(
-				'judul'  => $this->input->post('judul'),
-				'isi_agenda'  => $this->input->post('isi_agenda'),
-				// 'gambar'  => $this->input->post('gambar'),
-				'waktu'  => $this->input->post('waktu'),
-			);
-			$this->M_agenda->edit($data, $id);
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/agenda');
-		} else if ($this->uri->segment(3) == "delete") {
-			$id = $this->input->post('id');
-			$this->M_agenda->delete($id);
-			redirect('administrator/agenda');
-		}
+		// 	$this->M_agenda->add($data);
+
+		// 	$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		// 	redirect('administrator/agenda');
+		// } else if ($this->uri->segment(3) == "edit") {
+		// 	$id = $this->input->post('id');
+		// 	$data = array(
+		// 		'judul'  => $this->input->post('judulagenda'),
+		// 		'isi_agenda'  => $this->input->post('isiagenda'),
+		// 		'gambar'  => $this->input->post('userfile'),
+		// 		'waktu'  => $this->input->post('waktu'),
+		// 	);
+		// 	$this->M_agenda->edit($data, $id);
+		// 	$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		// 	redirect('administrator/agenda');
+		// } else if ($this->uri->segment(3) == "delete") {
+		// 	$id = $this->input->post('id');
+		// 	$this->M_agenda->delete($id);
+		// 	redirect('administrator/agenda');
+		// }
 
 		$data['agenda'] = $this->M_agenda->get_all();
 
@@ -440,45 +453,98 @@ class Administrator extends CI_Controller
 		$this->load->view('admin/layout', $data);
 	}
 
+
 	public function informasi()
 	{
 		$this->load->model('M_informasi');
 
-		if ($this->uri->segment(3) == "") {
-			$data['linkform'] = "administrator/informasi/add";
-			$data['slider'] = $this->M_informasi->get_all();
-		} else if ($this->uri->segment(3) == "add") {
-			$data = array(
-				'judul'  => $this->input->post('judul'),
-				'file'  => $this->input->post('file'),
-			);
+		// if ($this->uri->segment(3) == "") {
+		// 	$data['linkform'] = "administrator/informasi/add";
+		// 	$data['slider'] = $this->M_informasi->get_all();
+		// } else if ($this->uri->segment(3) == "add") {
+		// 	$data = array(
+		// 		'judul'  => $this->input->post('judulinformasi'),
+		// 		'file'  => $this->input->post('informasi'),
+		// 	);
 
-			$this->M_informasi->add($data);
+		// 	$this->M_informasi->add($data);
 
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/informasi');
-		} else if ($this->uri->segment(3) == "edit") {
-			$id = $this->input->post('id');
-			$data = array(
-				'judul'  => $this->input->post('judul'),
-				'file'  => $this->input->post('file'),
-			);
-			$this->M_informasi->edit($data, $id);
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/informasi');
-		} else if ($this->uri->segment(3) == "delete") {
-			$id = $this->input->post('id');
-			$this->M_informasi->delete($id);
-			redirect('administrator/informasi');
+		// 	$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		// 	redirect('administrator/informasi');
+		// } else if ($this->uri->segment(3) == "edit") {
+		// 	$id = $this->input->post('id');
+		// 	$data = array(
+		// 		'judul'  => $this->input->post('judul'),
+		// 		'file'  => $this->input->post('file'),
+		// 	);
+		// 	$this->M_informasi->edit($data, $id);
+		// 	$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		// 	redirect('administrator/informasi');
+		// } else if ($this->uri->segment(3) == "delete") {
+		// 	$id = $this->input->post('id');
+		// 	$this->M_informasi->delete($id);
+		// 	redirect('administrator/informasi');
+		// }
+		if ($this->input->post('aksi')) {
+			if ($this->input->post('aksi') == "add") {
+				$config['upload_path']   = FCPATH . '/assets/upload/informasi/';
+				$config['allowed_types'] = 'pdf';
+				$this->load->library('upload', $config);
+
+				if ($this->upload->do_upload('fileinformasi')) {
+					$file = $this->upload->data('file_name');
+					$judulinformasi = $this->input->post('judulinformasi');
+					$this->db->insert('informasi', array('judul' => $judulinformasi, 'file' => $file));
+				}
+			} elseif ($this->input->post('aksi') == "edit") {
+				//do something to edit
+				// $data = $this->insert->data('file_name');
+				// $id = $this->insert->data('id');
+
+				$this->M_informasi->edit($data, $id);
+			} elseif ($this->input->post('aksi') == "del") {
+				//do something to delete
+			}
+		} else {
+			$data['informasi'] = $this->M_informasi->get_all();
+			$data['_view'] = 'admin/informasi';
+			$this->load->view('admin/layout', $data);
 		}
-
-		$data['_view'] = 'admin/informasi';
-		$this->load->view('admin/layout', $data);
 	}
 
 	public function pengaturan()
 	{
 		$data['_view'] = 'admin/pengaturan';
 		$this->load->view('admin/layout', $data);
+	}
+
+
+	public function uploadagenda()
+	{
+		$config['upload_path']   = FCPATH . '/assets/upload/agenda/';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png|ico';
+
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('userfile')) {
+			$nama = $this->upload->data('file_name');
+			$this->db->insert('agenda', array('gambar' => $nama));
+		}
+	}
+
+	function uploadinformasi()
+	{
+		$config['upload_path']   = FCPATH . '/assets/upload/informasi/';
+		$config['allowed_types'] = 'pdf';
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('fileinformasi')) {
+			$filesk = $this->upload->data('file_name');
+			$namask = $this->input->post('namask');
+			$token = $this->input->post('token_informasi');
+			$uploaded_on = date("Y-m-d H:i:s");
+			$this->db->insert('informasi', array('namask' => $namask, 'filesk' => $filesk, 'token' => $token, 'uploaded_on' => $uploaded_on));
+		}
 	}
 }

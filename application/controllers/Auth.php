@@ -16,6 +16,7 @@ class Auth extends CI_Controller
 		$this->load->library(['ion_auth', 'form_validation']);
 		$this->load->helper(['url', 'language']);
 		$this->load->library(['recaptcha']);
+		$this->load->model(['M_informasi', 'M_agenda']);
 
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
@@ -109,6 +110,9 @@ class Auth extends CI_Controller
 				'id' => 'password',
 				'type' => 'password',
 			];
+
+			$this->data['agenda'] = $this->M_agenda->get_all();
+			$this->data['informasi'] = $this->M_informasi->get_all(3);
 
 			//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'login', $this->data);
 			$this->data['_view'] = 'pendaftar/navbar';

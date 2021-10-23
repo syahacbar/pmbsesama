@@ -21,7 +21,7 @@
                     <header>
                         <div class="row">
                             <div class="col-2">
-                                <img src="https://i.postimg.cc/Rh4XYxYK/download.png" alt="logo_unipa">
+                                <img src="<?php echo base_url('assets/frontend/img/logo_unipa.png') ?>" alt="logo_unipa">
                             </div>
                             <div class="col-md-10">
                                 <h5 id="heading">UNIVERSITAS PAPUA</h5>
