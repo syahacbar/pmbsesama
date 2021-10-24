@@ -10,8 +10,7 @@ class Datatables extends CI_Controller
 		{
 			redirect('auth/login', 'refresh');
 		}
-		$this->load->model('M_wilayah');
-        $this->load->model('M_pendaftar');
+		$this->load->model(['M_wilayah','M_pendaftar','M_prodi']);
 	}
 
 	function provinsi_list()
@@ -216,12 +215,15 @@ class Datatables extends CI_Controller
             $row[] = $no;
             $row[] = $des->username;
             $row[] = $des->namalengkap;
-            $row[] = $des->nik;
-            $row[] = $des->jeniskelamin;
-            $row[] = $des->lokasi_tempatlahir.", ".$des->tgl_lahir;
+            $row[] = $des->pilihan1;
+            $row[] = $des->pilihan2;
+            $row[] = $des->pilihan3;
+            $row[] = $des->suku;
+            $row[] = $des->tahunakademik;
             $row[] = '';
             $data[] = $row;
         }
+        
         $output = array(
             "draw" => $this->input->post('draw'),
             "recordsTotal" => $this->M_pendaftar->count_all(),

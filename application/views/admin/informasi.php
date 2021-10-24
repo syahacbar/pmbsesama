@@ -34,14 +34,6 @@
                                         </td> -->
 
                                         <td>
-                                            <!-- data-fileinformasi="<?php // echo $in['file'] 
-                                                                        ?>" -->
-                                            <a class="btn btn-info btn-icon-split btn-sm editform" data-judulinformasi="<?php echo $in['judul'] ?>" data-id="<?php echo $in['id'] ?>">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                                <span class="text">Edit</span>
-                                            </a>
                                             <a class="btn btn-danger btn-icon-split btn-sm deletedata" data-id="<?php echo $in['id'] ?>">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-trash"></i>
@@ -97,26 +89,16 @@
     Dropzone.autoDiscover = false;
 
     $(document).ready(function() {
-        // var table = $('#dataTable').DataTable();
-        // $("#dataTable").on("click", ".editform", function() {
-        //     event.preventDefault();
-        //     $("input#judulinformasi").val($(this).data('judul'));
-        //     $("#file").val($(this).data('file'));
-        //     // $("#userFile").val($(this).data('userfile'));
-        //     $("input#idinformasi").val($(this).data('id'));
-
-        //     $('#forminformasi').attr('action', '<?php // echo site_url('administrator/informasi/edit'); 
-                                                    ?>');
-        // });
 
         $(document).on('click', '.deletedata', function() {
             var id = $(this).data("id");
+            var aksi = "del";
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
-                    url: "<?php echo site_url(); ?>administrator/informasi/delete",
+                    url: "<?php echo site_url(); ?>administrator/informasi",
                     method: "POST",
                     data: {
-                        id: id
+                        id: id, aksi:aksi
                     },
                     success: function(data) {
                         alert("Data Berhasil Dihapus");
@@ -142,29 +124,20 @@
 
         informasi_upload.on("sending", function(a, b, c) {
             c.append("judulinformasi", $("input#judulinformasi").val());
-            c.append("aksi", $("input#aksi").val());
             c.append("idinformasi", $("input#idinformasi").val());
+        });
+
+        informasi_upload.on("complete", function (file) {
+            if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+              window.location.href = "<?php echo site_url('administrator/informasi');?>";
+            }
         });
 
         $('#forminformasi').submit(function(e) {
             e.preventDefault();
             informasi_upload.processQueue();
-            //location.reload();
-        });
-
-        $("#tableInformasi").on("click", ".editform", function() {
-            $("input#idinformasi").val($(this).data('id'));
-            $("input#judulinformasi").val($(this).data('judulinformasi'));
-            $("input#aksi").val('edit');
-            //console.log('klik editform ' + judulinformasi);
         });
 
 
     });
-</script>
-
-<script>
-    // informasi_upload.on('complete', function() {
-    //     location.reload();
-    // });
 </script>

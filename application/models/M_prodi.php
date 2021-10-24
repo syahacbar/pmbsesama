@@ -27,4 +27,10 @@ class M_prodi extends CI_Model
         $this->db->delete("prodi");
         return true;
     }
+
+    function get_by_id($id)
+    {
+        $query = $this->db->get_where('prodi', array('idprodi'=>$id));
+        return $query->row();
+    }
 }

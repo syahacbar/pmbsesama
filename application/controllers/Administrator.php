@@ -359,6 +359,8 @@ class Administrator extends CI_Controller
 
 	public function datapendaftar()
 	{
+		$this->load->model(['M_prodi']);
+		$data['listprodi'] = $this->M_prodi->get_all();
 		$data['_view'] = 'admin/data_pendaftar';
 		$this->load->view('admin/layout', $data);
 	}
@@ -454,56 +456,26 @@ class Administrator extends CI_Controller
 	}
 
 
+
 	public function informasi()
 	{
 		$this->load->model('M_informasi');
-
-		// if ($this->uri->segment(3) == "") {
-		// 	$data['linkform'] = "administrator/informasi/add";
-		// 	$data['slider'] = $this->M_informasi->get_all();
-		// } else if ($this->uri->segment(3) == "add") {
-		// 	$data = array(
-		// 		'judul'  => $this->input->post('judulinformasi'),
-		// 		'file'  => $this->input->post('informasi'),
-		// 	);
-
-		// 	$this->M_informasi->add($data);
-
-		// 	$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-		// 	redirect('administrator/informasi');
-		// } else if ($this->uri->segment(3) == "edit") {
-		// 	$id = $this->input->post('id');
-		// 	$data = array(
-		// 		'judul'  => $this->input->post('judul'),
-		// 		'file'  => $this->input->post('file'),
-		// 	);
-		// 	$this->M_informasi->edit($data, $id);
-		// 	$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-		// 	redirect('administrator/informasi');
-		// } else if ($this->uri->segment(3) == "delete") {
-		// 	$id = $this->input->post('id');
-		// 	$this->M_informasi->delete($id);
-		// 	redirect('administrator/informasi');
-		// }
 		if ($this->input->post('aksi')) {
+			$config['upload_path']   = FCPATH . '/assets/upload/informasi/';
+			$config['allowed_types'] = 'pdf';
+			$this->load->library('upload', $config);
+
 			if ($this->input->post('aksi') == "add") {
-				$config['upload_path']   = FCPATH . '/assets/upload/informasi/';
-				$config['allowed_types'] = 'pdf';
-				$this->load->library('upload', $config);
 
 				if ($this->upload->do_upload('fileinformasi')) {
 					$file = $this->upload->data('file_name');
 					$judulinformasi = $this->input->post('judulinformasi');
 					$this->db->insert('informasi', array('judul' => $judulinformasi, 'file' => $file));
 				}
-			} elseif ($this->input->post('aksi') == "edit") {
-				//do something to edit
-				// $data = $this->insert->data('file_name');
-				// $id = $this->insert->data('id');
-
-				$this->M_informasi->edit($data, $id);
 			} elseif ($this->input->post('aksi') == "del") {
-				//do something to delete
+				$id = $this->input->post('id');
+				$this->db->where('id', $id);
+				$this->db->delete('informasi');
 			}
 		} else {
 			$data['informasi'] = $this->M_informasi->get_all();
