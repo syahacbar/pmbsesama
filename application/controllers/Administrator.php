@@ -6,7 +6,10 @@ class Administrator extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		if (!$this->ion_auth->is_admin()) {
+		if (!$this->ion_auth->logged_in()) {
+			redirect('auth/login', 'refresh');
+		}
+		if($this->ion_auth->in_group('members')) {
 			redirect('auth/login', 'refresh');
 		}
 		$this->load->model('M_wilayah');
@@ -359,10 +362,16 @@ class Administrator extends CI_Controller
 
 	public function datapendaftar()
 	{
-		$this->load->model(['M_prodi']);
-		$data['listprodi'] = $this->M_prodi->get_all();
-		$data['_view'] = 'admin/data_pendaftar';
-		$this->load->view('admin/layout', $data);
+		$this->load->model(['M_prodi','M_register']);
+
+		if ($this->uri->segment(3) == "") {
+			$data['listprodi'] = $this->M_prodi->get_all();
+			$data['_view'] = 'admin/data_pendaftar';
+			$this->load->view('admin/layout', $data);
+		} else if ($this->uri->segment(3) == "kartupeserta") {
+			$data['peserta'] = $this->M_register->get_biodata_by_username($this->uri->segment(4))->row();
+			$this->load->view('pendaftar/kartu_peserta',$data);
+		}
 	}
 
 	public function slider()

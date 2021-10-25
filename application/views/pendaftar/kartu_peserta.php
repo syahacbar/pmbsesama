@@ -4,16 +4,16 @@
 <head>
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <title>Kartu Peserta - Portal PMB Oline UNIPA</title>
+    <title>Kartu Peserta <?php echo $peserta->username;?></title>
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <!-- Custom CSS -->
-    <link href="css/konfirmasi-regis.css" rel="stylesheet" />
+    <link href="<?php echo base_url(); ?>assets/frontend/css/konfirmasi-regis.css" rel="stylesheet" />
 
 </head>
 
-<body class='snippet-body'>
+<body class='snippet-body' onload="window.print();">
     <div class="container-fluid">
         <div class="row justify-content-center">
             <div class="col-11 col-sm-9 col-md-10 col-lg-10 col-xl-8 text-center p-0 mt-3 mb-2">
@@ -38,35 +38,35 @@
                                 <img src="https://2.bp.blogspot.com/-o6kYQGkFGL4/V_tSrlJT3aI/AAAAAAAAAEw/VbuqPUJLWXMZ5_4xuy_RzIntG-0OWm4YwCLcB/s1600/Neli%2BNurhalisa.jpg" alt="foto_pas_mahasiswa">
                             </div>
                             <div class="col-md-9">
-                                <h5>KARTU TANDA PESERTA UJIAN PMB <br>Tahun Akademik 2020 / 2021</h5>
+                                <h5>KARTU TANDA PESERTA SESAMA <br>Tahun Akademik <?php echo $peserta->tahunakademik;?></h5>
                                 <table class="table tabelidentitas">
                                     <tbody>
                                         <tr>
-                                            <td>Jalur Masuk</td>
+                                            <td>Nama</td>
                                             <td>:</td>
-                                            <td>Seleksi Lokal</td>
+                                            <td><?php echo $peserta->namalengkap;?></td>
                                         </tr>
                                         <tr>
-                                            <td>Nomor Tes</td>
+                                            <td>Nomor Pendaftaran</td>
                                             <td>:</td>
-                                            <td>20202207292</td>
+                                            <td><?php echo $peserta->username;?></td>
                                         </tr>
-                                        <tr>
-                                            <td>Nama Lengkap</td>
-                                            <td>:</td>
-                                            <td>ANNISA NAULINA FAHRANI</td>
-                                        </tr>
-                                        <tr>
                                             <td>Tempat/Tgl Lahir</td>
                                             <td>:</td>
-                                            <td>Manokwari, 17 September 2000</td>
+                                            <td><?php echo $peserta->lokasi_tempatlahir.", ".date_indo($peserta->tgl_lahir);?></td>
                                         </tr>
                                         <tr>
                                             <td>Program Studi</td>
                                             <td>:</td>
+                                            <?php
+                                            $CI =& get_instance();
+                                            $CI->load->model('M_prodi');
+                                            //$prodi= $CI->M_prodi->get_by_id($parameter)->result_array(); 
+                                            ?>  
                                             <td>
-                                                <span>Pil. 1 : 54294 - ILMU TANAH</span><br>
-                                                <span>Pil. 2 : 41201 - TEKNIK PERTANIAN DAN BIOSISTEM</span>
+                                                <span>Pil. 1 : <?php echo $CI->M_prodi->get_by_id($peserta->prodipilihan1)->namaprodi;?></span><br>
+                                                <span>Pil. 2 : <?php echo $CI->M_prodi->get_by_id($peserta->prodipilihan2)->namaprodi;?></span><br>
+                                                <span>Pil. 3 : <?php echo $CI->M_prodi->get_by_id($peserta->prodipilihan3)->namaprodi;?></span>
                                             </td>
                                         </tr>
                                     </tbody>
@@ -82,10 +82,10 @@
                                 <p>Manokwari, 21 Agustus 2021</p>
                             </div>
                             <div class="col-md-6 ttpeserta">
-                                <p>Tanda Tangan Peserta Tes</p>
+                                <p>Tanda Tangan Pendaftar</p>
                                 <br>
                                 <br>
-                                <p>(ANNISA NAULINA FAHRANI)</p>
+                                <p>(<?php echo $peserta->namalengkap;?>)</p>
                             </div>
 
                             <div class="col-md-6 ttpetugas">
@@ -95,40 +95,9 @@
                                 <p>(.................................)</p>
                             </div>
                         </div>
-
-                        <hr>
-                        <small>NB: Kartu tanda peserta tes ini berlaku jika sudah dinyatakan lolos verifikasi/validasi berkas.</small>
                         <br>
                         <br>
                     </section>
-
-
-                    <div class="container">
-                        <h5>DAFTAR HADIR PESERTA</h5>
-                        <div class="row daftarhadir">
-                            <div class="col-md-10">
-                                <table class="table table-bordered">
-                                    <thead>
-                                        <tr>
-                                            <th scope="col">Tanggal</th>
-                                            <th scope="col">Jam</th>
-                                            <th scope="col">Materi Tes</th>
-                                            <th scope="col">Tanda Tangan</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">Jumat, 21 Agustus 2020</th>
-                                            <td>10:00 - 12:00</td>
-                                            <td>Tes Potensi Sklolastik</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <small>NB: - Peserta ujian wajib mengenakan masker dan mematuhi aturan 'phisycal distancing'.</small>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </div>

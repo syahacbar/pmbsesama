@@ -6,10 +6,12 @@ class Datatables extends CI_Controller
 	public function __construct()
 	{
 		parent::__construct();
-		if (!$this->ion_auth->is_admin())
-		{
-			redirect('auth/login', 'refresh');
-		}
+        if (!$this->ion_auth->logged_in()) {
+            redirect('auth/login', 'refresh');
+        }
+        if($this->ion_auth->in_group('members')) {
+            redirect('auth/login', 'refresh');
+        }
 		$this->load->model(['M_wilayah','M_pendaftar','M_prodi']);
 	}
 
@@ -208,19 +210,20 @@ class Datatables extends CI_Controller
         $data = array();
         $no = $this->input->post('start');
         //looping data mahasiswa
-        foreach ($list as $des) {
+        foreach ($list as $pes) {
             $no++;
             $row = array();
             //row pertama akan kita gunakan untuk btn edit dan delete
+            $row[] = '<a class="btn btn-sm btn-success"><i class="fa fa-check-circle"></i></a>&nbsp;<a class="btn btn-sm btn-danger"><i class="fa fa-ban"></i></a>';
             $row[] = $no;
-            $row[] = $des->username;
-            $row[] = $des->namalengkap;
-            $row[] = $des->pilihan1;
-            $row[] = $des->pilihan2;
-            $row[] = $des->pilihan3;
-            $row[] = $des->suku;
-            $row[] = $des->tahunakademik;
-            $row[] = '';
+            $row[] = $pes->username;
+            $row[] = $pes->namalengkap;
+            $row[] = $pes->pilihan1;
+            $row[] = $pes->pilihan2;
+            $row[] = $pes->pilihan3;
+            $row[] = $pes->suku;
+            $row[] = $pes->tahunakademik;
+            $row[] = '<a data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>&nbsp;<a href="'.site_url('administrator/datapendaftar/kartupeserta/').$pes->username.'" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>'; 
             $data[] = $row;
         }
         

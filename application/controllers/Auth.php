@@ -40,22 +40,23 @@ class Auth extends CI_Controller
 		// 	show_error('You must be an administrator to view this page.');
 		// }
 		else {
-			$this->data['title'] = $this->lang->line('index_heading');
+			// $this->data['title'] = $this->lang->line('index_heading');
 
-			// set the flash data error message if there is one
-			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+			// // set the flash data error message if there is one
+			// $this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
 
-			//list the users
-			$this->data['users'] = $this->ion_auth->users()->result();
+			// //list the users
+			// $this->data['users'] = $this->ion_auth->users()->result();
 
-			//USAGE NOTE - you can do more complicated queries like this
-			//$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
+			// //USAGE NOTE - you can do more complicated queries like this
+			// //$this->data['users'] = $this->ion_auth->where('field', 'value')->users()->result();
 
-			foreach ($this->data['users'] as $k => $user) {
-				$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
-			}
+			// foreach ($this->data['users'] as $k => $user) {
+			// 	$this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
+			// }
 
-			$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
+			// $this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
+			redirect ('/');
 		}
 	}
 
@@ -78,14 +79,14 @@ class Auth extends CI_Controller
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
 				//if the login is successful
 				//redirect them back to the home page
-				if ($this->ion_auth->is_admin()) {
-					$this->session->set_flashdata('message', $this->ion_auth->messages());
-					//redirect('/', 'refresh');
-					redirect('administrator');
-				} else {
+				if($this->ion_auth->in_group('members')) { 
 					$this->session->set_flashdata('message', $this->ion_auth->messages());
 					//redirect('/', 'refresh');
 					redirect('register/isibiodata');
+				} else {
+					$this->session->set_flashdata('message', $this->ion_auth->messages());
+					//redirect('/', 'refresh');
+					redirect('administrator');
 				}
 			} else {
 				// if the login was un-successful
@@ -495,7 +496,7 @@ class Auth extends CI_Controller
 		$password = $this->generateRandomString(10);
 		//$password = $this->input->post('password');
 		$additional_data = [
-			'first_name' => $this->input->post('first_name'),
+			'first_name' => $this->input->post('namalengkap'),
 			'last_name' => $this->input->post('last_name'),
 			'company' => $this->input->post('company'),
 			'phone' => $this->input->post('nohpregister'),

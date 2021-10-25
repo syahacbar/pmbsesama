@@ -55,7 +55,7 @@
 
                 <!-- Divider -->
                 <hr class="sidebar-divider">
-
+                <?php if($this->ion_auth->in_group('admin')) { ?>
                 <!-- Heading -->
                 <div class="sidebar-heading">
                     Pendaftaran
@@ -175,8 +175,17 @@
     </div>
 </div>
 </li>
-
-
+<?php } else { ?>
+                <div class="sidebar-heading">
+                    Pendaftaran
+                </div>
+                <!-- Data Pendaftar -->
+                <li class="nav-item <?php echo ($this->uri->segment(2) == "datapendaftar") ? "active" : ""; ?>">
+                <a class="nav-link" href="<?php echo site_url('administrator/datapendaftar'); ?>">
+                    <i class="fas fa-fw fa-users"></i>
+                    <span>Data Pendaftar</span></a>
+                </li>
+            <?php } ?>
 
 <!-- Divider -->
 <hr class="sidebar-divider d-none d-md-block">
@@ -335,7 +344,7 @@
                         </a>
                         <a class="dropdown-item d-flex align-items-center" href="#">
                             <div class="dropdown-list-image mr-3">
-                                <img class="rounded-circle" src="https://source.unsplash.com/Mv9hjnEUHR4/60x60" alt="...">
+                                <img class="rounded-circle" src="<?php echo base_url(); ?>/assets/backend/startbootstrap/img/undraw_profile_3.svg" alt="...">
                                 <div class="status-indicator bg-success"></div>
                             </div>
                             <div>
@@ -352,9 +361,11 @@
                 <div class="topbar-divider d-none d-sm-block"></div>
 
                 <!-- Nav Item - User Information -->
+                <?php $user = $this->ion_auth->user()->row(); ?>
+
                 <li class="nav-item dropdown no-arrow">
                     <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <span class="mr-2 d-none d-lg-inline text-gray-600 small">Administrator</span>
+                        <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $user->first_name;?></span>
                         <img class="img-profile rounded-circle" src="<?php echo base_url(); ?>/assets/backend/startbootstrap/img/undraw_profile.svg">
                     </a>
                     <!-- Dropdown - User Information -->
