@@ -35,7 +35,7 @@
                     <section class="identitas">
                         <div class="row identitaspeserta">
                             <div class="col-md-3">
-                                <img src="https://2.bp.blogspot.com/-o6kYQGkFGL4/V_tSrlJT3aI/AAAAAAAAAEw/VbuqPUJLWXMZ5_4xuy_RzIntG-0OWm4YwCLcB/s1600/Neli%2BNurhalisa.jpg" alt="foto_pas_mahasiswa">
+                                <img src="<?php echo base_url('assets/upload/fotopas/').$peserta->image;?>" alt="foto_pas_mahasiswa">
                             </div>
                             <div class="col-md-9">
                                 <h5>KARTU TANDA PESERTA SESAMA <br>Tahun Akademik <?php echo $peserta->tahunakademik;?></h5>
