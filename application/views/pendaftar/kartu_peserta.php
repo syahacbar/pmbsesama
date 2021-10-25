@@ -12,7 +12,10 @@
     <link href="<?php echo base_url(); ?>assets/frontend/css/konfirmasi-regis.css" rel="stylesheet" />
 
 </head>
-
+<?php
+    $CI =& get_instance();
+    $CI->load->model(['M_prodi']);
+?>  
 <body class='snippet-body' onload="window.print();">
     <div class="container-fluid">
         <div class="row justify-content-center">
@@ -35,7 +38,7 @@
                     <section class="identitas">
                         <div class="row identitaspeserta">
                             <div class="col-md-3">
-                                <img src="<?php echo base_url('assets/upload/fotopas/').$peserta->image;?>" alt="foto_pas_mahasiswa">
+                                <img src="<?php echo base_url('assets/upload/fotopas/').$peserta->fotoprofil;?>" alt="foto_pas_mahasiswa">
                             </div>
                             <div class="col-md-9">
                                 <h5>KARTU TANDA PESERTA SESAMA <br>Tahun Akademik <?php echo $peserta->tahunakademik;?></h5>
@@ -58,11 +61,6 @@
                                         <tr>
                                             <td>Program Studi</td>
                                             <td>:</td>
-                                            <?php
-                                            $CI =& get_instance();
-                                            $CI->load->model('M_prodi');
-                                            //$prodi= $CI->M_prodi->get_by_id($parameter)->result_array(); 
-                                            ?>  
                                             <td>
                                                 <span>Pil. 1 : <?php echo $CI->M_prodi->get_by_id($peserta->prodipilihan1)->namaprodi;?></span><br>
                                                 <span>Pil. 2 : <?php echo $CI->M_prodi->get_by_id($peserta->prodipilihan2)->namaprodi;?></span><br>
