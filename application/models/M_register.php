@@ -50,7 +50,7 @@ class M_register extends CI_Model
 
 
     function get_biodata_by_username($username)
-    {
+    { 
         $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil FROM t_biodata tb LEFT JOIN upload u ON u.username=tb.username WHERE tb.username=$username ORDER BY u.id DESC LIMIT 1");
         return $query;
     }
