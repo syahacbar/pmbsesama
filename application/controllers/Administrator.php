@@ -9,7 +9,7 @@ class Administrator extends CI_Controller
 		if (!$this->ion_auth->logged_in()) {
 			redirect('auth/login', 'refresh');
 		}
-		if($this->ion_auth->in_group('members')) {
+		if ($this->ion_auth->in_group('members')) {
 			redirect('auth/login', 'refresh');
 		}
 		$this->load->model('M_wilayah');
@@ -362,7 +362,7 @@ class Administrator extends CI_Controller
 
 	public function datapendaftar()
 	{
-		$this->load->model(['M_prodi','M_register']);
+		$this->load->model(['M_prodi', 'M_register']);
 
 		if ($this->uri->segment(3) == "") {
 			$data['listprodi'] = $this->M_prodi->get_all();
@@ -370,7 +370,7 @@ class Administrator extends CI_Controller
 			$this->load->view('admin/layout', $data);
 		} else if ($this->uri->segment(3) == "kartupeserta") {
 			$data['peserta'] = $this->M_register->get_biodata_by_username($this->uri->segment(4))->row();
-			$this->load->view('pendaftar/kartu_peserta',$data);
+			$this->load->view('pendaftar/kartu_peserta', $data);
 		}
 	}
 
@@ -422,11 +422,11 @@ class Administrator extends CI_Controller
 
 	public function agenda()
 	{
+		$data['linkform'] = "administrator/agenda/add";
 
 		$this->load->model('M_agenda');
 
 		// if ($this->uri->segment(3) == "") {
-		// 	$data['linkform'] = "administrator/agenda/add";
 		// 	$data['slider'] = $this->M_agenda->get_all();
 		// } else if ($this->uri->segment(3) == "add") {
 
