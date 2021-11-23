@@ -164,6 +164,6 @@
         // });
 
         upload_agenda.on("sending", function(file, xhr, formData) {
-            formData.append("gambar", "gambar");
+            formData.append("gambar", "#userFile");
         });
     </script>

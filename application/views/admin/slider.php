@@ -1,6 +1,12 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
 <!-- Begin Page Content -->
+<style>
+    .img-thumbnail {
+        width: 60%;
+        margin: 0 20%;
+    }
+</style>
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6">
@@ -30,8 +36,8 @@
                                                     ?></td> -->
                                         <td><?php echo $sl['gambar']; ?></td>
                                         <td>
-                                            <img src="<?php echo base_url('assets/upload/slider/') . $sl['gambar'];
-                                                        ?>" width="100%">
+                                            <img class="img-thumbnail img-fluid" src="<?php echo base_url('assets/upload/slider/') . $sl['gambar'];
+                                                                                        ?>">
                                         </td>
 
                                         <td>
