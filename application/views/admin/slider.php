@@ -9,7 +9,7 @@
 </style>
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
@@ -24,7 +24,7 @@
                                     <th width="10">No.</th>
                                     <th>Nama Gambar</th>
                                     <th>Preview</th>
-                                    <th width="150">Aksi</th>
+                                    <th width="200">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -62,7 +62,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
 

@@ -32,7 +32,7 @@
                                 <option>Pilih Kecamatan/Distrik</option>
                             </select>
                         </div> 
-						<div class="col-md-2">
+						<div class="col-md-3">
 							<label for="txtKodeKabupaten" class="form-label">Kode Kelurahan/Desa</label>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
@@ -42,13 +42,18 @@
 								<input id="txtKodeKabupaten" type="text" class="form-control" name="kodekabupaten" placeholder="Kode Kelurahan/Desa" required>
 							</div>
 						</div>
-						<div class="col-md-2">
+
+						<div class="col-md-3">
 							<label for="txtKabupaten" class="form-label">Kelurahan/Desa</label>
 							<input id="txtKabupaten" type="text" class="form-control" name="wilayah" placeholder="Kelurahan/Desa" required>
-						</div>      
+						</div>  
+
+						<div class="col-md-3">
+						<label class="text-white">Label</label><br>   
 							<input type="hidden" id="kodewilayah" name="kodewilayah">                 
-							<button type="reset" class="btn btn-secondary">Reset</button>&nbsp;&nbsp;&nbsp;
-							<button type="submit" class="btn btn-primary">Save</button>
+							<button type="reset" class="btn btn-secondary btn-sm">Reset</button>&nbsp;&nbsp;&nbsp;
+							<button type="submit" class="btn btn-primary btn-sm">Save</button>
+						</div>
 						
 					</form>
 	

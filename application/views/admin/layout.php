@@ -36,10 +36,10 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div class="sidebar-brand-icon rotate-n-15">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?php echo base_url('administrator'); ?>">
+<!--                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
-                </div>
+                </div> -->
                 <div class="sidebar-brand-text mx-3">PMB SESAMA</div>
             </a>
 
@@ -78,11 +78,11 @@
                 </div>
                 </li>
 
-                <li class="nav-item <?php echo ($this->uri->segment(2) == "pengaturan") ? "active" : ""; ?>">
-                <a class="nav-link" href="<?php echo site_url('administrator/pengaturan'); ?>">
+<!--                 <li class="nav-item <?php // echo ($this->uri->segment(2) == "pengaturan") ? "active" : ""; ?>">
+                <a class="nav-link" href="<?php // echo site_url('administrator/pengaturan'); ?>">
                     <i class="fas fa-fw fa-cogs"></i>
                     <span>Pengaturan</span></a>
-                </li>
+                </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider">
