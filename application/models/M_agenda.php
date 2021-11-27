@@ -14,10 +14,16 @@ class M_agenda extends CI_Model
         return $query->row();
     }
 
-    function add($data)
+    // function add($data)
+    // {
+    //     $this->db->insert('agenda', $data);
+    //     return TRUE;
+    // }
+
+    public function add_agenda($params)
     {
-        $this->db->insert('agenda', $data);
-        return TRUE;
+        $this->db->insert('agenda', $params);
+        return $this->db->insert_id();
     }
 
     function edit($data, $id)
@@ -27,6 +33,7 @@ class M_agenda extends CI_Model
         return TRUE;
     }
 
+    // hapus data pendaftar
     function delete($id)
     {
         $this->db->where("id", $id);

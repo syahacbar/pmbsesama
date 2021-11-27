@@ -12,8 +12,9 @@ class Datatables extends CI_Controller
         if($this->ion_auth->in_group('members')) {
             redirect('auth/login', 'refresh');
         }
-		$this->load->model(['M_wilayah','M_pendaftar','M_prodi']);
+		$this->load->model(['M_wilayah','M_pendaftar','M_prodi', 'M_register']);
 	}
+
 
 	function provinsi_list()
     {
@@ -203,6 +204,23 @@ class Datatables extends CI_Controller
         $this->output->set_output(json_encode($output));
     } 
 
+    // ADDED BY ME AT 26112021
+    // TAMPIL DATA DI VIEW PENDAFTAR LIST
+    // public function data_pendaftar()
+    // {
+    //     $data ['data_pendaftar'] = $this->M_pendaftar->data_pendaftar();
+
+    //     $data['_view'] = 'admin/detail_pendaftar';
+    //     $this->load->view('admin/layout', $data);
+
+    // }
+
+    function proseslaporan($idt_biodata)
+    {
+        $status = $this->input->post('status');
+        $this->M_register->proseslaporan($idt_biodata, $status);
+    }
+
     function pendaftar_list()
     {
         header('Content-Type: application/json');
@@ -211,11 +229,20 @@ class Datatables extends CI_Controller
         $no = $this->input->post('start');
         //looping data mahasiswa
         foreach ($list as $pes) {
+            if ($pes->status=="Diterima"){ $classbtnTerima = "disabled"; $classbtnTolak = "";
+            } else if($pes->status=="Ditolak") { $classbtnTerima = ""; $classbtnTolak = "disabled";
+            } else if($pes->status=="Menunggu") { $classbtnTerima = ""; $classbtnTolak = "";
+        }
+
             $no++;
             $row = array();
             //row pertama akan kita gunakan untuk btn edit dan delete
-            $row[] = '<a class="btn btn-sm btn-success"><i class="fa fa-check-circle"></i></a>&nbsp;<a class="btn btn-sm btn-danger"><i class="fa fa-ban"></i></a>';
+            // $row[] = '<a class="btn btn-sm btn-success"><i class="fa fa-check-circle"></i></a>&nbsp;<a class="btn btn-sm btn-danger"><i class="fa fa-ban"></i></a>';
+
+            $row[] = '<button class="btn btn-sm btn-info btnTerima '.$classbtnTerima.'" idt_biodata="'.$pes->username.'" title="Terima" value="'.$pes->idt_biodata.'"><i class="fa fa-check-circle"></i></button>&nbsp;<button class="btn btn-sm btn-danger btnTolak '.$classbtnTolak.'" idt_biodata="'.$pes->username.'" title="Tolak" value="'.$pes->idt_biodata.'"><i class="fa fa-ban"></i></button>';
+
             $row[] = $no;
+            $row[] = $pes->status;
             $row[] = $pes->username;
             $row[] = $pes->namalengkap;
             $row[] = $pes->pilihan1;
@@ -223,7 +250,7 @@ class Datatables extends CI_Controller
             $row[] = $pes->pilihan3;
             $row[] = $pes->suku;
             $row[] = $pes->tahunakademik;
-            $row[] = '<a data-toggle="modal" data-target="#myModal" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>&nbsp;<a class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>&nbsp;<a class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>&nbsp;<a href="'.site_url('administrator/datapendaftar/kartupeserta/').$pes->username.'" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>'; 
+            $row[] = '<a href="'.site_url('administrator/datapendaftar/detail_pendaftar/').$pes->username.'" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>&nbsp;<a data-toggle="modal" data-target="#editData" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>&nbsp;<a href="'.site_url('administrator/datapendaftar/hapus_pendaftar/').$pes->idt_biodata.'" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>&nbsp;<a href="'.site_url('administrator/datapendaftar/kartupeserta/').$pes->username.'" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>'; 
             $data[] = $row;
         }
         
@@ -235,5 +262,13 @@ class Datatables extends CI_Controller
         );
         //output to json format
         $this->output->set_output(json_encode($output));
-    } 
+    }
+
+
+    // hapus data pendaftar
+    public function hapus_data($id) {   
+        $this->load->model("M_pendaftar");
+        $this->M_pendaftar->hapus_pendaftar($id);
+    }
+
 }

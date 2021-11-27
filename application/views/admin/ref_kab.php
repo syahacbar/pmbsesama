@@ -20,7 +20,7 @@
                             <?php endforeach; ?>
                             </select>
                         </div> 
-						<div class="col-md-2">
+						<div class="col-md-3">
 							<label for="txtKodeKabupaten" class="form-label">Kode Kabupaten/Kota</label>
 							<div class="input-group mb-3">
 								<div class="input-group-prepend">
@@ -33,10 +33,14 @@
 						<div class="col-md-3">
 							<label for="txtKabupaten" class="form-label">Kabupaten/Kota</label>
 							<input id="txtNamaKabupaten" type="text" class="form-control" name="txtNamaKabupaten" placeholder="Kabupaten/Kota" required>
-						</div>      
+						</div>    
+
+						<div class="col-md-3">
+						<label class="text-white">Label</label><br>
 							<input type="hidden" id="kodewilayah" name="kodewilayah">                 
-							<button type="reset" class="btn btn-secondary">Reset</button>&nbsp;&nbsp;&nbsp;
-							<button type="submit" class="btn btn-primary">Save</button>
+							<button type="reset" class="btn btn-secondary btn-sm">Reset</button>&nbsp;&nbsp;&nbsp;
+							<button type="submit" class="btn btn-primary btn-sm">Save</button>
+						</div>
 						
 					</form>
 	

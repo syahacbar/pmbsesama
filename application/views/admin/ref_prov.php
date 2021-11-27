@@ -13,7 +13,7 @@
 				<div class="card-body">
 					<?php echo $this->session->flashdata('notif'); ?>
 					<form id="formprovinsi" class="row g-3" method="POST">
-						<div class="col-md-2">
+						<div class="col-md-3">
 							<label>Kode Provinsi</label>
 							<input id="txtKodeProvinsi" type="text" class="form-control" name="txtKodeProvinsi" placeholder="Kode Provinsi" required>
 						</div>
@@ -21,9 +21,13 @@
 							<label>Provinsi</label>
 							<input id="txtNamaProvinsi" type="text" class="form-control" name="txtNamaProvinsi" placeholder="Provinsi" required>
 						</div>
+						<div class="col-md-3">
+						<label class="text-white">Label</label><br>
 						<input type="hidden" id="kodewilayah" name="kodewilayah" value="">
-						<button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>&nbsp;&nbsp;&nbsp;
-						<input type="submit" class="btn btn-primary btnSave" value="Save">
+						<button type="reset" class="btn btn-secondary btn-sm" data-dismiss="modal">Reset</button>&nbsp;&nbsp;&nbsp;
+						<input type="submit" class="btn btn-primary btn-sm btnSave" value="Save">
+						</div>
+
 					</form>
 				</div>
 			</div>

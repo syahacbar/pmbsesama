@@ -168,53 +168,39 @@
             <?php } ?>
 
             <div class="row d-flex agendaInformasi">
-                <div class="col-md-6">
+                <div class="col-md-6 mb-3">
                     <div class="card2 card border-0 px-4 py-5 agenda">
-                        <div class="row mb-4 px-3">
-                            <h4 class="mb-0 mr-4 mt-2">Agenda</h4>
+                    <div class="row">
+                        <div class="col-sm-12">
+                                <div class="row mb-4 px-3">
+                                    <h4 class="mb-0 mr-4 mt-2">Agenda</h4>
+                                </div>
+                        <table class="table">
+                            <tbody>
+                                <?php foreach ($agenda as $ag) { ?>
+                                    <tr>
+                                        <td>
+                                            <h6><?php echo $ag['judul']; ?></h6>
+                                            <p class="textmuted"><?php echo $ag['isi_agenda']; ?></p>
+                                        </td>
+                                        <td>
+
+                                                <a href="<?php echo base_url('agenda/detail/') . $ag['id']; ?>" class="btn btn-info btn-sm" target="_blank">Lihat</a>
+                                            </p>
+                                        </td>
+                                    </tr>
+                                <?php } ?>
+                            </tbody>
+                        </table>
+                            </div>
                         </div>
-                        <div class="row px-3 mb-4">
-                            <p class="textmuted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                <a href="#" class="text-danger">Baca Selengkapnya</a>
-                            </p>
-                        </div>
-                        <div class="row px-3 mb-4">
-                            <p class="textmuted">Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-                                <a href="#" class="text-danger">Baca Selengkapnya</a>
-                            </p>
-                        </div>
-                        <div class="row px-3 mb-4">
+                        <div class="col-sm-12 px-0 py-0">
                             <div>
-                                <a href="<?php echo base_url('informasi') ?>">Informasi Lainnya ...</a>
+                                <a href="<?php echo base_url('agenda') ?>" target="_blank" >Agenda Lainnya ...</a>
                             </div>
                         </div>
                     </div>
                 </div>
-                <!-- 
-                <div class="col-md-6">
-                    <div class="card2 card border-0 px-4 py-5 informasiTerbaru">
-                        <div class="row mb-4 px-3">
-                            <h4 class="mb-0 mr-4 mt-2">Informasi</h4>
-                        </div>
-                        <div class="row px-3 mb-4">
-                            <div>
-                                <h6>SK Penetapan Kelulusan Lokal 2021</h6>
-                                <button class="btn btn-info"><i class="fa fa-download"></i> Download</button>
-                            </div>
-                        </div>
-                        <div class="row px-3 mb-4">
-                            <div>
-                                <h6>Prosedur Registrasi Ulang Calon Mahasiswa Jalur Lokal 2021</h6>
-                                <button class="btn btn-info"><i class="fa fa-download"></i> Download</button>
-                            </div>
-                        </div>
-                        <div class="row px-3 mb-4">
-                            <div>
-                                <a href="#">Selengkapnya ...</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
 
                 <div class="col-md-6">
                     <div class="card2 card border-0 px-4 py-5 informasiTerbaru">
@@ -228,7 +214,7 @@
                                         <!-- <th width="20px" scope="row">1</th> -->
                                         <td><?php echo $in['judul']; ?></td>
                                         <td width="100px">
-                                            <a href="<?php echo base_url('assets/upload/informasi/') . $in['file']; ?>" class="btn btn-info btn-icon-split btn-sm downloadform">
+                                            <a href="<?php echo base_url('assets/upload/informasi/') . $in['file']; ?>" class="btn btn-info btn-icon-split btn-sm downloadform" target="_blank">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-download"></i>
                                                 </span>
@@ -241,7 +227,7 @@
                         </table>
                         <div class="row px-3 mb-4">
                             <div>
-                                <a href="<?php echo base_url('informasi') ?>">Informasi Lainnya ...</a>
+                                <a href="<?php echo base_url('informasi') ?>" target="_blank" >Informasi Lainnya ...</a>
                             </div>
                         </div>
                     </div>

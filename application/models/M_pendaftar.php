@@ -91,4 +91,27 @@ class M_pendaftar extends CI_Model
         return $this->db->count_all_results();
     }
 
+
+    // ADDED BY ME AT 26112021
+    // Tampild data di dalam modal view pendaftar list
+    // public function data_pendaftar()
+    // {
+    //     return $this->db->get('t_biodata')->result_array();
+
+    // }
+
+    public function data_pendaftar($username)
+    {
+        $query = $this->db->query("SELECT * FROM t_biodata WHERE username=$username");
+        return $query;
+
+    }
+
+    // hapus data pendaftar
+    public function hapus_pendaftar($idt_biodata)
+    {
+        $this->db->where('idt_biodata', $idt_biodata);
+        $this->db->delete('t_biodata'); 
+    }
+
 }
