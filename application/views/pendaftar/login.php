@@ -139,27 +139,27 @@
                             <div class="row mb-4 px-3">
                                 <h4 class="mb-0 mr-4 mt-2">Portal PMB Online</h4>
                             </div>
-                            <?php if($this->ion_auth->in_group('members')) { ?>
-                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                Sesi login Anda belum berakhir. Pastikan semua data telah diisi dengan benar.
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="row px-3 loginRegister">
-                                <small class="font-weight-bold">Silakan Cek/Lengkapi Biodata <a href="<?php echo site_url('register/isibiodata'); ?>" class="text-danger ">DI SINI</a></small>
-                            </div>
+                            <?php if ($this->ion_auth->in_group('members')) { ?>
+                                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                    Sesi login Anda belum berakhir. Pastikan semua data telah diisi dengan benar.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="row px-3 loginRegister">
+                                    <small class="font-weight-bold">Silakan Cek/Lengkapi Biodata <a href="<?php echo site_url('register/isibiodata'); ?>" class="text-danger ">DI SINI</a></small>
+                                </div>
                             <?php } else { ?>
 
-                            <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                Sesi login Anda belum berakhir. Silahkan klik tombol keluar untuk mengakhiri sesi.
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="row px-3 loginRegister">
-                                <small class="font-weight-bold">Kembali ke panel Admin <a href="<?php echo site_url('administrator'); ?>" class="text-danger ">DI SINI</a></small>
-                            </div>
+                                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                                    Sesi login Anda belum berakhir. Silahkan klik tombol keluar untuk mengakhiri sesi.
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="row px-3 loginRegister">
+                                    <small class="font-weight-bold">Kembali ke panel Admin <a href="<?php echo site_url('administrator'); ?>" class="text-danger ">DI SINI</a></small>
+                                </div>
                             <?php } ?>
 
                         </div>
@@ -170,33 +170,33 @@
             <div class="row d-flex agendaInformasi">
                 <div class="col-md-6 mb-3">
                     <div class="card2 card border-0 px-4 py-5 agenda">
-                    <div class="row">
-                        <div class="col-sm-12">
+                        <div class="row">
+                            <div class="col-sm-12">
                                 <div class="row mb-4 px-3">
                                     <h4 class="mb-0 mr-4 mt-2">Agenda</h4>
                                 </div>
-                        <table class="table">
-                            <tbody>
-                                <?php foreach ($agenda as $ag) { ?>
-                                    <tr>
-                                        <td>
-                                            <h6><?php echo $ag['judul']; ?></h6>
-                                            <p class="textmuted"><?php echo $ag['isi_agenda']; ?></p>
-                                        </td>
-                                        <td>
+                                <table class="table">
+                                    <tbody>
+                                        <?php foreach ($agenda as $ag) { ?>
+                                            <tr>
+                                                <td>
+                                                    <h6><?php echo $ag['judul']; ?></h6>
+                                                    <p class="textmuted"><?php echo $ag['isi_agenda']; ?></p>
+                                                </td>
+                                                <td>
 
-                                                <a href="<?php echo base_url('agenda/detail/') . $ag['id']; ?>" class="btn btn-info btn-sm" target="_blank">Lihat</a>
-                                            </p>
-                                        </td>
-                                    </tr>
-                                <?php } ?>
-                            </tbody>
-                        </table>
+                                                    <a href="<?php echo base_url('agenda/detail/') . $ag['id']; ?>" class="btn btn-info btn-sm" target="_blank">Lihat</a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        <?php } ?>
+                                    </tbody>
+                                </table>
                             </div>
                         </div>
                         <div class="col-sm-12 px-0 py-0">
                             <div>
-                                <a href="<?php echo base_url('agenda') ?>" target="_blank" >Agenda Lainnya ...</a>
+                                <a href="<?php echo base_url('agenda') ?>" target="_blank">Agenda Lainnya ...</a>
                             </div>
                         </div>
                     </div>
@@ -211,7 +211,6 @@
                             <tbody>
                                 <?php foreach ($informasi as $in) : ?>
                                     <tr>
-                                        <!-- <th width="20px" scope="row">1</th> -->
                                         <td><?php echo $in['judul']; ?></td>
                                         <td width="100px">
                                             <a href="<?php echo base_url('assets/upload/informasi/') . $in['file']; ?>" class="btn btn-info btn-icon-split btn-sm downloadform" target="_blank">
@@ -227,7 +226,7 @@
                         </table>
                         <div class="row px-3 mb-4">
                             <div>
-                                <a href="<?php echo base_url('informasi') ?>" target="_blank" >Informasi Lainnya ...</a>
+                                <a href="<?php echo base_url('informasi') ?>" target="_blank">Informasi Lainnya ...</a>
                             </div>
                         </div>
                     </div>

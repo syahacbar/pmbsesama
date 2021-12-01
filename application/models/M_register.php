@@ -42,6 +42,7 @@ class M_register extends CI_Model
     //     return $query;
     // }
 
+
     function update_biodata($username, $params)
     {
         $this->db->where('username', $username);
@@ -50,7 +51,7 @@ class M_register extends CI_Model
 
 
     function get_biodata_by_username($username)
-    { 
+    {
         $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil FROM t_biodata tb LEFT JOIN upload_data u ON u.username=tb.username WHERE tb.username=$username ORDER BY u.id DESC LIMIT 1");
         return $query;
     }
@@ -62,8 +63,8 @@ class M_register extends CI_Model
     //            ->update('t_biodata', array('status' => $status));
     // }
 
-    function proseslaporan($idt_biodata,$status)
+    function proseslaporan($idt_biodata, $status)
     {
-        return $this->db->where('idt_biodata',$idt_biodata)->update('t_biodata', array('status' => $status));
+        return $this->db->where('idt_biodata', $idt_biodata)->update('t_biodata', array('status' => $status));
     }
 }

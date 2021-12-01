@@ -2,11 +2,26 @@
 
 class M_agenda extends CI_Model
 {
-    function get_all()
+    // function get_all()
+    // {
+    //     $query = $this->db->get('agenda');
+    //     return $query->result_array();
+    // }
+    function get_all($limit = NULL)
     {
-        $query = $this->db->get('agenda');
+        if ($limit == NULL) {
+            $query = $this->db->get('agenda');
+        } else {
+            $query = $this->db->query("SELECT * FROM agenda ORDER BY id LIMIT $limit");
+        }
         return $query->result_array();
     }
+
+    // function get_image($idagenda)
+    // {
+    //     $query = $this->db->query("SELECT * FROM upload WHERE idagenda='$idagenda' AND kategori='dokumentasi1'");
+    //     return $query->row();
+    // }
 
     function get_by_id($id)
     {

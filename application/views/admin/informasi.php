@@ -98,7 +98,8 @@
                     url: "<?php echo site_url(); ?>administrator/informasi",
                     method: "POST",
                     data: {
-                        id: id, aksi:aksi
+                        id: id,
+                        aksi: aksi
                     },
                     success: function(data) {
                         alert("Data Berhasil Dihapus");
@@ -127,9 +128,9 @@
             c.append("idinformasi", $("input#idinformasi").val());
         });
 
-        informasi_upload.on("complete", function (file) {
+        informasi_upload.on("complete", function(file) {
             if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
-              window.location.href = "<?php echo site_url('administrator/informasi');?>";
+                window.location.href = "<?php echo site_url('administrator/informasi'); ?>";
             }
         });
 
