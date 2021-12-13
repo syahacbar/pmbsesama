@@ -17,14 +17,16 @@
                     <h6 class="m-0 font-weight-bold text-primary">Slider</h6>
                 </div>
                 <div class="card-body">
+                    <!-- <div id="flash" data-flash="<?php // echo $this->session->flasdata('success'); 
+                                                        ?>"></div> -->
                     <div class="table-responsive">
                         <table class="table table-bordered" id="tableSlider" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th width="10">No.</th>
-                                    <th>Nama Gambar</th>
+                                    <th width="200">Nama Gambar</th>
                                     <th>Preview</th>
-                                    <th width="200">Aksi</th>
+                                    <th width="100">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -41,12 +43,14 @@
                                         </td>
 
                                         <td>
-                                            <a href="#" class="btn btn-info btn-icon-split btn-sm editform" data-gambarslider="<?php echo $sl['gambar'] ?>" data-idslider="<?php echo $sl['id'] ?>">
+                                            <!-- <a href="#" class="btn btn-info btn-icon-split btn-sm editform" data-gambarslider="<?php // echo $sl['gambar'] 
+                                                                                                                                    ?>" data-idslider="<?php // echo $sl['id'] 
+                                                                                                                                                        ?>">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
                                                 <span class="text">Edit</span>
-                                            </a>
+                                            </a> -->
                                             <a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-idslider="<?php echo $sl['id'] ?>">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-trash"></i>
@@ -67,7 +71,7 @@
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Slider</h6>
+                    <h6 class="m-0 font-weight-bold text-primary">Tambah Slider</h6>
                 </div>
                 <div class="card-body">
                     <div class="form-group">
@@ -81,7 +85,7 @@
                             </div>
                         </div>
                     </div>
-                    <button type="submit" class="btn btn-primary">Save</button>
+                    <button type="submit" class="btn btn-primary saveSlider">Save</button>
 
                 </div>
 
@@ -96,33 +100,41 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var table = $('#dataTable').DataTable();
-        $("#dataTable").on("click", ".editform", function() {
-            event.preventDefault();
-            // $("input#judulAgenda").val($(this).data('judul'));
-            // $("textarea#isiAgenda").val($(this).data('isi_agenda'));
-            $("#slider").val($(this).data('slider'));
-            // $("input#id").val($(this).data('id'));
+        // $("#dataTable").on("click", ".editform", function() {
+        // event.preventDefault();
+        // $("input#judulAgenda").val($(this).data('judul'));
+        // $("textarea#isiAgenda").val($(this).data('isi_agenda'));
+        // $("#slider").val($(this).data('slider'));
+        // $("input#id").val($(this).data('id'));
 
-            $('#formagenda').attr('action', '<?php echo site_url('administrator/agenda/edit'); ?>');
-        });
+        // $('#formagenda').attr('action', '<?php // echo site_url('administrator/agenda/edit'); 
+                                            ?>');
+        // });
 
         $(document).on('click', '.deletedata', function() {
-            var idslider = $(this).data("idslider");
-            if (confirm("Are you sure you want to delete this?")) {
-                $.ajax({
-                    url: "<?php echo site_url(); ?>administrator/agenda/delete",
-                    method: "POST",
-                    data: {
-                        idslider: idslider
-                    },
-                    success: function(data) {
-                        alert("Data Berhasil Dihapus");
-                        location.reload();
-                    }
-                });
-            } else {
-                return false;
-            }
+            var id = $(this).data("idslider");
+            $.ajax({
+                url: "<?php echo site_url(); ?>administrator/slider/delete",
+                method: "POST",
+                data: {
+                    id: id
+                },
+                success: function(data) {
+                    Swal.fire({
+                        title: "Berhasil",
+                        text: "Slider telah dihapus",
+                        icon: "success",
+                        buttons: [
+                            'NO',
+                            'YES'
+                        ],
+                    }).then(function(isConfirm) {
+                        if (isConfirm) {
+                            location.reload();
+                        }
+                    });
+                }
+            });
         });
     });
 </script>
@@ -144,4 +156,25 @@
     upload_slider.on("sending", function(file, xhr, formData) {
         formData.append("gambar", "gambar");
     });
+
+
+    // Simpan Slider
+    $(document).on('click', '.saveSlider', function(e) {
+
+        Swal.fire({
+            title: "Berhasil",
+            text: "Anda menambah slider baru!",
+            icon: "success",
+            buttons: [
+                'NO',
+                'YES'
+            ],
+        }).then(function(isConfirm) {
+            if (isConfirm) {
+                location.reload();
+            } else {
+                //if no clicked => do something else
+            }
+        });
+    })
 </script>

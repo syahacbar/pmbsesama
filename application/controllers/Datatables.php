@@ -3,20 +3,20 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 class Datatables extends CI_Controller
 {
-	public function __construct()
-	{
-		parent::__construct();
+    public function __construct()
+    {
+        parent::__construct();
         if (!$this->ion_auth->logged_in()) {
             redirect('auth/login', 'refresh');
         }
-        if($this->ion_auth->in_group('members')) {
+        if ($this->ion_auth->in_group('members')) {
             redirect('auth/login', 'refresh');
         }
-		$this->load->model(['M_wilayah','M_pendaftar','M_prodi', 'M_register']);
-	}
+        $this->load->model(['M_wilayah', 'M_pendaftar', 'M_prodi', 'M_register']);
+    }
 
 
-	function provinsi_list()
+    function provinsi_list()
     {
         header('Content-Type: application/json');
         $list = $this->M_wilayah->get_datatables('provinsi');
@@ -30,8 +30,8 @@ class Datatables extends CI_Controller
             $row[] = $no;
             $row[] = $prov->kode;
             $row[] = $prov->namaprov;
-            $row[] = '<a href="#" class="btn btn-info btn-icon-split btn-sm editdata" data-namaprovinsi="'.$prov->namaprov.'" data-kodeprovinsi="'.$prov->kode.'" data-kodewilayah="'.$prov->kode.'"><span class="icon text-white-50"><i class="fas fa-edit"></i></span><span class="text">Edit</span></a>
-            		<a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-kodeprovinsi="'.$prov->kode.'"><span class="icon text-white-50"><i class="fas fa-trash"></i></span><span class="text">Hapus</span></a>';
+            $row[] = '<a href="#" class="btn btn-info btn-icon-split btn-sm editdata" data-namaprovinsi="' . $prov->namaprov . '" data-kodeprovinsi="' . $prov->kode . '" data-kodewilayah="' . $prov->kode . '"><span class="icon text-white-50"><i class="fas fa-edit"></i></span><span class="text">Edit</span></a>
+            		<a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-kodeprovinsi="' . $prov->kode . '"><span class="icon text-white-50"><i class="fas fa-trash"></i></span><span class="text">Hapus</span></a>';
             $data[] = $row;
         }
         $output = array(
@@ -42,33 +42,31 @@ class Datatables extends CI_Controller
         );
         //output to json format
         $this->output->set_output(json_encode($output));
-
     }
 
-    function provinsi_save($id=NULL)
+    function provinsi_save($id = NULL)
     {
-    	$data = array(	'kode'  => $this->input->post('kodeprov'),
-    					'nama'  => $this->input->post('namaprov'),
-    				);
+        $data = array(
+            'kode'  => $this->input->post('kodeprov'),
+            'nama'  => $this->input->post('namaprov'),
+        );
 
-    	if($id==NULL)
-    	{
-    		$this->M_wilayah->add($data);
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-    	} else {
-    		$id = $this->input->post('kodewilayah');
-    		$this->M_wilayah->edit($data, $id);
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-    	}
-		
+        if ($id == NULL) {
+            $this->M_wilayah->add($data);
+            $this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        } else {
+            $id = $this->input->post('kodewilayah');
+            $this->M_wilayah->edit($data, $id);
+            $this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+        }
     }
 
     function provinsi_delete()
     {
-    	$id = $this->input->post('kodeprov');
-		$this->M_wilayah->delete($id);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil dihapus <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-    }  
+        $id = $this->input->post('kodeprov');
+        $this->M_wilayah->delete($id);
+        $this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil dihapus <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+    }
 
     function kabupaten_list()
     {
@@ -85,8 +83,8 @@ class Datatables extends CI_Controller
             $row[] = $kab->kode;
             $row[] = $kab->namakab;
             $row[] = $kab->namaprov;
-            $row[] = '<a href="#" class="btn btn-info btn-icon-split btn-sm editdata" data-namakabupaten="'.$kab->namakab.'" data-kodeprovinsi="'.substr($kab->kode,0,2).'" data-kodekabupaten="'.substr($kab->kode,3,2).'" data-kodewilayah="'.$kab->kode.'"><span class="icon text-white-50"><i class="fas fa-edit"></i></span><span class="text">Edit</span></a>
-                    <a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-kodekabupaten="'.$kab->kode.'"><span class="icon text-white-50"><i class="fas fa-trash"></i></span><span class="text">Hapus</span></a>';
+            $row[] = '<a href="#" class="btn btn-info btn-icon-split btn-sm editdata" data-namakabupaten="' . $kab->namakab . '" data-kodeprovinsi="' . substr($kab->kode, 0, 2) . '" data-kodekabupaten="' . substr($kab->kode, 3, 2) . '" data-kodewilayah="' . $kab->kode . '"><span class="icon text-white-50"><i class="fas fa-edit"></i></span><span class="text">Edit</span></a>
+                    <a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-kodekabupaten="' . $kab->kode . '"><span class="icon text-white-50"><i class="fas fa-trash"></i></span><span class="text">Hapus</span></a>';
             $data[] = $row;
         }
         $output = array(
@@ -97,25 +95,24 @@ class Datatables extends CI_Controller
         );
         //output to json format
         $this->output->set_output(json_encode($output));
+    }
 
-    } 
-
-    function kabupaten_save($id=NULL)
+    function kabupaten_save($id = NULL)
     {
-        $kode = $this->input->post('kodeprov').".".$this->input->post('kodekab');
-        $data = array(  'kode'  => $kode,
-                        'nama'  => $this->input->post('namakab'),
-                    );
+        $kode = $this->input->post('kodeprov') . "." . $this->input->post('kodekab');
+        $data = array(
+            'kode'  => $kode,
+            'nama'  => $this->input->post('namakab'),
+        );
 
-        if($id==NULL)
-        {
+        if ($id == NULL) {
             $this->M_wilayah->add($data);
             $this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
         } else {
             $id = $this->input->post('kodewilayah');
             $this->M_wilayah->edit($data, $id);
             $this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-        }        
+        }
     }
 
     function kabupaten_delete()
@@ -123,7 +120,7 @@ class Datatables extends CI_Controller
         $id = $this->input->post('kodekab');
         $this->M_wilayah->delete($id);
         $this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil dihapus <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-    }  
+    }
 
     function kecamatan_list()
     {
@@ -141,8 +138,8 @@ class Datatables extends CI_Controller
             $row[] = $kec->namakec;
             $row[] = $kec->namakab;
             $row[] = $kec->namaprov;
-            $row[] = '<a href="#" class="btn btn-info btn-icon-split btn-sm editdata" data-namakecamatan="'.$kec->namakec.'" data-kodeprovinsi="'.substr($kec->kode,0,2).'" data-kodekabupaten="'.substr($kec->kode,0,5).'" data-kodekecamatan="'.substr($kec->kode,6,2).'" data-kodewilayah="'.$kec->kode.'"><span class="icon text-white-50"><i class="fas fa-edit"></i></span><span class="text">Edit</span></a>
-                    <a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-kodeprovinsi="'.$kec->kode.'"><span class="icon text-white-50"><i class="fas fa-trash"></i></span><span class="text">Hapus</span></a>';
+            $row[] = '<a href="#" class="btn btn-info btn-icon-split btn-sm editdata" data-namakecamatan="' . $kec->namakec . '" data-kodeprovinsi="' . substr($kec->kode, 0, 2) . '" data-kodekabupaten="' . substr($kec->kode, 0, 5) . '" data-kodekecamatan="' . substr($kec->kode, 6, 2) . '" data-kodewilayah="' . $kec->kode . '"><span class="icon text-white-50"><i class="fas fa-edit"></i></span><span class="text">Edit</span></a>
+                    <a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-kodeprovinsi="' . $kec->kode . '"><span class="icon text-white-50"><i class="fas fa-trash"></i></span><span class="text">Hapus</span></a>';
             $data[] = $row;
         }
         $output = array(
@@ -153,24 +150,24 @@ class Datatables extends CI_Controller
         );
         //output to json format
         $this->output->set_output(json_encode($output));
-    } 
+    }
 
-    function kecamatan_save($id=NULL)
+    function kecamatan_save($id = NULL)
     {
-        $kode = $this->input->post('kodekab').".".$this->input->post('kodekec');
-        $data = array(  'kode'  => $kode,
-                        'nama'  => $this->input->post('namakec'),
-                    );
+        $kode = $this->input->post('kodekab') . "." . $this->input->post('kodekec');
+        $data = array(
+            'kode'  => $kode,
+            'nama'  => $this->input->post('namakec'),
+        );
 
-        if($id==NULL)
-        {
+        if ($id == NULL) {
             $this->M_wilayah->add($data);
             $this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
         } else {
             $id = $this->input->post('kodewilayah');
             $this->M_wilayah->edit($data, $id);
             $this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-        }        
+        }
     }
 
     function desa_list()
@@ -190,8 +187,8 @@ class Datatables extends CI_Controller
             $row[] = $des->namakec;
             $row[] = $des->namakab;
             $row[] = $des->namaprov;
-            $row[] = '<a href="#" class="btn btn-info btn-icon-split btn-sm editdata" data-namaprovinsi="'.$des->namakec.'" data-kodeprovinsi="'.$des->kode.'" data-kodewilayah="'.$des->kode.'"><span class="icon text-white-50"><i class="fas fa-edit"></i></span><span class="text">Edit</span></a>
-                    <a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-kodeprovinsi="'.$des->kode.'"><span class="icon text-white-50"><i class="fas fa-trash"></i></span><span class="text">Hapus</span></a>';
+            $row[] = '<a href="#" class="btn btn-info btn-icon-split btn-sm editdata" data-namaprovinsi="' . $des->namakec . '" data-kodeprovinsi="' . $des->kode . '" data-kodewilayah="' . $des->kode . '"><span class="icon text-white-50"><i class="fas fa-edit"></i></span><span class="text">Edit</span></a>
+                    <a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-kodeprovinsi="' . $des->kode . '"><span class="icon text-white-50"><i class="fas fa-trash"></i></span><span class="text">Hapus</span></a>';
             $data[] = $row;
         }
         $output = array(
@@ -202,18 +199,7 @@ class Datatables extends CI_Controller
         );
         //output to json format
         $this->output->set_output(json_encode($output));
-    } 
-
-    // ADDED BY ME AT 26112021
-    // TAMPIL DATA DI VIEW PENDAFTAR LIST
-    // public function data_pendaftar()
-    // {
-    //     $data ['data_pendaftar'] = $this->M_pendaftar->data_pendaftar();
-
-    //     $data['_view'] = 'admin/detail_pendaftar';
-    //     $this->load->view('admin/layout', $data);
-
-    // }
+    }
 
     function proseslaporan($idt_biodata)
     {
@@ -223,24 +209,33 @@ class Datatables extends CI_Controller
 
     function pendaftar_list()
     {
+
+
         header('Content-Type: application/json');
+        // session()->set_Flashdata('swall-icon', 'success');
+        // session()->set_Flashdata('swall-title', 'Title Swall');
+        // session()->set_Flashdata('swall-text', 'Text Swall');
         $list = $this->M_pendaftar->get_datatables();
         $data = array();
         $no = $this->input->post('start');
         //looping data mahasiswa
         foreach ($list as $pes) {
-            if ($pes->status=="Diterima"){ $classbtnTerima = "disabled"; $classbtnTolak = "";
-            } else if($pes->status=="Ditolak") { $classbtnTerima = ""; $classbtnTolak = "disabled";
-            } else if($pes->status=="Menunggu") { $classbtnTerima = ""; $classbtnTolak = "";
-        }
+            if ($pes->status == "Diterima") {
+                $classbtnTerima = "disabled";
+                $classbtnTolak = "";
+            } else if ($pes->status == "Ditolak") {
+                $classbtnTerima = "";
+                $classbtnTolak = "disabled";
+            } else if ($pes->status == "Menunggu") {
+                $classbtnTerima = "";
+                $classbtnTolak = "";
+            }
 
             $no++;
             $row = array();
             //row pertama akan kita gunakan untuk btn edit dan delete
             // $row[] = '<a class="btn btn-sm btn-success"><i class="fa fa-check-circle"></i></a>&nbsp;<a class="btn btn-sm btn-danger"><i class="fa fa-ban"></i></a>';
-
-            $row[] = '<button class="btn btn-sm btn-info btnTerima '.$classbtnTerima.'" idt_biodata="'.$pes->username.'" title="Terima" value="'.$pes->idt_biodata.'"><i class="fa fa-check-circle"></i></button>&nbsp;<button class="btn btn-sm btn-danger btnTolak '.$classbtnTolak.'" idt_biodata="'.$pes->username.'" title="Tolak" value="'.$pes->idt_biodata.'"><i class="fa fa-ban"></i></button>';
-
+            $row[] = '<button class="btn btn-sm btn-info btnTerima ' . $classbtnTerima . '" idt_biodata="' . $pes->username . '" title="Terima" value="' . $pes->idt_biodata . '"><i class="fa fa-check-circle"></i></button>&nbsp;<button class="btn btn-sm btn-danger btnTolak ' . $classbtnTolak . '" idt_biodata="' . $pes->username . '" title="Tolak" value="' . $pes->idt_biodata . '"><i class="fa fa-ban"></i></button>';
             $row[] = $no;
             $row[] = $pes->status;
             $row[] = $pes->username;
@@ -250,10 +245,10 @@ class Datatables extends CI_Controller
             $row[] = $pes->pilihan3;
             $row[] = $pes->suku;
             $row[] = $pes->tahunakademik;
-            $row[] = '<a href="'.site_url('administrator/datapendaftar/detail_pendaftar/').$pes->username.'" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>&nbsp;<a data-toggle="modal" data-target="#editData" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>&nbsp;<a href="'.site_url('administrator/datapendaftar/hapus_pendaftar/').$pes->idt_biodata.'" class="btn btn-sm btn-danger"><i class="fa fa-trash"></i></a>&nbsp;<a href="'.site_url('administrator/datapendaftar/kartupeserta/').$pes->username.'" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>'; 
+            $row[] = '<a href="' . site_url('administrator/datapendaftar/detail_pendaftar/') . $pes->username . '" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>&nbsp;<a href="' . site_url('administrator/datapendaftar/editpendaftar/') . $pes->username . '" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>&nbsp;<a href="' . site_url('administrator/datapendaftar/hapus_pendaftar/') . $pes->idt_biodata . '" class="btn btn-sm btn-danger" id="btnHapus"><i class="fa fa-trash"></i></a>&nbsp;<a href="' . site_url('administrator/datapendaftar/kartupeserta/') . $pes->username . '" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>';
             $data[] = $row;
         }
-        
+
         $output = array(
             "draw" => $this->input->post('draw'),
             "recordsTotal" => $this->M_pendaftar->count_all(),
@@ -264,11 +259,15 @@ class Datatables extends CI_Controller
         $this->output->set_output(json_encode($output));
     }
 
+    // public function pendaftar()
+    // {
 
-    // hapus data pendaftar
-    public function hapus_data($id) {   
-        $this->load->model("M_pendaftar");
-        $this->M_pendaftar->hapus_pendaftar($id);
-    }
+    //     $data['count_oap'] = $this->M_pendaftar->count_by_suku('Papua')->num_rows();
+    //     $data['count_noap'] = $this->M_pendaftar->count_by_suku('Non Papua')->num_rows();
+    //     $data['list_pendaftar'] = $this->M_pendaftar->data_pendaftar();
+    //     $data['t_biodata'] = $this->M_pendaftar->get_all();
 
+    //     $data['_view'] = 'admin/dashboard';
+    //     $this->load->view('admin/layout', $data);
+    // }
 }

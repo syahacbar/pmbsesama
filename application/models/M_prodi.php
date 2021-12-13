@@ -1,10 +1,10 @@
 <?php
- 
+
 class M_prodi extends CI_Model
 {
     function get_all()
     {
-        $query = $this->db->query("SELECT p.*, f.namafakultas AS namafakultas FROM prodi p JOIN fakultas f ON p.idfakultas=f.idfakultas");  
+        $query = $this->db->query("SELECT p.*, f.namafakultas AS namafakultas FROM prodi p JOIN fakultas f ON p.idfakultas=f.idfakultas");
         return $query->result_array();
     }
 
@@ -30,7 +30,7 @@ class M_prodi extends CI_Model
 
     function get_by_id($id)
     {
-        $query = $this->db->get_where('prodi', array('idprodi'=>$id));
+        $query = $this->db->get_where('prodi', array('idprodi' => $id));
         return $query->row();
     }
 }
