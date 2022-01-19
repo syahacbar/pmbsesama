@@ -105,7 +105,31 @@ class M_pendaftar extends CI_Model
         // $query = $this->db->query("SELECT * FROM t_biodata WHERE username=$username");
         // return $query;
         // $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil FROM t_biodata tb LEFT JOIN upload_data u ON u.username=tb.username WHERE tb.username=$username ORDER BY u.id DESC LIMIT 1");
-        $this->db->select('*,(SELECT p1.namaprodi FROM prodi p1 WHERE p1.idprodi=tb.prodipilihan1) AS pilihan1, (SELECT p2.namaprodi FROM prodi p2 WHERE p2.idprodi=tb.prodipilihan2) AS pilihan2, (SELECT p3.namaprodi FROM prodi p3 WHERE p3.idprodi=tb.prodipilihan3) AS pilihan3, (SELECT agama FROM agama WHERE idagama=tb.agama) AS agama, (SELECT status FROM statusmenikah WHERE idstatusmenikah=tb.statusmenikah) AS statusmenikah');
+        $this->db->select('*,(SELECT p1.namaprodi FROM prodi p1 WHERE p1.idprodi=tb.prodipilihan1) AS pilihan1,
+        (SELECT p2.namaprodi FROM prodi p2 WHERE p2.idprodi=tb.prodipilihan2) AS pilihan2,
+        (SELECT p3.namaprodi FROM prodi p3 WHERE p3.idprodi=tb.prodipilihan3) AS pilihan3,
+        (SELECT agama FROM agama WHERE idagama=tb.agama) AS agama,
+        (SELECT status FROM statusmenikah WHERE idstatusmenikah=tb.statusmenikah) AS statusmenikah,
+        (SELECT namajurusan FROM jurusansmta WHERE idjurusansmta=tb.jurusansmta) AS jurusansmta,
+        (SELECT namajenissmta FROM jenissmta WHERE idjenissmta=tb.jenissmta) AS jenissmta,
+        (SELECT namapekerjaan FROM pekerjaanortu WHERE idpekerjaan=tb.pekerjaan_ayah) AS pekerjaan_ayah,
+        (SELECT namapekerjaan FROM pekerjaanortu WHERE idpekerjaan=tb.pekerjaan_ibu) AS pekerjaan_ibu,
+        (SELECT namapekerjaan FROM pekerjaanortu WHERE idpekerjaan=tb.pekerjaan_wali) AS pekerjaan_wali,
+        (SELECT namajenjang FROM pendidikanortu WHERE idpendidikan=tb.pendidikan_ayah) AS pendidikan_ayah,
+        (SELECT namajenjang FROM pendidikanortu WHERE idpendidikan=tb.pendidikan_ibu) AS pendidikan_ibu,
+        (SELECT penghasilan FROM penghasilanortu WHERE idpenghasilan=tb.penghasilan_ortu) AS penghasilan_ortu,
+        (SELECT penghasilan FROM penghasilanortu WHERE idpenghasilan=tb.penghasilan_wali) AS penghasilan_wali,
+        (SELECT nama FROM wilayah_2020 WHERE kode=tb.prov_tempattinggal) AS prov_tempattinggal,
+        (SELECT nama FROM wilayah_2020 WHERE kode=tb.kab_tempattinggal) AS kab_tempattinggal,
+        (SELECT nama FROM wilayah_2020 WHERE kode=tb.kec_tempattinggal) AS kec_tempattinggal,
+        (SELECT nama FROM wilayah_2020 WHERE kode=tb.des_tempattinggal) AS des_tempattinggal,
+        (SELECT nama FROM wilayah_2020 WHERE kode=tb.provinsi_tempattinggalortu) AS provinsi_tempattinggalortu,
+        (SELECT nama FROM wilayah_2020 WHERE kode=tb.kab_tempattinggalortu) AS kab_tempattinggalortu,
+        (SELECT nama FROM wilayah_2020 WHERE kode=tb.kec_tempattinggalortu) AS kec_tempattinggalortu,
+        (SELECT nama FROM wilayah_2020 WHERE kode=tb.prov_tempatlahir) AS prov_tempatlahir,
+        (SELECT nama FROM wilayah_2020 WHERE kode=tb.kab_tempatlahir) AS kab_tempatlahir,
+        (SELECT nama FROM wilayah_2020 WHERE kode=tb.lokasi_tempatlahir) AS lokasi_tempatlahir,
+        (SELECT nama FROM wilayah_2020 WHERE kode=tb.prov_smta) AS prov_smta');
         $this->db->from('users u');
         $this->db->join('t_biodata tb', 'tb.username = u.username');
         $this->db->where('u.username', $username);

@@ -561,14 +561,12 @@
 																			<tr>
 																				<td width="250">No. HP</td>
 																				<td>:</td>
-																				<td><?php // echo $p['']; 
-																					?></td>
+																				<td><?php echo $p['nohp']; ?></td>
 																			</tr>
 																			<tr>
 																				<td width="250">Alamat Email</td>
 																				<td>:</td>
-																				<td><?php // echo $p['']; 
-																					?></td>
+																				<td><?php echo $p['email']; ?></td>
 																			</tr>
 																			<tr>
 																				<td width="250">Tinggi Badan</td>

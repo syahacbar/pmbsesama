@@ -682,7 +682,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Tempat Lahir *</label>
-                                                <input name="tempatlahir" id="tempatlahir" type="text" class="form-control" placeholder="" value="<?php echo $row['lokasi_tempatlahir']; ?>" required>
+                                                <input name="lokasi_tempatlahir" id="lokasi_tempatlahir" type="text" class="form-control" placeholder="" value="<?php echo $row['lokasi_tempatlahir']; ?>" required>
                                             </div>
                                         </div>
 
@@ -741,6 +741,9 @@
                                                 <label>Kecamatan/Distrik *</label>
                                                 <select name="kectempattinggal" id="kectempattinggal" class="form-select" aria-label="Default select example">
                                                     <option <?php echo ($row['kec_tempattinggal'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <?php foreach ($kecamatan as $kec) : ?>
+                                                        <option value="<?php echo $kec['kode']; ?>" <?php echo ($kec['kode'] == $row['kec_tempattinggal']) ? 'selected' : ''; ?>><?php echo $kec['nama']; ?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -750,6 +753,9 @@
                                                 <label>Kelurahan/Desa *</label>
                                                 <select name="destempattinggal" id="destempattinggal" class="form-select" aria-label="Default select example">
                                                     <option <?php echo ($row['des_tempattinggal'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <?php foreach ($desa as $des) : ?>
+                                                        <option value="<?php echo $des['kode']; ?>" <?php echo ($des['kode'] == $row['des_tempattinggal']) ? 'selected' : ''; ?>><?php echo $des['nama']; ?></option>
+                                                    <?php endforeach; ?>
                                                 </select>
                                             </div>
                                         </div>
@@ -792,14 +798,14 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>No. Telp./HP *</label>
-                                                <input name="nohp" type="text" class="form-control" placeholder="" required value="<?php echo $nohp; ?>" readonly>
+                                                <input name="nohp" id="nohp" type="text" class="form-control" placeholder="" required value="<?php echo $row['nohp']; ?>">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Alamat Email *</label>
-                                                <input name="email" type="email" class="form-control" placeholder="" required value="<?php echo $email; ?>" readonly>
+                                                <input name="email" id="email" type="email" class="form-control" placeholder="" required value="<?php echo $row['email']; ?>">
                                                 <small>Email Aktif</small>
                                             </div>
                                         </div>
@@ -1456,12 +1462,14 @@
                     var agama = $("select[name='agama']").val();
                     var suku = $("select[name='suku']").val();
                     var statusmenikah = $("select[name='statusmenikah']").val();
+                    var nohp = $("input[name='nohp']").val();
+                    var email = $("input[name='email']").val();
                     var prodipilihan1 = $("select[name='prodipilihan1']").val();
                     var prodipilihan2 = $("select[name='prodipilihan2']").val();
                     var prodipilihan3 = $("select[name='prodipilihan3']").val();
                     var prov_tempatlahir = $("select[name='provtempatlahir']").val();
                     var kab_tempatlahir = $("select[name='kabtempatlahir']").val();
-                    var lokasi_tempatlahir = $("input[name='tempatlahir']").val();
+                    var lokasi_tempatlahir = $("input[name='lokasi_tempatlahir']").val();
                     var tgl_lahir = $("input[name='tanggallahir']").val();
                     var negara_tempattinggal = $("input[name='negaratinggal']").val();
                     var prov_tempattinggal = $("select[name='provtempattinggal']").val();
@@ -1485,6 +1493,8 @@
                             agama: agama,
                             suku: suku,
                             statusmenikah: statusmenikah,
+                            nohp: nohp,
+                            email: email,
                             prodipilihan1: prodipilihan1,
                             prodipilihan2: prodipilihan2,
                             prodipilihan3: prodipilihan3,
