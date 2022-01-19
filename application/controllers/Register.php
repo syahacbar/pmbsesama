@@ -104,6 +104,7 @@ class Register extends CI_Controller
 			'pendidikanortu' => $this->M_pendidikanortu->get_all(),
 			'pekerjaanortu' => $this->M_pekerjaanortu->get_all(),
 			'penghasilanortu' => $this->M_penghasilanortu->get_all(),
+			'kabupaten' => $this->M_wilayah->get_all_kabupaten(),
 
 
 		);
@@ -117,6 +118,7 @@ class Register extends CI_Controller
 
 		$user = $this->ion_auth->user()->row();
 		$params = array(
+			'nisn_pendaftar' => $this->input->post('nisn_pendaftar'),
 			'nik' => $this->input->post('nik'),
 			'jeniskelamin' => $this->input->post('jenkel'),
 			'suku' => $this->input->post('suku'),

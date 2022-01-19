@@ -528,6 +528,14 @@
                                             </div>
                                         </div>
 
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>NISN (Nomor Induk Siswa Nasional) *</label>
+                                                <input name="nisn_pendaftar" id="nisn_pendaftar" type="text" class="form-control" placeholder="" value="<?php echo $row['nisn_pendaftar']; ?>" required>
+                                                <small>Ketik NISN Anda.</small>
+                                            </div>
+                                        </div>
+
                                         <div class="col-sm-6 jeniskelamin">
                                             <label>Jenis Kelamin</label>
                                             <div class="row">
@@ -722,7 +730,7 @@
                                                 <select name="kabtempattinggal" id="kabtempattinggal" class="form-select" aria-label="Default select example">
                                                     <option <?php echo ($row['kab_tempattinggal'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($kabupaten as $kab) : ?>
-                                                        <option value="<?php echo $kab['kode']; ?>" <?php echo ($row['kab_tempattinggal'] == $kab['kode']) ? 'selected' : ''; ?>><?php echo $kab['nama']; ?></option>
+                                                        <option value="<?php echo $kab['kode']; ?>" <?php echo ($kab['kode'] == $row['kab_tempattinggal']) ? 'selected' : ''; ?>><?php echo $kab['nama']; ?></option>
                                                     <?php endforeach; ?>
                                                 </select>
                                             </div>
@@ -884,9 +892,9 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>NISN SMTA *</label>
+                                                <label>NPSN (Nomor Pokok Sekolah Nasional) *</label>
                                                 <input name="nisnsmta" id="nisnsmta" type="text" class="form-control" placeholder="" value="<?php echo $row['nisn_smta']; ?>" required>
-                                                <small>Ketik NISN SMTA Anda.</small>
+                                                <small>Ketik NPSN (Nomor Pokok Sekolah Nasional) Anda.</small>
                                             </div>
                                         </div>
 
@@ -923,7 +931,6 @@
                                             </div>
                                         </div>
 
-
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Kelas XI semeseter 2</label>
@@ -937,7 +944,6 @@
                                                 <input name="nrapor3" id="nrapor3" type="text" class="form-control" placeholder="" value="<?php echo $row['nrapor3']; ?>" required></input>
                                             </div>
                                         </div>
-
 
                                         <div class="dropzone dokrapor col-sm-12 mb-5" id="upload-dokumen">
                                             <div class="form">
@@ -1446,6 +1452,7 @@
                     $("#next1").attr("disabled", "disabled");
                     var jenkel = $(".jenkel:checked").val();
                     var nik = $("input[name='nik']").val();
+                    var nisn_pendaftar = $("input[name='nisn_pendaftar']").val();
                     var agama = $("select[name='agama']").val();
                     var suku = $("select[name='suku']").val();
                     var statusmenikah = $("select[name='statusmenikah']").val();
@@ -1472,6 +1479,7 @@
                         url: "<?php echo site_url('register/next1'); ?>",
                         type: "POST",
                         data: {
+                            nisn_pendaftar: nisn_pendaftar,
                             jenkel: jenkel,
                             nik: nik,
                             agama: agama,

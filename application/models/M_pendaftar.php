@@ -99,11 +99,17 @@ class M_pendaftar extends CI_Model
         return $this->db->count_all_results();
     }
 
+
     public function data_pendaftar($username)
     {
         // $query = $this->db->query("SELECT * FROM t_biodata WHERE username=$username");
         // return $query;
-        $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil FROM t_biodata tb LEFT JOIN upload_data u ON u.username=tb.username WHERE tb.username=$username ORDER BY u.id DESC LIMIT 1");
+        // $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil FROM t_biodata tb LEFT JOIN upload_data u ON u.username=tb.username WHERE tb.username=$username ORDER BY u.id DESC LIMIT 1");
+        $this->db->select('*,(SELECT p1.namaprodi FROM prodi p1 WHERE p1.idprodi=tb.prodipilihan1) AS pilihan1, (SELECT p2.namaprodi FROM prodi p2 WHERE p2.idprodi=tb.prodipilihan2) AS pilihan2, (SELECT p3.namaprodi FROM prodi p3 WHERE p3.idprodi=tb.prodipilihan3) AS pilihan3, (SELECT agama FROM agama WHERE idagama=tb.agama) AS agama, (SELECT status FROM statusmenikah WHERE idstatusmenikah=tb.statusmenikah) AS statusmenikah');
+        $this->db->from('users u');
+        $this->db->join('t_biodata tb', 'tb.username = u.username');
+        $this->db->where('u.username', $username);
+        $query = $this->db->get();
         return $query;
     }
 
