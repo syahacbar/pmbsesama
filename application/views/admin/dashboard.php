@@ -50,7 +50,8 @@
                             <div class="row no-gutters align-items-center">
                                 <div class="col-auto">
                                     <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">
-                                        <h1><?php echo $diterima; ?> Orang</h1>
+                                        <h1><?php // echo $diterima; 
+                                            ?> Orang</h1>
                                     </div>
                                 </div>
                             </div>
@@ -71,7 +72,8 @@
                         <div class="col mr-2">
                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">Ditolak</div>
                             <div class="h5 mb-0 font-weight-bold text-gray-800">
-                                <h1><?php echo $ditolak; ?> Orang</h1>
+                                <h1><?php // echo $ditolak; 
+                                    ?> Orang</h1>
                             </div>
                         </div>
                         <div class="col-auto">

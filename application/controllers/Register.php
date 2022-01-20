@@ -92,8 +92,8 @@ class Register extends CI_Controller
 		$biodata = $this->M_register->get_biodata_by_username($user->username);
 		$data = array(
 			'username' => $user->username,
-			'nohp' => $user->phone,
-			'email' => $user->email,
+			// 'nohp' => $user->phone,
+			// 'email' => $user->email,
 			'biodata' => $biodata->result_array(),
 			'agama' => $this->M_agama->get_all(),
 			'statusmenikah' => $this->M_statusmenikah->get_all(),
@@ -104,6 +104,7 @@ class Register extends CI_Controller
 			'pendidikanortu' => $this->M_pendidikanortu->get_all(),
 			'pekerjaanortu' => $this->M_pekerjaanortu->get_all(),
 			'penghasilanortu' => $this->M_penghasilanortu->get_all(),
+			'kabupaten' => $this->M_wilayah->get_all_kabupaten(),
 
 
 		);
@@ -117,11 +118,14 @@ class Register extends CI_Controller
 
 		$user = $this->ion_auth->user()->row();
 		$params = array(
+			'nisn_pendaftar' => $this->input->post('nisn_pendaftar'),
 			'nik' => $this->input->post('nik'),
 			'jeniskelamin' => $this->input->post('jenkel'),
 			'suku' => $this->input->post('suku'),
 			'agama' => $this->input->post('agama'),
 			'statusmenikah' => $this->input->post('statusmenikah'),
+			'nohp' => $this->input->post('nohp'),
+			'email' => $this->input->post('email'),
 			'prodipilihan1' => $this->input->post('prodipilihan1'),
 			'prodipilihan2' => $this->input->post('prodipilihan2'),
 			'prodipilihan3' => $this->input->post('prodipilihan3'),

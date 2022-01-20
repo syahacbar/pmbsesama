@@ -469,12 +469,18 @@
                                                                             <div class="row">
                                                                                 <div class="col-sm-12 d-flex justify-content-center">
                                                                                     <div class="form-group">
-                                                                                        <?php form_open_multipart('user/next1') ?>
-                                                                                        <?php if ($ep['fotoprofil'] == NULL) { ?>
-                                                                                            <img width="100" height="100" class="img-profile" src="<?php echo base_url('assets/upload/fotopas/profile_default.svg'); ?>">
-                                                                                        <?php } else { ?>
-                                                                                            <img width="100" height="100" class="img-profile" src="<?php echo base_url('assets/upload/fotopas/') . $ep['fotoprofil']; ?>">
-                                                                                        <?php } ?>
+                                                                                        <?php // form_open_multipart('user/next1') 
+                                                                                        ?>
+                                                                                        <!-- <?php // if ($ep['fotoprofil'] == NULL) { 
+                                                                                                ?>
+                                                                                            <img width="100" height="100" class="img-profile" src="<?php // echo base_url('assets/upload/fotopas/profile_default.svg'); 
+                                                                                                                                                    ?>">
+                                                                                        <?php // } else { 
+                                                                                        ?>
+                                                                                            <img width="100" height="100" class="img-profile" src="<?php // echo base_url('assets/upload/fotopas/') . $ep['fotoprofil']; 
+                                                                                                                                                    ?>"> -->
+                                                                                        <?php // } 
+                                                                                        ?>
                                                                                     </div>
                                                                                 </div>
                                                                                 <div class="col-sm-12 d-flex justify-content-center">

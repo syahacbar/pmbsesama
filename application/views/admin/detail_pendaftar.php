@@ -439,6 +439,11 @@
 																				<td><?php echo $p['namalengkap']; ?></td>
 																			</tr>
 																			<tr>
+																				<td width="200">NISN Pendaftar</td>
+																				<td>:</td>
+																				<td><?php echo $p['nisn_pendaftar']; ?></td>
+																			</tr>
+																			<tr>
 																				<td width="200">Jenis Kelamin</td>
 																				<td>:</td>
 																				<td><?php echo $p['jeniskelamin']; ?></td>
@@ -493,17 +498,17 @@
 																			<tr>
 																				<td width="200">Program Studi Pilihan 1</td>
 																				<td>:</td>
-																				<td><?php echo $p['prodipilihan1']; ?></td>
+																				<td><?php echo $p['pilihan1']; ?></td>
 																			</tr>
 																			<tr>
 																				<td width="200">Program Studi Pilihan 2</td>
 																				<td>:</td>
-																				<td><?php echo $p['prodipilihan2']; ?></td>
+																				<td><?php echo $p['pilihan2']; ?></td>
 																			</tr>
 																			<tr>
 																				<td width="200">Program Studi Pilihan 3</td>
 																				<td>:</td>
-																				<td><?php echo $p['prodipilihan3']; ?></td>
+																				<td><?php echo $p['pilihan3']; ?></td>
 																			</tr>
 																			<tr>
 																				<td width="200">Alamat Tinggal</td>
@@ -556,14 +561,12 @@
 																			<tr>
 																				<td width="250">No. HP</td>
 																				<td>:</td>
-																				<td><?php // echo $p['']; 
-																					?></td>
+																				<td><?php echo $p['nohp']; ?></td>
 																			</tr>
 																			<tr>
 																				<td width="250">Alamat Email</td>
 																				<td>:</td>
-																				<td><?php // echo $p['']; 
-																					?></td>
+																				<td><?php echo $p['email']; ?></td>
 																			</tr>
 																			<tr>
 																				<td width="250">Tinggi Badan</td>
