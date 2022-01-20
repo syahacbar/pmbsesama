@@ -180,7 +180,23 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
-
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Manajemen Akun
+            </div>
+            <!-- Data Pendaftar -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#AccountManagement" aria-expanded="true" aria-controls="AccountManagement">
+                    <i class="fas fa-fw fa-user"></i>
+                    <span>Daftar Akun</span>
+                </a>
+                <div id="AccountManagement" class="collapse" aria-labelledby="headingPendaftaran" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item ">Admin</a>
+                        <a class="collapse-item">Guru</a>
+                    </div>
+                </div>
+            </li>
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -188,6 +204,7 @@
 
         </ul>
         <!-- End of Sidebar -->
+
 
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
