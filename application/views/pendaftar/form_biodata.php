@@ -797,14 +797,14 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>No. Telp./HP *</label>
-                                                <input name="nohp" id="nohp" type="text" class="form-control" placeholder="" required value="<?php echo $row['nohp']; ?>">
+                                                <input name="nohp" id="nohp" type="text" class="form-control" placeholder="" required value="">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Alamat Email *</label>
-                                                <input name="email" id="email" type="email" class="form-control" placeholder="" required value="<?php echo $row['email']; ?>">
+                                                <input name="email" id="email" type="email" class="form-control" placeholder="" required value="">
                                                 <small>Email Aktif</small>
                                             </div>
                                         </div>
