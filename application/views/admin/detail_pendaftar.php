@@ -473,6 +473,13 @@
 																				<td>:</td>
 																				<td><?php echo $p['lokasi_tempatlahir']; ?></td>
 																			</tr>
+																		</tbody>
+																	</table>
+																</div>
+
+																<div class="col-sm-4">
+																	<table class="table table-sm">
+																		<tbody>
 																			<tr>
 																				<td width="200">Tanggal Lahir</td>
 																				<td>:</td>
@@ -483,13 +490,6 @@
 																				<td>:</td>
 																				<td><?php echo $p['kab_tempatlahir']; ?></td>
 																			</tr>
-																		</tbody>
-																	</table>
-																</div>
-
-																<div class="col-sm-4">
-																	<table class="table table-sm">
-																		<tbody>
 																			<tr>
 																				<td width="200">Provinsi</td>
 																				<td>:</td>
@@ -525,12 +525,6 @@
 																				<td>:</td>
 																				<td><?php echo $p['kec_tempattinggal']; ?></td>
 																			</tr>
-
-																			<tr>
-																				<td width="200">Kabupaten/Kota</td>
-																				<td>:</td>
-																				<td><?php echo $p['kab_tempattinggal']; ?></td>
-																			</tr>
 																		</tbody>
 																	</table>
 																</div>
@@ -538,6 +532,11 @@
 																<div class="col-sm-4">
 																	<table class="table table-sm">
 																		<tbody>
+																			<tr>
+																				<td width="200">Kabupaten/Kota</td>
+																				<td>:</td>
+																				<td><?php echo $p['kab_tempattinggal']; ?></td>
+																			</tr>
 																			<tr>
 																				<td width="250">Provinsi</td>
 																				<td>:</td>
@@ -646,28 +645,14 @@
 																		<tr>
 																			<td width="300">Lampiran Rapor Kelas XI semeseter 1</td>
 																			<td>:</td>
-																			<td>
-																				<a href="<?php echo $p['beratbadan']; ?>" class="btn btn-info btn-sm">
-																					Unduh File
+																			<td width="100px">
+																				<a href="<?php echo base_url('assets/upload/rapor/') . $rapor['nama_dok']; ?>" target="_blank" class="btn btn-info btn-icon-split btn-sm downloadform" target="_blank">
+																					<span class="icon text-white-50">
+																						<i class="fas fa-download"></i>
+																					</span>
+																					<span class="text">Unduh</span>
 																				</a>
 																			</td>
-																		</tr>
-																		<tr>
-																			<td width="300">Lampiran Rapor Kelas XI semeseter 2</td>
-																			<td>:</td>
-																			<td>
-																				<a href="<?php echo $p['beratbadan']; ?>" class="btn btn-info btn-sm">
-																					Unduh File
-																				</a>
-																			</td>
-																		</tr>
-																		<tr>
-																			<td width="300">Lampiran Rapor Kelas XII semeseter 1</td>
-																			<td>:</td>
-																			<td>
-																				<a href="<?php echo $p['beratbadan']; ?>" class="btn btn-info btn-sm">
-																					Unduh File
-																				</a>
 																			</td>
 																		</tr>
 																	</tbody>
@@ -725,18 +710,17 @@
 																				<td>:</td>
 																				<td><?php echo $p['pendidikan_ibu']; ?></td>
 																			</tr>
-																			<tr>
-																				<td width="200">Pekerjaan Ibu</td>
-																				<td>:</td>
-																				<td><?php echo $p['pekerjaan_ibu']; ?></td>
-																			</tr>
 																		</tbody>
 																	</table>
 																</div>
 																<div class="col-sm-6">
 																	<table class="table table-sm">
 																		<tbody>
-
+																			<tr>
+																				<td width="200">Pekerjaan Ibu</td>
+																				<td>:</td>
+																				<td><?php echo $p['pekerjaan_ibu']; ?></td>
+																			</tr>
 																			<tr>
 																				<td width="200">Penghasilan Orang Tua</td>
 																				<td>:</td>

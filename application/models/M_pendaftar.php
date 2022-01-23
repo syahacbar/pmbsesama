@@ -12,8 +12,6 @@ class M_pendaftar extends CI_Model
         return $query->result();
     }
 
-
-
     //set nama tabel yang akan kita tampilkan datanya
     var $table = 't_biodata';
     //set kolom order, kolom pertama saya null untuk kolom edit dan hapus
@@ -105,7 +103,7 @@ class M_pendaftar extends CI_Model
         // $query = $this->db->query("SELECT * FROM t_biodata WHERE username=$username");
         // return $query;
         // $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil FROM t_biodata tb LEFT JOIN upload_data u ON u.username=tb.username WHERE tb.username=$username ORDER BY u.id DESC LIMIT 1");
-        $this->db->select('*,(SELECT p1.namaprodi FROM prodi p1 WHERE p1.idprodi=tb.prodipilihan1) AS pilihan1,
+        $this->db->select('*, u.email AS email, u.phone AS nohp, (SELECT p1.namaprodi FROM prodi p1 WHERE p1.idprodi=tb.prodipilihan1) AS pilihan1,
         (SELECT p2.namaprodi FROM prodi p2 WHERE p2.idprodi=tb.prodipilihan2) AS pilihan2,
         (SELECT p3.namaprodi FROM prodi p3 WHERE p3.idprodi=tb.prodipilihan3) AS pilihan3,
         (SELECT agama FROM agama WHERE idagama=tb.agama) AS agama,
@@ -128,7 +126,6 @@ class M_pendaftar extends CI_Model
         (SELECT nama FROM wilayah_2020 WHERE kode=tb.kec_tempattinggalortu) AS kec_tempattinggalortu,
         (SELECT nama FROM wilayah_2020 WHERE kode=tb.prov_tempatlahir) AS prov_tempatlahir,
         (SELECT nama FROM wilayah_2020 WHERE kode=tb.kab_tempatlahir) AS kab_tempatlahir,
-        (SELECT nama FROM wilayah_2020 WHERE kode=tb.lokasi_tempatlahir) AS lokasi_tempatlahir,
         (SELECT nama FROM wilayah_2020 WHERE kode=tb.prov_smta) AS prov_smta');
         $this->db->from('users u');
         $this->db->join('t_biodata tb', 'tb.username = u.username');

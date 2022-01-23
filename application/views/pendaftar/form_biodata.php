@@ -682,7 +682,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Tempat Lahir *</label>
-                                                <input name="lokasi_tempatlahir" id="lokasi_tempatlahir" type="text" class="form-control" placeholder="" value="<?php echo $row['lokasi_tempatlahir']; ?>" required>
+                                                <input name="lokasi_tempatlahir" id="lokasi_tempatlahir" type="text" class="form-control" value="<?php echo $row['lokasi_tempatlahir']; ?>" required>
                                             </div>
                                         </div>
 
@@ -780,7 +780,6 @@
                                                 <input name="alamatlaintempattinggal" id="alamatlaintempattinggal" type="text" class="form-control" placeholder="" value="<?php echo $row['alamatlain_tempattinggal']; ?>" required></input>
                                             </div>
                                         </div>
-
                                     </div>
 
 
@@ -1188,7 +1187,6 @@
                                                 <label>Nama Wali</label>
                                                 <input name="namawali" id="namawali" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_wali']; ?>" required>
                                             </div>
-
                                         </div>
 
                                         <div class="col-sm-6">
@@ -1223,7 +1221,6 @@
                                                 <small>Alamat wali saat ini. Maksimal 50 karakter.</small>
                                             </div>
                                         </div>
-
                                     </div>
                                 </div>
                                 <input type="button" name="next4" id="next4" class="next action-button" value="Lanjut" />
