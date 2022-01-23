@@ -400,7 +400,7 @@
 						showCancelButton: false,
 						confirmButtonText: 'Kembali',
 					})
-					// tablePendaftar.draw(false);
+					tablePendaftar.draw(false);
 				},
 				error: function() {
 					// alert('Gagal Merubah Status Laporan : ' + username);
