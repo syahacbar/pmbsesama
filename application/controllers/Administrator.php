@@ -376,7 +376,7 @@ class Administrator extends CI_Controller
 	// DATA DI BAGIAN PENDAFTAR LIST
 	public function datapendaftar()
 	{
-		$this->load->model(['M_prodi', 'M_register', 'M_pendaftar']);
+		$this->load->model(['M_prodi', 'M_register', 'M_pendaftar', 'M_informasi']);
 
 		if ($this->uri->segment(3) == "") {
 			// $data ['data_pendaftar'] = $this->M_pendaftar->data_pendaftar();
@@ -388,6 +388,7 @@ class Administrator extends CI_Controller
 			$this->load->view('pendaftar/kartu_peserta', $data);
 		} else if ($this->uri->segment(3) == "detail_pendaftar") {
 			$data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
+			$data['rapor'] = $this->M_pendaftar->get_all($this->uri->segment(5));
 			$this->load->view('admin/detail_pendaftar', $data);
 		} else if ($this->uri->segment(3) == "hapus_pendaftar") {
 			$data['hapus_pendaftar'] = $this->M_pendaftar->hapus_data($this->uri->segment(4));
