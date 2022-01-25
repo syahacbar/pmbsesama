@@ -353,7 +353,7 @@
 			//username.classList.add("disabled");
 			$.ajax({
 				type: "POST",
-				url: '<?php echo site_url() ?>datatables/proseslaporan/' + idt_biodata,
+				url: '<?php echo site_url() ?>/datatables/proseslaporan/' + idt_biodata,
 				data: {
 					status: status,
 					idt_biodata: idt_biodata
@@ -387,7 +387,7 @@
 			var username = $(this).attr('idt_biodata');
 			$.ajax({
 				type: "POST",
-				url: '<?php echo site_url() ?>datatables/proseslaporan/' + idt_biodata,
+				url: '<?php echo site_url() ?>/datatables/proseslaporan/' + idt_biodata,
 				data: {
 					status: status,
 					idt_biodata: idt_biodata
