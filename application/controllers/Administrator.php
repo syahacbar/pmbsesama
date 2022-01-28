@@ -22,13 +22,9 @@ class Administrator extends CI_Controller
 	{
 		$data['count_oap'] = $this->M_pendaftar->count_by_suku('Papua')->num_rows();
 		$data['count_noap'] = $this->M_pendaftar->count_by_suku('Non Papua')->num_rows();
-		// $data['menunggu'] = $this->M_pendaftar->get_status('Menunggu');
-		// $data['diterima'] = $this->M_pendaftar->get_status('Diterima');
-		// $data['ditolak'] = $this->M_pendaftar->get_status('Ditolak');
-		$data['menunggu'] = $this->M_pendaftar->get_status('Menunggu')->result();
-		$data['diterima'] = $this->M_pendaftar->get_status('Diterima')->result();
-		$data['ditolak'] = $this->M_pendaftar->get_status('Ditolak')->result();
-		// $data['status'] = $this->M_pendaftar->data_pendaftar();
+		$data['menunggu'] = $this->M_pendaftar->count_by_status('Menunggu')->num_rows();
+		$data['diterima'] = $this->M_pendaftar->count_by_status('Diterima')->num_rows();
+		$data['ditolak'] = $this->M_pendaftar->count_by_status('Ditolak')->num_rows();
 		$data['t_biodata'] = $this->M_pendaftar->get_all();
 
 		$data['_view'] = 'admin/dashboard';

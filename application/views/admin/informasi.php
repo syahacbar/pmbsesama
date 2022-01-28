@@ -113,7 +113,7 @@
 
         var informasi_upload = new Dropzone(".informasi", {
             autoProcessQueue: false,
-            url: "<?php echo site_url('administrator/informasi') ?>",
+            url: "<?php echo site_url('/administrator/informasi') ?>",
             maxFilesize: 50,
             maxFiles: 1,
             method: "post",
@@ -130,7 +130,7 @@
 
         informasi_upload.on("complete", function(file) {
             if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
-                window.location.href = "<?php echo site_url('administrator/informasi'); ?>";
+                window.location.href = "<?php echo site_url('/administrator/informasi'); ?>";
             }
         });
 
