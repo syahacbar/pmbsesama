@@ -34,23 +34,15 @@
                                 foreach ($slider as $sl) { ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <!-- <td><?php // echo $sl['nama_gambar']; 
-                                                    ?></td> -->
+                                        <!-- <td><?php // echo $sl['nama_gambar']; ?></td> -->
                                         <td><?php echo $sl['gambar']; ?></td>
                                         <td>
-                                            <img class="img-thumbnail img-fluid" src="<?php echo base_url('assets/upload/slider/') . $sl['gambar'];
-                                                                                        ?>">
+                                            <a href="#" class="pop">
+                                                <img src="<?php echo base_url('assets/upload/slider/') . $sl['gambar']; ?>" style="width: 300px; height: auto;">
+                                            </a>
                                         </td>
 
                                         <td>
-                                            <!-- <a href="#" class="btn btn-info btn-icon-split btn-sm editform" data-gambarslider="<?php // echo $sl['gambar'] 
-                                                                                                                                    ?>" data-idslider="<?php // echo $sl['id'] 
-                                                                                                                                                        ?>">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                                <span class="text">Edit</span>
-                                            </a> -->
                                             <a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-idslider="<?php echo $sl['id'] ?>">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-trash"></i>
@@ -66,6 +58,7 @@
                 </div>
             </div>
         </div>
+
         <div class="col-lg-4">
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
@@ -88,11 +81,20 @@
                     <button type="submit" class="btn btn-primary saveSlider">Save</button>
 
                 </div>
-
-
             </div>
         </div>
     </div>
+</div>
+
+<div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">              
+      <div class="modal-body">
+        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+        <img src="" class="imagepreview" style="width: 100%;" >
+      </div>
+    </div>
+  </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -177,4 +179,11 @@
             }
         });
     })
+
+    $(function() {
+            $('.pop').on('click', function() {
+                $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+                $('#imagemodal').modal('show');   
+            });     
+    });
 </script>

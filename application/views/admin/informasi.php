@@ -75,7 +75,7 @@
                         <input type="hidden" id="idinformasi" name="idinformasi">
                         <input type="hidden" id="aksi" name="aksi" value="add">
                         <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
+                        <button type="submit" class="btn btn-primary saveInformasi">Save</button>
                     </form>
                 </div>
             </div>
@@ -111,34 +111,71 @@
             }
         });
 
-        var informasi_upload = new Dropzone(".informasi", {
-            autoProcessQueue: false,
-            url: "<?php echo site_url('/administrator/informasi') ?>",
-            maxFilesize: 50,
-            maxFiles: 1,
-            method: "post",
-            acceptedFiles: "application/pdf",
-            paramName: "fileinformasi",
-            dictInvalidFileType: "Type file ini tidak dizinkan",
-            addRemoveLinks: true,
-        });
+        // var informasi_upload = new Dropzone(".informasi", {
+        //     autoProcessQueue: false,
+        //     url: "<?php echo site_url('/administrator/informasi') ?>",
+        //     maxFilesize: 50,
+        //     maxFiles: 1,
+        //     method: "post",
+        //     acceptedFiles: "application/pdf",
+        //     paramName: "fileinformasi",
+        //     dictInvalidFileType: "Type file ini tidak dizinkan",
+        //     addRemoveLinks: true,
+        // });
 
-        informasi_upload.on("sending", function(a, b, c) {
-            c.append("judulinformasi", $("input#judulinformasi").val());
-            c.append("idinformasi", $("input#idinformasi").val());
-        });
+        // informasi_upload.on("sending", function(a, b, c) {
+        //     c.append("judulinformasi", $("input#judulinformasi").val());
+        //     c.append("idinformasi", $("input#idinformasi").val());
+        // });
 
-        informasi_upload.on("complete", function(file) {
-            if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
-                window.location.href = "<?php echo site_url('/administrator/informasi'); ?>";
+        // informasi_upload.on("complete", function(file) {
+        //     if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+        //         window.location.href = "<?php echo site_url('/administrator/informasi'); ?>";
+        //     }
+        // });
+
+        // $('#forminformasi').submit(function(e) {
+        //     e.preventDefault();
+        //     informasi_upload.processQueue();
+        // });
+
+
+    // Unggah Infromasi di halaman admin panel
+    var upload_informasi = new Dropzone(".informasi", {
+        url: "<?php echo base_url('administrator/informasi') ?>",
+        maxFilesize: 2,
+        method: "post",
+        acceptedFiles: ".pdf",
+        paramName: "fileinformasi",
+        dictInvalidFileType: "Type file ini tidak dizinkan",
+        addRemoveLinks: true,
+    });
+
+
+    upload_informasi.on("sending", function(file, xhr, formData) {
+        formData.append("judulinformasi", "judulinformasi");
+    });
+
+
+    // Simpan Slider
+    $(document).on('click', '.saveInformasi', function(e) {
+
+        Swal.fire({
+            title: "Berhasil",
+            text: "Anda telah menambah informasi baru!",
+            icon: "success",
+            buttons: [
+                'NO',
+                'YES'
+            ],
+        }).then(function(isConfirm) {
+            if (isConfirm) {
+                location.reload();
+            } else {
+                //if no clicked => do something else
             }
         });
-
-        $('#forminformasi').submit(function(e) {
-            e.preventDefault();
-            informasi_upload.processQueue();
-        });
-
+    })
 
     });
 </script>
