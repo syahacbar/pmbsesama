@@ -22,13 +22,9 @@ class Administrator extends CI_Controller
 	{
 		$data['count_oap'] = $this->M_pendaftar->count_by_suku('Papua')->num_rows();
 		$data['count_noap'] = $this->M_pendaftar->count_by_suku('Non Papua')->num_rows();
-		// $data['menunggu'] = $this->M_pendaftar->get_status('Menunggu');
-		// $data['diterima'] = $this->M_pendaftar->get_status('Diterima');
-		// $data['ditolak'] = $this->M_pendaftar->get_status('Ditolak');
-		$data['menunggu'] = $this->M_pendaftar->get_status('Menunggu')->result();
-		$data['diterima'] = $this->M_pendaftar->get_status('Diterima')->result();
-		$data['ditolak'] = $this->M_pendaftar->get_status('Ditolak')->result();
-		// $data['status'] = $this->M_pendaftar->data_pendaftar();
+		$data['menunggu'] = $this->M_pendaftar->count_by_status('Menunggu')->num_rows();
+		$data['diterima'] = $this->M_pendaftar->count_by_status('Diterima')->num_rows();
+		$data['ditolak'] = $this->M_pendaftar->count_by_status('Ditolak')->num_rows();
 		$data['t_biodata'] = $this->M_pendaftar->get_all();
 
 		$data['_view'] = 'admin/dashboard';
@@ -500,29 +496,49 @@ class Administrator extends CI_Controller
 
 	public function informasi()
 	{
-		$this->load->model('M_informasi');
-		if ($this->input->post('aksi')) {
-			$config['upload_path']   = FCPATH . '/assets/upload/informasi/';
-			$config['allowed_types'] = 'pdf';
-			$this->load->library('upload', $config);
+		$config['upload_path']   = FCPATH . '/assets/upload/informasi/';
+		$config['allowed_types'] = 'pdf';
 
-			if ($this->input->post('aksi') == "add") {
+		$this->load->library('upload', $config);
 
-				if ($this->upload->do_upload('fileinformasi')) {
-					$file = $this->upload->data('file_name');
-					$judulinformasi = $this->input->post('judulinformasi');
-					$this->db->insert('informasi', array('judul' => $judulinformasi, 'file' => $file));
-				}
-			} elseif ($this->input->post('aksi') == "del") {
-				$id = $this->input->post('id');
-				$this->db->where('id', $id);
-				$this->db->delete('informasi');
-			}
-		} else {
-			$data['informasi'] = $this->M_informasi->get_all();
-			$data['_view'] = 'admin/informasi';
-			$this->load->view('admin/layout', $data);
+		if ($this->upload->do_upload('fileinformasi')) {
+			// $nama = $this->upload->data('file_name');
+			$file = $this->upload->data('file_name');
+			$judulinformasi = $this->input->post('judulinformasi');
+			$this->db->insert('informasi', array('judul' => $judulinformasi, 'file' => $file));
+			// $this->db->insert('slider', array('gambar' => $nama));
 		}
+
+		$this->load->model('M_informasi');
+
+		if ($this->uri->segment(3) == "") {
+			$data['linkform'] = "administrator/informasi/add";
+			$data['informasi'] = $this->M_informasi->get_all();
+		} else if ($this->uri->segment(3) == "add") {
+			$data = array(
+				'informasi'  => $this->input->post('informasi'),
+			);
+
+			$this->M_informasi->add($data);
+
+			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			redirect('administrator/informasi');
+		} else if ($this->uri->segment(3) == "edit") {
+			$id = $this->input->post('id');
+			$data = array(
+				'informasi'  => $this->input->post('informasi')
+			);
+			$this->M_informasi->edit($data, $id);
+			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			redirect('administrator/informasi');
+		} else if ($this->uri->segment(3) == "delete") {
+			$id = $this->input->post('id');
+			$this->M_informasi->delete($id);
+			redirect('administrator/informasi');
+		}
+		$data['informasi'] = $this->M_informasi->get_all();
+		$data['_view'] = 'admin/informasi';
+		$this->load->view('admin/layout', $data);
 	}
 
 	public function pengaturan()

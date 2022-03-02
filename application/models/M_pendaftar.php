@@ -160,12 +160,11 @@ class M_pendaftar extends CI_Model
         return $query;
     }
 
+
     public function get_status()
     {
         $query = $this->db->query("SELECT tb.status FROM t_biodata tb GROUP BY tb.status");
-        // return $query->result();
         return $query;
-        // return $query->result_array();
     }
 
     function count_by_status($status = NULL)
