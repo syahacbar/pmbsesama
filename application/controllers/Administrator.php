@@ -412,7 +412,7 @@ class Administrator extends CI_Controller
 		$this->load->model('M_slider');
 
 		if ($this->uri->segment(3) == "") {
-			$data['linkform'] = "administrator/slider/add";
+			$data['linkform'] = "/administrator/slider/add";
 			$data['slider'] = $this->M_slider->get_all();
 		} else if ($this->uri->segment(3) == "add") {
 			$data = array(
