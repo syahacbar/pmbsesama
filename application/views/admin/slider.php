@@ -34,7 +34,8 @@
                                 foreach ($slider as $sl) { ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <!-- <td><?php // echo $sl['nama_gambar']; ?></td> -->
+                                        <!-- <td><?php // echo $sl['nama_gambar']; 
+                                                    ?></td> -->
                                         <td><?php echo $sl['gambar']; ?></td>
                                         <td>
                                             <a href="#" class="pop">
@@ -87,14 +88,14 @@
 </div>
 
 <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-  <div class="modal-dialog modal-lg">
-    <div class="modal-content">              
-      <div class="modal-body">
-        <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
-        <img src="" class="imagepreview" style="width: 100%;" >
-      </div>
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-body">
+                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <img src="" class="imagepreview" style="width: 100%;">
+            </div>
+        </div>
     </div>
-  </div>
 </div>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -145,7 +146,7 @@
     Dropzone.autoDiscover = false;
 
     var upload_slider = new Dropzone(".gambarslider", {
-        url: "<?php echo base_url('administrator/slider') ?>",
+        url: "<?php echo site_url('administrator/slider') ?>",
         maxFilesize: 2,
         method: "post",
         acceptedFiles: ".jpeg,.jpg,.png,.gif",
@@ -181,9 +182,9 @@
     })
 
     $(function() {
-            $('.pop').on('click', function() {
-                $('.imagepreview').attr('src', $(this).find('img').attr('src'));
-                $('#imagemodal').modal('show');   
-            });     
+        $('.pop').on('click', function() {
+            $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+            $('#imagemodal').modal('show');
+        });
     });
 </script>
