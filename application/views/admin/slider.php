@@ -117,7 +117,7 @@
         $(document).on('click', '.deletedata', function() {
             var id = $(this).data("idslider");
             $.ajax({
-                url: "<?php echo site_url(); ?>administrator/slider/delete",
+                url: "<?php echo site_url(); ?>/administrator/slider/delete",
                 method: "POST",
                 data: {
                     id: id
@@ -146,7 +146,7 @@
     Dropzone.autoDiscover = false;
 
     var upload_slider = new Dropzone(".gambarslider", {
-        url: "<?php echo site_url('administrator/slider') ?>",
+        url: "<?php echo site_url('/administrator/slider') ?>",
         maxFilesize: 2,
         method: "post",
         acceptedFiles: ".jpeg,.jpg,.png,.gif",
@@ -164,21 +164,21 @@
     // Simpan Slider
     $(document).on('click', '.saveSlider', function(e) {
 
-        // Swal.fire({
-        //     title: "Berhasil",
-        //     text: "Anda menambah slider baru!",
-        //     icon: "success",
-        //     buttons: [
-        //         'NO',
-        //         'YES'
-        //     ],
-        // }).then(function(isConfirm) {
-        //     if (isConfirm) {
-        //         location.reload();
-        //     } else {
-        //         //if no clicked => do something else
-        //     }
-        // });
+        Swal.fire({
+            title: "Berhasil",
+            text: "Anda menambah slider baru!",
+            icon: "success",
+            buttons: [
+                'NO',
+                'YES'
+            ],
+        }).then(function(isConfirm) {
+            if (isConfirm) {
+                location.reload();
+            } else {
+                //if no clicked => do something else
+            }
+        });
     })
 
     $(function() {
