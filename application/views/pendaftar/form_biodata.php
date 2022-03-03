@@ -512,9 +512,9 @@
                                                 <div class="col-sm-6 profile">
                                                     <?php form_open_multipart('user/next1') ?>
                                                     <?php if ($row['fotoprofil'] == NULL) { ?>
-                                                        <img class="img-profile" src="<?php echo base_url('assets/upload/fotopas/profile_default.svg'); ?>">
+                                                        <img class="img-profile" src="<?php echo base_url('/assets/upload/profile/profile_default.svg'); ?>">
                                                     <?php } else { ?>
-                                                        <img class="img-profile" src="<?php echo base_url('assets/upload/fotopas/') . $row['fotoprofil']; ?>">
+                                                        <img class="img-profile" src="<?php echo base_url('/assets/upload/profile/') . $row['fotoprofil']; ?>">
                                                     <?php } ?>
                                                 </div>
 
@@ -1689,7 +1689,7 @@
             Dropzone.autoDiscover = false;
 
             var foto_upload = new Dropzone(".uploadfoto", {
-                url: "<?php echo base_url('register/uploadfotopas') ?>",
+                url: "<?php echo site_url('register/uploadfotopas') ?>",
                 maxFilesize: 1,
                 autoProcessQueue: false,
                 method: "post",
@@ -1719,7 +1719,7 @@
             Dropzone.autoDiscover = false;
 
             var dok_rapor = new Dropzone(".dokrapor", {
-                url: "<?php echo base_url('register/uploadrapor') ?>",
+                url: "<?php echo site_url('register/uploadrapor') ?>",
                 maxFilesize: 2,
                 method: "post",
                 acceptedFiles: ".pdf",

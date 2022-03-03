@@ -217,14 +217,14 @@ class Register extends CI_Controller
 	//Untuk proses upload foto
 	public function uploadfotopas()
 	{
-		$config['upload_path']   = FCPATH . '/assets/upload/fotopas/';
+		$config['upload_path']   = FCPATH . '/assets/upload/profile/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png|ico';
 
 		$this->load->library('upload', $config);
 		if ($this->upload->do_upload('fotopas')) {
 			$nama = $this->upload->data('file_name');
 			$username = $this->input->post('username');
-			$this->db->insert('upload', array('namafile' => $nama, 'username' => $username));
+			$this->db->insert('upload_data', array('namafile' => $nama, 'username' => $username));
 
 			if ($this->upload->do_upload('namafile')) {
 				$this->session->set_flashdata('msg', $this->upload->display_errors('', ''));
