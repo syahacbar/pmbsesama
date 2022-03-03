@@ -122,21 +122,21 @@
                 data: {
                     id: id
                 },
-                success: function(data) {
-                    Swal.fire({
-                        title: "Berhasil",
-                        text: "Slider telah dihapus",
-                        icon: "success",
-                        buttons: [
-                            'NO',
-                            'YES'
-                        ],
-                    }).then(function(isConfirm) {
-                        if (isConfirm) {
-                            location.reload();
-                        }
-                    });
-                }
+                // success: function(data) {
+                //     Swal.fire({
+                //         title: "Berhasil",
+                //         text: "Slider telah dihapus",
+                //         icon: "success",
+                //         buttons: [
+                //             'NO',
+                //             'YES'
+                //         ],
+                //     }).then(function(isConfirm) {
+                //         if (isConfirm) {
+                //             location.reload();
+                //         }
+                //     });
+                // }
             });
         });
     });
