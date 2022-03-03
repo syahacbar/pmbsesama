@@ -122,21 +122,21 @@
                 data: {
                     id: id
                 },
-                // success: function(data) {
-                //     Swal.fire({
-                //         title: "Berhasil",
-                //         text: "Slider telah dihapus",
-                //         icon: "success",
-                //         buttons: [
-                //             'NO',
-                //             'YES'
-                //         ],
-                //     }).then(function(isConfirm) {
-                //         if (isConfirm) {
-                //             location.reload();
-                //         }
-                //     });
-                // }
+                success: function(data) {
+                    Swal.fire({
+                        title: "Berhasil",
+                        text: "Slider telah dihapus",
+                        icon: "success",
+                        buttons: [
+                            'NO',
+                            'YES'
+                        ],
+                    }).then(function(isConfirm) {
+                        if (isConfirm) {
+                            location.reload();
+                        }
+                    });
+                }
             });
         });
     });
@@ -164,21 +164,21 @@
     // Simpan Slider
     $(document).on('click', '.saveSlider', function(e) {
 
-        Swal.fire({
-            title: "Berhasil",
-            text: "Anda menambah slider baru!",
-            icon: "success",
-            buttons: [
-                'NO',
-                'YES'
-            ],
-        }).then(function(isConfirm) {
-            if (isConfirm) {
-                location.reload();
-            } else {
-                //if no clicked => do something else
-            }
-        });
+        // Swal.fire({
+        //     title: "Berhasil",
+        //     text: "Anda menambah slider baru!",
+        //     icon: "success",
+        //     buttons: [
+        //         'NO',
+        //         'YES'
+        //     ],
+        // }).then(function(isConfirm) {
+        //     if (isConfirm) {
+        //         location.reload();
+        //     } else {
+        //         //if no clicked => do something else
+        //     }
+        // });
     })
 
     $(function() {
