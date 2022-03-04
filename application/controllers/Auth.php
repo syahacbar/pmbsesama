@@ -56,7 +56,7 @@ class Auth extends CI_Controller
 			// }
 
 			// $this->_render_page('auth' . DIRECTORY_SEPARATOR . 'index', $this->data);
-			redirect ('/');
+			redirect('/');
 		}
 	}
 
@@ -79,7 +79,7 @@ class Auth extends CI_Controller
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
 				//if the login is successful
 				//redirect them back to the home page
-				if($this->ion_auth->in_group('members')) { 
+				if ($this->ion_auth->in_group('members')) {
 					$this->session->set_flashdata('message', $this->ion_auth->messages());
 					//redirect('/', 'refresh');
 					redirect('register/isibiodata');

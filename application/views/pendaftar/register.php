@@ -113,39 +113,6 @@
                 <input type="hidden" name="gelombang" value="1">
                 <input type="hidden" name="kelompokujian" value="1">
 
-                <!-- <div class="col-sm-4">
-                  <label>Gelombang</label>
-                  <div class="form-group">
-                    <select name="gelombang" class="form-select" aria-label="Default select example" required>
-                      <option value=""> -- Pilih -- </option>
-                      <?php //foreach ($gelombang as $g) { 
-                      ?>
-                        <option value="<?php //echo $g['id']; 
-                                        ?>"><?php //echo $g['gelombang']; 
-                                            ?></option>
-                      <?php // } 
-                      ?>
-                    </select>
-                  </div>
-                </div>
-
-
-                <div class="col-sm-4">
-                  <label>Kelompok Ujian</label>
-                  <div class="form-group">
-                    <select name="kelompokujian" class="form-select" aria-label="Default select example" required>
-                      <option value=""> -- Pilih -- </option>
-                      <?php // foreach ($kelompokujian as $k) { 
-                      ?>
-                        <option value="<?php // echo $k['id']; 
-                                        ?>"><?php // echo $k['kelompokujian']; 
-                                            ?></option>
-                      <?php //} 
-                      ?>
-                    </select>
-                  </div>
-                </div> -->
-
                 <div class="col-sm-12">
                   <div class="form-group">
                     <label>Kode Verifikasi</label>
@@ -183,19 +150,19 @@
               <div class="carousel-inner">
                 <div class="carousel-item active">
                   <div class="carousel-caption">
-                    <img src="<?php echo base_url(); ?>/assets/upload/slider/ecampuz_default_slideshow_82305.jpg" alt="login">
+                    <img src="<?php echo base_url(); ?>/assets/upload/slider/rektorat_unipa.jpg" alt="login">
                   </div>
                 </div>
 
                 <div class="carousel-item">
                   <div class="carousel-caption">
-                    <img src="<?php echo base_url(); ?>/assets/upload/slider/rektorat_89137.jpg" alt="login1">
+                    <img src="<?php echo base_url(); ?>/assets/upload/slider/banner2-1-scaled.jpg" alt="login1">
                   </div>
                 </div>
 
                 <div class="carousel-item">
                   <div class="carousel-caption">
-                    <img src="<?php echo base_url(); ?>/assets/upload/slider/rektorat2_40982.jpg" alt="login2">
+                    <img src="<?php echo base_url(); ?>/assets/upload/slider/banner-scaled1.jpg" alt="login2">
                   </div>
                 </div>
               </div>

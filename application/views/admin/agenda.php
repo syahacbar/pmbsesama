@@ -158,7 +158,6 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <!-- <button type="submit" name="submit" class="btn btn-primary">Buat Agenda</button> -->
                         <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Simpan</button>
 
                     </div>
@@ -218,14 +217,11 @@
                     addRemoveLinks: true,
                 });
 
-                // gbr_agenda.on("sending", function(a, b, c) {
-                //     a.token = Math.random();
-                //     c.append("token_agenda", a.token); //Menmpersiapkan token untuk masing masing foto
-                //     c.append("idagenda", $('#idagenda').val()); //ambil dari idberita yang tipe hidden di atas, sebelum button Simpan
-                // });
-
-                gbr_agenda.on("sending", function(file, xhr, formData) {
-                    formData.append("file_name", "#idagenda");
+                upload_informasi.on("sending", function(a, b, c) {
+                    a.judulagenda = $("input[name='judulagenda']").val();
+                    a.judulagenda = $("textarea[name='isiagenda']").val();
+                    c.append("judulagenda", a.judulagenda);
+                    c.append("isiagenda", a.isiagenda);
                 });
 
 

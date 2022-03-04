@@ -28,10 +28,6 @@
                                         <td><?php echo $no++; ?></td>
                                         <td><?php echo $in['judul']; ?></td>
                                         <td><?php echo $in['file']; ?></td>
-                                        <!-- <td>
-                                            <img src="<?php // echo base_url('assets/upload/agenda/') . $in['gambar'];
-                                                        ?>">
-                                        </td> -->
 
                                         <td>
                                             <a class="btn btn-danger btn-icon-split btn-sm deletedata" data-id="<?php echo $in['id'] ?>">
@@ -74,8 +70,7 @@
                         </div>
                         <input type="hidden" id="idinformasi" name="idinformasi">
                         <input type="hidden" id="aksi" name="aksi" value="add">
-                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
-                        <button type="submit" class="btn btn-primary saveInformasi">Save</button>
+                        <button type="submit" class="btn btn-primary saveInformasi">Simpan</button>
                     </form>
                 </div>
             </div>
@@ -92,14 +87,12 @@
 
         $(document).on('click', '.deletedata', function() {
             var id = $(this).data("id");
-            var aksi = "del";
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
-                    url: "<?php echo site_url(); ?>administrator/informasi",
+                    url: "<?php echo site_url(); ?>administrator/informasi/delete",
                     method: "POST",
                     data: {
                         id: id,
-                        aksi: aksi
                     },
                     success: function(data) {
                         alert("Data Berhasil Dihapus");
@@ -110,37 +103,6 @@
                 return false;
             }
         });
-
-        // var informasi_upload = new Dropzone(".informasi", {
-        //     autoProcessQueue: false,
-        //     url: "<?php // echo site_url('/administrator/informasi') 
-                        ?>",
-        //     maxFilesize: 50,
-        //     maxFiles: 1,
-        //     method: "post",
-        //     acceptedFiles: "application/pdf",
-        //     paramName: "fileinformasi",
-        //     dictInvalidFileType: "Type file ini tidak dizinkan",
-        //     addRemoveLinks: true,
-        // });
-
-        // informasi_upload.on("sending", function(a, b, c) {
-        //     c.append("judulinformasi", $("input#judulinformasi").val());
-        //     c.append("idinformasi", $("input#idinformasi").val());
-        // });
-
-        // informasi_upload.on("complete", function(file) {
-        //     if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
-        //         window.location.href = "<?php // echo site_url('/administrator/informasi'); 
-                                            ?>";
-        //     }
-        // });
-
-        // $('#forminformasi').submit(function(e) {
-        //     e.preventDefault();
-        //     informasi_upload.processQueue();
-        // });
-
 
         // Unggah Infromasi di halaman admin panel
         var upload_informasi = new Dropzone(".informasi", {
@@ -153,13 +115,13 @@
             addRemoveLinks: true,
         });
 
-
-        upload_informasi.on("sending", function(file, xhr, formData) {
-            formData.append("judulinformasi", "judulinformasi");
+        upload_informasi.on("sending", function(a, b, c) {
+            a.judulinformasi = $("input[name='judulinformasi']").val();
+            c.append("judulinformasi", a.judulinformasi);
         });
 
 
-        // Simpan Slider
+        // Simpan Informasi
         $(document).on('click', '.saveInformasi', function(e) {
 
             Swal.fire({

@@ -8,15 +8,11 @@ class Informasi extends CI_Controller
     {
         parent::__construct();
         $this->load->model('M_informasi');
-        // $this->load->model('M_pendaftar');
     }
 
     public function index()
     {
         $data['informasi'] = $this->M_informasi->get_all();
-
-        // $data['_view'] = 'pendaftar/navbar';
         $this->load->view('informasi/index', $data);
-        // $this->load->view('pendaftar/informasi');
     }
 }

@@ -103,16 +103,6 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var table = $('#dataTable').DataTable();
-        // $("#dataTable").on("click", ".editform", function() {
-        // event.preventDefault();
-        // $("input#judulAgenda").val($(this).data('judul'));
-        // $("textarea#isiAgenda").val($(this).data('isi_agenda'));
-        // $("#slider").val($(this).data('slider'));
-        // $("input#id").val($(this).data('id'));
-
-        // $('#formagenda').attr('action', '<?php // echo site_url('administrator/agenda/edit'); 
-                                            ?>');
-        // });
 
         $(document).on('click', '.deletedata', function() {
             var id = $(this).data("idslider");
