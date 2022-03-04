@@ -29,12 +29,6 @@ class M_agenda extends CI_Model
         return $query->row();
     }
 
-    // function add($data)
-    // {
-    //     $this->db->insert('agenda', $data);
-    //     return TRUE;
-    // }
-
     public function add_agenda($params)
     {
         $this->db->insert('agenda', $params);
