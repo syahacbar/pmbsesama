@@ -18,6 +18,7 @@ class Administrator extends CI_Controller
 		$this->load->model('M_agenda');
 	}
 
+
 	public function index()
 	{
 		$data['count_oap'] = $this->M_pendaftar->count_by_suku('Papua')->num_rows();
@@ -383,7 +384,7 @@ class Administrator extends CI_Controller
 			$this->load->view('pendaftar/kartu_peserta', $data);
 		} else if ($this->uri->segment(3) == "detail_pendaftar") {
 			$data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
-			$data['rapor'] = $this->M_pendaftar->get_all($this->uri->segment(5));
+			$data['rapor'] = $this->M_pendaftar->get_all();
 			$this->load->view('admin/detail_pendaftar', $data);
 		} else if ($this->uri->segment(3) == "hapus_pendaftar") {
 			$data['hapus_pendaftar'] = $this->M_pendaftar->hapus_data($this->uri->segment(4));
@@ -444,7 +445,6 @@ class Administrator extends CI_Controller
 		$this->load->model('M_agenda');
 
 		if ($this->uri->segment(3) == "") {
-			$data['linkform'] = "administrator/agenda/add";
 			$data['agenda'] = $this->M_agenda->get_all();
 		} else if ($this->uri->segment(3) == "delete") {
 			$id = $this->input->post('id');
@@ -517,11 +517,10 @@ class Administrator extends CI_Controller
 
 		if ($this->upload->do_upload('gbr_agenda')) {
 			$namafile = $this->upload->data('file_name');
-			// $judulagenda = $this->upload->data('judulagenda');
-			// $isiagenda = $this->input->post('isiagenda');
+			$judulagenda = $this->input->post('judulagenda');
+			$isiagenda = $this->input->post('isiagenda');
 			$uploaded_on = date("Y-m-d H:i:s");
-			// $this->db->insert('agenda', array('gambar' => $namafile, 'isi_agenda' => $isiagenda, 'judul' => $judulagenda, 'waktu' => $uploaded_on));
-			$this->db->insert('agenda', array('gambar' => $namafile, 'waktu' => $uploaded_on));
+			$this->db->insert('agenda', array('gambar' => $namafile, 'isi_agenda' => $isiagenda, 'judul' => $judulagenda, 'waktu' => $uploaded_on));
 		}
 	}
 
@@ -539,25 +538,25 @@ class Administrator extends CI_Controller
 		}
 	}
 
-	public function saveagenda()
-	{
-		$params = array(
-			'judul' => $this->input->post('judulagenda'),
-			'isi_agenda' => $this->input->post('isiagenda'),
-			'waktu' => date("Y-m-d H:i:s"),
-			'id' => $this->input->post('id'),
-		);
+	// public function saveagenda()
+	// {
+	// 	$params = array(
+	// 		'judul' => $this->input->post('judulagenda'),
+	// 		'isi_agenda' => $this->input->post('isiagenda'),
+	// 		'waktu' => date("Y-m-d H:i:s"),
+	// 		'id' => $this->input->post('id'),
+	// 	);
 
-		$this->M_agenda->add_agenda($params);
+	// 	$this->M_agenda->add_agenda($params);
 
-		$this->session->set_flashdata('message', '<div class="alert alert-success d-flex align-items-center" role="alert">
-        <svg class="bi flex-shrink-0 me-2" width="24"  height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-        <div>
-         Agenda telah berhasil ditambah.
-        </div>
-      </div>');
-		echo json_encode(array('status' => TRUE));
-	}
+	// 	$this->session->set_flashdata('message', '<div class="alert alert-success d-flex align-items-center" role="alert">
+ //        <svg class="bi flex-shrink-0 me-2" width="24"  height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+ //        <div>
+ //         Agenda telah berhasil ditambah.
+ //        </div>
+ //      </div>');
+	// 	echo json_encode(array('status' => TRUE));
+	// }
 
 	public function hapus_pendaftar()
 	{
