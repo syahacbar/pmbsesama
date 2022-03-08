@@ -103,7 +103,7 @@
                     </div>
                     <!-- <?php // echo $this->session->flashdata('message'); 
                             ?> -->
-                    <?php echo form_open_multipart('administrator/saveagenda', array('id' => 'formInputAgenda')); ?>
+                    <?php echo form_open_multipart('', array('id' => 'formInputAgenda')); ?>
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-sm-12">
@@ -171,42 +171,42 @@
         <script>
             Dropzone.autoDiscover = false;
             $(document).ready(function() {
-                $('#formInputAgenda').submit(function(e) {
-                    e.preventDefault();
-                    var judulagenda = $("input[name='judulagenda']").val();
-                    var isiagenda = $("textarea[name='isiagenda']").val();
-                    var idagenda = $("input[name='idagenda']").val();
+                // $('#formInputAgenda').submit(function(e) {
+                //     e.preventDefault();
+                //     var judulagenda = $("input[name='judulagenda']").val();
+                //     var isiagenda = $("textarea[name='isiagenda']").val();
+                //     var idagenda = $("input[name='idagenda']").val();
 
-                    $.ajax({
-                        url: "<?php echo site_url('administrator/saveagenda') ?>",
-                        type: "POST",
-                        data: {
-                            judulagenda: judulagenda,
-                            isiagenda: isiagenda,
-                            idagenda: idagenda,
-                        },
+                //     $.ajax({
+                //         url: "<?php echo site_url('administrator/saveagenda') ?>",
+                //         type: "POST",
+                //         data: {
+                //             judulagenda: judulagenda,
+                //             isiagenda: isiagenda,
+                //             idagenda: idagenda,
+                //         },
 
-                        error: function() {
-                            console.log('Tidak berhasil simpan data');
-                        },
-                        success: function(data) {
-                            Swal.fire({
-                                title: "Berhasil",
-                                text: "Anda menambah 1 agenda baru",
-                                icon: "success",
-                                showCancelButton: false,
-                            }).then(function(isConfirm) {
-                                if (isConfirm) {
-                                    location.reload();
-                                }
-                            });
-                        }
-                    });
+                //         error: function() {
+                //             console.log('Tidak berhasil simpan data');
+                //         },
+                //         success: function(data) {
+                //             Swal.fire({
+                //                 title: "Berhasil",
+                //                 text: "Anda menambah 1 agenda baru",
+                //                 icon: "success",
+                //                 showCancelButton: false,
+                //             }).then(function(isConfirm) {
+                //                 if (isConfirm) {
+                //                     location.reload();
+                //                 }
+                //             });
+                //         }
+                //     });
 
-                });
+                // });
 
                 var gbr_agenda = new Dropzone(".gbrAgenda", {
-                    autoProcessQueue: true,
+                    autoProcessQueue: false,
                     url: "<?php echo site_url('administrator/unggahagenda') ?>",
                     maxFilesize: 2,
                     maxFiles: 1,
@@ -217,11 +217,25 @@
                     addRemoveLinks: true,
                 });
 
-                upload_informasi.on("sending", function(a, b, c) {
+                gbr_agenda.on("sending", function(a, b, c) {
                     a.judulagenda = $("input[name='judulagenda']").val();
-                    a.judulagenda = $("textarea[name='isiagenda']").val();
+                    a.isiagenda = $("textarea[name='isiagenda']").val();
                     c.append("judulagenda", a.judulagenda);
                     c.append("isiagenda", a.isiagenda);
+                });
+
+                 gbr_agenda.on("complete", function (file) {
+                    location.reload();
+                });
+
+
+                $('#formInputAgenda').submit(function(e) {
+                    e.preventDefault();
+                    gbr_agenda.processQueue();
+
+                    // alert("Berhasil simpan");
+                    // location.reload();
+
                 });
 
 
