@@ -65,11 +65,6 @@
               <small class="text-left">Bidang/isian yang bertanda bintang (*) wajib untuk diisi. Pastikan semua data yang Anda isi sudah benar karena tidak dapat diubah setelah terkirim.</small>
             </div>
 
-            <!-- <div class="row">
-              <?php //echo $this->session->flashdata('message'); 
-              ?>
-            </div> -->
-
             <form method="post" action="<?php echo site_url('auth/create_user'); ?>">
               <div class="row px-3">
                 <div class="col-sm-6">
