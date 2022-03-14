@@ -196,7 +196,7 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="editUserLabel">Edit User</h5>
                     </div>
-                    <form method="post" action="<?php echo site_url('auth/edit_user'); ?>">
+                    <form method="post" action="<?php echo site_url('user/edit_user'); ?>">
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-sm-12">
