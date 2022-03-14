@@ -1,5 +1,5 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 /*
 |--------------------------------------------------------------------------
@@ -19,8 +19,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 $config['re_keys'] = array(
-	'site_key'		=> '6Ld-9tYcAAAAAE1EVhYVOXcDfrVwEXzztDTN4m6N',
-	'secret_key'	=> '6Ld-9tYcAAAAADkbhf9D1hwAjZmShr_wTOL6nbZY'
+	// 'site_key'		=> '6Ld-9tYcAAAAAE1EVhYVOXcDfrVwEXzztDTN4m6N',
+	// 'secret_key'	=> '6Ld-9tYcAAAAADkbhf9D1hwAjZmShr_wTOL6nbZY'
+	'site_key'		=> '6LcizNweAAAAANoGEb-eIsdnySrul9XkGCdNYL7j',
+	'secret_key'	=> '6LcizNweAAAAADeJNivgeKCxw-BhA69VpOFG0KNq'
 );
 
 /*
