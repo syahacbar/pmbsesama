@@ -140,7 +140,7 @@ class User extends CI_Controller
             $groups = $this->ion_auth->groups()->result_array();
             $this->data['groups'] = $groups;
 
-            $data['pengguna'] = $this->M_user->get_all();
+            $this->data['pengguna'] = $this->M_user->get_all();
             $data['grup'] = $this->M_user->group();
 
             $this->data['_view'] = 'admin/user';
