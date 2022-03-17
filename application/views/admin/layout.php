@@ -176,18 +176,11 @@
             <div class="sidebar-heading">
                 Manajemen Akun
             </div>
-            <!-- Data Pendaftar -->
-            <li class="nav-item">
-                <a <?php echo ($this->uri->segment(2) == "index") ? "active" : ""; ?>class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#AccountManagement" aria-expanded="true" aria-controls="AccountManagement">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Daftar Akun</span>
-                </a>
-                <div id="AccountManagement" class="collapse" aria-labelledby="headingPendaftaran" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <a href="<?php echo site_url('user'); ?>" class="collapse-item ">Admin</a>
-                        <a class="collapse-item">Sekolah</a>
-                    </div>
-                </div>
+
+            <li class="nav-item <?php echo ($this->uri->segment(1) == "user") ? "active" : ""; ?>">
+                <a class="nav-link" href="<?php echo site_url('user'); ?>">
+                    <i class="fas fa-fw fa-laptop"></i>
+                    <span>Operator Sekolah</span></a>
             </li>
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">

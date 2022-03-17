@@ -14,7 +14,8 @@ class User extends CI_Controller
 
     public function index()
     {
-        $data['pengguna'] = $this->M_user->get_all();
+        //$data['pengguna'] = $this->M_user->get_all(); 
+        $data['pengguna'] = $this->ion_auth->users('sekolah')->result(); 
         $data['grup'] = $this->M_user->group();
 
         $data['_view'] = 'admin/user';

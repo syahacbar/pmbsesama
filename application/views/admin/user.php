@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-    <title>User - PMBSESAMA UNIPA</title>
 
     <link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
@@ -24,7 +23,7 @@
                 <div class="card shadow mb-4">
 
                     <div class="card-header py-3">
-                        <h6 class="m-0 font-weight-bold text-primary">Daftar User</h6>
+                        <h6 class="m-0 font-weight-bold text-primary">Operator Sekolah</h6>
                     </div>
                     <div class="card-body">
                         <div class="row mt-2">
@@ -51,13 +50,13 @@
                                     foreach ($pengguna as $u) { ?>
                                         <tr>
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $u['first_name']; ?></td>
-                                            <td><?php echo $u['username']; ?></td>
-                                            <td><?php echo $u['email']; ?></td>
-                                            <td><?php echo $u['phone']; ?></td>
-                                            <td><?php echo $u['company']; ?></td>
+                                            <td><?php echo $u->first_name." ".$u->last_name; ?></td>
+                                            <td><?php echo $u->username; ?></td>
+                                            <td><?php echo $u->email; ?></td>
+                                            <td><?php echo $u->phone; ?></td>
+                                            <td><?php echo $u->company; ?></td>
                                             <td>
-                                                <?php echo ($u['active'] == '1') ? "Aktif" : "Tidak Aktif"; ?>
+                                                <?php echo ($u->active == '1') ? "Aktif" : "Tidak Aktif"; ?>
                                             </td>
 
                                             <td>
@@ -68,14 +67,14 @@
                                                 </a>
 
                                                 <?php
-                                                if ($u['active'] == '1') {
-                                                    echo '<button data-iduser="' . $u['id'] . '" data-namauser="' . $u['username'] . '" class="btn btn-warning btn-sm btnNonaktif"><i class="fas fa-ban" title="Nonaktifkan"></i></button>';
+                                                if ($u->active == '1') {
+                                                    echo '<button data-iduser="' . $u->id . '" data-namauser="' . $u->username . '" class="btn btn-warning btn-sm btnNonaktif"><i class="fas fa-ban" title="Nonaktifkan"></i></button>';
                                                 } else {
-                                                    echo '<button data-iduser="' . $u['id'] . '" data-namauser="' . $u['username'] . '" class="btn btn-success btn-sm btnAktif" title="Aktifkan" href=""><i class="fas fa-ban"></i></button>';
+                                                    echo '<button data-iduser="' . $u->id . '" data-namauser="' . $u->username . '" class="btn btn-success btn-sm btnAktif" title="Aktifkan" href=""><i class="fas fa-ban"></i></button>';
                                                 }
                                                 ?>
                                                 <form action="<?php echo base_url('user/hapus_user') ?>" method="POST">
-                                                    <input type="hidden" name="id" value="<?php echo $u['id']; ?>">
+                                                    <input type="hidden" name="id" value="<?php echo $u->id; ?>">
                                                     <button onclick="return confirm('Anda yakin ingin menghapus user ini?')" class="btn btn-danger btn-sm" title="Hapus"><i class="fas fa-trash"></i></button>
                                                 </form>
                                             </td>
