@@ -162,6 +162,36 @@
                 </div>
               </div>
 
+              <!-- <div class="carousel-inner">
+                <div class="carousel-item active">
+                  <div class="carousel-caption">
+                    <img class="img-thumbnail img-fluid" src="<?php // echo base_url('assets/upload/slider/rektorat_unipa.jpg'); 
+                                                              ?>">
+                  </div>
+                </div>
+
+                <?php // foreach ($slider as $sl) { 
+                ?>
+                  <div class="carousel-item">
+                    <div class="carousel-caption">
+                      <?php // if ($sl) { 
+                      ?>
+                        <img class="img-thumbnail img-fluid" src="<?php // echo base_url('assets/upload/slider/') . $sl['gambar']; 
+                                                                  ?>">
+                      <?php // } else { 
+                      ?>
+                        <img width="100" height="150" src="<?php // echo base_url('assets/upload/slider/no-image.png'); 
+                                                            ?>" alt="">
+                      <?php // } 
+                      ?>
+
+                    </div>
+                  </div>
+                <?php // } 
+                ?>
+              </div> -->
+
+
               <a class="carousel-control-prev" href="#demo" data-slide="prev"><i class='fas fa-arrow-left'></i></a>
               <a class="carousel-control-next" href="#demo" data-slide="next"><i class='fas fa-arrow-right'></i></a>
             </div>

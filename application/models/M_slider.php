@@ -4,7 +4,7 @@ class M_slider extends CI_Model
 {
     function get_all()
     {
-        $query = $this->db->get('slider');  
+        $query = $this->db->get('slider');
         return $query->result_array();
     }
 
@@ -14,8 +14,9 @@ class M_slider extends CI_Model
         return TRUE;
     }
 
-    function edit($data, $id){
-        $this->db->where('id',$id);
+    function edit($data, $id)
+    {
+        $this->db->where('id', $id);
         $this->db->update('slider', $data);
         return TRUE;
     }
