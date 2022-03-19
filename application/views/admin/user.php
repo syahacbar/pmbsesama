@@ -50,7 +50,7 @@
                                     foreach ($pengguna as $u) { ?>
                                         <tr>
                                             <td><?php echo $no++; ?></td>
-                                            <td><?php echo $u->first_name." ".$u->last_name; ?></td>
+                                            <td><?php echo $u->first_name . " " . $u->last_name; ?></td>
                                             <td><?php echo $u->username; ?></td>
                                             <td><?php echo $u->email; ?></td>
                                             <td><?php echo $u->phone; ?></td>
@@ -60,10 +60,8 @@
                                             </td>
 
                                             <td>
-                                                <a href="#" class="btn btn-info btn-sm btn-icon-split btn-sm editform" data-toggle="modal" data-target="#editUser">
-                                                    <span class="icon text-white-50">
-                                                        <i class="fas fa-edit" title="Ubah"></i>
-                                                    </span>
+                                                <a id="ubahData" class="btn btn-info btn-sm mb-1" href="" title="Edit User" data-toggle="modal" data-target="#editUser" data-firstname="<?php echo $u->first_name; ?>" data-identity="<?php echo $u->username; ?>" data-company="<?php echo $u->company; ?>" data-email="<?php echo $u->email; ?>" data-phone="<?php echo $u->phone; ?>">
+                                                    <i class="fas fa-edit" title="Ubah"></i>
                                                 </a>
 
                                                 <?php
@@ -207,35 +205,45 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="nama_depan">Nama Lengkap</label>
-                                                <input type="text" class="form-control" id="nama_depan" name="nama_depan" value="<?php echo $u['first_name']; ?>" required>
+                                                <label for="first_name">Nama Depan</label>
+                                                <input type="text" class="form-control" id="namalengkap" name="first_name" required>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="username">Username</label>
-                                                <input type="text" class="form-control" id="username" value="<?php echo $u['username']; ?>" required>
+                                                <label for="identity">Username</label>
+                                                <input type="text" class="form-control" id="namauser" name="identity" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="company">Nama Instansi</label>
-                                                <input type="text" class="form-control" id="company" value="<?php echo $u['company']; ?>" required>
+                                                <input type="text" class="form-control" id="sekolah" name="company" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input type="email" class="form-control" id="surel" name="email" required>
                                             </div>
                                         </div>
 
-                                        <div class="col-md-12">
+                                        <!-- <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="group">Grup</label>
                                                 <select name="groups" class="form-control">
                                                     <option value="">-- Pilih Group --</option>
-                                                    <?php foreach ($grup as $g) : ?>
-                                                        <option value="<?php echo $g['name']; ?>"><?php echo htmlspecialchars($g['description'], ENT_QUOTES, 'UTF-8'); ?></option>
-                                                    <?php endforeach ?>
+                                                    <?php // foreach ($grup as $g) : 
+                                                    ?>
+                                                        <option value="<?php // echo $g['name']; 
+                                                                        ?>"><?php // echo htmlspecialchars($g['description'], ENT_QUOTES, 'UTF-8'); 
+                                                                            ?></option>
+                                                    <?php // endforeach 
+                                                    ?>
 
                                                 </select>
                                             </div>
-                                        </div>
+                                        </div> -->
 
                                     </div>
                                 </div>
@@ -244,28 +252,22 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="email" class="form-control" id="email" name="email" value="<?php echo $u['email']; ?>" required>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="no_hp">Nomor HP/WA</label>
-                                                <input type="text" class="form-control" id="no_hp" name="no_hp" value="<?php echo $u['phone']; ?>" required>
+                                                <label for="phone">Nomor HP/WA</label>
+                                                <input type="text" class="form-control" id="nohp" name="phone" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="password">Kata Sandi</label>
-                                                <input type="password" class="form-control" id="password" name="password" required>
+                                                <input type="password" class="form-control" id="sandi" name="password" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
                                                 <label for="confirm_password">Konfirmasi Kata Sandi</label>
-                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+                                                <input type="password" class="form-control" id="katasandi" name="confirm_password" required>
                                             </div>
                                         </div>
                                     </div>
@@ -328,7 +330,27 @@
 
             });
         </script>
+        <script>
+            $(document).ready(function() {
+                $(document).on('click', '#ubahData', function() {
+                    var firstname = $(this).data('firstname');
+                    var identity = $(this).data('identity');
+                    var company = $(this).data('company');
+                    var email = $(this).data('email');
+                    var phone = $(this).data('phone');
+                    var sandi = $(this).data('sandi');
+                    var katasandi = $(this).data('katasandi');
 
+                    $('#namalengkap').val(firstname);
+                    $('#namauser').val(identity);
+                    $('#sekolah').val(company);
+                    $('#surel').val(email);
+                    $('#nohp').val(phone);
+                    $('#sandi').val(sandi);
+                    $('#katasandi').val(katasandi);
+                })
+            })
+        </script>
 </body>
 
 </html>
