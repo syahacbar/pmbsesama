@@ -571,26 +571,6 @@ class Administrator extends CI_Controller
 		}
 	}
 
-	// public function saveagenda()
-	// {
-	// 	$params = array(
-	// 		'judul' => $this->input->post('judulagenda'),
-	// 		'isi_agenda' => $this->input->post('isiagenda'),
-	// 		'waktu' => date("Y-m-d H:i:s"),
-	// 		'id' => $this->input->post('id'),
-	// 	);
-
-	// 	$this->M_agenda->add_agenda($params);
-
-	// 	$this->session->set_flashdata('message', '<div class="alert alert-success d-flex align-items-center" role="alert">
-	//        <svg class="bi flex-shrink-0 me-2" width="24"  height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-	//        <div>
-	//         Agenda telah berhasil ditambah.
-	//        </div>
-	//      </div>');
-	// 	echo json_encode(array('status' => TRUE));
-	// }
-
 	public function hapus_pendaftar()
 	{
 		$username = $this->input->get('username');
