@@ -428,6 +428,7 @@
 																<div class="col-sm-4">
 																	<table class="table table-sm">
 																		<tbody>
+
 																			<tr>
 																				<td width="200">Nomor Pendaftaran</td>
 																				<td>:</td>
@@ -646,7 +647,7 @@
 																			<td width="300">Lampiran Rapor Kelas XI semeseter 1</td>
 																			<td>:</td>
 																			<td width="100px">
-																				<a href="<?php echo base_url('assets/upload/rapor/') . $rapor['nama_dok']; ?>" target="_blank" class="btn btn-info btn-icon-split btn-sm downloadform" target="_blank">
+																				<a href="<?php echo base_url('assets/upload/rapor/') . $p['nama_dok']; ?>" target="_blank" class="btn btn-info btn-icon-split btn-sm downloadform" target="_blank">
 																					<span class="icon text-white-50">
 																						<i class="fas fa-download"></i>
 																					</span>
