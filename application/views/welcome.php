@@ -49,7 +49,7 @@
             <div class="content">
                 <!--start-product-->
                 <div class="products">
-                    <img style="cursor:pointer;" onclick="toggle_drawer('filter-drawer-A');" src="http://simunipa.unipa.ac.id/styles/images/academic_ms.gif" />
+                    <!-- <img style="cursor:pointer;" onclick="toggle_drawer('filter-drawer-A');" src="http://simunipa.unipa.ac.id/styles/images/academic_ms.gif" /> -->
                     <div id="filter-drawer-A">
                         <img src="http://simunipa.unipa.ac.id/images/academica.jpg" />
                         <ul>
@@ -82,7 +82,7 @@
         </div>
     </div>
     <div id="footer">
-        Copyright UNIPA &copy; 2016. Hak cipta dilindungi undang-undang.
+        Copyright Biro Perencanaan Akademik dan Kemahasiswaan Universitas Papua &copy; 2021. Hak cipta dilindungi undang-undang.
     </div>
 </body>
 

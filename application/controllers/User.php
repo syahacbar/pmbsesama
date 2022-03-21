@@ -7,6 +7,9 @@ class User extends CI_Controller
     function __construct()
     {
         parent::__construct();
+        if (!$this->ion_auth->logged_in()) {
+			redirect('auth/login', 'refresh');
+		}
         $this->load->model('M_user');
         $this->load->model('Ion_auth_model');
         $this->load->library(['ion_auth', 'form_validation']);
