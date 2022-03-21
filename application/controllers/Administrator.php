@@ -450,6 +450,14 @@ class Administrator extends CI_Controller
 			$id = $this->input->post('id');
 			$this->M_agenda->delete($id);
 			redirect('administrator/agenda');
+		} else if ($this->uri->segment(3) == "edit") {
+			$id = $this->input->post('id');
+			$data = array(
+				'agenda'  => $this->input->post('agenda')
+			);
+			$this->M_agenda->edit($data, $id);
+			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+			redirect('administrator/agenda');
 		}
 
 		$data['agenda'] = $this->M_agenda->get_all();
@@ -520,7 +528,32 @@ class Administrator extends CI_Controller
 			$judulagenda = $this->input->post('judulagenda');
 			$isiagenda = $this->input->post('isiagenda');
 			$uploaded_on = date("Y-m-d H:i:s");
-			$this->db->insert('agenda', array('gambar' => $namafile, 'isi_agenda' => $isiagenda, 'judul' => $judulagenda, 'waktu' => $uploaded_on));
+			$this->db->insert('agenda', array(
+				'gambar' => $namafile,
+				'isi_agenda' => $isiagenda,
+				'judul' => $judulagenda,
+				'waktu' => $uploaded_on
+			));
+		}
+	}
+
+	public function editagenda()
+	{
+		$config['upload_path']   = FCPATH . 'assets/upload/agenda/';
+		$config['allowed_types'] = '*';
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('editgbr_agenda')) {
+			$namafile = $this->upload->data('file_name');
+			$judulagenda = $this->input->post('judulagenda');
+			$isiagenda = $this->input->post('isiagenda');
+			$uploaded_on = date("Y-m-d H:i:s");
+			$this->db->update('agenda', array(
+				'gambar' => $namafile,
+				'isi_agenda' => $isiagenda,
+				'judul' => $judulagenda,
+				'waktu' => $uploaded_on
+			));
 		}
 	}
 
@@ -550,11 +583,11 @@ class Administrator extends CI_Controller
 	// 	$this->M_agenda->add_agenda($params);
 
 	// 	$this->session->set_flashdata('message', '<div class="alert alert-success d-flex align-items-center" role="alert">
- //        <svg class="bi flex-shrink-0 me-2" width="24"  height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
- //        <div>
- //         Agenda telah berhasil ditambah.
- //        </div>
- //      </div>');
+	//        <svg class="bi flex-shrink-0 me-2" width="24"  height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+	//        <div>
+	//         Agenda telah berhasil ditambah.
+	//        </div>
+	//      </div>');
 	// 	echo json_encode(array('status' => TRUE));
 	// }
 

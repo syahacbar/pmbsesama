@@ -112,7 +112,7 @@ class Auth extends CI_Controller
 				'type' => 'password',
 			];
 
-			$this->data['agenda'] = $this->M_agenda->get_all();
+			$this->data['agenda'] = $this->M_agenda->get_all(2);
 			$this->data['informasi'] = $this->M_informasi->get_all(3);
 			$this->data['slider'] = $this->M_slider->get_all();
 

@@ -49,4 +49,10 @@ class M_agenda extends CI_Model
         $this->db->delete("agenda");
         return true;
     }
+
+    // function gbr_agenda($gambar)
+    // {
+    //     $query = $this->db->query("SELECT * FROM agenda WHERE gambar='$gambar'");
+    //     return $query->row();
+    // }
 }
