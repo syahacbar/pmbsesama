@@ -58,7 +58,7 @@
                                 <div class="label">
                                 </div>
                                 <div class="title">
-                                    <a href="<?php echo site_url('/'); ?> " target='_blank'>
+                                    <a href="<?php echo site_url('auth/login'); ?> " target='_blank'>
                                         Portal PMB</a>
                                 </div>
                             </li>
@@ -67,7 +67,7 @@
                                 <div class="label">
                                 </div>
                                 <div class="title">
-                                    <a href="http://simunipa.unipa.ac.id/gtakademik_portal/" target='_blank'>
+                                    <a href="https://bpak.unipa.ac.id/undangansesama/" target='_blank'>
                                         Undangan Sesama</a>
                                 </div>
                             </li>
