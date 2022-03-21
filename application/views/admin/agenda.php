@@ -218,7 +218,7 @@
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="idagenda" name="idagenda">
+                                    <input type="hidden" class="form-control" id="idagenda" name="idagenda">
                                 </div>
                             </div>
                         </div>

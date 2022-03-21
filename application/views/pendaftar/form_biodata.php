@@ -1434,6 +1434,7 @@
                     $('#kabupatenortu').load(url);
                     return false;
                 });
+
                 $("#kabupatenortu").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
                     $('#kecamatanortu').load(url);
@@ -1445,6 +1446,7 @@
                     $('#kectempattinggal').load(url);
                     return false;
                 });
+
                 $("#kectempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_des'); ?>/" + $(this).val();
                     $('#destempattinggal').load(url);

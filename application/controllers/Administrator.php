@@ -373,7 +373,7 @@ class Administrator extends CI_Controller
 	// DATA DI BAGIAN PENDAFTAR LIST
 	public function datapendaftar()
 	{
-		$this->load->model(['M_prodi', 'M_register', 'M_pendaftar', 'M_informasi']);
+		$this->load->model(['M_pendidikanortu', 'M_penghasilanortu', 'M_pekerjaanortu', 'M_prodi', 'M_register', 'M_pendaftar', 'M_informasi', 'M_agama', 'M_statusmenikah', 'M_jurusansmta', 'M_jenissmta']);
 
 		if ($this->uri->segment(3) == "") {
 			$data['listprodi'] = $this->M_prodi->get_all();
@@ -385,13 +385,27 @@ class Administrator extends CI_Controller
 		} else if ($this->uri->segment(3) == "detail_pendaftar") {
 			$data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
 			$data['rapor'] = $this->M_pendaftar->get_rapor($this->uri->segment(4))->result_array();
-			$this->load->view('admin/detail_pendaftar', $data);
+			$data['_view'] = 'admin/detail_pendaftar';
+			$this->load->view('admin/layout', $data);
 		} else if ($this->uri->segment(3) == "hapus_pendaftar") {
 			$data['hapus_pendaftar'] = $this->M_pendaftar->hapus_data($this->uri->segment(4));
 			redirect('administrator/datapendaftar');
 		} else if ($this->uri->segment(3) == "editpendaftar") {
-			$data['editpendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
-			$this->load->view('admin/edit_pendaftar', $data);
+			$data['editpendaftar'] = $this->M_pendaftar->edit_pendaftar($this->uri->segment(4))->result_array();
+			$data['agama'] = $this->M_agama->get_all();
+			$data['statusmenikah'] = $this->M_statusmenikah->get_all();
+			$data['prodi'] = $this->M_prodi->get_all();
+			$data['provinsi'] = $this->M_wilayah->get_all_provinsi();
+			$data['kabupaten'] = $this->M_wilayah->get_all_kabupaten();
+			$data['kecamatan'] = $this->M_wilayah->get_all_kecamatan();
+			$data['desa'] = $this->M_wilayah->get_all_desa();
+			$data['jurusansmta'] = $this->M_jurusansmta->get_all();
+			$data['jenissmta'] = $this->M_jenissmta->get_all();
+			$data['pendidikanortu'] = $this->M_pendidikanortu->get_all();
+			$data['pekerjaanortu'] = $this->M_pekerjaanortu->get_all();
+			$data['penghasilanortu'] = $this->M_penghasilanortu->get_all();
+			$data['_view'] = 'admin/edit_pendaftar';
+			$this->load->view('admin/layout', $data);
 		}
 	}
 
