@@ -384,7 +384,7 @@ class Administrator extends CI_Controller
 			$this->load->view('pendaftar/kartu_peserta', $data);
 		} else if ($this->uri->segment(3) == "detail_pendaftar") {
 			$data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
-			$data['rapor'] = $this->M_pendaftar->get_all();
+			$data['rapor'] = $this->M_pendaftar->get_rapor($this->uri->segment(4))->result_array();
 			$this->load->view('admin/detail_pendaftar', $data);
 		} else if ($this->uri->segment(3) == "hapus_pendaftar") {
 			$data['hapus_pendaftar'] = $this->M_pendaftar->hapus_data($this->uri->segment(4));
@@ -450,15 +450,16 @@ class Administrator extends CI_Controller
 			$id = $this->input->post('id');
 			$this->M_agenda->delete($id);
 			redirect('administrator/agenda');
-		} else if ($this->uri->segment(3) == "edit") {
-			$id = $this->input->post('id');
-			$data = array(
-				'agenda'  => $this->input->post('agenda')
-			);
-			$this->M_agenda->edit($data, $id);
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/agenda');
 		}
+		// else if ($this->uri->segment(3) == "edit") {
+		// 	$id = $this->input->post('id');
+		// 	$data = array(
+		// 		'agenda'  => $this->input->post('agenda')
+		// 	);
+		// 	$this->M_agenda->edit($data, $id);
+		// 	$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		// 	redirect('administrator/agenda');
+		// }
 
 		$data['agenda'] = $this->M_agenda->get_all();
 		$data['_view'] = 'admin/agenda';
@@ -544,16 +545,27 @@ class Administrator extends CI_Controller
 		$this->load->library('upload', $config);
 
 		if ($this->upload->do_upload('editgbr_agenda')) {
+			$id = $this->input->post('idagenda');
 			$namafile = $this->upload->data('file_name');
 			$judulagenda = $this->input->post('judulagenda');
 			$isiagenda = $this->input->post('isiagenda');
 			$uploaded_on = date("Y-m-d H:i:s");
-			$this->db->update('agenda', array(
+			// $this->db->update('agenda', array(
+			// 	'gambar' => $namafile,
+			// 	'isi_agenda' => $isiagenda,
+			// 	'judul' => $judulagenda,
+			// 	'waktu' => $uploaded_on
+			// ));
+			$data = array(
 				'gambar' => $namafile,
 				'isi_agenda' => $isiagenda,
 				'judul' => $judulagenda,
 				'waktu' => $uploaded_on
-			));
+			);
+
+			//$this->M_agenda->edit($data, $id);
+			$this->db->where('id', $id);
+			$this->db->update('agenda', $data);
 		}
 	}
 

@@ -145,12 +145,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                <div class="form-group">
-                                    <input type="hidden" class="form-control" id="idagenda" name="idagenda">
-                                </div>
-                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -182,8 +176,8 @@
                                 <div class="row">
                                     <div class="col-md-12">
                                         <div class="form-group">
-                                            <label for="judulagenda">Judul Agenda</label>
-                                            <input type="text" class="form-control" id="judul" name="judulagenda" required>
+                                            <label for="judul">Judul Agenda</label>
+                                            <input type="text" class="form-control" id="judul" name="judul" required>
                                         </div>
                                     </div>
 
@@ -215,7 +209,7 @@
                                         <label>Isi Agenda</label>
                                         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 py-0 px-0">
                                             <div class="form-group mt-0">
-                                                <textarea id="isi" name="isiagenda"></textarea>
+                                                <textarea id="isi" name="isi"></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -224,7 +218,7 @@
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input type="text" class="form-control" id="id" name="idagenda">
+                                    <input type="text" class="form-control" id="idagenda" name="idagenda">
                                 </div>
                             </div>
                         </div>
@@ -325,10 +319,12 @@
                 });
 
                 editgbr_agenda.on("sending", function(a, b, c) {
-                    a.judulagenda = $("input[name='judulagenda']").val();
-                    a.isiagenda = $("textarea[name='isiagenda']").val();
+                    a.judulagenda = $("input[name='judul']").val();
+                    a.isiagenda = $("textarea[name='isi']").val();
+                    a.idagenda = $("input[name='idagenda']").val();
                     c.append("judulagenda", a.judulagenda);
                     c.append("isiagenda", a.isiagenda);
+                    c.append("idagenda", a.idagenda);
                 });
 
                 editgbr_agenda.on("complete", function(file) {
@@ -393,7 +389,7 @@
                     var isiagenda = $(this).data('isiagenda');
                     // var gbr = $(this).data('gbr');
 
-                    $('#id').val(id);
+                    $('#formEditAgenda #idagenda').val(id);
                     $('#judul').val(judulagenda);
                     $('#isi').val(isiagenda);
                     // $('#gambar').attr("src", "/assets/upload/agenda/" + gbr);

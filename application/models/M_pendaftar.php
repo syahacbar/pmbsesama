@@ -172,4 +172,10 @@ class M_pendaftar extends CI_Model
         $query = $this->db->query("SELECT * FROM t_biodata tb WHERE tb.status='$status'");
         return $query;
     }
+
+    public function get_rapor()
+    {
+        $query = $this->db->query("SELECT * FROM rapor");
+        return $query;
+    }
 }
