@@ -49,6 +49,11 @@ class M_register extends CI_Model
         $this->db->update('t_biodata', $params);
     }
 
+    function get_user_username($username)
+    {
+        $query = $this->db->query("SELECT * FROM users WHERE username = $username");
+        return $query->row();
+    }
 
     function get_biodata_by_username($username)
     {

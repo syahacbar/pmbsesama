@@ -107,6 +107,7 @@
                 <input type="hidden" name="jalurmasuk" value="3">
                 <input type="hidden" name="gelombang" value="1">
                 <input type="hidden" name="kelompokujian" value="1">
+                <input type="hidden" name="tahunakademik" value="2022/2023">
 
                 <div class="col-sm-12">
                   <div class="form-group">

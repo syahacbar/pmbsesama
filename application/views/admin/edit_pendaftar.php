@@ -10,6 +10,7 @@
     <meta name="author" content="">
 
     <title>PMB SESAMA - UNIPA</title>
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
     <style>
@@ -70,6 +71,20 @@
         h5.fs-title {
             color: #4e73df;
         }
+
+        .col-sm-12.d-flex.justify-content-flex-start {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .col-sm-2.fotoprofil .form-group.tombol {
+            position: absolute;
+            margin: auto;
+            align-items: center;
+            bottom: 10px;
+        }
     </style>
 
 </head>
@@ -88,6 +103,8 @@
                 <div class="container-fluid">
                     <div class="row">
                         <?php foreach ($editpendaftar as $ep) : ?>
+                            <input name="username" type="hidden" class="form-control" placeholder="" value="<?php echo $ep['username']; ?>">
+
                             <div class="col-lg-12">
                                 <div class="card shadow mb-4">
                                     <div class="card-header py-3">
@@ -120,33 +137,6 @@
 
                                                                 <div class="col-sm-12">
                                                                     <div class="row">
-                                                                        <div class="col-sm-2">
-                                                                            <div class="row">
-                                                                                <div class="col-sm-12 d-flex justify-content-center">
-                                                                                    <div class="form-group">
-                                                                                        <?php // form_open_multipart('user/next1') 
-                                                                                        ?>
-                                                                                        <!-- <?php // if ($ep['fotoprofil'] == NULL) { 
-                                                                                                ?>
-                                                                                            <img width="100" height="100" class="img-profile" src="<?php // echo base_url('assets/upload/fotopas/profile_default.svg'); 
-                                                                                                                                                    ?>">
-                                                                                        <?php // } else { 
-                                                                                        ?>
-                                                                                            <img width="100" height="100" class="img-profile" src="<?php // echo base_url('assets/upload/fotopas/') . $ep['fotoprofil']; 
-                                                                                                                                                    ?>"> -->
-                                                                                        <?php // } 
-                                                                                        ?>
-                                                                                    </div>
-                                                                                </div>
-                                                                                <div class="col-sm-12 d-flex justify-content-center">
-                                                                                    <div class="form-group">
-                                                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#modaluploadfoto">Ubah Foto</button>
-                                                                                    </div>
-                                                                                </div>
-
-                                                                            </div>
-
-                                                                        </div>
 
                                                                         <div class="col-sm-5">
                                                                             <div class="row">
@@ -159,7 +149,7 @@
                                                                                 <div class="col-sm-12">
                                                                                     <div class="form-group">
                                                                                         <label>NIK/No. KTP</label>
-                                                                                        <input name="namalengkap" type="text" class="form-control" placeholder="" value="<?php echo $ep['nik']; ?>">
+                                                                                        <input name="nik" type="text" class="form-control" placeholder="" value="<?php echo $ep['nik']; ?>">
                                                                                     </div>
                                                                                 </div>
                                                                             </div>
@@ -171,26 +161,39 @@
                                                                                 <div class="col-sm-12">
                                                                                     <div class="form-group">
                                                                                         <label>Nomor Pendaftaran</label>
-                                                                                        <input name="namalengkap" type="text" class="form-control" placeholder="" value="<?php echo $ep['username']; ?>">
+                                                                                        <input name="" type="text" class="form-control" placeholder="" value="<?php echo $ep['username']; ?>" readonly>
                                                                                     </div>
                                                                                 </div>
-                                                                                <div class="col-sm-12 jeniskelamin">
-                                                                                    <label>Jenis Kelamin</label>
-                                                                                    <div class="row">
-                                                                                        <div class="col-sm-6">
-                                                                                            <div class="form-check">
-                                                                                                <input class="form-check-input jenkel" type="radio" name="jeniskelamin" id="jeniskelamin" value="Laki-laki" <?php echo ($ep['jeniskelamin'] == 'Laki-laki') ? 'checked' : ''; ?>>
-                                                                                                <label class="form-check-label" for="exampleRadios1">Laki-Laki</label>
-                                                                                            </div>
-                                                                                        </div>
-
-                                                                                        <div class="col-sm-6">
-                                                                                            <div class="form-check">
-                                                                                                <input class="form-check-input jenkel" type="radio" name="jeniskelamin" id="jeniskelamin" value="Perempuan" <?php echo ($ep['jeniskelamin'] == 'Perempuan') ? 'checked' : ''; ?>>
-                                                                                                <label class="form-check-label" for="exampleRadios1">Perempuan</label>
-                                                                                            </div>
-                                                                                        </div>
+                                                                                <div class="col-sm-12">
+                                                                                    <div class="form-group">
+                                                                                        <label>NISN (Nomor Induk Siswa Nasional)</label>
+                                                                                        <input name="nisn_pendaftar" type="text" class="form-control" placeholder="" value="<?php echo $ep['nisn_pendaftar']; ?>">
                                                                                     </div>
+                                                                                </div>
+
+                                                                            </div>
+
+                                                                        </div>
+
+                                                                        <div class="col-sm-2 fotoprofil">
+                                                                            <div class="row">
+                                                                                <div class="col-sm-12 d-flex justify-content-flex-start">
+                                                                                    <div class="form-group">
+                                                                                        <?php // form_open_multipart('user/next1')
+                                                                                        ?>
+                                                                                        <?php if ($ep['fotoprofil'] == NULL) { ?>
+                                                                                            <img width="120" height="150" class="img-profile" src="<?php echo base_url('assets/upload/profile/profil_default.svg'); ?>">
+                                                                                        <?php } else { ?>
+                                                                                            <img width="120" height="150" class="img-profile" src="<?php echo base_url('assets/upload/profile/') . $ep['fotoprofil']; ?>">
+                                                                                        <?php }
+                                                                                        ?>
+                                                                                    </div>
+
+                                                                                    <div class="form-group tombol">
+                                                                                        <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#unggahFoto">Ubah Foto</button>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="col-sm-12 d-flex justify-content-flex-start">
                                                                                 </div>
                                                                             </div>
 
@@ -198,11 +201,30 @@
                                                                     </div>
                                                                 </div>
 
+                                                                <div class="col-sm-4 col-md-3 col-lg-3 jeniskelamin">
+                                                                    <label>Jenis Kelamin</label>
+                                                                    <div class="row">
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-check">
+                                                                                <input class="form-check-input jenkel" type="radio" name="jeniskelamin" id="jeniskelamin" value="Laki-laki" <?php echo ($ep['jeniskelamin'] == 'Laki-laki') ? 'checked' : ''; ?>>
+                                                                                <label class="form-check-label" for="exampleRadios1">Laki-Laki</label>
+                                                                            </div>
+                                                                        </div>
+
+                                                                        <div class="col-sm-6">
+                                                                            <div class="form-check">
+                                                                                <input class="form-check-input jenkel" type="radio" name="jeniskelamin" id="jeniskelamin" value="Perempuan" <?php echo ($ep['jeniskelamin'] == 'Perempuan') ? 'checked' : ''; ?>>
+                                                                                <label class="form-check-label" for="exampleRadios1">Perempuan</label>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
                                                                 <div class="col-sm-4 col-md-3 col-lg-3">
                                                                     <div class="form-group">
-                                                                        <label for="agama">Agama Anda</label>
+                                                                        <label for="agama">Agama</label>
                                                                         <select id="agama" name="agama" class="form-select" aria-label="Default select example">
-                                                                            <option <?php echo ($ep['agama'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                                            <option value="" <?php echo ($ep['agama'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                                             <?php foreach ($agama as $ag) : ?>
                                                                                 <option value="<?php echo $ag['idagama']; ?>" <?php echo ($ep['agama'] == $ag['idagama']) ? 'selected' : ''; ?>><?php echo $ag['agama']; ?></option>
                                                                             <?php endforeach; ?>
@@ -214,7 +236,7 @@
                                                                     <div class="form-group">
                                                                         <label>Suku *</label>
                                                                         <select name="suku" id="suku" class="form-select" aria-label="Default select example">
-                                                                            <option <?php echo ($ep['suku'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                                            <option value="" <?php echo ($ep['suku'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                                             <option value="Papua" <?= $ep['suku'] == 'Papua' ? ' selected="selected"' : ''; ?>>Papua</option>
                                                                             <option value="Non Papua" <?= $ep['suku'] == 'Non Papua' ? ' selected="selected"' : ''; ?>>Non Papua</option>
                                                                         </select>
@@ -225,33 +247,25 @@
                                                                     <div class="form-group">
                                                                         <label>Status Menikah *</label>
                                                                         <select id="statusmenikah" name="statusmenikah" class="form-select" aria-label="Default select example">
-                                                                            <option <?php echo ($ep['statusmenikah'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                                            <option value="" <?php echo ($ep['statusmenikah'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                                             <?php foreach ($statusmenikah as $sm) : ?>
                                                                                 <option value="<?php echo $sm['idstatusmenikah']; ?>" <?php echo ($ep['statusmenikah'] == $sm['idstatusmenikah']) ? 'selected' : ''; ?>><?php echo $sm['status']; ?></option>
                                                                             <?php endforeach; ?>
                                                                         </select>
                                                                     </div>
                                                                 </div>
+                                                            </div>
 
-                                                                <div class="col-sm-4 col-md-3 col-lg-3">
-                                                                    <div class="form-group">
-                                                                        <label>Tempat Lahir</label>
-                                                                        <input name="tempatlahir" id="tempatlahir" type="text" class="form-control" placeholder="" value="<?php echo $ep['lokasi_tempatlahir']; ?>" required>
-                                                                    </div>
-                                                                </div>
-
-                                                                <div class="col-sm-4 col-md-3 col-lg-3">
-                                                                    <div class="form-group">
-                                                                        <label>Tanggal Lahir</label>
-                                                                        <input type="date" name="tanggallahir" id="tanggallahir" class="datepicker" data-date-format="mm/dd/yyyy" value="<?php echo $ep['tgl_lahir']; ?>">
-                                                                    </div>
+                                                            <div class="row">
+                                                                <div class="col-12 mt-4">
+                                                                    <h5 class="fs-title">Tempat Tanggal lahir</h5>
                                                                 </div>
 
                                                                 <div class=" col-sm-4 col-md-3 col-lg-3">
                                                                     <div class="form-group">
                                                                         <label>Provinsi *</label>
                                                                         <select name="provtempatlahir" id="provtempatlahir" class="form-select" aria-label="Default select example">
-                                                                            <option <?php echo ($ep['prov_tempatlahir'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                                            <option value="" <?php echo ($ep['prov_tempatlahir'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                                             <?php foreach ($provinsi as $prov) : ?>
                                                                                 <option value="<?php echo $prov['kode']; ?>" <?php echo ($ep['prov_tempatlahir'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
                                                                             <?php endforeach; ?>
@@ -268,6 +282,20 @@
                                                                     </div>
                                                                 </div>
 
+                                                                <div class="col-sm-4 col-md-3 col-lg-3">
+                                                                    <div class="form-group">
+                                                                        <label>Tempat Lahir</label>
+                                                                        <input name="lokasi_tempatlahir" id="lokasi_tempatlahir" type="text" class="form-control" placeholder="" value="<?php echo $ep['lokasi_tempatlahir']; ?>" required>
+                                                                    </div>
+                                                                </div>
+
+                                                                <div class="col-sm-4 col-md-3 col-lg-3">
+                                                                    <div class="form-group">
+                                                                        <label>Tanggal Lahir</label>
+                                                                        <input type="date" name="tanggallahir" id="tanggallahir" class="datepicker" data-date-format="mm/dd/yyyy" value="<?php echo $ep['tgl_lahir']; ?>">
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
 
                                                             <div class="row">
@@ -279,7 +307,7 @@
                                                                     <div class="form-group">
                                                                         <label>Pilihan 1 *</label>
                                                                         <select id="prodipilihan1" name="prodipilihan1" class="form-select" aria-label="Default select example">
-                                                                            <option <?php echo ($ep['prodipilihan1'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                                            <option value="" <?php echo ($ep['prodipilihan1'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                                             <?php foreach ($prodi as $pr1) : ?>
                                                                                 <option value="<?php echo $pr1['idprodi']; ?>" <?php echo ($ep['prodipilihan1'] == $pr1['idprodi']) ? 'selected' : ''; ?>><?php echo $pr1['namaprodi']; ?></option>
                                                                             <?php endforeach; ?>
@@ -291,7 +319,7 @@
                                                                     <div class="form-group">
                                                                         <label>Pilihan 2</label>
                                                                         <select id="prodipilihan2" name="prodipilihan2" class="form-select" aria-label="Default select example">
-                                                                            <option <?php echo ($ep['prodipilihan2'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                                            <option value="" <?php echo ($ep['prodipilihan2'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                                             <?php foreach ($prodi as $pr2) : ?>
                                                                                 <option value="<?php echo $pr2['idprodi']; ?>" <?php echo ($ep['prodipilihan2'] == $pr2['idprodi']) ? 'selected' : ''; ?>><?php echo $pr2['namaprodi']; ?></option>
                                                                             <?php endforeach; ?>
@@ -303,7 +331,7 @@
                                                                     <div class="form-group">
                                                                         <label>Pilihan 3</label>
                                                                         <select id="prodipilihan3" name="prodipilihan3" class="form-select" aria-label="Default select example">
-                                                                            <option <?php echo ($ep['prodipilihan3'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                                            <option value="" <?php echo ($ep['prodipilihan3'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                                             <?php foreach ($prodi as $pr3) : ?>
                                                                                 <option value="<?php echo $pr3['idprodi']; ?>" <?php echo ($ep['prodipilihan3'] == $pr3['idprodi']) ? 'selected' : ''; ?>><?php echo $pr3['namaprodi']; ?></option>
                                                                             <?php endforeach; ?>
@@ -327,7 +355,7 @@
                                                                     <div class="form-group">
                                                                         <label>Provinsi *</label>
                                                                         <select name="provtempattinggal" id="provtempattinggal" class="form-select" aria-label="Default select example">
-                                                                            <option <?php echo ($ep['prov_tempattinggal'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                                            <option value="" <?php echo ($ep['prov_tempattinggal'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                                             <?php foreach ($provinsi as $prov) : ?>
                                                                                 <option value="<?php echo $prov['kode']; ?>" <?php echo ($ep['prov_tempattinggal'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
                                                                             <?php endforeach; ?>
@@ -426,7 +454,8 @@
 
                                                         </div>
                                                         <div class="d-flex justify-content-end mt-3">
-                                                            <button class="btn btn-primary">Simpan</button>
+
+                                                            <input type="button" id="simpan1" name="simpan1" class="btn btn-primary" value="Simpan">
                                                         </div>
                                                     </div>
                                             </div>
@@ -586,7 +615,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="d-flex justify-content-end mt-3">
-                                                        <button class="btn btn-primary">Simpan</button>
+                                                        <input type="button" id="simpan2" name="simpan2" class="btn btn-primary" value="Simpan">
                                                     </div>
                                                 </fieldset>
                                             </div>
@@ -770,7 +799,7 @@
 
                                                     </div>
                                                     <div class="d-flex justify-content-end mt-3">
-                                                        <button class="btn btn-primary">Simpan</button>
+                                                        <input type="button" id="simpan3" name="simpan3" class="btn btn-primary" value="Simpan">
                                                     </div>
                                                 </fieldset>
                                             </div>
@@ -826,7 +855,7 @@
                                                         </div>
                                                     </div>
                                                     <div class="d-flex justify-content-end mt-3">
-                                                        <button class="btn btn-primary">Simpan</button>
+                                                        <input type="button" id="simpan4" name="simpan4" class="btn btn-primary" value="Simpan">
                                                     </div>
                                                 </fieldset>
                                             </div>
@@ -840,6 +869,37 @@
             </div>
         </div>
 
+    </div>
+
+    <!-- Modal Update Foto Profil -->
+    <div class="modal" id="unggahFoto" tabindex="-1" role="dialog" aria-labelledby="unggahFotolabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="unggahFotolabel">Unggah Foto</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form class="dropzone uploadfoto" id="image-upload">
+                        <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                            <small>Rasio Foto : 4 x 6, atau max resolusi 300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg, png.</small>
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="dz-message">
+                            <h6> Klik atau Drop gambar ke sini</h6>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button id="uploadFile" type="button" class="btn btn-primary">Upload</button>
+                    <button id="closeModal" type="button" class="btn btn-default">Kembali</button>
+                </div>
+            </div>
+        </div>
     </div>
     <!-- End of Main Content -->
     <script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/vendor/jquery/jquery.min.js"></script>
@@ -897,6 +957,233 @@
                 a.judulrapor = $("input[name='judulrapor']").val();
                 c.append("judulrapor", a.judulinformasi);
             });
+
+            $('#simpan1').on('click', function() {
+                var jenkel = $(".jenkel:checked").val();
+                var nik = $("input[name='nik']").val();
+                var namalengkap = $("input[name='namalengkap']").val();
+                var username = $("input[name='username']").val();
+                var nisn_pendaftar = $("input[name='nisn_pendaftar']").val();
+                var agama = $("select[name='agama']").val();
+                var suku = $("select[name='suku']").val();
+                var statusmenikah = $("select[name='statusmenikah']").val();
+                var nohp = $("input[name='nohp']").val();
+                var email = $("input[name='email']").val();
+                var prodipilihan1 = $("select[name='prodipilihan1']").val();
+                var prodipilihan2 = $("select[name='prodipilihan2']").val();
+                var prodipilihan3 = $("select[name='prodipilihan3']").val();
+                var prov_tempatlahir = $("select[name='provtempatlahir']").val();
+                var kab_tempatlahir = $("select[name='kabtempatlahir']").val();
+                var lokasi_tempatlahir = $("input[name='lokasi_tempatlahir']").val();
+                var tgl_lahir = $("input[name='tanggallahir']").val();
+                var negara_tempattinggal = $("input[name='negaratinggal']").val();
+                var prov_tempattinggal = $("select[name='provtempattinggal']").val();
+                var kab_tempattinggal = $("select[name='kabtempattinggal']").val();
+                var kec_tempattinggal = $("select[name='kectempattinggal']").val();
+                var des_tempattinggal = $("select[name='destempattinggal']").val();
+                var kodepos_tempattinggal = $("input[name='kodepos']").val();
+                var alamat_tempattinggal = $("input[name='alamattempattinggal']").val();
+                var alamatlain_tempattinggal = $("input[name='alamatlaintempattinggal']").val();
+                var tinggibadan = $("input[name='tinggibadan']").val();
+                var beratbadan = $("input[name='beratbadan']").val();
+
+                $.ajax({
+                    url: "<?php echo site_url('administrator/pendaftar_update1'); ?>",
+                    type: "POST",
+                    data: {
+                        nisn_pendaftar: nisn_pendaftar,
+                        namalengkap: namalengkap,
+                        jenkel: jenkel,
+                        nik: nik,
+                        username: username,
+                        agama: agama,
+                        suku: suku,
+                        statusmenikah: statusmenikah,
+                        nohp: nohp,
+                        email: email,
+                        prodipilihan1: prodipilihan1,
+                        prodipilihan2: prodipilihan2,
+                        prodipilihan3: prodipilihan3,
+                        prov_tempatlahir: prov_tempatlahir,
+                        kab_tempatlahir: kab_tempatlahir,
+                        lokasi_tempatlahir: lokasi_tempatlahir,
+                        tgl_lahir: tgl_lahir,
+                        negara_tempattinggal: negara_tempattinggal,
+                        prov_tempattinggal: prov_tempattinggal,
+                        kab_tempattinggal: kab_tempattinggal,
+                        kec_tempattinggal: kec_tempattinggal,
+                        des_tempattinggal: des_tempattinggal,
+                        kodepos_tempattinggal: kodepos_tempattinggal,
+                        alamat_tempattinggal: alamat_tempattinggal,
+                        alamatlain_tempattinggal: alamatlain_tempattinggal,
+                        tinggibadan: tinggibadan,
+                        beratbadan: beratbadan,
+                    },
+
+                    //cache: false,
+                    success: function(dataResult) {
+                        var dataResult = JSON.parse(dataResult);
+                        if (dataResult.statusCode == 1) {
+                            location.reload();
+                        } else {
+                            alert("Error occured !");
+                        }
+                    }
+                });
+            });
+
+            $('#simpan2').on('click', function() {
+                var username = $("input[name='username']").val();
+                var tahunlulussmta = $("select[name='tahunlulussmta']").val();
+                var jurusansmta = $("select[name='jurusansmta']").val();
+                var jenissmta = $("select[name='jenissmta']").val();
+                var namasmta = $("input[name='namasmta']").val();
+                var nisnsmta = $("input[name='nisnsmta']").val();
+                var provinsismta = $("select[name='provinsismta']").val();
+                var alamatsmta = $("input[name='alamatsmta']").val();
+                var nrapor1 = $("input[name='nrapor1']").val();
+                var nrapor2 = $("input[name='nrapor2']").val();
+                var nrapor3 = $("input[name='nrapor3']").val();
+
+                $.ajax({
+                    url: "<?php echo site_url('administrator/pendaftar_update2'); ?>",
+                    type: "POST",
+                    data: {
+                        username: username,
+                        tahunlulussmta: tahunlulussmta,
+                        jurusansmta: jurusansmta,
+                        jenissmta: jenissmta,
+                        namasmta: namasmta,
+                        nisnsmta: nisnsmta,
+                        provinsismta: provinsismta,
+                        alamatsmta: alamatsmta,
+                        nrapor1: nrapor1,
+                        nrapor2: nrapor2,
+                        nrapor3: nrapor3,
+                    },
+
+                    //cache: false,
+                    success: function(dataResult) {
+                        var dataResult = JSON.parse(dataResult);
+                        if (dataResult.statusCode == 1) {
+                            location.reload();
+                        } else {
+                            alert("Error occured !");
+                        }
+                    }
+                });
+            });
+
+            $('#simpan3').on('click', function() {
+                var username = $("input[name='username']").val();
+                var nik_ayah = $("input[name='nikayah']").val();
+                var nama_ayah = $("input[name='namaayah']").val();
+                var pendidikanayah = $("select[name='pendidikanayah']").val();
+                var pekerjaanayah = $("select[name='pekerjaanayah']").val();
+                var alamatkantor_ayah = $("input[name='alamatkantorayah']").val();
+                var nik_ibu = $("input[name='nikibu']").val();
+                var nama_ibu = $("input[name='namaibu']").val();
+                var pendidikanibu = $("select[name='pendidikanibu']").val();
+                var pekerjaanibu = $("select[name='pekerjaanibu']").val();
+                var penghasilanortu = $("select[name='penghasilanortu']").val();
+                var alamat_ortu = $("input[name='alamatortu']").val();
+                var provinsi_ortu = $("select[name='provortu']").val();
+                var kabupaten_ortu = $("select[name='kabupatenortu']").val();
+                var kecamatan_ortu = $("select[name='kecamatanortu']").val();
+                var kodepos_ortu = $("input[name='kodeposortu']").val();
+                var nohp_ortu = $("input[name='nohportu']").val();
+
+
+                $.ajax({
+                    url: "<?php echo site_url('administrator/pendaftar_update3'); ?>",
+                    type: "POST",
+                    data: {
+                        username: username,
+                        nik_ayah: nik_ayah,
+                        nama_ayah: nama_ayah,
+                        pendidikanayah: pendidikanayah,
+                        pekerjaanayah: pekerjaanayah,
+                        alamatkantor_ayah: alamatkantor_ayah,
+                        nik_ibu: nik_ibu,
+                        nama_ibu: nama_ibu,
+                        pendidikanibu: pendidikanibu,
+                        pekerjaanibu: pekerjaanibu,
+                        penghasilanortu: penghasilanortu,
+                        alamat_ortu: alamat_ortu,
+                        provinsi_ortu: provinsi_ortu,
+                        kabupaten_ortu: kabupaten_ortu,
+                        kecamatan_ortu: kecamatan_ortu,
+                        kodepos_ortu: kodepos_ortu,
+                        nohp_ortu: nohp_ortu,
+
+
+                    },
+                    //cache: false,
+                    success: function(dataResult) {
+                        var dataResult = JSON.parse(dataResult);
+                        if (dataResult.statusCode == 1) {
+                            location.reload();
+                        } else {
+                            alert("Error occured !");
+                        }
+                    }
+                });
+            });
+
+            $('#simpan4').on('click', function() {
+                var username = $("input[name='username']").val();
+                var nama_wali = $("input[name='namawali']").val();
+                var pekerjaanwali = $("select[name='pekerjaanwali']").val();
+                var penghasilanwali = $("select[name='penghasilanwali']").val();
+                var alamat_wali = $("input[name='alamatwali']").val();
+
+
+                $.ajax({
+                    url: "<?php echo site_url('administrator/pendaftar_update4'); ?>",
+                    type: "POST",
+                    data: {
+                        username: username,
+                        nama_wali: nama_wali,
+                        pekerjaanwali: pekerjaanwali,
+                        penghasilanwali: penghasilanwali,
+                        alamat_wali: alamat_wali,
+
+                    },
+                    //cache: false,
+                    success: function(dataResult) {
+                        var dataResult = JSON.parse(dataResult);
+                        if (dataResult.statusCode == 1) {
+                            location.reload();
+                        } else {
+                            alert("Error occured !");
+                        }
+                    }
+                });
+            });
+
+            var foto_upload = new Dropzone(".uploadfoto", {
+                url: "<?php echo site_url('register/uploadfotopas') ?>",
+                maxFilesize: 1,
+                autoProcessQueue: false,
+                method: "post",
+                acceptedFiles: ".jpeg,.jpg,.png,.gif",
+                paramName: "fotopas",
+                dictInvalidFileType: "Type file ini tidak dizinkan",
+                addRemoveLinks: true,
+            });
+
+            $('#uploadFile').click(function() {
+                foto_upload.processQueue();
+            });
+
+            foto_upload.on("sending", function(file, xhr, formData) {
+                // Will send the filesize along with the file as POST data.
+                // formData.append("filesize", file.size);
+                // formData.append("username", "<?php // echo $row['username']; 
+                                                ?>");
+            });
+
+
         });
     </script>
 

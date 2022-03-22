@@ -91,7 +91,8 @@ class Auth extends CI_Controller
 			} else {
 				// if the login was un-successful
 				// redirect them back to the login page
-				$this->session->set_flashdata('message', $this->ion_auth->errors());
+				// $this->session->set_flashdata('message', $this->ion_auth->errors());
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username/Password salah</div>');
 				redirect('auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
 			}
 		} else {
@@ -510,6 +511,7 @@ class Auth extends CI_Controller
 			't_jalurmasuk_id' => $this->input->post('jalurmasuk'),
 			't_kelompokujian_id' => $this->input->post('kelompokujian'),
 			't_gelombang_id' => $this->input->post('gelombang'),
+			'tahunakademik' => $this->input->post('tahunakademik'),
 		];
 		//}
 		$is_valid = $this->recaptcha->is_valid();

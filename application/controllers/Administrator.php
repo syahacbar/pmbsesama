@@ -384,6 +384,7 @@ class Administrator extends CI_Controller
 			$this->load->view('pendaftar/kartu_peserta', $data);
 		} else if ($this->uri->segment(3) == "detail_pendaftar") {
 			$data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
+			$data['editpendaftar'] = $this->M_pendaftar->edit_pendaftar($this->uri->segment(4))->result_array();
 			$data['rapor'] = $this->M_pendaftar->get_rapor($this->uri->segment(4))->result_array();
 			$data['_view'] = 'admin/detail_pendaftar';
 			$this->load->view('admin/layout', $data);
@@ -407,6 +408,115 @@ class Administrator extends CI_Controller
 			$data['_view'] = 'admin/edit_pendaftar';
 			$this->load->view('admin/layout', $data);
 		}
+	}
+
+	public function pendaftar_update1()
+	{
+		$username = $this->input->post('username');
+		$params = array(
+			'nisn_pendaftar' => $this->input->post('nisn_pendaftar'),
+			'nik' => $this->input->post('nik'),
+			'namalengkap' => $this->input->post('namalengkap'),
+			'jeniskelamin' => $this->input->post('jenkel'),
+			'suku' => $this->input->post('suku'),
+			'agama' => $this->input->post('agama'),
+			'statusmenikah' => $this->input->post('statusmenikah'),
+			'prodipilihan1' => $this->input->post('prodipilihan1'),
+			'prodipilihan2' => $this->input->post('prodipilihan2'),
+			'prodipilihan3' => $this->input->post('prodipilihan3'),
+			'prov_tempatlahir' => $this->input->post('prov_tempatlahir'),
+			'kab_tempatlahir' => $this->input->post('kab_tempatlahir'),
+			'lokasi_tempatlahir'  => $this->input->post('lokasi_tempatlahir'),
+			'tgl_lahir' => $this->input->post('tgl_lahir'),
+			'negara_tempattinggal' => $this->input->post('negara_tempattinggal'),
+			'prov_tempattinggal' => $this->input->post('prov_tempattinggal'),
+			'kab_tempattinggal' => $this->input->post('kab_tempattinggal'),
+			'kec_tempattinggal' => $this->input->post('kec_tempattinggal'),
+			'des_tempattinggal' => $this->input->post('des_tempattinggal'),
+			'kodepos_tempattinggal' => $this->input->post('kodepos_tempattinggal'),
+			'alamat_tempattinggal' => $this->input->post('alamat_tempattinggal'),
+			'alamatlain_tempattinggal' => $this->input->post('alamatlain_tempattinggal'),
+			'tinggibadan' => $this->input->post('tinggibadan'),
+			'beratbadan' => $this->input->post('beratbadan'),
+		);
+
+		//update data tabel t_biodata
+
+		$this->M_register->update_biodata($username, $params);
+
+		$datauser = [
+			'first_name' => $this->input->post('namalengkap'),
+			'email' => $this->input->post('email'),
+			'phone' => $this->input->post('nohp'),
+		];
+
+		//update data tabel users
+
+		$user = $this->M_register->get_user_username($username);
+		$this->ion_auth->update($user->id, $datauser);
+
+		echo json_encode(array("statusCode" => 1));
+	}
+
+	public function pendaftar_update2()
+	{
+		$username = $this->input->post('username');
+		$params = array(
+			'tahunlulus_smta' => $this->input->post('tahunlulussmta'),
+			'jurusansmta' => $this->input->post('jurusansmta'),
+			'jenissmta' => $this->input->post('jenissmta'),
+			'nama_smta' => $this->input->post('namasmta'),
+			'nisn_smta' => $this->input->post('nisnsmta'),
+			'prov_smta' => $this->input->post('provinsismta'),
+			'alamat_smta' => $this->input->post('alamatsmta'),
+			'nrapor1' => $this->input->post('nrapor1'),
+			'nrapor2' => $this->input->post('nrapor2'),
+			'nrapor3' => $this->input->post('nrapor3'),
+
+		);
+
+		$this->M_register->update_biodata($username, $params);
+		echo json_encode(array("statusCode" => 1));
+	}
+
+	public function pendaftar_update3()
+	{
+		$username = $this->input->post('username');
+		$params = array(
+			'nik_ayah' => $this->input->post('nik_ayah'),
+			'nama_ayah' => $this->input->post('nama_ayah'),
+			'pendidikan_ayah' => $this->input->post('pendidikanayah'),
+			'pekerjaan_ayah' => $this->input->post('pekerjaanayah'),
+			'alamatkantor_ayah' => $this->input->post('alamatkantor_ayah'),
+			'nik_ibu' => $this->input->post('nik_ibu'),
+			'nama_ibu' => $this->input->post('nama_ibu'),
+			'pendidikan_ibu' => $this->input->post('pendidikanibu'),
+			'pekerjaan_ibu' => $this->input->post('pekerjaanibu'),
+			'penghasilan_ortu' => $this->input->post('penghasilanortu'),
+			'alamat_ortu' => $this->input->post('alamat_ortu'),
+			'provinsi_tempattinggalortu' => $this->input->post('provinsi_ortu'),
+			'kab_tempattinggalortu' => $this->input->post('kabupaten_ortu'),
+			'kec_tempattinggalortu' => $this->input->post('kecamatan_ortu'),
+			'kodepost_tempattinggalortu' => $this->input->post('kodepos_ortu'),
+			'nohp_ortu' => $this->input->post('nohp_ortu'),
+
+		);
+		$this->M_register->update_biodata($username, $params);
+		echo json_encode(array("statusCode" => 1));
+	}
+
+	public function pendaftar_update4()
+	{
+		$username = $this->input->post('username');
+		$params = array(
+			'nama_wali' => $this->input->post('nama_wali'),
+			'pekerjaan_wali' => $this->input->post('pekerjaanwali'),
+			'penghasilan_wali' => $this->input->post('penghasilanwali'),
+			'alamat_wali' => $this->input->post('alamat_wali'),
+		);
+
+		$this->M_register->update_biodata($username, $params);
+		echo json_encode(array("statusCode" => 1));
 	}
 
 	public function slider()

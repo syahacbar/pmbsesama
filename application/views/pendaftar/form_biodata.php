@@ -512,7 +512,7 @@
                                                 <div class="col-sm-6 profile">
                                                     <?php form_open_multipart('user/next1') ?>
                                                     <?php if ($row['fotoprofil'] == NULL) { ?>
-                                                        <img class="img-profile" src="<?php echo base_url('/assets/upload/profile/profile_default.svg'); ?>">
+                                                        <img class="img-profile" src="<?php echo base_url('/assets/upload/profile/profil_default.svg'); ?>">
                                                     <?php } else { ?>
                                                         <img class="img-profile" src="<?php echo base_url('/assets/upload/profile/') . $row['fotoprofil']; ?>">
                                                     <?php } ?>

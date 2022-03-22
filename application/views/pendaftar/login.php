@@ -67,6 +67,7 @@
                             <div class="row mb-4 px-3">
                                 <h4 class="mb-0 mr-4 mt-2">Portal PMB Online UNIPA</h4>
                             </div>
+                            <?php echo $this->session->flashdata('message'); ?></p>
                             <?php echo form_open("auth/login"); ?>
                             <div class="row px-3 mb-4">
                                 <small class="text-center">Silakan Login Untuk Mengisi Formulir Pendaftaran</small>

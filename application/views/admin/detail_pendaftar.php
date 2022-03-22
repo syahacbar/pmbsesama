@@ -23,6 +23,15 @@
 		tbody>tr>td:nth-child(1) {
 			width: 200px !important;
 		}
+
+		img.foto-profil {
+			position: fixed;
+			right: 25px;
+			z-index: 999;
+			object-fit: cover;
+			background-color: #fff;
+			padding: 5px;
+		}
 	</style>
 
 </head>
@@ -42,6 +51,13 @@
 						<?php foreach ($data_pendaftar as $p) : ?>
 							<div class="col-lg-12">
 								<div class="card shadow mb-4">
+									<?php foreach ($editpendaftar as $ep) : ?>
+										<?php if ($ep['fotoprofil'] == NULL) { ?>
+											<img width="105" height="120" class="img-profile foto-profil" src="<?php echo base_url('assets/upload/profile/profil_default.svg'); ?>">
+										<?php } else { ?>
+											<img width="105" height="120" class="img-profile foto-profil" src="<?php echo base_url('assets/upload/profile/') . $ep['fotoprofil']; ?>">
+										<?php } ?>
+									<?php endforeach; ?>
 									<div class="card-header py-3">
 										<h4 class="m-0 font-weight-bold text-primary">Detail Data Pendaftar: <?php echo ucwords($p['namalengkap']); ?></h4>
 									</div>
