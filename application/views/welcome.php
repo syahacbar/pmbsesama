@@ -82,7 +82,7 @@
         </div>
     </div>
     <div id="footer">
-        Copyright Biro Perencanaan Akademik dan Kemahasiswaan Universitas Papua &copy; 2021. Hak cipta dilindungi undang-undang.
+        Copyright BPAK UNIPA &copy; 2021. Hak cipta dilindungi undang-undang.
     </div>
 </body>
 

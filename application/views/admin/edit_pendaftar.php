@@ -527,9 +527,9 @@
 
                                                             <div class="col-sm-4 col-md-3 col-lg-3">
                                                                 <div class="form-group">
-                                                                    <label>NISN SMTA *</label>
+                                                                    <label>NPSN (Nomor Pokok Sekolah Nasional) *</label>
                                                                     <input name="nisnsmta" id="nisnsmta" type="text" class="form-control" placeholder="" value="<?php echo $ep['nisn_smta']; ?>" required>
-                                                                    <small>Ketik NISN SMTA Anda.</small>
+                                                                    <small>Ketik NPSN SMTA Anda.</small>
                                                                 </div>
                                                             </div>
 
