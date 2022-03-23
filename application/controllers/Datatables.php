@@ -205,7 +205,6 @@ class Datatables extends CI_Controller
     {
         $status = $this->input->post('status');
         $this->M_register->proseslaporan($idt_biodata, $status);
-        echo json_encode(array("statusCode" => 1));
     }
 
     function pendaftar_list()
@@ -246,14 +245,9 @@ class Datatables extends CI_Controller
             $row[] = $pes->pilihan3;
             $row[] = $pes->suku;
             $row[] = $pes->tahunakademik;
-            $row[] = '
-                <a href="" data-toggle="modal" data-target="#detailPendaftar" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>&nbsp;
-                <a href="" data-toggle="modal" data-target="#editPendaftar" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>&nbsp;
-                <a href="' . site_url('administrator/datapendaftar/hapus_pendaftar/') . $pes->idt_biodata . '" class="btn btn-sm btn-danger" id="btnHapus"><i class="fa fa-trash"></i></a>&nbsp;
-                <a href="' . site_url('administrator/datapendaftar/kartupeserta/') . $pes->username . '" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>';
+            $row[] = '<a href="' . site_url('administrator/datapendaftar/detail_pendaftar/') . $pes->username . '" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>&nbsp;<a href="' . site_url('administrator/datapendaftar/editpendaftar/') . $pes->username . '" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>&nbsp;<a href="' . site_url('administrator/datapendaftar/hapus_pendaftar/') . $pes->idt_biodata . '" class="btn btn-sm btn-danger" id="btnHapus"><i class="fa fa-trash"></i></a>&nbsp;<a href="' . site_url('administrator/datapendaftar/kartupeserta/') . $pes->username . '" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>';
             $data[] = $row;
         }
-
 
         $output = array(
             "draw" => $this->input->post('draw'),
@@ -264,4 +258,16 @@ class Datatables extends CI_Controller
         //output to json format
         $this->output->set_output(json_encode($output));
     }
+
+    // public function pendaftar()
+    // {
+
+    //     $data['count_oap'] = $this->M_pendaftar->count_by_suku('Papua')->num_rows();
+    //     $data['count_noap'] = $this->M_pendaftar->count_by_suku('Non Papua')->num_rows();
+    //     $data['list_pendaftar'] = $this->M_pendaftar->data_pendaftar();
+    //     $data['t_biodata'] = $this->M_pendaftar->get_all();
+
+    //     $data['_view'] = 'admin/dashboard';
+    //     $this->load->view('admin/layout', $data);
+    // }
 }
