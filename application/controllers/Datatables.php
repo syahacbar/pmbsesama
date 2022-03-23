@@ -204,7 +204,7 @@ class Datatables extends CI_Controller
     function proseslaporan($idt_biodata)
     {
         $status = $this->input->post('status');
-        $this->M_register->proseslaporan($idt_biodata, $status); 
+        $this->M_register->proseslaporan($idt_biodata, $status);
         echo json_encode(array("statusCode" => 1));
     }
 
@@ -247,11 +247,13 @@ class Datatables extends CI_Controller
             $row[] = $pes->suku;
             $row[] = $pes->tahunakademik;
             $row[] = '
-                <a href="' . site_url('administrator/datapendaftar/detail_pendaftar/') . $pes->username . '" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>&nbsp;
+                <a href="" data-toggle="modal" data-target="#detailPendaftar" class="btn btn-sm btn-info"><i class="fa fa-eye"></i></a>&nbsp;
+                <a href="" data-toggle="modal" data-target="#editPendaftar" class="btn btn-sm btn-primary"><i class="fa fa-edit"></i></a>&nbsp;
                 <a href="' . site_url('administrator/datapendaftar/hapus_pendaftar/') . $pes->idt_biodata . '" class="btn btn-sm btn-danger" id="btnHapus"><i class="fa fa-trash"></i></a>&nbsp;
                 <a href="' . site_url('administrator/datapendaftar/kartupeserta/') . $pes->username . '" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>';
             $data[] = $row;
         }
+
 
         $output = array(
             "draw" => $this->input->post('draw'),
