@@ -148,7 +148,7 @@
 									<th>Status</th>
 									<th>Nomor Pendaftaran</th>
 									<th>Nama Lengkap</th>
-									<th>Prodi Pilihan 1</th>
+					 				<th>Prodi Pilihan 1</th>
 									<th>Prodi Pilihan 2</th>
 									<th>Prodi Pilihan 3</th>
 									<th>Suku</th>
@@ -166,13 +166,13 @@
 	</div>
 </div>
 
+
 <!-- /.container-fluid -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
 <script type="text/javascript">
 	$(document).ready(function() {
-
 		$(".tabs").click(function() {
 
 			$(".tabs").removeClass("active");
@@ -255,7 +255,7 @@
 				},
 				"processing": true,
 				"serverSide": true,
-				"stateSave": false,
+				"stateSave": true,
 				"order": [],
 				"columnDefs": [{
 						"targets": 0,
@@ -366,7 +366,8 @@
 						showCancelButton: false,
 						confirmButtonText: 'Kembali',
 					})
-					tablePendaftar.draw(false);
+					//tablePendaftar.draw(false);
+					reload_table();
 				},
 				error: function() {
 					// alert('Gagal Merubah Status Laporan : ' + username);
@@ -399,7 +400,8 @@
 						showCancelButton: false,
 						confirmButtonText: 'Kembali',
 					})
-					tablePendaftar.draw(false);
+					//tablePendaftar.draw(false);
+					reload_table();
 				},
 				error: function() {
 					// alert('Gagal Merubah Status Laporan : ' + username);
