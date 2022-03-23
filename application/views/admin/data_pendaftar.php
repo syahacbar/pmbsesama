@@ -93,6 +93,98 @@
 	ul#myTab li.nav-item {
 		padding: 0 0.5rem;
 	}
+
+	div#modalEdit .modal-body ul.nav.nav-tabs li a.active {
+		background-color: #ecf0f6 !important;
+		padding: 0 10px 0 10px !important;
+		border-radius: 5px 5px 0 0 !important;
+		margin: 0 10px !important;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 45px;
+	}
+
+	div#modalEdit .modal-body ul.nav.nav-tabs li a {
+		padding: 0 10px 0 10px !important;
+		margin: 0 10px !important;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		height: 45px;
+	}
+
+	.alert.alert-server {
+		margin-bottom: 0;
+	}
+
+	.dropzone {
+		min-height: 150px;
+		border: 0;
+		background: white;
+		padding: 20px 20px;
+	}
+
+	.dropzone .dz-message {
+		text-align: center;
+		margin: 1em 0;
+		padding: 37px 0;
+		border: 2px solid #dce3f9;
+		border-radius: 10px;
+	}
+
+	#DataPribadi1 table.table.table-sm tr:nth-child(2) td:nth-child(2) {
+		width: 20px;
+	}
+
+	.form-group {
+		margin-bottom: 1rem;
+		display: flex;
+		flex-direction: column;
+	}
+
+	select,
+	input#tanggallahir {
+		word-wrap: normal;
+		display: block;
+		width: 100%;
+		height: calc(1.5em + 0.75rem + 2px);
+		padding: 0.375rem 0.75rem;
+		font-size: 1rem;
+		font-weight: 400;
+		line-height: 1.5;
+		color: #6e707e;
+		background-color: #fff;
+		background-clip: padding-box;
+		border: 1px solid #d1d3e2;
+		border-radius: 0.35rem;
+	}
+
+	.nav-tabs .nav-item.show .nav-link,
+	.nav-tabs .nav-link.active {
+		color: #4e73df;
+		background-color: #fff;
+		border-color: #dddfeb #dddfeb #fff;
+		font-weight: bold;
+	}
+
+	h5.fs-title {
+		color: #4e73df;
+	}
+
+	.col-sm-12.d-flex.justify-content-flex-start {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		flex-direction: column;
+	}
+
+	.col-sm-2.fotoprofil .form-group.tombol {
+		position: absolute;
+		margin: auto;
+		align-items: center;
+		bottom: 10px;
+	}
 </style>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <!-- Begin Page Content -->
@@ -174,493 +266,767 @@
 	</div>
 </div>
 
-
 <!-- Modal Detail Pendaftar -->
-<div class="modal fade" id="detailPendaftar" tabindex="-1" role="dialog" aria-labelledby="detailPendaftarLabel" aria-hidden="true">
+<div class="modal fade" id="modalDetail" tabindex="-1" role="dialog" aria-labelledby="modalDetailLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content modal-lg">
 			<div class="modal-header">
-				<h4 class="m-0 font-weight-bold text-primary modal-title" id="detailPendaftarLabel">Detail Data Pendaftar: <?php // // echo ucwords($p['namalengkap']); 
-																															?></h4>
+				<h4 class="m-0 font-weight-bold text-primary modal-title" id="modalDetailLabel">
+					Detail Data Pendaftar: <span id="usernamependaftar"></span></h4>
 			</div>
 			<!-- <?php // // echo $this->session->flashdata('message'); 
 					?> -->
 			<?php // echo form_open_multipart('', array('id' => 'formInputAgenda')); 
 			?>
 			<div class="modal-body">
-				<?php // // foreach ($data_pendaftar as $p) : 
-				?>
-				<div class="card-body">
-					<ul class="nav nav-tabs" id="myTab" role="tablist">
-						<li class="nav-item" role="presentation">
-							<button class="nav-link active" id="home-tab" data-toggle="tab" data-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Informasi Pribadi</button>
-						</li>
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="profile-tab" data-toggle="tab" data-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Informasi Sekolah</button>
-						</li>
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="contact-tab" data-toggle="tab" data-target="#contact" type="button" role="tab" aria-controls="contact" aria-selected="false">Data Orang Tua</button>
-						</li>
-						<li class="nav-item" role="presentation">
-							<button class="nav-link" id="dataWali-tab" data-toggle="tab" data-target="#dataWali" type="button" role="tab" aria-controls="dataWali" aria-selected="false">Data Wali</button>
-						</li>
-					</ul>
-
-					<div class="tab-content" id="myTabContent">
-						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
-							<fieldset class="show" id="DataPribadi1">
-								<div class="col-md-12 mt-3 px-0 py-0">
-									<div class="form-card">
-										<div class="row">
-											<div class="col-sm-4">
-												<table class="table table-sm">
-													<tbody>
-
-														<tr>
-															<td width="200">Nomor Pendaftaran</td>
-															<td>:</td>
-															<td><?php // // echo $p['username']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Nama Lengkap</td>
-															<td>:</td>
-															<td><?php // // echo $p['namalengkap']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">NISN Pendaftar</td>
-															<td>:</td>
-															<td><?php // // echo $p['nisn_pendaftar']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Jenis Kelamin</td>
-															<td>:</td>
-															<td><?php // // echo $p['jeniskelamin']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">NIK/No. KTP</td>
-															<td>:</td>
-															<td><?php // // echo $p['nik']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Agama</td>
-															<td>:</td>
-															<td><?php // // echo $p['agama']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Suku</td>
-															<td>:</td>
-															<td><?php // // echo $p['suku']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Status Menikah</td>
-															<td>:</td>
-															<td><?php // // echo $p['statusmenikah']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Tempat Lahir</td>
-															<td>:</td>
-															<td><?php // // echo $p['lokasi_tempatlahir']; 
-																?></td>
-														</tr>
-
-														<tr>
-															<td width="200">Tanggal Lahir</td>
-															<td>:</td>
-															<td><?php // // echo $p['tgl_lahir']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Kabupaten/Kota</td>
-															<td>:</td>
-															<td><?php // // echo $p['kab_tempatlahir']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Provinsi</td>
-															<td>:</td>
-															<td><?php // // echo $p['prov_tempatlahir']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Program Studi Pilihan 1</td>
-															<td>:</td>
-															<td><?php // // echo $p['pilihan1']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Program Studi Pilihan 2</td>
-															<td>:</td>
-															<td><?php // // echo $p['pilihan2']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Program Studi Pilihan 3</td>
-															<td>:</td>
-															<td><?php // // echo $p['pilihan3']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Alamat Tinggal</td>
-															<td>:</td>
-															<td><?php // // echo $p['alamat_tempattinggal']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Desa/Kelurahan</td>
-															<td>:</td>
-															<td><?php // // echo $p['des_tempattinggal']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Kecamatan/Distrik</td>
-															<td>:</td>
-															<td><?php // // echo $p['kec_tempattinggal']; 
-																?></td>
-														</tr>
-
-														<tr>
-															<td width="200">Kabupaten/Kota</td>
-															<td>:</td>
-															<td><?php // // echo $p['kab_tempattinggal']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="250">Provinsi</td>
-															<td>:</td>
-															<td><?php // // echo $p['prov_tempattinggal']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="250">Negara</td>
-															<td>:</td>
-															<td><?php // // echo $p['negara_tempattinggal']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="250">Kode Pos</td>
-															<td>:</td>
-															<td><?php // // echo $p['kodepos_tempattinggal']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="250">Alamat Tinggal Lain</td>
-															<td>:</td>
-															<td><?php // // echo $p['alamatlain_tempattinggal']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="250">No. HP</td>
-															<td>:</td>
-															<td><?php // // echo $p['nohp']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="250">Alamat Email</td>
-															<td>:</td>
-															<td><?php // // echo $p['email']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="250">Tinggi Badan</td>
-															<td>:</td>
-															<td><?php // // echo $p['tinggibadan']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="250">Berat Badan</td>
-															<td>:</td>
-															<td><?php // // echo $p['beratbadan']; 
-																?></td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-										</div>
-									</div>
-								</div>
-							</fieldset>
-						</div>
-						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-							<fieldset class="show" id="DataSekolah1">
-								<div class="col-md-12 mt-3 px-0 py-0">
-									<div class="form-card">
-										<div class="row">
-											<table class="table table-sm">
-												<tbody>
-													<tr>
-														<td width="200">Tahun Lulus SMTA</td>
-														<td>:</td>
-														<td><?php // // echo $p['tahunlulus_smta']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">Jurusan SMTA</td>
-														<td>:</td>
-														<td><?php // // echo $p['jurusansmta']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">Jenis SMTA</td>
-														<td>:</td>
-														<td><?php // // echo $p['jenissmta']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">Nama SMTA</td>
-														<td>:</td>
-														<td><?php // // echo $p['nama_smta']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">NISN SMTA</td>
-														<td>:</td>
-														<td><?php // // echo $p['nisn_smta']; 
-															?></td>
-													</tr>
-													<tr>
-														<td>Alamat SMTA</td>
-														<td>:</td>
-														<td><?php // // echo $p['alamat_smta']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">Provinsi SMTA</td>
-														<td>:</td>
-														<td><?php // // echo $p['prov_smta']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">Nilai Rapor Kelas XI semeseter 1</td>
-														<td>:</td>
-														<td><?php // // echo $p['nrapor1']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">Nilai Rapor Kelas XI semeseter 2</td>
-														<td>:</td>
-														<td><?php // // echo $p['nrapor2']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">Nilai Rapor Kelas XII semeseter 1</td>
-														<td>:</td>
-														<td><?php // // echo $p['nrapor3']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">Lampiran Rapor Kelas XI semeseter 1</td>
-														<td>:</td>
-														<td width="100px">
-															<a href="<?php // // // echo base_url('assets/upload/rapor/') . $p['nama_dok']; 
-																		?>" target="_blank" class="btn btn-info btn-icon-split btn-sm downloadform" target="_blank">
-																<span class="icon text-white-50">
-																	<i class="fas fa-download"></i>
-																</span>
-																<span class="text">Unduh</span>
-															</a>
-														</td>
-														</td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</fieldset>
-						</div>
-						<div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
-							<fieldset class="show" id="DataOrtu1">
-								<div class="col-md-12 mt-3 px-0 py-0">
-									<div class="form-card">
-										<div class="row">
-											<div class="col-sm-6">
-												<table class="table table-sm">
-													<tbody>
-														<tr>
-															<td width="200">NIK/No. KTP Ayah</td>
-															<td>:</td>
-															<td><?php // // echo $p['nik_ayah']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Nama Ayah</td>
-															<td>:</td>
-															<td><?php // // echo $p['nama_ayah']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Pendidikan Ayah</td>
-															<td>:</td>
-															<td><?php // // echo $p['pendidikan_ayah']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Pekerjaan Ayah</td>
-															<td>:</td>
-															<td><?php // // echo $p['pekerjaan_ayah']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Alamat Kantor Ayah</td>
-															<td>:</td>
-															<td><?php // // echo $p['alamatkantor_ayah']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">NIK/No. KTP Ibu</td>
-															<td>:</td>
-															<td><?php // // echo $p['nik_ibu']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Nama Ibu</td>
-															<td>:</td>
-															<td><?php // // echo $p['nama_ibu']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Pendidikan Ibu</td>
-															<td>:</td>
-															<td><?php // // echo $p['pendidikan_ibu']; 
-																?></td>
-														</tr>
-
-														<tr>
-															<td width="200">Pekerjaan Ibu</td>
-															<td>:</td>
-															<td><?php // // echo $p['pekerjaan_ibu']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Penghasilan Orang Tua</td>
-															<td>:</td>
-															<td><?php // // echo $p['penghasilan_ortu']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Alamat Orang Tua</td>
-															<td>:</td>
-															<td><?php // // echo $p['alamat_ortu']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Kecamatan/Distrik</td>
-															<td>:</td>
-															<td><?php // // echo $p['kec_tempattinggalortu']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Kabupaten/Kota</td>
-															<td>:</td>
-															<td><?php // // echo $p['kab_tempattinggalortu']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Provinsi</td>
-															<td>:</td>
-															<td><?php // // echo $p['provinsi_tempattinggalortu']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">Kode POS</td>
-															<td>:</td>
-															<td><?php // // echo $p['kodepost_tempattinggalortu']; 
-																?></td>
-														</tr>
-														<tr>
-															<td width="200">No. Telp./HP Orang Tua</td>
-															<td>:</td>
-															<td><?php // // echo $p['nohp_ortu']; 
-																?></td>
-														</tr>
-													</tbody>
-												</table>
-											</div>
-
-										</div>
-									</div>
-								</div>
-							</fieldset>
-						</div>
-
-						<div class="tab-pane fade" id="dataWali" role="tabpanel" aria-labelledby="dataWali-tab">
-							<fieldset class="show" id="DataWali1">
-								<div class="col-md-12">
-									<div class="form-card">
-										<div class="row">
-											<table class="table table-sm">
-												<tbody>
-													<tr>
-														<td width="200">Nama Wali</td>
-														<td>:</td>
-														<td><?php // //  // echo $p['nama_wali']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">Pekerjaan Wali</td>
-														<td>:</td>
-														<td><?php // //  // echo $p['pekerjaan_wali']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">Penghasilan Wali</td>
-														<td>:</td>
-														<td><?php // //  // echo $p['penghasilan_wali']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">Alamat Wali</td>
-														<td>:</td>
-														<td><?php // //  // echo $p['alamat_wali']; 
-															?></td>
-													</tr>
-													<tr>
-														<td width="200">Nomor HP Wali</td>
-														<td>:</td>
-														<td><?php // //  // echo $p['nohp_ortu']; 
-															?></td>
-													</tr>
-												</tbody>
-											</table>
-										</div>
-									</div>
-								</div>
-							</fieldset>
-						</div>
-					</div>
-				</div>
-				<?php // // endforeach; 
-				?>
+				<div id="detailPendaftarx"></div>
 			</div>
 			<div class="modal-footer">
-				<button type="button" class="btn btn-primary btn-sm" data-dismiss="modal">Tutup</button>
+				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+				<input type="button" id="simpan4" name="simpan4" class="btn btn-primary" value="Simpan Perubahan">
 			</div>
 		</div>
 	</div>
-	<?php // echo form_close(); 
-	?>
-</div>
-</div>
 </div>
 <!-- Akhir Modal Detail Pendaftar -->
 
 <!-- Modal Ubah Data Pendaftar -->
-<div class="modal fade" id="editPendaftar" tabindex="-1" role="dialog" aria-labelledby="editPendaftarLabel" aria-hidden="true">
+<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
 	<div class="modal-dialog modal-lg" role="document">
 		<div class="modal-content modal-lg">
 			<div class="modal-header">
-				<h4 class="m-0 font-weight-bold text-primary modal-title" id="editPendaftarLabel">Ubah Data Pendaftar: <?php // echo ucwords($ep['namalengkap']); 
-																														?></h4>
+				<h4 class="m-0 font-weight-bold text-primary modal-title" id="modalEditLabel">Ubah Data Pendaftar</h4>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
 			</div>
 			<div class="modal-body">
+				<div role="tabpanel">
+					<!-- Nav tabs -->
+					<ul class="nav nav-tabs" role="tablist">
+						<li role="presentation" class="active">
+							<a class="active" href="#infoPribadi" aria-controls="infoPribadi" role="tab" data-toggle="tab">Identitas Pendaftar</a>
+						</li>
+						<li role="presentation">
+							<a href="#infoSekolah" aria-controls="infoSekolah" role="tab" data-toggle="tab">Data Sekolah</a>
+						</li>
+						<li role="presentation">
+							<a href="#infoOrtu" aria-controls="infoOrtu" role="tab" data-toggle="tab">Data Orang Tua</a>
+						</li>
+						<li role="presentation">
+							<a href="#infoWali" aria-controls="infoWali" role="tab" data-toggle="tab">Data Wali</a>
+						</li>
+					</ul>
+					<!-- Tab panes -->
+					<div class="tab-content">
+						<div role="tabpanel" class="tab-pane active" id="infoPribadi">
+							<div class="col-md-12">
+								<div class="form-card mt-4">
+									<div class="row">
+										<div class="col-sm-12">
+											<div class="row">
+
+												<div class="col-sm-6">
+													<div class="row">
+														<div class="col-sm-12">
+															<div class="form-group">
+																<label>Nama Lengkap</label>
+																<input name="namalengkap" type="text" class="form-control" placeholder="" value="">
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<label>NIK/No. KTP</label>
+																<input name="nik" type="text" class="form-control" placeholder="" value="<?php // echo $ep['nik']; 
+																																			?>">
+															</div>
+														</div>
+													</div>
+
+												</div>
+
+												<div class="col-sm-6 profile">
+													<div class="row">
+														<div class="col-sm-12">
+															<div class="form-group">
+																<label>Nomor Pendaftaran</label>
+																<input name="username" type="text" class="form-control" placeholder="" value="<?php // echo $ep['username']; 
+																																				?>" readonly>
+															</div>
+														</div>
+														<div class="col-sm-12">
+															<div class="form-group">
+																<label>NISN (Nomor Induk Siswa Nasional)</label>
+																<input name="nisn_pendaftar" type="text" class="form-control" placeholder="" value="">
+															</div>
+														</div>
+
+													</div>
+
+												</div>
+
+												<!-- <div class="col-sm-6 fotoprofil">
+													<div class="row">
+														<div class="col-sm-12 d-flex justify-content-flex-start">
+															<div class="form-group">
+															</div>
+
+															<div class="form-group tombol">
+																<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#unggahFoto">Ubah Foto</button>
+															</div>
+														</div>
+														<div class="col-sm-12 d-flex justify-content-flex-start">
+														</div>
+													</div>
+
+												</div> -->
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6 jeniskelamin">
+											<label>Jenis Kelamin</label>
+											<div class="row">
+												<div class="col-sm-4">
+													<div class="form-check">
+														<input class="form-check-input jenkel" type="radio" name="jeniskelamin" id="jeniskelamin" value="Laki-laki" <?php // echo ($ep['jeniskelamin'] == 'Laki-laki') ? 'checked' : ''; 
+																																									?>>
+														<label class="form-check-label" for="exampleRadios1">Laki-Laki</label>
+													</div>
+												</div>
+
+												<div class="col-sm-4">
+													<div class="form-check">
+														<input class="form-check-input jenkel" type="radio" name="jeniskelamin" id="jeniskelamin" value="Perempuan" <?php // echo ($ep['jeniskelamin'] == 'Perempuan') ? 'checked' : ''; 
+																																									?>>
+														<label class="form-check-label" for="exampleRadios1">Perempuan</label>
+													</div>
+												</div>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label for="agama">Agama</label>
+												<select id="agama" name="agama" class="form-select" aria-label="Default select example">
+													<option value=""> -- Pilih -- </option>
+													<?php foreach ($agama as $ag) :
+													?>
+														<option value="<?php echo $ag['idagama']; ?>"><?php echo $ag['agama']; ?></option>
+													<?php endforeach;
+													?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Suku *</label>
+												<select name="suku" id="suku" class="form-select" aria-label="Default select example">
+													<option value=""> -- Pilih -- </option>
+													<option value="Papua">Papua</option>
+													<option value="Non Papua">Non Papua</option>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-4 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Status Menikah *</label>
+												<select id="statusmenikah" name="statusmenikah" class="form-select" aria-label="Default select example">
+													<option value=""> -- Pilih -- </option>
+													<?php foreach ($statusmenikah as $sm) :
+													?>
+														<option value="<?php echo $sm['idstatusmenikah']; ?>"><?php echo $sm['status']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-12 mt-4">
+											<h5 class="fs-title">Tempat Tanggal lahir</h5>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Provinsi *</label>
+												<select name="provtempatlahir" id="provtempatlahir" class="form-select" aria-label="Default select example">
+													<option value=""> -- Pilih -- </option>
+													<?php foreach ($provinsi as $prov) : ?>
+														<option value="<?php echo $prov['kode']; ?>"><?php echo $prov['nama']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Kabupaten/Kota *</label>
+												<select name="kabtempatlahir" id="kabtempatlahir" class="form-select" aria-label="Default select example">
+													<option value="<?php echo $prov['kode']; ?>"><?php echo $prov['nama']; ?> </option>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Tempat Lahir</label>
+												<input name="lokasi_tempatlahir" id="lokasi_tempatlahir" type="text" class="form-control" placeholder="" value="" required>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Tanggal Lahir</label>
+												<input type="date" name="tanggallahir" id="tanggallahir" class="datepicker" data-date-format="mm/dd/yyyy" value="<?php // echo $ep['tgl_lahir']; 
+																																									?>">
+											</div>
+										</div>
+
+									</div>
+
+									<div class="row">
+										<div class="col-12 mt-4">
+											<h5 class="fs-title">Program Studi Pilihan</h5>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Pilihan 1 *</label>
+												<select id="prodipilihan1" name="prodipilihan1" class="form-select" aria-label="Default select example">
+													<option value=""> -- Pilih -- </option>
+													<?php foreach ($prodi as $pr1) :
+													?>
+														<option value="<?php echo $pr1['idprodi']; ?>"><?php echo $pr1['namaprodi']; ?></option>
+													<?php endforeach;
+													?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Pilihan 2</label>
+												<select id="prodipilihan2" name="prodipilihan2" class="form-select" aria-label="Default select example">
+													<option value=""> -- Pilih -- </option>
+													<?php foreach ($prodi as $pr2) : ?>
+														<option value="<?php echo $pr2['idprodi']; ?>"><?php echo $pr2['namaprodi']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Pilihan 3</label>
+												<select id="prodipilihan3" name="prodipilihan3" class="form-select" aria-label="Default select example">
+													<option value=""> -- Pilih -- </option>
+													<?php foreach ($prodi as $pr3) : ?>
+														<option value="<?php echo $pr3['idprodi']; ?>"><?php echo $pr3['namaprodi']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-12 mt-4">
+											<h5 class="fs-title">Tempat Tinggal</h5>
+										</div>
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Negara Tinggal *</label>
+												<input name="negaratinggal" id="negaratinggal" type="text" class="form-control" placeholder="" required value="<?php // echo $ep['negara_tempattinggal']; 
+																																								?>">
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Provinsi *</label>
+												<select name="provtempattinggal" id="provtempattinggal" class="form-select" aria-label="Default select example">
+													<option value=""> -- Pilih -- </option>
+													<?php foreach ($provinsi as $prov) : ?>
+														<option value="<?php echo $prov['kode']; ?>"><?php echo $prov['nama']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Kabupaten/Kota *</label>
+												<select name="kabtempattinggal" id="kabtempattinggal" class="form-select" aria-label="Default select example">
+													<option value=""> </option>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Kecamatan/Distrik *</label>
+												<select name="kectempattinggal" id="kectempattinggal" class="form-select" aria-label="Default select example">
+													<option value=""> </option>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Kelurahan/Desa *</label>
+												<select name="destempattinggal" id="destempattinggal" class="form-select" aria-label="Default select example">
+													<option value=""> </option>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Kode Pos</label>
+												<input name="kodepos" id="kodepos" type="text" class="form-control" placeholder="" value="" required>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Alamat *</label>
+												<input name="alamattempattinggal" id="alamattempattinggal" row="8" type="text" class="form-control" placeholder="" value="" required></input>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Alamat Tinggal Lain</label>
+												<input name="alamatlaintempattinggal" id="alamatlaintempattinggal" type="text" class="form-control" placeholder="" value="" required></input>
+											</div>
+										</div>
+
+									</div>
+
+
+									<div class="row">
+										<div class="col-12 mt-4">
+											<h5 class="fs-title">Data Tambahan</h5>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>No. Telp./HP *</label>
+												<input name="nohp" type="text" class="form-control" placeholder="" value="">
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Alamat Email *</label>
+												<input name="email" type="email" class="form-control" placeholder="" value="">
+												<small>Email Aktif</small>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Tinggi Badan *</label>
+												<input name="tinggibadan" id="tinggibadan" type="text" class="form-control" placeholder="" value="" required>
+												<small>Satuan cm. Contoh: 165</small>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Berat Badan *</label>
+												<input name="beratbadan" id="beratbadan" type="text" class="form-control" placeholder="" value="" required>
+												<small>Satuan kg. Contoh: 60</small>
+											</div>
+										</div>
+
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="infoSekolah">
+							<div class="col-md-12">
+								<div class="form-card">
+									<div class="row">
+										<div class="col-12 mt-4">
+											<div class="alert alert-primary alert-dismissible fade show" role="alert">
+												Bidang/isian yang bertanda bintang (*) wajib untuk diisi.
+												<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+													<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Tahun Lulus SMTA *</label>
+												<select name="tahunlulussmta" id="tahunlulussmta" class="form-select" aria-label="Default select example">
+													<option> -- Pilih -- </option>
+													<?php $thn_skr = date('Y');
+													for ($x = $thn_skr; $x >= 2000; $x--) { ?>
+														<option value="<?php echo $x ?>"><?php echo $x ?></option>
+													<?php } ?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Jurusan SMTA *</label>
+												<select class="form-select" name="jurusansmta" id="jurusansmta" aria-label="Default select example">
+													<option> -- Pilih -- </option>
+													<?php foreach ($jurusansmta as $jur) : ?>
+														<option value="<?php echo $jur['idjurusansmta']; ?>"><?php echo $jur['namajurusan']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Jenis SMTA *</label>
+												<select name="jenissmta" id="jenissmta" class="form-select" aria-label="Default select example">
+													<option> -- Pilih -- </option>
+													<?php foreach ($jenissmta as $jen) : ?>
+														<option value="<?php echo $jen['idjenissmta']; ?>"><?php echo $jen['namajenissmta']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Nama SMTA *</label>
+												<input name="namasmta" id="namasmta" type="text" class="form-control" placeholder="" value="" required>
+												<small>Ketik nama SMTA Anda.</small>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>NPSN (Nomor Pokok Sekolah Nasional) *</label>
+												<input name="nisnsmta" id="nisnsmta" type="text" class="form-control" placeholder="" value="" required>
+												<small>Ketik NPSN SMTA Anda.</small>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Provinsi SMTA *</label>
+												<select name="provinsismta" id="provinsismta" class="form-select" aria-label="Default select example">
+													<option> -- Pilih -- </option>
+													<?php foreach ($provinsi as $prov) : ?>
+														<option value="<?php echo $prov['kode']; ?>"><?php echo $prov['nama']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Alamat SMTA</label>
+												<input name="alamatsmta" id="alamatsmta" type="text" class="form-control" placeholder="" value="" required></input>
+												<small>Maksimal 50 karakter, gunakan spasi untuk memisahkan tiap kata</small>
+											</div>
+										</div>
+
+										<div class="col-sm-12 mt-4">
+											<div class="form-group">
+												<h5 class="fs-title">Nilai Rata-Rata Rapor</h5>
+											</div>
+
+											<div class="row">
+												<div class="col-sm-6">
+													<div class="row">
+														<div class="col-sm-12">
+															<div class="form-group">
+																<label>Kelas XI semeseter 1</label>
+																<input name="nrapor1" id="nrapor1" type="text" class="form-control" placeholder="" value="" required></input>
+															</div>
+														</div>
+
+
+														<div class="col-sm-12">
+															<div class="form-group">
+																<label>Kelas XI semeseter 2</label>
+																<input name="nrapor2" id="nrapor2" type="text" class="form-control" placeholder="" value="" required></input>
+															</div>
+														</div>
+
+														<div class="col-sm-12">
+															<div class="form-group">
+																<label>Kelas XII semeseter 1</label>
+																<input name="nrapor3" id="nrapor3" type="text" class="form-control" placeholder="" value="" required></input>
+															</div>
+														</div>
+													</div>
+												</div>
+
+												<div class="col-sm-6">
+													<div class="row mt-2">
+														<div class="col-sm-12">
+															<div class="form">
+																<div class="dropzone rapor" id="file">
+																	<div class="alert alert-primary alert-dismissible fade show" role="alert">
+																		<small>Unggah file rapor dalam bentuk .pdf dengan ukuran maksimal 500kb. Format nama file <b>Rapor.pdf</b> </small>
+																		<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+																			<span aria-hidden="true">&times;</span>
+																		</button>
+																	</div>
+																	<div class="dz-message">
+																		<h6> Klik atau Drop file PDF ke sini</h6>
+																	</div>
+																</div>
+
+															</div>
+														</div>
+													</div>
+												</div>
+
+											</div>
+
+
+
+
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="infoOrtu">
+							<div class="col-md-12">
+								<div class="form-card">
+									<div class="row">
+										<div class="col-sm-12 mt-4">
+											<h5 class="fs-title">Biodata Ayah</h5>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>NIK/No. KTP Ayah</label>
+												<input name="nikayah" id="nikayah" type="text" class="form-control" placeholder="" value="" required>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Nama Ayah *</label>
+												<input name="namaayah" id="namaayah" type="text" class="form-control" placeholder="" value="" required>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Pendidikan Ayah *</label>
+												<select name="pendidikanayah" id="pendidikanayah" class="form-select" aria-label="Default select example">
+													<option> -- Pilih -- </option>
+													<?php foreach ($pendidikanortu as $pd) : ?>
+														<option value="<?php echo $pd['idpendidikan']; ?>"><?php echo $pd['namajenjang']; ?></option>
+													<?php endforeach; ?>
+												</select>
+												<small>Pendidikan terakhir</small>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Pekerjaan Ayah *</label>
+												<select name="pekerjaanayah" id="pekerjaanayah" class="form-select" aria-label="Default select example">
+													<option> -- Pilih -- </option>
+													<?php foreach ($pekerjaanortu as $pk) : ?>
+														<option value="<?php echo $pk['idpekerjaan']; ?>"><?php echo $pk['namapekerjaan']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Alamat Kantor Ayah *</label>
+												<input name="alamatkantorayah" id="alamatkantorayah" type="text" class="form-control" placeholder="" value="" required>
+												<small>Alamat kantor Ayah, maksimal 50 karakter.</small>
+											</div>
+										</div>
+										</select>
+									</div>
+
+									<div class="row">
+										<div class="col-sm-12 mt-4">
+											<h5 class="fs-title">Biodata Ibu</h5>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>NIK/No. KTP Ibu</label>
+												<input name="nikibu" type="text" class="form-control" placeholder="" value="" required>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Nama Ibu *</label>
+												<input name="namaibu" id="namaibu" type="text" class="form-control" placeholder="" value="" required>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Pendidikan Ibu *</label>
+												<select name="pendidikanibu" id="pendidikanibu" class="form-select" aria-label="Default select example">
+													<option> -- Pilih -- </option>
+													<?php foreach ($pendidikanortu as $pd) : ?>
+														<option value="<?php echo $pd['idpendidikan']; ?>"><?php echo $pd['namajenjang']; ?></option>
+													<?php endforeach; ?>
+												</select>
+												<small>Pendidikan terakhir</small>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Pekerjaan Ibu *</label>
+												<select name="pekerjaanibu" id="pekerjaanibu" class="form-select" aria-label="Default select example">
+													<option> -- Pilih -- </option>
+													<?php foreach ($pekerjaanortu as $pk) : ?>
+														<option value="<?php echo $pk['idpekerjaan']; ?>"><?php echo $pk['namapekerjaan']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Penghasilan Orang Tua*</label>
+												<select name="penghasilanortu" id="penghasilanortu" class="form-select" aria-label="Default select example">
+													<option> -- Pilih -- </option>
+													<?php foreach ($penghasilanortu as $ph) : ?>
+														<option value="<?php echo $ph['idpenghasilan']; ?>"><?php echo $ph['penghasilan']; ?></option>
+													<?php endforeach; ?>
+												</select>
+												<small>Penghasilan Orang Tua Per Bulan</small>
+											</div>
+										</div>
+									</div>
+
+									<div class="row">
+										<div class="col-sm-12 mt-4">
+											<h5 class="fs-title">Alamat Orang Tua</h5>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Alamat Orang Tua *</label>
+												<input name="alamatortu" id="alamatortu" type="text" class="form-control" placeholder="" value="" required>
+												<small>Alamat tinggal orang tua saat ini. Maksimal 50 karakter.</small>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Provinsi *</label>
+												<select name="provortu" id="provortu" class="form-select" aria-label="Default select example">
+													<option> -- Pilih -- </option>
+													<?php foreach ($provinsi as $prov) : ?>
+														<option value="<?php echo $prov['kode']; ?>"><?php echo $prov['nama']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Kabupaten/Kota *</label>
+												<select name="kabupatenortu" id="kabupatenortu" class="form-select" aria-label="Default select example">
+													<option value=""> </option>
+
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Kecamatan/Distrik *</label>
+												<select name="kecamatanortu" id="kecamatanortu" class="form-select" aria-label="Default select example">
+													<option value=""> </option>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Kode Pos *</label>
+												<input name="kodeposortu" id="kodeposortu" type="text" class="form-control" placeholder="" value="" required>
+												<small>Kode pos tempat tinggal orang tua saat ini</small>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>No. Telp./HP *</label>
+												<input name="nohportu" id="nohportu" type="text" class="form-control" placeholder="" value="" required>
+												<small>Nomor telp atau handphone orang tua yang bisa dihubungi</small>
+											</div>
+										</div>
+									</div>
+
+								</div>
+							</div>
+						</div>
+						<div role="tabpanel" class="tab-pane" id="infoWali">
+							<div class="col-md-12">
+								<div class="form-card mt-4">
+									<div class="row">
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Nama Wali</label>
+												<input name="namawali" id="namawali" type="text" class="form-control" placeholder="" value="" required>
+											</div>
+
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Pekerjaan Wali *</label>
+												<select name="pekerjaanwali" id="pekerjaanwali" class="form-select" aria-label="Default select example">
+													<option> -- Pilih -- </option>
+													<?php foreach ($pekerjaanortu as $pk) : ?>
+														<option value="<?php echo $pk['idpekerjaan']; ?>"><?php echo $pk['namapekerjaan']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Penghasilan Wali *</label>
+												<select name="penghasilanwali" id="penghasilanwali" class="form-select" aria-label="Default select example">
+													<option> -- Pilih -- </option>
+													<?php foreach ($penghasilanortu as $ph) : ?>
+														<option value="<?php echo $ph['idpenghasilan']; ?>"><?php echo $ph['penghasilan']; ?></option>
+													<?php endforeach; ?>
+												</select>
+											</div>
+										</div>
+
+										<div class="col-sm-6 col-md-6 col-lg-6">
+											<div class="form-group">
+												<label>Alamat Wali *</label>
+												<input name="alamatwali" id="alamatwali" type="text" class="form-control" placeholder="" value="" required>
+												<small>Alamat wali saat ini. Maksimal 50 karakter.</small>
+											</div>
+										</div>
+
+									</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
+				<input type="button" id="simpan4" name="simpan4" class="btn btn-primary" value="Simpan Perubahan">
 			</div>
 		</div>
 	</div>
@@ -876,6 +1242,98 @@
 			$('#tablePendaftar').DataTable().ajax.reload(null, false);
 		}
 
+		$("#tablePendaftar").on("click", ".btnDetail", function() {
+			var username = $(this).data('username');
+			$.ajax({
+				type: "POST",
+				url: '<?php echo site_url() ?>/datatables/detailpendaftar/' + username,
+				data: {
+					username: username,
+				},
+				success: function(response) {
+					$('#usernamependaftar').html(username);
+					$('#detailPendaftarx').html(response);
+
+				}
+			});
+
+		});
+
+		$("#tablePendaftar").on("click", ".btnEdit", function() {
+			var username = $(this).data('username');
+			$.ajax({
+				type: "POST",
+				url: '<?php echo site_url() ?>/datatables/editpendaftar/' + username,
+				data: {
+					username: username,
+				},
+				success: function(response) {
+					var json = $.parseJSON(response);
+					$('input[name="username"]').val(json.username);
+					$('input[name="namalengkap"]').val(json.namalengkap);
+					$('input[name="nik"]').val(json.nik);
+					$('input[name="nisn_pendaftar"]').val(json.nisn_pendaftar);
+					$('input[name="jeniskelamin"]').val(json.jeniskelamin);
+					$('select[name="agama"]').val(json.agama).attr('selected', 'selected');
+					$('select[name="suku"]').val(json.suku).attr('selected', 'selected');
+					$('select[name="statusmenikah"]').val(json.statusmenikah).attr('selected', 'selected');
+					$('select[name="provtempatlahir"]').val(json.prov_tempatlahir).attr('selected', 'selected');
+					$('select[name="kabtempatlahir"]').val(json.kab_tempatlahir).attr('selected', 'selected');
+					$('input[name="lokasi_tempatlahir"]').val(json.lokasi_tempatlahir).attr('selected', 'selected');
+					$('input[name="tanggallahir"]').val(json.tgl_lahir).attr('selected', 'selected');
+					$('select[name="prodipilihan1"]').val(json.prodipilihan1).attr('selected', 'selected');
+					$('select[name="prodipilihan2"]').val(json.prodipilihan2).attr('selected', 'selected');
+					$('select[name="prodipilihan3"]').val(json.prodipilihan3).attr('selected', 'selected');
+					$('input[name="negaratinggal"]').val(json.negara_tempattinggal).attr('selected', 'selected');
+					$('select[name="provtempattinggal"]').val(json.prov_tempattinggal).attr('selected', 'selected');
+					$('select[name="kabtempattinggal"]').val(json.kab_tempattinggal).attr('selected', 'selected');
+					$('select[name="kectempattinggal"]').val(json.kec_tempattinggal).attr('selected', 'selected');
+					$('select[name="destempattinggal"]').val(json.des_tempattinggal).attr('selected', 'selected');
+					$('input[name="kodepos"]').val(json.kodepos_tempattinggal).attr('selected', 'selected');
+					$('input[name="alamattempattinggal"]').val(json.alamat_tempattinggal).attr('selected', 'selected');
+					$('input[name="alamatlaintempattinggal"]').val(json.alamatlain_tempattinggal).attr('selected', 'selected');
+					$('input[name="nohp"]').val(json.phone).attr('selected', 'selected');
+					$('input[name="email"]').val(json.email).attr('selected', 'selected');
+					$('input[name="tinggibadan"]').val(json.tinggibadan).attr('selected', 'selected');
+					$('input[name="beratbadan"]').val(json.beratbadan).attr('selected', 'selected');
+					$('select[name="tahunlulussmta"]').val(json.tahunlulus_smta).attr('selected', 'selected');
+					$('select[name="jurusansmta"]').val(json.jurusansmta).attr('selected', 'selected');
+					$('select[name="jenissmta"]').val(json.jenissmta).attr('selected', 'selected');
+					$('input[name="namasmta"]').val(json.nama_smta).attr('selected', 'selected');
+					$('input[name="nisnsmta"]').val(json.nisn_smta).attr('selected', 'selected');
+					$('select[name="provinsismta"]').val(json.prov_smta).attr('selected', 'selected');
+					$('input[name="alamatsmta"]').val(json.alamat_smta).attr('selected', 'selected');
+					$('input[name="nrapor1"]').val(json.nrapor1).attr('selected', 'selected');
+					$('input[name="nrapor2"]').val(json.nrapor2).attr('selected', 'selected');
+					$('input[name="nrapor3"]').val(json.nrapor3).attr('selected', 'selected');
+					$('input[name="button"]').val(json.button).attr('selected', 'selected');
+					$('input[name="nikayah"]').val(json.nik_ayah).attr('selected', 'selected');
+					$('input[name="namaayah"]').val(json.nama_ayah).attr('selected', 'selected');
+					$('select[name="pendidikanayah"]').val(json.pendidikan_ayah).attr('selected', 'selected');
+					$('select[name="pekerjaanayah"]').val(json.pekerjaan_ayah).attr('selected', 'selected');
+					$('input[name="alamatkantorayah"]').val(json.alamatkantor_ayah).attr('selected', 'selected');
+
+					$('input[name="nikibu"]').val(json.nik_ibu).attr('selected', 'selected');
+					$('input[name="namaibu"]').val(json.nama_ibu).attr('selected', 'selected');
+					$('select[name="pendidikanibu"]').val(json.pendidikan_ibu).attr('selected', 'selected');
+					$('select[name="pekerjaanibu"]').val(json.pekerjaan_ibu).attr('selected', 'selected');
+					$('select[name="penghasilanortu"]').val(json.penghasilan_ortu).attr('selected', 'selected');
+					$('input[name="alamatortu"]').val(json.alamat_ortu).attr('selected', 'selected');
+					$('select[name="provortu"]').val(json.provinsi_tempattinggalortu).attr('selected', 'selected');
+					$('select[name="alamatortu"]').val(json.kab_tempattinggalortu).attr('selected', 'selected');
+					$('select[name="alamatortu"]').val(json.kec_tempattinggalortu).attr('selected', 'selected');
+					$('input[name="kodeposortu"]').val(json.kodepost_tempattinggalortu).attr('selected', 'selected');
+					$('input[name="nohportu"]').val(json.nohp_ortu).attr('selected', 'selected');
+					$('input[name="namawali"]').val(json.nama_wali).attr('selected', 'selected');
+					$('select[name="pekerjaanwali"]').val(json.pekerjaan_wali).attr('selected', 'selected');
+					$('select[name="penghasilanwali"]').val(json.penghasilan_wali).attr('selected', 'selected');
+					$('input[name="alamatwali"]').val(json.alamat_wali).attr('selected', 'selected');
+					// console.log("agama = " + json.agama);
+				}
+			});
+
+		});
+
 		$("#tablePendaftar").on("click", ".btnTerima", function() {
 			var idt_biodata = $(this).val();
 			var status = 'Diterima';
@@ -968,4 +1426,18 @@
 			})
 		})
 	});
+</script>
+
+<script>
+	function addImage(pk) {
+		alert("addImage: " + pk);
+	}
+
+	$('#modalEdit .save').click(function(e) {
+		e.preventDefault();
+		addImage(5);
+		$('#modalEdit').modal('hide');
+		//$(this).tab('show')
+		return false;
+	})
 </script>

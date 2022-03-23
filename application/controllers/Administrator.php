@@ -377,6 +377,19 @@ class Administrator extends CI_Controller
 
 		if ($this->uri->segment(3) == "") {
 			$data['listprodi'] = $this->M_prodi->get_all();
+			$data['agama'] = $this->M_agama->get_all();
+			$data['prodi'] = $this->M_prodi->get_all();
+			$data['statusmenikah'] = $this->M_statusmenikah->get_all();
+			$data['provinsi'] = $this->M_wilayah->get_all_provinsi();
+			$data['kabupaten'] = $this->M_wilayah->get_all_kabupaten();
+			$data['kecamatan'] = $this->M_wilayah->get_all_kecamatan();
+			$data['desa'] = $this->M_wilayah->get_all_desa();
+			$data['jurusansmta'] = $this->M_jurusansmta->get_all();
+			$data['jenissmta'] = $this->M_jenissmta->get_all();
+			$data['pendidikanortu'] = $this->M_pendidikanortu->get_all();
+			$data['pekerjaanortu'] = $this->M_pekerjaanortu->get_all();
+			$data['penghasilanortu'] = $this->M_penghasilanortu->get_all();
+
 			$data['_view'] = 'admin/data_pendaftar';
 			$this->load->view('admin/layout', $data);
 		} else if ($this->uri->segment(3) == "kartupeserta") {

@@ -67,7 +67,7 @@ class M_pendaftar extends CI_Model
 
         // jika datatable mengirim POST untuk order
         if ($this->input->post('order')) {
-            $this->db->order_by($column_order[$this->input->post('order')['0']['column']], $this->input->post('order')['0']['dir']);
+            $this->db->order_by($this->column_order[$this->input->post('order')['0']['column']], $this->input->post('order')['0']['dir']);
         } else if (isset($this->order)) {
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
@@ -102,7 +102,9 @@ class M_pendaftar extends CI_Model
         // $query = $this->db->query("SELECT * FROM t_biodata WHERE username=$username");
         // return $query;
         // $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil FROM t_biodata tb LEFT JOIN upload_data u ON u.username=tb.username WHERE tb.username=$username ORDER BY u.id DESC LIMIT 1");
-        $this->db->select('*, u.email AS email, u.phone AS nohp, (SELECT p1.namaprodi FROM prodi p1 WHERE p1.idprodi=tb.prodipilihan1) AS pilihan1,
+        $this->db->select('*, u.email AS email, u.phone AS nohp, 
+        (SELECT ud.namafile FROM upload_data ud WHERE ud.username=tb.username ORDER BY id DESC LIMIT 1) AS fotoprofil,
+        (SELECT p1.namaprodi FROM prodi p1 WHERE p1.idprodi=tb.prodipilihan1) AS pilihan1,
         (SELECT p2.namaprodi FROM prodi p2 WHERE p2.idprodi=tb.prodipilihan2) AS pilihan2,
         (SELECT p3.namaprodi FROM prodi p3 WHERE p3.idprodi=tb.prodipilihan3) AS pilihan3,
         (SELECT agama FROM agama WHERE idagama=tb.agama) AS agama,
@@ -139,11 +141,11 @@ class M_pendaftar extends CI_Model
         // return $query;
         // $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil FROM t_biodata tb LEFT JOIN upload_data u ON u.username=tb.username WHERE tb.username=$username ORDER BY u.id DESC LIMIT 1");
         $this->db->select('*, u.email AS email, u.phone AS nohp,
-        (SELECT ud.namafile FROM upload_data ud WHERE ud.username=tb.username) AS fotoprofil,
+        (SELECT ud.namafile FROM upload_data ud WHERE ud.username=tb.username ORDER BY id DESC LIMIT 1) AS fotoprofil,
         (SELECT p1.namaprodi FROM prodi p1 WHERE p1.idprodi=tb.prodipilihan1) AS pilihan1,
         (SELECT p2.namaprodi FROM prodi p2 WHERE p2.idprodi=tb.prodipilihan2) AS pilihan2,
         (SELECT p3.namaprodi FROM prodi p3 WHERE p3.idprodi=tb.prodipilihan3) AS pilihan3,
-        (SELECT idagama FROM agama WHERE idagama=tb.agama) AS agama,
+        
         (SELECT idstatusmenikah FROM statusmenikah WHERE idstatusmenikah=tb.statusmenikah) AS statusmenikah,
         (SELECT idjurusansmta FROM jurusansmta WHERE idjurusansmta=tb.jurusansmta) AS jurusansmta,
         (SELECT idjenissmta FROM jenissmta WHERE idjenissmta=tb.jenissmta) AS jenissmta,
@@ -213,6 +215,12 @@ class M_pendaftar extends CI_Model
     public function get_rapor()
     {
         $query = $this->db->query("SELECT * FROM rapor");
+        return $query;
+    }
+
+    public function get_pendaftar($id)
+    {
+        $query = $this->db->query("SELECT * FROM t_biodata tb WHERE tb.idt_biodata='$id'");
         return $query;
     }
 }
