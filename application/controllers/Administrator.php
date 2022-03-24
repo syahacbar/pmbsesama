@@ -9,7 +9,7 @@ class Administrator extends CI_Controller
 		if (!$this->ion_auth->logged_in()) {
 			redirect('auth/login', 'refresh');
 		}
-		if ($this->ion_auth->in_group('members')) {
+		if (!$this->ion_auth->is_admin()) {
 			redirect('auth/login', 'refresh');
 		}
 		$this->load->model('M_wilayah');
