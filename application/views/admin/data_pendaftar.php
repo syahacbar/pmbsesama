@@ -348,8 +348,7 @@
 														<div class="col-sm-12">
 															<div class="form-group">
 																<label>Nomor Pendaftaran</label>
-																<input name="username" type="text" class="form-control" placeholder="" value="<?php // echo $ep['username']; 
-																																				?>" readonly>
+																<input name="username" type="text" class="form-control" placeholder="" value="" readonly>
 															</div>
 														</div>
 														<div class="col-sm-12">
@@ -386,16 +385,14 @@
 											<div class="row">
 												<div class="col-sm-4">
 													<div class="form-check">
-														<input class="form-check-input jenkel" type="radio" name="jeniskelamin" id="jeniskelamin" value="Laki-laki" <?php // echo ($ep['jeniskelamin'] == 'Laki-laki') ? 'checked' : ''; 
-																																									?>>
+														<input class="form-check-input jenkel" type="radio" name="jeniskelamin" id="jeniskelamin" value="Laki-laki">
 														<label class="form-check-label" for="exampleRadios1">Laki-Laki</label>
 													</div>
 												</div>
 
 												<div class="col-sm-4">
 													<div class="form-check">
-														<input class="form-check-input jenkel" type="radio" name="jeniskelamin" id="jeniskelamin" value="Perempuan" <?php // echo ($ep['jeniskelamin'] == 'Perempuan') ? 'checked' : ''; 
-																																									?>>
+														<input class="form-check-input jenkel" type="radio" name="jeniskelamin" id="jeniskelamin" value="Perempuan">
 														<label class="form-check-label" for="exampleRadios1">Perempuan</label>
 													</div>
 												</div>
@@ -461,8 +458,8 @@
 										<div class="col-sm-6 col-md-6 col-lg-6">
 											<div class="form-group">
 												<label>Kabupaten/Kota *</label>
-												<select name="kabtempatlahir" id="kabtempatlahir" class="form-select" aria-label="Default select example">
-													<option value="<?php echo $prov['kode']; ?>"><?php echo $prov['nama']; ?> </option>
+												<select name="kabtempatlahir" id="kabtempatlahir" class="form-select selectkab" aria-label="Default select example">
+													<option value=""></option>
 												</select>
 											</div>
 										</div>
@@ -555,8 +552,8 @@
 										<div class="col-sm-6 col-md-6 col-lg-6">
 											<div class="form-group">
 												<label>Kabupaten/Kota *</label>
-												<select name="kabtempattinggal" id="kabtempattinggal" class="form-select" aria-label="Default select example">
-													<option value=""> </option>
+												<select name="kabtempattinggal" id="kabtempattinggal" class="form-select selectkab" aria-label="Default select example">
+													<option value=""></option>
 												</select>
 											</div>
 										</div>
@@ -565,7 +562,7 @@
 											<div class="form-group">
 												<label>Kecamatan/Distrik *</label>
 												<select name="kectempattinggal" id="kectempattinggal" class="form-select" aria-label="Default select example">
-													<option value=""> </option>
+													<option value="">tes</option>
 												</select>
 											</div>
 										</div>
@@ -574,7 +571,7 @@
 											<div class="form-group">
 												<label>Kelurahan/Desa *</label>
 												<select name="destempattinggal" id="destempattinggal" class="form-select" aria-label="Default select example">
-													<option value=""> </option>
+													<option value="" selected>tez</option>
 												</select>
 											</div>
 										</div>
@@ -937,7 +934,7 @@
 										<div class="col-sm-6 col-md-6 col-lg-6">
 											<div class="form-group">
 												<label>Kabupaten/Kota *</label>
-												<select name="kabupatenortu" id="kabupatenortu" class="form-select" aria-label="Default select example">
+												<select name="kabupatenortu" id="kabupatenortu" class="form-select selectkab" aria-label="Default select example">
 													<option value=""> </option>
 
 												</select>
@@ -1071,6 +1068,43 @@
 
 <script type="text/javascript">
 	$(document).ready(function() {
+
+			
+		   $("#provtempatlahir").change(function() {
+                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+                $('#kabtempatlahir').load(url);
+                return false;
+            });
+
+            $("#provtempattinggal").change(function() {
+                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+                $('#kabtempattinggal').load(url);
+                return false;
+            });
+
+            $("#kabtempattinggal").change(function() {
+                var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
+                $('#kectempattinggal').load(url);
+                return false;
+            });
+            $("#kectempattinggal").change(function() {
+                var url = "<?php echo site_url('register/add_ajax_des'); ?>/" + $(this).val();
+                $('#destempattinggal').load(url);
+                return false;
+            });
+
+            $("#provortu").change(function() {
+                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+                $('#kabupatenortu').load(url);
+                return false;
+            });
+
+            $("#kabupatenortu").change(function() {
+                var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
+                $('#kecamatanortu').load(url);
+                return false;
+            });
+
 		$(".tabs").click(function() {
 
 			$(".tabs").removeClass("active");
@@ -1140,11 +1174,11 @@
 
 	$(document).ready(function() {
 		var tablePendaftar = $('#tablePendaftar').DataTable({
-
-			"language": {
-				"emptyTable": "Tidak ada data yang ditampilkan. Pilih opsi filter diatas untuk menampilkan data"
-			},
-		});
+        
+            "language": {
+            "emptyTable": "Tidak ada data yang ditampilkan. Pilih salah satu Program Studi"
+            },
+    	});
 
 		function load_data(is_tahunakademik, is_prodi, is_suku) {
 			var tablePendaftar = $('#tablePendaftar').DataTable({
@@ -1204,7 +1238,7 @@
 			tablePendaftar.destroy();
 			if (tahunakademik != '') {
 				load_data(tahunakademik);
-				//tablePendaftar.search('').draw();
+				tablePendaftar.search('').draw();
 			} else {
 				load_data();
 			}
@@ -1273,12 +1307,18 @@
 					$('input[name="namalengkap"]').val(json.namalengkap);
 					$('input[name="nik"]').val(json.nik);
 					$('input[name="nisn_pendaftar"]').val(json.nisn_pendaftar);
-					$('input[name="jeniskelamin"]').val(json.jeniskelamin);
+					$('input[name=jeniskelamin][value="' + json.jeniskelamin + '"]').prop('checked', true);
 					$('select[name="agama"]').val(json.agama).attr('selected', 'selected');
 					$('select[name="suku"]').val(json.suku).attr('selected', 'selected');
 					$('select[name="statusmenikah"]').val(json.statusmenikah).attr('selected', 'selected');
 					$('select[name="provtempatlahir"]').val(json.prov_tempatlahir).attr('selected', 'selected');
-					$('select[name="kabtempatlahir"]').val(json.kab_tempatlahir).attr('selected', 'selected');
+					//$('select[name="kabtempatlahir"]').val(json.kab_tempatlahir).attr('selected', 'selected');
+					// load kabupaten by prov yg selected
+					var prov_tempatlahir = $('select[name="provtempatlahir"]').children("option:selected").val();
+					var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + prov_tempatlahir;
+                	$('#kabtempatlahir').load(url);
+
+					$('select[name="kabtempatlahir"]').val()
 					$('input[name="lokasi_tempatlahir"]').val(json.lokasi_tempatlahir).attr('selected', 'selected');
 					$('input[name="tanggallahir"]').val(json.tgl_lahir).attr('selected', 'selected');
 					$('select[name="prodipilihan1"]').val(json.prodipilihan1).attr('selected', 'selected');
@@ -1286,7 +1326,17 @@
 					$('select[name="prodipilihan3"]').val(json.prodipilihan3).attr('selected', 'selected');
 					$('input[name="negaratinggal"]').val(json.negara_tempattinggal).attr('selected', 'selected');
 					$('select[name="provtempattinggal"]').val(json.prov_tempattinggal).attr('selected', 'selected');
-					$('select[name="kabtempattinggal"]').val(json.kab_tempattinggal).attr('selected', 'selected');
+
+                	var prov_tempattinggal = $('select[name="provtempattinggal"]').children("option:selected").val();
+					var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + prov_tempattinggal;
+                	$('#kabtempattinggal').load(url);
+                	// $("#kabtempattinggal").val(json.kab_tempattinggal).trigger('change');
+
+                	$('#kabtempattinggal > [value="' + json.kab_tempattinggal + '"]').attr('selected', 'selected');
+
+					console.log("kabtempattinggal : "+json.kab_tempattinggal);
+
+
 					$('select[name="kectempattinggal"]').val(json.kec_tempattinggal).attr('selected', 'selected');
 					$('select[name="destempattinggal"]').val(json.des_tempattinggal).attr('selected', 'selected');
 					$('input[name="kodepos"]').val(json.kodepos_tempattinggal).attr('selected', 'selected');
@@ -1320,7 +1370,12 @@
 					$('select[name="penghasilanortu"]').val(json.penghasilan_ortu).attr('selected', 'selected');
 					$('input[name="alamatortu"]').val(json.alamat_ortu).attr('selected', 'selected');
 					$('select[name="provortu"]').val(json.provinsi_tempattinggalortu).attr('selected', 'selected');
-					$('select[name="alamatortu"]').val(json.kab_tempattinggalortu).attr('selected', 'selected');
+					//$('select[name="alamatortu"]').val(json.kab_tempattinggalortu).attr('selected', 'selected');
+
+                	var provortu = $('select[name="provortu"]').children("option:selected").val();
+					var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + provortu;
+                	$('#kabupatenortu').load(url);
+
 					$('select[name="alamatortu"]').val(json.kec_tempattinggalortu).attr('selected', 'selected');
 					$('input[name="kodeposortu"]').val(json.kodepost_tempattinggalortu).attr('selected', 'selected');
 					$('input[name="nohportu"]').val(json.nohp_ortu).attr('selected', 'selected');
@@ -1328,7 +1383,7 @@
 					$('select[name="pekerjaanwali"]').val(json.pekerjaan_wali).attr('selected', 'selected');
 					$('select[name="penghasilanwali"]').val(json.penghasilan_wali).attr('selected', 'selected');
 					$('input[name="alamatwali"]').val(json.alamat_wali).attr('selected', 'selected');
-					// console.log("agama = " + json.agama);
+					
 				}
 			});
 

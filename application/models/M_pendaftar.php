@@ -157,14 +157,8 @@ class M_pendaftar extends CI_Model
         (SELECT idpenghasilan FROM penghasilanortu WHERE idpenghasilan=tb.penghasilan_ortu) AS penghasilan_ortu,
         (SELECT idpenghasilan FROM penghasilanortu WHERE idpenghasilan=tb.penghasilan_wali) AS penghasilan_wali,
         (SELECT kode FROM wilayah_2020 WHERE kode=tb.prov_tempattinggal) AS prov_tempattinggal,
-        (SELECT nama FROM wilayah_2020 WHERE kode=tb.kab_tempattinggal) AS kab_tempattinggal,
-        (SELECT nama FROM wilayah_2020 WHERE kode=tb.kec_tempattinggal) AS kec_tempattinggal,
-        (SELECT nama FROM wilayah_2020 WHERE kode=tb.des_tempattinggal) AS des_tempattinggal,
         (SELECT kode FROM wilayah_2020 WHERE kode=tb.provinsi_tempattinggalortu) AS provinsi_tempattinggalortu,
-        (SELECT nama FROM wilayah_2020 WHERE kode=tb.kab_tempattinggalortu) AS kab_tempattinggalortu,
-        (SELECT nama FROM wilayah_2020 WHERE kode=tb.kec_tempattinggalortu) AS kec_tempattinggalortu,
         (SELECT kode FROM wilayah_2020 WHERE kode=tb.prov_tempatlahir) AS prov_tempatlahir,
-        (SELECT nama FROM wilayah_2020 WHERE kode=tb.kab_tempatlahir) AS kab_tempatlahir,
         (SELECT kode FROM wilayah_2020 WHERE kode=tb.prov_smta) AS prov_smta');
         $this->db->from('users u');
         $this->db->join('t_biodata tb', 'tb.username = u.username');

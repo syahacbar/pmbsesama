@@ -372,7 +372,7 @@ class Administrator extends CI_Controller
 
 	// DATA DI BAGIAN PENDAFTAR LIST
 	public function datapendaftar()
-	{
+	{ 
 		$this->load->model(['M_pendidikanortu', 'M_penghasilanortu', 'M_pekerjaanortu', 'M_prodi', 'M_register', 'M_pendaftar', 'M_informasi', 'M_agama', 'M_statusmenikah', 'M_jurusansmta', 'M_jenissmta']);
 
 		if ($this->uri->segment(3) == "") {
