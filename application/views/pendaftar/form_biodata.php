@@ -770,14 +770,14 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat *</label>
-                                                <input name="alamattempattinggal" id="alamattempattinggal" row="8" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_tempattinggal']; ?>" required></input>
+                                                <textarea name="alamattempattinggal" id="alamattempattinggal" row="2" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_tempattinggal']; ?>" required></textarea>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat Tinggal Lain</label>
-                                                <input name="alamatlaintempattinggal" id="alamatlaintempattinggal" type="text" class="form-control" placeholder="" value="<?php echo $row['alamatlain_tempattinggal']; ?>" required></input>
+                                                <textarea name="alamatlaintempattinggal" id="alamatlaintempattinggal" type="text" rows="2" class="form-control" placeholder="" value="<?php echo $row['alamatlain_tempattinggal']; ?>" required></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -918,7 +918,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat SMTA</label>
-                                                <input name="alamatsmta" id="alamatsmta" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_smta']; ?>" required></input>
+                                                <textarea name="alamatsmta" id="alamatsmta" type="text" rows="2" class="form-control" placeholder="" value="<?php echo $row['alamat_smta']; ?>" required></textarea>
                                                 <small>Maksimal 50 karakter, gunakan spasi untuk memisahkan tiap kata</small>
                                             </div>
                                         </div>
@@ -1032,7 +1032,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat Kantor Ayah *</label>
-                                                <input name="alamatkantorayah" id="alamatkantorayah" type="text" class="form-control" placeholder="" value="<?php echo $row['alamatkantor_ayah']; ?>" required>
+                                                <textarea name="alamatkantorayah" id="alamatkantorayah" type="text" class="form-control" placeholder="" value="<?php echo $row['alamatkantor_ayah']; ?>" required></textarea>
                                                 <small>Alamat kantor Ayah, maksimal 50 karakter.</small>
                                             </div>
                                         </div>
@@ -1103,64 +1103,73 @@
                                         </div>
 
                                         <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Alamat Orang Tua *</label>
-                                                <input name="alamatortu" id="alamatortu" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_ortu']; ?>" required>
-                                                <small>Alamat tinggal orang tua saat ini. Maksimal 50 karakter.</small>
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Provinsi *</label>
+                                                        <select name="provortu" id="provortu" class="form-select" aria-label="Default select example">
+                                                            <option <?php echo ($row['provinsi_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                            <?php foreach ($provinsi as $prov) : ?>
+                                                                <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['provinsi_tempattinggalortu'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Kabupaten/Kota *</label>
+                                                        <select name="kabupatenortu" id="kabupatenortu" class="form-select" aria-label="Default select example">
+                                                            <option <?php echo ($row['kab_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                            <?php foreach ($kabupaten as $kab) : ?>
+                                                                <option value="<?php echo $kab['kode']; ?>" <?php echo ($row['kab_tempattinggalortu'] == $kab['kode']) ? 'selected' : ''; ?>><?php echo $kab['nama']; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Kecamatan/Distrik *</label>
+                                                        <select name="kecamatanortu" id="kecamatanortu" class="form-select" aria-label="Default select example">
+                                                            <option <?php echo ($row['kec_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                            <?php foreach ($kecamatan as $kec) : ?>
+                                                                <option value="<?php echo $kec['kode']; ?>" <?php echo ($row['kec_tempattinggalortu'] == $kec['kode']) ? 'selected' : ''; ?>><?php echo $kec['nama']; ?></option>
+                                                            <?php endforeach; ?>
+                                                        </select>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Kode Pos *</label>
+                                                        <input name="kodeposortu" id="kodeposortu" type="text" class="form-control" placeholder="" value="<?php echo $row['kodepost_tempattinggalortu']; ?>" required>
+                                                        <small>Kode pos tempat tinggal orang tua saat ini</small>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="row">
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>Alamat Orang Tua *</label>
+                                                        <textarea name="alamatortu" id="alamatortu" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_ortu']; ?>" required></textarea>
+                                                        <small>Alamat tinggal orang tua saat ini. Maksimal 50 karakter.</small>
+                                                    </div>
+                                                </div>
+
+                                                <div class="col-sm-12">
+                                                    <div class="form-group">
+                                                        <label>No. Telp./HP *</label>
+                                                        <input name="nohportu" id="nohportu" type="text" class="form-control" placeholder="" value="<?php echo $row['nohp_ortu']; ?>" required>
+                                                        <small>Nomor telp atau handphone orang tua yang bisa dihubungi</small>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Provinsi *</label>
-                                                <select name="provortu" id="provortu" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['provinsi_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($provinsi as $prov) : ?>
-                                                        <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['provinsi_tempattinggalortu'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Kabupaten/Kota *</label>
-                                                <select name="kabupatenortu" id="kabupatenortu" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['kab_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($kabupaten as $kab) : ?>
-                                                        <option value="<?php echo $kab['kode']; ?>" <?php echo ($row['kab_tempattinggalortu'] == $kab['kode']) ? 'selected' : ''; ?>><?php echo $kab['nama']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Kecamatan/Distrik *</label>
-                                                <select name="kecamatanortu" id="kecamatanortu" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['kec_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($kecamatan as $kec) : ?>
-                                                        <option value="<?php echo $kec['kode']; ?>" <?php echo ($row['kec_tempattinggalortu'] == $kec['kode']) ? 'selected' : ''; ?>><?php echo $kec['nama']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>Kode Pos *</label>
-                                                <input name="kodeposortu" id="kodeposortu" type="text" class="form-control" placeholder="" value="<?php echo $row['kodepost_tempattinggalortu']; ?>" required>
-                                                <small>Kode pos tempat tinggal orang tua saat ini</small>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6">
-                                            <div class="form-group">
-                                                <label>No. Telp./HP *</label>
-                                                <input name="nohportu" id="nohportu" type="text" class="form-control" placeholder="" value="<?php echo $row['nohp_ortu']; ?>" required>
-                                                <small>Nomor telp atau handphone orang tua yang bisa dihubungi</small>
-                                            </div>
-                                        </div>
                                     </div>
 
                                 </div>
@@ -1216,8 +1225,15 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
+                                                <label>No. HP Wali *</label>
+                                                <input name="nohp_wali" id="nohp_wali" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_wali']; ?>" required>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
                                                 <label>Alamat Wali *</label>
-                                                <input name="alamatwali" id="alamatwali" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_wali']; ?>" required>
+                                                <textarea name="alamatwali" id="alamatwali" type="text" rows="2" class="form-control" placeholder="" value="<?php echo $row['alamat_wali']; ?>" required></textarea>
                                                 <small>Alamat wali saat ini. Maksimal 50 karakter.</small>
                                             </div>
                                         </div>
@@ -1476,8 +1492,8 @@
                     var kec_tempattinggal = $("select[name='kectempattinggal']").val();
                     var des_tempattinggal = $("select[name='destempattinggal']").val();
                     var kodepos_tempattinggal = $("input[name='kodepos']").val();
-                    var alamat_tempattinggal = $("input[name='alamattempattinggal']").val();
-                    var alamatlain_tempattinggal = $("input[name='alamatlaintempattinggal']").val();
+                    var alamat_tempattinggal = $("textarea[name='alamattempattinggal']").val();
+                    var alamatlain_tempattinggal = $("textarea[name='alamatlaintempattinggal']").val();
                     var tinggibadan = $("input[name='tinggibadan']").val();
                     var beratbadan = $("input[name='beratbadan']").val();
 
@@ -1543,7 +1559,7 @@
                     var namasmta = $("input[name='namasmta']").val();
                     var nisnsmta = $("input[name='nisnsmta']").val();
                     var provinsismta = $("select[name='provinsismta']").val();
-                    var alamatsmta = $("input[name='alamatsmta']").val();
+                    var alamatsmta = $("textarea[name='alamatsmta']").val();
                     var nrapor1 = $("input[name='nrapor1']").val();
                     var nrapor2 = $("input[name='nrapor2']").val();
                     var nrapor3 = $("input[name='nrapor3']").val();
@@ -1594,13 +1610,13 @@
                     var nama_ayah = $("input[name='namaayah']").val();
                     var pendidikanayah = $("select[name='pendidikanayah']").val();
                     var pekerjaanayah = $("select[name='pekerjaanayah']").val();
-                    var alamatkantor_ayah = $("input[name='alamatkantorayah']").val();
+                    var alamatkantor_ayah = $("textarea[name='alamatkantorayah']").val();
                     var nik_ibu = $("input[name='nikibu']").val();
                     var nama_ibu = $("input[name='namaibu']").val();
                     var pendidikanibu = $("select[name='pendidikanibu']").val();
                     var pekerjaanibu = $("select[name='pekerjaanibu']").val();
                     var penghasilanortu = $("select[name='penghasilanortu']").val();
-                    var alamat_ortu = $("input[name='alamatortu']").val();
+                    var alamat_ortu = $("textarea[name='alamatortu']").val();
                     var provinsi_ortu = $("select[name='provortu']").val();
                     var kabupaten_ortu = $("select[name='kabupatenortu']").val();
                     var kecamatan_ortu = $("select[name='kecamatanortu']").val();
@@ -1652,7 +1668,8 @@
                     var nama_wali = $("input[name='namawali']").val();
                     var pekerjaanwali = $("select[name='pekerjaanwali']").val();
                     var penghasilanwali = $("select[name='penghasilanwali']").val();
-                    var alamat_wali = $("input[name='alamatwali']").val();
+                    var alamat_wali = $("textarea[name='alamatwali']").val();
+                    var nohp_wali = $("input[name='nohp_wali']").val();
 
 
                     $.ajax({
@@ -1663,6 +1680,7 @@
                             pekerjaanwali: pekerjaanwali,
                             penghasilanwali: penghasilanwali,
                             alamat_wali: alamat_wali,
+                            nohp_wali: nohp_wali,
 
                         },
                         //cache: false,

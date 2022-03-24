@@ -12,7 +12,7 @@ class Operator extends CI_Controller
         if (!$this->ion_auth->in_group('sekolah')) {
             redirect('login', 'refresh');
         }
-        $this->load->model(['M_wilayah','M_pendaftar','M_register','M_agenda']);
+        $this->load->model(['M_wilayah', 'M_pendaftar', 'M_register', 'M_agenda']);
     }
 
     public function index()
@@ -24,29 +24,29 @@ class Operator extends CI_Controller
         $data['ditolak'] = $this->M_pendaftar->count_by_status('Ditolak')->num_rows();
         $data['t_biodata'] = $this->M_pendaftar->get_all();
         $data['_view'] = 'admin/dashboard';
-        $this->load->view('operator/layout',$data);
+        $this->load->view('operator/layout', $data);
     }
 
     public function pendaftar()
     {
         $this->load->model(['M_pendidikanortu', 'M_penghasilanortu', 'M_pekerjaanortu', 'M_prodi', 'M_informasi', 'M_agama', 'M_statusmenikah', 'M_jurusansmta', 'M_jenissmta']);
 
-            $data['listprodi'] = $this->M_prodi->get_all();
-            $data['agama'] = $this->M_agama->get_all();
-            $data['prodi'] = $this->M_prodi->get_all();
-            $data['statusmenikah'] = $this->M_statusmenikah->get_all();
-            $data['provinsi'] = $this->M_wilayah->get_all_provinsi();
-            $data['kabupaten'] = $this->M_wilayah->get_all_kabupaten();
-            $data['kecamatan'] = $this->M_wilayah->get_all_kecamatan();
-            $data['desa'] = $this->M_wilayah->get_all_desa();
-            $data['jurusansmta'] = $this->M_jurusansmta->get_all();
-            $data['jenissmta'] = $this->M_jenissmta->get_all();
-            $data['pendidikanortu'] = $this->M_pendidikanortu->get_all();
-            $data['pekerjaanortu'] = $this->M_pekerjaanortu->get_all();
-            $data['penghasilanortu'] = $this->M_penghasilanortu->get_all();
+        $data['listprodi'] = $this->M_prodi->get_all();
+        $data['agama'] = $this->M_agama->get_all();
+        $data['prodi'] = $this->M_prodi->get_all();
+        $data['statusmenikah'] = $this->M_statusmenikah->get_all();
+        $data['provinsi'] = $this->M_wilayah->get_all_provinsi();
+        $data['kabupaten'] = $this->M_wilayah->get_all_kabupaten();
+        $data['kecamatan'] = $this->M_wilayah->get_all_kecamatan();
+        $data['desa'] = $this->M_wilayah->get_all_desa();
+        $data['jurusansmta'] = $this->M_jurusansmta->get_all();
+        $data['jenissmta'] = $this->M_jenissmta->get_all();
+        $data['pendidikanortu'] = $this->M_pendidikanortu->get_all();
+        $data['pekerjaanortu'] = $this->M_pekerjaanortu->get_all();
+        $data['penghasilanortu'] = $this->M_penghasilanortu->get_all();
+        // $data['fotopas'] = $this->M_pendaftar->data_pendaftar();
 
-            $data['_view'] = 'admin/data_pendaftar';
-            $this->load->view('operator/layout', $data);
-        
+        $data['_view'] = 'admin/data_pendaftar';
+        $this->load->view('operator/layout', $data);
     }
 }

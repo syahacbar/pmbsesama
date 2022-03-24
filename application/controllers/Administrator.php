@@ -389,6 +389,8 @@ class Administrator extends CI_Controller
 			$data['pendidikanortu'] = $this->M_pendidikanortu->get_all();
 			$data['pekerjaanortu'] = $this->M_pekerjaanortu->get_all();
 			$data['penghasilanortu'] = $this->M_penghasilanortu->get_all();
+			$data['fotoprofil'] = $this->M_pendaftar->edit_pendaftar($this->uri->segment(4));
+
 
 			$data['_view'] = 'admin/data_pendaftar';
 			$this->load->view('admin/layout', $data);
