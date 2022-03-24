@@ -283,7 +283,6 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-				<input type="button" id="simpan4" name="simpan4" class="btn btn-primary" value="Simpan Perubahan">
 			</div>
 		</div>
 	</div>
@@ -1023,7 +1022,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-				<input type="button" id="simpan4" name="simpan4" class="btn btn-primary" value="Simpan Perubahan">
+				<input type="button" id="btnSimpan" name="btnSimpan" class="btn btn-primary" value="Simpan Perubahan">
 			</div>
 		</div>
 	</div>
@@ -1387,6 +1386,10 @@
 					
 				}
 			});
+
+		});
+
+		$("#tablePendaftar").on("click", ".btnSimpan", function() {
 
 		});
 
