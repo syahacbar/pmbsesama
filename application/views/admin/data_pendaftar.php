@@ -1022,7 +1022,7 @@
 			</div>
 			<div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
-				<input type="button" id="btnSimpan" name="btnSimpan" class="btn btn-primary" value="Simpan Perubahan">
+				<input type="button" id="btnSimpan" name="btnSimpan" class="btn btn-primary btnSimpan" value="Simpan Perubahan">
 			</div>
 		</div>
 	</div>
@@ -1068,41 +1068,41 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-			
-		   $("#provtempatlahir").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
-                $('#kabtempatlahir').load(url);
-                return false;
-            });
 
-            $("#provtempattinggal").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
-                $('#kabtempattinggal').load(url);
-                return false;
-            });
+		$("#provtempatlahir").change(function() {
+			var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+			$('#kabtempatlahir').load(url);
+			return false;
+		});
 
-            $("#kabtempattinggal").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
-                $('#kectempattinggal').load(url);
-                return false;
-            });
-            $("#kectempattinggal").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_des'); ?>/" + $(this).val();
-                $('#destempattinggal').load(url);
-                return false;
-            });
+		$("#provtempattinggal").change(function() {
+			var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+			$('#kabtempattinggal').load(url);
+			return false;
+		});
 
-            $("#provortu").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
-                $('#kabupatenortu').load(url);
-                return false;
-            });
+		$("#kabtempattinggal").change(function() {
+			var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
+			$('#kectempattinggal').load(url);
+			return false;
+		});
+		$("#kectempattinggal").change(function() {
+			var url = "<?php echo site_url('register/add_ajax_des'); ?>/" + $(this).val();
+			$('#destempattinggal').load(url);
+			return false;
+		});
 
-            $("#kabupatenortu").change(function() {
-                var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
-                $('#kecamatanortu').load(url);
-                return false;
-            });
+		$("#provortu").change(function() {
+			var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+			$('#kabupatenortu').load(url);
+			return false;
+		});
+
+		$("#kabupatenortu").change(function() {
+			var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
+			$('#kecamatanortu').load(url);
+			return false;
+		});
 
 		$(".tabs").click(function() {
 
@@ -1173,11 +1173,11 @@
 
 	$(document).ready(function() {
 		var tablePendaftar = $('#tablePendaftar').DataTable({
-        
-            "language": {
-            "emptyTable": "Tidak ada data yang ditampilkan. Pilih salah satu Program Studi"
-            },
-    	});
+
+			"language": {
+				"emptyTable": "Tidak ada data yang ditampilkan. Pilih salah satu Program Studi"
+			},
+		});
 
 		function load_data(is_tahunakademik, is_prodi, is_suku) {
 			var tablePendaftar = $('#tablePendaftar').DataTable({
@@ -1311,11 +1311,11 @@
 					$('select[name="suku"]').val(json.suku).attr('selected', 'selected');
 					$('select[name="statusmenikah"]').val(json.statusmenikah).attr('selected', 'selected');
 					$('select[name="provtempatlahir"]').val(json.prov_tempatlahir).attr('selected', 'selected');
-					
+
 					// load kabupaten by prov yg selected
 					var prov_tempatlahir = $('select[name="provtempatlahir"]').children("option:selected").val();
-					var url1 = "<?php echo site_url('register/add_ajax_kab'); ?>/" + prov_tempatlahir+"/"+json.kab_tempatlahir;
-                	$('#kabtempatlahir').load(url1);
+					var url1 = "<?php echo site_url('register/add_ajax_kab'); ?>/" + prov_tempatlahir + "/" + json.kab_tempatlahir;
+					$('#kabtempatlahir').load(url1);
 
 					//$('select[name="kabtempatlahir"]').val()
 					$('input[name="lokasi_tempatlahir"]').val(json.lokasi_tempatlahir).attr('selected', 'selected');
@@ -1326,14 +1326,14 @@
 					$('input[name="negaratinggal"]').val(json.negara_tempattinggal).attr('selected', 'selected');
 					$('select[name="provtempattinggal"]').val(json.prov_tempattinggal).attr('selected', 'selected');
 
-					var url2 = "<?php echo site_url('register/add_ajax_kab'); ?>/" + json.prov_tempattinggal+"/"+json.kab_tempattinggal;
-                	$('#kabtempattinggal').load(url2);
+					var url2 = "<?php echo site_url('register/add_ajax_kab'); ?>/" + json.prov_tempattinggal + "/" + json.kab_tempattinggal;
+					$('#kabtempattinggal').load(url2);
 
-					var url3 = "<?php echo site_url('register/add_ajax_kec'); ?>/" + json.kab_tempattinggal+"/"+json.kec_tempattinggal;
-                	$('#kectempattinggal').load(url3);
+					var url3 = "<?php echo site_url('register/add_ajax_kec'); ?>/" + json.kab_tempattinggal + "/" + json.kec_tempattinggal;
+					$('#kectempattinggal').load(url3);
 
-					var url4 = "<?php echo site_url('register/add_ajax_des'); ?>/" + json.kec_tempattinggal+"/"+json.des_tempattinggal;
-                	$('#destempattinggal').load(url4);
+					var url4 = "<?php echo site_url('register/add_ajax_des'); ?>/" + json.kec_tempattinggal + "/" + json.des_tempattinggal;
+					$('#destempattinggal').load(url4);
 
 					$('select[name="kectempattinggal"]').val(json.kec_tempattinggal).attr('selected', 'selected');
 					$('select[name="destempattinggal"]').val(json.des_tempattinggal).attr('selected', 'selected');
@@ -1369,12 +1369,12 @@
 					$('input[name="alamatortu"]').val(json.alamat_ortu).attr('selected', 'selected');
 					$('select[name="provortu"]').val(json.provinsi_tempattinggalortu).attr('selected', 'selected');
 
-                	var provortu = $('select[name="provortu"]').children("option:selected").val();
-					var url5 = "<?php echo site_url('register/add_ajax_kab'); ?>/" + provortu+"/"+json.kab_tempattinggalortu;
-                	$('#kabupatenortu').load(url5);
+					var provortu = $('select[name="provortu"]').children("option:selected").val();
+					var url5 = "<?php echo site_url('register/add_ajax_kab'); ?>/" + provortu + "/" + json.kab_tempattinggalortu;
+					$('#kabupatenortu').load(url5);
 
-					var url6 = "<?php echo site_url('register/add_ajax_kec'); ?>/" + json.kab_tempattinggalortu+"/"+json.kec_tempattinggalortu;
-                	$('#kecamatanortu').load(url6);
+					var url6 = "<?php echo site_url('register/add_ajax_kec'); ?>/" + json.kab_tempattinggalortu + "/" + json.kec_tempattinggalortu;
+					$('#kecamatanortu').load(url6);
 
 					$('select[name="alamatortu"]').val(json.kec_tempattinggalortu).attr('selected', 'selected');
 					$('input[name="kodeposortu"]').val(json.kodepost_tempattinggalortu).attr('selected', 'selected');
@@ -1383,14 +1383,168 @@
 					$('select[name="pekerjaanwali"]').val(json.pekerjaan_wali).attr('selected', 'selected');
 					$('select[name="penghasilanwali"]').val(json.penghasilan_wali).attr('selected', 'selected');
 					$('input[name="alamatwali"]').val(json.alamat_wali).attr('selected', 'selected');
-					
+
 				}
 			});
 
 		});
 
-		$("#tablePendaftar").on("click", ".btnSimpan", function() {
+		$("#modalEdit").on("click", ".btnSimpan", function() {
+			// Data Pribadi
+			var jenkel = $(".jenkel:checked").val();
+			var nik = $("input[name='nik']").val();
+			var namalengkap = $("input[name='namalengkap']").val();
+			var username = $("input[name='username']").val();
+			var nisn_pendaftar = $("input[name='nisn_pendaftar']").val();
+			var agama = $("select[name='agama']").val();
+			var suku = $("select[name='suku']").val();
+			var statusmenikah = $("select[name='statusmenikah']").val();
+			var nohp = $("input[name='nohp']").val();
+			var email = $("input[name='email']").val();
+			var prodipilihan1 = $("select[name='prodipilihan1']").val();
+			var prodipilihan2 = $("select[name='prodipilihan2']").val();
+			var prodipilihan3 = $("select[name='prodipilihan3']").val();
+			var prov_tempatlahir = $("select[name='provtempatlahir']").val();
+			var kab_tempatlahir = $("select[name='kabtempatlahir']").val();
+			var lokasi_tempatlahir = $("input[name='lokasi_tempatlahir']").val();
+			var tgl_lahir = $("input[name='tanggallahir']").val();
+			var negara_tempattinggal = $("input[name='negaratinggal']").val();
+			var prov_tempattinggal = $("select[name='provtempattinggal']").val();
+			var kab_tempattinggal = $("select[name='kabtempattinggal']").val();
+			var kec_tempattinggal = $("select[name='kectempattinggal']").val();
+			var des_tempattinggal = $("select[name='destempattinggal']").val();
+			var kodepos_tempattinggal = $("input[name='kodepos']").val();
+			var alamat_tempattinggal = $("input[name='alamattempattinggal']").val();
+			var alamatlain_tempattinggal = $("input[name='alamatlaintempattinggal']").val();
+			var tinggibadan = $("input[name='tinggibadan']").val();
+			var beratbadan = $("input[name='beratbadan']").val();
 
+			// Data Sekolah
+			var tahunlulussmta = $("select[name='tahunlulussmta']").val();
+			var jurusansmta = $("select[name='jurusansmta']").val();
+			var jenissmta = $("select[name='jenissmta']").val();
+			var namasmta = $("input[name='namasmta']").val();
+			var nisnsmta = $("input[name='nisnsmta']").val();
+			var provinsismta = $("select[name='provinsismta']").val();
+			var alamatsmta = $("input[name='alamatsmta']").val();
+			var nrapor1 = $("input[name='nrapor1']").val();
+			var nrapor2 = $("input[name='nrapor2']").val();
+			var nrapor3 = $("input[name='nrapor3']").val();
+
+			// Biodata Ortu
+			var nik_ayah = $("input[name='nikayah']").val();
+			var nama_ayah = $("input[name='namaayah']").val();
+			var pendidikanayah = $("select[name='pendidikanayah']").val();
+			var pekerjaanayah = $("select[name='pekerjaanayah']").val();
+			var alamatkantor_ayah = $("input[name='alamatkantorayah']").val();
+			var nik_ibu = $("input[name='nikibu']").val();
+			var nama_ibu = $("input[name='namaibu']").val();
+			var pendidikanibu = $("select[name='pendidikanibu']").val();
+			var pekerjaanibu = $("select[name='pekerjaanibu']").val();
+			var penghasilanortu = $("select[name='penghasilanortu']").val();
+			var alamat_ortu = $("input[name='alamatortu']").val();
+			var provinsi_ortu = $("select[name='provortu']").val();
+			var kabupaten_ortu = $("select[name='kabupatenortu']").val();
+			var kecamatan_ortu = $("select[name='kecamatanortu']").val();
+			var kodepos_ortu = $("input[name='kodeposortu']").val();
+			var nohp_ortu = $("input[name='nohportu']").val();
+
+			// Biodata Wali
+			var nama_wali = $("input[name='namawali']").val();
+			var pekerjaanwali = $("select[name='pekerjaanwali']").val();
+			var penghasilanwali = $("select[name='penghasilanwali']").val();
+			var alamat_wali = $("input[name='alamatwali']").val();
+
+			$.ajax({
+				url: "<?php echo site_url('administrator/pendaftar_update'); ?>",
+				type: "POST",
+				data: {
+					// Indentitas Pribadi
+					nisn_pendaftar: nisn_pendaftar,
+					namalengkap: namalengkap,
+					jenkel: jenkel,
+					nik: nik,
+					username: username,
+					agama: agama,
+					suku: suku,
+					statusmenikah: statusmenikah,
+					nohp: nohp,
+					email: email,
+					prodipilihan1: prodipilihan1,
+					prodipilihan2: prodipilihan2,
+					prodipilihan3: prodipilihan3,
+					prov_tempatlahir: prov_tempatlahir,
+					kab_tempatlahir: kab_tempatlahir,
+					lokasi_tempatlahir: lokasi_tempatlahir,
+					tgl_lahir: tgl_lahir,
+					negara_tempattinggal: negara_tempattinggal,
+					prov_tempattinggal: prov_tempattinggal,
+					kab_tempattinggal: kab_tempattinggal,
+					kec_tempattinggal: kec_tempattinggal,
+					des_tempattinggal: des_tempattinggal,
+					kodepos_tempattinggal: kodepos_tempattinggal,
+					alamat_tempattinggal: alamat_tempattinggal,
+					alamatlain_tempattinggal: alamatlain_tempattinggal,
+					tinggibadan: tinggibadan,
+					beratbadan: beratbadan,
+
+					// Identitas Sekolah
+					tahunlulussmta: tahunlulussmta,
+					jurusansmta: jurusansmta,
+					jenissmta: jenissmta,
+					namasmta: namasmta,
+					nisnsmta: nisnsmta,
+					provinsismta: provinsismta,
+					alamatsmta: alamatsmta,
+					nrapor1: nrapor1,
+					nrapor2: nrapor2,
+					nrapor3: nrapor3,
+
+					// Biodata Ortu
+					nik_ayah: nik_ayah,
+					nama_ayah: nama_ayah,
+					pendidikanayah: pendidikanayah,
+					pekerjaanayah: pekerjaanayah,
+					alamatkantor_ayah: alamatkantor_ayah,
+					nik_ibu: nik_ibu,
+					nama_ibu: nama_ibu,
+					pendidikanibu: pendidikanibu,
+					pekerjaanibu: pekerjaanibu,
+					penghasilanortu: penghasilanortu,
+					alamat_ortu: alamat_ortu,
+					provinsi_ortu: provinsi_ortu,
+					kabupaten_ortu: kabupaten_ortu,
+					kecamatan_ortu: kecamatan_ortu,
+					kodepos_ortu: kodepos_ortu,
+					nohp_ortu: nohp_ortu,
+
+					// Biodata Wali
+					nama_wali: nama_wali,
+					pekerjaanwali: pekerjaanwali,
+					penghasilanwali: penghasilanwali,
+					alamat_wali: alamat_wali,
+
+
+				},
+
+				//cache: false,
+				success: function(dataResult) {
+					var dataResult = JSON.parse(dataResult);
+					if (dataResult.statusCode == 1) {
+						Swal.fire({
+							title: 'Berhasil!',
+							text: "Anda telah memperbarui data",
+							icon: 'success',
+							showCancelButton: false,
+							// confirmButtonText: 'Kembali',
+						})
+						//tablePendaftar.draw(false);
+						reload_table();
+					} else {
+						alert("Error occured !");
+					}
+				}
+			});
 		});
 
 		$("#tablePendaftar").on("click", ".btnTerima", function() {
