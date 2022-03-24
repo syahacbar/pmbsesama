@@ -553,7 +553,9 @@
 											<div class="form-group">
 												<label>Kabupaten/Kota *</label>
 												<select name="kabtempattinggal" id="kabtempattinggal" class="form-select selectkab" aria-label="Default select example">
-													<option value=""></option>
+													<?php foreach ($kabupaten as $kab) : ?>
+													<option value=""><?php echo $kab['namakabupaten']; ?></option>
+													<?php endforeach; ?>
 												</select>
 											</div>
 										</div>
@@ -1327,9 +1329,9 @@
 					$('input[name="negaratinggal"]').val(json.negara_tempattinggal).attr('selected', 'selected');
 					$('select[name="provtempattinggal"]').val(json.prov_tempattinggal).attr('selected', 'selected');
 
-                	var prov_tempattinggal = $('select[name="provtempattinggal"]').children("option:selected").val();
-					var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + prov_tempattinggal;
-                	$('#kabtempattinggal').load(url);
+     //            	var prov_tempattinggal = $('select[name="provtempattinggal"]').children("option:selected").val();
+					// var url = "<?php //echo site_url('register/add_ajax_kab'); ?>/" + prov_tempattinggal;
+     //            	$('#kabtempattinggal').load(url);
                 	// $("#kabtempattinggal").val(json.kab_tempattinggal).trigger('change');
 
                 	$('#kabtempattinggal > [value="' + json.kab_tempattinggal + '"]').attr('selected', 'selected');
