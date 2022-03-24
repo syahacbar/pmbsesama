@@ -553,9 +553,7 @@
 											<div class="form-group">
 												<label>Kabupaten/Kota *</label>
 												<select name="kabtempattinggal" id="kabtempattinggal" class="form-select selectkab" aria-label="Default select example">
-													<?php foreach ($kabupaten as $kab) : ?>
-													<option value=""><?php echo $kab['namakabupaten']; ?></option>
-													<?php endforeach; ?>
+													<option value=""></option>
 												</select>
 											</div>
 										</div>
@@ -564,7 +562,7 @@
 											<div class="form-group">
 												<label>Kecamatan/Distrik *</label>
 												<select name="kectempattinggal" id="kectempattinggal" class="form-select" aria-label="Default select example">
-													<option value="">tes</option>
+													<option value=""></option>
 												</select>
 											</div>
 										</div>
@@ -573,7 +571,7 @@
 											<div class="form-group">
 												<label>Kelurahan/Desa *</label>
 												<select name="destempattinggal" id="destempattinggal" class="form-select" aria-label="Default select example">
-													<option value="" selected>tez</option>
+													<option value="" selected></option>
 												</select>
 											</div>
 										</div>
@@ -1314,13 +1312,13 @@
 					$('select[name="suku"]').val(json.suku).attr('selected', 'selected');
 					$('select[name="statusmenikah"]').val(json.statusmenikah).attr('selected', 'selected');
 					$('select[name="provtempatlahir"]').val(json.prov_tempatlahir).attr('selected', 'selected');
-					//$('select[name="kabtempatlahir"]').val(json.kab_tempatlahir).attr('selected', 'selected');
+					
 					// load kabupaten by prov yg selected
 					var prov_tempatlahir = $('select[name="provtempatlahir"]').children("option:selected").val();
-					var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + prov_tempatlahir;
-                	$('#kabtempatlahir').load(url);
+					var url1 = "<?php echo site_url('register/add_ajax_kab'); ?>/" + prov_tempatlahir+"/"+json.kab_tempatlahir;
+                	$('#kabtempatlahir').load(url1);
 
-					$('select[name="kabtempatlahir"]').val()
+					//$('select[name="kabtempatlahir"]').val()
 					$('input[name="lokasi_tempatlahir"]').val(json.lokasi_tempatlahir).attr('selected', 'selected');
 					$('input[name="tanggallahir"]').val(json.tgl_lahir).attr('selected', 'selected');
 					$('select[name="prodipilihan1"]').val(json.prodipilihan1).attr('selected', 'selected');
@@ -1329,15 +1327,14 @@
 					$('input[name="negaratinggal"]').val(json.negara_tempattinggal).attr('selected', 'selected');
 					$('select[name="provtempattinggal"]').val(json.prov_tempattinggal).attr('selected', 'selected');
 
-     //            	var prov_tempattinggal = $('select[name="provtempattinggal"]').children("option:selected").val();
-					// var url = "<?php //echo site_url('register/add_ajax_kab'); ?>/" + prov_tempattinggal;
-     //            	$('#kabtempattinggal').load(url);
-                	// $("#kabtempattinggal").val(json.kab_tempattinggal).trigger('change');
+					var url2 = "<?php echo site_url('register/add_ajax_kab'); ?>/" + json.prov_tempattinggal+"/"+json.kab_tempattinggal;
+                	$('#kabtempattinggal').load(url2);
 
-                	$('#kabtempattinggal > [value="' + json.kab_tempattinggal + '"]').attr('selected', 'selected');
+					var url3 = "<?php echo site_url('register/add_ajax_kec'); ?>/" + json.kab_tempattinggal+"/"+json.kec_tempattinggal;
+                	$('#kectempattinggal').load(url3);
 
-					console.log("kabtempattinggal : "+json.kab_tempattinggal);
-
+					var url4 = "<?php echo site_url('register/add_ajax_des'); ?>/" + json.kec_tempattinggal+"/"+json.des_tempattinggal;
+                	$('#destempattinggal').load(url4);
 
 					$('select[name="kectempattinggal"]').val(json.kec_tempattinggal).attr('selected', 'selected');
 					$('select[name="destempattinggal"]').val(json.des_tempattinggal).attr('selected', 'selected');
@@ -1372,11 +1369,13 @@
 					$('select[name="penghasilanortu"]').val(json.penghasilan_ortu).attr('selected', 'selected');
 					$('input[name="alamatortu"]').val(json.alamat_ortu).attr('selected', 'selected');
 					$('select[name="provortu"]').val(json.provinsi_tempattinggalortu).attr('selected', 'selected');
-					//$('select[name="alamatortu"]').val(json.kab_tempattinggalortu).attr('selected', 'selected');
 
                 	var provortu = $('select[name="provortu"]').children("option:selected").val();
-					var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + provortu;
-                	$('#kabupatenortu').load(url);
+					var url5 = "<?php echo site_url('register/add_ajax_kab'); ?>/" + provortu+"/"+json.kab_tempattinggalortu;
+                	$('#kabupatenortu').load(url5);
+
+					var url6 = "<?php echo site_url('register/add_ajax_kec'); ?>/" + json.kab_tempattinggalortu+"/"+json.kec_tempattinggalortu;
+                	$('#kecamatanortu').load(url6);
 
 					$('select[name="alamatortu"]').val(json.kec_tempattinggalortu).attr('selected', 'selected');
 					$('input[name="kodeposortu"]').val(json.kodepost_tempattinggalortu).attr('selected', 'selected');

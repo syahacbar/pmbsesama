@@ -34,33 +34,68 @@ class Register extends CI_Controller
 		return $randomString;
 	}
 
-	function add_ajax_kab($id)
+	function add_ajax_kab($id,$selected=NULL)
 	{
 		$query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 5 AND LEFT(kode,2) = '$id' ORDER BY kode ASC");
 		$data = "<option value=''> - Pilih Kabupaten/Kota - </option>";
 		foreach ($query->result() as $value) {
-			$data .= "<option value='" . $value->kode . "'>" . $value->nama . "</option>";
+			$add_attr = "";
+			if($selected != NULL)
+			{
+				if($selected == $value->kode)
+				{
+					$add_attr = "selected";
+				} else
+				{
+					$add_attr = "";
+				}
+			}
+			 
+			$data .= "<option value='" . $value->kode . "' ".$add_attr.">" . $value->nama . "</option>";
 		}
 		echo $data;
 	}
 
-	function add_ajax_kec($id)
+	function add_ajax_kec($id,$selected=NULL)
 	{
 		$query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 8 AND LEFT(kode,5) = '$id' ORDER BY kode ASC");
 		$data = "<option value=''> - Pilih Kecamatan/Distrik - </option>";
 		foreach ($query->result() as $value) {
-			$data .= "<option value='" . $value->kode . "'>" . $value->nama . "</option>";
+			$add_attr = "";
+			if($selected != NULL)
+			{
+				if($selected == $value->kode)
+				{
+					$add_attr = "selected";
+				} else
+				{
+					$add_attr = "";
+				}
+			}
+
+			$data .= "<option value='" . $value->kode . "' ".$add_attr.">" . $value->nama . "</option>";
 		};
 		$data .= "<option value='Lainnya'>Lainnya</option>";
 		echo $data;
 	}
 
-	function add_ajax_des($id)
+	function add_ajax_des($id,$selected=NULL)
 	{
 		$query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 13 AND LEFT(kode,8) = '$id' ORDER BY kode ASC");
 		$data = "<option value=''> - Pilih Kelurahan/Desa - </option>";
 		foreach ($query->result() as $value) {
-			$data .= "<option value='" . $value->kode . "'>" . $value->nama . "</option>";
+			$add_attr = "";
+			if($selected != NULL)
+			{
+				if($selected == $value->kode)
+				{
+					$add_attr = "selected";
+				} else
+				{
+					$add_attr = "";
+				}
+			}
+			$data .= "<option value='" . $value->kode . "' ".$add_attr.">" . $value->nama . "</option>";
 		};
 		$data .= "<option value='Lainnya'>Lainnya</option>";
 		echo $data;
