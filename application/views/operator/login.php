@@ -43,7 +43,7 @@
         }
     </style>
 </head>
-
+ 
 <body class="text-center">
     <?php echo $this->session->flashdata('message'); ?></p>
     <?php echo form_open("auth/login", array('class' => 'form-signin'));  ?>
@@ -51,9 +51,9 @@
     <img class="mb-4" src="http://simunipa.unipa.ac.id/gtakademik/images/logo_client.png" alt="" width="72" height="72">
     <h1 class="h3 mb-5 font-weight-bold">Login Panel Admin PMB Sesama</h1>
     <label for="inputEmail" class="sr-only">Username</label>
-    <input type="text" id="inputEmail" class="form-control mb-4 mt-4" placeholder="Username" required autofocus>
+    <input name="identity" type="text" id="inputEmail" class="form-control mb-4 mt-4" placeholder="Username" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
-    <input type="password" id="inputPassword" class="form-control  mb-4 mt-4" placeholder="Password" required>
+    <input name="password" type="password" id="inputPassword" class="form-control  mb-4 mt-4" placeholder="Password" required>
     <div class="checkbox mb-3">
         <label>
             <input type="checkbox" value="remember-me"> Remember me

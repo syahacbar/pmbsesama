@@ -79,14 +79,19 @@ class Auth extends CI_Controller
 			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
 				//if the login is successful
 				//redirect them back to the home page
-				if ($this->ion_auth->in_group('members')) {
+				if ($this->ion_auth->is_admin())
+				{
 					$this->session->set_flashdata('message', $this->ion_auth->messages());
-					//redirect('/', 'refresh');
-					redirect('register/isibiodata');
-				} else {
-					$this->session->set_flashdata('message', $this->ion_auth->messages());
-					//redirect('/', 'refresh');
 					redirect('administrator');
+				} else {
+					if ($this->ion_auth->in_group('members')) {
+						$this->session->set_flashdata('message', $this->ion_auth->messages());
+						redirect('register/isibiodata');
+					} 
+					else if($this->ion_auth->in_group('sekolah')) {
+						$this->session->set_flashdata('message', $this->ion_auth->messages());
+						redirect('operator');
+					}
 				}
 			} else {
 				// if the login was un-successful
