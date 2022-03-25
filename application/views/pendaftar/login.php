@@ -70,7 +70,7 @@
                             <?php echo $this->session->flashdata('message'); ?></p>
                             <?php echo form_open("auth/login"); ?>
                             <div class="row px-3 mb-4">
-                                <small class="text-center">Silakan Login Untuk Mengisi Formulir Pendaftaran</small>
+                                <small class="text-center">Silakan Login Untuk Melengkapi Formulir Pendaftaran</small>
                             </div>
                             <div class="row px-3">
                                 <label class="mb-1">

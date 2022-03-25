@@ -5,7 +5,7 @@
     <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
     <link rel="stylesheet" type="text/css" href="http://simunipa.unipa.ac.id/styles/css1/demo-common.css" />
     <link rel="stylesheet" type="text/css" href="http://simunipa.unipa.ac.id/styles/css1/demo-element.css" />
-    <title></title>
+    <title>pmb.unipa.ac.id</title>
     <script type="text/javascript" src="http://simunipa.unipa.ac.id/scripts/jquery.js"></script>
     <script type="text/javascript">
         function toggle_drawer(drawer_obj) {

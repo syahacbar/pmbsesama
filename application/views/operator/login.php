@@ -8,7 +8,7 @@
     <meta name="author" content="">
     <link rel="icon" href="http://simunipa.unipa.ac.id/gtakademik/images/logo_client.png">
 
-    <title>Signin Template for Bootstrap</title>
+    <title>Login - PMB Online Unipa</title>
 
     <link rel="canonical" href="https://getbootstrap.com/docs/4.0/examples/sign-in/">
 

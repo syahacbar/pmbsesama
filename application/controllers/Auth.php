@@ -60,6 +60,72 @@ class Auth extends CI_Controller
 		}
 	}
 
+	public function login1()
+	{
+		// validate form input
+		$this->form_validation->set_rules('identity', str_replace(':', '', $this->lang->line('login_identity_label')), 'required');
+		$this->form_validation->set_rules('password', str_replace(':', '', $this->lang->line('login_password_label')), 'required');
+
+		if ($this->form_validation->run() === TRUE) {
+			// check to see if the user is logging in
+			// check for "remember me"
+			$remember = (bool)$this->input->post('remember');
+
+			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) 
+			{
+				//if the login is successful
+				//redirect them back to the home page
+				if ($this->ion_auth->is_admin())
+				{
+					$this->session->set_flashdata('message', $this->ion_auth->messages());
+					redirect('administrator');
+				} else {
+					if ($this->ion_auth->in_group('members')) {
+						$this->session->set_flashdata('message', $this->ion_auth->messages());
+						redirect('register/isibiodata');
+					} 
+					else if($this->ion_auth->in_group('sekolah')) {
+						$this->session->set_flashdata('message', $this->ion_auth->messages());
+						redirect('operator');
+					}
+				}
+			} else {
+				// if the login was un-successful
+				// redirect them back to the login page
+				// $this->session->set_flashdata('message', $this->ion_auth->errors());
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username/Password salah</div>');
+				redirect('auth/login', 'refresh'); // use redirects instead of loading views for compatibility with MY_Controller libraries
+			}
+		} else {
+			// the user is not logging in so display the login page
+			// set the flash data error message if there is one
+			$this->data['message'] = (validation_errors()) ? validation_errors() : $this->session->flashdata('message');
+
+			$this->data['identity'] = [
+				'name' => 'identity',
+				'id' => 'identity',
+				'type' => 'text',
+				'value' => $this->form_validation->set_value('identity'),
+			];
+
+			$this->data['password'] = [
+				'name' => 'password',
+				'id' => 'password',
+				'type' => 'password',
+			];
+
+			$this->data['agenda'] = $this->M_agenda->get_all(2);
+			$this->data['informasi'] = $this->M_informasi->get_all(3);
+			$this->data['slider'] = $this->M_slider->get_all();
+
+
+			//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'login', $this->data);
+			$this->data['_view'] = 'pendaftar/navbar';
+			$this->load->view('pendaftar/login', $this->data);
+		}
+	}
+
+
 	/**
 	 * Log the user in
 	 */
@@ -76,7 +142,8 @@ class Auth extends CI_Controller
 			// check for "remember me"
 			$remember = (bool)$this->input->post('remember');
 
-			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) {
+			if ($this->ion_auth->login($this->input->post('identity'), $this->input->post('password'), $remember)) 
+			{
 				//if the login is successful
 				//redirect them back to the home page
 				if ($this->ion_auth->is_admin())

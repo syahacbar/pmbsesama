@@ -11,6 +11,7 @@
                                     <li class="nav-item"><a class="nav-link" href="<?php echo site_url('agenda'); ?>"><i class="fa fa-calendar-o"></i> Agenda</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo site_url('informasi'); ?>"><i class="fa fa-info-circle"></i> Informasi</a></li>
                                     <li class="nav-item"><a class="nav-link" href="<?php echo site_url('pengumuman'); ?>"><i class="fa fa-bullhorn"></i> Pengumuman</a></li>
+                                     <li class="nav-item"><a target="_blank" class="nav-link" href="<?php echo site_url('operator'); ?>"><i class="fa fa-sign-in"></i> Login</a></li>
 
                                     <?php if ($this->ion_auth->logged_in()) { ?>
 
