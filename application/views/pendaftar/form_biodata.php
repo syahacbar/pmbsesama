@@ -770,14 +770,14 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat *</label>
-                                                <textarea name="alamattempattinggal" id="alamattempattinggal" row="2" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_tempattinggal']; ?>" required></textarea>
+                                                <textarea name="alamattempattinggal" id="alamattempattinggal" row="2" type="text" class="form-control" placeholder="" required><?php echo $row['alamat_tempattinggal']; ?></textarea>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat Tinggal Lain</label>
-                                                <textarea name="alamatlaintempattinggal" id="alamatlaintempattinggal" type="text" rows="2" class="form-control" placeholder="" value="<?php echo $row['alamatlain_tempattinggal']; ?>" required></textarea>
+                                                <textarea name="alamatlaintempattinggal" id="alamatlaintempattinggal" type="text" rows="2" class="form-control" placeholder="" required><?php echo $row['alamatlain_tempattinggal']; ?></textarea>
                                             </div>
                                         </div>
                                     </div>
@@ -797,14 +797,14 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>No. Telp./HP *</label>
-                                                <input name="nohp" id="nohp" type="text" class="form-control" placeholder="" required value="">
+                                                <input name="nohp" id="nohp" type="text" class="form-control" placeholder="" required value="<?php echo $nohp; ?>">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Alamat Email *</label>
-                                                <input name="email" id="email" type="email" class="form-control" placeholder="" required value="">
+                                                <input name="email" id="email" type="email" class="form-control" placeholder="" required value="<?php echo $email; ?>">
                                                 <small>Email Aktif</small>
                                             </div>
                                         </div>
@@ -1746,7 +1746,7 @@
 
             //Event ketika Memulai mengupload
             dok_rapor.on("sending", function(file, xhr, formData) {
-                formData.append("username", $("<?php echo $row['nisn_pendaftar']; ?>").val());
+                formData.append("username", <?php echo $username; ?>);
                 // formData.append("username", $("input[name='nisn_pendaftar']").val());
 
             });
