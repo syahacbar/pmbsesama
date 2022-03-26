@@ -78,7 +78,7 @@ $html = '
 </table>
 <table border=0 align="center" width="100%" cellspacing="10px">
 	<tr align="left">
-		<td><div class="text-justify">Silakan akses <a href="https://pmb.unipa.ac.id/pmbsesama" class="text-danger ">https://pmb.unipa.ac.id/pmbsesama</a>. Masukkan username dan password di atas untuk login dan melengkapi formulir biodata pendaftaran.</div></td>
+		<td><div class="text-justify">Silakan akses <a href="http://pmb.unipa.ac.id/pmbsesama" class="text-danger ">http://pmb.unipa.ac.id/pmbsesama</a>. Masukkan username dan password di atas untuk login dan melengkapi formulir biodata pendaftaran.</div></td>
 	</tr>
 	<tr align="left">
 		<td>Informasi lebih lanjut silahkan menghubungi panitia PMB UNIVERSITAS PAPUA. <br>Terimakasih.</td>
