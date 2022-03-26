@@ -149,7 +149,7 @@ class Auth extends CI_Controller
 				if ($this->ion_auth->is_admin())
 				{
 					$this->session->set_flashdata('message', $this->ion_auth->messages());
-					redirect('administrator');
+					redirect('pmbsesama/administrator');
 				} else {
 					if ($this->ion_auth->in_group('members')) {
 						$this->session->set_flashdata('message', $this->ion_auth->messages());
@@ -157,7 +157,7 @@ class Auth extends CI_Controller
 					} 
 					else if($this->ion_auth->in_group('sekolah')) {
 						$this->session->set_flashdata('message', $this->ion_auth->messages());
-						redirect('operator');
+						redirect('pmbsesama/operator');
 					}
 				}
 			} else {
@@ -199,16 +199,29 @@ class Auth extends CI_Controller
 	/**
 	 * Log the user out
 	 */
-	public function logout()
+	public function logout($usertype)
 	{
 		$this->data['title'] = "Logout";
 
 		// log the user out
 		$this->ion_auth->logout();
 
-		// redirect them to the login page
-		redirect('auth/login', 'refresh');
+		if (isset($usertype) && $usertype)
+		{
+			if($usertype == "operator" || $usertype == "admin")
+			{
+				// redirect them to the login page
+				redirect('pmbsesama/login', 'refresh');
+			}
+			elseif($usertype == "pendaftar")
+			{
+				// redirect them to the login page
+				redirect('pmbsesama', 'refresh');
+			}
+		}
 	}
+
+
 
 	/**
 	 * Change password

@@ -113,40 +113,15 @@
       padding-left: 0;
     }
   </style>
-</head>
+</head> 
 
 <body class='snippet-body'>
   <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
     <div class="card card0 border-0">
 
       <!-- Navigation-->
-      <div class="container-fluid nav-unipa">
-        <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav">
-          <div class="logo-nama">
-            <img src="<?php echo base_url('assets/frontend/img/logo_unipa.png') ?>" alt=""><a class="navbar-brand" href="<?php echo base_url('') ?>">&nbsp; UNIVERSITAS PAPUA</a>
-          </div>
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto my-2 my-lg-0">
-              <li class="nav-item"><a class="nav-link" href="<?php echo site_url('auth/login'); ?>"><i class="fa fa-home"></i> Beranda</a></li>
-              <li class="nav-item"><a class="nav-link" href="<?php echo site_url('agenda'); ?>"><i class="fa fa-calendar-o"></i> Agenda</a></li>
-              <li class="nav-item"><a class="nav-link" href="<?php echo site_url('informasi'); ?>"><i class="fa fa-info-circle"></i> Informasi</a></li>
-              <li class="nav-item"><a class="nav-link" href="<?php echo site_url('pengumuman'); ?>"><i class="fa fa-bullhorn"></i> Pengumuman</a></li>
+      <?php $this->load->view('pendaftar/navbar'); ?>
 
-              <?php if ($this->ion_auth->logged_in()) { ?>
-
-                <li class="nav-item">
-                  <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw text-gray-400"></i>
-                    Keluar
-                  </a>
-                </li>
-              <?php }  ?>
-
-            </ul>
-          </div>
-        </nav>
-      </div>
 
       <div class="row d-flex">
         <div class="col-lg-12 infoAgenda">

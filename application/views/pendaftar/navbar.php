@@ -7,11 +7,11 @@
                             <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                             <div class="collapse navbar-collapse" id="navbarResponsive">
                                 <ul class="navbar-nav ms-auto my-2 my-lg-0">
-                                    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('auth/login'); ?>"><i class="fa fa-home"></i> Beranda</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('agenda'); ?>"><i class="fa fa-calendar-o"></i> Agenda</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('informasi'); ?>"><i class="fa fa-info-circle"></i> Informasi</a></li>
-                                    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('pengumuman'); ?>"><i class="fa fa-bullhorn"></i> Pengumuman</a></li>
-                                     <li class="nav-item"><a target="_blank" class="nav-link" href="<?php echo site_url('operator'); ?>"><i class="fa fa-sign-in"></i> Login</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('pmbsesama'); ?>"><i class="fa fa-home"></i> Beranda</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('pmbsesama/agenda'); ?>"><i class="fa fa-calendar-o"></i> Agenda</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('pmbsesama/informasi'); ?>"><i class="fa fa-info-circle"></i> Informasi</a></li>
+                                    <li class="nav-item"><a class="nav-link" href="<?php echo site_url('pmbsesama/pengumuman'); ?>"><i class="fa fa-bullhorn"></i> Pengumuman</a></li>
+                                     <li class="nav-item"><a target="_blank" class="nav-link" href="<?php echo site_url('pmbsesama/operator'); ?>"><i class="fa fa-sign-in"></i> Login</a></li>
 
                                     <?php if ($this->ion_auth->logged_in()) { ?>
 

@@ -7,10 +7,10 @@ class Administrator extends CI_Controller
 	{
 		parent::__construct();
 		if (!$this->ion_auth->logged_in()) {
-			redirect('auth/login', 'refresh');
+			redirect('pmbsesama/login', 'refresh');
 		}
 		if ($this->ion_auth->in_group('members')) {
-			redirect('auth/login', 'refresh');
+			redirect('pmbsesama/login', 'refresh');
 		}
 		$this->load->model('M_wilayah');
 		$this->load->model('M_pendaftar');
@@ -36,10 +36,10 @@ class Administrator extends CI_Controller
 	{
 		$this->load->model('M_agama');
 
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['linkform'] = "administrator/ref_agama/add";
 			$data['agama'] = $this->M_agama->get_all();
-		} else if ($this->uri->segment(3) == "add") {
+		} else if ($this->uri->segment(4) == "add") {
 			$data = array(
 				'agama'  => $this->input->post('agama'),
 			);
@@ -48,7 +48,7 @@ class Administrator extends CI_Controller
 
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_agama');
-		} else if ($this->uri->segment(3) == "edit") {
+		} else if ($this->uri->segment(4) == "edit") {
 			$id = $this->input->post('idagama');
 			$data = array(
 				'agama'  => $this->input->post('agama')
@@ -56,7 +56,7 @@ class Administrator extends CI_Controller
 			$this->M_agama->edit($data, $id);
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_agama');
-		} else if ($this->uri->segment(3) == "delete") {
+		} else if ($this->uri->segment(4) == "delete") {
 			$id = $this->input->post('idagama');
 			$this->M_agama->delete($id);
 			redirect('administrator/ref_agama');
@@ -70,10 +70,10 @@ class Administrator extends CI_Controller
 	{
 		$this->load->model('M_statusmenikah');
 
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['linkform'] = "administrator/ref_statusmenikah/add";
 			$data['statusmenikah'] = $this->M_statusmenikah->get_all();
-		} else if ($this->uri->segment(3) == "add") {
+		} else if ($this->uri->segment(4) == "add") {
 			$data = array(
 				'status'  => $this->input->post('statusmenikah'),
 			);
@@ -82,7 +82,7 @@ class Administrator extends CI_Controller
 
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_statusmenikah');
-		} else if ($this->uri->segment(3) == "edit") {
+		} else if ($this->uri->segment(4) == "edit") {
 			$id = $this->input->post('idstatusmenikah');
 			$data = array(
 				'status'  => $this->input->post('statusmenikah')
@@ -90,7 +90,7 @@ class Administrator extends CI_Controller
 			$this->M_statusmenikah->edit($data, $id);
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_statusmenikah');
-		} else if ($this->uri->segment(3) == "delete") {
+		} else if ($this->uri->segment(4) == "delete") {
 			$id = $this->input->post('idstatusmenikah');
 			$this->M_statusmenikah->delete($id);
 			redirect('administrator/ref_statusmenikah');
@@ -104,10 +104,10 @@ class Administrator extends CI_Controller
 	{
 		$this->load->model('M_jenissmta');
 
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['linkform'] = "administrator/ref_jenissmta/add";
 			$data['jenissmta'] = $this->M_jenissmta->get_all();
-		} else if ($this->uri->segment(3) == "add") {
+		} else if ($this->uri->segment(4) == "add") {
 			$data = array(
 				'namajenissmta'  => $this->input->post('jenissmta'),
 			);
@@ -116,7 +116,7 @@ class Administrator extends CI_Controller
 
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_jenissmta');
-		} else if ($this->uri->segment(3) == "edit") {
+		} else if ($this->uri->segment(4) == "edit") {
 			$id = $this->input->post('idjenissmta');
 			$data = array(
 				'namajenissmta'  => $this->input->post('jenissmta')
@@ -124,7 +124,7 @@ class Administrator extends CI_Controller
 			$this->M_jenissmta->edit($data, $id);
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_jenissmta');
-		} else if ($this->uri->segment(3) == "delete") {
+		} else if ($this->uri->segment(4) == "delete") {
 			$id = $this->input->post('idjenissmta');
 			$this->M_jenissmta->delete($id);
 			redirect('administrator/ref_jenissmta');
@@ -138,10 +138,10 @@ class Administrator extends CI_Controller
 	{
 		$this->load->model('M_jurusansmta');
 
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['linkform'] = "administrator/ref_jurusansmta/add";
 			$data['jurusansmta'] = $this->M_jurusansmta->get_all();
-		} else if ($this->uri->segment(3) == "add") {
+		} else if ($this->uri->segment(4) == "add") {
 			$data = array(
 				'namajurusan'  => $this->input->post('jurusansmta'),
 			);
@@ -150,7 +150,7 @@ class Administrator extends CI_Controller
 
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_jurusansmta');
-		} else if ($this->uri->segment(3) == "edit") {
+		} else if ($this->uri->segment(4) == "edit") {
 			$id = $this->input->post('idjurusansmta');
 			$data = array(
 				'namajurusan'  => $this->input->post('jurusansmta')
@@ -158,7 +158,7 @@ class Administrator extends CI_Controller
 			$this->M_jurusansmta->edit($data, $id);
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_jurusansmta');
-		} else if ($this->uri->segment(3) == "delete") {
+		} else if ($this->uri->segment(4) == "delete") {
 			$id = $this->input->post('idjurusansmta');
 			$this->M_jurusansmta->delete($id);
 			redirect('administrator/ref_jurusansmta');
@@ -172,10 +172,10 @@ class Administrator extends CI_Controller
 	{
 		$this->load->model('M_pekerjaanortu');
 
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['linkform'] = "administrator/ref_pekerjaanortu/add";
 			$data['pekerjaanortu'] = $this->M_pekerjaanortu->get_all();
-		} else if ($this->uri->segment(3) == "add") {
+		} else if ($this->uri->segment(4) == "add") {
 			$data = array(
 				'namapekerjaan'  => $this->input->post('pekerjaanortu'),
 			);
@@ -184,7 +184,7 @@ class Administrator extends CI_Controller
 
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_pekerjaanortu');
-		} else if ($this->uri->segment(3) == "edit") {
+		} else if ($this->uri->segment(4) == "edit") {
 			$id = $this->input->post('idpekerjaan');
 			$data = array(
 				'namapekerjaan'  => $this->input->post('pekerjaanortu')
@@ -192,7 +192,7 @@ class Administrator extends CI_Controller
 			$this->M_pekerjaanortu->edit($data, $id);
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_pekerjaanortu');
-		} else if ($this->uri->segment(3) == "delete") {
+		} else if ($this->uri->segment(4) == "delete") {
 			$id = $this->input->post('idpekerjaan');
 			$this->M_pekerjaanortu->delete($id);
 			redirect('administrator/ref_pekerjaanortu');
@@ -206,10 +206,10 @@ class Administrator extends CI_Controller
 	{
 		$this->load->model('M_pendidikanortu');
 
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['linkform'] = "administrator/ref_pendidikanortu/add";
 			$data['pendidikanortu'] = $this->M_pendidikanortu->get_all();
-		} else if ($this->uri->segment(3) == "add") {
+		} else if ($this->uri->segment(4) == "add") {
 			$data = array(
 				'namajenjang'  => $this->input->post('pendidikanortu'),
 			);
@@ -218,7 +218,7 @@ class Administrator extends CI_Controller
 
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_pendidikanortu');
-		} else if ($this->uri->segment(3) == "edit") {
+		} else if ($this->uri->segment(4) == "edit") {
 			$id = $this->input->post('idpendidikan');
 			$data = array(
 				'namajenjang'  => $this->input->post('pendidikanortu')
@@ -226,7 +226,7 @@ class Administrator extends CI_Controller
 			$this->M_pendidikanortu->edit($data, $id);
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_pendidikanortu');
-		} else if ($this->uri->segment(3) == "delete") {
+		} else if ($this->uri->segment(4) == "delete") {
 			$id = $this->input->post('idpendidikan');
 			$this->M_pendidikanortu->delete($id);
 			redirect('administrator/ref_pendidikanortu');
@@ -240,10 +240,10 @@ class Administrator extends CI_Controller
 	{
 		$this->load->model('M_penghasilanortu');
 
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['linkform'] = "administrator/ref_penghasilanortu/add";
 			$data['penghasilanortu'] = $this->M_penghasilanortu->get_all();
-		} else if ($this->uri->segment(3) == "add") {
+		} else if ($this->uri->segment(4) == "add") {
 			$data = array(
 				'penghasilan'  => $this->input->post('penghasilanortu'),
 			);
@@ -252,7 +252,7 @@ class Administrator extends CI_Controller
 
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_penghasilanortu');
-		} else if ($this->uri->segment(3) == "edit") {
+		} else if ($this->uri->segment(4) == "edit") {
 			$id = $this->input->post('idpenghasilan');
 			$data = array(
 				'penghasilan'  => $this->input->post('penghasilanortu')
@@ -260,7 +260,7 @@ class Administrator extends CI_Controller
 			$this->M_penghasilanortu->edit($data, $id);
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_penghasilanortu');
-		} else if ($this->uri->segment(3) == "delete") {
+		} else if ($this->uri->segment(4) == "delete") {
 			$id = $this->input->post('idpenghasilan');
 			$this->M_penghasilanortu->delete($id);
 			redirect('administrator/ref_penghasilanortu');
@@ -273,10 +273,10 @@ class Administrator extends CI_Controller
 	public function ref_fakultas()
 	{
 		$this->load->model('M_fakultas');
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['linkform'] = "administrator/ref_fakultas/add";
 			$data['fakultas'] = $this->M_fakultas->get_all();
-		} else if ($this->uri->segment(3) == "add") {
+		} else if ($this->uri->segment(4) == "add") {
 			$data = array(
 				'namafakultas'  => $this->input->post('fakultas'),
 			);
@@ -285,7 +285,7 @@ class Administrator extends CI_Controller
 
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_fakultas');
-		} else if ($this->uri->segment(3) == "edit") {
+		} else if ($this->uri->segment(4) == "edit") {
 			$id = $this->input->post('idfakultas');
 			$data = array(
 				'namafakultas'  => $this->input->post('fakultas')
@@ -293,7 +293,7 @@ class Administrator extends CI_Controller
 			$this->M_fakultas->edit($data, $id);
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_fakultas');
-		} else if ($this->uri->segment(3) == "delete") {
+		} else if ($this->uri->segment(4) == "delete") {
 			$id = $this->input->post('idfakultas');
 			$this->M_fakultas->delete($id);
 			redirect('administrator/ref_fakultas');
@@ -307,11 +307,11 @@ class Administrator extends CI_Controller
 	{
 		$this->load->model('M_fakultas');
 		$this->load->model('M_prodi');
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['linkform'] = "administrator/ref_prodi/add";
 			$data['prodi'] = $this->M_prodi->get_all();
 			$data['fakultas'] = $this->M_fakultas->get_all();
-		} else if ($this->uri->segment(3) == "add") {
+		} else if ($this->uri->segment(4) == "add") {
 			$data = array(
 				'namaprodi'  => $this->input->post('prodi'),
 				'idfakultas'  => $this->input->post('optFakultas'),
@@ -321,7 +321,7 @@ class Administrator extends CI_Controller
 
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_prodi');
-		} else if ($this->uri->segment(3) == "edit") {
+		} else if ($this->uri->segment(4) == "edit") {
 			$id = $this->input->post('idprodi');
 			$data = array(
 				'namaprodi'  => $this->input->post('prodi'),
@@ -330,7 +330,7 @@ class Administrator extends CI_Controller
 			$this->M_prodi->edit($data, $id);
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/ref_prodi');
-		} else if ($this->uri->segment(3) == "delete") {
+		} else if ($this->uri->segment(4) == "delete") {
 			$id = $this->input->post('idprodi');
 			$this->M_prodi->delete($id);
 			redirect('administrator/ref_prodi');
@@ -375,7 +375,7 @@ class Administrator extends CI_Controller
 	{
 		$this->load->model(['M_pendidikanortu', 'M_penghasilanortu', 'M_pekerjaanortu', 'M_prodi', 'M_register', 'M_pendaftar', 'M_informasi', 'M_agama', 'M_statusmenikah', 'M_jurusansmta', 'M_jenissmta']);
 
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['listprodi'] = $this->M_prodi->get_all();
 			$data['agama'] = $this->M_agama->get_all();
 			$data['prodi'] = $this->M_prodi->get_all();
@@ -392,21 +392,21 @@ class Administrator extends CI_Controller
 
 			$data['_view'] = 'admin/data_pendaftar';
 			$this->load->view('admin/layout', $data);
-		} else if ($this->uri->segment(3) == "kartupeserta") {
+		} else if ($this->uri->segment(4) == "kartupeserta") {
         	$this->load->library('Pdf');
 
 			$data['peserta'] = $this->M_register->get_biodata_by_username($this->uri->segment(4))->row();
 			$this->load->view('admin/kartu_peserta_pdf', $data);
-		} else if ($this->uri->segment(3) == "detail_pendaftar") {
+		} else if ($this->uri->segment(4) == "detail_pendaftar") {
 			$data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
 			$data['editpendaftar'] = $this->M_pendaftar->edit_pendaftar($this->uri->segment(4))->result_array();
 			$data['rapor'] = $this->M_pendaftar->get_rapor($this->uri->segment(4))->result_array();
 			$data['_view'] = 'admin/detail_pendaftar';
 			$this->load->view('admin/layout', $data);
-		} else if ($this->uri->segment(3) == "hapus_pendaftar") {
+		} else if ($this->uri->segment(4) == "hapus_pendaftar") {
 			$data['hapus_pendaftar'] = $this->M_pendaftar->hapus_data($this->uri->segment(4));
 			redirect('administrator/datapendaftar');
-		} else if ($this->uri->segment(3) == "editpendaftar") {
+		} else if ($this->uri->segment(4) == "editpendaftar") {
 			$data['editpendaftar'] = $this->M_pendaftar->edit_pendaftar($this->uri->segment(4))->result_array();
 			$data['agama'] = $this->M_agama->get_all();
 			$data['statusmenikah'] = $this->M_statusmenikah->get_all();
@@ -579,10 +579,10 @@ class Administrator extends CI_Controller
 
 		$this->load->model('M_slider');
 
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['linkform'] = "administrator/slider/add";
 			$data['slider'] = $this->M_slider->get_all();
-		} else if ($this->uri->segment(3) == "add") {
+		} else if ($this->uri->segment(4) == "add") {
 			$data = array(
 				'gambar'  => $this->input->post('gambar'),
 			);
@@ -591,7 +591,7 @@ class Administrator extends CI_Controller
 
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/slider');
-		} else if ($this->uri->segment(3) == "edit") {
+		} else if ($this->uri->segment(4) == "edit") {
 			$id = $this->input->post('id');
 			$data = array(
 				'gambar'  => $this->input->post('gambar')
@@ -599,7 +599,7 @@ class Administrator extends CI_Controller
 			$this->M_slider->edit($data, $id);
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/slider');
-		} else if ($this->uri->segment(3) == "delete") {
+		} else if ($this->uri->segment(4) == "delete") {
 			$id = $this->input->post('id');
 			$this->M_slider->delete($id);
 			redirect('administrator/slider');
@@ -614,14 +614,14 @@ class Administrator extends CI_Controller
 
 		$this->load->model('M_agenda');
 
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['agenda'] = $this->M_agenda->get_all();
-		} else if ($this->uri->segment(3) == "delete") {
+		} else if ($this->uri->segment(4) == "delete") {
 			$id = $this->input->post('id');
 			$this->M_agenda->delete($id);
 			redirect('administrator/agenda');
 		}
-		// else if ($this->uri->segment(3) == "edit") {
+		// else if ($this->uri->segment(4) == "edit") {
 		// 	$id = $this->input->post('id');
 		// 	$data = array(
 		// 		'agenda'  => $this->input->post('agenda')
@@ -651,10 +651,10 @@ class Administrator extends CI_Controller
 
 		$this->load->model('M_informasi');
 
-		if ($this->uri->segment(3) == "") {
+		if ($this->uri->segment(4) == "") {
 			$data['linkform'] = "administrator/informasi/add";
 			$data['informasi'] = $this->M_informasi->get_all();
-		} else if ($this->uri->segment(3) == "add") {
+		} else if ($this->uri->segment(4) == "add") {
 			$data = array(
 				'informasi'  => $this->input->post('informasi'),
 			);
@@ -663,7 +663,7 @@ class Administrator extends CI_Controller
 
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/informasi');
-		} else if ($this->uri->segment(3) == "edit") {
+		} else if ($this->uri->segment(4) == "edit") {
 			$id = $this->input->post('id');
 			$data = array(
 				'informasi'  => $this->input->post('informasi')
@@ -671,7 +671,7 @@ class Administrator extends CI_Controller
 			$this->M_informasi->edit($data, $id);
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/informasi');
-		} else if ($this->uri->segment(3) == "delete") {
+		} else if ($this->uri->segment(4) == "delete") {
 			$id = $this->input->post('id');
 			$this->M_informasi->delete($id);
 			redirect('administrator/informasi');

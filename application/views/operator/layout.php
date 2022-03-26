@@ -40,8 +40,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item <?php echo ($this->uri->segment(2) == "") ? "active" : ""; ?>">
-                <a class="nav-link" href="<?php echo site_url('operator'); ?>">
+            <li class="nav-item <?php echo ($this->uri->segment(3) == "") ? "active" : ""; ?>">
+                <a class="nav-link" href="<?php echo site_url('pmbsesama/operator'); ?>">
                     <i class="fas fa-fw fa-laptop"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -53,8 +53,8 @@
                 <div class="sidebar-heading">
                     Pendaftaran
                 </div>
-                <li class="nav-item <?php echo ($this->uri->segment(2) == "pendaftar") ? "active" : ""; ?>">
-                    <a class="nav-link" href="<?php echo site_url('operator/pendaftar'); ?>">
+                <li class="nav-item <?php echo ($this->uri->segment(3) == "pendaftar") ? "active" : ""; ?>">
+                    <a class="nav-link" href="<?php echo site_url('pmbsesama/operator/pendaftar'); ?>">
                         <i class="fas fa-fw fa-laptop"></i>
                         <span>Data Pendaftar</span></a>
                 </li>
@@ -305,7 +305,7 @@
                 <div class="modal-body">Silakan tekan tombol "Keluar di bawah ini untuk mengakhiri sesi login Anda.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="<?php echo site_url('auth/logout'); ?>">Keluar</a>
+                    <a class="btn btn-primary" href="<?php echo site_url('auth/logout/operator'); ?>">Keluar</a>
                 </div>
             </div>
         </div>

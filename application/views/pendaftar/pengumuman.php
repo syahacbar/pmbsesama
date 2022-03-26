@@ -28,41 +28,16 @@
     <div class="card card0 border-0">
 
       <!-- Navigation-->
-      <div class="container-fluid nav-unipa">
-        <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav">
-          <div class="logo-nama">
-            <img src="<?php echo base_url('assets/frontend/img/logo_unipa.png') ?>" alt=""><a class="navbar-brand" href="<?php echo base_url('') ?>">&nbsp; UNIVERSITAS PAPUA</a>
-          </div>
-          <button class="navbar-toggler navbar-toggler-right" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-          <div class="collapse navbar-collapse" id="navbarResponsive">
-            <ul class="navbar-nav ms-auto my-2 my-lg-0">
-              <li class="nav-item"><a class="nav-link" href="<?php echo site_url('auth/login'); ?>"><i class="fa fa-home"></i> Beranda</a></li>
-              <li class="nav-item"><a class="nav-link" href="<?php echo site_url('agenda'); ?>"><i class="fa fa-calendar-o"></i> Agenda</a></li>
-              <li class="nav-item"><a class="nav-link" href="<?php echo site_url('informasi'); ?>"><i class="fa fa-info-circle"></i> Informasi</a></li>
-              <li class="nav-item"><a class="nav-link" href="<?php echo site_url('pengumuman'); ?>"><i class="fa fa-bullhorn"></i> Pengumuman</a></li>
+      <?php $this->load->view('pendaftar/navbar'); ?>
 
-              <?php if ($this->ion_auth->logged_in()) { ?>
-
-                <li class="nav-item">
-                  <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
-                    <i class="fas fa-sign-out-alt fa-sm fa-fw text-gray-400"></i>
-                    Keluar
-                  </a>
-                </li>
-              <?php }  ?>
-
-            </ul>
-          </div>
-        </nav>
-      </div>
 
       <div class="content-pengumuman">
         <div class="row">
           <div class="col-lg-12">
             <div class="card2 card border-0 px-0 py-0">
-              <h4 class="mb-0 mr-4 mt-2 mb-3">Pengumuman Test Penerimaan Mahasiswa Baru (PMB)</h4>
+              <h4 class="mb-0 mr-4 mt-2 mb-3">Pengumuman Test Penerimaan Mahasiswa Baru (PMB) </h4>
               <div class="alert alert-info alert-dismissible fade show" role="alert">
-                <strong>Penting!</strong> Untuk mengecek pengumuman kelulusan, silakan ketikkan nomor tes Anda di kolom No. Tes berikut ini.
+                <strong>Penting!</strong> Untuk mengecek pengumuman kelulusan, silakan ketikkan nomor Pendaftaran Anda di kolom No. Pendaftaran berikut ini.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
                 </button>
@@ -74,7 +49,7 @@
 
       <div class="row pengumuman">
         <div class="col-lg-12">
-          <h6 class="card-title">Pengumuman Hasil Test PMB untuk Periode Ganjil - 2021/2022</h6>
+          <h6 class="card-title">Pengumuman Hasil Test PMB Jalur SESAMA untuk Periode Ganjil - 2022/2023</h6>
         </div>
         <div class="col-lg-6 mb-2">
           <div class="card px-0 py-0">
@@ -87,7 +62,7 @@
         <div class="col-lg-6">
           <div class="card px-0 py-0">
             <div class="card-body px-2 py-2">
-              <strong class="card-title">No. Tes</strong>
+              <strong class="card-title">No. Pendaftaran</strong>
               <div class="row d-flex">
                 <div class="col-lg-8 mt-2">
                   <input type="text" name="nomortes" class="form-control" id="nomortes" placeholder="Ketik nomor tes Anda di sini">

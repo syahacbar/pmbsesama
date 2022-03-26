@@ -7,10 +7,10 @@ class Operator extends CI_Controller
     {
         parent::__construct();
         if (!$this->ion_auth->logged_in()) {
-            redirect('login', 'refresh');
+            redirect('pmbsesama/login', 'refresh');
         }
         if (!$this->ion_auth->in_group('sekolah')) {
-            redirect('login', 'refresh');
+            redirect('pmbsesama/login', 'refresh');
         }
         $this->load->model(['M_wilayah', 'M_pendaftar', 'M_register', 'M_agenda']);
     }
