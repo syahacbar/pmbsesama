@@ -678,6 +678,7 @@ class Auth extends CI_Controller
 
 	public function registration_confirm($username, $password, $namalengkap, $email, $nohp)
 	{
+		$this->load->library('Pdf');
 		$data = array(
 			'username' => $username,
 			'password' => $password,
@@ -685,8 +686,21 @@ class Auth extends CI_Controller
 			'email' => $email,
 			'nohp' => $nohp,
 		);
-		$this->load->view('pendaftar/konfirmasi_pendaftaran', $data);
+		$this->load->view('pendaftar/konfirmasi_pendaftaran_pdf', $data); 
 	}
+
+	// public function tes_cetak_kartu_akun($username, $password=NULL, $namalengkap=NULL, $email=NULL, $nohp=NULL)
+	// {
+	// 	$this->load->library('Pdf');
+	// 	$data = array(
+	// 		'username' => $username,
+	// 		'password' => $password,
+	// 		'namalengkap' => $namalengkap,
+	// 		'email' => $email,
+	// 		'nohp' => $nohp,
+	// 	);
+	// 	$this->load->view('pendaftar/konfirmasi_pendaftaran_pdf', $data); 
+	// }
 	/**
 	 * Redirect a user checking if is admin
 	 */
