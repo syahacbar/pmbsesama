@@ -44,7 +44,6 @@ class Operator extends CI_Controller
         $data['pendidikanortu'] = $this->M_pendidikanortu->get_all();
         $data['pekerjaanortu'] = $this->M_pekerjaanortu->get_all();
         $data['penghasilanortu'] = $this->M_penghasilanortu->get_all();
-        $data['fotoprofil'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
 
         $data['_view'] = 'operator/data_pendaftar';
         $this->load->view('operator/layout', $data);
