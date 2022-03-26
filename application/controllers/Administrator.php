@@ -390,14 +390,16 @@ class Administrator extends CI_Controller
 			$data['pekerjaanortu'] = $this->M_pekerjaanortu->get_all();
 			$data['penghasilanortu'] = $this->M_penghasilanortu->get_all();
 			$data['fotoprofil'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
-
+ 
 
 
 			$data['_view'] = 'admin/data_pendaftar';
 			$this->load->view('admin/layout', $data);
 		} else if ($this->uri->segment(3) == "kartupeserta") {
+        	$this->load->library('Pdf');
+
 			$data['peserta'] = $this->M_register->get_biodata_by_username($this->uri->segment(4))->row();
-			$this->load->view('pendaftar/kartu_peserta', $data);
+			$this->load->view('admin/kartu_peserta_pdf', $data);
 		} else if ($this->uri->segment(3) == "detail_pendaftar") {
 			$data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
 			$data['editpendaftar'] = $this->M_pendaftar->edit_pendaftar($this->uri->segment(4))->result_array();
