@@ -191,14 +191,109 @@
 	}
 
 	/* Important part */
-	.modal-dialog {
+	#modalEdit .modal-dialog {
 		overflow-y: initial !important
 	}
 
-	.modal-body {
+	#modalEdit .modal-body {
 		height: 80vh;
 		overflow-y: auto;
 	}
+
+	/* Foto Profil */
+/*	.tempatfoto {
+  position: relative;
+  width: 125px;
+  height: 125px;
+  border-radius: 50%;
+  overflow: hidden;
+  background-color: #111;
+  margin: 0 auto;
+}*/
+
+.tempatfoto .col-sm-12 {
+    padding: 0;
+}
+
+div#modalEdit .alert.alert-warning.text-muted {
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.tempatfoto {
+    position: relative;
+    width: 100%;
+    height: auto;
+    border-radius: 5%;
+    overflow: hidden;
+    background-color: #ecf0f6;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.tempatfoto:hover .unggah {
+  opacity: 1;
+}
+
+.tempatfoto:hover #fotopas {
+  opacity: .8;
+}
+
+#fotopas {
+  object-fit: cover;
+  opacity: 1;
+  transition: opacity .2s ease-in-out;
+    width: 70%;
+    margin: 0 15%;
+}
+
+.unggah {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  opacity: 0;
+  transition: opacity .2s ease-in-out;
+}
+
+.icon_edit {
+  color: white;
+  padding-bottom: 8px;
+}
+
+.fas {
+  font-size: 20px;
+}
+
+.btnUnggahfoto {
+  text-transform: uppercase;
+  font-size: 12px;
+  width: 50%;
+  text-align: center;
+}
+
+div#modalEdit .alert.alert-warning.text-muted ul {
+    padding: 8px;
+}
+
+button.btnUnggahfoto {
+    width: 80%;
+}
+
+.text-muted {
+	font-size: 12px;
+}
 </style>
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 <!-- Begin Page Content -->
@@ -307,17 +402,27 @@
 					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
 				</div>
 				<div class="modal-body">
-					<div class="row">
-						<div class="col-sm-6">
-							<div class="alert alert-secondary text-muted" role="alert">
-								Silakan ubah data yang perlu diubah. Data yang tidak diubah, biarkan <i>default</i>. Jangan lupa klik tombol <b>Simpan</b> setiap kali melakukan perubahan data!
+					<div class="row panduan-profil">
+						<div class="col-sm-9 d-flex justify-content-start">
+							<div class="alert alert-warning text-muted" role="alert">
+								<ul>
+									<li class="text-muted">Untuk mengubah gambar profil, silakan arahkan pointer ke bagian foto.</li>
+									<li class="text-muted">Data yang tidak diubah dibiarkan default</li>
+									<li class="text-muted">Klik tombol Simpan setiap kali melakukan perubahan data</li>
+								</ul>
 							</div>
 						</div>
-						<div class="col-sm-6">
+						<div class="col-sm-3">
 							<div class="row tempatfoto">
 								<div class="col-sm-12">
-									<img src="" id="fotopas" width="120px"><br>
-									<button class="btnUnggahfoto">Ubah Foto</button>
+									<img src="" id="fotopas"><br>
+									<!-- <button class="btnUnggahfoto">Ubah Foto</button> -->
+									  <div class="unggah">
+									    <span class="icon_edit"><i class="fas fa-edit"></i></span>
+										<button class="btnUnggahfoto tombol btn btn-primary">Ubah Foto</button>
+
+									    <!-- <span class="tombol">Edit Profile</span> -->
+									  </div>
 								</div>						
 							</div>
 							<div class="row unggahfoto" style="display:none;">
@@ -335,10 +440,8 @@
 								</div>								
 							</div>
 						</div>
-
-
 					</div>
-					<div role="tabpanel">
+					<div role="tabpanel" class="mt-4">
 						<!-- Nav tabs -->
 						<ul class="nav nav-tabs" role="tablist">
 							<li role="presentation" class="active">
@@ -1025,9 +1128,7 @@
 													<label>Nama Wali</label>
 													<input name="namawali" id="namawali" type="text" class="form-control" placeholder="" value="" required>
 												</div>
-
 											</div>
-
 											<div class="col-sm-6 col-md-6 col-lg-6">
 												<div class="form-group">
 													<label>Pekerjaan Wali *</label>
@@ -1039,7 +1140,6 @@
 													</select>
 												</div>
 											</div>
-
 											<div class="col-sm-6 col-md-6 col-lg-6">
 												<div class="form-group">
 													<label>Penghasilan Wali *</label>
@@ -1057,7 +1157,6 @@
 													<input name="nohp_wali" id="nohp_wali" type="text" class="form-control" placeholder="" value="" required>
 												</div>
 											</div>
-
 											<div class="col-sm-6 col-md-6 col-lg-6">
 												<div class="form-group">
 													<label>Alamat Wali *</label>
@@ -1065,7 +1164,6 @@
 													<small>Alamat wali saat ini. Maksimal 50 karakter.</small>
 												</div>
 											</div>
-
 										</div>
 									</div>
 								</div>

@@ -25,7 +25,7 @@ $html = '
 	  text-justify: inter-word;
 	}
 </style>
-<table border=0 align="center" width="100%" cellspacing="5">
+<table border="0" align="center" width="100%" cellspacing="5">
 	<tr>
 		<td align="left" width="15%"><img src="'.base_url().'assets/frontend/img/unipa.png" width="50"></td>
 		<td align="left" width="85%">
@@ -37,7 +37,7 @@ $html = '
 		<td colspan="2"><hr></td>
 	</tr>
 </table>
-<table border=0 align="center" width="100%" cellspacing="10px">
+<table border="0" align="center" width="100%" cellspacing="10px">
 	<tr>
 		<td>
 			<span class="kop">KARTU TANDA PESERTA SESAMA</span><br><strong>TAHUN AKADEMIK '.$peserta->tahunakademik.'</strong>
@@ -70,7 +70,7 @@ $html = '
 					<td>:</td>
 					<td>
 						<ol type="number">
-							<li >'.$CI->M_prodi->get_by_id($peserta->prodipilihan1)->namaprodi.'</li>
+							<li>'.$CI->M_prodi->get_by_id($peserta->prodipilihan1)->namaprodi.'</li>
 							<li>'.$CI->M_prodi->get_by_id($peserta->prodipilihan2)->namaprodi.'</li>
 							<li>'.$CI->M_prodi->get_by_id($peserta->prodipilihan3)->namaprodi.'</li>
 						</ol>
@@ -98,3 +98,5 @@ $html = '
 ';
 $pdf->writeHTML($html, true, false, true, false, '');
 $pdf->Output('KARTU PESERTA '.$peserta->username.'.pdf', 'I');
+
+?>

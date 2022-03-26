@@ -1732,26 +1732,23 @@
             foto_upload.on("complete", function(file) {
                 window.location.href = "<?php echo site_url('register/isibiodata') ?>";
             });
-        </script>
-
-
-        <script type="text/javascript">
-            Dropzone.autoDiscover = false;
 
             var dok_rapor = new Dropzone(".dokrapor", {
+                autoProcessQueue: true,
                 url: "<?php echo site_url('register/uploadrapor') ?>",
                 maxFilesize: 2,
                 method: "post",
                 acceptedFiles: ".pdf",
-                paramName: "userfile",
+                paramName: "filerapor",
                 dictInvalidFileType: "Type file ini tidak dizinkan",
                 addRemoveLinks: true,
             });
 
             //Event ketika Memulai mengupload
-            dok_rapor.on("sending", function(a, b, c) {
-                a.token = Math.random();
-                c.append("token_dok", a.token);
+            dok_rapor.on("sending", function(file, xhr, formData) {
+                formData.append("username", $("<?php echo $row['nisn_pendaftar']; ?>").val());
+                // formData.append("username", $("input[name='nisn_pendaftar']").val());
+
             });
         </script>
 
