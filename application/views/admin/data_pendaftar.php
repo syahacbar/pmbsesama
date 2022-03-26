@@ -1434,6 +1434,8 @@ button.btnUnggahfoto {
 			});
 
 			$("#tablePendaftar").on("click", ".btnEdit", function() {
+				$('.tempatfoto').show();
+    			$('.unggahfoto').hide();
 
 				var username = $(this).data('username');
 				$.ajax({
@@ -1690,6 +1692,7 @@ button.btnUnggahfoto {
 
 							reload_table();
 							$("#fotopas").attr("src", "<?php echo base_url('assets/upload/profile/');?>" + dataResult.fotoprofil);
+							
 						} else {
 							alert("Error occured !");
 						}

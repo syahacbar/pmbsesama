@@ -395,19 +395,19 @@ class Administrator extends CI_Controller
 		} else if ($this->uri->segment(4) == "kartupeserta") {
         	$this->load->library('Pdf');
 
-			$data['peserta'] = $this->M_register->get_biodata_by_username($this->uri->segment(4))->row();
+			$data['peserta'] = $this->M_register->get_biodata_by_username($this->uri->segment(5))->row();
 			$this->load->view('admin/kartu_peserta_pdf', $data);
 		} else if ($this->uri->segment(4) == "detail_pendaftar") {
-			$data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
-			$data['editpendaftar'] = $this->M_pendaftar->edit_pendaftar($this->uri->segment(4))->result_array();
-			$data['rapor'] = $this->M_pendaftar->get_rapor($this->uri->segment(4))->result_array();
+			$data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(5))->result_array();
+			$data['editpendaftar'] = $this->M_pendaftar->edit_pendaftar($this->uri->segment(5))->result_array();
+			$data['rapor'] = $this->M_pendaftar->get_rapor($this->uri->segment(5))->result_array();
 			$data['_view'] = 'admin/detail_pendaftar';
 			$this->load->view('admin/layout', $data);
 		} else if ($this->uri->segment(4) == "hapus_pendaftar") {
-			$data['hapus_pendaftar'] = $this->M_pendaftar->hapus_data($this->uri->segment(4));
+			$data['hapus_pendaftar'] = $this->M_pendaftar->hapus_data($this->uri->segment(5));
 			redirect('administrator/datapendaftar');
 		} else if ($this->uri->segment(4) == "editpendaftar") {
-			$data['editpendaftar'] = $this->M_pendaftar->edit_pendaftar($this->uri->segment(4))->result_array();
+			$data['editpendaftar'] = $this->M_pendaftar->edit_pendaftar($this->uri->segment(5))->result_array();
 			$data['agama'] = $this->M_agama->get_all();
 			$data['statusmenikah'] = $this->M_statusmenikah->get_all();
 			$data['prodi'] = $this->M_prodi->get_all();
@@ -500,8 +500,10 @@ class Administrator extends CI_Controller
 
 		$user = $this->M_register->get_user_username($username);
 		$this->ion_auth->update($user->id, $datauser);
+		$biodata = $data['peserta'] = $this->M_register->get_biodata_by_username($username)->row();
 
-		echo json_encode(array("statusCode" => 1));
+
+		echo json_encode(array("statusCode" => 1,"fotoprofil"=>$biodata->fotoprofil));
 	}
 
 	// public function pendaftar_update2()
