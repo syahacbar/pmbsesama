@@ -9,30 +9,92 @@ $pdf->SetAuthor('Author');
 $pdf->SetDisplayMode('real', 'default');
 $pdf->setPrintHeader(false);
 //$pdf->setPrintFooter(false);
-$pdf->SetMargins(5, 10, 5, true);
+$pdf->SetMargins(20, 20, 20, true);
 
 $pdf->AddPage('P', 'A4');
 $CI = &get_instance();
 $CI->load->model(['M_prodi']);
 $html = '
-LOGO UNIPA :<br>
-<img src="'.base_url().'assets/frontend/img/logo_unipa.png"><br>
-UNIVERSITAS PAPUA<br>
-Jl. Gunung Salju Amban Manokwari Papua Barat Kode Pos 98314 MANOKWARI<br><br>
-KARTU TANDA PESERTA SESAMA<br>
-FOTO PESERTA : <br>
-<img src="'.base_url('assets/upload/profile/') . $peserta->fotoprofil.'"><br>
-Tahun Akademik '.$peserta->tahunakademik.'<br><br>
-Nama Lengkap : '.$peserta->namalengkap.'<br>
-Nomor Pendaftaran : '.$peserta->username.'<br>
-Tempat/Tgl Lahir : '.$peserta->lokasi_tempatlahir . ", " . date_indo($peserta->tgl_lahir).'<br>
-Program Studi<br>
-Pil. 1 : '.$CI->M_prodi->get_by_id($peserta->prodipilihan1)->namaprodi.'<br>
-Pil. 2 : '.$CI->M_prodi->get_by_id($peserta->prodipilihan2)->namaprodi.'<br>
-Pil. 3 : '.$CI->M_prodi->get_by_id($peserta->prodipilihan3)->namaprodi.'<br><br>
-Manokwari, 21 Agustus 2021<br>
-Tanda Tangan Pendaftar<br>
-'.$peserta->namalengkap.'
+<style>
+	span.kop{
+		font-weight:bold;
+		font-size:18px;
+	}
+	div.text-justify {
+	  text-align: justify;
+	  text-justify: inter-word;
+	}
+</style>
+<table border=0 align="center" width="100%" cellspacing="5">
+	<tr>
+		<td align="left" width="15%"><img src="'.base_url().'assets/frontend/img/unipa.png" width="50"></td>
+		<td align="left" width="85%">
+			<span class="kop">UNIVERSITAS PAPUA</span>
+			<br>Jl. Gunung Salju Amban Manokwari Papua Barat <br>Kode Pos 98314 MANOKWARI
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2"><hr></td>
+	</tr>
+</table>
+<table border=0 align="center" width="100%" cellspacing="10px">
+	<tr>
+		<td>
+			<span class="kop">KARTU TANDA PESERTA SESAMA</span><br><strong>TAHUN AKADEMIK '.$peserta->tahunakademik.'</strong>
+		</td>
+	</tr>
+</table>
+<br><br>
+<table border="0" width="100%">
+	<tr>
+		<td width="20%"><img src="'.base_url('assets/upload/profile/') . $peserta->fotoprofil.'" width="50"></td>
+		<td width="80%"> 
+			<table border="0" align="left" width="100%">
+				<tr>
+					<td width="27%">Nama Lengkap</td>
+					<td width="3%">:</td>
+					<td width="70%">'.strtoupper($peserta->namalengkap).'</td>
+				</tr>
+				<tr>
+					<td>No. Pendaftaran</td>
+					<td>:</td>
+					<td>'.$peserta->username.'</td>
+				</tr>
+				<tr>
+					<td>Tempat Tgl. Lahir</td>
+					<td>:</td>
+					<td>'.$peserta->lokasi_tempatlahir . ", " . date_indo($peserta->tgl_lahir).'</td>
+				</tr>
+				<tr>
+					<td>Pilihan Prodi</td>
+					<td>:</td>
+					<td>
+						<ol type="number">
+							<li >'.$CI->M_prodi->get_by_id($peserta->prodipilihan1)->namaprodi.'</li>
+							<li>'.$CI->M_prodi->get_by_id($peserta->prodipilihan2)->namaprodi.'</li>
+							<li>'.$CI->M_prodi->get_by_id($peserta->prodipilihan3)->namaprodi.'</li>
+						</ol>
+					</td>
+				</tr>
+			</table>
+		</td>
+	</tr>
+</table>
+<br><br><br><br><br>
+<table border="0" width="100%" align="center">
+	<tr>
+		<td width="50%"></td>
+		<td width="50%">Manokwari, '.date_indo(date("Y-m-d")).'</td>
+	</tr>
+	<tr>
+		<td>Tanda Tangan Pendaftar,<br><br><br></td>
+		<td>Petugas Verifikasi,<br><br><br></td>
+	</tr>
+	<tr>
+		<td>('.$peserta->namalengkap.')</td>
+		<td>(...............................)</td>
+	</tr>
+</table>
 ';
 $pdf->writeHTML($html, true, false, true, false, '');
 $pdf->Output('KARTU PESERTA '.$peserta->username.'.pdf', 'I');

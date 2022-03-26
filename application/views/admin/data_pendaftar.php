@@ -1,3 +1,6 @@
+    <link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
+
 <style type="text/css">
 	fieldset {
 		display: none
@@ -119,18 +122,19 @@
 	}
 
 	.dropzone {
-		min-height: 150px;
-		border: 0;
-		background: white;
-		padding: 20px 20px;
+	    border: 0;
+	    background: white;
+	    padding: 0;
+	    margin: 0 !important;
+	    min-height: 100px !important;
 	}
 
 	.dropzone .dz-message {
-		text-align: center;
-		margin: 1em 0;
-		padding: 37px 0;
-		border: 2px solid #dce3f9;
-		border-radius: 10px;
+	    text-align: center;
+	    margin: 1em 0;
+	    padding: 10px;
+	    border: 2px solid #dce3f9;
+	    border-radius: 10px;
 	}
 
 	#DataPribadi1 table.table.table-sm tr:nth-child(2) td:nth-child(2) {
@@ -304,14 +308,33 @@
 				</div>
 				<div class="modal-body">
 					<div class="row">
-						<div class="col-sm-8">
+						<div class="col-sm-6">
 							<div class="alert alert-secondary text-muted" role="alert">
 								Silakan ubah data yang perlu diubah. Data yang tidak diubah, biarkan <i>default</i>. Jangan lupa klik tombol <b>Simpan</b> setiap kali melakukan perubahan data!
 							</div>
 						</div>
-						<div class="col-sm-4">
-							<img src="<?php echo base_url('assets/upload/profile/') . $fotoprofil['namafile']; ?>" id="fotopas" width="120px">
+						<div class="col-sm-6">
+							<div class="row">
+								<div class="col-sm-4">
+									<img src="" id="fotopas" width="120px">
+								</div>
+								<div class="col-sm-8">
+                                    <div class="form-group">
+                                        <label>Gambar Agenda</label>
+                                        <div class="dropzone editFoto col-sm-12 mb-5" id="editFoto">
+                                            <div class="form">
+                                                <div name="editFoto" class="dz-message">
+                                                    <h6> Klik atau Drop file ke sini</h6>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+								</div>
+								
+							</div>
 						</div>
+
+
 					</div>
 					<div role="tabpanel">
 						<!-- Nav tabs -->
@@ -349,8 +372,7 @@
 															<div class="col-sm-12">
 																<div class="form-group">
 																	<label>NIK/No. KTP</label>
-																	<input name="nik" type="text" class="form-control" placeholder="" value="<?php // echo $ep['nik']; 
-																																				?>">
+																	<input name="nik" type="text" class="form-control" placeholder="" value="">
 																</div>
 															</div>
 														</div>
@@ -1048,7 +1070,6 @@
 							</div>
 						</div>
 					</div>
-
 				</div>
 				<div class="modal-footer">
 					<button type="button" class="btn btn-default" data-dismiss="modal">Tutup</button>
@@ -1060,35 +1081,24 @@
 	<!-- Akhir Modal Ubah Data Pendaftar -->
 
 	<!-- Modal Update Foto Profil -->
-	<div class="modal" id="unggahFoto" tabindex="-1" role="dialog" aria-labelledby="unggahFotolabel" aria-hidden="true">
-		<div class="modal-dialog" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title" id="unggahFotolabel">Unggah Foto</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-				<div class="modal-body">
-					<form class="dropzone uploadfoto" id="image-upload">
-						<div class="alert alert-primary alert-dismissible fade show" role="alert">
-							<small>Rasio Foto : 4 x 6, atau max resolusi 300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg, png.</small>
-							<button type="button" class="close" data-dismiss="alert" aria-label="Close">
-								<span aria-hidden="true">&times;</span>
-							</button>
-						</div>
-						<div class="dz-message">
-							<h6> Klik atau Drop gambar ke sini</h6>
-						</div>
-					</form>
-				</div>
-				<div class="modal-footer">
-					<button id="uploadFile" type="button" class="btn btn-primary">Upload</button>
-					<button id="closeModal" type="button" class="btn btn-default">Kembali</button>
-				</div>
-			</div>
-		</div>
-	</div>
+	<div class="modal" id="unggahFoto" tabindex="-1" role="dialog"
+	aria-labelledby="unggahFotolabel" aria-hidden="true"> <div
+	class="modal-dialog" role="document"> <div class="modal-content"> <div
+	class="modal-header"> <h5 class="modal-title"
+	id="unggahFotolabel">Unggah Foto</h5> <button type="button"
+	class="close" data-dismiss="modal" aria-label="Close"> <span
+	aria-hidden="true">&times;</span> </button> </div> <div
+	class="modal-body"> <form class="dropzone uploadfoto"
+	id="image-upload"> <div class="alert alert-primary alert-dismissible
+	fade show" role="alert"> <small>Rasio Foto : 4 x 6, atau max resolusi
+	300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg,
+	png.</small> <button type="button" class="close" data-dismiss="alert"
+	aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
+	</div> <div class="dz-message"> <h6> Klik atau Drop gambar ke
+	sini</h6> </div> </form> </div> <div class="modal-footer"> <button
+	id="uploadFile" type="button" class="btn btn-primary">Upload</button>
+	<button id="closeModal" type="button" class="btn
+	btn-default">Kembali</button> </div> </div> </div> </div>
 	<!-- Akhir Modal Update Foto Profil -->
 	<script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/vendor/jquery/jquery.min.js"></script>>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
@@ -1199,6 +1209,8 @@
 	<script type="text/javascript">
 		var save_method; //for save method string
 		var tablePendaftar;
+
+        Dropzone.autoDiscover = false;
 
 		$(document).ready(function() {
 			var tablePendaftar = $('#tablePendaftar').DataTable({
@@ -1331,9 +1343,8 @@
 					},
 					success: function(response) {
 						var json = $.parseJSON(response);
-						// var fotopas = $(this).data('fotopas')
 
-						// $("#fotopas").attr("src", "assets/upload/profile/" + fotopas)
+						$("#fotopas").attr("src", "<?php echo base_url('assets/upload/profile/');?>" + json.fotoprofil);
 
 						$('input[name="username"]').val(json.username);
 						$('input[name="namalengkap"]').val(json.namalengkap);
@@ -1672,6 +1683,28 @@
 					}
 				})
 			})
+
+			var edit_fotoprofil = new Dropzone(".editFoto", {
+                    autoProcessQueue: true,
+                    url: "<?php echo site_url('administrator/editFoto') ?>",
+                    maxFilesize: 2,
+                    maxFiles: 1,
+                    method: "post",
+                    acceptedFiles: ".jpeg,.jpg,.png,.gif",
+                    paramName: "edit_fotoprofil",
+                    dictInvalidFileType: "Type file ini tidak dizinkan",
+                    addRemoveLinks: true,
+                });
+
+
+            edit_fotoprofil.on("sending", function(file, xhr, formData) {
+                // Will send the filesize along with the file as POST data.
+                // formData.append("filesize", file.size);
+                // formData.append("username", "<?php //echo $row['username']; ?>");
+            	formData.append("username", $("input[name='username']").val());
+
+            });
+
 		});
 	</script>
 

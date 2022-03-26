@@ -389,9 +389,6 @@ class Administrator extends CI_Controller
 			$data['pendidikanortu'] = $this->M_pendidikanortu->get_all();
 			$data['pekerjaanortu'] = $this->M_pekerjaanortu->get_all();
 			$data['penghasilanortu'] = $this->M_penghasilanortu->get_all();
-			$data['fotoprofil'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
- 
-
 
 			$data['_view'] = 'admin/data_pendaftar';
 			$this->load->view('admin/layout', $data);
@@ -766,4 +763,19 @@ class Administrator extends CI_Controller
 			echo "Error !";
 		}
 	}
+
+	public function editFoto()
+	{
+		$config['upload_path']   = FCPATH . 'assets/upload/profile/';
+		$config['allowed_types'] = 'gif|jpg|jpeg|png|ico';
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('edit_fotoprofil')) {
+			$nama = $this->upload->data('file_name');
+			$username = $this->input->post('username');
+			$this->db->insert('upload_data', array('namafile' => $nama, 'username' => $username));
+		}
+	}
+
+
 }
