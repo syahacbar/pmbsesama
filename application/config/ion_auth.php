@@ -122,8 +122,8 @@ $config['argon2_default_params']	= [
  | The library will fail for empty password or password size above 4096 bytes.
  | This is an arbitrary (long) value to protect against DOS attack.
  */
-$config['site_title']                 = "Example.com";       // Site Title, example.com
-$config['admin_email']                = "admin@example.com"; // Admin Email, admin@example.com
+$config['site_title']                 = "pmb.unipa.ac.id";       // Site Title, example.com
+$config['admin_email']                = "admin@pmb.unipa.ac.id"; // Admin Email, admin@example.com
 $config['default_group']              = 'members';           // Default group, use name
 $config['admin_group']                = 'admin';             // Default administrators group, use name
 $config['identity']                   = 'username';             /* You can use any unique column in your table as identity column.
@@ -156,7 +156,8 @@ $config['recheck_timer']              = 0;                   /* The number of se
  |
  | Please customize
  */
-$config['session_hash'] = '6583d6c4f205998ecacc9f51b68a2a2e44ea0006';
+//$config['session_hash'] = '6583d6c4f205998ecacc9f51b68a2a2e44ea0006';
+$config['session_hash'] = '6583d6c4f205998ecacc9f51b68a2a2e44ea1116';
 
 /*
  | -------------------------------------------------------------------------

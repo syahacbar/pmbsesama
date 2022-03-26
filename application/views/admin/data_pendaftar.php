@@ -314,13 +314,16 @@
 							</div>
 						</div>
 						<div class="col-sm-6">
-							<div class="row">
-								<div class="col-sm-4">
-									<img src="" id="fotopas" width="120px">
-								</div>
-								<div class="col-sm-8">
+							<div class="row tempatfoto">
+								<div class="col-sm-12">
+									<img src="" id="fotopas" width="120px"><br>
+									<button class="btnUnggahfoto">Ubah Foto</button>
+								</div>						
+							</div>
+							<div class="row unggahfoto" style="display:none;">
+								<div class="col-sm-12">
                                     <div class="form-group">
-                                        <label>Gambar Agenda</label>
+                                        <label>Upload Foto Pendaftar</label>
                                         <div class="dropzone editFoto col-sm-12 mb-5" id="editFoto">
                                             <div class="form">
                                                 <div name="editFoto" class="dz-message">
@@ -329,8 +332,7 @@
                                             </div>
                                         </div>
                                     </div>
-								</div>
-								
+								</div>								
 							</div>
 						</div>
 
@@ -1334,6 +1336,7 @@
 			});
 
 			$("#tablePendaftar").on("click", ".btnEdit", function() {
+
 				var username = $(this).data('username');
 				$.ajax({
 					type: "POST",
@@ -1582,14 +1585,23 @@
 								icon: 'success',
 								showCancelButton: false,
 								// confirmButtonText: 'Kembali',
-							})
+							});
 							//tablePendaftar.draw(false);
+							$('.tempatfoto').show();
+							$('.unggahfoto').hide();
+
 							reload_table();
+							$("#fotopas").attr("src", "<?php echo base_url('assets/upload/profile/');?>" + dataResult.fotoprofil);
 						} else {
 							alert("Error occured !");
 						}
 					}
 				});
+			});
+
+    		$("#modalEdit").on("click", ".btnUnggahfoto", function() {
+    			$('.tempatfoto').hide();
+    			$('.unggahfoto').show();
 			});
 
 			$("#tablePendaftar").on("click", ".btnTerima", function() {

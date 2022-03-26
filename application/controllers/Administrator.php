@@ -496,12 +496,15 @@ class Administrator extends CI_Controller
 			'phone' => $this->input->post('nohp'),
 		];
 
+		$data = $this->M_pendaftar->edit_pendaftar($username)->row();
+		$fotoprofil = $data->fotoprofil;
+
 		//update data tabel users
 
 		$user = $this->M_register->get_user_username($username);
 		$this->ion_auth->update($user->id, $datauser);
 
-		echo json_encode(array("statusCode" => 1));
+		echo json_encode(array("statusCode" => 1,"fotoprofil"=>$fotoprofil));
 	}
 
 	// public function pendaftar_update2()
