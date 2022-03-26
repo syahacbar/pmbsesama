@@ -20,6 +20,7 @@ class Register extends CI_Controller
 		$this->load->model('M_pendidikanortu');
 		$this->load->model('M_pekerjaanortu');
 		$this->load->model('M_penghasilanortu');
+		$this->load->model('M_pendaftar');
 		$this->load->library('recaptcha');
 	}
 
@@ -274,15 +275,13 @@ class Register extends CI_Controller
 	{
 		$config['upload_path']   = FCPATH . '/assets/upload/rapor/';
 		$config['allowed_types'] = 'pdf';
-		// $config['max_size']      = 1024;
-
 
 		$this->load->library('upload', $config);
 
-		if ($this->upload->do_upload('userfile')) {
-			$token = $this->input->post('token_dok');
+		if ($this->upload->do_upload('filerapor')) {
 			$nama = $this->upload->data('file_name');
-			$this->db->insert('rapor', array('nama_dok' => $nama, 'token' => $token));
+			$username = $this->input->post('username');
+			$this->db->insert('rapor', array('nama_dok' => $nama, 'username' => $username));
 		}
 	}
 }
