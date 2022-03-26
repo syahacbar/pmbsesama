@@ -1340,7 +1340,7 @@
                     <div class="modal-body">Yakin ingin keluar? Pilih "Ya" jika ingin keluar.</div>
                     <div class="modal-footer">
                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                        <a class="btn btn-primary" href="<?php echo site_url('auth/logout'); ?>">Ya</a>
+                        <a class="btn btn-primary" href="<?php echo site_url('auth/logout/pendaftar'); ?>">Ya</a>
                     </div>
                 </div>
             </div>

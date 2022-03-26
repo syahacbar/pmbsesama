@@ -40,8 +40,8 @@
             <hr class="sidebar-divider my-0">
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item <?php echo ($this->uri->segment(2) == "") ? "active" : ""; ?>">
-                <a class="nav-link" href="<?php echo site_url('administrator'); ?>">
+            <li class="nav-item <?php echo ($this->uri->segment(3) == "") ? "active" : ""; ?>">
+                <a class="nav-link" href="<?php echo site_url('pmbsesama/administrator'); ?>">
                     <i class="fas fa-fw fa-laptop"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -54,24 +54,24 @@
                     Pendaftaran
                 </div>
                 <!-- Data Pendaftar -->
-                <li class="nav-item <?php echo ($this->uri->segment(2) == "datapendaftar" || $this->uri->segment(2) == "slider" || $this->uri->segment(2) == "agenda" || $this->uri->segment(2) == "informasi") ? "active" : ""; ?>">
+                <li class="nav-item <?php echo ($this->uri->segment(3) == "datapendaftar" || $this->uri->segment(3) == "slider" || $this->uri->segment(3) == "agenda" || $this->uri->segment(3) == "informasi") ? "active" : ""; ?>">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePendaftaran" aria-expanded="true" aria-controls="collapsePendaftaran">
                         <i class="fas fa-fw fa-users"></i>
                         <span>Pendaftaran</span>
                     </a>
-                    <div id="collapsePendaftaran" class="collapse <?php echo ($this->uri->segment(2) == "datapendaftar" || $this->uri->segment(2) == "slider" || $this->uri->segment(2) == "agenda" || $this->uri->segment(2) == "informasi") ? "show" : ""; ?>" aria-labelledby="headingPendaftaran" data-parent="#accordionSidebar">
+                    <div id="collapsePendaftaran" class="collapse <?php echo ($this->uri->segment(3) == "datapendaftar" || $this->uri->segment(3) == "slider" || $this->uri->segment(3) == "agenda" || $this->uri->segment(3) == "informasi") ? "show" : ""; ?>" aria-labelledby="headingPendaftaran" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "datapendaftar") ? "active" : ""; ?>" href="<?php echo site_url('administrator/datapendaftar'); ?>">Data Pendaftar</a>
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "slider") ? "active" : ""; ?>" href="<?php echo site_url('administrator/slider'); ?>">Slider Depan</a>
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "agenda") ? "active" : ""; ?>" href="<?php echo site_url('administrator/agenda'); ?>">Agenda Penerimaan</a>
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "informasi") ? "active" : ""; ?>" href="<?php echo site_url('administrator/informasi'); ?>">Informasi</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "datapendaftar") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/datapendaftar'); ?>">Data Pendaftar</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "slider") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/slider'); ?>">Slider Depan</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "agenda") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/agenda'); ?>">Agenda Penerimaan</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "informasi") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/informasi'); ?>">Informasi</a>
                         </div>
                     </div>
                 </li>
 
-                <!--                 <li class="nav-item <?php // echo ($this->uri->segment(2) == "pengaturan") ? "active" : ""; 
+                <!--                 <li class="nav-item <?php // echo ($this->uri->segment(3) == "pengaturan") ? "active" : ""; 
                                                             ?>">
-                <a class="nav-link" href="<?php // echo site_url('administrator/pengaturan'); 
+                <a class="nav-link" href="<?php // echo site_url('pmbsesama/administrator/pengaturan'); 
                                             ?>">
                     <i class="fas fa-fw fa-cogs"></i>
                     <span>Pengaturan</span></a>
@@ -86,75 +86,75 @@
                 </div>
 
                 <!-- Data Pribadi -->
-                <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_agama" || $this->uri->segment(2) == "ref_statusmenikah") ? "active" : ""; ?>">
+                <li class="nav-item <?php echo ($this->uri->segment(3) == "ref_agama" || $this->uri->segment(3) == "ref_statusmenikah") ? "active" : ""; ?>">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDatapribadi" aria-expanded="true" aria-controls="collapseDatapribadi">
                         <i class="fas fa-fw fa-user"></i>
                         <span>Data Pribadi</span>
                     </a>
-                    <div id="collapseDatapribadi" class="collapse <?php echo ($this->uri->segment(2) == "ref_agama" || $this->uri->segment(2) == "ref_statusmenikah") ? "show" : ""; ?>" aria-labelledby="headingDatapribadi" data-parent="#accordionSidebar">
+                    <div id="collapseDatapribadi" class="collapse <?php echo ($this->uri->segment(3) == "ref_agama" || $this->uri->segment(3) == "ref_statusmenikah") ? "show" : ""; ?>" aria-labelledby="headingDatapribadi" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_agama") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_agama'); ?>">Agama</a>
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_statusmenikah") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_statusmenikah'); ?>">Status Menikah</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_agama") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_agama'); ?>">Agama</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_statusmenikah") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_statusmenikah'); ?>">Status Menikah</a>
                         </div>
                     </div>
                 </li>
 
 
                 <!-- Data Pilihan Prodi -->
-                <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_fakultas" || $this->uri->segment(2) == "ref_prodi") ? "active" : ""; ?>">
+                <li class="nav-item <?php echo ($this->uri->segment(3) == "ref_fakultas" || $this->uri->segment(3) == "ref_prodi") ? "active" : ""; ?>">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePilihanprodi" aria-expanded="true" aria-controls="collapsePilihanprodi">
                         <i class="fas fa-fw fa-building"></i>
                         <span>Pilihan Program Studi</span>
                     </a>
-                    <div id="collapsePilihanprodi" class="collapse <?php echo ($this->uri->segment(2) == "ref_fakultas" || $this->uri->segment(2) == "ref_prodi") ? "show" : ""; ?>" aria-labelledby="headingPilihanprodi" data-parent="#accordionSidebar">
+                    <div id="collapsePilihanprodi" class="collapse <?php echo ($this->uri->segment(3) == "ref_fakultas" || $this->uri->segment(3) == "ref_prodi") ? "show" : ""; ?>" aria-labelledby="headingPilihanprodi" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_fakultas") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_fakultas'); ?>">Data Fakultas</a>
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_prodi") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_prodi'); ?>">Data Prodi</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_fakultas") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_fakultas'); ?>">Data Fakultas</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_prodi") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_prodi'); ?>">Data Prodi</a>
                         </div>
                     </div>
                 </li>
 
                 <!-- Data Wilayah -->
-                <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_prov" || $this->uri->segment(2) == "ref_kab" || $this->uri->segment(2) == "ref_kec" || $this->uri->segment(2) == "ref_des") ? "active" : ""; ?>">
+                <li class="nav-item <?php echo ($this->uri->segment(3) == "ref_prov" || $this->uri->segment(3) == "ref_kab" || $this->uri->segment(3) == "ref_kec" || $this->uri->segment(3) == "ref_des") ? "active" : ""; ?>">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseDatawiayah" aria-expanded="true" aria-controls="collapseDatawiayah">
                         <i class="fas fa-fw fa-map-marked"></i>
                         <span>Data Wilayah</span>
                     </a>
-                    <div id="collapseDatawiayah" class="collapse <?php echo ($this->uri->segment(2) == "ref_prov" || $this->uri->segment(2) == "ref_kab" || $this->uri->segment(2) == "ref_kec" || $this->uri->segment(2) == "ref_des") ? "show" : ""; ?>" aria-labelledby="headingDatawiayah" data-parent="#accordionSidebar">
+                    <div id="collapseDatawiayah" class="collapse <?php echo ($this->uri->segment(3) == "ref_prov" || $this->uri->segment(3) == "ref_kab" || $this->uri->segment(3) == "ref_kec" || $this->uri->segment(3) == "ref_des") ? "show" : ""; ?>" aria-labelledby="headingDatawiayah" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_prov") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_prov'); ?>">Data Provinsi</a>
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_kab") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_kab'); ?>">Data Kabupaten</a>
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_kec") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_kec'); ?>">Data Kecamatan/Distrik</a>
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_des") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_des'); ?>">Data Kelurahan/Desa</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_prov") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_prov'); ?>">Data Provinsi</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_kab") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_kab'); ?>">Data Kabupaten</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_kec") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_kec'); ?>">Data Kecamatan/Distrik</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_des") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_des'); ?>">Data Kelurahan/Desa</a>
                         </div>
                     </div>
                 </li>
 
                 <!-- Identitas Sekolah Asal -->
-                <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_jenissmta" || $this->uri->segment(2) == "ref_jurusansmta") ? "active" : ""; ?>">
+                <li class="nav-item <?php echo ($this->uri->segment(3) == "ref_jenissmta" || $this->uri->segment(3) == "ref_jurusansmta") ? "active" : ""; ?>">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIdentitasSekolah" aria-expanded="true" aria-controls="collapseIdentitasSekolah">
                         <i class="fas fa-fw fa-school"></i>
                         <span>Identitas Sekolah</span>
                     </a>
-                    <div id="collapseIdentitasSekolah" class="collapse <?php echo ($this->uri->segment(2) == "ref_jenissmta" || $this->uri->segment(2) == "ref_jurusansmta") ? "show" : ""; ?>" aria-labelledby="headingIdentitasSekolah" data-parent="#accordionSidebar">
+                    <div id="collapseIdentitasSekolah" class="collapse <?php echo ($this->uri->segment(3) == "ref_jenissmta" || $this->uri->segment(3) == "ref_jurusansmta") ? "show" : ""; ?>" aria-labelledby="headingIdentitasSekolah" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_jenissmta") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_jenissmta'); ?>">Jenis SMTA</a>
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_jurusansmta") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_jurusansmta'); ?>">Jurusan SMTA</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_jenissmta") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_jenissmta'); ?>">Jenis SMTA</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_jurusansmta") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_jurusansmta'); ?>">Jurusan SMTA</a>
                         </div>
                     </div>
                 </li>
 
                 <!-- Orang Tua / Wali -->
-                <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_pendidikanortu" || $this->uri->segment(2) == "ref_pekerjaanortu" || $this->uri->segment(2) == "ref_penghasilanortu") ? "active" : ""; ?>">
+                <li class="nav-item <?php echo ($this->uri->segment(3) == "ref_pendidikanortu" || $this->uri->segment(3) == "ref_pekerjaanortu" || $this->uri->segment(3) == "ref_penghasilanortu") ? "active" : ""; ?>">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseOrangtua" aria-expanded="true" aria-controls="collapseOrangtua">
                         <i class="fas fa-fw fa-user-friends"></i>
                         <span>Data Orang Tua / Wali</span>
                     </a>
-                    <div id="collapseOrangtua" class="collapse <?php echo ($this->uri->segment(2) == "ref_pendidikanortu" || $this->uri->segment(2) == "ref_pekerjaanortu" || $this->uri->segment(2) == "ref_penghasilanortu") ? "show" : ""; ?>" aria-labelledby="headingOrangtua" data-parent="#accordionSidebar">
+                    <div id="collapseOrangtua" class="collapse <?php echo ($this->uri->segment(3) == "ref_pendidikanortu" || $this->uri->segment(3) == "ref_pekerjaanortu" || $this->uri->segment(3) == "ref_penghasilanortu") ? "show" : ""; ?>" aria-labelledby="headingOrangtua" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_pendidikanortu") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_pendidikanortu'); ?>">Pendidikan Orang Tua</a>
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_pekerjaanortu") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_pekerjaanortu'); ?>">Pekerjaan Orang Tua</a>
-                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "ref_penghasilanortu") ? "active" : ""; ?>" href="<?php echo site_url('administrator/ref_penghasilanortu'); ?>">Penghasilan Orang Tua</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_pendidikanortu") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_pendidikanortu'); ?>">Pendidikan Orang Tua</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_pekerjaanortu") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_pekerjaanortu'); ?>">Pekerjaan Orang Tua</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_penghasilanortu") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_penghasilanortu'); ?>">Penghasilan Orang Tua</a>
                         </div>
                     </div>
                 </li>
@@ -175,8 +175,8 @@
                     Pendaftaran
                 </div>
                 <!-- Data Pendaftar -->
-                <li class="nav-item <?php echo ($this->uri->segment(2) == "datapendaftar") ? "active" : ""; ?>">
-                    <a class="nav-link" href="<?php echo site_url('administrator/datapendaftar'); ?>">
+                <li class="nav-item <?php echo ($this->uri->segment(3) == "datapendaftar") ? "active" : ""; ?>">
+                    <a class="nav-link" href="<?php echo site_url('pmbsesama/administrator/datapendaftar'); ?>">
                         <i class="fas fa-fw fa-users"></i>
                         <span>Data Pendaftar</span></a>
                 </li>
@@ -428,7 +428,7 @@
                 <div class="modal-body">Silakan tekan tombol "Keluar di bawah ini untuk mengakhiri sesi login Anda.</div>
                 <div class="modal-footer">
                     <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
-                    <a class="btn btn-primary" href="<?php echo site_url('auth/logout'); ?>">Keluar</a>
+                    <a class="btn btn-primary" href="<?php echo site_url('auth/logout/admin'); ?>">Keluar</a>
                 </div>
             </div>
         </div>
