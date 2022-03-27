@@ -382,7 +382,7 @@
 															Lampiran Rapor Kelas XI semeseter 1
 														</div>
 														<div class="col-sm-6">
-															: <a href="<?php // echo base_url('assets/upload/rapor/') . $p['nama_dok']; 
+															: <a href="<?php echo base_url('assets/upload/rapor/') . $p['username']; 
 																		?>" target="_blank" class="btn btn-info btn-icon-split btn-sm downloadform" target="_blank">
 																<span class="icon text-white-50">
 																	<i class="fas fa-download"></i>

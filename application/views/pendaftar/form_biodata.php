@@ -674,7 +674,7 @@
                                             <div class="form-group">
                                                 <label>Kabupaten/Kota *</label>
                                                 <select name="kabtempatlahir" id="kabtempatlahir" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['kab_tempatlahir'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <option value=""></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -918,7 +918,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat SMTA</label>
-                                                <textarea name="alamatsmta" id="alamatsmta" type="text" rows="2" class="form-control" placeholder="" value="<?php echo $row['alamat_smta']; ?>" required></textarea>
+                                                <textarea name="alamatsmta" id="alamatsmta" type="text" rows="2" class="form-control" placeholder="" required><?php echo $row['alamat_smta']; ?> </textarea>
                                                 <small>Maksimal 50 karakter, gunakan spasi untuk memisahkan tiap kata</small>
                                             </div>
                                         </div>
@@ -1469,6 +1469,35 @@
                     return false;
                 });
 
+// load kabupaten by prov yg selected
+                        var prov_tempatlahir = $('select[name="provtempatlahir"]').children("option:selected").val();
+                        var url1 = "<?php echo site_url('register/add_ajax_kab'); ?>/" + prov_tempatlahir + "/" + json.kab_tempatlahir;
+                        $('#kabtempatlahir').load(url1);
+
+                        //$('select[name="kabtempatlahir"]').val()
+                        $('input[name="lokasi_tempatlahir"]').val(json.lokasi_tempatlahir);
+                        $('input[name="tanggallahir"]').val(json.tgl_lahir);
+                        $('select[name="prodipilihan1"]').val(json.prodipilihan1).attr('selected', 'selected');
+                        $('select[name="prodipilihan2"]').val(json.prodipilihan2).attr('selected', 'selected');
+                        $('select[name="prodipilihan3"]').val(json.prodipilihan3).attr('selected', 'selected');
+                        $('input[name="negaratinggal"]').val(json.negara_tempattinggal);
+                        $('select[name="provtempattinggal"]').val(json.prov_tempattinggal).attr('selected', 'selected');
+
+                        var url2 = "<?php echo site_url('register/add_ajax_kab'); ?>/" + json.prov_tempattinggal + "/" + json.kab_tempattinggal;
+                        $('#kabtempattinggal').load(url2);
+
+                        var url3 = "<?php echo site_url('register/add_ajax_kec'); ?>/" + json.kab_tempattinggal + "/" + json.kec_tempattinggal;
+                        $('#kectempattinggal').load(url3);
+
+                        var url4 = "<?php echo site_url('register/add_ajax_des'); ?>/" + json.kec_tempattinggal + "/" + json.des_tempattinggal;
+                        $('#destempattinggal').load(url4);
+
+                        $('select[name="kectempattinggal"]').val(json.kec_tempattinggal).attr('selected', 'selected');
+                        $('select[name="destempattinggal"]').val(json.des_tempattinggal).attr('selected', 'selected');
+                        $('input[name="kodepos"]').val(json.kodepos_tempattinggal);
+                        $('textarea[name="alamattempattinggal"]').val(json.alamat_tempattinggal);
+                        $('textarea[name="alamatlaintempattinggal"]').val(json.alamatlain_tempattinggal);
+
                 $('#next1').on('click', function() {
                     $("#next1").attr("disabled", "disabled");
                     var jenkel = $(".jenkel:checked").val();
@@ -1726,7 +1755,7 @@
             foto_upload.on("sending", function(file, xhr, formData) {
                 // Will send the filesize along with the file as POST data.
                 // formData.append("filesize", file.size);
-                formData.append("username", "<?php echo $row['username']; ?>");
+                formData.append("username", "<?php echo $username; ?>");
             });
 
             foto_upload.on("complete", function(file) {
@@ -1747,8 +1776,6 @@
             //Event ketika Memulai mengupload
             dok_rapor.on("sending", function(file, xhr, formData) {
                 formData.append("username", <?php echo $username; ?>);
-                // formData.append("username", $("input[name='nisn_pendaftar']").val());
-
             });
         </script>
 

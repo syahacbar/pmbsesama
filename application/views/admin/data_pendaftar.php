@@ -378,10 +378,6 @@ button.btnUnggahfoto {
 					<h4 class="m-0 font-weight-bold text-primary modal-title" id="modalDetailLabel">
 						Detail Data Pendaftar: <span id="usernamependaftar"></span></h4>
 				</div>
-				<!-- <?php // // echo $this->session->flashdata('message'); 
-						?> -->
-				<?php // echo form_open_multipart('', array('id' => 'formInputAgenda')); 
-				?>
 				<div class="modal-body">
 					<div id="detailPendaftarx"></div>
 				</div>
@@ -1812,6 +1808,23 @@ button.btnUnggahfoto {
                 // formData.append("filesize", file.size);
                 // formData.append("username", "<?php //echo $row['username']; ?>");
             	formData.append("username", $("input[name='username']").val());
+
+            });
+
+            var unggah_rapor = new Dropzone(".rapor", {
+                autoProcessQueue: true,
+                url: "<?php echo site_url('administrator/uploadrapor') ?>",
+                maxFilesize: 2,
+                method: "post",
+                acceptedFiles: ".pdf",
+                paramName: "rapor",
+                dictInvalidFileType: "Type file ini tidak dizinkan",
+                addRemoveLinks: true,
+            });
+
+            //Event ketika Memulai mengupload
+            unggah_rapor.on("sending", function(file, xhr, formData) {
+                formData.append("username", $("input[name='username']").val());
 
             });
 

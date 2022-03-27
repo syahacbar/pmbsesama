@@ -778,4 +778,20 @@ class Administrator extends CI_Controller
 	}
 
 
+
+	public function uploadrapor()
+	{
+		$config['upload_path']   = FCPATH . '/assets/upload/rapor/';
+		$config['allowed_types'] = 'pdf';
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('rapor')) {
+			$nama = $this->upload->data('file_name');
+			$username = $this->input->post('username');
+			$this->db->insert('rapor', array('nama_dok' => $nama, 'username' => $username));
+		}
+	}
+
+
 }
