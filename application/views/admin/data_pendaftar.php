@@ -1487,7 +1487,7 @@ button.btnUnggahfoto {
 						$('input[name="kodepos"]').val(json.kodepos_tempattinggal);
 						$('textarea[name="alamattempattinggal"]').val(json.alamat_tempattinggal);
 						$('textarea[name="alamatlaintempattinggal"]').val(json.alamatlain_tempattinggal);
-						$('input[name="nohp"]').val(json.phone);
+						$('input[name="nohp"]').val(json.nohp);
 						$('input[name="email"]').val(json.email);
 						$('input[name="tinggibadan"]').val(json.tinggibadan);
 						$('input[name="beratbadan"]').val(json.beratbadan);
