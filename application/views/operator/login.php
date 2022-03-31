@@ -27,6 +27,18 @@
             border-radius: 5px !important;
         }
 
+        #page {
+            width: 100%;
+            background: #FFFFFF;
+            border : 0;
+            margin: 0;
+            padding: 0;
+            background-image: url(https://unipa.ac.id/wp-content/uploads/2021/01/banner-scaled.jpg);
+            background-position: center;
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
         .form-signin {
             width: 100%;
             max-width: 450px;

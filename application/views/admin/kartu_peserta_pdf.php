@@ -16,9 +16,9 @@ $CI = &get_instance();
 $CI->load->model(['M_prodi']);
 $html = '
 <style>
-	span.kop{
-		font-weight:bold;
-		font-size:18px;
+	span.kop {
+		font-weight: bold;
+		font-size: 18px;
 	}
 	div.text-justify {
 	  text-align: justify;
@@ -98,5 +98,3 @@ $html = '
 ';
 $pdf->writeHTML($html, true, false, true, false, '');
 $pdf->Output('KARTU PESERTA '.$peserta->username.'.pdf', 'I');
-
-?>
