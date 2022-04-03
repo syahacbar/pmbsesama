@@ -30,7 +30,7 @@
         #page {
             width: 100%;
             background: #FFFFFF;
-            border : 0;
+            border: 0;
             margin: 0;
             padding: 0;
             background-image: url(https://unipa.ac.id/wp-content/uploads/2021/01/banner-scaled.jpg);
@@ -55,7 +55,7 @@
         }
     </style>
 </head>
- 
+
 <body class="text-center">
     <?php echo $this->session->flashdata('message'); ?></p>
     <?php echo form_open("auth/login", array('class' => 'form-signin'));  ?>
