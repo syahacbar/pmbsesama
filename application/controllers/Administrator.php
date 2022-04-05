@@ -636,6 +636,14 @@ class Administrator extends CI_Controller
 		$this->load->view('admin/layout', $data);
 	}
 
+	public function hapus_agenda()
+	{
+		$this->load->model('M_agenda');
+		$id = $this->input->post('id');
+		$this->M_agenda->delete($id);
+		redirect('pmbsesama/administrator/agenda');
+	}
+
 	public function informasi()
 	{
 		$config['upload_path']   = FCPATH . '/assets/upload/informasi/';

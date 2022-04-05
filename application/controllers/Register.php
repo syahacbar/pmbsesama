@@ -35,6 +35,13 @@ class Register extends CI_Controller
 		return $randomString;
 	}
 
+	function load_provinsisekolah($id,$selected=NULL)
+	{
+		$query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 2 AND kode = '$id' ORDER BY kode ASC")->row();
+		$data = $query->nama;
+		echo $data;
+	}
+
 	function add_ajax_kab($id,$selected=NULL)
 	{
 		$query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 5 AND LEFT(kode,2) = '$id' ORDER BY kode ASC");
@@ -120,6 +127,7 @@ class Register extends CI_Controller
 
 	public function isibiodata()
 	{
+		$this->load->model('M_namasmta');
 		if (!$this->ion_auth->logged_in()) {
 			// redirect them to the login page
 			redirect('auth/login', 'refresh');
@@ -141,7 +149,7 @@ class Register extends CI_Controller
 			'pekerjaanortu' => $this->M_pekerjaanortu->get_all(),
 			'penghasilanortu' => $this->M_penghasilanortu->get_all(),
 			'kabupaten' => $this->M_wilayah->get_all_kabupaten(),
-
+			'namasmta' => $this->M_namasmta->get_all(),
 			'recaptcha' => $this->recaptcha->create_box(),
 			'errorcaptcha' => '',
 

@@ -891,16 +891,22 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Nama SMTA *</label>
-                                                <input name="namasmta" id="namasmta" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_smta']; ?>" required>
-                                                <small>Ketik nama SMTA Anda.</small>
+                                                <label>Nama SMTA *</label><!-- 
+                                                <input name="namasmta" id="namasmta" type="text" class="form-control" placeholder="" value="<?php //echo $row['nama_smta']; ?>" required> -->
+                                                <select name="namasmta" id="namasmta" class="form-select">
+                                                    <option value="0">-- Pilih SMTA --</option>
+                                                    <?php foreach ($namasmta AS $smta) : ?>
+                                                    <option value="<?php echo $smta['id']; ?>"><?php echo $smta['nama_smta']; ?></option>
+                                                    <?php endforeach; ?>
+                                                </select>
+                                                <small>Pilih nama SMTA Anda.</small>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>NPSN (Nomor Pokok Sekolah Nasional) *</label>
-                                                <input name="nisnsmta" id="nisnsmta" type="text" class="form-control" placeholder="" value="<?php echo $row['nisn_smta']; ?>" required>
+                                                <input name="nisnsmta" id="nisnsmta" type="text" class="form-control" readonly>
                                                 <small>Ketik NPSN (Nomor Pokok Sekolah Nasional) Anda.</small>
                                             </div>
                                         </div>
@@ -908,12 +914,13 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Provinsi SMTA *</label>
-                                                <select name="provinsismta" id="provinsismta" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['prov_smta'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($provinsi as $prov) : ?>
-                                                        <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['prov_smta'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
-                                                    <?php endforeach; ?>
-                                                </select>
+                                                <input class="form-control" type="text" name="provinsismta" id="provinsismta" readonly>
+                                                <!-- <select name="provinsismta" id="provinsismta" class="form-select" aria-label="Default select example">
+                                                    <option <?php //echo ($row['prov_smta'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <?php //foreach ($provinsi as $prov) : ?>
+                                                        <option value="<?php //echo $prov['kode']; ?>" <?php //echo ($row['prov_smta'] == $prov['kode']) ? 'selected' : ''; ?>><?php //echo $prov['nama']; ?></option>
+                                                    <?php //endforeach; ?>
+                                                </select> -->
                                             </div>
                                         </div>
 
@@ -1555,14 +1562,19 @@
                     var tahunlulussmta = $("select[name='tahunlulussmta']").val();
                     var jurusansmta = $("select[name='jurusansmta']").val();
                     var jenissmta = $("select[name='jenissmta']").val();
-                    var namasmta = $("input[name='namasmta']").val();
+                    var namasmta = $("select[name='namasmta']").val();
                     var nisnsmta = $("input[name='nisnsmta']").val();
-                    var provinsismta = $("select[name='provinsismta']").val();
+                    var provinsismta = $("input[name='provinsismta']").val();
                     var alamatsmta = $("textarea[name='alamatsmta']").val();
                     var nrapor1 = $("input[name='nrapor1']").val();
                     var nrapor2 = $("input[name='nrapor2']").val();
                     var nrapor3 = $("input[name='nrapor3']").val();
 
+                    $('select[name="namasmta"]').change(function() {
+                    var url = "<?php echo site_url('register/load_provinsisekolah'); ?>/" + $(this).val();
+                    $('input[name="provinsismta"]').load(url);
+                    return false;
+                });
 
                     $.ajax({
                         url: "<?php echo site_url('register/next2'); ?>",

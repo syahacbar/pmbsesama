@@ -345,7 +345,7 @@
                 $(document).on('click', '.deletedata', function() {
                     var id = $(this).data("id"); 
                     $.ajax({
-                        url: "<?php echo site_url(); ?>administrator/agenda/delete",
+                        url: "<?php echo site_url(); ?>administrator/hapus_agenda",
                         method: "POST",
                         data: {
                             id: id
