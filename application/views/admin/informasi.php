@@ -96,7 +96,7 @@
                     },
                     success: function(data) {
                         alert("Data Berhasil Dihapus");
-                        location.reload();
+                        //location.reload();
                     }
                 });
             } else {

@@ -95,7 +95,7 @@
 
                             <div class="row px-3 loginRegister">
                                 <button type="submit" class="btn btn-blue text-center">MASUK</button>
-                                <small class="font-weight-bold">Belum punya akun? <a href="<?php echo site_url('register'); ?>" class="text-danger" target="_blank
+                                <small class="font-weight-bold">Belum punya akun? <a href="<?php echo site_url('pmbsesama/register'); ?>" class="text-danger" target="_blank
                                 ">DAFTAR DI SINI</a></small>
                             </div>
                             <?php echo form_close(); ?>
@@ -111,6 +111,20 @@
                         <div class="card2 card border-0 px-4 py-5 gambarSlider">
                             <div id="demo" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
+
+                                      <?php foreach ($slider as $sl) { ?>
+                                        <div class="carousel-item">
+                                            <div class="carousel-caption">
+                                                <?php if ($sl) { ?>
+                                                    <img src="<?php echo base_url('assets/upload/slider/') . $sl['gambar']; ?>">
+                                                <?php } else { ?>
+                                                    <img width="100" height="150" src="<?php echo base_url('assets/upload/slider/no-image.png'); ?>" alt="">
+                                                <?php } ?>
+
+                                            </div>
+                                        </div>
+                                    <?php } ?>
+
                                     <div class="carousel-item active">
                                         <div class="carousel-caption">
                                             <img src="<?php echo base_url(); ?>/assets/upload/slider/ecampuz_default_slideshow_82305.jpg" alt="login">
@@ -187,7 +201,7 @@
                                                 </td>
                                                 <td>
 
-                                                    <a href="<?php echo base_url('agenda/detail/') . $ag['id']; ?>" class="btn btn-info btn-sm" target="_blank">Lihat</a>
+                                                    <a href="<?php echo base_url('pmbsesama/agenda/') . $ag['id']; ?>" class="btn btn-info btn-sm" target="_blank">Lihat</a>
                                                     </p>
                                                 </td>
                                             </tr>

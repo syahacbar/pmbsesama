@@ -506,66 +506,7 @@ class Administrator extends CI_Controller
 		echo json_encode(array("statusCode" => 1,"fotoprofil"=>$biodata->fotoprofil));
 	}
 
-	// public function pendaftar_update2()
-	// {
-	// 	$username = $this->input->post('username');
-	// 	$params = array(
-	// 		'tahunlulus_smta' => $this->input->post('tahunlulussmta'),
-	// 		'jurusansmta' => $this->input->post('jurusansmta'),
-	// 		'jenissmta' => $this->input->post('jenissmta'),
-	// 		'nama_smta' => $this->input->post('namasmta'),
-	// 		'nisn_smta' => $this->input->post('nisnsmta'),
-	// 		'prov_smta' => $this->input->post('provinsismta'),
-	// 		'alamat_smta' => $this->input->post('alamatsmta'),
-	// 		'nrapor1' => $this->input->post('nrapor1'),
-	// 		'nrapor2' => $this->input->post('nrapor2'),
-	// 		'nrapor3' => $this->input->post('nrapor3'),
-
-	// 	);
-
-	// 	$this->M_register->update_biodata($username, $params);
-	// 	echo json_encode(array("statusCode" => 1));
-	// }
-
-	// public function pendaftar_update3()
-	// {
-	// 	$username = $this->input->post('username');
-	// 	$params = array(
-	// 		'nik_ayah' => $this->input->post('nik_ayah'),
-	// 		'nama_ayah' => $this->input->post('nama_ayah'),
-	// 		'pendidikan_ayah' => $this->input->post('pendidikanayah'),
-	// 		'pekerjaan_ayah' => $this->input->post('pekerjaanayah'),
-	// 		'alamatkantor_ayah' => $this->input->post('alamatkantor_ayah'),
-	// 		'nik_ibu' => $this->input->post('nik_ibu'),
-	// 		'nama_ibu' => $this->input->post('nama_ibu'),
-	// 		'pendidikan_ibu' => $this->input->post('pendidikanibu'),
-	// 		'pekerjaan_ibu' => $this->input->post('pekerjaanibu'),
-	// 		'penghasilan_ortu' => $this->input->post('penghasilanortu'),
-	// 		'alamat_ortu' => $this->input->post('alamat_ortu'),
-	// 		'provinsi_tempattinggalortu' => $this->input->post('provinsi_ortu'),
-	// 		'kab_tempattinggalortu' => $this->input->post('kabupaten_ortu'),
-	// 		'kec_tempattinggalortu' => $this->input->post('kecamatan_ortu'),
-	// 		'kodepost_tempattinggalortu' => $this->input->post('kodepos_ortu'),
-	// 		'nohp_ortu' => $this->input->post('nohp_ortu'),
-
-	// 	);
-	// 	$this->M_register->update_biodata($username, $params);
-	// 	echo json_encode(array("statusCode" => 1));
-	// }
-
-	// public function pendaftar_update4()
-	// {
-	// 	$username = $this->input->post('username');
-	// 	$params = array(
-	// 		'nama_wali' => $this->input->post('nama_wali'),
-	// 		'pekerjaan_wali' => $this->input->post('pekerjaanwali'),
-	// 		'penghasilan_wali' => $this->input->post('penghasilanwali'),
-	// 		'alamat_wali' => $this->input->post('alamat_wali'),
-	// 	);
-
-	// 	$this->M_register->update_biodata($username, $params);
-	// 	echo json_encode(array("statusCode" => 1));
-	// }
+	
 
 	public function slider()
 	{
@@ -670,13 +611,18 @@ class Administrator extends CI_Controller
 			$data = array(
 				'informasi'  => $this->input->post('informasi')
 			);
-			$this->M_informasi->edit($data, $id);
+			$this->M_informasi->edit($data, $id); 
 			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
 			redirect('administrator/informasi');
-		} else if ($this->uri->segment(4) == "delete") {
+		} else if ($this->uri->segment(3) == "delete") {
 			$id = $this->input->post('id');
-			$this->M_informasi->delete($id);
-			redirect('administrator/informasi');
+			if ($this->M_informasi->delete($id))
+			{
+				echo json_encode(array("statusCode" => 1));
+			} else {
+				echo json_encode(array("statusCode" => 0));
+			}
+			//redirect('pmbsesama/administrator/informasi');
 		}
 		$data['informasi'] = $this->M_informasi->get_all();
 		$data['_view'] = 'admin/informasi';

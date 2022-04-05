@@ -145,7 +145,7 @@
                 <div class="col-md-8 col-12 d-flex flex-column px-0">
                   <h5><?php echo $ag['judul']; ?></h5>
                   <div class="px-lg-2 pb-4 textmuted"><?php echo $ag['isi_agenda']; ?>
-                    <a href="<?php echo base_url('agenda/detail/') . $ag['id']; ?>" target="_blank" class="btn btn-info btn-icon-split btn-sm btnAgenda">
+                    <a href="<?php echo base_url('pmbsesama/agenda/') . $ag['id']; ?>" target="_blank" class="btn btn-info btn-icon-split btn-sm btnAgenda">
                       <span class="text">Selengkapnya </span>
                       <span class="icon text-white-50 fasbtnAgenda">
                         <i class="fas fa-arrow-right"></i>

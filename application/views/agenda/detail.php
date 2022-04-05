@@ -164,7 +164,7 @@
                     </div>
                 </div>
             </div>
-
+ 
             <div class="row mx-2 mb-3 detailAgenda">
                 <div class=" col-md-3 mb-lg-0 ms-0 photo">
                     <img src="<?php echo base_url('assets/upload/agenda/') . $detail->gambar; ?>" alt="" class="w-100 h-100">
@@ -174,7 +174,7 @@
                     <div class="px-lg-2 pb-4 textmuted"><?php echo $detail->isi_agenda; ?></div>
                 </div>
                 <div class="col-md-12 d-flex justify-content-end">
-                    <a class="btn btn-info" href="<?php echo site_url('agenda'); ?>">Kembali</a>
+                    <a class="btn btn-info" href="<?php echo site_url('pmbsesama/agenda'); ?>">Kembali</a>
                 </div>
 
             </div>

@@ -343,7 +343,7 @@
 
                 // Hapus Agenda
                 $(document).on('click', '.deletedata', function() {
-                    var id = $(this).data("id");
+                    var id = $(this).data("id"); 
                     $.ajax({
                         url: "<?php echo site_url(); ?>administrator/agenda/delete",
                         method: "POST",

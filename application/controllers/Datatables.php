@@ -248,7 +248,7 @@ class Datatables extends CI_Controller
             $row[] = '
             <a href="" data-username="' . $pes->username . '" data-toggle="modal" data-target="#modalDetail" class="btn btn-sm btn-info btnDetail"><i class="fa fa-eye"></i></a>&nbsp;
             <a href="" data-username="' . $pes->username . '" data-toggle="modal" data-target="#modalEdit"  class="btn btn-sm btn-primary btnEdit"><i class="fa fa-edit"></i></a>&nbsp;
-            <a href="' . site_url('administrator/datapendaftar/hapus_pendaftar/') . $pes->idt_biodata . '" class="btn btn-sm btn-danger" id="btnHapus"><i class="fa fa-trash"></i></a>&nbsp;
+            <button class="btn btn-sm btn-danger btnHapus" idt_biodata="' . $pes->idt_biodata . '"><i class="fa fa-trash"></i></button>&nbsp;
             <a href="' . site_url('administrator/datapendaftar/kartupeserta/') . $pes->username . '" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>';
             $data[] = $row;
         }
@@ -274,5 +274,12 @@ class Datatables extends CI_Controller
         $data = $this->M_pendaftar->edit_pendaftar($username)->row();
 
         echo json_encode($data);
+    }
+
+    public function deletependaftar()
+    {
+        $idt_biodata = $this->input->post('idt_biodata');
+        $this->M_pendaftar->hapus_data($idt_biodata);
+        //echo json_encode($data);
     }
 }
