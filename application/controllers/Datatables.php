@@ -249,7 +249,7 @@ class Datatables extends CI_Controller
             <a href="" data-username="' . $pes->username . '" data-toggle="modal" data-target="#modalDetail" class="btn btn-sm btn-info btnDetail"><i class="fa fa-eye"></i></a>&nbsp;
             <a href="" data-username="' . $pes->username . '" data-toggle="modal" data-target="#modalEdit"  class="btn btn-sm btn-primary btnEdit"><i class="fa fa-edit"></i></a>&nbsp;
             <button class="btn btn-sm btn-danger btnHapus" idt_biodata="' . $pes->idt_biodata . '"><i class="fa fa-trash"></i></button>&nbsp;
-            <a href="' . site_url('administrator/datapendaftar/kartupeserta/') . $pes->username . '" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>';
+            <a href="' . site_url('pmbsesama/administrator/kartupeserta/') . $pes->username . '" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>';
             $data[] = $row;
         }
 
