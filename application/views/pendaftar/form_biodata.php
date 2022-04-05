@@ -427,6 +427,14 @@
             text-align: center;
             margin: 0;
         }
+
+        .nama-smta .select2-container--bootstrap {
+            width: 100% !important;
+        }
+
+        .nama-smta span.select2-selection.select2-selection--single {
+            height: 40px !important;
+        }
     </style>
 </head>
 
@@ -888,18 +896,18 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6 nama-smta">
                                             <div class="form-group">
                                                 <label>Nama SMTA *</label><!-- 
                                                 <input name="namasmta" id="namasmta" type="text" class="form-control" placeholder="" value="<?php //echo $row['nama_smta']; ?>" required> -->
-                                                <select name="namasmta" id="namasmta">
+                                                <select name="namasmta" id="namasmta" class="form-select" aria-label="Default select example">
                                                     
                                                 </select>
                                                 <small>Pilih nama SMTA Anda.</small>
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6" style="display: none;">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>NPSN (Nomor Pokok Sekolah Nasional) *</label>
                                                 <input name="nisnsmta" id="nisnsmta" type="text" class="form-control" readonly>
@@ -907,20 +915,14 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6" style="display: none;">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Provinsi SMTA *</label>
                                                 <input class="form-control" type="text" name="provinsismta" id="provinsismta" readonly>
-                                                <!-- <select name="provinsismta" id="provinsismta" class="form-select" aria-label="Default select example">
-                                                    <option <?php //echo ($row['prov_smta'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php //foreach ($provinsi as $prov) : ?>
-                                                        <option value="<?php //echo $prov['kode']; ?>" <?php //echo ($row['prov_smta'] == $prov['kode']) ? 'selected' : ''; ?>><?php //echo $prov['nama']; ?></option>
-                                                    <?php //endforeach; ?>
-                                                </select> -->
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6" style="display: none;">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat SMTA</label>
                                                 <textarea name="alamatsmta" id="alamatsmta" type="text" rows="2" class="form-control" placeholder="" required><?php echo $row['alamat_smta']; ?> </textarea>
@@ -1280,7 +1282,7 @@
                                     </div>
 
                                 </div>
-                                <button type="button" name="next5" id="next5"  class="next action-button fifth btn btn-primary" value="Simpan"></button>
+                                <input type="button" name="next5" id="next5"  class="next action-button fifth btn btn-primary" value="Simpan" />
                                 <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
                             </fieldset>
                         <?php endforeach; ?>
@@ -1717,16 +1719,18 @@
                 });
 
                 $('#next5').on('click', function() {
-                    Swal.fire(
-                        'Berhasil',
-                        'Menyimpan Biodata!',
-                        );
-
-                        window.location.href= "<?php echo site_url('pmbsesama/auth/logout'); ?>";
+                    Swal.fire({
+                        title: "Selamat!",
+                        text: "Anda telah berhasil memperbarui data Anda!",
+                        type: "success"
+                    }).then(function() {
+                        window.location = "<?php echo site_url('auth/logout/pendaftar'); ?>";
+                    });
                 });
-                
-                
 
+
+                
+                
                 $('#closeModal').click(function() {
                     $('.modal').modal('hide');
                 });
