@@ -449,13 +449,11 @@
     <script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/vendor/datatables/dataTables.bootstrap4.min.js"></script>
 
+    <script src="https:////cdn.datatables.net/plug-ins/1.11.5/api/fnReloadAjax.js"></script>
     <!-- Page level custom scripts -->
     <script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/js/demo/datatables-demo.js"></script>
     <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
 
-    <script>
-        // var flash = $('#flash').data('flash');
-    </script>
 
 </body>
 

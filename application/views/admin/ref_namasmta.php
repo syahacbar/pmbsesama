@@ -102,7 +102,6 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 <script type="text/javascript">
     $(document).ready(function() {
         var table = $('#dataTable').DataTable();
@@ -119,23 +118,32 @@
 
         $(document).on('click', '.deletedata', function() {
             var idsmta = $(this).data("idsmta");
-            $.ajax({
-                url: "<?php echo site_url(); ?>administrator/hapus_smta",
-                method: "POST",
-                data: {
-                    idsmta: idsmta
-                },
-                success: function(data) {
-                    Swal.fire({
-                        title: 'Berhasil!',
-                        text: "Anda berhasil menghapus SMTA!",
-                        icon: 'success',
-                        showCancelButton: false,
-                        confirmButtonText: 'Tutup',
-                    })
-                    location.reload();
-                }
-            });
+            Swal.fire({
+              title: 'Apakah anda yakin akan menghapus?',
+              icon: 'warning',
+              showCancelButton: true,
+              confirmButtonColor: '#3085d6',
+              cancelButtonColor: '#d33',
+              confirmButtonText: 'Ya',
+              cancelButtonText: 'Tidak'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                $.ajax({
+                    url: "<?php echo site_url(); ?>administrator/hapus_smta",
+                    method: "POST",
+                    data: {
+                        idsmta: idsmta
+                    },
+                    success: function(data) {
+                        
+                    }
+                });
+                Swal.fire(
+                  'Terhapus!'
+                );
+                location.reload();
+              }
+            })
         });
     });
 </script>

@@ -743,13 +743,13 @@ class Administrator extends CI_Controller
 		$this->load->model('M_informasi');
 
 		$id = $this->input->post('id');
+
 		if ($this->M_informasi->delete($id))
 		{
 			echo json_encode(array("statusCode" => 1));
 		} else {
 			echo json_encode(array("statusCode" => 0));
 		}
-		//redirect('pmbsesama/administrator/informasi');
 
 	}
 
