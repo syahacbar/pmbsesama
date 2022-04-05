@@ -64,7 +64,9 @@
             <div class="row px-3 mb-4">
               <small class="text-left">Bidang/isian yang bertanda bintang (*) wajib untuk diisi. Pastikan semua data yang Anda isi sudah benar karena tidak dapat diubah setelah terkirim.</small>
             </div>
-
+            <?php if($message != ''){ ?>
+            <div class="alert alert-danger" role="alert"><?php echo $message;?></div>
+            <?php } ?>
             <form method="post" action="<?php echo site_url('auth/create_user'); ?>">
               <div class="row px-3">
                 <div class="col-sm-6">

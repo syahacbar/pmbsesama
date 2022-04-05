@@ -517,15 +517,9 @@ class Auth extends CI_Controller
 	 */
 	public function create_user()
 	{
-
 		$this->load->model('M_register');
 
 		$this->data['title'] = $this->lang->line('create_user_heading');
-
-		// if (!$this->ion_auth->logged_in() || !$this->ion_auth->is_admin())
-		// {
-		// 	redirect('auth', 'refresh');
-		// }
 
 		$tables = $this->config->item('tables', 'ion_auth');
 		$identity_column = $this->config->item('identity', 'ion_auth');
@@ -558,27 +552,6 @@ class Auth extends CI_Controller
 			$username = date("Y") . "33" . $idakun;
 		}
 
-
-
-		// validate form input
-		//$this->form_validation->set_rules('first_name', $this->lang->line('create_user_validation_fname_label'), 'trim|required');
-		//$this->form_validation->set_rules('last_name', $this->lang->line('create_user_validation_lname_label'), 'trim|required');
-		// if ($identity_column !== 'email')
-		// {
-		// 	$this->form_validation->set_rules('identity', $this->lang->line('create_user_validation_identity_label'), 'trim|required|is_unique[' . $tables['users'] . '.' . $identity_column . ']');
-		// 	$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'trim|required|valid_email');
-		// }
-		// else
-		// {
-		// 	$this->form_validation->set_rules('email', $this->lang->line('create_user_validation_email_label'), 'trim|required|valid_email|is_unique[' . $tables['users'] . '.email]');
-		// }
-		//$this->form_validation->set_rules('phone', $this->lang->line('create_user_validation_phone_label'), 'trim');
-		//$this->form_validation->set_rules('company', $this->lang->line('create_user_validation_company_label'), 'trim');
-		//$this->form_validation->set_rules('password', $this->lang->line('create_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|matches[password_confirm]');
-		//$this->form_validation->set_rules('password_confirm', $this->lang->line('create_user_validation_password_confirm_label'), 'required');
-
-		// if ($this->form_validation->run() === TRUE)
-		// {
 		$email = strtolower($this->input->post('email'));
 		$identity = ($identity_column === 'email') ? $email : $username;
 		$password = $this->generateRandomString(10);
@@ -598,20 +571,50 @@ class Auth extends CI_Controller
 			't_gelombang_id' => $this->input->post('gelombang'),
 			'tahunakademik' => $this->input->post('tahunakademik'),
 		];
-		//}
+
 		$is_valid = $this->recaptcha->is_valid();
 
+		if ($is_valid['success'])
+		{ 
+			$email = $this->input->post('email');
+			$query = $this->db->query("SELECT * FROM users WHERE email='$email'");
 
-		// if ($this->form_validation->run() === TRUE && $this->ion_auth->register($identity, $password, $email, $additional_data))
+			if($query->num_rows()>=1)
+			{
+				$this->load->model('M_jalurmasuk');
+				$this->load->model('M_gelombang');
+				$this->load->model('M_kelompokujian');
+				$this->data['errorcaptcha'] = "Captcha wajib dicentang";
 
-		if ($is_valid['success'] && $this->ion_auth->register($identity, $password, $email, $additional_data)) {
-			// check to see if we are creating the user
-			// redirect them back to the admin page
-			//$this->M_register->update_username($this->db->insert_id());
-			$this->M_register->add_biodata($biodata_awal);
-			$this->session->set_flashdata('message', $this->ion_auth->messages());
-			$this->registration_confirm($identity, $password, $this->input->post('namalengkap'), $this->input->post('email'), $this->input->post('nohpregister'));
-			//redirect("auth", 'refresh');
+				// display the create user form
+				// set the flash data error message if there is one
+				//$this->data['message'] = (validation_errors() ? validation_errors() : ($this->ion_auth->errors() ? $this->ion_auth->errors() : $this->session->flashdata('message')));
+
+				$this->data['jalurmasuk'] = $this->M_jalurmasuk->get_all();
+				$this->data['gelombang'] = $this->M_gelombang->get_all();
+				$this->data['kelompokujian'] = $this->M_kelompokujian->get_all();
+				$this->data['recaptcha'] = $this->recaptcha->create_box();
+				$this->data['nama_lengkap'] = $this->input->post('namalengkap');
+				$this->data['nohpregister'] = $this->input->post('nohpregister');
+				$this->data['email'] = $this->input->post('email');
+				$this->data['message'] ="Email sudah terdaftar! Gunakan email lain";
+				$this->load->view('pendaftar/register', $this->data);
+			}
+			else if($this->ion_auth->register($identity, $password, $email, $additional_data))
+			{
+				$this->M_register->add_biodata($biodata_awal);
+				$array_msg = array(
+					'identity'=> $identity,
+					'password'=> $password,
+					'namalengkap'=> $this->input->post('namalengkap'), 
+					'email'=> $this->input->post('email'), 
+					'nohpregister'=> $this->input->post('nohpregister'),
+					'message'=> $this->ion_auth->messages(),
+				);
+				$this->session->set_flashdata('msg',$array_msg);
+				redirect('auth/registration_confirm');
+			}
+			
 		} else {
 			$this->load->model('M_jalurmasuk');
 			$this->load->model('M_gelombang');
@@ -633,87 +636,25 @@ class Auth extends CI_Controller
 
 			$this->load->view('pendaftar/register', $this->data);
 
-			// Jikan daftar berhasil, muncul pesan ini
-			// $this->session->set_flashdata('message', '<div class="alert alert-info alert-dismissible fade show" role="alert">Anda telah berhasil membuat akun. Silakan Login!</div>');
-
-			// $this->data['first_name'] = [
-			// 	'name' => 'first_name',
-			// 	'id' => 'first_name',
-			// 	'type' => 'text',
-			// 	'value' => $this->form_validation->set_value('first_name'),
-			// ];
-			// $this->data['last_name'] = [
-			// 	'name' => 'last_name',
-			// 	'id' => 'last_name',
-			// 	'type' => 'text',
-			// 	'value' => $this->form_validation->set_value('last_name'),
-			// ];
-			// $this->data['identity'] = [
-			// 	'name' => 'identity',
-			// 	'id' => 'identity',
-			// 	'type' => 'text',
-			// 	'value' => $this->form_validation->set_value('identity'),
-			// ];
-			// $this->data['email'] = [
-			// 	'name' => 'email',
-			// 	'id' => 'email',
-			// 	'type' => 'text',
-			// 	'value' => $this->form_validation->set_value('email'),
-			// ];
-			// $this->data['company'] = [
-			// 	'name' => 'company',
-			// 	'id' => 'company',
-			// 	'type' => 'text',
-			// 	'value' => $this->form_validation->set_value('company'),
-			// ];
-			// $this->data['phone'] = [
-			// 	'name' => 'phone',
-			// 	'id' => 'phone',
-			// 	'type' => 'text',
-			// 	'value' => $this->form_validation->set_value('phone'),
-			// ];
-			// $this->data['password'] = [
-			// 	'name' => 'password',
-			// 	'id' => 'password',
-			// 	'type' => 'password',
-			// 	'value' => $this->form_validation->set_value('password'),
-			// ];
-			// $this->data['password_confirm'] = [
-			// 	'name' => 'password_confirm',
-			// 	'id' => 'password_confirm',
-			// 	'type' => 'password',
-			// 	'value' => $this->form_validation->set_value('password_confirm'),
-			// ];
-
-			// $this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
 		}
 	}
 
-	public function registration_confirm($username, $password, $namalengkap, $email, $nohp)
+	public function registration_confirm()
 	{
 		$this->load->library('Pdf');
+		$msg = $this->session->flashdata('msg');
+		
 		$data = array(
-			'username' => $username,
-			'password' => $password,
-			'namalengkap' => $namalengkap,
-			'email' => $email,
-			'nohp' => $nohp,
+			'username' => $msg['identity'],
+			'password' => $msg['password'],
+			'namalengkap' => $msg['namalengkap'],
+			'email' => $msg['email'],
+			'nohp' => $msg['nohpregister'],
 		);
 		$this->load->view('pendaftar/konfirmasi_pendaftaran_pdf', $data); 
 	}
 
-	// public function tes_cetak_kartu_akun($username, $password=NULL, $namalengkap=NULL, $email=NULL, $nohp=NULL)
-	// {
-	// 	$this->load->library('Pdf');
-	// 	$data = array(
-	// 		'username' => $username,
-	// 		'password' => $password,
-	// 		'namalengkap' => $namalengkap,
-	// 		'email' => $email,
-	// 		'nohp' => $nohp,
-	// 	);
-	// 	$this->load->view('pendaftar/konfirmasi_pendaftaran_pdf', $data); 
-	// }
+	
 	/**
 	 * Redirect a user checking if is admin
 	 */
