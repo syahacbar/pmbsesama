@@ -11,6 +11,9 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" type="text/css" />
     <link rel="stylesheet" href="<?php echo base_url();?>assets/frontend/css/select2-bootstrap.min.css">
 
+    <link href="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.css" rel="stylesheet">
+    <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
+
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
@@ -1190,13 +1193,13 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Nama Wali</label>
-                                                <input name="namawali" id="namawali" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_wali']; ?>" required>
+                                                <input name="namawali" id="namawali" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_wali']; ?>">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Pekerjaan Wali *</label>
+                                                <label>Pekerjaan Wali</label>
                                                 <select name="pekerjaanwali" id="pekerjaanwali" class="form-select" aria-label="Default select example">
                                                     <option <?php echo ($row['pekerjaan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($pekerjaanortu as $pk) : ?>
@@ -1209,7 +1212,7 @@
                                     <div class="row">
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Penghasilan Wali *</label>
+                                                <label>Penghasilan Wali</label>
                                                 <select name="penghasilanwali" id="penghasilanwali" class="form-select" aria-label="Default select example">
                                                     <option <?php echo ($row['penghasilan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($penghasilanortu as $ph) : ?>
@@ -1221,15 +1224,15 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>No. HP Wali *</label>
-                                                <input name="nohp_wali" id="nohp_wali" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_wali']; ?>" required>
+                                                <label>No. HP Wali</label>
+                                                <input name="nohp_wali" id="nohp_wali" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_wali']; ?>">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Alamat Wali *</label>
-                                                <textarea name="alamatwali" id="alamatwali" type="text" rows="2" class="form-control" placeholder="" value="<?php echo $row['alamat_wali']; ?>" required></textarea>
+                                                <label>Alamat Wali</label>
+                                                <textarea name="alamatwali" id="alamatwali" type="text" rows="2" class="form-control" placeholder="" value="<?php echo $row['alamat_wali']; ?>"></textarea>
                                                 <small>Alamat wali saat ini. Maksimal 50 karakter.</small>
                                             </div>
                                         </div>
@@ -1277,7 +1280,7 @@
                                     </div>
 
                                 </div>
-                                <input type="button" name="next5" id="next5"  class="next action-button" value="Simpan" />
+                                <button type="button" name="next5" id="next5"  class="next action-button fifth btn btn-primary" value="Simpan"></button>
                                 <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
                             </fieldset>
                         <?php endforeach; ?>
@@ -1714,8 +1717,15 @@
                 });
 
                 $('#next5').on('click', function() {
-                    location.reload();
+                    Swal.fire(
+                        'Berhasil',
+                        'Menyimpan Biodata!',
+                        );
+
+                        window.location.href= "<?php echo site_url('pmbsesama/auth/logout'); ?>";
                 });
+                
+                
 
                 $('#closeModal').click(function() {
                     $('.modal').modal('hide');

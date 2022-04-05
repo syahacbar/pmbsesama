@@ -265,6 +265,14 @@ class Register extends CI_Controller
 		echo json_encode(array("statusCode" => 1));
 	}
 
+	public function next5()
+	{
+
+		$user = $this->ion_auth->user()->row();
+		$this->M_register->update_biodata($user->username);
+		echo json_encode(array("statusCode" => 1));
+	}
+
 
 	//Untuk proses upload foto
 	public function uploadfotopas()
