@@ -94,14 +94,14 @@
             $("input#txtProdi").val($(this).data('namaprodi'));
             $("input#idprodi").val($(this).data('idprodi'));
             $("select#optFakultas").val($(this).data('idfakultas')).change();
-            $('#formprodi').attr('action', '<?php echo site_url('administrator/ref_prodi/edit'); ?>');
+            $('#formprodi').attr('action', '<?php echo site_url('administrator/edit_prodi'); ?>');
         });
 
         $(document).on('click', '.deletedata', function() {
             var idprodi = $(this).data("idprodi");
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
-                    url: "<?php echo site_url(); ?>administrator/ref_prodi/delete",
+                    url: "<?php echo site_url(); ?>administrator/hapus_prodi",
                     method: "POST",
                     data: {
                         idprodi: idprodi

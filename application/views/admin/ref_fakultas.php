@@ -82,14 +82,14 @@
             event.preventDefault();
             $("input#txtFakultas").val($(this).data('fakultas'));
             $("input#idfakultas").val($(this).data('idfakultas'));
-            $('#formfakultas').attr('action', '<?php echo site_url('administrator/ref_fakultas/edit'); ?>');
+            $('#formfakultas').attr('action', '<?php echo site_url('administrator/edit_fakultas'); ?>');
         });
 
         $(document).on('click', '.deletedata', function() {
             var idfakultas = $(this).data("idfakultas");
             if (confirm("Are you sure you want to delete this?")) {
                 $.ajax({
-                    url: "<?php echo site_url(); ?>administrator/ref_fakultas/delete",
+                    url: "<?php echo site_url(); ?>administrator/hapus_fakultas",
                     method: "POST",
                     data: {
                         idfakultas: idfakultas
