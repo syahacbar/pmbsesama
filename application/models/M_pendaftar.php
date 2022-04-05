@@ -99,10 +99,7 @@ class M_pendaftar extends CI_Model
 
     public function data_pendaftar($username)
     {
-        // $query = $this->db->query("SELECT * FROM t_biodata WHERE username=$username");
-        // return $query;
-        // $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil FROM t_biodata tb LEFT JOIN upload_data u ON u.username=tb.username WHERE tb.username=$username ORDER BY u.id DESC LIMIT 1");
-        $this->db->select('*, u.email AS email, u.phone AS nohp, 
+        $this->db->select('*, u.email AS email, u.phone AS nohp, ts.nama_smta AS namasmta, ts.npsn_smta AS npsnsmta, ts.alamat_smta AS alamatsmta,
         (SELECT ud.namafile FROM upload_data ud WHERE ud.username=tb.username ORDER BY id DESC LIMIT 1) AS fotoprofil,
         (SELECT p1.namaprodi FROM prodi p1 WHERE p1.idprodi=tb.prodipilihan1) AS pilihan1,
         (SELECT p2.namaprodi FROM prodi p2 WHERE p2.idprodi=tb.prodipilihan2) AS pilihan2,
@@ -127,9 +124,10 @@ class M_pendaftar extends CI_Model
         (SELECT nama FROM wilayah_2020 WHERE kode=tb.kec_tempattinggalortu) AS kec_tempattinggalortu,
         (SELECT nama FROM wilayah_2020 WHERE kode=tb.prov_tempatlahir) AS prov_tempatlahir,
         (SELECT nama FROM wilayah_2020 WHERE kode=tb.kab_tempatlahir) AS kab_tempatlahir,
-        (SELECT nama FROM wilayah_2020 WHERE kode=tb.prov_smta) AS prov_smta');
+        (SELECT nama FROM wilayah_2020 WHERE kode=ts.provinsi_smta) AS prov_smta');
         $this->db->from('users u');
         $this->db->join('t_biodata tb', 'tb.username = u.username');
+        $this->db->join('t_smta ts', 'ts.id = tb.nama_smta');
         $this->db->where('u.username', $username);
         $query = $this->db->get();
         return $query;
@@ -191,7 +189,7 @@ class M_pendaftar extends CI_Model
     {
         $query = $this->db->query("SELECT * FROM t_biodata WHERE suku='$suku'");
         return $query;
-    }
+    } 
 
 
     public function get_status()
