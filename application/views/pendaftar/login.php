@@ -212,7 +212,7 @@
                         </div>
                         <div class="col-sm-12 px-0 py-0">
                             <div>
-                                <a href="<?php echo base_url('agenda') ?>" target="_blank">Agenda Lainnya ...</a>
+                                <a href="<?php echo site_url('pmbsesama/agenda') ?>">Agenda Lainnya ...</a>
                             </div>
                         </div>
                     </div>
@@ -242,7 +242,7 @@
                         </table>
                         <div class="row px-3 mb-4">
                             <div>
-                                <a href="<?php echo base_url('informasi') ?>" target="_blank">Informasi Lainnya ...</a>
+                                <a href="<?php echo site_url('pmbsesama/informasi') ?>" >Informasi Lainnya ...</a>
                             </div>
                         </div>
                     </div>
