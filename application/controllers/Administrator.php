@@ -394,25 +394,36 @@ class Administrator extends CI_Controller
 	public function datapendaftar()
 	{
 		$this->load->model(['M_prodi', 'M_register', 'M_pendaftar', 'M_informasi']);
+		$data['listprodi'] = $this->M_prodi->get_all();
+		$data['_view'] = 'admin/data_pendaftar';
+		$this->load->view('admin/layout', $data);
 
-		if ($this->uri->segment(3) == "") {
-			$data['listprodi'] = $this->M_prodi->get_all();
-			$data['_view'] = 'admin/data_pendaftar';
-			$this->load->view('admin/layout', $data);
-		} else if ($this->uri->segment(3) == "kartupeserta") {
-			$data['peserta'] = $this->M_register->get_biodata_by_username($this->uri->segment(4))->row();
-			$this->load->view('pendaftar/kartu_peserta', $data);
-		} else if ($this->uri->segment(3) == "detail_pendaftar") {
-			$data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
-			$data['rapor'] = $this->M_pendaftar->get_all();
-			$this->load->view('admin/detail_pendaftar', $data);
-		} else if ($this->uri->segment(3) == "hapus_pendaftar") {
-			$data['hapus_pendaftar'] = $this->M_pendaftar->hapus_data($this->uri->segment(4));
-			redirect('administrator/datapendaftar');
-		} else if ($this->uri->segment(3) == "editpendaftar") {
-			$data['editpendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
-			$this->load->view('admin/edit_pendaftar', $data);
-		}
+		// if ($this->uri->segment(3) == "") {
+		// 	$data['listprodi'] = $this->M_prodi->get_all();
+		// 	$data['_view'] = 'admin/data_pendaftar';
+		// 	$this->load->view('admin/layout', $data);
+		// } else if ($this->uri->segment(3) == "kartupeserta") {
+		// 	$data['peserta'] = $this->M_register->get_biodata_by_username($this->uri->segment(4))->row();
+		// 	$this->load->view('pendaftar/kartu_peserta', $data);
+		// } else if ($this->uri->segment(3) == "detail_pendaftar") {
+		// 	$data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
+		// 	$data['rapor'] = $this->M_pendaftar->get_all();
+		// 	$this->load->view('admin/detail_pendaftar', $data);
+		// } else if ($this->uri->segment(3) == "hapus_pendaftar") {
+		// 	$data['hapus_pendaftar'] = $this->M_pendaftar->hapus_data($this->uri->segment(4));
+		// 	redirect('administrator/datapendaftar');
+		// } else if ($this->uri->segment(3) == "editpendaftar") {
+		// 	$data['editpendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
+		// 	$this->load->view('admin/edit_pendaftar', $data);
+		// }
+	}
+
+	public function kartupeserta($username)
+	{
+		$this->load->model(['M_prodi', 'M_register', 'M_pendaftar', 'M_informasi']);
+
+		$data['peserta'] = $this->M_register->get_biodata_by_username($username)->row();
+		$this->load->view('pendaftar/kartu_peserta', $data);
 	}
 
 	public function slider()

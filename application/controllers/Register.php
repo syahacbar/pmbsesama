@@ -125,6 +125,7 @@ class Register extends CI_Controller
 			'nama_lengkap' => '',
 			'nohpregister' => '',
 			'email' => '',
+			'message' => '',
 		);
 		$this->load->view('pendaftar/register', $data);
 	}

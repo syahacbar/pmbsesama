@@ -63,6 +63,7 @@ $route['pmbsesama/operator'] = 'operator';
 $route['pmbsesama/operator/(:any)'] = 'operator/$1';
 $route['pmbsesama/administrator'] = 'administrator';
 $route['pmbsesama/administrator/(:any)'] = 'administrator/$1';
+$route['pmbsesama/administrator/kartupeserta/(:any)'] = 'administrator/kartupeserta/$1';
 $route['pmbsesama/register'] = 'register';
 
 $route['translate_uri_dashes'] = FALSE;
