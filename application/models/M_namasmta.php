@@ -28,4 +28,12 @@ class M_namasmta extends CI_Model
         $this->db->delete("t_smta");
         return true;
     }
+
+    function getSMTA($str)
+    {
+        $this->db->select('id, nama_smta AS text');
+        $this->db->like('nama_smta', $str);
+        $query = $this->db->get('t_smta');
+        return $query->result();
+    }
 }

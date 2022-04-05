@@ -5,8 +5,12 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>Formulir - Portal PMB Oline UNIPA</title>
+    
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/frontend/css/select2-bootstrap.min.css">
+
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
@@ -19,6 +23,7 @@
 
 
     <style>
+
         img.img-profile {
             width: 75px;
             display: flex;
@@ -730,10 +735,7 @@
                                             <div class="form-group">
                                                 <label>Kabupaten/Kota *</label>
                                                 <select name="kabtempattinggal" id="kabtempattinggal" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['kab_tempattinggal'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($kabupaten as $kab) : ?>
-                                                        <option value="<?php echo $kab['kode']; ?>" <?php echo ($kab['kode'] == $row['kab_tempattinggal']) ? 'selected' : ''; ?>><?php echo $kab['nama']; ?></option>
-                                                    <?php endforeach; ?>
+                                                    <option value=""></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -742,10 +744,7 @@
                                             <div class="form-group">
                                                 <label>Kecamatan/Distrik *</label>
                                                 <select name="kectempattinggal" id="kectempattinggal" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['kec_tempattinggal'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($kecamatan as $kec) : ?>
-                                                        <option value="<?php echo $kec['kode']; ?>" <?php echo ($kec['kode'] == $row['kec_tempattinggal']) ? 'selected' : ''; ?>><?php echo $kec['nama']; ?></option>
-                                                    <?php endforeach; ?>
+                                                    <option value=""></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -754,10 +753,7 @@
                                             <div class="form-group">
                                                 <label>Kelurahan/Desa *</label>
                                                 <select name="destempattinggal" id="destempattinggal" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['des_tempattinggal'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php foreach ($desa as $des) : ?>
-                                                        <option value="<?php echo $des['kode']; ?>" <?php echo ($des['kode'] == $row['des_tempattinggal']) ? 'selected' : ''; ?>><?php echo $des['nama']; ?></option>
-                                                    <?php endforeach; ?>
+                                                    <option value=""></option>
                                                 </select>
                                             </div>
                                         </div>
@@ -893,11 +889,8 @@
                                             <div class="form-group">
                                                 <label>Nama SMTA *</label><!-- 
                                                 <input name="namasmta" id="namasmta" type="text" class="form-control" placeholder="" value="<?php //echo $row['nama_smta']; ?>" required> -->
-                                                <select name="namasmta" id="namasmta" class="form-select">
-                                                    <option value="0">-- Pilih SMTA --</option>
-                                                    <?php foreach ($namasmta AS $smta) : ?>
-                                                    <option value="<?php echo $smta['id']; ?>"><?php echo $smta['nama_smta']; ?></option>
-                                                    <?php endforeach; ?>
+                                                <select name="namasmta" id="namasmta">
+                                                    
                                                 </select>
                                                 <small>Pilih nama SMTA Anda.</small>
                                             </div>
@@ -1129,10 +1122,7 @@
                                                     <div class="form-group">
                                                         <label>Kabupaten/Kota *</label>
                                                         <select name="kabupatenortu" id="kabupatenortu" class="form-select" aria-label="Default select example">
-                                                            <option <?php echo ($row['kab_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                            <?php foreach ($kabupaten as $kab) : ?>
-                                                                <option value="<?php echo $kab['kode']; ?>" <?php echo ($row['kab_tempattinggalortu'] == $kab['kode']) ? 'selected' : ''; ?>><?php echo $kab['nama']; ?></option>
-                                                            <?php endforeach; ?>
+                                                            <option value=""></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1141,10 +1131,7 @@
                                                     <div class="form-group">
                                                         <label>Kecamatan/Distrik *</label>
                                                         <select name="kecamatanortu" id="kecamatanortu" class="form-select" aria-label="Default select example">
-                                                            <option <?php echo ($row['kec_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                            <?php foreach ($kecamatan as $kec) : ?>
-                                                                <option value="<?php echo $kec['kode']; ?>" <?php echo ($row['kec_tempattinggalortu'] == $kec['kode']) ? 'selected' : ''; ?>><?php echo $kec['nama']; ?></option>
-                                                            <?php endforeach; ?>
+                                                           <option value=""></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1290,7 +1277,7 @@
                                     </div>
 
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="Simpan" />
+                                <input type="button" name="next5" id="next5"  class="next action-button" value="Simpan" />
                                 <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
                             </fieldset>
                         <?php endforeach; ?>
@@ -1436,7 +1423,8 @@
             });
         </script>
 
-
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
         <script>
             $(document).ready(function() {
 
@@ -1474,6 +1462,25 @@
                     $('#destempattinggal').load(url);
                     return false;
                 });
+
+                $("#namasmta").select2({
+                    theme: "bootstrap",
+                    placeholder: '-- Pilih SMTA --',
+                    minimumInputLength: 1,
+                    ajax: {
+                        url: "<?php echo site_url('register/searchSMTA');?>",
+                        dataType: 'json',
+                        delay: 250,
+                        processResults: function (data) {
+                            return {
+                                results: data
+                            };
+                        },
+                        cache: true
+                    }
+                });
+
+                
 
                 $('#next1').on('click', function() {
                     $("#next1").attr("disabled", "disabled");
@@ -1570,8 +1577,6 @@
                     var nrapor2 = $("input[name='nrapor2']").val();
                     var nrapor3 = $("input[name='nrapor3']").val();
 
-                    
-                });
 
                     $.ajax({
                         url: "<?php echo site_url('register/next2'); ?>",
@@ -1699,12 +1704,17 @@
                                 $('#fupForm').find('input:text').val('');
                                 $("#success").show();
                                 $('#success').html('Data added successfully !');
+
                             } else {
                                 alert("Error occured !");
                             }
 
                         }
                     });
+                });
+
+                $('#next5').on('click', function() {
+                    location.reload();
                 });
 
                 $('#closeModal').click(function() {

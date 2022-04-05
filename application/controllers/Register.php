@@ -21,6 +21,7 @@ class Register extends CI_Controller
 		$this->load->model('M_pekerjaanortu');
 		$this->load->model('M_penghasilanortu');
 		$this->load->model('M_pendaftar');
+		$this->load->model('M_namasmta');
 		$this->load->library('recaptcha');
 	}
 
@@ -35,12 +36,16 @@ class Register extends CI_Controller
 		return $randomString;
 	}
 
-	function load_provinsisekolah($id,$selected=NULL)
-	{
-		$query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 2 AND kode = '$id' ORDER BY kode ASC")->row();
-		$data = $query->nama;
-		echo $data;
-	}
+	function searchSMTA()
+    {
+        $q = $this->input->get('q');
+        echo json_encode($this->M_namasmta->getSMTA($q));
+    }
+
+    function tesautocomplete()
+    {
+    	$this->load->view('pendaftar/tesautocomplete');
+    }
 
 	function add_ajax_kab($id,$selected=NULL)
 	{
