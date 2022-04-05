@@ -16,6 +16,8 @@ class Administrator extends CI_Controller
 		$this->load->model('M_pendaftar');
 		$this->load->model('M_register');
 		$this->load->model('M_agenda');
+		$this->load->model('M_jenissmta');
+		$this->load->model('M_jurusansmta');
 	}
 
 
@@ -103,35 +105,39 @@ class Administrator extends CI_Controller
 	public function ref_jenissmta()
 	{
 		$this->load->model('M_jenissmta');
-
-		if ($this->uri->segment(4) == "") {
-			$data['linkform'] = "administrator/ref_jenissmta/add";
-			$data['jenissmta'] = $this->M_jenissmta->get_all();
-		} else if ($this->uri->segment(4) == "add") {
-			$data = array(
-				'namajenissmta'  => $this->input->post('jenissmta'),
-			);
-
-			$this->M_jenissmta->add($data);
-
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/ref_jenissmta');
-		} else if ($this->uri->segment(4) == "edit") {
-			$id = $this->input->post('idjenissmta');
-			$data = array(
-				'namajenissmta'  => $this->input->post('jenissmta')
-			);
-			$this->M_jenissmta->edit($data, $id);
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/ref_jenissmta');
-		} else if ($this->uri->segment(4) == "delete") {
-			$id = $this->input->post('idjenissmta');
-			$this->M_jenissmta->delete($id);
-			redirect('administrator/ref_jenissmta');
-		}
-
+		$data['linkform'] = "administrator/tambah_jenissmta";
+		$data['jenissmta'] = $this->M_jenissmta->get_all();
 		$data['_view'] = 'admin/ref_jenissmta';
 		$this->load->view('admin/layout', $data);
+	}
+
+	public function tambah_jenissmta()
+	{
+		$data = array(
+			'namajenissmta'  => $this->input->post('jenissmta'),
+		);
+
+		$this->M_jenissmta->add($data);
+
+		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		redirect('administrator/ref_jenissmta');
+	}
+
+	public function edit_jenissmta()
+	{
+		$id = $this->input->post('idjenissmta');
+		$data = array(
+			'namajenissmta'  => $this->input->post('jenissmta')
+		);
+		$this->M_jenissmta->edit($data, $id);
+		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		redirect('administrator/ref_jenissmta');
+
+	}
+	public function hapus_jenissmta()
+	{
+		$id = $this->input->post('idjenissmta');
+		$this->M_jenissmta->delete($id);
 	}
 
 	public function tambah_smta()
@@ -194,35 +200,38 @@ class Administrator extends CI_Controller
 	public function ref_jurusansmta()
 	{
 		$this->load->model('M_jurusansmta');
-
-		if ($this->uri->segment(4) == "") {
-			$data['linkform'] = "administrator/ref_jurusansmta/add";
-			$data['jurusansmta'] = $this->M_jurusansmta->get_all();
-		} else if ($this->uri->segment(4) == "add") {
-			$data = array(
-				'namajurusan'  => $this->input->post('jurusansmta'),
-			);
-
-			$this->M_jurusansmta->add($data);
-
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/ref_jurusansmta');
-		} else if ($this->uri->segment(4) == "edit") {
-			$id = $this->input->post('idjurusansmta');
-			$data = array(
-				'namajurusan'  => $this->input->post('jurusansmta')
-			);
-			$this->M_jurusansmta->edit($data, $id);
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/ref_jurusansmta');
-		} else if ($this->uri->segment(4) == "delete") {
-			$id = $this->input->post('idjurusansmta');
-			$this->M_jurusansmta->delete($id);
-			redirect('administrator/ref_jurusansmta');
-		}
-
+		$data['linkform'] = "administrator/tambah_jurusansmta";
+		$data['jurusansmta'] = $this->M_jurusansmta->get_all();
 		$data['_view'] = 'admin/ref_jurusansmta';
 		$this->load->view('admin/layout', $data);
+	}
+
+	public function tambah_jurusansmta()
+	{
+		$data = array(
+			'namajurusan'  => $this->input->post('jurusansmta'),
+		);
+
+		$this->M_jurusansmta->add($data);
+		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		redirect('administrator/ref_jurusansmta');
+	}
+
+	public function edit_jurusansmta()
+	{
+		$id = $this->input->post('idjurusansmta');
+		$data = array(
+			'namajurusan'  => $this->input->post('jurusansmta')
+		);
+		$this->M_jurusansmta->edit($data, $id);
+		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		redirect('administrator/ref_jurusansmta');
+	}
+
+	public function hapus_jurusansmta()
+	{
+		$id = $this->input->post('idjurusansmta');
+		$this->M_jurusansmta->delete($id);	
 	}
 
 	public function ref_pekerjaanortu()

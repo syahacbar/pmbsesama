@@ -82,26 +82,41 @@
             event.preventDefault();
             $("input#txtJurusansmta").val($(this).data('jurusansmta'));
             $("input#idjurusansmta").val($(this).data('idjurusansmta'));
-            $('#formjurusansmta').attr('action', '<?php echo site_url('administrator/ref_jurusansmta/edit'); ?>');
+            $('#formjurusansmta').attr('action', '<?php echo site_url('administrator/edit_jurusansmta'); ?>');
         });
 
         $(document).on('click', '.deletedata', function() {
             var idjurusansmta = $(this).data("idjurusansmta");
-            if (confirm("Are you sure you want to delete this?")) {
-                $.ajax({
-                    url: "<?php echo site_url(); ?>administrator/ref_jurusansmta/delete",
-                    method: "POST",
-                    data: {
-                        idjurusansmta: idjurusansmta
-                    },
-                    success: function(data) {
-                        alert("Data Berhasil Dihapus");
-                        location.reload();
-                    }
-                });
-            } else {
-                return false;
-            }
+            Swal.fire({
+                title: 'Apakah Anda Yakin akan menghapus?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>administrator/hapus_jurusansmta",
+                        method: "POST",
+                        data: {
+                            idjurusansmta: idjurusansmta
+                        },
+
+                        success: function(data) {
+                            // alert("Data Berhasil Dihapus");
+                            // location.reload();
+                        }
+                    });
+
+                    Swal.fire(
+                        'Terhapus!',
+                        )
+                    };
+                    
+                    location.reload();            
+            })
         });
     });
 </script>

@@ -74,6 +74,7 @@
 
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://cdn.datatables.net/plug-ins/1.11.5/api/fnReloadAjax.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
@@ -82,26 +83,42 @@
             event.preventDefault();
             $("input#txtJenissmta").val($(this).data('jenissmta'));
             $("input#idjenissmta").val($(this).data('idjenissmta'));
-            $('#formjenissmta').attr('action', '<?php echo site_url('administrator/ref_jenissmta/edit'); ?>');
+            $('#formjenissmta').attr('action', '<?php echo site_url('administrator/edit_jenissmta'); ?>');
         });
 
         $(document).on('click', '.deletedata', function() {
             var idjenissmta = $(this).data("idjenissmta");
-            if (confirm("Are you sure you want to delete this?")) {
-                $.ajax({
-                    url: "<?php echo site_url(); ?>administrator/ref_jenissmta/delete",
-                    method: "POST",
-                    data: {
-                        idjenissmta: idjenissmta
-                    },
-                    success: function(data) {
-                        alert("Data Berhasil Dihapus");
-                        location.reload();
-                    }
-                });
-            } else {
-                return false;
-            }
+            Swal.fire({
+                title: 'Apakah Anda Yakin akan menghapus?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>administrator/hapus_jenissmta",
+                        method: "POST",
+                        data: {
+                            idjenissmta: idjenissmta
+                        },
+
+                        
+                        success: function(data) {
+                            // alert("Data Berhasil Dihapus");
+                            // location.reload();
+                        }
+                    });
+
+                    Swal.fire(
+                        'Terhapus!',
+                        )
+                    };
+                    
+                    location.reload();            
+            })
         });
     });
 </script>
