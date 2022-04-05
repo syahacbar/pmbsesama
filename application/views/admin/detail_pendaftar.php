@@ -326,7 +326,7 @@
 															Nama SMTA
 														</div>
 														<div class="col-sm-6">
-															: <?php echo $p['nama_smta']; ?>
+															: <?php echo $p['namasmta']; ?>
 														</div>
 													</div>
 													<div class="row">
@@ -334,7 +334,7 @@
 															NPSN SMTA
 														</div>
 														<div class="col-sm-6">
-															: <?php echo $p['nisn_smta']; ?>
+															: <?php echo $p['npsnsmta']; ?>
 														</div>
 													</div>
 													<div class="row">
@@ -342,7 +342,7 @@
 															Alamat SMTA
 														</div>
 														<div class="col-sm-6">
-															: <?php echo $p['alamat_smta']; ?>
+															: <?php echo $p['alamatsmta']; ?>
 														</div>
 													</div>
 													<div class="row">
