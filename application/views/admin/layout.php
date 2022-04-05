@@ -131,15 +131,16 @@
                 </li>
 
                 <!-- Identitas Sekolah Asal -->
-                <li class="nav-item <?php echo ($this->uri->segment(3) == "ref_jenissmta" || $this->uri->segment(3) == "ref_jurusansmta") ? "active" : ""; ?>">
+                <li class="nav-item <?php echo ($this->uri->segment(3) == "ref_jenissmta" || $this->uri->segment(3) == "ref_jurusansmta"|| $this->uri->segment(3) == "ref_namasmta") ? "active" : ""; ?>">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIdentitasSekolah" aria-expanded="true" aria-controls="collapseIdentitasSekolah">
                         <i class="fas fa-fw fa-school"></i>
                         <span>Identitas Sekolah</span>
                     </a>
-                    <div id="collapseIdentitasSekolah" class="collapse <?php echo ($this->uri->segment(3) == "ref_jenissmta" || $this->uri->segment(3) == "ref_jurusansmta") ? "show" : ""; ?>" aria-labelledby="headingIdentitasSekolah" data-parent="#accordionSidebar">
+                    <div id="collapseIdentitasSekolah" class="collapse <?php echo ($this->uri->segment(3) == "ref_jenissmta" || $this->uri->segment(3) == "ref_jurusansmta" || $this->uri->segment(3) == "ref_namasmta") ? "show" : ""; ?>" aria-labelledby="headingIdentitasSekolah" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_jenissmta") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_jenissmta'); ?>">Jenis SMTA</a>
                             <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_jurusansmta") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_jurusansmta'); ?>">Jurusan SMTA</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(3) == "ref_namasmta") ? "active" : ""; ?>" href="<?php echo site_url('pmbsesama/administrator/ref_namasmta'); ?>">Nama SMTA</a>
                         </div>
                     </div>
                 </li>

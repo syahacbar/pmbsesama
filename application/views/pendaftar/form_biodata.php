@@ -15,6 +15,8 @@
 
     <link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
+  <script src='https://www.google.com/recaptcha/api.js?hl=id'></script>
+
 
     <style>
         img.img-profile {
@@ -1261,14 +1263,11 @@
                                                     <td>Kode Verifikasi</td>
                                                     <td>:</td>
                                                     <td>
-                                                        <input type="text" name="kodeverifikasi">
+                                                        <?php echo $recaptcha; ?>
+                                                        <small id="captchahelp" class="form-text text-danger"><?php echo ($errorcaptcha != NULL) ? $errorcaptcha : ""; ?></small>
                                                     </td>
                                                 </tr>
-                                                <tr>
-                                                    <td>Syarat Pendaftaran</td>
-                                                    <td>:</td>
-                                                    <td>1</td>
-                                                </tr>
+                                                
                                                 <tr>
                                                     <td>Kebijakan</td>
                                                     <td>:</td>

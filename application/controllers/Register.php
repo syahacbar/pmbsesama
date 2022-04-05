@@ -142,6 +142,8 @@ class Register extends CI_Controller
 			'penghasilanortu' => $this->M_penghasilanortu->get_all(),
 			'kabupaten' => $this->M_wilayah->get_all_kabupaten(),
 
+			'recaptcha' => $this->recaptcha->create_box(),
+			'errorcaptcha' => '',
 
 		);
 

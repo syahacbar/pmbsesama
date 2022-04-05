@@ -3,7 +3,7 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-6">
+        <div class="col-lg-8">
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
@@ -46,7 +46,7 @@
             </div>
         </div>
 
-        <div class="col-lg-6">
+        <div class="col-lg-4">
             <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
@@ -87,21 +87,24 @@
 
         $(document).on('click', '.deletedata', function() {
             var id = $(this).data("id");
-            if (confirm("Are you sure you want to delete this?")) {
-                $.ajax({
-                    url: "<?php echo site_url(); ?>administrator/informasi/delete",
-                    method: "POST",
-                    data: {
-                        id: id,
-                    },
-                    success: function(data) {
-                        alert("Data Berhasil Dihapus");
-                        //location.reload();
-                    }
-                });
-            } else {
-                return false;
-            }
+           
+            $.ajax({
+                url: "<?php echo site_url(); ?>administrator/hapus_informasi",
+                method: "POST",
+                data: {
+                    id: id,
+                },
+                success: function(data) {
+                    Swal.fire({
+                        title: 'Berhasil!',
+                        text: "Anda telah menghapus informasi!",
+                        icon: 'success',
+                        showCancelButton: false,
+                        confirmButtonText: 'Tutup',
+                    })
+                    location.reload();
+                }
+            });
         });
 
         // Unggah Infromasi di halaman admin panel

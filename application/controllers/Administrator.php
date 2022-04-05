@@ -134,6 +134,63 @@ class Administrator extends CI_Controller
 		$this->load->view('admin/layout', $data);
 	}
 
+	public function tambah_smta()
+	{
+		$this->load->model('M_namasmta');
+
+		$data = array(
+			'nama_smta'  => $this->input->post('namasmta'),
+			'alamat_smta'  => $this->input->post('alamatsmta'),
+			'npsn_smta'  => $this->input->post('npsnsmta'),
+			'provinsi_smta'  => $this->input->post('optProvinsi'),
+		);
+		$this->M_namasmta->add($data);
+		redirect('pmbsesama/administrator/ref_namasmta');
+	}
+
+	public function edit_smta()
+	{
+		$this->load->model('M_namasmta');
+		$idsmta = $this->input->post('idsmta');
+		$data = array(
+			'nama_smta'  => $this->input->post('namasmta'),
+			'alamat_smta'  => $this->input->post('alamatsmta'),
+			'npsn_smta'  => $this->input->post('npsnsmta'),
+			'provinsi_smta'  => $this->input->post('optProvinsi'),
+		);
+		$this->M_namasmta->edit($data, $idsmta);
+		redirect('pmbsesama/administrator/ref_namasmta');
+
+	}
+
+	public function hapus_smta()
+	{
+		$this->load->model('M_namasmta');
+
+		$id = $this->input->post('idsmta');
+		$this->M_namasmta->delete($id);
+		//redirect('pmbsesama/administrator/ref_namasmta');
+	}
+
+	public function ref_namasmta()
+	{
+		$this->load->model('M_namasmta');
+
+		if ($this->uri->segment(4) == "") {
+			$data['linkform'] = "administrator/tambah_smta";
+			$data['namasmta'] = $this->M_namasmta->get_all();
+		
+		} else if ($this->uri->segment(4) == "delete") {
+			$id = $this->input->post('idjenissmta');
+			$this->M_jenissmta->delete($id);
+			redirect('administrator/ref_jenissmta');
+		}
+		
+		$data['provinsi'] = $this->M_wilayah->get_all_provinsi();
+		$data['_view'] = 'admin/ref_namasmta';
+		$this->load->view('admin/layout', $data);
+	}
+
 	public function ref_jurusansmta()
 	{
 		$this->load->model('M_jurusansmta');
@@ -627,6 +684,21 @@ class Administrator extends CI_Controller
 		$data['informasi'] = $this->M_informasi->get_all();
 		$data['_view'] = 'admin/informasi';
 		$this->load->view('admin/layout', $data);
+	}
+
+	public function hapus_informasi()
+	{
+		$this->load->model('M_informasi');
+
+		$id = $this->input->post('id');
+		if ($this->M_informasi->delete($id))
+		{
+			echo json_encode(array("statusCode" => 1));
+		} else {
+			echo json_encode(array("statusCode" => 0));
+		}
+		//redirect('pmbsesama/administrator/informasi');
+
 	}
 
 	public function pengaturan()
