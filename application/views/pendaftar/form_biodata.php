@@ -903,7 +903,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" style="display: none;">
                                             <div class="form-group">
                                                 <label>NPSN (Nomor Pokok Sekolah Nasional) *</label>
                                                 <input name="nisnsmta" id="nisnsmta" type="text" class="form-control" readonly>
@@ -911,7 +911,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" style="display: none;">
                                             <div class="form-group">
                                                 <label>Provinsi SMTA *</label>
                                                 <input class="form-control" type="text" name="provinsismta" id="provinsismta" readonly>
@@ -924,7 +924,7 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6">
+                                        <div class="col-sm-6" style="display: none;">
                                             <div class="form-group">
                                                 <label>Alamat SMTA</label>
                                                 <textarea name="alamatsmta" id="alamatsmta" type="text" rows="2" class="form-control" placeholder="" required><?php echo $row['alamat_smta']; ?> </textarea>
@@ -1563,17 +1563,14 @@
                     var jurusansmta = $("select[name='jurusansmta']").val();
                     var jenissmta = $("select[name='jenissmta']").val();
                     var namasmta = $("select[name='namasmta']").val();
-                    var nisnsmta = $("input[name='nisnsmta']").val();
-                    var provinsismta = $("input[name='provinsismta']").val();
-                    var alamatsmta = $("textarea[name='alamatsmta']").val();
+                    // var nisnsmta = $("input[name='nisnsmta']").val();
+                    // var provinsismta = $("input[name='provinsismta']").val();
+                    // var alamatsmta = $("textarea[name='alamatsmta']").val();
                     var nrapor1 = $("input[name='nrapor1']").val();
                     var nrapor2 = $("input[name='nrapor2']").val();
                     var nrapor3 = $("input[name='nrapor3']").val();
 
-                    $('select[name="namasmta"]').change(function() {
-                    var url = "<?php echo site_url('register/load_provinsisekolah'); ?>/" + $(this).val();
-                    $('input[name="provinsismta"]').load(url);
-                    return false;
+                    
                 });
 
                     $.ajax({
@@ -1584,9 +1581,9 @@
                             jurusansmta: jurusansmta,
                             jenissmta: jenissmta,
                             namasmta: namasmta,
-                            nisnsmta: nisnsmta,
-                            provinsismta: provinsismta,
-                            alamatsmta: alamatsmta,
+                            // nisnsmta: nisnsmta,
+                            // provinsismta: provinsismta,
+                            // alamatsmta: alamatsmta,
                             // lulussmta: lulussmta,
                             // nomorijazah: nomorijazah,
                             // uanmtk: uanmtk,
