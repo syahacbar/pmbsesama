@@ -82,26 +82,41 @@
             event.preventDefault();
             $("input#txtStatusmenikah").val($(this).data('statusmenikah'));
             $("input#idstatusmenikah").val($(this).data('idstatusmenikah'));
-            $('#formstatusmenikah').attr('action', '<?php echo site_url('administrator/ref_statusmenikah/edit'); ?>');
+            $('#formstatusmenikah').attr('action', '<?php echo site_url('administrator/edit_statusmenikah'); ?>');
         });
 
         $(document).on('click', '.deletedata', function() {
             var idstatusmenikah = $(this).data("idstatusmenikah");
-            if (confirm("Are you sure you want to delete this?")) {
-                $.ajax({
-                    url: "<?php echo site_url(); ?>administrator/ref_statusmenikah/delete",
-                    method: "POST",
-                    data: {
-                        idstatusmenikah: idstatusmenikah
-                    },
-                    success: function(data) {
-                        alert("Data Berhasil Dihapus");
-                        location.reload();
-                    }
-                });
-            } else {
-                return false;
-            }
+            Swal.fire({
+                title: 'Apakah Anda Yakin akan menghapus?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>administrator/hapus_statusmenikah",
+                        method: "POST",
+                        data: {
+                            idstatusmenikah: idstatusmenikah
+                        },
+
+                        success: function(data) {
+                            // alert("Data Berhasil Dihapus");
+                            // location.reload();
+                        }
+                    });
+
+                    Swal.fire(
+                        'Terhapus!',
+                        )
+                    };
+                    
+                    location.reload();            
+            })
         });
     });
 </script>

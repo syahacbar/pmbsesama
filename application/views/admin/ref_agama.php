@@ -83,31 +83,41 @@
 			event.preventDefault();
 			$("input#txtAgama").val($(this).data('agama')); 
 			$("input#idagama").val($(this).data('idagama')); 
-			$('#formagama').attr('action', '<?php echo site_url('administrator/ref_agama/edit');?>');
+			$('#formagama').attr('action', '<?php echo site_url('administrator/edit_agama');?>');
 		});
 
 		$("#tableAgama").on('click', '.deletedata', function(){ 
 			var idagama = $(this).data("idagama");  
-			if(confirm("Are you sure you want to delete this?"))  
-			{  
-				$.ajax({  
-					url:"<?php echo site_url(); ?>administrator/ref_agama/delete",  
-					method:"POST",  
-					data:{idagama:idagama},  
-					success:function(data)  
-					{  
-						$('#alert').html('<div class="alert alert-warning alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Data berhasil dihapus.</div>');
-						$(".alert").fadeTo(5000, 0).slideUp(100, function(){
-			                $(this).remove();
-			            });
-						location.reload();
-					}  
-				});  
-			}  
-			else  
-			{  
-				return false;       
-			}  
+			Swal.fire({
+                title: 'Apakah Anda Yakin akan menghapus?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>administrator/hapus_agama",
+                        method: "POST",
+                        data: {
+                            idagama: idagama
+                        },
+
+                        success: function(data) {
+                            // alert("Data Berhasil Dihapus");
+                            // location.reload();
+                        }
+                    });
+
+                    Swal.fire(
+                        'Terhapus!',
+                        )
+                    };
+                    
+                    location.reload();            
+            }) 
 		});  
 		window.setTimeout(function() {
             $(".alert").fadeTo(5000, 0).slideUp(100, function(){
