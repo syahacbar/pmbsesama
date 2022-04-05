@@ -1,14 +1,54 @@
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="row">
-        <div class="col-lg-8">
-            <!-- DataTales Example -->
+        <div class="col-lg-12">
             <div class="card shadow mb-4">
-
                 <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Referensi Data SMTA</h6>
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <h6 class="m-0 font-weight-bold text-primary">Referensi Data SMTA</h6>
+                        </div>
+                        <div class="col-sm-6 d-flex justify-content-end">
+                            <button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#newDataSMTA"><i class="fas fa-plus"></i></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="card-body">
+                <?php echo $this->session->flashdata('notif'); ?>
+					<form id="formkabupaten" method="POST" class="row g-3">
+						<div class="col-md-3">
+                            <label for="optProvinsi" class="form-label">Pilih Provinsi</label>
+                            <select name="optProvinsi" id="optProvinsi" class="form-control">
+                                <option>Pilih Provinsi</option>
+                                <?php foreach ($provinsi AS $pr) : ?>
+                                <option value="<?php echo $pr['kode'];?>"><?php echo $pr['nama'];?></option>
+                            <?php endforeach; ?>
+                            </select>
+                        </div> 
+						<div class="col-md-3">
+							<label for="txtKabupaten" class="form-label">Pilih Kabupaten/Kota</label>
+                            <select name="optProvinsi" id="optProvinsi" class="form-control">
+                                <option>Pilih Kabupaten/Kota</option>
+                            </select>
+						</div>    
+
+						<div class="col-md-3">
+							<label for="txtKabupaten" class="form-label">Pilih Kecamatan</label>
+                            <select name="optProvinsi" id="optProvinsi" class="form-control">
+                                <option>Pilih Kecamatan</option>
+                            </select>
+						</div>    					
+					</form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-12">
+            <!-- DataTales Example -->
+            <div class="card shadow mb-4">
+                <div class="card-body">
+                <?php echo $this->session->flashdata('notif'); ?>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>
@@ -32,7 +72,7 @@
                                         <td><?php echo $ns['alamat_smta']; ?></td>
                                         <td><?php echo $ns['provinsi_smta']; ?></td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-icon-split btn-sm editform" data-idsmta="<?php echo $ns['id'] ?>" 
+                                            <a href="#" class="btn btn-info btn-icon-split btn-sm editform" data-toggle="modal" data-target="#editDataSMTA" data-idsmta="<?php echo $ns['id'] ?>" 
                                                 data-namasmta="<?php echo $ns['nama_smta'] ?>"
                                                 data-npsnsmta="<?php echo $ns['npsn_smta'] ?>"
                                                 data-alamatsmta="<?php echo $ns['alamat_smta'] ?>"
@@ -58,48 +98,158 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <!-- DataTales Example -->
-            <div class="card shadow mb-4">
-
-                <div class="card-header py-3">
-                    <h6 class="m-0 font-weight-bold text-primary">Tambah/Edit SMTA</h6>
-                </div>
-                <div class="card-body">
-                    <?php echo $this->session->flashdata('notif'); ?>
-                    <form id="formnamasmta" action="<?php echo site_url($linkform); ?>" method="post">
-                        <div class="form-group">
-                            <label>Nama SMTA</label>
-                            <input id="txtNamasmta" type="text" class="form-control" name="namasmta" placeholder="Nama SMTA" required>
-                            <input type="hidden" id="idsmta" name="idsmta">
-                        </div>
-                        <div class="form-group">
-                            <label>NPSN</label>
-                            <input id="txtNPSN" type="text" class="form-control" name="npsnsmta" placeholder="NPSN" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Alamat</label>
-                            <textarea id="txtAlamatsmta" type="text" class="form-control" name="alamatsmta" placeholder="Alamat" required></textarea>
-                        </div>
-                        <div class="form-group">
-                            <label>Provinsi</label>
-                            <select name="optProvinsi" id="optProvinsi" class="form-control">
-                                <option>Pilih Provinsi</option>
-                                <?php foreach ($provinsi AS $pr) : ?>
-                                <option value="<?php echo $pr['kode'];?>"><?php echo $pr['nama'];?></option>
-                            <?php endforeach; ?>
-                            </select>
-                        </div>
-                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
-                        <button type="submit" class="btn btn-primary">Save</button>
-                    </form>
-                </div>
-            </div>
-        </div>
     </div>
 </div>
 <!-- /.container-fluid -->
 
+        <!-- Modal Tambah SMTA -->
+        <div class="modal fade" id="newDataSMTA" tabindex="-1" role="dialog" aria-labelledby="newDataSMTALabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content modal-lg">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="newDataSMTALabel">Tambah SMTA Baru</h5>
+                    </div>
+                    <!-- <?php // echo $this->session->flashdata('message'); 
+                            ?> -->
+                    <?php echo form_open_multipart('', array('id' => 'formInputAgenda')); ?>
+                    <div class="modal-body">
+                    <div class="card-body">
+                        <!-- <div class="card-header py-3">
+                            <h6 class="m-0 font-weight-bold text-primary">Tambah/Edit SMTA</h6>
+                        </div> -->
+                            <?php echo $this->session->flashdata('notif'); ?>
+                            <form id="formnamasmta" action="<?php echo site_url($linkform); ?>" method="post">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Nama SMTA</label>
+                                            <input id="txtNamasmta" type="text" class="form-control" name="namasmta" placeholder="Nama SMTA" required>
+                                            <input type="hidden" id="idsmta" name="idsmta">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Provinsi</label>
+                                            <select name="optProvinsi" id="optProvinsi" class="form-control">
+                                                <option>Pilih Provinsi</option>
+                                                <?php foreach ($provinsi AS $pr) : ?>
+                                                <option value="<?php echo $pr['kode'];?>"><?php echo $pr['nama'];?></option>
+                                            <?php endforeach; ?>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Kecamatan</label>
+                                            <select name="optKecamatan" id="optKecamatan" class="form-control">
+                                                <option>Pilih Kecamatan</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>NPSN</label>
+                                            <input id="txtNPSN" type="text" class="form-control" name="npsnsmta" placeholder="NPSN" required>
+                                        </div>
+                                        
+                                        
+                                        <div class="form-group">
+                                            <label>Kabupaten</label>
+                                            <select name="optKabupaten" id="optKabupaten" class="form-control">
+                                                <option>Pilih Kabupaten</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Alamat</label>
+                                            <textarea id="txtAlamatsmta" type="text" class="form-control" name="alamatsmta" placeholder="Alamat" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Simpan</button> -->
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    <?php echo form_close(); ?>
+                </div>
+            </div>
+        </div>
+        <!-- Akhir Modal Tambah SMTA -->
+
+        <!-- Modal Edit SMTA -->
+        <div class="modal fade" id="editDataSMTA" tabindex="-1" role="dialog" aria-labelledby="editDataSMTALabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content modal-lg">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="editDataSMTALabel">Edit SMTA Baru</h5>
+                    </div>
+                    <!-- <?php // echo $this->session->flashdata('message'); 
+                            ?> -->
+                    <?php echo form_open_multipart('', array('id' => 'formInputAgenda')); ?>
+                    <div class="modal-body">
+                    <div class="card-body">
+                            <?php echo $this->session->flashdata('notif'); ?>
+                            <form id="formnamasmta" action="<?php echo site_url($linkform); ?>" method="post">
+                                <div class="row">
+                                    <div class="col-sm-6">
+                                    <div class="form-group">
+                                        <label>Nama SMTA</label>
+                                            <input id="txtNamasmta" type="text" class="form-control" name="namasmta" placeholder="Nama SMTA" required>
+                                            <input type="hidden" id="idsmta" name="idsmta">
+                                        </div>
+                                        <div class="form-group">
+                                            <label>Provinsi</label>
+                                            <select name="optProvinsi" id="optProvinsi" class="form-control">
+                                                <option>Pilih Provinsi</option>
+                                                <?php foreach ($provinsi AS $pr) : ?>
+                                                <option value="<?php echo $pr['kode'];?>"><?php echo $pr['nama'];?></option>
+                                            <?php endforeach; ?>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Kecamatan</label>
+                                            <select name="optKecamatan" id="optKecamatan" class="form-control">
+                                                <option>Pilih Kecamatan</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <div class="form-group">
+                                            <label>NPSN</label>
+                                            <input id="txtNPSN" type="text" class="form-control" name="npsnsmta" placeholder="NPSN" required>
+                                        </div>
+                                        
+                                        
+                                        <div class="form-group">
+                                            <label>Kabupaten</label>
+                                            <select name="optKabupaten" id="optKabupaten" class="form-control">
+                                                <option>Pilih Kabupaten</option>
+                                            </select>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <label>Alamat</label>
+                                            <textarea id="txtAlamatsmta" type="text" class="form-control" name="alamatsmta" placeholder="Alamat" required></textarea>
+                                        </div>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <!-- <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Simpan</button> -->
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
+                        <button type="submit" class="btn btn-primary">Save</button>
+                    </div>
+                    <?php echo form_close(); ?>
+                </div>
+            </div>
+        </div>
+        <!-- Akhir Modal Edit SMTA -->
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
