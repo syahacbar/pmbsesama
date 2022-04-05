@@ -66,6 +66,7 @@ class Register extends CI_Controller
 			 
 			$data .= "<option value='" . $value->kode . "' ".$add_attr.">" . $value->nama . "</option>";
 		}
+
 		echo $data;
 	}
 
@@ -206,7 +207,7 @@ class Register extends CI_Controller
 			'tahunlulus_smta' => $this->input->post('tahunlulussmta'),
 			'jurusansmta' => $this->input->post('jurusansmta'),
 			'jenissmta' => $this->input->post('jenissmta'),
-			'nama_smta' => $this->input->post('namasmta'),
+			//'nama_smta' => $this->input->post('namasmta'),
 			// 'nisn_smta' => $this->input->post('nisnsmta'),
 			// 'prov_smta' => $this->input->post('provinsismta'),
 			// 'alamat_smta' => $this->input->post('alamatsmta'),
