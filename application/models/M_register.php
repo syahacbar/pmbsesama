@@ -57,7 +57,7 @@ class M_register extends CI_Model
 
     function get_biodata_by_username($username)
     {
-        $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil FROM t_biodata tb LEFT JOIN upload_data u ON u.username=tb.username WHERE tb.username=$username ORDER BY u.id DESC LIMIT 1");
+        $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil, ts.nama_smta AS namasmta, ts.npsn_smta AS npsnsmta, ts.alamat_smta AS alamatsmta, w.nama AS provinsismta FROM t_biodata tb LEFT JOIN upload_data u ON u.username=tb.username LEFT JOIN t_smta ts ON ts.id=tb.nama_smta LEFT JOIN wilayah_2020 w ON LEFT(w.kode,2)=ts.provinsi_smta WHERE tb.username='$username' ORDER BY u.id DESC LIMIT 1");
         return $query;
     }
 

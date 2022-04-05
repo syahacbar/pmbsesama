@@ -887,46 +887,32 @@
                                                 </select>
                                             </div>
                                         </div>
-
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Nama SMTA *</label><!-- 
-                                                <input name="namasmta" id="namasmta" type="text" class="form-control" placeholder="" value="<?php //echo $row['nama_smta']; ?>" required> -->
-                                                <select name="namasmta" id="namasmta">
-                                                    
-                                                </select>
-                                                <small>Pilih nama SMTA Anda.</small>
+                                                <label>Nama SMTA </label>
+                                                <input name="namasmta" id="namasmta" type="text" class="form-control" value="<?php echo $row['namasmta']; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>NPSN (Nomor Pokok Sekolah Nasional)</label>
+                                                <input name="npsnsmta" id="npsnsmta" type="text" class="form-control" value="<?php echo $row['npsnsmta']; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Provinsi SMTA </label>
+                                                <input name="provinsismta" id="provinsismta" type="text" class="form-control" value="<?php echo $row['provinsismta']; ?>" readonly>
+                                            </div>
+                                        </div>
+                                        <div class="col-sm-6">
+                                            <div class="form-group">
+                                                <label>Alamat SMTA </label>
+                                                <input name="alamatsmta" id="alamatsmta" type="text" class="form-control" value="<?php echo $row['alamatsmta']; ?>" readonly>
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6" style="display: none;">
-                                            <div class="form-group">
-                                                <label>NPSN (Nomor Pokok Sekolah Nasional) *</label>
-                                                <input name="nisnsmta" id="nisnsmta" type="text" class="form-control" readonly>
-                                                <small>Ketik NPSN (Nomor Pokok Sekolah Nasional) Anda.</small>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6" style="display: none;">
-                                            <div class="form-group">
-                                                <label>Provinsi SMTA *</label>
-                                                <input class="form-control" type="text" name="provinsismta" id="provinsismta" readonly>
-                                                <!-- <select name="provinsismta" id="provinsismta" class="form-select" aria-label="Default select example">
-                                                    <option <?php //echo ($row['prov_smta'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
-                                                    <?php //foreach ($provinsi as $prov) : ?>
-                                                        <option value="<?php //echo $prov['kode']; ?>" <?php //echo ($row['prov_smta'] == $prov['kode']) ? 'selected' : ''; ?>><?php //echo $prov['nama']; ?></option>
-                                                    <?php //endforeach; ?>
-                                                </select> -->
-                                            </div>
-                                        </div>
-
-                                        <div class="col-sm-6" style="display: none;">
-                                            <div class="form-group">
-                                                <label>Alamat SMTA</label>
-                                                <textarea name="alamatsmta" id="alamatsmta" type="text" rows="2" class="form-control" placeholder="" required><?php echo $row['alamat_smta']; ?> </textarea>
-                                                <small>Maksimal 50 karakter, gunakan spasi untuk memisahkan tiap kata</small>
-                                            </div>
-                                        </div>
+                                        
 
                                         <div class="col-sm-12">
                                             <div class="form-group">
@@ -1466,22 +1452,24 @@
                     return false;
                 });
 
-                $("#namasmta").select2({
-                    theme: "bootstrap",
-                    placeholder: '-- Pilih SMTA --',
-                    minimumInputLength: 1,
-                    ajax: {
-                        url: "<?php echo site_url('register/searchSMTA');?>",
-                        dataType: 'json',
-                        delay: 250,
-                        processResults: function (data) {
-                            return {
-                                results: data
-                            };
-                        },
-                        cache: true
-                    }
-                });
+                $("input[name='namasmta']").val();
+
+                // $("#namasmta").select2({
+                //     theme: "bootstrap",
+                //     placeholder: '-- Pilih SMTA --',
+                //     minimumInputLength: 1,
+                //     ajax: {
+                //         url: "<?php echo site_url('register/searchSMTA');?>",
+                //         dataType: 'json',
+                //         delay: 250,
+                //         processResults: function (data) {
+                //             return {
+                //                 results: data
+                //             };
+                //         },
+                //         cache: true
+                //     }
+                // });
 
                 
 
@@ -1572,7 +1560,7 @@
                     var tahunlulussmta = $("select[name='tahunlulussmta']").val();
                     var jurusansmta = $("select[name='jurusansmta']").val();
                     var jenissmta = $("select[name='jenissmta']").val();
-                    var namasmta = $("select[name='namasmta']").val();
+                    // var namasmta = $("select[name='namasmta']").val();
                     // var nisnsmta = $("input[name='nisnsmta']").val();
                     // var provinsismta = $("input[name='provinsismta']").val();
                     // var alamatsmta = $("textarea[name='alamatsmta']").val();
@@ -1588,7 +1576,7 @@
                             tahunlulussmta: tahunlulussmta,
                             jurusansmta: jurusansmta,
                             jenissmta: jenissmta,
-                            namasmta: namasmta,
+                            // namasmta: namasmta,
                             // nisnsmta: nisnsmta,
                             // provinsismta: provinsismta,
                             // alamatsmta: alamatsmta,
@@ -1720,9 +1708,10 @@
                     Swal.fire(
                         'Berhasil',
                         'Menyimpan Biodata!',
+                        'Untuk mengetahui hasil seleksi jalur SESAMA, silahkan akses menu pengumuman pada website https://pmb.unipa.ac.id/pmbsesama',
                         );
 
-                        window.location.href= "<?php echo site_url('pmbsesama/auth/logout'); ?>";
+                        window.location.href= "<?php echo site_url('auth/logout/pendaftar'); ?>";
                 });
                 
                 
