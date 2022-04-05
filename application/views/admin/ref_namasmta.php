@@ -57,7 +57,6 @@
                                     <th>Nama SMTA</th>
                                     <th>NPSN</th>
                                     <th>Alamat</th>
-                                    <th>Provinsi</th>
                                     <th width="150">Aksi</th>
                                 </tr>
                             </thead>
@@ -70,7 +69,6 @@
                                         <td><?php echo $ns['nama_smta']; ?></td>
                                         <td><?php echo $ns['npsn_smta']; ?></td>
                                         <td><?php echo $ns['alamat_smta']; ?></td>
-                                        <td><?php echo $ns['provinsi_smta']; ?></td>
                                         <td>
                                             <a href="#" class="btn btn-info btn-icon-split btn-sm editform" data-toggle="modal" data-target="#editDataSMTA" data-idsmta="<?php echo $ns['id'] ?>" 
                                                 data-namasmta="<?php echo $ns['nama_smta'] ?>"
