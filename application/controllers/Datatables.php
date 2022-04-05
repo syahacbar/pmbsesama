@@ -267,7 +267,7 @@ class Datatables extends CI_Controller
     {
         $data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($username)->result_array();
         $this->load->view('admin/detail_pendaftar', $data);
-    }
+    } 
 
     public function editpendaftar($username)
     {

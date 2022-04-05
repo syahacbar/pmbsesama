@@ -10,6 +10,9 @@
   <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
   <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/frontend/css/select2-bootstrap.min.css">
+
 
   <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -102,6 +105,14 @@
                       foreach ($jalurmasuk as $j) { ?>
                         <option value="<?php echo $j['id']; ?>" <?php echo ($j['jalurmasuk'] == $selectjalurmasuk) ? 'selected' : ''; ?>><?php echo $j['jalurmasuk']; ?></option>
                       <?php } ?>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col-sm-6">
+                  <label>Nama SMTA</label>
+                  <div class="form-group">
+                    <select name="namasmta" id="namasmta" class="form-select">
                     </select>
                   </div>
                 </div>
@@ -215,10 +226,31 @@
     </div>
   </div>
 
-  <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
+  <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>  
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
   <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+  <script>
+    $(document).ready(function() {
+      $("#namasmta").select2({
+            theme: "bootstrap",
+            placeholder: '-- Pilih SMTA --',
+            minimumInputLength: 1,
+            ajax: {
+                url: "<?php echo site_url('register/searchSMTA');?>",
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            }
+        });
+      });
+    </script>
 
 </body>
 

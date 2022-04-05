@@ -570,6 +570,7 @@ class Auth extends CI_Controller
 			't_kelompokujian_id' => $this->input->post('kelompokujian'),
 			't_gelombang_id' => $this->input->post('gelombang'),
 			'tahunakademik' => $this->input->post('tahunakademik'),
+			'nama_smta'=> $this->input->post('namasmta'),
 		];
 
 		$is_valid = $this->recaptcha->is_valid();
