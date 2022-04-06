@@ -54,7 +54,7 @@
                                             }
                                         } else {
                                     ?>
-                                        <div class="carousel-item <?php echo ($i==1) ? 'active' : ''; ?>">
+                                        <div class="carousel-item active">
                                             <div class="carousel-caption">
                                                 <img width="100" height="150" src="<?php echo base_url('assets/frontend/img/noimage.png'); ?>" alt="">
                                             </div>
