@@ -576,7 +576,7 @@
                                             <div class="form-group">
                                                 <label>Agama</label>
                                                 <select id="agama" name="agama" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['agama'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['agama'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($agama as $ag) : ?>
                                                         <option value="<?php echo $ag['idagama']; ?>" <?php echo ($row['agama'] == $ag['idagama']) ? 'selected' : ''; ?>><?php echo $ag['agama']; ?></option>
                                                     <?php endforeach; ?>
@@ -588,7 +588,7 @@
                                             <div class="form-group">
                                                 <label>Suku *</label>
                                                 <select name="suku" id="suku" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['suku'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['suku'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <option value="Papua" <?= $row['suku'] == 'Papua' ? ' selected="selected"' : ''; ?>>Papua</option>
                                                     <option value="Non Papua" <?= $row['suku'] == 'Non Papua' ? ' selected="selected"' : ''; ?>>Non Papua</option>
                                                 </select>
@@ -599,7 +599,7 @@
                                             <div class="form-group">
                                                 <label>Status Menikah *</label>
                                                 <select id="statusmenikah" name="statusmenikah" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['statusmenikah'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['statusmenikah'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($statusmenikah as $sm) : ?>
                                                         <option value="<?php echo $sm['idstatusmenikah']; ?>" <?php echo ($row['statusmenikah'] == $sm['idstatusmenikah']) ? 'selected' : ''; ?>><?php echo $sm['status']; ?></option>
                                                     <?php endforeach; ?>
@@ -624,7 +624,7 @@
                                             <div class="form-group">
                                                 <label>Pilihan 1 *</label>
                                                 <select id="prodipilihan1" name="prodipilihan1" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['prodipilihan1'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['prodipilihan1'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($prodi as $pr1) : ?>
                                                         <option value="<?php echo $pr1['idprodi']; ?>" <?php echo ($row['prodipilihan1'] == $pr1['idprodi']) ? 'selected' : ''; ?>><?php echo $pr1['namaprodi']; ?></option>
                                                     <?php endforeach; ?>
@@ -636,7 +636,7 @@
                                             <div class="form-group">
                                                 <label>Pilihan 2</label>
                                                 <select id="prodipilihan2" name="prodipilihan2" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['prodipilihan2'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['prodipilihan2'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($prodi as $pr2) : ?>
                                                         <option value="<?php echo $pr2['idprodi']; ?>" <?php echo ($row['prodipilihan2'] == $pr2['idprodi']) ? 'selected' : ''; ?>><?php echo $pr2['namaprodi']; ?></option>
                                                     <?php endforeach; ?>
@@ -648,7 +648,7 @@
                                             <div class="form-group">
                                                 <label>Pilihan 3</label>
                                                 <select id="prodipilihan3" name="prodipilihan3" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['prodipilihan3'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['prodipilihan3'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($prodi as $pr3) : ?>
                                                         <option value="<?php echo $pr3['idprodi']; ?>" <?php echo ($row['prodipilihan3'] == $pr3['idprodi']) ? 'selected' : ''; ?>><?php echo $pr3['namaprodi']; ?></option>
                                                     <?php endforeach; ?>
@@ -672,7 +672,7 @@
                                             <div class="form-group">
                                                 <label>Provinsi *</label>
                                                 <select name="provtempatlahir" id="provtempatlahir" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['prov_tempatlahir'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['prov_tempatlahir'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($provinsi as $prov) : ?>
                                                         <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['prov_tempatlahir'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
                                                     <?php endforeach; ?>
@@ -727,7 +727,7 @@
                                             <div class="form-group">
                                                 <label>Provinsi *</label>
                                                 <select name="provtempattinggal" id="provtempattinggal" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['prov_tempattinggal'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['prov_tempattinggal'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($provinsi as $prov) : ?>
                                                         <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['prov_tempattinggal'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
                                                     <?php endforeach; ?>
@@ -855,7 +855,7 @@
                                             <div class="form-group">
                                                 <label>Tahun Lulus SMTA *</label>
                                                 <select name="tahunlulussmta" id="tahunlulussmta" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['tahunlulus_smta'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['tahunlulus_smta'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php
                                                     $thn_skr = date('Y');
                                                     for ($x = $thn_skr; $x >= 2000; $x--) {
@@ -872,7 +872,7 @@
                                             <div class="form-group">
                                                 <label>Jurusan SMTA *</label>
                                                 <select class="form-select" name="jurusansmta" id="jurusansmta" aria-label="Default select example">
-                                                    <option <?php echo ($row['jurusansmta'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['jurusansmta'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($jurusansmta as $jur) : ?>
                                                         <option value="<?php echo $jur['idjurusansmta']; ?>" <?php echo ($row['jurusansmta'] == $jur['idjurusansmta']) ? 'selected' : ''; ?>><?php echo $jur['namajurusan']; ?></option>
                                                     <?php endforeach; ?>
@@ -884,7 +884,7 @@
                                             <div class="form-group">
                                                 <label>Jenis SMTA *</label>
                                                 <select name="jenissmta" id="jenissmta" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['jenissmta'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['jenissmta'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($jenissmta as $jen) : ?>
                                                         <option value="<?php echo $jen['idjenissmta']; ?>" <?php echo ($row['jenissmta'] == $jen['idjenissmta']) ? 'selected' : ''; ?>><?php echo $jen['namajenissmta']; ?></option>
                                                     <?php endforeach; ?>
@@ -1002,7 +1002,7 @@
                                             <div class="form-group">
                                                 <label>Pendidikan Ayah *</label>
                                                 <select name="pendidikanayah" id="pendidikanayah" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['pendidikan_ayah'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['pendidikan_ayah'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($pendidikanortu as $pd) : ?>
                                                         <option value="<?php echo $pd['idpendidikan']; ?>" <?php echo ($row['pendidikan_ayah'] == $pd['idpendidikan']) ? 'selected' : ''; ?>><?php echo $pd['namajenjang']; ?></option>
                                                     <?php endforeach; ?>
@@ -1015,7 +1015,7 @@
                                             <div class="form-group">
                                                 <label>Pekerjaan Ayah *</label>
                                                 <select name="pekerjaanayah" id="pekerjaanayah" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['pekerjaan_ayah'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['pekerjaan_ayah'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($pekerjaanortu as $pk) : ?>
                                                         <option value="<?php echo $pk['idpekerjaan']; ?>" <?php echo ($row['pekerjaan_ayah'] == $pk['idpekerjaan']) ? 'selected' : ''; ?>><?php echo $pk['namapekerjaan']; ?></option>
                                                     <?php endforeach; ?>
@@ -1057,7 +1057,7 @@
                                             <div class="form-group">
                                                 <label>Pendidikan Ibu *</label>
                                                 <select name="pendidikanibu" id="pendidikanibu" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['pendidikan_ibu'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['pendidikan_ibu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($pendidikanortu as $pd) : ?>
                                                         <option value="<?php echo $pd['idpendidikan']; ?>" <?php echo ($row['pendidikan_ibu'] == $pd['idpendidikan']) ? 'selected' : ''; ?>><?php echo $pd['namajenjang']; ?></option>
                                                     <?php endforeach; ?>
@@ -1070,7 +1070,7 @@
                                             <div class="form-group">
                                                 <label>Pekerjaan Ibu *</label>
                                                 <select name="pekerjaanibu" id="pekerjaanibu" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['pekerjaan_ibu'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['pekerjaan_ibu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($pekerjaanortu as $pk) : ?>
                                                         <option value="<?php echo $pk['idpekerjaan']; ?>" <?php echo ($row['pekerjaan_ibu'] == $pk['idpekerjaan']) ? 'selected' : ''; ?>><?php echo $pk['namapekerjaan']; ?></option>
                                                     <?php endforeach; ?>
@@ -1082,7 +1082,7 @@
                                             <div class="form-group">
                                                 <label>Penghasilan Orang Tua*</label>
                                                 <select name="penghasilanortu" id="penghasilanortu" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['penghasilan_ortu'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                    <option <?php echo ($row['penghasilan_ortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($penghasilanortu as $ph) : ?>
                                                         <option value="<?php echo $ph['idpenghasilan']; ?>" <?php echo ($row['penghasilan_ortu'] == $ph['idpenghasilan']) ? 'selected' : ''; ?>><?php echo $ph['penghasilan']; ?></option>
                                                     <?php endforeach; ?>
@@ -1103,7 +1103,7 @@
                                                     <div class="form-group">
                                                         <label>Provinsi *</label>
                                                         <select name="provortu" id="provortu" class="form-select" aria-label="Default select example">
-                                                            <option <?php echo ($row['provinsi_tempattinggalortu'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
+                                                            <option <?php echo ($row['provinsi_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                             <?php foreach ($provinsi as $prov) : ?>
                                                                 <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['provinsi_tempattinggalortu'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
                                                             <?php endforeach; ?>
