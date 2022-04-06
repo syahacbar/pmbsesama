@@ -427,6 +427,14 @@
             text-align: center;
             margin: 0;
         }
+
+        .nama-smta .select2-container--bootstrap {
+            width: 100% !important;
+        }
+
+        .nama-smta span.select2-selection.select2-selection--single {
+            height: 40px !important;
+        }
     </style>
 </head>
 
@@ -891,24 +899,28 @@
                                                 </select>
                                             </div>
                                         </div>
+
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Nama SMTA </label>
                                                 <input name="namasmta" id="namasmta" type="text" class="form-control" value="<?php echo $row['namasmta']; ?>" readonly>
                                             </div>
                                         </div>
+
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>NPSN (Nomor Pokok Sekolah Nasional)</label>
                                                 <input name="npsnsmta" id="npsnsmta" type="text" class="form-control" value="<?php echo $row['npsnsmta']; ?>" readonly>
                                             </div>
                                         </div>
+
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Provinsi SMTA </label>
                                                 <input name="provinsismta" id="provinsismta" type="text" class="form-control" value="<?php echo $row['provinsismta']; ?>" readonly>
                                             </div>
                                         </div>
+
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat SMTA </label>
@@ -1272,7 +1284,9 @@
                                     </div>
 
                                 </div>
+
                                 <input type="button" name="next5" id="next5"  class="next action-button btn btn-primary" value="Simpan">
+
                                 <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
                             </fieldset>
                         <?php endforeach; ?>
@@ -1760,6 +1774,7 @@
                     });
                 });
 
+
                
 
                 $('#next5').on('click', function() {
@@ -1795,9 +1810,9 @@
     '<i class="fa fa-thumbs-down"></i>',
   cancelButtonAriaLabel: 'Thumbs down'
 })
-                
-                
 
+                
+                
                 $('#closeModal').click(function() {
                     $('.modal').modal('hide');
                 });
