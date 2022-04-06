@@ -672,7 +672,7 @@
                                             <div class="form-group">
                                                 <label>Provinsi *</label>
                                                 <select name="provtempatlahir" id="provtempatlahir" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['prov_tempatlahir'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <option <?php echo ($row['prov_tempatlahir'] == '') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                     <?php foreach ($provinsi as $prov) : ?>
                                                         <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['prov_tempatlahir'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
                                                     <?php endforeach; ?>
@@ -700,7 +700,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Tanggal Lahir *</label><br>
-                                                <input type="date" name="tanggallahir" id="tanggallahir" class="datepicker" data-date-format="mm/dd/yyyy" value="<?php echo $row['tgl_lahir']; ?>">
+                                                <input type="date" name="tanggallahir" id="tanggallahir" class="datepicker" data-date-format="yyyy-MM-dd" value="<?php echo $row['tgl_lahir']; ?>">
                                             </div>
                                         </div>
 
@@ -727,7 +727,7 @@
                                             <div class="form-group">
                                                 <label>Provinsi *</label>
                                                 <select name="provtempattinggal" id="provtempattinggal" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['prov_tempattinggal'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <option <?php echo ($row['prov_tempattinggal'] == '') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                     <?php foreach ($provinsi as $prov) : ?>
                                                         <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['prov_tempattinggal'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
                                                     <?php endforeach; ?>
@@ -1103,7 +1103,7 @@
                                                     <div class="form-group">
                                                         <label>Provinsi *</label>
                                                         <select name="provortu" id="provortu" class="form-select" aria-label="Default select example">
-                                                            <option <?php echo ($row['provinsi_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                            <option <?php echo ($row['provinsi_tempattinggalortu'] == '') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                             <?php foreach ($provinsi as $prov) : ?>
                                                                 <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['provinsi_tempattinggalortu'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
                                                             <?php endforeach; ?>
@@ -1429,28 +1429,69 @@
                     return false;
                 });
 
+                var provtempatlahir = $("#provtempatlahir").val();
+                if (provtempatlahir != "0")
+                {
+                    //set selected kab by data from db
+                    var url = "<?php  echo site_url('register/add_ajax_kab'); ?>/" + provtempatlahir +"/" + $("#h_kabtempatlahir").val();
+                    $('#kabtempatlahir').load(url);
+                }
+               
+
                 $("#provtempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
                     $('#kabtempattinggal').load(url);
                     return false;
                 });
+
+                var provtempattinggal = $("#provtempattinggal").val();
+                if (provtempattinggal != "0")
+                {
+                    //set selected kab by data from db
+                    var url = "<?php  echo site_url('register/add_ajax_kab'); ?>/" + provtempattinggal +"/" + $("#h_kabtempattinggal").val();
+                    $('#kabtempattinggal').load(url);
+                }
+
                 $("#provortu").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
                     $('#kabupatenortu').load(url);
                     return false;
                 });
 
+                var provortu = $("#provortu").val();
+                if (provortu != "0")
+                {
+                //set selected kab by data from db
+                    var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + provortu +"/" + $("#h_kabupatenortu").val();
+                    $('#kabupatenortu').load(url);
+                }
                 $("#kabupatenortu").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
                     $('#kecamatanortu').load(url);
                     return false;
                 });
 
+                var h_kabupatenortu = $("#h_kabupatenortu").val();
+                if (h_kabupatenortu != "")
+                {
+                //set selected kec by data from db
+                    var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + h_kabupatenortu +"/" + $("#h_kecamatanortu").val();
+                        $('#kecamatanortu').load(url);
+                }
+                
                 $("#kabtempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
                     $('#kectempattinggal').load(url);
                     return false;
                 });
+
+                var h_kabtempattinggal = $("#h_kabtempattinggal").val();
+                if (h_kabtempattinggal != "")
+                {
+                //set selected kec by data from db
+                    var url = "<?php  echo site_url('register/add_ajax_kec'); ?>/" + h_kabtempattinggal +"/" + $("#h_kectempattinggal").val();
+                    $('#kectempattinggal').load(url);
+                }
 
 
                 $("#kectempattinggal").change(function() {
@@ -1458,6 +1499,14 @@
                     $('#destempattinggal').load(url);
                     return false;
                 });
+
+                var h_kectempattinggal = $("#h_kectempattinggal").val();
+                if (h_kectempattinggal != "")
+                {
+                    //set selected kec by data from db
+                    var url = "<?php  echo site_url('register/add_ajax_des'); ?>/" + h_kectempattinggal +"/" + $("#h_destempattinggal").val();
+                    $('#destempattinggal').load(url);
+                }
 
                 // $("input[name='namasmta']").val();
 
