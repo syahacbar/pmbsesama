@@ -672,7 +672,7 @@
                                             <div class="form-group">
                                                 <label>Provinsi *</label>
                                                 <select name="provtempatlahir" id="provtempatlahir" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['prov_tempatlahir'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <option <?php echo ($row['prov_tempatlahir'] == '') ? 'selected' : ''; ?> value=""> -- Pilih -- </option>
                                                     <?php foreach ($provinsi as $prov) : ?>
                                                         <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['prov_tempatlahir'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
                                                     <?php endforeach; ?>
@@ -1429,8 +1429,8 @@
                     return false;
                 });
                 //set selected kab by data from db
-                // var url = "<?php  echo site_url('register/add_ajax_kab'); ?>/" + $("#provtempatlahir").val() +"/" + $("#h_kabtempatlahir").val();
-                // $('#kabtempatlahir').load(url);
+                var url = "<?php  echo site_url('register/add_ajax_kab'); ?>/" + $("#provtempatlahir").val() +"/" + $("#h_kabtempatlahir").val();
+                $('#kabtempatlahir').load(url);
 
                 $("#provtempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
