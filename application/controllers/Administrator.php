@@ -564,7 +564,7 @@ class Administrator extends CI_Controller
 
 		if ($this->upload->do_upload('fileinformasi')) {
 			$fileinformasi = $this->upload->data('file_name');
-			$judulinformasi = $this->input->post('namask');
+			$judulinformasi = $this->input->post('judulinformasi');
 			$this->db->insert('informasi', array('file' => $fileinformasi, 'judul' => $judulinformasi));
 		}
 	}
@@ -593,7 +593,7 @@ class Administrator extends CI_Controller
 				'judul' => $judulagenda,
 				'waktu' => $uploaded_on
 			));
-		}
+		} 
 	}
 
 	public function editagenda()
