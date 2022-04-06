@@ -150,7 +150,7 @@
                 ],
             }).then(function(isConfirm) {
                 if (isConfirm) {
-                    location.reload();
+                    // location.reload();
                 } else {
                     //if no clicked => do something else
                 }
