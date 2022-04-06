@@ -579,6 +579,20 @@ class Administrator extends CI_Controller
 		// redirect('administrator/informasi');
 	}
 
+	// Upload Informasi Panel Admin
+	function upload_informasi()
+	{
+		$config['upload_path']   = FCPATH . '/assets/upload/informasi/';
+		$config['allowed_types'] = 'pdf';
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('fileinformasi')) {
+			$fileinformasi = $this->upload->data('file_name');
+			$judulinformasi = $this->input->post('judulinformasi');
+			$this->db->insert('informasi', array('file' => $fileinformasi, 'judul' => $judulinformasi));
+		}
+	}
+
 	public function pengaturan()
 	{
 		$data['_view'] = 'admin/pengaturan';
@@ -603,7 +617,7 @@ class Administrator extends CI_Controller
 				'judul' => $judulagenda,
 				'waktu' => $uploaded_on
 			));
-		}
+		} 
 	}
 
 	public function editagenda()
