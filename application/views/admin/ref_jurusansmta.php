@@ -105,17 +105,13 @@
                         },
 
                         success: function(data) {
-                            // alert("Data Berhasil Dihapus");
-                            // location.reload();
+                            Swal.fire(
+                                'Tersimpan!',
+                                'Data SMTA telah berhasil ditambah.'
+                            )
+                            table.ajax.reload();
                         }
-                    });
-
-                    Swal.fire(
-                        'Terhapus!',
-                        )
-                    };
-                    
-                    location.reload();            
+                    });         
             })
         });
     });

@@ -37,37 +37,30 @@
                         <div class="card2 card border-0 px-4 py-5 gambarSlider">
                             <div id="demo" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
-                                <div class="carousel-item active">
-                                            <div class="carousel-caption">
-                                                <img width="100" height="150" src="<?php echo base_url('assets/upload/slider/banner_unipa.jpg'); ?>" alt="">
-                                            </div>
-                                        </div>
-                                </div>
-                                    <!--
                                     <?php 
-                                        // if(!empty($slider))
-                                        //{
-                                            //$i = 0;
-                                            //foreach ($slider as $sl) { 
-                                            //$i++;
+                                        if(!empty($slider))
+                                        {
+                                            $i = 0;
+                                            foreach ($slider as $sl) { 
+                                            $i++;
                                     ?>
-                                        <div class="carousel-item <?php // echo ($i==1) ? 'active' : ''; ?>">
+                                        <div class="carousel-item <?php echo ($i==1) ? 'active' : ''; ?>">
                                             <div class="carousel-caption">
-                                                <img class="img-thumbnail img-fluid" src="<?php // echo base_url('assets/upload/slider/') . $sl['gambar']; ?>">
+                                                <img class="img-thumbnail img-fluid" src="<?php echo base_url('assets/upload/slider/') . $sl['gambar']; ?>">
                                                 
                                             </div>
                                         </div>
                                     <?php 
-                                            // }
-                                        // } else {
+                                            }
+                                        } else {
                                     ?>
                                         <div class="carousel-item active">
                                             <div class="carousel-caption">
-                                                <img width="100" height="150" src="<?php // echo base_url('assets/frontend/img/noimage.png'); ?>" alt="">
+                                                <img width="100" height="150" src="<?php echo base_url('assets/frontend/img/noimage.png'); ?>" alt="">
                                             </div>
                                         </div>
-                                    <?php // } ?>
-                                </div> -->
+                                    <?php } ?>
+                                </div>
 
                                 <a class="carousel-control-prev" href="#demo" data-slide="prev"><i class='fas fa-arrow-left'></i></a>
                                 <a class="carousel-control-next" href="#demo" data-slide="next"><i class='fas fa-arrow-right'></i></a>
@@ -123,39 +116,33 @@
                         <div class="card2 card border-0 px-4 py-5 gambarSlider">
                             <div id="demo" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
-                                <div class="carousel-caption">
-                                                <img width="100" height="150" src="<?php echo base_url('assets/upload/slider/banner_unipa.jpg'); ?>" alt="">
-                                            </div>
-                                        </div>
-                                </div>
-
-                                      <!-- <?php 
-                                    //   if(!empty($slider))
-                                    //   {
-                                    //     $i = 0;
-                                    //     foreach ($slider as $sl) { 
-                                    //     $i++;
-                                        ?> -->
-                                        <!-- <div class="carousel-item <?php // echo ($i==1) ? 'active' : ''; ?>">
+                                      <?php 
+                                      if(!empty($slider))
+                                      {
+                                        $i = 0;
+                                        foreach ($slider as $sl) { 
+                                        $i++;
+                                        ?>
+                                        <div class="carousel-item <?php echo ($i==1) ? 'active' : ''; ?>">
                                             <div class="carousel-caption">
-                                                    <img alt="<?php // echo $i;?>" src="<?php // echo base_url().'assets/upload/slider/'.$sl['gambar']; ?>">
+                                                    <img alt="<?php echo $i;?>" src="<?php echo base_url().'assets/upload/slider/'.$sl['gambar']; ?>">
                                                 
 
                                             </div>
-                                        </div> -->
+                                        </div>
                                      <?php
-                                // }
-                                      //} else {
+                                 }
+                                      } else {
                                         ?>
-                                        <!-- <div class="carousel-item active">
+                                        <div class="carousel-item active">
                                             <div class="carousel-caption">
-                                                    <img width="100" height="150" src="<?php // echo base_url('assets/frontend/img/noimage.png'); ?>" alt="">
+                                                    <img width="100" height="150" src="<?php echo base_url('assets/frontend/img/noimage.png'); ?>" alt="">
 
                                             </div>
-                                        </div> -->
-                                <?php // } ?>
+                                        </div>
+                                <?php } ?>
                                     
-                                <!-- </div> -->
+                                </div>
 
                                 <a class="carousel-control-prev" href="#demo" data-slide="prev"><i class='fas fa-arrow-left'></i></a>
                                 <a class="carousel-control-next" href="#demo" data-slide="next"><i class='fas fa-arrow-right'></i></a>
