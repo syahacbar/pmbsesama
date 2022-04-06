@@ -68,7 +68,7 @@
                                 </div>
                             </div>
                         </div>
-                        <input type="hidden" id="idinformasi" name="idinformasi">
+                        <input type="hidden" id="id" name="id">
                         <input type="hidden" id="aksi" name="aksi" value="add">
                         <button type="submit" class="btn btn-primary saveInformasi">Simpan</button>
                     </form>
@@ -88,28 +88,41 @@
         $(document).on('click', '.deletedata', function() {
             var id = $(this).data("id");
            
-            $.ajax({
-                url: "<?php echo site_url(); ?>administrator/hapus_informasi",
-                method: "POST",
-                data: {
-                    id: id,
-                },
-                success: function(data) {
-                    Swal.fire({
-                        title: 'Berhasil!',
-                        text: "Anda telah menghapus informasi!",
-                        icon: 'success',
-                        showCancelButton: false,
-                        confirmButtonText: 'Tutup',
-                    })
-                    location.reload();
-                }
-            });
+            Swal.fire({
+                title: 'Apakah Anda Yakin akan menghapus?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>administrator/hapus_informasi",
+                        method: "POST",
+                        data: {
+                            id: id
+                        },
+
+                        success: function(data) {
+                            // alert("Data Berhasil Dihapus");
+                            // location.reload();
+                        }
+                    });
+
+                    Swal.fire(
+                        'Terhapus!',
+                        )
+                    };
+                    
+                    location.reload();            
+            }) 
         });
 
         // Unggah Infromasi di halaman admin panel
         var upload_informasi = new Dropzone(".informasi", {
-            url: "<?php echo site_url('administrator/informasi') ?>",
+            url: "<?php echo site_url('administrator/upload_informasi') ?>",
             maxFilesize: 2,
             method: "post",
             acceptedFiles: ".pdf",

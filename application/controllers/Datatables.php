@@ -12,7 +12,7 @@ class Datatables extends CI_Controller
         if ($this->ion_auth->in_group('members')) {
             redirect('auth/login', 'refresh');
         }
-        $this->load->model(['M_wilayah', 'M_pendaftar', 'M_prodi', 'M_register']);
+        $this->load->model(['M_wilayah', 'M_pendaftar', 'M_prodi', 'M_register','M_namasmta']);
     }
 
 
@@ -170,6 +170,8 @@ class Datatables extends CI_Controller
         }
     }
 
+   
+
     function desa_list()
     {
         header('Content-Type: application/json');
@@ -281,5 +283,53 @@ class Datatables extends CI_Controller
         $idt_biodata = $this->input->post('idt_biodata');
         $this->M_pendaftar->hapus_data($idt_biodata);
         //echo json_encode($data);
+    }
+
+    function smta_list()
+    {
+        header('Content-Type: application/json');
+        // session()->set_Flashdata('swall-icon', 'success');
+        // session()->set_Flashdata('swall-title', 'Title Swall');
+        // session()->set_Flashdata('swall-text', 'Text Swall');
+        $list = $this->M_namasmta->get_datatables();
+        $data = array();
+        $no = $this->input->post('start');
+        //looping data smta
+        foreach ($list as $smta) {
+            // if ($pes->status == "Diterima") {
+            //     $classbtnTerima = "disabled";
+            //     $classbtnTolak = "";
+            // } else if ($pes->status == "Ditolak") {
+            //     $classbtnTerima = "";
+            //     $classbtnTolak = "disabled";
+            // } else if ($pes->status == "Menunggu") {
+            //     $classbtnTerima = "";
+            //     $classbtnTolak = "";
+            // }
+
+            $no++;
+            $row = array();
+            //row pertama akan kita gunakan untuk btn edit dan delete
+            // $row[] = '<a class="btn btn-sm btn-success"><i class="fa fa-check-circle"></i></a>&nbsp;<a class="btn btn-sm btn-danger"><i class="fa fa-ban"></i></a>';
+            //$row[] = '<button class="btn btn-sm btn-info btnTerima ' . $classbtnTerima . '" idt_biodata="' . $pes->username . '" title="Terima" value="' . $pes->idt_biodata . '"><i class="fa fa-check-circle"></i></button>&nbsp;<button class="btn btn-sm btn-danger btnTolak ' . $classbtnTolak . '" idt_biodata="' . $pes->username . '" title="Tolak" value="' . $pes->idt_biodata . '"><i class="fa fa-ban"></i></button>';
+            $row[] = $no;
+            $row[] = $smta->nama_smta;
+            $row[] = $smta->npsn_smta;
+            $row[] = $smta->alamat_smta;
+            $row[] = '
+            <a href="" data-id="' . $smta->id . '" data-toggle="modal" data-target="#modalEdit"  class="btn btn-sm btn-primary btnEdit"><i class="fa fa-edit"></i></a>&nbsp;
+            <a href="" class="btn btn-sm btn-danger btnHapus" data-id="' . $smta->id . '"><i class="fa fa-trash"></i></a>&nbsp';
+           
+            $data[] = $row;
+        }
+
+        $output = array(
+            "draw" => $this->input->post('draw'),
+            "recordsTotal" => $this->M_namasmta->count_all(),
+            "recordsFiltered" => $this->M_namasmta->count_filtered(),
+            "data" => $data,
+        );
+        //output to json format
+        $this->output->set_output(json_encode($output));
     }
 }

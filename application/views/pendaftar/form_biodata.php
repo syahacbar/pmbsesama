@@ -680,7 +680,7 @@
                                             <div class="form-group">
                                                 <label>Provinsi *</label>
                                                 <select name="provtempatlahir" id="provtempatlahir" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['prov_tempatlahir'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <option <?php echo ($row['prov_tempatlahir'] == '') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                     <?php foreach ($provinsi as $prov) : ?>
                                                         <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['prov_tempatlahir'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
                                                     <?php endforeach; ?>
@@ -691,6 +691,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Kabupaten/Kota *</label>
+                                                <input type="hidden" name="h_kabtempatlahir" id="h_kabtempatlahir" value="<?php echo $row['kab_tempatlahir'];?>">
                                                 <select name="kabtempatlahir" id="kabtempatlahir" class="form-select" aria-label="Default select example">
                                                     <option value=""></option>
                                                 </select>
@@ -707,7 +708,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Tanggal Lahir *</label><br>
-                                                <input type="date" name="tanggallahir" id="tanggallahir" class="datepicker" data-date-format="mm/dd/yyyy" value="<?php echo $row['tgl_lahir']; ?>">
+                                                <input type="date" name="tanggallahir" id="tanggallahir" class="datepicker" data-date-format="yyyy-MM-dd" value="<?php echo $row['tgl_lahir']; ?>">
                                             </div>
                                         </div>
 
@@ -734,7 +735,7 @@
                                             <div class="form-group">
                                                 <label>Provinsi *</label>
                                                 <select name="provtempattinggal" id="provtempattinggal" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['prov_tempattinggal'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <option <?php echo ($row['prov_tempattinggal'] == '') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                     <?php foreach ($provinsi as $prov) : ?>
                                                         <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['prov_tempattinggal'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
                                                     <?php endforeach; ?>
@@ -745,6 +746,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Kabupaten/Kota *</label>
+                                                <input type="hidden" name="h_kabtempattinggal" id="h_kabtempattinggal" value="<?php echo $row['kab_tempattinggal'];?>">
                                                 <select name="kabtempattinggal" id="kabtempattinggal" class="form-select" aria-label="Default select example">
                                                     <option value=""></option>
                                                 </select>
@@ -754,6 +756,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Kecamatan/Distrik *</label>
+                                                <input type="hidden" name="h_kectempattinggal" id="h_kectempattinggal" value="<?php echo $row['kec_tempattinggal'];?>">
                                                 <select name="kectempattinggal" id="kectempattinggal" class="form-select" aria-label="Default select example">
                                                     <option value=""></option>
                                                 </select>
@@ -763,6 +766,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Kelurahan/Desa *</label>
+                                                <input type="hidden" name="h_destempattinggal" id="h_destempattinggal" value="<?php echo $row['des_tempattinggal'];?>">
                                                 <select name="destempattinggal" id="destempattinggal" class="form-select" aria-label="Default select example">
                                                     <option value=""></option>
                                                 </select>
@@ -896,39 +900,35 @@
                                             </div>
                                         </div>
 
-                                        <div class="col-sm-6 nama-smta">
+                                        <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Nama SMTA *</label><!-- 
-                                                <input name="namasmta" id="namasmta" type="text" class="form-control" placeholder="" value="<?php //echo $row['nama_smta']; ?>" required> -->
-                                                <select name="namasmta" id="namasmta" class="form-select" aria-label="Default select example">
-                                                    
-                                                </select>
-                                                <small>Pilih nama SMTA Anda.</small>
+                                                <label>Nama SMTA </label>
+                                                <input name="namasmta" id="namasmta" type="text" class="form-control" value="<?php echo $row['namasmta']; ?>" readonly>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>NPSN (Nomor Pokok Sekolah Nasional) *</label>
-                                                <input name="nisnsmta" id="nisnsmta" type="text" class="form-control" readonly>
-                                                <small>Ketik NPSN (Nomor Pokok Sekolah Nasional) Anda.</small>
+                                                <label>NPSN (Nomor Pokok Sekolah Nasional)</label>
+                                                <input name="npsnsmta" id="npsnsmta" type="text" class="form-control" value="<?php echo $row['npsnsmta']; ?>" readonly>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Provinsi SMTA *</label>
-                                                <input class="form-control" type="text" name="provinsismta" id="provinsismta" readonly>
+                                                <label>Provinsi SMTA </label>
+                                                <input name="provinsismta" id="provinsismta" type="text" class="form-control" value="<?php echo $row['provinsismta']; ?>" readonly>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Alamat SMTA</label>
-                                                <textarea name="alamatsmta" id="alamatsmta" type="text" rows="2" class="form-control" placeholder="" required><?php echo $row['alamat_smta']; ?> </textarea>
-                                                <small>Maksimal 50 karakter, gunakan spasi untuk memisahkan tiap kata</small>
+                                                <label>Alamat SMTA </label>
+                                                <input name="alamatsmta" id="alamatsmta" type="text" class="form-control" value="<?php echo $row['alamatsmta']; ?>" readonly>
                                             </div>
                                         </div>
+
+                                        
 
                                         <div class="col-sm-12">
                                             <div class="form-group">
@@ -960,7 +960,7 @@
                                         <div class="dropzone dokrapor col-sm-12 mb-5" id="upload-dokumen">
                                             <div class="form">
                                                 <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                                    <small>Unggah file rapor dalam bentuk .pdf dengan ukuran maksimal 500kb. Format nama file <b>Rapor Blabla</b> </small>
+                                                    <small>Unggah file rapor dalam format .pdf dengan ukuran maksimal 5 MB. Penamaan file "Rapor-Username", contoh: <b>Rapor - 2022330001</b> </small>
                                                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                         <span aria-hidden="true">&times;</span>
                                                     </button>
@@ -1039,7 +1039,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat Kantor Ayah *</label>
-                                                <textarea name="alamatkantorayah" id="alamatkantorayah" type="text" class="form-control" placeholder="" value="<?php echo $row['alamatkantor_ayah']; ?>" required></textarea>
+                                                <textarea name="alamatkantorayah" id="alamatkantorayah" type="text" class="form-control" placeholder="" value="<?php echo $row['alamatkantor_ayah']; ?>" required><?php echo $row['alamatkantor_ayah']; ?></textarea>
                                                 <small>Alamat kantor Ayah, maksimal 50 karakter.</small>
                                             </div>
                                         </div>
@@ -1115,7 +1115,7 @@
                                                     <div class="form-group">
                                                         <label>Provinsi *</label>
                                                         <select name="provortu" id="provortu" class="form-select" aria-label="Default select example">
-                                                            <option <?php echo ($row['provinsi_tempattinggalortu'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                            <option <?php echo ($row['provinsi_tempattinggalortu'] == '') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                             <?php foreach ($provinsi as $prov) : ?>
                                                                 <option value="<?php echo $prov['kode']; ?>" <?php echo ($row['provinsi_tempattinggalortu'] == $prov['kode']) ? 'selected' : ''; ?>><?php echo $prov['nama']; ?></option>
                                                             <?php endforeach; ?>
@@ -1126,6 +1126,7 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Kabupaten/Kota *</label>
+                                                        <input type="hidden" name="h_kabupatenortu" id="h_kabupatenortu" value="<?php echo $row['kab_tempattinggalortu'];?>">
                                                         <select name="kabupatenortu" id="kabupatenortu" class="form-select" aria-label="Default select example">
                                                             <option value=""></option>
                                                         </select>
@@ -1135,6 +1136,7 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Kecamatan/Distrik *</label>
+                                                        <input type="hidden" name="h_kecamatanortu" id="h_kecamatanortu" value="<?php echo $row['kec_tempattinggalortu'];?>">
                                                         <select name="kecamatanortu" id="kecamatanortu" class="form-select" aria-label="Default select example">
                                                            <option value=""></option>
                                                         </select>
@@ -1156,7 +1158,7 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Alamat Orang Tua *</label>
-                                                        <textarea name="alamatortu" id="alamatortu" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_ortu']; ?>" required></textarea>
+                                                        <textarea name="alamatortu" id="alamatortu" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_ortu']; ?>" required><?php echo $row['alamat_ortu']; ?></textarea>
                                                         <small>Alamat tinggal orang tua saat ini. Maksimal 50 karakter.</small>
                                                     </div>
                                                 </div>
@@ -1203,7 +1205,7 @@
                                             <div class="form-group">
                                                 <label>Pekerjaan Wali</label>
                                                 <select name="pekerjaanwali" id="pekerjaanwali" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['pekerjaan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <option <?php echo ($row['pekerjaan_wali'] == '') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                     <?php foreach ($pekerjaanortu as $pk) : ?>
                                                         <option value="<?php echo $pk['idpekerjaan']; ?>" <?php echo ($row['pekerjaan_wali'] == $pk['idpekerjaan']) ? 'selected' : ''; ?>><?php echo $pk['namapekerjaan']; ?></option>
                                                     <?php endforeach; ?>
@@ -1216,7 +1218,7 @@
                                             <div class="form-group">
                                                 <label>Penghasilan Wali</label>
                                                 <select name="penghasilanwali" id="penghasilanwali" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['penghasilan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <option <?php echo ($row['penghasilan_wali'] == '') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                     <?php foreach ($penghasilanortu as $ph) : ?>
                                                         <option value="<?php echo $ph['idpenghasilan']; ?>" <?php echo ($row['penghasilan_wali'] == $ph['idpenghasilan']) ? 'selected' : ''; ?>><?php echo $ph['penghasilan']; ?></option>
                                                     <?php endforeach; ?>
@@ -1272,7 +1274,7 @@
                                                     <td>:</td>
                                                     <td>
                                                         <div class="custom-control custom-checkbox custom-control-inline">
-                                                            <input id="chk1" type="checkbox" name="chk" class="custom-control-input">
+                                                            <input id="chk1" type="checkbox" name="chk" class="custom-control-input" required>
                                                             <label for="chk1" class="custom-control-label text-sm">Dengan ini saya menyatakan bahwa data yang saya isikan adalah data yang sebenarnya, jika di kemudian hari ternyata data yang saya isikan terbukti tidak benar maka saya bersedia digugurkan dan diproses sesuai aturan perundang-undangan.</label>
                                                         </div>
                                                     </td>
@@ -1282,7 +1284,9 @@
                                     </div>
 
                                 </div>
-                                <input type="button" name="next5" id="next5"  class="next action-button fifth btn btn-primary" value="Simpan" />
+
+                                <input type="button" name="next5" id="next5"  class="next action-button btn btn-primary" value="Simpan">
+
                                 <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
                             </fieldset>
                         <?php endforeach; ?>
@@ -1438,11 +1442,29 @@
                     $('#kabtempatlahir').load(url);
                     return false;
                 });
+
+                var provtempatlahir = $("#provtempatlahir").val();
+                if (provtempatlahir != "0")
+                {
+                    //set selected kab by data from db
+                    var url = "<?php  echo site_url('register/add_ajax_kab'); ?>/" + provtempatlahir +"/" + $("#h_kabtempatlahir").val();
+                    $('#kabtempatlahir').load(url);
+                }
+               
+
                 $("#provtempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
                     $('#kabtempattinggal').load(url);
                     return false;
                 });
+
+                var provtempattinggal = $("#provtempattinggal").val();
+                if (provtempattinggal != "0")
+                {
+                    //set selected kab by data from db
+                    var url = "<?php  echo site_url('register/add_ajax_kab'); ?>/" + provtempattinggal +"/" + $("#h_kabtempattinggal").val();
+                    $('#kabtempattinggal').load(url);
+                }
 
                 $("#provortu").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
@@ -1450,17 +1472,41 @@
                     return false;
                 });
 
+                var provortu = $("#provortu").val();
+                if (provortu != "0")
+                {
+                //set selected kab by data from db
+                    var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + provortu +"/" + $("#h_kabupatenortu").val();
+                    $('#kabupatenortu').load(url);
+                }
                 $("#kabupatenortu").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
                     $('#kecamatanortu').load(url);
                     return false;
                 });
 
+                var h_kabupatenortu = $("#h_kabupatenortu").val();
+                if (h_kabupatenortu != "")
+                {
+                //set selected kec by data from db
+                    var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + h_kabupatenortu +"/" + $("#h_kecamatanortu").val();
+                        $('#kecamatanortu').load(url);
+                }
+                
                 $("#kabtempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
                     $('#kectempattinggal').load(url);
                     return false;
                 });
+
+                var h_kabtempattinggal = $("#h_kabtempattinggal").val();
+                if (h_kabtempattinggal != "")
+                {
+                //set selected kec by data from db
+                    var url = "<?php  echo site_url('register/add_ajax_kec'); ?>/" + h_kabtempattinggal +"/" + $("#h_kectempattinggal").val();
+                    $('#kectempattinggal').load(url);
+                }
+
 
                 $("#kectempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_des'); ?>/" + $(this).val();
@@ -1468,22 +1514,32 @@
                     return false;
                 });
 
-                $("#namasmta").select2({
-                    theme: "bootstrap",
-                    placeholder: '-- Pilih SMTA --',
-                    minimumInputLength: 1,
-                    ajax: {
-                        url: "<?php echo site_url('register/searchSMTA');?>",
-                        dataType: 'json',
-                        delay: 250,
-                        processResults: function (data) {
-                            return {
-                                results: data
-                            };
-                        },
-                        cache: true
-                    }
-                });
+                var h_kectempattinggal = $("#h_kectempattinggal").val();
+                if (h_kectempattinggal != "")
+                {
+                    //set selected kec by data from db
+                    var url = "<?php  echo site_url('register/add_ajax_des'); ?>/" + h_kectempattinggal +"/" + $("#h_destempattinggal").val();
+                    $('#destempattinggal').load(url);
+                }
+
+                // $("input[name='namasmta']").val();
+
+                // $("#namasmta").select2({
+                //     theme: "bootstrap",
+                //     placeholder: '-- Pilih SMTA --',
+                //     minimumInputLength: 1,
+                //     ajax: {
+                //         url: "<?php //echo site_url('register/searchSMTA');?>",
+                //         dataType: 'json',
+                //         delay: 250,
+                //         processResults: function (data) {
+                //             return {
+                //                 results: data
+                //             };
+                //         },
+                //         cache: true
+                //     }
+                // });
 
                 
 
@@ -1574,7 +1630,7 @@
                     var tahunlulussmta = $("select[name='tahunlulussmta']").val();
                     var jurusansmta = $("select[name='jurusansmta']").val();
                     var jenissmta = $("select[name='jenissmta']").val();
-                    var namasmta = $("select[name='namasmta']").val();
+                    // var namasmta = $("select[name='namasmta']").val();
                     // var nisnsmta = $("input[name='nisnsmta']").val();
                     // var provinsismta = $("input[name='provinsismta']").val();
                     // var alamatsmta = $("textarea[name='alamatsmta']").val();
@@ -1590,7 +1646,7 @@
                             tahunlulussmta: tahunlulussmta,
                             jurusansmta: jurusansmta,
                             jenissmta: jenissmta,
-                            namasmta: namasmta,
+                            // namasmta: namasmta,
                             // nisnsmta: nisnsmta,
                             // provinsismta: provinsismta,
                             // alamatsmta: alamatsmta,
@@ -1718,16 +1774,42 @@
                     });
                 });
 
+
+               
+
                 $('#next5').on('click', function() {
                     Swal.fire({
-                        title: "Selamat!",
-                        text: "Anda telah berhasil memperbarui data Anda!",
-                        type: "success"
-                    }).then(function() {
-                        window.location = "<?php echo site_url('auth/logout/pendaftar'); ?>";
-                    });
+                      title: 'Berhasil menyimpan biodata !',
+                      text: "Untuk mengetahui hasil seleksi jalur SESAMA, silahkan akses menu pengumuman pada website https://pmb.unipa.ac.id/pmbsesama",
+                      icon: 'success',
+                      showCancelButton: false,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Keluar'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        window.location.href= "<?php echo site_url('auth/logout/pendaftar'); ?>";
+                      }
+                    })
                 });
 
+                Swal.fire({
+  title: '<strong>HTML <u>example</u></strong>',
+  icon: 'info',
+  html:
+    'You can use <b>bold text</b>, ' +
+    '<a href="//sweetalert2.github.io">links</a> ' +
+    'and other HTML tags',
+  showCloseButton: true,
+  showCancelButton: true,
+  focusConfirm: false,
+  confirmButtonText:
+    '<i class="fa fa-thumbs-up"></i> Great!',
+  confirmButtonAriaLabel: 'Thumbs up, great!',
+  cancelButtonText:
+    '<i class="fa fa-thumbs-down"></i>',
+  cancelButtonAriaLabel: 'Thumbs down'
+})
 
                 
                 
@@ -1768,7 +1850,7 @@
             var dok_rapor = new Dropzone(".dokrapor", {
                 autoProcessQueue: true,
                 url: "<?php echo site_url('register/uploadrapor') ?>",
-                maxFilesize: 2,
+                maxFilesize: 5,
                 method: "post",
                 acceptedFiles: ".pdf",
                 paramName: "filerapor",

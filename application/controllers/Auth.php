@@ -213,7 +213,7 @@ class Auth extends CI_Controller
 				// redirect them to the login page
 				redirect('pmbsesama/login', 'refresh');
 			}
-			elseif($usertype == "pendaftar")
+			else
 			{
 				// redirect them to the login page
 				redirect('pmbsesama', 'refresh');
