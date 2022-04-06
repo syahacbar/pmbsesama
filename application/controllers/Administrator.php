@@ -12,6 +12,7 @@ class Administrator extends CI_Controller
 		if ($this->ion_auth->in_group('members')) {
 			redirect('auth/login', 'refresh');
 		}
+
 		$this->load->model('M_wilayah');
 		$this->load->model('M_pendaftar');
 		$this->load->model('M_register');
@@ -521,35 +522,51 @@ class Administrator extends CI_Controller
 		}
 
 		$this->load->model('M_informasi');
-
-		if ($this->uri->segment(3) == "") {
-			$data['linkform'] = "administrator/informasi/add";
-			$data['informasi'] = $this->M_informasi->get_all();
-		} else if ($this->uri->segment(3) == "add") {
-			$data = array(
-				'informasi'  => $this->input->post('informasi'),
-			);
-
-			$this->M_informasi->add($data);
-
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/informasi');
-		} else if ($this->uri->segment(3) == "edit") {
-			$id = $this->input->post('id');
-			$data = array(
-				'informasi'  => $this->input->post('informasi')
-			);
-			$this->M_informasi->edit($data, $id);
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/informasi');
-		} else if ($this->uri->segment(3) == "delete") {
-			$id = $this->input->post('id');
-			$this->M_informasi->delete($id);
-			redirect('administrator/informasi');
-		}
+		$data['linkform'] = "administrator/tambah_informasi";
 		$data['informasi'] = $this->M_informasi->get_all();
 		$data['_view'] = 'admin/informasi';
 		$this->load->view('admin/layout', $data);
+	}
+
+
+	public function tambah_informasi() {
+		$data = array(
+			'informasi'  => $this->input->post('informasi'),
+		);
+
+		$this->M_informasi->add($data);
+
+		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		redirect('pmbsesama/administrator/informasi');
+	}
+
+	public function edit_informasi() {
+		$id = $this->input->post('id');
+		$data = array(
+			'informasi'  => $this->input->post('informasi')
+		);
+		$this->M_informasi->edit($data, $id);
+		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		redirect('pmbsesama/administrator/informasi');
+	}
+
+	public function hapus_informasi() {
+		$id = $this->input->post('id');
+		$this->M_informasi->delete($id);
+	}
+
+	// Upload Informasi Panel Admin
+	function upload_informasi()
+	{
+		$config['upload_path']   = FCPATH . '/assets/upload/informasi/';
+		$config['allowed_types'] = 'pdf';
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('fileinformasi')) {
+			$fileinformasi = $this->upload->data('file_name');
+			$judulinformasi = $this->input->post('namask');
+			$this->db->insert('informasi', array('file' => $fileinformasi, 'judul' => $judulinformasi));
+		}
 	}
 
 	public function pengaturan()
@@ -598,40 +615,6 @@ class Administrator extends CI_Controller
 			));
 		}
 	}
-
-	// Upload Informasi Panel Admin
-	function uploadinformasi()
-	{
-		$config['upload_path']   = FCPATH . '/assets/upload/informasi/';
-		$config['allowed_types'] = 'pdf';
-		$this->load->library('upload', $config);
-
-		if ($this->upload->do_upload('fileinformasi')) {
-			$fileinformasi = $this->upload->data('file_name');
-			$judulinformasi = $this->input->post('namask');
-			$this->db->insert('informasi', array('file' => $fileinformasi, 'judul' => $judulinformasi));
-		}
-	}
-
-	// public function saveagenda()
-	// {
-	// 	$params = array(
-	// 		'judul' => $this->input->post('judulagenda'),
-	// 		'isi_agenda' => $this->input->post('isiagenda'),
-	// 		'waktu' => date("Y-m-d H:i:s"),
-	// 		'id' => $this->input->post('id'),
-	// 	);
-
-	// 	$this->M_agenda->add_agenda($params);
-
-	// 	$this->session->set_flashdata('message', '<div class="alert alert-success d-flex align-items-center" role="alert">
-	//        <svg class="bi flex-shrink-0 me-2" width="24"  height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-	//        <div>
-	//         Agenda telah berhasil ditambah.
-	//        </div>
-	//      </div>');
-	// 	echo json_encode(array('status' => TRUE));
-	// }
 
 	public function hapus_pendaftar()
 	{
