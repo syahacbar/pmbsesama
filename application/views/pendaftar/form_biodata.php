@@ -1193,7 +1193,7 @@
                                             <div class="form-group">
                                                 <label>Pekerjaan Wali</label>
                                                 <select name="pekerjaanwali" id="pekerjaanwali" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['pekerjaan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <option <?php echo ($row['pekerjaan_wali'] == '') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                     <?php foreach ($pekerjaanortu as $pk) : ?>
                                                         <option value="<?php echo $pk['idpekerjaan']; ?>" <?php echo ($row['pekerjaan_wali'] == $pk['idpekerjaan']) ? 'selected' : ''; ?>><?php echo $pk['namapekerjaan']; ?></option>
                                                     <?php endforeach; ?>
@@ -1206,7 +1206,7 @@
                                             <div class="form-group">
                                                 <label>Penghasilan Wali</label>
                                                 <select name="penghasilanwali" id="penghasilanwali" class="form-select" aria-label="Default select example">
-                                                    <option <?php echo ($row['penghasilan_wali'] == '') ? 'selected' : ''; ?>> -- Pilih -- </option>
+                                                    <option <?php echo ($row['penghasilan_wali'] == '') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                     <?php foreach ($penghasilanortu as $ph) : ?>
                                                         <option value="<?php echo $ph['idpenghasilan']; ?>" <?php echo ($row['penghasilan_wali'] == $ph['idpenghasilan']) ? 'selected' : ''; ?>><?php echo $ph['penghasilan']; ?></option>
                                                     <?php endforeach; ?>
@@ -1730,29 +1730,22 @@
                     });
                 });
 
-                var response = grecaptcha.getResponse();
-                    if(response.length == 0) 
-                    { 
-                        $('#captchahelp').html('Captcha wajib dicentang !');
-                        $("#next5").removeAttr("disabled");                        
-                    } else {
+               
 
                 $('#next5').on('click', function() {
-                    
-                        Swal.fire({
-                          title: 'Berhasil menyimpan biodata !',
-                          text: "Untuk mengetahui hasil seleksi jalur SESAMA, silahkan akses menu pengumuman pada website https://pmb.unipa.ac.id/pmbsesama",
-                          icon: 'success',
-                          showCancelButton: false,
-                          confirmButtonColor: '#3085d6',
-                          cancelButtonColor: '#d33',
-                          confirmButtonText: 'Keluar'
-                        }).then((result) => {
-                          if (result.isConfirmed) {
-                            window.location.href= "<?php echo site_url('auth/logout/pendaftar'); ?>";
-                          }
-                        })
-                    }
+                    Swal.fire({
+                      title: 'Berhasil menyimpan biodata !',
+                      text: "Untuk mengetahui hasil seleksi jalur SESAMA, silahkan akses menu pengumuman pada website https://pmb.unipa.ac.id/pmbsesama",
+                      icon: 'success',
+                      showCancelButton: false,
+                      confirmButtonColor: '#3085d6',
+                      cancelButtonColor: '#d33',
+                      confirmButtonText: 'Keluar'
+                    }).then((result) => {
+                      if (result.isConfirmed) {
+                        window.location.href= "<?php echo site_url('auth/logout/pendaftar'); ?>";
+                      }
+                    })
                 });
                 
                 

@@ -1,3 +1,5 @@
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
+
 <!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="row">
@@ -27,14 +29,14 @@
                         </div> 
 						<div class="col-md-3">
 							<label for="txtKabupaten" class="form-label">Pilih Kabupaten/Kota</label>
-                            <select name="optProvinsi" id="optProvinsi" class="form-control">
+                            <select name="optKabupaten" id="optKabupaten" class="form-control">
                                 <option>Pilih Kabupaten/Kota</option>
                             </select>
 						</div>    
 
 						<div class="col-md-3">
-							<label for="txtKabupaten" class="form-label">Pilih Kecamatan</label>
-                            <select name="optProvinsi" id="optProvinsi" class="form-control">
+							<label for="txtKecamatan" class="form-label">Pilih Kecamatan</label>
+                            <select name="optKecamatan" id="optKecamatan" class="form-control">
                                 <option>Pilih Kecamatan</option>
                             </select>
 						</div>    					
@@ -50,7 +52,7 @@
                 <div class="card-body">
                 <?php echo $this->session->flashdata('notif'); ?>
                     <div class="table-responsive">
-                        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <table class="table table-bordered" id="tableSMTA" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
                                     <th width="10">No.</th>
@@ -61,27 +63,27 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php
-                                $no = 1;
-                                foreach ($namasmta as $ns) : ?>
+                                <!-- <?php
+                                //$no = 1;
+                                //foreach ($namasmta as $ns) : ?>
                                     <tr>
-                                        <td><?php echo $no++; ?></td>
-                                        <td><?php echo $ns['nama_smta']; ?></td>
-                                        <td><?php echo $ns['npsn_smta']; ?></td>
-                                        <td><?php echo $ns['alamat_smta']; ?></td>
+                                        <td><?php //echo $no++; ?></td>
+                                        <td><?php //echo $ns['nama_smta']; ?></td>
+                                        <td><?php //echo $ns['npsn_smta']; ?></td>
+                                        <td><?php //echo $ns['alamat_smta']; ?></td>
                                         <td>
-                                            <a href="#" class="btn btn-info btn-icon-split btn-sm editform" data-toggle="modal" data-target="#editDataSMTA" data-idsmta="<?php echo $ns['id'] ?>" 
-                                                data-namasmta="<?php echo $ns['nama_smta'] ?>"
-                                                data-npsnsmta="<?php echo $ns['npsn_smta'] ?>"
-                                                data-alamatsmta="<?php echo $ns['alamat_smta'] ?>"
-                                                data-provinsismta="<?php echo $ns['kodeprovinsi'] ?>"
+                                            <a href="#" class="btn btn-info btn-icon-split btn-sm editform" data-toggle="modal" data-target="#editDataSMTA" data-idsmta="<?php //echo $ns['id'] ?>" 
+                                                data-namasmta="<?php //echo $ns['nama_smta'] ?>"
+                                                data-npsnsmta="<?php //echo $ns['npsn_smta'] ?>"
+                                                data-alamatsmta="<?php //echo $ns['alamat_smta'] ?>"
+                                                data-provinsismta="<?php //echo $ns['kodeprovinsi'] ?>"
                                                 >
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-edit"></i>
                                                 </span>
                                                 <span class="text">Edit</span>
                                             </a>
-                                            <a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-idsmta="<?php echo $ns['id'] ?>">
+                                            <a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-idsmta="<?php //echo $ns['id'] ?>">
                                                 <span class="icon text-white-50">
                                                     <i class="fas fa-trash"></i>
                                                 </span>
@@ -89,7 +91,7 @@
                                             </a>
                                         </td>
                                     </tr>
-                                <?php endforeach; ?>
+                                <?php //endforeach; ?> -->
                             </tbody>
                         </table>
                     </div>
@@ -251,8 +253,113 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript">
+    var save_method; //for save method string
+    var tablePendaftar;
+
     $(document).ready(function() {
-        var table = $('#dataTable').DataTable();
+        // $("#optProvinsi").change(function() {
+        //     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+        //     $('#optKabupaten').load(url);
+        //     return false;
+        // });
+
+        // var tableSMTA = $('#tableSMTA').DataTable({
+
+        //     "language": {
+        //         "emptyTable": "Tidak ada data yang ditampilkan. Pilih salah satu Program Studi"
+        //     },
+        // });
+
+        function load_data(is_provinsi,is_kabupaten,is_kecamatan) {
+            var tableSMTA = $('#tableSMTA').DataTable({
+                "language": {
+                    "url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Indonesian.json"
+                },
+                "processing": true,
+                "serverSide": true,
+                "stateSave": true,
+                "order": [],
+                "columnDefs": [{
+                        "targets": 0,
+                        "orderable": false,
+                        "width": "8%",
+                        "className": "text-center"
+                    },
+                    {
+                        "targets": 1,
+                        "orderable": false,
+                    },
+                    {
+                        "targets": -1,
+                        "orderable": false,
+                        "width": "12%",
+                        "className": "text-center"
+                    }
+                ],
+                "fixedColumns": {
+                    "left": 1,
+                    "right": 1
+                },
+                "ajax": {
+                    //panggil method ajax list dengan ajax
+                    "url": '<?php echo site_url('Datatables/smta_list'); ?>',
+                    "type": "POST",
+                    "data": {
+                        is_provinsi: is_provinsi,
+                        is_kabupaten: is_kabupaten,
+                        is_kecamatan: is_kecamatan,
+                    }
+                },
+
+            });
+
+            tableSMTA.search('').draw();
+        }
+
+        $(document).on('change', '#optProvinsi', function() {
+            var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+            $('#optKabupaten').load(url);
+            //return false;
+
+            var tableSMTA = $('#tableSMTA').DataTable();
+            var is_provinsi = $('#optProvinsi').val();
+            // var is_kabupaten = $('#optKabupaten').val();
+            // var is_kecamatan = $('#optKecamatan').val();
+
+            tableSMTA.destroy();
+            if (is_provinsi != '') {
+                load_data(is_provinsi);
+                tableSMTA.search('').draw();
+            } else {
+                load_data();
+            }
+
+            tableSMTA.search('').draw();
+        });
+
+        $(document).on('change', '#optKabupaten', function() {
+            var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
+            $('#optKecamatan').load(url);
+            //return false;
+
+            var tableSMTA = $('#tableSMTA').DataTable();
+            var is_provinsi = $('#optProvinsi').val();
+            var is_kabupaten = $('#optKabupaten').val();
+            // var is_kecamatan = $('#optKecamatan').val();
+
+            tableSMTA.destroy();
+            if (is_kabupaten != '') {
+                load_data(is_provinsi,is_kabupaten);
+                tableSMTA.search('').draw();
+            } else {
+                load_data();
+            }
+            
+            tableSMTA.search('').draw();
+        });
+
+        
+        //var table = $('#dataTable').DataTable();
         $("#dataTable").on("click", ".editform", function(){
             event.preventDefault();
             $("input#idsmta").val($(this).data('idsmta'));

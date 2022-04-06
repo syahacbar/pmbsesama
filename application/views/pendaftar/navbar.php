@@ -28,7 +28,10 @@
                         </nav>
                     </div>
 
-                    <?php if ($this->ion_auth->logged_in()) { ?>
+                    <?php if ($this->ion_auth->logged_in()) { 
+                        $user = $this->ion_auth->user()->row();
+                        $user_groups = $this->ion_auth->get_users_groups($user->id)->row();
+                    ?>
                         <!-- Modal Logout -->
                         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
@@ -42,7 +45,8 @@
                                     <div class="modal-body">Yakin ingin keluar? Pilih "Ya" jika ingin keluar.</div>
                                     <div class="modal-footer">
                                         <button class="btn btn-secondary" type="button" data-dismiss="modal">Tidak</button>
-                                        <a class="btn btn-primary" href="<?php echo site_url('auth/logout'); ?>">Ya</a>
+
+                                        <a class="btn btn-primary" href="<?php echo site_url('auth/logout/').$user_groups->name; ?>">Ya</a>
                                     </div>
                                 </div>
                             </div>

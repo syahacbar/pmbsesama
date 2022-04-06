@@ -1,7 +1,7 @@
 <?php
 
 class M_pendaftar extends CI_Model
-{
+{ 
 
     function get_all()
     {
