@@ -1428,45 +1428,29 @@
                     $('#kabtempatlahir').load(url);
                     return false;
                 });
-                //set selected kab by data from db
-                var url = "<?php  echo site_url('register/add_ajax_kab'); ?>/" + $("#provtempatlahir").val() +"/" + $("#h_kabtempatlahir").val();
-                $('#kabtempatlahir').load(url);
 
                 $("#provtempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
                     $('#kabtempattinggal').load(url);
                     return false;
                 });
-                //set selected kab by data from db
-                var url = "<?php  echo site_url('register/add_ajax_kab'); ?>/" + $("#provtempattinggal").val() +"/" + $("#h_kabtempattinggal").val();
-                $('#kabtempattinggal').load(url);
-
                 $("#provortu").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
                     $('#kabupatenortu').load(url);
                     return false;
                 });
-                //set selected kab by data from db
-                var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $("#provortu").val() +"/" + $("#h_kabupatenortu").val();
-                    $('#kabupatenortu').load(url);
 
                 $("#kabupatenortu").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
                     $('#kecamatanortu').load(url);
                     return false;
                 });
-                //set selected kec by data from db
-                var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $("#h_kabupatenortu").val() +"/" + $("#h_kecamatanortu").val();
-                    $('#kecamatanortu').load(url);
 
                 $("#kabtempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
                     $('#kectempattinggal').load(url);
                     return false;
                 });
-                //set selected kec by data from db
-                var url = "<?php  echo site_url('register/add_ajax_kec'); ?>/" + $("#h_kabtempattinggal").val() +"/" + $("#h_kectempattinggal").val();
-                $('#kectempattinggal').load(url);
 
 
                 $("#kectempattinggal").change(function() {
@@ -1474,9 +1458,6 @@
                     $('#destempattinggal').load(url);
                     return false;
                 });
-                //set selected kec by data from db
-                var url = "<?php  echo site_url('register/add_ajax_des'); ?>/" + $("#h_kectempattinggal").val() +"/" + $("#h_destempattinggal").val();
-                $('#destempattinggal').load(url);
 
                 // $("input[name='namasmta']").val();
 
