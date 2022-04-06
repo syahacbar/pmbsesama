@@ -1429,8 +1429,8 @@
                     return false;
                 });
                 //set selected kab by data from db
-                var url = "<?php  echo site_url('register/add_ajax_kab'); ?>/" + $("#provtempatlahir").val() +"/" + $("#h_kabtempatlahir").val();
-                $('#kabtempatlahir').load(url);
+                // var url = "<?php  echo site_url('register/add_ajax_kab'); ?>/" + $("#provtempatlahir").val() +"/" + $("#h_kabtempatlahir").val();
+                // $('#kabtempatlahir').load(url);
 
                 $("#provtempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
