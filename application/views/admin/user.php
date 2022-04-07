@@ -129,7 +129,7 @@
                                                 <select name="groups" class="form-control">
                                                     <option value="">-- Pilih Group --</option>
                                                     <?php foreach ($grup as $g) : ?>
-                                                        <option value="<?php echo $g['name']; ?>"><?php echo htmlspecialchars($g['description'], ENT_QUOTES, 'UTF-8'); ?></option>
+                                                        <option value="<?php echo $g['id']; ?>"><?php echo htmlspecialchars($g['description'], ENT_QUOTES, 'UTF-8'); ?></option>
                                                     <?php endforeach ?>
 
                                                 </select>

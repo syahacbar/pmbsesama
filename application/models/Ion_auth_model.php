@@ -876,7 +876,7 @@ class Ion_auth_model extends CI_Model
 			$groups[] = $default_group->id;
 		}
 
-		if (!empty($groups))
+		if (!empty($groups)) 
 		{
 			// add to groups
 			foreach ($groups as $group)

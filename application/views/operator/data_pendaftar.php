@@ -212,12 +212,12 @@
 							<label for="pilihprodi" class="form-label">Pilih Program Studi</label>
 							<select class="form-control" id="pilihprodi" name="pilihprodi">
 								<option value="0">-- Semua Program Studi --</option>
-								<?php // foreach ($listprodi as $pr) : 
+								<?php foreach ($listprodi as $pr) : 
 								?>
-								<option value="<?php // echo $pr['idprodi']; 
-												?>"><?php // echo $pr['namaprodi']; 
+								<option value="<?php echo $pr['idprodi']; 
+												?>"><?php echo $pr['namaprodi']; 
 													?></option>
-								<?php // endforeach; 
+								<?php endforeach; 
 								?>
 							</select>
 						</div>
@@ -252,7 +252,6 @@
 									<th>Prodi Pilihan 2</th>
 									<th>Prodi Pilihan 3</th>
 									<th>Suku</th>
-									<th>Tahun Akademik</th>
 									<th>Aksi</th>
 								</tr>
 							</thead>
@@ -695,36 +694,10 @@
 												<label>Nama SMTA *</label>
 												<input name="namasmta" id="namasmta" type="text" class="form-control" placeholder="" value="" required>
 												<small>Ketik nama SMTA Anda.</small>
-											</div>
+											</div> 
 										</div>
 
-										<div class="col-sm-6 col-md-6 col-lg-6">
-											<div class="form-group">
-												<label>NPSN (Nomor Pokok Sekolah Nasional) *</label>
-												<input name="nisnsmta" id="nisnsmta" type="text" class="form-control" placeholder="" value="" required>
-												<small>Ketik NPSN SMTA Anda.</small>
-											</div>
-										</div>
-
-										<div class="col-sm-6 col-md-6 col-lg-6">
-											<div class="form-group">
-												<label>Provinsi SMTA *</label>
-												<select name="provinsismta" id="provinsismta" class="form-select" aria-label="Default select example">
-													<option> -- Pilih -- </option>
-													<?php foreach ($provinsi as $prov) : ?>
-														<option value="<?php echo $prov['kode']; ?>"><?php echo $prov['nama']; ?></option>
-													<?php endforeach; ?>
-												</select>
-											</div>
-										</div>
-
-										<div class="col-sm-6 col-md-6 col-lg-6">
-											<div class="form-group">
-												<label>Alamat SMTA</label>
-												<input name="alamatsmta" id="alamatsmta" type="text" class="form-control" placeholder="" value="" required></input>
-												<small>Maksimal 50 karakter, gunakan spasi untuk memisahkan tiap kata</small>
-											</div>
-										</div>
+										
 
 										<div class="col-sm-12 mt-4">
 											<div class="form-group">
@@ -1201,7 +1174,7 @@
 					{
 						"targets": -1,
 						"orderable": false,
-						"width": "12%",
+						"width": "15%",
 						"className": "text-center"
 					}
 				],
@@ -1456,7 +1429,7 @@
 			var alamat_wali = $("input[name='alamatwali']").val();
 
 			$.ajax({
-				url: "<?php echo site_url('administrator/pendaftar_update'); ?>",
+				url: "<?php echo site_url('administrator/edit_pendaftar'); ?>",
 				type: "POST",
 				data: {
 					// Indentitas Pribadi

@@ -572,6 +572,7 @@ class Auth extends CI_Controller
 			'tahunakademik' => $this->input->post('tahunakademik'),
 			'nama_smta'=> $this->input->post('namasmta'),
 			'pass' => $password,
+			'negara_tempattinggal' => 'Indonesia',
 		];
 
 		$is_valid = $this->recaptcha->is_valid();
