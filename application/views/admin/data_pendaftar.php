@@ -626,7 +626,7 @@
     												<div class="form-group">
     													<label>Pilihan 1 *</label>
     													<select id="prodipilihan1" name="prodipilihan1" class="form-select" aria-label="Default select example">
-    														<option value=""> -- Pilih -- </option>
+    														<option value="0"> -- Pilih -- </option>
     														<?php foreach ($prodi as $pr1) :
 															?>
     															<option value="<?php echo $pr1['idprodi']; ?>"><?php echo $pr1['namaprodi']; ?></option>
@@ -640,7 +640,7 @@
     												<div class="form-group">
     													<label>Pilihan 2</label>
     													<select id="prodipilihan2" name="prodipilihan2" class="form-select" aria-label="Default select example">
-    														<option value=""> -- Pilih -- </option>
+    														<option value="0"> -- Pilih -- </option>
     														<?php foreach ($prodi as $pr2) : ?>
     															<option value="<?php echo $pr2['idprodi']; ?>"><?php echo $pr2['namaprodi']; ?></option>
     														<?php endforeach; ?>
@@ -652,7 +652,7 @@
     												<div class="form-group">
     													<label>Pilihan 3</label>
     													<select id="prodipilihan3" name="prodipilihan3" class="form-select" aria-label="Default select example">
-    														<option value=""> -- Pilih -- </option>
+    														<option value="0"> -- Pilih -- </option>
     														<?php foreach ($prodi as $pr3) : ?>
     															<option value="<?php echo $pr3['idprodi']; ?>"><?php echo $pr3['namaprodi']; ?></option>
     														<?php endforeach; ?>

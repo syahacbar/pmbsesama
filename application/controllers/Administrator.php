@@ -446,6 +446,18 @@ class Administrator extends CI_Controller
 	}
 	public function edit_pendaftar()
 	{
+		if (!empty($this->input->post('prodipilihan2')) && $this->input->post('prodipilihan2') != "0") {
+			$prodi2 = $this->input->post('prodipilihan2');
+		} else {
+			$prodi2 = NULL;
+		}
+
+		if (!empty($this->input->post('prodipilihan3')) && $this->input->post('prodipilihan3') != "0") {
+			$prodi3 = $this->input->post('prodipilihan3');
+		} else {
+			$prodi3 = NULL;
+		}
+
 		$params = array(
 			'nisn_pendaftar' => $this->input->post('nisn_pendaftar'),
 			'nik' => $this->input->post('nik'),
@@ -454,8 +466,8 @@ class Administrator extends CI_Controller
 			'agama' => $this->input->post('agama'),
 			'statusmenikah' => $this->input->post('statusmenikah'),
 			'prodipilihan1' => $this->input->post('prodipilihan1'),
-			'prodipilihan2' => $this->input->post('prodipilihan2'),
-			'prodipilihan3' => $this->input->post('prodipilihan3'),
+			'prodipilihan2' => $prodi2,
+			'prodipilihan3' => $prodi3,
 			'prov_tempatlahir' => $this->input->post('prov_tempatlahir'),
 			'kab_tempatlahir' => $this->input->post('kab_tempatlahir'),
 			'lokasi_tempatlahir'  => $this->input->post('lokasi_tempatlahir'),
