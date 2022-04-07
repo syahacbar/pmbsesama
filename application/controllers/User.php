@@ -21,9 +21,9 @@ class User extends CI_Controller
         for ($i=$userawal; $i<=$userakhir; $i++)
         {
             //update di tabel users
-            $this->ion_auth->reset_password($i, 'UNIPA2022A');
+            $this->ion_auth->reset_password($i, 'SESAMA2022');
 
-            $this->M_register->update_biodata($i,array('pass'=>'UNIPA2022A'));
+            $this->M_register->update_biodata($i,array('pass'=>'SESAMA2022'));
 
             echo "Reset pass user ".$i." berhasil ! <br>";
         }
