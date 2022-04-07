@@ -246,12 +246,13 @@ class Datatables extends CI_Controller
             $row[] = $pes->pilihan2;
             $row[] = $pes->pilihan3;
             $row[] = $pes->suku;
-            $row[] = $pes->tahunakademik;
             $row[] = '
+            <a href="' . site_url('pmbsesama/administrator/kartupendaftaran/') . $pes->username . '" target="_blank" class="btn btn-sm btn-info"><i class="fa fa-user"></i></a>&nbsp;
+            <a href="' . site_url('pmbsesama/administrator/kartupeserta/') . $pes->username . '" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>&nbsp;
             <a href="" data-username="' . $pes->username . '" data-toggle="modal" data-target="#modalDetail" class="btn btn-sm btn-info btnDetail"><i class="fa fa-eye"></i></a>&nbsp;
             <a href="" data-username="' . $pes->username . '" data-toggle="modal" data-target="#modalEdit"  class="btn btn-sm btn-primary btnEdit"><i class="fa fa-edit"></i></a>&nbsp;
             <button class="btn btn-sm btn-danger btnHapus" idt_biodata="' . $pes->idt_biodata . '"><i class="fa fa-trash"></i></button>&nbsp;
-            <a href="' . site_url('pmbsesama/administrator/kartupeserta/') . $pes->username . '" target="_blank" class="btn btn-sm btn-warning"><i class="fa fa-print"></i></a>';
+            ';
             $data[] = $row;
         }
 

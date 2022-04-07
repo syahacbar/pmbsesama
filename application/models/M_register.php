@@ -64,6 +64,12 @@ class M_register extends CI_Model
         return $query;
     }
 
+    function get_kartupendaftaran($username)
+    {
+        $query = $this->db->query("SELECT * FROM t_biodata tb JOIN users u ON u.username=tb.username WHERE tb.username='$username'");
+        return $query;
+    }
+
     // function proseslaporan($id,$status)
     // {
     //     return $this->db

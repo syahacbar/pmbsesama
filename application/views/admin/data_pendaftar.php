@@ -357,7 +357,6 @@
     									<th>Prodi Pilihan 2</th>
     									<th>Prodi Pilihan 3</th>
     									<th>Suku</th>
-    									<th>Tahun Akademik</th>
     									<th>Aksi</th>
     								</tr>
     							</thead>
@@ -1320,7 +1319,7 @@
     						{
     							"targets": -1,
     							"orderable": false,
-    							"width": "12%",
+    							"width": "15%",
     							"className": "text-center"
     						}
     					],

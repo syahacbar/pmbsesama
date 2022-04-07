@@ -524,6 +524,23 @@ class Administrator extends CI_Controller
 		$this->load->view('pendaftar/kartu_peserta', $data);
 	}
 
+	public function kartupendaftaran($username)
+	{
+		$this->load->library('Pdf');
+		//$msg = $this->session->flashdata('msg');
+		$r = $this->M_register->get_kartupendaftaran($username)->row();
+
+		
+		$data = array(
+			'username' => $r->username,
+			'password' => $r->pass,
+			'namalengkap' => $r->namalengkap,
+			'email' => $r->email,
+			'nohp' => $r->phone,
+		);
+		$this->load->view('pendaftar/konfirmasi_pendaftaran_pdf', $data); 
+	}
+
 	public function slider()
 	{
 		$config['upload_path']   = FCPATH . '/assets/upload/slider/';
