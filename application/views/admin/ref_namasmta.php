@@ -340,46 +340,46 @@
         });
 
         //var table = $('#dataTable').DataTable();
-        $("#dataTable").on("click", ".editform", function(){
-            event.preventDefault();
-            $("input#idsmta").val($(this).data('idsmta'));
-            $("input#txtNamasmta").val($(this).data('namasmta'));
-            $("input#txtNPSN").val($(this).data('npsnsmta'));
-            $("textarea#txtAlamatsmta").val($(this).data('alamatsmta'));
-            $("select#optProvinsi").val($(this).data('provinsismta')).change();
+        // $("#dataTable").on("click", ".editform", function(){
+        //     event.preventDefault();
+        //     $("input#idsmta").val($(this).data('idsmta'));
+        //     $("input#txtNamasmta").val($(this).data('namasmta'));
+        //     $("input#txtNPSN").val($(this).data('npsnsmta'));
+        //     $("textarea#txtAlamatsmta").val($(this).data('alamatsmta'));
+        //     $("select#optProvinsi").val($(this).data('provinsismta')).change();
 
-            $('#formnamasmta').attr('action', '<?php echo site_url('administrator/edit_smta'); ?>');
-        });
+        //     $('#formnamasmta').attr('action', '<?php //echo site_url('administrator/edit_smta'); ?>');
+        // });
 
-        $(document).on('click', '.deletedata', function() {
-            var idsmta = $(this).data("idsmta");
-            Swal.fire({
-              title: 'Apakah anda yakin akan menghapus?',
-              icon: 'warning',
-              showCancelButton: true,
-              confirmButtonColor: '#3085d6',
-              cancelButtonColor: '#d33',
-              confirmButtonText: 'Ya',
-              cancelButtonText: 'Tidak'
-            }).then((result) => {
-              if (result.isConfirmed) {
-                $.ajax({
-                    url: "<?php echo site_url(); ?>administrator/hapus_smta",
-                    method: "POST",
-                    data: {
-                        idsmta: idsmta
-                    },
-                    success: function(data) {
+        // $(document).on('click', '.deletedata', function() {
+        //     var idsmta = $(this).data("idsmta");
+        //     Swal.fire({
+        //       title: 'Apakah anda yakin akan menghapus?',
+        //       icon: 'warning',
+        //       showCancelButton: true,
+        //       confirmButtonColor: '#3085d6',
+        //       cancelButtonColor: '#d33',
+        //       confirmButtonText: 'Ya',
+        //       cancelButtonText: 'Tidak'
+        //     }).then((result) => {
+        //       if (result.isConfirmed) {
+        //         $.ajax({
+        //             url: "<?php echo site_url(); ?>administrator/hapus_smta",
+        //             method: "POST",
+        //             data: {
+        //                 idsmta: idsmta
+        //             },
+        //             success: function(data) {
                         
-                    }
-                });
-                Swal.fire(
-                  'Terhapus!'
-                );
-                location.reload();
-              }
-            })
-        });
+        //             }
+        //         });
+        //         Swal.fire(
+        //           'Terhapus!'
+        //         );
+        //         location.reload();
+        //       }
+        //     })
+        // });
 
         $(document).on('click', '#btnTambahsmta', function() {
             $("#provinsismta").change(function() {
@@ -404,8 +404,8 @@
             var alamatsmta = $("#alamatsmta").val();
             
             Swal.fire({
-                title: 'Apakah Anda Yakin akan menghapus?',
-                icon: 'warning',
+                title: 'SMTA berhasil ditambahkan',
+                icon: 'success',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
                 cancelButtonColor: '#d33',
@@ -431,10 +431,6 @@
                         }
                     });
 
-                    Swal.fire(
-                        'Sukses!',
-                        'Data SMTA Berhasil Ditambah!',
-                        )
                     };
                     
                     location.reload();            
@@ -442,52 +438,52 @@
 
         });
 
-    	$("#tableSMTA").on("click", ".btnEdit", function() {
-            var idsmta = $("#idsmta").val();
-            var namasmta = $("#txtNamasmta").val();
-            var provinsismta = $("#optProvinsi").val();
-            var kabupatensmta = $("#optKabupaten").val();
-            var kecamatansmta = $("#optKecamatan").val();
-            var npsnsmta = $("#txtNPSN").val();
-            var alamatsmta = $("#txtAlamatsmta").val();
+    	// $("#tableSMTA").on("click", ".btnEdit", function() {
+     //        var idsmta = $("#idsmta").val();
+     //        var namasmta = $("#txtNamasmta").val();
+     //        var provinsismta = $("#optProvinsi").val();
+     //        var kabupatensmta = $("#optKabupaten").val();
+     //        var kecamatansmta = $("#optKecamatan").val();
+     //        var npsnsmta = $("#txtNPSN").val();
+     //        var alamatsmta = $("#txtAlamatsmta").val();
 
-            Swal.fire({
-                title: 'Apakah Anda Yakin akan mengubah?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya',
-                cancelButtonText: 'Tidak'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: "<?php echo site_url(); ?>administrator/edit_smta",
-                        method: "POST",
-                        data: {
-                            idsmta: idsmta,
-                            namasmta: namasmta,
-                            provinsismta: provinsismta,
-                            kabupatensmta: kabupatensmta,
-                            kecamatansmta: kecamatansmta,
-                            npsnsmta: npsnsmta,
-                            alamatsmta: alamatsmta
-                        },
+     //        Swal.fire({
+     //            title: 'Apakah Anda Yakin akan mengubah?',
+     //            icon: 'warning',
+     //            showCancelButton: true,
+     //            confirmButtonColor: '#3085d6',
+     //            cancelButtonColor: '#d33',
+     //            confirmButtonText: 'Ya',
+     //            cancelButtonText: 'Tidak'
+     //            }).then((result) => {
+     //            if (result.isConfirmed) {
+     //                $.ajax({
+     //                    url: "<?php echo site_url(); ?>administrator/edit_smta",
+     //                    method: "POST",
+     //                    data: {
+     //                        idsmta: idsmta,
+     //                        namasmta: namasmta,
+     //                        provinsismta: provinsismta,
+     //                        kabupatensmta: kabupatensmta,
+     //                        kecamatansmta: kecamatansmta,
+     //                        npsnsmta: npsnsmta,
+     //                        alamatsmta: alamatsmta
+     //                    },
                         
-                        success: function(data) {
+     //                    success: function(data) {
 
-                        }
-                    });
+     //                    }
+     //                });
 
-                    Swal.fire(
-                        'Sukses!',
-                        'Data SMTA Berhasil Diubah!',
-                        )
-                    };
+     //                Swal.fire(
+     //                    'Sukses!',
+     //                    'Data SMTA Berhasil Diubah!',
+     //                    )
+     //                };
                     
-                    location.reload();            
-            })
-        });        
+     //                location.reload();            
+     //        })
+     //    });        
 
     });
 </script>

@@ -316,9 +316,8 @@ class Datatables extends CI_Controller
             $row[] = $smta->nama_smta;
             $row[] = $smta->npsn_smta;
             $row[] = $smta->alamat_smta;
-            $row[] = '
-            <a href="" data-id="' . $smta->id . '" data-toggle="modal" data-target="#editDataSMTA" class="btn btn-sm btn-primary btnEdit"><i class="fa fa-edit"></i></a>&nbsp;
-            <a href="" class="btn btn-sm btn-danger btnHapus" data-id="' . $smta->id . '"><i class="fa fa-trash"></i></a>&nbsp';
+            $row[] = '';
+            
            
             $data[] = $row;
         }
