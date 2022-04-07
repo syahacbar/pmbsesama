@@ -11,8 +11,23 @@ class User extends CI_Controller
 			redirect('auth/login', 'refresh');
 		}
         $this->load->model('M_user');
+        $this->load->model('M_register');
         $this->load->model('Ion_auth_model');
         $this->load->library(['ion_auth', 'form_validation']);
+    }
+
+    public function reset_password($userawal,$userakhir)
+    {
+        for ($i=$userawal; $i<=$userakhir; $i++)
+        {
+            //update di tabel users
+            $this->ion_auth->reset_password($i, 'UNIPA2022A');
+
+            $this->M_register->update_biodata($i,array('pass'=>'UNIPA2022A'));
+
+            echo "Reset pass user ".$i." berhasil ! <br>";
+        }
+        
     }
 
     public function index()
