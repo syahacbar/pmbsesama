@@ -87,7 +87,7 @@
                     <!-- Topbar Search -->
                     <form class="d-none d-sm-inline-block form-inline my-md-0 mw-100 navbar-search">
                         <div class="input-group">
-                            <h5>PANEL OPERATOR SEKOLAH</h5>
+                            <h5>PANEL OPERATOR</h5>
                         </div>
                     </form>
 
