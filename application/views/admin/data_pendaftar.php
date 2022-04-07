@@ -836,33 +836,7 @@
     												</div>
     											</div>
 
-    											<div class="col-sm-6 col-md-6 col-lg-6">
-    												<div class="form-group">
-    													<label>NPSN (Nomor Pokok Sekolah Nasional) *</label>
-    													<input name="nisnsmta" id="nisnsmta" type="text" class="form-control" placeholder="" value="" required>
-    													<small>Ketik NPSN SMTA Anda.</small>
-    												</div>
-    											</div>
-
-    											<div class="col-sm-6 col-md-6 col-lg-6">
-    												<div class="form-group">
-    													<label>Provinsi SMTA *</label>
-    													<select name="provinsismta" id="provinsismta" class="form-select" aria-label="Default select example">
-    														<option> -- Pilih -- </option>
-    														<?php foreach ($provinsi as $prov) : ?>
-    															<option value="<?php echo $prov['kode']; ?>"><?php echo $prov['nama']; ?></option>
-    														<?php endforeach; ?>
-    													</select>
-    												</div>
-    											</div>
-
-    											<div class="col-sm-6 col-md-6 col-lg-6">
-    												<div class="form-group">
-    													<label>Alamat SMTA</label>
-    													<textarea name="alamatsmta" id="alamatsmta" type="text" class="form-control" placeholder="" value="" required></textarea>
-    													<small>Maksimal 50 karakter, gunakan spasi untuk memisahkan tiap kata</small>
-    												</div>
-    											</div>
+    											
 
     											<div class="col-sm-12 mt-4">
     												<div class="form-group">
@@ -1122,12 +1096,12 @@
     											<div class="col-sm-6 col-md-6 col-lg-6">
     												<div class="form-group">
     													<label>Nama Wali</label>
-    													<input name="namawali" id="namawali" type="text" class="form-control" placeholder="" value="" required>
+    													<input name="namawali" id="namawali" type="text" class="form-control" placeholder="" value="">
     												</div>
     											</div>
     											<div class="col-sm-6 col-md-6 col-lg-6">
     												<div class="form-group">
-    													<label>Pekerjaan Wali *</label>
+    													<label>Pekerjaan Wali</label>
     													<select name="pekerjaanwali" id="pekerjaanwali" class="form-select" aria-label="Default select example">
     														<option> -- Pilih -- </option>
     														<?php foreach ($pekerjaanortu as $pk) : ?>
@@ -1138,7 +1112,7 @@
     											</div>
     											<div class="col-sm-6 col-md-6 col-lg-6">
     												<div class="form-group">
-    													<label>Penghasilan Wali *</label>
+    													<label>Penghasilan Wali</label>
     													<select name="penghasilanwali" id="penghasilanwali" class="form-select" aria-label="Default select example">
     														<option> -- Pilih -- </option>
     														<?php foreach ($penghasilanortu as $ph) : ?>
@@ -1149,14 +1123,14 @@
     											</div>
     											<div class="col-sm-6 col-md-6 col-lg-6">
     												<div class="form-group">
-    													<label>No. HP Wali *</label>
-    													<input name="nohp_wali" id="nohp_wali" type="text" class="form-control" placeholder="" value="" required>
+    													<label>No. HP Wali</label>
+    													<input name="nohp_wali" id="nohp_wali" type="text" class="form-control" placeholder="" value="">
     												</div>
     											</div>
     											<div class="col-sm-6 col-md-6 col-lg-6">
     												<div class="form-group">
-    													<label>Alamat Wali *</label>
-    													<textarea name="alamatwali" id="alamatwali" type="text" class="form-control" placeholder="" value="" required></textarea>
+    													<label>Alamat Wali</label>
+    													<textarea name="alamatwali" id="alamatwali" type="text" class="form-control" placeholder="" value=""></textarea>
     													<small>Alamat wali saat ini. Maksimal 50 karakter.</small>
     												</div>
     											</div>
@@ -1608,7 +1582,7 @@
     				var alamat_wali = $("textarea[name='alamatwali']").val();
 
     				$.ajax({
-    					url: "<?php echo site_url('administrator/pendaftar_update'); ?>",
+    					url: "<?php echo site_url('administrator/edit_pendaftar'); ?>",
     					type: "POST",
     					data: {
     						// Indentitas Pribadi

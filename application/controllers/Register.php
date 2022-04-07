@@ -168,7 +168,6 @@ class Register extends CI_Controller
 
 	public function next1()
 	{
-
 		$user = $this->ion_auth->user()->row();
 		$params = array(
 			'nisn_pendaftar' => $this->input->post('nisn_pendaftar'),

@@ -25,6 +25,7 @@ class Administrator extends CI_Controller
 		$this->load->model('M_statusmenikah');
 		$this->load->model('M_fakultas');
 		$this->load->model('M_prodi');
+		$this->load->model('M_namasmta');
 
 	}
 
@@ -405,7 +406,22 @@ class Administrator extends CI_Controller
 	public function datapendaftar()
 	{
 		$this->load->model(['M_prodi', 'M_register', 'M_pendaftar', 'M_informasi']);
-		$data['listprodi'] = $this->M_prodi->get_all();
+		$data = array(
+			'agama' => $this->M_agama->get_all(),
+			'listprodi' => $this->M_prodi->get_all(),
+			'agama' => $this->M_agama->get_all(),
+			'statusmenikah' => $this->M_statusmenikah->get_all(),
+			'prodi' => $this->M_prodi->get_all(),
+			'provinsi' => $this->M_wilayah->get_all_provinsi(),
+			'jurusansmta' => $this->M_jurusansmta->get_all(),
+			'jenissmta' => $this->M_jenissmta->get_all(),
+			'pendidikanortu' => $this->M_pendidikanortu->get_all(),
+			'pekerjaanortu' => $this->M_pekerjaanortu->get_all(),
+			'penghasilanortu' => $this->M_penghasilanortu->get_all(),
+			'kabupaten' => $this->M_wilayah->get_all_kabupaten(),
+			'namasmta' => $this->M_namasmta->get_all(),
+		);
+
 		$data['_view'] = 'admin/data_pendaftar';
 		$this->load->view('admin/layout', $data);
 
@@ -427,6 +443,77 @@ class Administrator extends CI_Controller
 		// 	$data['editpendaftar'] = $this->M_pendaftar->data_pendaftar($this->uri->segment(4))->result_array();
 		// 	$this->load->view('admin/edit_pendaftar', $data);
 		// }
+	}
+	public function edit_pendaftar()
+	{
+		$params = array(
+			'nisn_pendaftar' => $this->input->post('nisn_pendaftar'),
+			'nik' => $this->input->post('nik'),
+			'jeniskelamin' => $this->input->post('jenkel'),
+			'suku' => $this->input->post('suku'),
+			'agama' => $this->input->post('agama'),
+			'statusmenikah' => $this->input->post('statusmenikah'),
+			'prodipilihan1' => $this->input->post('prodipilihan1'),
+			'prodipilihan2' => $this->input->post('prodipilihan2'),
+			'prodipilihan3' => $this->input->post('prodipilihan3'),
+			'prov_tempatlahir' => $this->input->post('prov_tempatlahir'),
+			'kab_tempatlahir' => $this->input->post('kab_tempatlahir'),
+			'lokasi_tempatlahir'  => $this->input->post('lokasi_tempatlahir'),
+			'tgl_lahir' => $this->input->post('tgl_lahir'),
+			'negara_tempattinggal' => $this->input->post('negara_tempattinggal'),
+			'prov_tempattinggal' => $this->input->post('prov_tempattinggal'),
+			'kab_tempattinggal' => $this->input->post('kab_tempattinggal'),
+			'kec_tempattinggal' => $this->input->post('kec_tempattinggal'),
+			'des_tempattinggal' => $this->input->post('des_tempattinggal'),
+			'kodepos_tempattinggal' => $this->input->post('kodepos_tempattinggal'),
+			'alamat_tempattinggal' => $this->input->post('alamat_tempattinggal'),
+			'alamatlain_tempattinggal' => $this->input->post('alamatlain_tempattinggal'),
+			'tinggibadan' => $this->input->post('tinggibadan'),
+			'beratbadan' => $this->input->post('beratbadan'),
+
+			'tahunlulus_smta' => $this->input->post('tahunlulussmta'),
+			'jurusansmta' => $this->input->post('jurusansmta'),
+			'jenissmta' => $this->input->post('jenissmta'),
+			'nrapor1' => $this->input->post('nrapor1'),
+			'nrapor2' => $this->input->post('nrapor2'),
+			'nrapor3' => $this->input->post('nrapor3'),
+
+			'nik_ayah' => $this->input->post('nik_ayah'),
+			'nama_ayah' => $this->input->post('nama_ayah'),
+			'pendidikan_ayah' => $this->input->post('pendidikanayah'),
+			'pekerjaan_ayah' => $this->input->post('pekerjaanayah'),
+			'alamatkantor_ayah' => $this->input->post('alamatkantor_ayah'),
+			'nik_ibu' => $this->input->post('nik_ibu'),
+			'nama_ibu' => $this->input->post('nama_ibu'),
+			'pendidikan_ibu' => $this->input->post('pendidikanibu'),
+			'pekerjaan_ibu' => $this->input->post('pekerjaanibu'),
+			'penghasilan_ortu' => $this->input->post('penghasilanortu'),
+			'alamat_ortu' => $this->input->post('alamat_ortu'),
+			'provinsi_tempattinggalortu' => $this->input->post('provinsi_ortu'),
+			'kab_tempattinggalortu' => $this->input->post('kabupaten_ortu'),
+			'kec_tempattinggalortu' => $this->input->post('kecamatan_ortu'),
+			'kodepost_tempattinggalortu' => $this->input->post('kodepos_ortu'),
+			'nohp_ortu' => $this->input->post('nohp_ortu'),
+
+			'nama_wali' => $this->input->post('nama_wali'),
+			'pekerjaan_wali' => $this->input->post('pekerjaanwali'),
+			'penghasilan_wali' => $this->input->post('penghasilanwali'),
+			'alamat_wali' => $this->input->post('alamat_wali'),
+
+		);
+		$username = $this->input->post('username');
+		$this->M_register->update_biodata($username, $params);
+		echo json_encode(array("statusCode" => 1));
+	}
+	public function hapus_pendaftar()
+	{
+		$username = $this->input->get('username');
+		$response = $this->M_pendaftar->hapus_data($username);
+		if ($response == true) {
+			echo "Data deleted successfully !";
+		} else {
+			echo "Error !";
+		}
 	}
 
 	public function kartupeserta($username)
@@ -674,16 +761,7 @@ class Administrator extends CI_Controller
 	// 	echo json_encode(array('status' => TRUE));
 	// }
 
-	public function hapus_pendaftar()
-	{
-		$username = $this->input->get('username');
-		$response = $this->M_pendaftar->hapus_data($username);
-		if ($response == true) {
-			echo "Data deleted successfully !";
-		} else {
-			echo "Error !";
-		}
-	}
+	
 
 	public function ref_namasmta()
 	{

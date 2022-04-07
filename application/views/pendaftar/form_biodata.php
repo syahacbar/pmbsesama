@@ -1038,8 +1038,8 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Alamat Kantor Ayah *</label>
-                                                <textarea name="alamatkantorayah" id="alamatkantorayah" type="text" class="form-control" placeholder="" value="<?php echo $row['alamatkantor_ayah']; ?>" required><?php echo $row['alamatkantor_ayah']; ?></textarea>
+                                                <label>Alamat Kantor Ayah</label>
+                                                <textarea name="alamatkantorayah" id="alamatkantorayah" type="text" class="form-control" placeholder="" value="<?php echo $row['alamatkantor_ayah']; ?>"><?php echo $row['alamatkantor_ayah']; ?></textarea>
                                                 <small>Alamat kantor Ayah, maksimal 50 karakter.</small>
                                             </div>
                                         </div>
