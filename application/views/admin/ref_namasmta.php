@@ -63,35 +63,6 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <!-- <?php
-                                //$no = 1;
-                                //foreach ($namasmta as $ns) : ?>
-                                    <tr>
-                                        <td><?php //echo $no++; ?></td>
-                                        <td><?php //echo $ns['nama_smta']; ?></td>
-                                        <td><?php //echo $ns['npsn_smta']; ?></td>
-                                        <td><?php //echo $ns['alamat_smta']; ?></td>
-                                        <td>
-                                            <a href="#" class="btn btn-info btn-icon-split btn-sm editform" data-toggle="modal" data-target="#editDataSMTA" data-idsmta="<?php //echo $ns['id'] ?>" 
-                                                data-namasmta="<?php //echo $ns['nama_smta'] ?>"
-                                                data-npsnsmta="<?php //echo $ns['npsn_smta'] ?>"
-                                                data-alamatsmta="<?php //echo $ns['alamat_smta'] ?>"
-                                                data-provinsismta="<?php //echo $ns['kodeprovinsi'] ?>"
-                                                >
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-edit"></i>
-                                                </span>
-                                                <span class="text">Edit</span>
-                                            </a>
-                                            <a href="#" class="btn btn-danger btn-icon-split btn-sm deletedata" data-idsmta="<?php //echo $ns['id'] ?>">
-                                                <span class="icon text-white-50">
-                                                    <i class="fas fa-trash"></i>
-                                                </span>
-                                                <span class="text">Hapus</span>
-                                            </a>
-                                        </td>
-                                    </tr>
-                                <?php //endforeach; ?> -->
                             </tbody>
                         </table>
                     </div>
@@ -161,8 +132,7 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <!-- <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Simpan</button> -->
-                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
                         <button class="btn btn-primary btnSimpansmta">Save</button>
                     </div>
                     <?php echo form_close(); ?>
