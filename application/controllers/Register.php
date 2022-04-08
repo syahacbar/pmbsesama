@@ -194,7 +194,7 @@ class Register extends CI_Controller
 			'prodipilihan3' => $prodi3,
 			'prov_tempatlahir' => $this->input->post('prov_tempatlahir'),
 			'kab_tempatlahir' => $this->input->post('kab_tempatlahir'),
-			'lokasi_tempatlahir'  => $this->input->post('lokasi_tempatlahir'),
+			'lokasi_tempatlahir'  => strtoupper($this->input->post('lokasi_tempatlahir')),
 			'tgl_lahir' => $this->input->post('tgl_lahir'),
 			'negara_tempattinggal' => $this->input->post('negara_tempattinggal'),
 			'prov_tempattinggal' => $this->input->post('prov_tempattinggal'),
@@ -202,8 +202,8 @@ class Register extends CI_Controller
 			'kec_tempattinggal' => $this->input->post('kec_tempattinggal'),
 			'des_tempattinggal' => $this->input->post('des_tempattinggal'),
 			'kodepos_tempattinggal' => $this->input->post('kodepos_tempattinggal'),
-			'alamat_tempattinggal' => $this->input->post('alamat_tempattinggal'),
-			'alamatlain_tempattinggal' => $this->input->post('alamatlain_tempattinggal'),
+			'alamat_tempattinggal' => strtoupper($this->input->post('alamat_tempattinggal')),
+			'alamatlain_tempattinggal' => strtoupper($this->input->post('alamatlain_tempattinggal')),
 			'tinggibadan' => $this->input->post('tinggibadan'),
 			'beratbadan' => $this->input->post('beratbadan'),
 		);
@@ -243,16 +243,16 @@ class Register extends CI_Controller
 		$user = $this->ion_auth->user()->row();
 		$params3 = array(
 			'nik_ayah' => $this->input->post('nik_ayah'),
-			'nama_ayah' => $this->input->post('nama_ayah'),
+			'nama_ayah' => strtoupper($this->input->post('nama_ayah')),
 			'pendidikan_ayah' => $this->input->post('pendidikanayah'),
 			'pekerjaan_ayah' => $this->input->post('pekerjaanayah'),
-			'alamatkantor_ayah' => $this->input->post('alamatkantor_ayah'),
+			'alamatkantor_ayah' => strtoupper($this->input->post('alamatkantor_ayah')),
 			'nik_ibu' => $this->input->post('nik_ibu'),
-			'nama_ibu' => $this->input->post('nama_ibu'),
+			'nama_ibu' => strtoupper($this->input->post('nama_ibu')),
 			'pendidikan_ibu' => $this->input->post('pendidikanibu'),
 			'pekerjaan_ibu' => $this->input->post('pekerjaanibu'),
 			'penghasilan_ortu' => $this->input->post('penghasilanortu'),
-			'alamat_ortu' => $this->input->post('alamat_ortu'),
+			'alamat_ortu' => strtoupper($this->input->post('alamat_ortu')),
 			'provinsi_tempattinggalortu' => $this->input->post('provinsi_ortu'),
 			'kab_tempattinggalortu' => $this->input->post('kabupaten_ortu'),
 			'kec_tempattinggalortu' => $this->input->post('kecamatan_ortu'),
@@ -269,10 +269,10 @@ class Register extends CI_Controller
 
 		$user = $this->ion_auth->user()->row();
 		$params4 = array(
-			'nama_wali' => $this->input->post('nama_wali'),
+			'nama_wali' => strtoupper($this->input->post('nama_wali')),
 			'pekerjaan_wali' => $this->input->post('pekerjaanwali'),
 			'penghasilan_wali' => $this->input->post('penghasilanwali'),
-			'alamat_wali' => $this->input->post('alamat_wali'),
+			'alamat_wali' => strtoupper($this->input->post('alamat_wali')),
 		);
 		$this->M_register->update_biodata($user->username, $params4);
 		echo json_encode(array("statusCode" => 1));

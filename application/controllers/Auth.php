@@ -565,14 +565,14 @@ class Auth extends CI_Controller
 
 		$biodata_awal = [
 			'username' => $username,
-			'namalengkap' => $this->input->post('namalengkap'),
+			'namalengkap' => strtoupper($this->input->post('namalengkap')),
 			't_jalurmasuk_id' => $this->input->post('jalurmasuk'),
 			't_kelompokujian_id' => $this->input->post('kelompokujian'),
 			't_gelombang_id' => $this->input->post('gelombang'),
 			'tahunakademik' => $this->input->post('tahunakademik'),
 			'nama_smta'=> $this->input->post('namasmta'),
 			'pass' => $password,
-			'negara_tempattinggal' => 'Indonesia',
+			'negara_tempattinggal' => 'INDONESIA',
 		];
 
 		$is_valid = $this->recaptcha->is_valid();
