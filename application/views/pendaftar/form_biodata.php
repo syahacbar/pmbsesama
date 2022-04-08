@@ -1479,6 +1479,7 @@
                     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + provortu +"/" + $("#h_kabupatenortu").val();
                     $('#kabupatenortu').load(url);
                 }
+                
                 $("#kabupatenortu").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
                     $('#kecamatanortu').load(url);
@@ -1520,28 +1521,7 @@
                     //set selected kec by data from db
                     var url = "<?php  echo site_url('register/add_ajax_des'); ?>/" + h_kectempattinggal +"/" + $("#h_destempattinggal").val();
                     $('#destempattinggal').load(url);
-                }
-
-                // $("input[name='namasmta']").val();
-
-                // $("#namasmta").select2({
-                //     theme: "bootstrap",
-                //     placeholder: '-- Pilih SMTA --',
-                //     minimumInputLength: 1,
-                //     ajax: {
-                //         url: "<?php //echo site_url('register/searchSMTA');?>",
-                //         dataType: 'json',
-                //         delay: 250,
-                //         processResults: function (data) {
-                //             return {
-                //                 results: data
-                //             };
-                //         },
-                //         cache: true
-                //     }
-                // });
-
-                
+                }                
 
                 $('#next1').on('click', function() {
                     $("#next1").attr("disabled", "disabled");

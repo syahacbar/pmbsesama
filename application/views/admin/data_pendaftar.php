@@ -1573,7 +1573,7 @@
     				var kodepos_ortu = $("input[name='kodeposortu']").val();
     				var nohp_ortu = $("input[name='nohportu']").val();
 
-    				// Biodata Wali
+    				// Biodata Wali 
     				var nama_wali = $("input[name='namawali']").val();
     				var pekerjaanwali = $("select[name='pekerjaanwali']").val();
     				var penghasilanwali = $("select[name='penghasilanwali']").val();
@@ -1754,7 +1754,6 @@
     			});
 
     			$("#tablePendaftar").on("click", ".btnHapus", function() {
-    				
     				var idt_biodata = $(this).attr('idt_biodata');
     				$.ajax({
     					type: "POST",

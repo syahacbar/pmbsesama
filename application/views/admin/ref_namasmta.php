@@ -21,7 +21,7 @@
 						<div class="col-md-3">
                             <label for="optProvinsi" class="form-label">Pilih Provinsi</label>
                             <select name="optProvinsi" id="optProvinsi" class="form-control">
-                                <option>Pilih Provinsi</option>
+                                <option value="0">-- Semua Provinsi --</option>
                                 <?php foreach ($provinsi AS $pr) : ?>
                                 <option value="<?php echo $pr['kode'];?>"><?php echo $pr['nama'];?></option>
                             <?php endforeach; ?>
@@ -30,14 +30,14 @@
 						<div class="col-md-3">
 							<label for="txtKabupaten" class="form-label">Pilih Kabupaten/Kota</label>
                             <select name="optKabupaten" id="optKabupaten" class="form-control">
-                                <option>Pilih Kabupaten/Kota</option>
+                                <option value="0">-- Semua Kabupaten/Kota --</option>
                             </select>
 						</div>    
 
 						<div class="col-md-3">
 							<label for="txtKecamatan" class="form-label">Pilih Kecamatan</label>
                             <select name="optKecamatan" id="optKecamatan" class="form-control">
-                                <option>Pilih Kecamatan</option>
+                                <option value="0">-- Semua Kecamatan --</option>
                             </select>
 						</div>    					
 					</form>
@@ -94,7 +94,7 @@
                                         <div class="form-group">
                                             <label>Provinsi</label>
                                             <select name="provinsismta" id="provinsismta" class="form-control">
-                                                <option>Pilih Provinsi</option>
+                                                <option value="0">-- Pilih Provinsi --</option>
                                                 <?php foreach ($provinsi AS $pr) : ?>
                                                 <option value="<?php echo $pr['kode'];?>"><?php echo $pr['nama'];?></option>
                                             <?php endforeach; ?>
@@ -104,7 +104,7 @@
                                         <div class="form-group">
                                             <label>Kecamatan</label>
                                             <select name="kecamatansmta" id="kecamatansmta" class="form-control">
-                                                <option>Pilih Kecamatan</option>
+                                                <option value="0">-- Pilih Kecamatan --</option>
                                             </select>
                                         </div>
 
@@ -118,13 +118,13 @@
                                         <div class="form-group">
                                             <label>Kabupaten</label>
                                             <select name="kabupatensmta" id="kabupatensmta" class="form-control">
-                                                <option>Pilih Kabupaten</option>
+                                                <option value="0">-- Pilih Kabupaten --</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea id="alamatsmta" type="text" class="form-control" name="alamatsmta" placeholder="Alamat" required></textarea>
+                                            <textarea id="alamatsmta" type="text" class="form-control" name="alamatsmta" placeholder="Alamat"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -156,13 +156,13 @@
                                     <div class="col-sm-6">
                                     <div class="form-group">
                                         <label>Nama SMTA</label>
-                                            <input id="txtNamasmta" type="text" class="form-control" name="namasmta" placeholder="Nama SMTA" value="" required>
-                                            <input type="hidden" id="idsmta" name="idsmta">
+                                            <input id="edit_namasmta" type="text" class="form-control" name="edit_namasmta" placeholder="Nama SMTA" value="" required>
+                                            <input type="hidden" id="edit_idsmta" name="edit_idsmta">
                                         </div>
                                         <div class="form-group">
                                             <label>Provinsi</label>
-                                            <select name="optProvinsi" id="optProvinsi" class="form-control">
-                                                <option>Pilih Provinsi</option>
+                                            <select name="edit_provinsismta" id="edit_provinsismta" class="form-control">
+                                                <option value="0">-- Pilih Provinsi --</option>
                                                 <?php foreach ($provinsi AS $pr) : ?>
                                                 <option value="<?php echo $pr['kode'];?>"><?php echo $pr['nama'];?></option>
                                             <?php endforeach; ?>
@@ -171,8 +171,8 @@
 
                                         <div class="form-group">
                                             <label>Kecamatan</label>
-                                            <select name="optKecamatan" id="optKecamatan" class="form-control">
-                                                <option>Pilih Kecamatan</option>
+                                            <select name="edit_kecamatansmta" id="edit_kecamatansmta" class="form-control">
+                                                <option value="0">-- Pilih Kecamatan --</option>
                                             </select>
                                         </div>
 
@@ -180,20 +180,21 @@
                                     <div class="col-sm-6">
                                         <div class="form-group">
                                             <label>NPSN</label>
-                                            <input id="txtNPSN" type="text" class="form-control" name="npsnsmta" placeholder="NPSN" required>
+                                            <input id="edit_npsnsmta" type="text" class="form-control" name="edit_npsnsmta" placeholder="NPSN" required>
                                         </div>
                                         
                                         
                                         <div class="form-group">
                                             <label>Kabupaten</label>
-                                            <select name="optKabupaten" id="optKabupaten" class="form-control">
-                                                <option>Pilih Kabupaten</option>
+                                            <input type="hidden" name="h_edit_kabupatensmta" id="h_edit_kabupatensmta" value="">
+                                            <select name="edit_kabupatensmta" id="edit_kabupatensmta" class="form-control">
+                                                <option value="0">-- Pilih Kabupaten --</option>
                                             </select>
                                         </div>
 
                                         <div class="form-group">
                                             <label>Alamat</label>
-                                            <textarea id="txtAlamatsmta" type="text" class="form-control" name="alamatsmta" placeholder="Alamat" required></textarea>
+                                            <textarea id="edit_alamatsmta" type="text" class="form-control" name="edit_alamatsmta" placeholder="Alamat"></textarea>
                                         </div>
                                     </div>
                                 </div>
@@ -201,9 +202,8 @@
                         </div>
                     </div>
                     <div class="modal-footer">
-                        <!-- <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Simpan</button> -->
-                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Reset</button>
-                        <button type="submit" class="btn btn-primary btnSimpan">Save</button>
+                        <button type="reset" class="btn btn-secondary" data-dismiss="modal">Kembali</button>
+                        <button type="submit" class="btn btn-primary btnSimpanEdit">Save</button>
                     </div>
                     <?php echo form_close(); ?>
                 </div>
@@ -217,6 +217,7 @@
     var tablePendaftar;
 
     $(document).ready(function() {
+        load_data();
         function reload_table() {
             $('#tableSMTA').DataTable().ajax.reload(null, false);
         };
@@ -309,48 +310,6 @@
             tableSMTA.search('').draw();
         });
 
-        //var table = $('#dataTable').DataTable();
-        // $("#dataTable").on("click", ".editform", function(){
-        //     event.preventDefault();
-        //     $("input#idsmta").val($(this).data('idsmta'));
-        //     $("input#txtNamasmta").val($(this).data('namasmta'));
-        //     $("input#txtNPSN").val($(this).data('npsnsmta'));
-        //     $("textarea#txtAlamatsmta").val($(this).data('alamatsmta'));
-        //     $("select#optProvinsi").val($(this).data('provinsismta')).change();
-
-        //     $('#formnamasmta').attr('action', '<?php //echo site_url('administrator/edit_smta'); ?>');
-        // });
-
-        // $(document).on('click', '.deletedata', function() {
-        //     var idsmta = $(this).data("idsmta");
-        //     Swal.fire({
-        //       title: 'Apakah anda yakin akan menghapus?',
-        //       icon: 'warning',
-        //       showCancelButton: true,
-        //       confirmButtonColor: '#3085d6',
-        //       cancelButtonColor: '#d33',
-        //       confirmButtonText: 'Ya',
-        //       cancelButtonText: 'Tidak'
-        //     }).then((result) => {
-        //       if (result.isConfirmed) {
-        //         $.ajax({
-        //             url: "<?php echo site_url(); ?>administrator/hapus_smta",
-        //             method: "POST",
-        //             data: {
-        //                 idsmta: idsmta
-        //             },
-        //             success: function(data) {
-                        
-        //             }
-        //         });
-        //         Swal.fire(
-        //           'Terhapus!'
-        //         );
-        //         location.reload();
-        //       }
-        //     })
-        // });
-
         $(document).on('click', '#btnTambahsmta', function() {
             $("#provinsismta").change(function() {
                 var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
@@ -372,88 +331,164 @@
             var kecamatansmta = $("#kecamatansmta").val();
             var npsnsmta = $("#npsnsmta").val();
             var alamatsmta = $("#alamatsmta").val();
-            
-            Swal.fire({
-                title: 'SMTA berhasil ditambahkan',
-                icon: 'success',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya',
-                cancelButtonText: 'Tidak'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: "<?php echo site_url(); ?>administrator/tambah_smta",
-                        method: "POST",
-                        data: {
-                            namasmta: namasmta,
-                            provinsismta: provinsismta,
-                            kabupatensmta: kabupatensmta,
-                            kecamatansmta: kecamatansmta,
-                            npsnsmta: npsnsmta,
-                            alamatsmta: alamatsmta
-                        },
 
-                        success: function(data) {
-                            // alert("Data Berhasil Dihapus");
-                            // location.reload();
-                        }
+             $.ajax({
+                url: "<?php echo site_url(); ?>administrator/tambah_smta",
+                method: "POST",
+                data: {
+                    namasmta: namasmta,
+                    provinsismta: provinsismta,
+                    kabupatensmta: kabupatensmta,
+                    kecamatansmta: kecamatansmta,
+                    npsnsmta: npsnsmta,
+                    alamatsmta: alamatsmta
+                },
+
+                success: function(data) {
+                    var dataResult = JSON.parse(data);
+                        if (dataResult.statusCode == 1) {
+                            Swal.fire({
+                                title: 'Berhasil tambah SMTA',
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Ya',
+                            }).then((result) => {
+                                if (result.isConfirmed) {  
+                                     $('#newDataSMTA').modal('hide');                         
+                                    reload_table();
+                                };     
+                            })
+                        }       
+                },
+            });
+        });
+        
+    	$("#tableSMTA").on("click", ".btnEdit", function() {
+            var idsmta = $(this).data('idsmta');
+            $.ajax({
+                type: "POST",
+                url: '<?php echo site_url() ?>/datatables/editsmta/' + idsmta,
+                data: {
+                    idsmta: idsmta,
+                },
+                success: function(response) {
+                    var json = $.parseJSON(response);
+                    $('input[name="edit_idsmta"]').val(json.id);
+                    $('input[name="edit_namasmta"]').val(json.nama_smta);
+                    $('input[name="edit_npsnsmta"]').val(json.npsn_smta);
+                    $('select[name="edit_provinsismta"]').val(json.provinsi_smta).attr('selected', 'selected');
+                    //$('select[name="edit_kabupatensmta"]').val(json.kabupaten_smta).attr('selected', 'selected');
+                    
+                    $("#edit_provinsismta").change(function() {
+                        var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+                        $('#edit_kabupatensmta').load(url);
+                        return false;
                     });
 
-                    };
-                    
-                    location.reload();            
-            })
+                    $("#edit_kabupatensmta").change(function() {
+                        var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
+                        $('#edit_kecamatansmta').load(url);
+                        return false;
+                    });
 
+                    var edit_provinsismta = $("#edit_provinsismta").val();
+                    if (edit_provinsismta != "0")
+                    {
+                    //set selected kab by data from db
+                        var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + edit_provinsismta +"/" + json.kabupaten_smta;
+                        $('#edit_kabupatensmta').load(url);
+                    }
+
+                    var url3 = "<?php echo site_url('register/add_ajax_kec'); ?>/" + json.kabupaten_smta + "/" + json.kecamatan_smta;
+                            $('#edit_kecamatansmta').load(url3);                 
+
+                    $('textarea[name="edit_alamatsmta"]').val(json.alamat_smta);
+
+                }
+            });
+        });        
+
+        $(document).on('click', '.btnSimpanEdit', function() {
+            var namasmta = $("#edit_namasmta").val();
+            var provinsismta = $("#edit_provinsismta").val();
+            var kabupatensmta = $("#edit_kabupatensmta").val();
+            var kecamatansmta = $("#edit_kecamatansmta").val();
+            var npsnsmta = $("#edit_npsnsmta").val();
+            var alamatsmta = $("#edit_alamatsmta").val();
+            var idsmta = $("#edit_idsmta").val();
+            $.ajax({
+                url: "<?php echo site_url(); ?>administrator/simpan_editsmta",
+                method: "POST",
+                data: {
+                    idsmta: idsmta,
+                    namasmta: namasmta,
+                    provinsismta: provinsismta,
+                    kabupatensmta: kabupatensmta,
+                    kecamatansmta: kecamatansmta,
+                    npsnsmta: npsnsmta,
+                    alamatsmta: alamatsmta
+                },
+
+                success: function(data) {
+                    var dataResult = JSON.parse(data);
+                    if (dataResult.statusCode == 1) {
+                        Swal.fire({
+                            title: 'SMTA berhasil diubah',
+                            icon: 'success',
+                            showCancelButton: false,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Ya',
+                        }).then((result) => {
+                            if (result.isConfirmed) {  
+                                 $('#editDataSMTA').modal('hide');                         
+                                reload_table();
+                            };     
+                        })
+                    }       
+                },
+
+            });
         });
 
-    	// $("#tableSMTA").on("click", ".btnEdit", function() {
-     //        var idsmta = $("#idsmta").val();
-     //        var namasmta = $("#txtNamasmta").val();
-     //        var provinsismta = $("#optProvinsi").val();
-     //        var kabupatensmta = $("#optKabupaten").val();
-     //        var kecamatansmta = $("#optKecamatan").val();
-     //        var npsnsmta = $("#txtNPSN").val();
-     //        var alamatsmta = $("#txtAlamatsmta").val();
-
-     //        Swal.fire({
-     //            title: 'Apakah Anda Yakin akan mengubah?',
-     //            icon: 'warning',
-     //            showCancelButton: true,
-     //            confirmButtonColor: '#3085d6',
-     //            cancelButtonColor: '#d33',
-     //            confirmButtonText: 'Ya',
-     //            cancelButtonText: 'Tidak'
-     //            }).then((result) => {
-     //            if (result.isConfirmed) {
-     //                $.ajax({
-     //                    url: "<?php echo site_url(); ?>administrator/edit_smta",
-     //                    method: "POST",
-     //                    data: {
-     //                        idsmta: idsmta,
-     //                        namasmta: namasmta,
-     //                        provinsismta: provinsismta,
-     //                        kabupatensmta: kabupatensmta,
-     //                        kecamatansmta: kecamatansmta,
-     //                        npsnsmta: npsnsmta,
-     //                        alamatsmta: alamatsmta
-     //                    },
-                        
-     //                    success: function(data) {
-
-     //                    }
-     //                });
-
-     //                Swal.fire(
-     //                    'Sukses!',
-     //                    'Data SMTA Berhasil Diubah!',
-     //                    )
-     //                };
-                    
-     //                location.reload();            
-     //        })
-     //    });        
+        $(document).on("click", ".btnHapus", function() {
+            var idsmta = $(this).data('idsmta');
+            $.ajax({
+                type: "POST",
+                url: '<?php echo site_url() ?>/administrator/hapus_smta/',
+                data: {
+                    idsmta: idsmta
+                },
+                success: function(data) {
+                    var dataResult = JSON.parse(data);
+                    if (dataResult.statusCode == 1) {
+                        Swal.fire({
+                            title: 'Apakah yakin akan menghapus SMTA?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Ya',
+                            cancelButtonText: 'Tidak',
+                        }).then((result) => {
+                            if (result.isConfirmed) {                          
+                                reload_table();
+                            };     
+                        })
+                    }    
+                },
+                error: function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Maaf...',
+                        text: 'Ada yang salah!',
+                        confirmButtonText: 'Kembali',
+                    })
+                }
+            });
+        });
 
     });
 </script>

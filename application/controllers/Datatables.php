@@ -317,7 +317,9 @@ class Datatables extends CI_Controller
             $row[] = $smta->nama_smta;
             $row[] = $smta->npsn_smta;
             $row[] = $smta->alamat_smta;
-            $row[] = '';
+            $row[] = '
+            <a data-idsmta="' . $smta->id . '" data-toggle="modal" data-target="#editDataSMTA"  class="btn btn-sm btn-info btnEdit" data-placement="top" title="Ubah SMTA"><i class="fa fa-edit"></i></a>&nbsp;
+            <a data-idsmta="' . $smta->id . '" class="btn btn-sm btn-danger btnHapus" data-toggle="tooltip" data-placement="top" title="Hapus SMTA"><i class="fa fa-trash"></i></a>';
             
            
             $data[] = $row;
@@ -331,5 +333,12 @@ class Datatables extends CI_Controller
         );
         //output to json format
         $this->output->set_output(json_encode($output));
+    }
+
+    public function editsmta($idsmta)
+    {
+        $data = $this->M_namasmta->edit_smta($idsmta)->row();
+
+        echo json_encode($data);
     }
 }

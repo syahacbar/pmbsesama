@@ -806,8 +806,7 @@ class Administrator extends CI_Controller
 	public function tambah_smta()
 	{
 		$this->load->model('M_namasmta');
-
-		$data = array(
+		$data = array( 
 			'nama_smta'  => $this->input->post('namasmta'),
 			'alamat_smta'  => $this->input->post('alamatsmta'),
 			'npsn_smta'  => $this->input->post('npsnsmta'),
@@ -816,10 +815,11 @@ class Administrator extends CI_Controller
 			'kecamatan_smta'  => $this->input->post('kecamatansmta'),
 		);
 		$this->M_namasmta->add($data);
-		redirect('pmbsesama/administrator/ref_namasmta');
+		echo json_encode(array("statusCode" => 1));
+
 	}
 
-	public function edit_smta()
+	public function simpan_editsmta()
 	{
 		$this->load->model('M_namasmta');
 		$idsmta = $this->input->post('idsmta');
@@ -827,10 +827,13 @@ class Administrator extends CI_Controller
 			'nama_smta'  => $this->input->post('namasmta'),
 			'alamat_smta'  => $this->input->post('alamatsmta'),
 			'npsn_smta'  => $this->input->post('npsnsmta'),
-			'provinsi_smta'  => $this->input->post('optProvinsi'),
+			'provinsi_smta'  => $this->input->post('provinsismta'),
+			'kabupaten_smta'  => $this->input->post('kabupatensmta'),
+			'kecamatan_smta'  => $this->input->post('kecamatansmta'),
 		);
 		$this->M_namasmta->edit($data, $idsmta);
-		redirect('pmbsesama/administrator/ref_namasmta');
+		echo json_encode(array("statusCode" => 1));
+
 
 	}
 
@@ -840,7 +843,8 @@ class Administrator extends CI_Controller
 
 		$id = $this->input->post('idsmta');
 		$this->M_namasmta->delete($id);
-		//redirect('pmbsesama/administrator/ref_namasmta');
+		echo json_encode(array("statusCode" => 1));
+		
 	}
 
 }

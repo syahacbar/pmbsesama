@@ -37,6 +37,12 @@ class M_namasmta extends CI_Model
         return $query->result();
     }
 
+    function edit_smta($idsmta)
+    {
+        $query = $this->db->query("SELECT * FROM t_smta WHERE id='$idsmta'");
+        return $query;
+    }
+
     //set nama tabel yang akan kita tampilkan datanya
     var $table = 't_smta';
     //set kolom order, kolom pertama saya null untuk kolom edit dan hapus
