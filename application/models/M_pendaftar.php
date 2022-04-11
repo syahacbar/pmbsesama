@@ -2,22 +2,12 @@
 
 class M_pendaftar extends CI_Model
 { 
-
-    function get_all()
-    {
-        $this->db->select("tb.*");
-        $this->db->from("t_biodata tb");
-
-        $query = $this->db->get();
-        return $query->result();
-    }
-
     //set nama tabel yang akan kita tampilkan datanya
     var $table = 't_biodata';
     //set kolom order, kolom pertama saya null untuk kolom edit dan hapus
     var $column_order = array(NULL, 'namalengkap', 'namalengkap');
 
-    var $column_search = array('nama');
+    var $column_search = array('namalengkap','u.username');
     // default order 
     var $order = array('idt_biodata' => 'ASC');
 
@@ -72,6 +62,15 @@ class M_pendaftar extends CI_Model
             $order = $this->order;
             $this->db->order_by(key($order), $order[key($order)]);
         }
+    }
+
+    function get_all()
+    {
+        $this->db->select("tb.*");
+        $this->db->from("t_biodata tb");
+
+        $query = $this->db->get();
+        return $query->result();
     }
 
     function get_datatables()
