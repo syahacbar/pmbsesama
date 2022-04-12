@@ -922,12 +922,8 @@ class Administrator extends CI_Controller
 	    foreach($pendaftar as $r){ // Lakukan looping pada variabel siswa
 			$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
 			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $r->username);
-			$excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $r->nisn_pendaftar);
-			$excel->getActiveSheet()
-		    ->getStyle('D'.$numrow)
-		    ->getNumberFormat()
-		    ->setFormatCode( PHPExcel_Style_NumberFormat::FORMAT_TEXT );
-			$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $r->nik);
+			$excel->getActiveSheet()->setCellValueExplicit('C'.$numrow, $r->nisn_pendaftar, PHPExcel_Cell_DataType::TYPE_STRING);
+			$excel->getActiveSheet()->setCellValueExplicit('D'.$numrow, $r->nik, PHPExcel_Cell_DataType::TYPE_STRING);
 			$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow,strtoupper($r->namalengkap));
 			$excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow,strtoupper($r->jeniskelamin));
 	        $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow,strtoupper($r->agama));
