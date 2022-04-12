@@ -923,11 +923,11 @@ class Administrator extends CI_Controller
 			$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
 			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $r->username);
 			$excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $r->nisn_pendaftar);
-			$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $r->nik);
 			$excel->getActiveSheet()
 		    ->getStyle('D'.$numrow)
 		    ->getNumberFormat()
 		    ->setFormatCode( PHPExcel_Style_NumberFormat::FORMAT_TEXT );
+			$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $r->nik);
 			$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow,strtoupper($r->namalengkap));
 			$excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow,strtoupper($r->jeniskelamin));
 	        $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow,strtoupper($r->agama));
