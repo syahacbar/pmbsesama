@@ -924,6 +924,10 @@ class Administrator extends CI_Controller
 			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $r->username);
 			$excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $r->nisn_pendaftar);
 			$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $r->nik);
+			$excel->getActiveSheet()
+		    ->getStyle('D'.$numrow)
+		    ->getNumberFormat()
+		    ->setFormatCode( PHPExcel_Style_NumberFormat::FORMAT_TEXT );
 			$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow,strtoupper($r->namalengkap));
 			$excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow,strtoupper($r->jeniskelamin));
 	        $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow,strtoupper($r->agama));
@@ -985,7 +989,7 @@ class Administrator extends CI_Controller
 	        $excel->setActiveSheetIndex(0)->setCellValue('BF'.$numrow,$r->nohp_wali);
 	        $excel->setActiveSheetIndex(0)->setCellValue('BG'.$numrow,strtoupper($r->alamat_wali));
 	        $excel->setActiveSheetIndex(0)->setCellValue('BH'.$numrow,date("d-m-Y",$r->created_on));
-	      
+	      	
 	        for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
 				$excel->getActiveSheet()->getStyle($i.$numrow)->applyFromArray($style_row);
 			}
