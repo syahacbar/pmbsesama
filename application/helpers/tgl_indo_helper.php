@@ -1,6 +1,6 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
       
-    if ( ! function_exists('tgl_indo'))
+    if ( ! function_exists('date_indo'))
     {
         function date_indo($tgl)
         {
@@ -69,7 +69,7 @@
             $tanggal = $pecah[2];
             $bulan = short_bulan($pecah[1]);
             $tahun = $pecah[0];
-            return $tanggal.'/'.$bulan.'/'.$tahun;
+            return $tanggal.'-'.$bulan.'-'.$tahun;
         }
     }
       

@@ -73,6 +73,40 @@ class M_pendaftar extends CI_Model
         return $query->result();
     }
 
+    function get_export_excel()
+    {
+        $query = $this->db->query("
+            SELECT tb.*, u.*, ts.nama_smta AS nama_smta, ts.npsn_smta AS npsn_smta, ts.alamat_smta AS alamatsmta,
+            (SELECT a.agama FROM agama a WHERE a.idagama=tb.agama) AS agama,
+            (SELECT sm.status FROM statusmenikah sm WHERE sm.idstatusmenikah=tb.statusmenikah) AS statusmenikah,
+            (SELECT pr.namaprodi FROM prodi pr WHERE pr.idprodi=tb.prodipilihan1) AS prodipilihan1,
+            (SELECT pr.namaprodi FROM prodi pr WHERE pr.idprodi=tb.prodipilihan2) AS prodipilihan2,
+            (SELECT pr.namaprodi FROM prodi pr WHERE pr.idprodi=tb.prodipilihan3) AS prodipilihan3,
+            (SELECT w.nama FROM wilayah_2020 w WHERE w.kode=tb.prov_tempatlahir) AS prov_tempatlahir,
+            (SELECT w.nama FROM wilayah_2020 w WHERE w.kode=tb.kab_tempatlahir) AS kab_tempatlahir,
+            (SELECT w.nama FROM wilayah_2020 w WHERE w.kode=tb.prov_tempattinggal) AS prov_tempattinggal,
+            (SELECT w.nama FROM wilayah_2020 w WHERE w.kode=tb.kab_tempattinggal) AS kab_tempattinggal,
+            (SELECT w.nama FROM wilayah_2020 w WHERE w.kode=tb.kec_tempattinggal) AS kec_tempattinggal,
+            (SELECT w.nama FROM wilayah_2020 w WHERE w.kode=tb.des_tempattinggal) AS des_tempattinggal,
+            (SELECT namajurusan FROM jurusansmta WHERE idjurusansmta=tb.jurusansmta) AS jurusansmta,
+            (SELECT namajenissmta FROM jenissmta WHERE idjenissmta=tb.jenissmta) AS jenissmta,
+            (SELECT namapekerjaan FROM pekerjaanortu WHERE idpekerjaan=tb.pekerjaan_ayah) AS pekerjaan_ayah,
+            (SELECT namapekerjaan FROM pekerjaanortu WHERE idpekerjaan=tb.pekerjaan_ibu) AS pekerjaan_ibu,
+            (SELECT namapekerjaan FROM pekerjaanortu WHERE idpekerjaan=tb.pekerjaan_wali) AS pekerjaan_wali,
+            (SELECT namajenjang FROM pendidikanortu WHERE idpendidikan=tb.pendidikan_ayah) AS pendidikan_ayah,
+            (SELECT namajenjang FROM pendidikanortu WHERE idpendidikan=tb.pendidikan_ibu) AS pendidikan_ibu,
+            (SELECT penghasilan FROM penghasilanortu WHERE idpenghasilan=tb.penghasilan_ortu) AS penghasilan_ortu,
+            (SELECT penghasilan FROM penghasilanortu WHERE idpenghasilan=tb.penghasilan_wali) AS penghasilan_wali,
+            (SELECT nama FROM wilayah_2020 WHERE kode=ts.provinsi_smta) AS prov_smta,
+            (SELECT nama FROM wilayah_2020 WHERE kode=ts.kabupaten_smta) AS kab_smta,
+            (SELECT nama FROM wilayah_2020 WHERE kode=tb.provinsi_tempattinggalortu) AS provinsi_tempattinggalortu,
+            (SELECT nama FROM wilayah_2020 WHERE kode=tb.kab_tempattinggalortu) AS kab_tempattinggalortu,
+            (SELECT nama FROM wilayah_2020 WHERE kode=tb.kec_tempattinggalortu) AS kec_tempattinggalortu
+            FROM t_biodata tb JOIN users u ON u.username=tb.username JOIN t_smta ts ON ts.id = tb.nama_smta
+        ");
+        return $query->result();
+    }
+
     function get_datatables()
     {
         $this->_get_datatables_query();

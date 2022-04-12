@@ -847,4 +847,171 @@ class Administrator extends CI_Controller
 		
 	}
 
+	public function export_pendaftar_excel()
+	{
+		include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+		$excel = new PHPExcel();
+	    // Settingan awal fil excel
+	    $excel->getProperties()->setCreator('Admin PMB Sesama')
+	                 ->setLastModifiedBy('Admin PMB Sesama')
+	                 ->setTitle("Data Pendaftar SESAMA 2022-2023")
+	                 ->setSubject("Pendaftar")
+	                 ->setDescription("Data Pendaftar SESAMA 2022-2023")
+	                 ->setKeywords("Data Pendaftar SESAMA 2022-2023");
+	    // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
+	    $style_col = array(
+	      'font' => array('bold' => true), // Set font nya jadi bold
+	      'alignment' => array(
+	        'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+	        'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+	      ),
+	      'borders' => array(
+	        'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border top dengan garis tipis
+	        'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  // Set border right dengan garis tipis
+	        'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border bottom dengan garis tipis
+	        'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
+	      ),
+	      'fill' => array(
+            'type' => PHPExcel_Style_Fill::FILL_SOLID,
+            'color' => array('rgb' => 'D9D9D9')
+          )
+	    );
+
+	    // Buat sebuah variabel untuk menampung pengaturan style dari isi tabel
+	    $style_row = array(
+	      'alignment' => array(
+	        'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+	      ),
+	      'borders' => array(
+	        'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border top dengan garis tipis
+	        'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  // Set border right dengan garis tipis
+	        'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border bottom dengan garis tipis
+	        'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
+	      )
+	    );
+
+	    $excel->setActiveSheetIndex(0)->setCellValue('A1', "Data Pendaftar SESAMA 2022-2023"); // Set kolom A1 dengan tulisan "DATA SISWA"
+	    $excel->getActiveSheet()->mergeCells('A1:BH1'); 
+	    $excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE); // Set bold kolom A1
+	    $excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15); // Set font size 15 untuk kolom A1
+	    $excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT); // Set text center untuk kolom A1
+	    $excel->setActiveSheetIndex(0);
+	    $excel->getActiveSheet()->getRowDimension('3')->setRowHeight(40);
+	    // Buat header tabel nya pada baris ke 3
+	    $table_columns = array("No.","No. Pendaftaran","NISN","NIK/No. KTP","Nama Lengkap","Jenis Kelamin","Agama","Suku","Status Menikah","Telp","Email","Tinggi Badan (cm)","Berat Badan (kg)","Prov. Tempat Lahir","Kab/Kota Tempat Lahir","Tempat Lahir","Tanggal Lahir","Pilihan I","Pilihan II","Pilihan III","Negara Tempat Tinggal","Provinsi","Kab/Kota","Kec/Distrik","Kel/Desa","Kode Pos","Alamat 1","Alamat 2","Tahun Lulus SMTA","Jurusan SMTA","Jenis SMTA","Nama SMTA","NPSN SMTA","Prov. SMTA","Kab/Kota SMTA","Rapor Sem 3","Rapor Sem 4","Rapor Sem 5","NIK Ayah","Nama Ayah","Pekerjaan Ayah","Pendidikan Ayah","Alamat Kantor Ayah","NIK Ibu","Nama Ibu","Pekerjaan Ibu","Pendidikan Ibu","Penghasilan Orang Tua","Provinsi Orang Tua","Kab/Kota Orang Tua","Kec/Distrik Orang Tua","Alamat Orang Tua","Kode Pos Orang Tua","No. Telp Orang Tua","Nama Wali","Pekerjaan Wali","Penghasilan Wali","No. HP Wali","Alamat Wali","Tanggal Pendaftaran","");
+	    $column = 0;
+	    foreach($table_columns as $field){
+	        $excel->getActiveSheet()->setCellValueByColumnAndRow($column, 3, $field);
+	        $column++;
+	      }
+
+
+	    for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
+			$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
+			$excel->getActiveSheet()->getStyle($i.'3')->applyFromArray($style_col);
+		}
+
+
+	      
+
+	    // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
+	    $pendaftar = $this->M_pendaftar->get_export_excel();
+	    $no = 1; // Untuk penomoran tabel, di awal set dengan 1
+	    $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
+
+	    foreach($pendaftar as $r){ // Lakukan looping pada variabel siswa
+			$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
+			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $r->username);
+			$excel->setActiveSheetIndex(0)->setCellValue('C'.$numrow, $r->nisn_pendaftar);
+			$excel->setActiveSheetIndex(0)->setCellValue('D'.$numrow, $r->nik);
+			$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow,strtoupper($r->namalengkap));
+			$excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow,strtoupper($r->jeniskelamin));
+	        $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow,strtoupper($r->agama));
+	        $excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow,strtoupper($r->suku));
+	        $excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow,strtoupper($r->statusmenikah));
+	        $excel->setActiveSheetIndex(0)->setCellValue('J'.$numrow,$r->phone);
+	        $excel->setActiveSheetIndex(0)->setCellValue('K'.$numrow,$r->email);
+	        $excel->setActiveSheetIndex(0)->setCellValue('L'.$numrow,$r->tinggibadan);
+	        $excel->setActiveSheetIndex(0)->setCellValue('M'.$numrow,$r->beratbadan);
+	        $excel->setActiveSheetIndex(0)->setCellValue('N'.$numrow,strtoupper($r->prov_tempatlahir));
+	        $excel->setActiveSheetIndex(0)->setCellValue('O'.$numrow,strtoupper($r->kab_tempatlahir));
+	        $excel->setActiveSheetIndex(0)->setCellValue('P'.$numrow,strtoupper($r->lokasi_tempatlahir));
+		    if ($r->tgl_lahir != '')
+			{
+				$excel->setActiveSheetIndex(0)->setCellValue('Q'.$numrow,shortdate_indo($r->tgl_lahir));
+			} else {
+				$excel->setActiveSheetIndex(0)->setCellValue('Q'.$numrow,'');
+			}
+			$excel->setActiveSheetIndex(0)->setCellValue('R'.$numrow,strtoupper($r->prodipilihan1));
+	        $excel->setActiveSheetIndex(0)->setCellValue('S'.$numrow,strtoupper($r->prodipilihan2));
+	        $excel->setActiveSheetIndex(0)->setCellValue('T'.$numrow,strtoupper($r->prodipilihan3));
+	        $excel->setActiveSheetIndex(0)->setCellValue('U'.$numrow,strtoupper($r->negara_tempattinggal));
+	        $excel->setActiveSheetIndex(0)->setCellValue('V'.$numrow,strtoupper($r->prov_tempattinggal));
+	        $excel->setActiveSheetIndex(0)->setCellValue('W'.$numrow,strtoupper($r->kab_tempattinggal));
+	        $excel->setActiveSheetIndex(0)->setCellValue('X'.$numrow,strtoupper($r->kec_tempattinggal));
+	        $excel->setActiveSheetIndex(0)->setCellValue('Y'.$numrow,strtoupper($r->des_tempattinggal));
+	        $excel->setActiveSheetIndex(0)->setCellValue('Z'.$numrow,strtoupper($r->kodepos_tempattinggal));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AA'.$numrow,strtoupper($r->alamat_tempattinggal));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AB'.$numrow,strtoupper($r->alamatlain_tempattinggal));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AC'.$numrow,$r->tahunlulus_smta);
+	        $excel->setActiveSheetIndex(0)->setCellValue('AD'.$numrow,strtoupper($r->jurusansmta));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AE'.$numrow,strtoupper($r->jenissmta));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AF'.$numrow,strtoupper($r->nama_smta));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AG'.$numrow,$r->npsn_smta);
+	        $excel->setActiveSheetIndex(0)->setCellValue('AH'.$numrow,strtoupper($r->prov_smta));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AI'.$numrow,strtoupper($r->kab_smta));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AJ'.$numrow,$r->nrapor1);
+	        $excel->setActiveSheetIndex(0)->setCellValue('AK'.$numrow,$r->nrapor2);
+	        $excel->setActiveSheetIndex(0)->setCellValue('AL'.$numrow,$r->nrapor3);
+	        $excel->setActiveSheetIndex(0)->setCellValue('AM'.$numrow,$r->nik_ayah);
+	        $excel->setActiveSheetIndex(0)->setCellValue('AN'.$numrow,strtoupper($r->nama_ayah));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AO'.$numrow,strtoupper($r->pekerjaan_ayah));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AP'.$numrow,strtoupper($r->pendidikan_ayah));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AQ'.$numrow,strtoupper($r->alamatkantor_ayah));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AR'.$numrow,$r->nik_ibu);
+	        $excel->setActiveSheetIndex(0)->setCellValue('AS'.$numrow,strtoupper($r->nama_ibu));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AT'.$numrow,strtoupper($r->pekerjaan_ibu));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AU'.$numrow,strtoupper($r->pendidikan_ibu));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AV'.$numrow,$r->penghasilan_ortu);
+	        $excel->setActiveSheetIndex(0)->setCellValue('AW'.$numrow,strtoupper($r->provinsi_tempattinggalortu));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AX'.$numrow,strtoupper($r->kab_tempattinggalortu));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AY'.$numrow,strtoupper($r->kec_tempattinggalortu));
+	        $excel->setActiveSheetIndex(0)->setCellValue('AZ'.$numrow,strtoupper($r->alamat_ortu));
+	        $excel->setActiveSheetIndex(0)->setCellValue('BA'.$numrow,$r->kodepost_tempattinggalortu);
+	        $excel->setActiveSheetIndex(0)->setCellValue('BB'.$numrow,$r->nohp_ortu);
+	        $excel->setActiveSheetIndex(0)->setCellValue('BC'.$numrow,strtoupper($r->nama_wali));
+	        $excel->setActiveSheetIndex(0)->setCellValue('BD'.$numrow,strtoupper($r->pekerjaan_wali));
+	        $excel->setActiveSheetIndex(0)->setCellValue('BE'.$numrow,strtoupper($r->penghasilan_wali));
+	        $excel->setActiveSheetIndex(0)->setCellValue('BF'.$numrow,$r->nohp_wali);
+	        $excel->setActiveSheetIndex(0)->setCellValue('BG'.$numrow,strtoupper($r->alamat_wali));
+	        $excel->setActiveSheetIndex(0)->setCellValue('BH'.$numrow,date("d-m-Y",$r->created_on));
+	      
+	        for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
+				$excel->getActiveSheet()->getStyle($i.$numrow)->applyFromArray($style_row);
+			}
+	      
+	      $no++; // Tambah 1 setiap kali looping
+	      $numrow++; // Tambah 1 setiap kali looping
+	    }
+
+		for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
+			$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
+		}
+	    
+	    
+	    // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
+	    $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
+	    // Set orientasi kertas jadi LANDSCAPE
+	    $excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+	    // Set judul file excel nya
+	    $excel->getActiveSheet(0)->setTitle("Data Pendaftar SESAMA 2022-2023");
+	    $excel->setActiveSheetIndex(0);
+	    // Proses file excel
+	    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+	    header('Content-Disposition: attachment; filename="Data Pendaftar SESAMA 2022-2023.xlsx"'); // Set nama file excel nya
+	    header('Cache-Control: max-age=0');
+	    $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+	    $write->save('php://output');
+	}
+
 }

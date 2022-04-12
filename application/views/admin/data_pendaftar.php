@@ -294,9 +294,12 @@
     	.text-muted {
     		font-size: 12px;
     	}
+    	
     </style>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
     <!-- Begin Page Content -->
+    
+
     <div class="container-fluid">
     	<div class="row">
     		<div class="col-lg-12">
@@ -304,7 +307,14 @@
     			<div class="card shadow mb-4">
 
     				<div class="card-header py-3">
-    					<h4 class="m-0 font-weight-bold text-primary">Data Pendaftar Jalur SESAMA</h4>
+    					<div class="row">
+    						<div class="col-sm-6">
+	    						<h4 class="m-0 font-weight-bold text-primary">Data Pendaftar Jalur SESAMA</h4>
+	    					</div>
+	    					<div class="col-sm-6 d-flex justify-content-end">
+	    						<a href="<?php echo site_url('administrator/export_pendaftar_excel'); ?>" id="btnExporExcel" type="button" class="btn btn-primary btn-sm"><i class="fas fa-file-alt"></i> &nbsp; Export Excel</a>  
+	    					</div>  						
+    					</div>
     				</div>
     				<div class="card-body">
     					<div id="alert"></div>
@@ -336,13 +346,7 @@
     						</div>
     					</form>
     				</div>
-    			</div>
-    		</div>
-    	</div>
-    	<div class="row">
-    		<div class="col-lg-12">
-    			<!-- DataTales Example -->
-    			<div class="card shadow mb-4">
+    		
     				<div class="card-body">
     					<div class="table-responsive">
     						<table class="table table-bordered" id="tablePendaftar" cellspacing="0">
@@ -394,7 +398,7 @@
     			<div class="modal-content modal-lg">
     				<div class="modal-header">
     					<h4 class="m-0 font-weight-bold text-primary modal-title" id="modalEditLabel">Ubah Data Pendaftar</h4>
-    					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span>
+    					<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
     				</div>
     				<div class="modal-body">
     					<div class="row panduan-profil">
@@ -1785,26 +1789,6 @@
     				});
     			});
  
-    			// Hapus Pendaftar
-    			// $(document).on('click', '#btnHapus', function(e) {
-    			// 	e.preventDefault();
-    			// 	var link = $(this).attr('href');
-
-    			// 	Swal.fire({
-    			// 		title: 'Apakah Anda Yakin?',
-    			// 		text: "Pendaftar akan dihapus!",
-    			// 		icon: 'warning',
-    			// 		showCancelButton: true,
-    			// 		confirmButtonColor: '#3085d6',
-    			// 		cancelButtonColor: '#d33',
-    			// 		confirmButtonText: 'Ya',
-    			// 		cancelButtonText: "Batal",
-    			// 	}).then((result) => {
-    			// 		if (result.isConfirmed) {
-    			// 			window.location = link;
-    			// 		}
-    			// 	})
-    			// })
 
     			var edit_fotoprofil = new Dropzone(".editFoto", {
     				autoProcessQueue: true,
@@ -1861,3 +1845,4 @@
     			return false;
     		})
     	</script>
+
