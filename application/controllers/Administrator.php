@@ -890,34 +890,55 @@ class Administrator extends CI_Controller
 	      )
 	    );
 
-	    $excel->setActiveSheetIndex(0)->setCellValue('A1', "Data Pendaftar SESAMA 2022-2023"); // Set kolom A1 dengan tulisan "DATA SISWA"
+	    $excel->setActiveSheetIndex(0)->setCellValue('A1', "Data Pendaftar SESAMA 2022-2023"); 
 	    $excel->getActiveSheet()->mergeCells('A1:BH1'); 
 	    $excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE); // Set bold kolom A1
 	    $excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15); // Set font size 15 untuk kolom A1
 	    $excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT); // Set text center untuk kolom A1
+
+	    $excel->setActiveSheetIndex(0)->setCellValue('A3', "No."); 
+	    $excel->getActiveSheet()->mergeCells('A3:A4'); 
+
+	    $excel->setActiveSheetIndex(0)->setCellValue('B3', "Identitas Pendaftar"); 
+	    $excel->getActiveSheet()->mergeCells('B3:AB3'); 
+
+	    $excel->setActiveSheetIndex(0)->setCellValue('AC3', "Data Sekolah"); 
+	    $excel->getActiveSheet()->mergeCells('AC3:AL3'); 
+
+	    $excel->setActiveSheetIndex(0)->setCellValue('AM3', "Data Orang Tua"); 
+	    $excel->getActiveSheet()->mergeCells('AM3:BB3'); 
+
+	    $excel->setActiveSheetIndex(0)->setCellValue('BC3', "Data Wali"); 
+	    $excel->getActiveSheet()->mergeCells('BC3:BG3'); 
+
+	    $excel->setActiveSheetIndex(0)->setCellValue('BH3', "Tgl. Pendaftaran"); 
+	    $excel->getActiveSheet()->mergeCells('BH3:BH4'); 
+
+
 	    $excel->setActiveSheetIndex(0);
-	    $excel->getActiveSheet()->getRowDimension('3')->setRowHeight(40);
+	    $excel->getActiveSheet()->getRowDimension('4')->setRowHeight(40);
 	    // Buat header tabel nya pada baris ke 3
-	    $table_columns = array("No.","No. Pendaftaran","NISN","NIK/No. KTP","Nama Lengkap","Jenis Kelamin","Agama","Suku","Status Menikah","Telp","Email","Tinggi Badan (cm)","Berat Badan (kg)","Prov. Tempat Lahir","Kab/Kota Tempat Lahir","Tempat Lahir","Tanggal Lahir","Pilihan I","Pilihan II","Pilihan III","Negara Tempat Tinggal","Provinsi","Kab/Kota","Kec/Distrik","Kel/Desa","Kode Pos","Alamat 1","Alamat 2","Tahun Lulus SMTA","Jurusan SMTA","Jenis SMTA","Nama SMTA","NPSN SMTA","Prov. SMTA","Kab/Kota SMTA","Rapor Sem 3","Rapor Sem 4","Rapor Sem 5","NIK Ayah","Nama Ayah","Pekerjaan Ayah","Pendidikan Ayah","Alamat Kantor Ayah","NIK Ibu","Nama Ibu","Pekerjaan Ibu","Pendidikan Ibu","Penghasilan Orang Tua","Provinsi Orang Tua","Kab/Kota Orang Tua","Kec/Distrik Orang Tua","Alamat Orang Tua","Kode Pos Orang Tua","No. Telp Orang Tua","Nama Wali","Pekerjaan Wali","Penghasilan Wali","No. HP Wali","Alamat Wali","Tanggal Pendaftaran","");
-	    $column = 0;
+	    $table_columns = array("No. Pendaftaran","NISN","NIK/No. KTP","Nama Lengkap","Jenis Kelamin","Agama","Suku","Status Menikah","Telp","Email","Tinggi Badan (cm)","Berat Badan (kg)","Prov. Tempat Lahir","Kab/Kota Tempat Lahir","Tempat Lahir","Tanggal Lahir","Pilihan I","Pilihan II","Pilihan III","Negara Tempat Tinggal","Provinsi","Kab/Kota","Kec/Distrik","Kel/Desa","Kode Pos","Alamat 1","Alamat 2","Tahun Lulus SMTA","Jurusan SMTA","Jenis SMTA","Nama SMTA","NPSN SMTA","Prov. SMTA","Kab/Kota SMTA","Rapor Sem 3","Rapor Sem 4","Rapor Sem 5","NIK Ayah","Nama Ayah","Pekerjaan Ayah","Pendidikan Ayah","Alamat Kantor Ayah","NIK Ibu","Nama Ibu","Pekerjaan Ibu","Pendidikan Ibu","Penghasilan Orang Tua","Provinsi Orang Tua","Kab/Kota Orang Tua","Kec/Distrik Orang Tua","Alamat Orang Tua","Kode Pos Orang Tua","No. Telp Orang Tua","Nama Wali","Pekerjaan Wali","Penghasilan Wali","No. HP Wali","Alamat Wali");
+	    $column = 1;
 	    foreach($table_columns as $field){
-	        $excel->getActiveSheet()->setCellValueByColumnAndRow($column, 3, $field);
+	        $excel->getActiveSheet()->setCellValueByColumnAndRow($column, 4, $field);
 	        $column++;
 	      }
 
-
-	    for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
+	    for ($i = 'A'; $i !==   $excel->getActiveSheet()->getHighestColumn(); $i++) {
 			$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
 			$excel->getActiveSheet()->getStyle($i.'3')->applyFromArray($style_col);
+			$excel->getActiveSheet()->getStyle($i.'4')->applyFromArray($style_col);
 		}
+		
 
-
-	      
+		$excel->getActiveSheet()->getColumnDimension('BH')->setWidth(15);
+		$excel->getActiveSheet()->getStyle('BH3:BH4')->applyFromArray($style_col);
 
 	    // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
 	    $pendaftar = $this->M_pendaftar->get_export_excel();
 	    $no = 1; // Untuk penomoran tabel, di awal set dengan 1
-	    $numrow = 4; // Set baris pertama untuk isi tabel adalah baris ke 4
+	    $numrow = 5; // Set baris pertama untuk isi tabel adalah baris ke 4
 
 	    foreach($pendaftar as $r){ // Lakukan looping pada variabel siswa
 			$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
@@ -988,6 +1009,7 @@ class Administrator extends CI_Controller
 	        $excel->setActiveSheetIndex(0)->setCellValue('BH'.$numrow,date("d-m-Y",$r->created_on));
 	      	
 	        for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
+	        	$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
 				$excel->getActiveSheet()->getStyle($i.$numrow)->applyFromArray($style_row);
 			}
 	      
@@ -995,9 +1017,9 @@ class Administrator extends CI_Controller
 	      $numrow++; // Tambah 1 setiap kali looping
 	    }
 
-		for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
-			$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
-		}
+		// for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
+		// 	$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
+		// }
 	    
 	    
 	    // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
