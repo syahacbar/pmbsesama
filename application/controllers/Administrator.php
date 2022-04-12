@@ -924,12 +924,13 @@ class Administrator extends CI_Controller
 			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $r->username);
 			$excel->getActiveSheet()->setCellValueExplicit('C'.$numrow, $r->nisn_pendaftar, PHPExcel_Cell_DataType::TYPE_STRING);
 			$excel->getActiveSheet()->setCellValueExplicit('D'.$numrow, $r->nik, PHPExcel_Cell_DataType::TYPE_STRING);
+
 			$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow,strtoupper($r->namalengkap));
 			$excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow,strtoupper($r->jeniskelamin));
 	        $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow,strtoupper($r->agama));
 	        $excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow,strtoupper($r->suku));
 	        $excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow,strtoupper($r->statusmenikah));
-	        $excel->setActiveSheetIndex(0)->setCellValue('J'.$numrow,$r->phone);
+	        $excel->getActiveSheet()->setCellValueExplicit('J'.$numrow,$r->phone, PHPExcel_Cell_DataType::TYPE_STRING);
 	        $excel->setActiveSheetIndex(0)->setCellValue('K'.$numrow,$r->email);
 	        $excel->setActiveSheetIndex(0)->setCellValue('L'.$numrow,$r->tinggibadan);
 	        $excel->setActiveSheetIndex(0)->setCellValue('M'.$numrow,$r->beratbadan);
@@ -963,12 +964,12 @@ class Administrator extends CI_Controller
 	        $excel->setActiveSheetIndex(0)->setCellValue('AJ'.$numrow,$r->nrapor1);
 	        $excel->setActiveSheetIndex(0)->setCellValue('AK'.$numrow,$r->nrapor2);
 	        $excel->setActiveSheetIndex(0)->setCellValue('AL'.$numrow,$r->nrapor3);
-	        $excel->setActiveSheetIndex(0)->setCellValue('AM'.$numrow,$r->nik_ayah);
+	        $excel->getActiveSheet()->setCellValueExplicit('AM'.$numrow,$r->nik_ayah, PHPExcel_Cell_DataType::TYPE_STRING);
 	        $excel->setActiveSheetIndex(0)->setCellValue('AN'.$numrow,strtoupper($r->nama_ayah));
 	        $excel->setActiveSheetIndex(0)->setCellValue('AO'.$numrow,strtoupper($r->pekerjaan_ayah));
 	        $excel->setActiveSheetIndex(0)->setCellValue('AP'.$numrow,strtoupper($r->pendidikan_ayah));
 	        $excel->setActiveSheetIndex(0)->setCellValue('AQ'.$numrow,strtoupper($r->alamatkantor_ayah));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AR'.$numrow,$r->nik_ibu);
+	        $excel->getActiveSheet()->setCellValueExplicit('AR'.$numrow,$r->nik_ibu, PHPExcel_Cell_DataType::TYPE_STRING);
 	        $excel->setActiveSheetIndex(0)->setCellValue('AS'.$numrow,strtoupper($r->nama_ibu));
 	        $excel->setActiveSheetIndex(0)->setCellValue('AT'.$numrow,strtoupper($r->pekerjaan_ibu));
 	        $excel->setActiveSheetIndex(0)->setCellValue('AU'.$numrow,strtoupper($r->pendidikan_ibu));
@@ -982,7 +983,7 @@ class Administrator extends CI_Controller
 	        $excel->setActiveSheetIndex(0)->setCellValue('BC'.$numrow,strtoupper($r->nama_wali));
 	        $excel->setActiveSheetIndex(0)->setCellValue('BD'.$numrow,strtoupper($r->pekerjaan_wali));
 	        $excel->setActiveSheetIndex(0)->setCellValue('BE'.$numrow,strtoupper($r->penghasilan_wali));
-	        $excel->setActiveSheetIndex(0)->setCellValue('BF'.$numrow,$r->nohp_wali);
+	        $excel->getActiveSheet()->setCellValueExplicit('BF'.$numrow,$r->nohp_wali, PHPExcel_Cell_DataType::TYPE_STRING);
 	        $excel->setActiveSheetIndex(0)->setCellValue('BG'.$numrow,strtoupper($r->alamat_wali));
 	        $excel->setActiveSheetIndex(0)->setCellValue('BH'.$numrow,date("d-m-Y",$r->created_on));
 	      	
