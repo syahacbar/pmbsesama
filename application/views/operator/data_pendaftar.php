@@ -1515,7 +1515,7 @@
 						reload_table();
 					} else {
 						alert("Error occured !");
-					}
+					} 
 				}
 			});
 		});
@@ -1591,26 +1591,50 @@
 			});
 		});
 
-		// Hapus Pendaftar
-		$(document).on('click', '#btnHapus', function(e) {
-			e.preventDefault();
-			var link = $(this).attr('href');
-
-			Swal.fire({
-				title: 'Apakah Anda Yakin?',
-				text: "Pendaftar akan dihapus!",
-				icon: 'warning',
-				showCancelButton: true,
-				confirmButtonColor: '#3085d6',
-				cancelButtonColor: '#d33',
-				confirmButtonText: 'Ya',
-				cancelButtonText: "Batal",
-			}).then((result) => {
-				if (result.isConfirmed) {
-					window.location = link;
+		$("#tablePendaftar").on("click", ".btnHapus", function() {
+			var idt_biodata = $(this).attr('idt_biodata');
+			$.ajax({
+				type: "POST",
+				url: '<?php echo site_url() ?>/datatables/deletependaftar/',
+				data: {
+					idt_biodata: idt_biodata
+				},
+				success: function(data) {
+					var dataResult = JSON.parse(data);
+                    if (dataResult.statusCode == 1) {
+                        Swal.fire({
+                            title: 'Apakah yakin akan menghapus pendaftar?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Ya',
+                            cancelButtonText: 'Tidak',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+	                            Swal.fire({
+									title: 'Berhasil!',
+									text: "Anda telah menghapus pendaftar!",
+									icon: 'success',
+									showCancelButton: false,
+									confirmButtonText: 'Tutup',
+								})                          
+                                reload_table();
+                            };     
+                        })
+                    }    
+				},
+				error: function() {
+					// alert('Gagal Merubah Status Laporan : ' + username);
+					Swal.fire({
+						icon: 'error',
+						title: 'Maaf...',
+						text: 'Ada yang salah!',
+						confirmButtonText: 'Kembali',
+					})
 				}
-			})
-		})
+			});
+    	});
 	});
 </script>
 

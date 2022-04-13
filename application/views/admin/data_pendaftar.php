@@ -1758,36 +1758,49 @@
     			});
 
     			$("#tablePendaftar").on("click", ".btnHapus", function() {
-    				var idt_biodata = $(this).attr('idt_biodata');
-    				$.ajax({
-    					type: "POST",
-    					url: '<?php echo site_url() ?>/datatables/deletependaftar/',
-    					data: {
-    						idt_biodata: idt_biodata
-    					},
-    					success: function(data) {
-    						Swal.fire({
-    							title: 'Berhasil!',
-    							text: "Anda telah menghapus pendaftar!",
-    							icon: 'success',
-    							showCancelButton: false,
-    							confirmButtonText: 'Tutup',
-    						})
-    						//tablePendaftar.draw(false);
-    						reload_table();
-    						console.log("berhasil hapus "+idt_biodata);
-    					},
-    					error: function() {
-    						// alert('Gagal Merubah Status Laporan : ' + username);
-    						Swal.fire({
-    							icon: 'error',
-    							title: 'Maaf...',
-    							text: 'Ada yang salah!',
-    							confirmButtonText: 'Kembali',
-    						})
-    					}
-    				});
-    			});
+					var idt_biodata = $(this).attr('idt_biodata');
+					$.ajax({
+						type: "POST",
+						url: '<?php echo site_url() ?>/datatables/deletependaftar/',
+						data: {
+							idt_biodata: idt_biodata
+						},
+						success: function(data) {
+							var dataResult = JSON.parse(data);
+		                    if (dataResult.statusCode == 1) {
+		                        Swal.fire({
+		                            title: 'Apakah yakin akan menghapus pendaftar?',
+		                            icon: 'warning',
+		                            showCancelButton: true,
+		                            confirmButtonColor: '#3085d6',
+		                            cancelButtonColor: '#d33',
+		                            confirmButtonText: 'Ya',
+		                            cancelButtonText: 'Tidak',
+		                        }).then((result) => {
+		                            if (result.isConfirmed) {
+			                            Swal.fire({
+											title: 'Berhasil!',
+											text: "Anda telah menghapus pendaftar!",
+											icon: 'success',
+											showCancelButton: false,
+											confirmButtonText: 'Tutup',
+										})                          
+		                                reload_table();
+		                            };     
+		                        })
+		                    }    
+						},
+						error: function() {
+							// alert('Gagal Merubah Status Laporan : ' + username);
+							Swal.fire({
+								icon: 'error',
+								title: 'Maaf...',
+								text: 'Ada yang salah!',
+								confirmButtonText: 'Kembali',
+							})
+						}
+					});
+		    	});
  
 
     			var edit_fotoprofil = new Dropzone(".editFoto", {

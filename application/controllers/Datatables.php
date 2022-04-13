@@ -283,7 +283,7 @@ class Datatables extends CI_Controller
     {
         $idt_biodata = $this->input->post('idt_biodata');
         $this->M_pendaftar->hapus_data($idt_biodata);
-        //echo json_encode($data);
+        echo json_encode(array("statusCode" => 1));
     }
 
     function smta_list()
