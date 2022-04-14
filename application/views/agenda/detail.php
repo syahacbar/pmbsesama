@@ -174,7 +174,7 @@
                     <div class="px-lg-2 pb-4 textmuted"><?php echo $detail->isi_agenda; ?></div>
                 </div>
                 <div class="col-md-12 d-flex justify-content-end">
-                    <a class="btn btn-info" href="<?php echo site_url('pmbsesama/agenda'); ?>">Kembali</a>
+                    <a class="btn btn-info" href="<?php echo site_url('agenda'); ?>">Kembali</a>
                 </div>
 
             </div>

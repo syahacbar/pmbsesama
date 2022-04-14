@@ -247,8 +247,8 @@ class Datatables extends CI_Controller
             $row[] = $pes->pilihan3;
             $row[] = $pes->suku;
             $row[] = '
-            <a href="' . site_url('pmbsesama/administrator/kartupendaftaran/') . $pes->username . '" target="_blank" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Kartu Pendaftar"><i class="fa fa-user"></i></a>&nbsp;
-            <a href="' . site_url('pmbsesama/administrator/kartupeserta/') . $pes->username . '" target="_blank" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Kartu Peserta"><i class="fa fa-print"></i></a>&nbsp;
+            <a href="' . site_url('administrator/kartupendaftaran/') . $pes->username . '" target="_blank" class="btn btn-sm btn-info" data-toggle="tooltip" data-placement="top" title="Kartu Pendaftar"><i class="fa fa-user"></i></a>&nbsp;
+            <a href="' . site_url('administrator/kartupeserta/') . $pes->username . '" target="_blank" class="btn btn-sm btn-warning" data-toggle="tooltip" data-placement="top" title="Kartu Peserta"><i class="fa fa-print"></i></a>&nbsp;
             <a href="" data-username="' . $pes->username . '" data-toggle="modal" data-target="#modalDetail" class="btn btn-sm btn-info btnDetail" data-toggle="tooltip" data-placement="top" title="Detail Pendaftar"><i class="fa fa-eye"></i></a>&nbsp;
             <a href="" data-username="' . $pes->username . '" data-toggle="modal" data-target="#modalEdit"  class="btn btn-sm btn-primary btnEdit" data-toggle="tooltip" data-placement="top" title="Ubah Pendaftar"><i class="fa fa-edit"></i></a>&nbsp;
             <button class="btn btn-sm btn-danger btnHapus" idt_biodata="' . $pes->idt_biodata . '"><i class="fa fa-trash" data-toggle="tooltip" data-placement="top" title="Hapus Pendaftar"></i></button>&nbsp;

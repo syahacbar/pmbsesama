@@ -167,7 +167,7 @@
         <div class="row">
             <div class="col-sm-6">
                 <div class="card">
-                    <a href="<?php echo site_url('pmbsesama'); ?>" target='_blank'>
+                    <a href="<?php echo site_url(); ?>" target='_blank'>
                         <div class="card-body">
                             <img src="https://unpkg.com/ionicons@5.5.2/dist/svg/desktop-outline.svg">
                             <p class="btn btn-primary w-100 mt-3">Portal PMB</p>

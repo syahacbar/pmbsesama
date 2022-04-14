@@ -41,7 +41,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item <?php echo ($this->uri->segment(3) == "") ? "active" : ""; ?>">
-                <a class="nav-link" href="<?php echo site_url('pmbsesama/operator'); ?>">
+                <a class="nav-link" href="<?php echo site_url('operator'); ?>">
                     <i class="fas fa-fw fa-laptop"></i>
                     <span>Dashboard</span></a>
             </li>
@@ -54,7 +54,7 @@
                     Pendaftaran
                 </div>
                 <li class="nav-item <?php echo ($this->uri->segment(3) == "pendaftar") ? "active" : ""; ?>">
-                    <a class="nav-link" href="<?php echo site_url('pmbsesama/operator/pendaftar'); ?>">
+                    <a class="nav-link" href="<?php echo site_url('operator/pendaftar'); ?>">
                         <i class="fas fa-fw fa-laptop"></i>
                         <span>Data Pendaftar</span></a>
                 </li>

@@ -69,7 +69,7 @@
   
     <button class="btn btn-lg btn-primary btn-block" type="submit">Masuk</button>
     <br>
-    <a href="<?php echo site_url('pmbsesama');?>">Kembali ke halaman utama</a>
+    <a href="<?php echo site_url();?>">Kembali ke halaman utama</a>
     <p class="mt-5 mb-3 text-muted text-small">Portal PMB Unipa &copy; 2021. Hak Cipta Dilindungi Undang-Undang.</p>
     <!-- </form> -->
     <?php echo form_close(); ?>

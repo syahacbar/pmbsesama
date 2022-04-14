@@ -149,7 +149,7 @@ class Auth extends CI_Controller
 				if ($this->ion_auth->is_admin())
 				{
 					$this->session->set_flashdata('message', $this->ion_auth->messages());
-					redirect('pmbsesama/administrator');
+					redirect('administrator');
 				} else {
 					if ($this->ion_auth->in_group('members')) {
 						$this->session->set_flashdata('message', $this->ion_auth->messages());
@@ -157,7 +157,7 @@ class Auth extends CI_Controller
 					} 
 					else if($this->ion_auth->in_group('sekolah')) {
 						$this->session->set_flashdata('message', $this->ion_auth->messages());
-						redirect('pmbsesama/operator');
+						redirect('operator');
 					}
 				}
 			} else {
@@ -211,12 +211,12 @@ class Auth extends CI_Controller
 			if($usertype == "operator" || $usertype == "admin")
 			{
 				// redirect them to the login page
-				redirect('pmbsesama/login', 'refresh');
+				redirect('login', 'refresh');
 			}
 			else
 			{
 				// redirect them to the login page
-				redirect('pmbsesama', 'refresh');
+				redirect('/', 'refresh');
 			}
 		}
 	}

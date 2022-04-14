@@ -311,7 +311,7 @@ class Administrator extends CI_Controller
 		$this->M_fakultas->add($data);
 
 		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-		redirect('pmbsesama/administrator/ref_fakultas');
+		redirect('administrator/ref_fakultas');
 	}
 	public function edit_fakultas()
 	{
@@ -321,13 +321,13 @@ class Administrator extends CI_Controller
 		);
 		$this->M_fakultas->edit($data, $id);
 		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-		redirect('pmbsesama/administrator/ref_fakultas');
+		redirect('administrator/ref_fakultas');
 	}
 	public function hapus_fakultas()
 	{
 		$id = $this->input->post('idfakultas');
 		$this->M_fakultas->delete($id);
-		redirect('pmbsesama/administrator/ref_fakultas');
+		redirect('administrator/ref_fakultas');
 	}
 
 	public function ref_prodi()
@@ -350,7 +350,7 @@ class Administrator extends CI_Controller
 		$this->M_prodi->add($data);
 
 		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-		redirect('pmbsesama/administrator/ref_prodi');
+		redirect('administrator/ref_prodi');
 	}
 
 	public function edit_prodi()
@@ -362,14 +362,14 @@ class Administrator extends CI_Controller
 		);
 		$this->M_prodi->edit($data, $id);
 		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-		redirect('pmbsesama/administrator/ref_prodi');
+		redirect('administrator/ref_prodi');
 	}
 
 	public function hapus_prodi()
 	{
 		$id = $this->input->post('idprodi');
 		$this->M_prodi->delete($id);
-		redirect('pmbsesama/administrator/ref_prodi');	
+		redirect('administrator/ref_prodi');	
 	}
 
 	public function ref_prov()

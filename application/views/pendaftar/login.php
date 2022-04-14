@@ -100,7 +100,7 @@
 
                             <div class="row px-3 loginRegister">
                                 <button type="submit" class="btn btn-blue text-center">MASUK</button>
-                                <small class="font-weight-bold">Belum punya akun? <a href="<?php echo site_url('pmbsesama/register'); ?>" class="text-danger" target="_blank
+                                <small class="font-weight-bold">Belum punya akun? <a href="<?php echo site_url('register'); ?>" class="text-danger" target="_blank
                                 ">DAFTAR DI SINI</a></small>
                             </div>
                             <?php echo form_close(); ?>
@@ -201,7 +201,7 @@
                                                 </td>
                                                 <td>
 
-                                                    <a href="<?php echo base_url('pmbsesama/agenda/') . $ag['id']; ?>" class="btn btn-info btn-sm" target="_blank">Lihat</a>
+                                                    <a href="<?php echo base_url('agenda/') . $ag['id']; ?>" class="btn btn-info btn-sm" target="_blank">Lihat</a>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -212,7 +212,7 @@
                         </div>
                         <div class="col-sm-12 px-0 py-0">
                             <div>
-                                <a href="<?php echo site_url('pmbsesama/agenda') ?>">Agenda Lainnya ...</a>
+                                <a href="<?php echo site_url('agenda') ?>">Agenda Lainnya ...</a>
                             </div>
                         </div>
                     </div>
@@ -242,7 +242,7 @@
                         </table>
                         <div class="row px-3 mb-4">
                             <div>
-                                <a href="<?php echo site_url('pmbsesama/informasi') ?>" >Informasi Lainnya ...</a>
+                                <a href="<?php echo site_url('informasi') ?>" >Informasi Lainnya ...</a>
                             </div>
                         </div>
                     </div>
