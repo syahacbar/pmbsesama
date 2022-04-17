@@ -22,6 +22,7 @@ class Register extends CI_Controller
 		$this->load->model('M_penghasilanortu');
 		$this->load->model('M_pendaftar');
 		$this->load->model('M_namasmta');
+		$this->load->model('M_slider');
 		$this->load->library('recaptcha');
 	}
 
@@ -126,7 +127,8 @@ class Register extends CI_Controller
 			'nama_lengkap' => '',
 			'nohpregister' => '',
 			'email' => '',
-			'message' => '',
+			'message' => '', 
+			'slider' => $this->M_slider->get_all(),
 		);
 		$this->load->view('pendaftar/register', $data);
 	}
