@@ -94,6 +94,7 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="newUserLabel">Buat User Baru</h5>
                     </div>
+                    <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
                     <form method="post" action="<?php echo site_url('user/create_user'); ?>">
                         <div class="modal-body">
                             <div class="row">
@@ -193,6 +194,7 @@
                     <div class="modal-header">
                         <h5 class="modal-title" id="editUserLabel">Edit User</h5>
                     </div>
+                    <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
                     <form method="post" action="<?php echo site_url('user/edit_user'); ?>">
                         <div class="modal-body">
                             <div class="row">

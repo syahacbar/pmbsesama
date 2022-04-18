@@ -55,7 +55,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Fakultas</h6>
                 </div>
                 <div class="card-body">
-                    <?php echo $this->session->flashdata('notif'); ?>
+                    <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
                     <form id="formfakultas" action="<?php echo site_url($linkform); ?>" method="post">
                         <div class="form-group">
                             <label>Fakultas</label>
@@ -87,21 +87,37 @@
 
         $(document).on('click', '.deletedata', function() {
             var idfakultas = $(this).data("idfakultas");
-            if (confirm("Are you sure you want to delete this?")) {
-                $.ajax({
-                    url: "<?php echo site_url(); ?>administrator/hapus_fakultas",
-                    method: "POST",
-                    data: {
-                        idfakultas: idfakultas
-                    },
-                    success: function(data) {
-                        alert("Data Berhasil Dihapus");
-                        location.reload();
-                    }
-                });
-            } else {
-                return false;
-            }
+            Swal.fire({
+                title: 'Apakah Anda Yakin akan menghapus?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak'
+                }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>administrator/hapus_fakultas",
+                        method: "POST",
+                        data: {
+                            idfakultas: idfakultas
+                        },
+
+                        
+                        success: function(data) {
+                            // alert("Data Berhasil Dihapus");
+                            // location.reload();
+                        }
+                    });
+
+                    Swal.fire(
+                        'Terhapus!',
+                        )
+                    };
+                    
+                    location.reload();            
+            })
         });
     });
 </script>

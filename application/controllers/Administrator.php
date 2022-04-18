@@ -63,7 +63,7 @@ class Administrator extends CI_Controller
 
 		$this->M_agama->add($data);
 
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
 		redirect('administrator/ref_agama');	
 	}
 	public function edit_agama() {
@@ -72,7 +72,7 @@ class Administrator extends CI_Controller
 			'agama'  => $this->input->post('agama')
 		);
 		$this->M_agama->edit($data, $id);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil diubah');
 		redirect('administrator/ref_agama');
 	}
 	public function hapus_agama() {
@@ -98,7 +98,7 @@ class Administrator extends CI_Controller
 		);
 
 		$this->M_statusmenikah->add($data);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
 		redirect('administrator/ref_statusmenikah');	
 	}
 
@@ -108,7 +108,7 @@ class Administrator extends CI_Controller
 			'status'  => $this->input->post('statusmenikah')
 		);
 		$this->M_statusmenikah->edit($data, $id);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil diubah');
 		redirect('administrator/ref_statusmenikah');
 	}
 
@@ -137,7 +137,7 @@ class Administrator extends CI_Controller
 
 		$this->M_jenissmta->add($data);
 
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
 		redirect('administrator/ref_jenissmta');	
 	}
 
@@ -147,7 +147,7 @@ class Administrator extends CI_Controller
 			'namajenissmta'  => $this->input->post('jenissmta')
 		);
 		$this->M_jenissmta->edit($data, $id);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil diubah');
 		redirect('administrator/ref_jenissmta');
 	}
 
@@ -175,7 +175,7 @@ class Administrator extends CI_Controller
 		); 
 
 		$this->M_jurusansmta->add($data);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
 		redirect('administrator/ref_jurusansmta');
 	}
 
@@ -185,7 +185,10 @@ class Administrator extends CI_Controller
 			'namajurusan'  => $this->input->post('jurusansmta')
 		);
 		$this->M_jurusansmta->edit($data, $id);
-		echo json_encode(array("statusCode" => 1));
+		$this->session->set_flashdata('notif', 'Data Berhasil diubah');
+		// echo json_encode(array("statusCode" => 1));
+		redirect('administrator/ref_jurusansmta');
+
 	}
 
 	public function hapus_jurusansmta() {
@@ -270,7 +273,7 @@ class Administrator extends CI_Controller
 
 		$this->M_pekerjaanortu->add($data);
 
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
 		redirect('administrator/ref_pekerjaanortu');
 	}
 
@@ -280,7 +283,7 @@ class Administrator extends CI_Controller
 			'namapekerjaan'  => $this->input->post('pekerjaanortu')
 		);
 		$this->M_pekerjaanortu->edit($data, $id);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil diubah');
 		redirect('administrator/ref_pekerjaanortu');
 	}
 
@@ -308,7 +311,7 @@ class Administrator extends CI_Controller
 		);
 
 		$this->M_pendidikanortu->add($data);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
 		redirect('administrator/ref_pendidikanortu');
 	}
 
@@ -318,7 +321,7 @@ class Administrator extends CI_Controller
 			'namajenjang'  => $this->input->post('pendidikanortu')
 		);
 		$this->M_pendidikanortu->edit($data, $id);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil diubah');
 		redirect('administrator/ref_pendidikanortu');
 	}
 	public function hapus_pendidikanortu() {
@@ -345,7 +348,7 @@ class Administrator extends CI_Controller
 
 		$this->M_penghasilanortu->add($data);
 
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
 		redirect('administrator/ref_penghasilanortu');
 	}
 
@@ -355,7 +358,7 @@ class Administrator extends CI_Controller
 			'penghasilan'  => $this->input->post('penghasilanortu')
 		);
 		$this->M_penghasilanortu->edit($data, $id);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil diubah');
 		redirect('administrator/ref_penghasilanortu');
 	}
 
@@ -383,7 +386,7 @@ class Administrator extends CI_Controller
 
 		$this->M_fakultas->add($data);
 
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
 		redirect('administrator/ref_fakultas');
 	}
 	public function edit_fakultas()
@@ -393,14 +396,15 @@ class Administrator extends CI_Controller
 			'namafakultas'  => $this->input->post('fakultas')
 		);
 		$this->M_fakultas->edit($data, $id);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil diubah');
 		redirect('administrator/ref_fakultas');
 	}
 	public function hapus_fakultas()
 	{
 		$id = $this->input->post('idfakultas');
 		$this->M_fakultas->delete($id);
-		redirect('administrator/ref_fakultas');
+
+		echo json_encode(array("statusCode" => 1));
 	}
 
 	//referensi data prodi
@@ -424,7 +428,7 @@ class Administrator extends CI_Controller
 
 		$this->M_prodi->add($data);
 
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
 		redirect('administrator/ref_prodi');
 	}
 
@@ -436,7 +440,7 @@ class Administrator extends CI_Controller
 			'idfakultas'  => $this->input->post('optFakultas'),
 		);
 		$this->M_prodi->edit($data, $id);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
+		$this->session->set_flashdata('notif', 'Data Berhasil diubah');
 		redirect('administrator/ref_prodi');
 	}
 
@@ -444,7 +448,9 @@ class Administrator extends CI_Controller
 	{
 		$id = $this->input->post('idprodi');
 		$this->M_prodi->delete($id);
-		redirect('administrator/ref_prodi');	
+		
+		echo json_encode(array("statusCode" => 1));
+
 	}
 
 	//referensi data wilayah
@@ -764,13 +770,14 @@ class Administrator extends CI_Controller
 		$data['informasi'] = $this->M_informasi->get_all();
 		$data['_view'] = 'admin/informasi';
 		$this->load->view('admin/layout', $data);
+
+	
 	}
 	
 	public function hapus_informasi() {
 		$id = $this->input->post('id');
 		$this->M_informasi->delete($id);
 		echo json_encode(array("statusCode" => 1));
-
 	}
 
 	public function export_pendaftar_excel()

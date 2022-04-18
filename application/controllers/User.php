@@ -71,6 +71,7 @@ class User extends CI_Controller
         if ($this->ion_auth->register($identity, $password, $email, $additional_data, $group)) {
             // check to see if we are creating the user
             // redirect them back to the admin page
+		    $this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
             $this->session->set_flashdata('message', $this->ion_auth->messages());
             redirect("user", 'refresh');
         } else {
@@ -311,6 +312,7 @@ class User extends CI_Controller
             'type' => 'password'
         ];
 
+		// $this->session->set_flashdata('notif', 'Data Berhasil diubah');
         // $this->_render_page('user/edit_user', $this->data);
         $this->load->view('admin/user', $data);
     }

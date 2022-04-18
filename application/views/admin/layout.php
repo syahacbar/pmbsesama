@@ -453,6 +453,7 @@
     <!-- Page level custom scripts -->
     <script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/js/demo/datatables-demo.js"></script>
     <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
+    <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/custom-sweetalert.js"></script>
 
 
 </body>
