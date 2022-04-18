@@ -134,6 +134,7 @@ class M_pendaftar extends CI_Model
     {
         $this->db->select('*, u.email AS email, u.phone AS nohp, ts.nama_smta AS namasmta, ts.npsn_smta AS npsnsmta, ts.alamat_smta AS alamatsmta,
         (SELECT ud.namafile FROM upload_data ud WHERE ud.username=tb.username ORDER BY id DESC LIMIT 1) AS fotoprofil,
+        (SELECT r.nama_dok FROM rapor r WHERE r.username=tb.username ORDER BY id DESC LIMIT 1) AS file_rapor,
         (SELECT p1.namaprodi FROM prodi p1 WHERE p1.idprodi=tb.prodipilihan1) AS pilihan1,
         (SELECT p2.namaprodi FROM prodi p2 WHERE p2.idprodi=tb.prodipilihan2) AS pilihan2,
         (SELECT p3.namaprodi FROM prodi p3 WHERE p3.idprodi=tb.prodipilihan3) AS pilihan3,

@@ -27,6 +27,7 @@ class Administrator extends CI_Controller
 		$this->load->model('M_prodi');
 		$this->load->model('M_namasmta');
 		$this->load->model('M_slider');
+		$this->load->model('M_informasi');
 
 	}
 
@@ -184,16 +185,73 @@ class Administrator extends CI_Controller
 			'namajurusan'  => $this->input->post('jurusansmta')
 		);
 		$this->M_jurusansmta->edit($data, $id);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-		redirect('administrator/ref_jurusansmta');
+		echo json_encode(array("statusCode" => 1));
 	}
 
 	public function hapus_jurusansmta() {
 		$id = $this->input->post('idjurusansmta');
 		$this->M_jurusansmta->delete($id);
-		// redirect('administrator/ref_jurusansmta');
+		echo json_encode(array("statusCode" => 1));
 	}
 	
+
+	
+	public function ref_namasmta()
+	{
+		$this->load->model('M_namasmta');
+
+		$data['linkform'] = "administrator/tambah_smta";
+		$data['namasmta'] = $this->M_namasmta->get_all();
+		$data['provinsi'] = $this->M_wilayah->get_all_provinsi();
+		$data['_view'] = 'admin/ref_namasmta';
+		$this->load->view('admin/layout', $data);
+	}
+
+	public function tambah_smta()
+	{
+		$this->load->model('M_namasmta');
+		$data = array( 
+			'nama_smta'  => $this->input->post('namasmta'),
+			'alamat_smta'  => $this->input->post('alamatsmta'),
+			'npsn_smta'  => $this->input->post('npsnsmta'),
+			'provinsi_smta'  => $this->input->post('provinsismta'),
+			'kabupaten_smta'  => $this->input->post('kabupatensmta'),
+			'kecamatan_smta'  => $this->input->post('kecamatansmta'),
+		);
+		$this->M_namasmta->add($data);
+		echo json_encode(array("statusCode" => 1));
+
+	}
+
+	public function simpan_editsmta()
+	{
+		$this->load->model('M_namasmta');
+		$idsmta = $this->input->post('idsmta');
+		$data = array(
+			'nama_smta'  => $this->input->post('namasmta'),
+			'alamat_smta'  => $this->input->post('alamatsmta'),
+			'npsn_smta'  => $this->input->post('npsnsmta'),
+			'provinsi_smta'  => $this->input->post('provinsismta'),
+			'kabupaten_smta'  => $this->input->post('kabupatensmta'),
+			'kecamatan_smta'  => $this->input->post('kecamatansmta'),
+		);
+		$this->M_namasmta->edit($data, $idsmta);
+		echo json_encode(array("statusCode" => 1));
+
+
+	}
+
+	public function hapus_smta()
+	{
+		$this->load->model('M_namasmta');
+
+		$id = $this->input->post('idsmta');
+		$this->M_namasmta->delete($id);
+		echo json_encode(array("statusCode" => 1));
+		
+	}
+
+
 	//referensi data pekerjaan ortu
 
 	public function ref_pekerjaanortu()
@@ -516,8 +574,40 @@ class Administrator extends CI_Controller
 		);
 		$username = $this->input->post('username');
 		$this->M_register->update_biodata($username, $params);
-		echo json_encode(array("statusCode" => 1));
+		$datapendaftar = $this->M_pendaftar->edit_pendaftar($username)->row();
+		echo json_encode(array("statusCode" => 1, "datapendaftar" => $datapendaftar));
 	}
+
+	public function edit_pendaftar_foto()
+	{
+		$config['upload_path']   = FCPATH . 'assets/upload/profile/';
+		$config['allowed_types'] = '*';
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('edit_fotoprofil')) {
+			$namafile = $this->upload->data('file_name');
+			$username = $this->input->post('username');
+			$this->db->insert('upload_data', array(
+				'namafile' => $namafile,
+				'username' => $username,
+			));
+		}
+	}
+
+	public function edit_pendaftar_rapor()
+	{
+		$config['upload_path']   = FCPATH . '/assets/upload/rapor/';
+		$config['allowed_types'] = 'pdf';
+
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('filerapor')) {
+			$nama = $this->upload->data('file_name');
+			$username = $this->input->post('username');
+			$this->db->insert('rapor', array('nama_dok' => $nama, 'username' => $username));
+		}
+	}
+
 	public function hapus_pendaftar()
 	{
 		$username = $this->input->get('username');
@@ -658,8 +748,6 @@ class Administrator extends CI_Controller
 		echo json_encode(array("statusCode" => 1));
 	}
 
-	
-
 	public function informasi()
 	{
 		$config['upload_path']   = FCPATH . '/assets/upload/informasi/';
@@ -673,177 +761,16 @@ class Administrator extends CI_Controller
 			$this->db->insert('informasi', array('judul' => $judulinformasi, 'file' => $file));
 		}
 
-		$this->load->model('M_informasi');
-
-		if ($this->uri->segment(3) == "") {
-			$data['linkform'] = "administrator/informasi/add";
-			$data['informasi'] = $this->M_informasi->get_all();
-		} else if ($this->uri->segment(3) == "add") {
-			$data = array(
-				'informasi'  => $this->input->post('informasi'),
-			);
-
-			$this->M_informasi->add($data);
-
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/informasi');
-		} else if ($this->uri->segment(3) == "edit") {
-			$id = $this->input->post('id');
-			$data = array(
-				'informasi'  => $this->input->post('informasi')
-			);
-			$this->M_informasi->edit($data, $id);
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/informasi');
-		} else if ($this->uri->segment(3) == "delete") {
-			$id = $this->input->post('id');
-			$this->M_informasi->delete($id);
-			redirect('administrator/informasi');
-		}
 		$data['informasi'] = $this->M_informasi->get_all();
 		$data['_view'] = 'admin/informasi';
 		$this->load->view('admin/layout', $data);
 	}
-
-	public function tambah_informasi() {
-		$data = array(
-			'informasi'  => $this->input->post('informasi'),
-		);
-
-		$this->M_informasi->add($data);
-
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-		redirect('administrator/informasi');
-	}
-
-	public function edit_informasi() {
-		$id = $this->input->post('id');
-		$data = array(
-			'informasi'  => $this->input->post('informasi')
-		);
-		$this->M_informasi->edit($data, $id);
-		$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-		redirect('administrator/informasi');
-	}
-
+	
 	public function hapus_informasi() {
 		$id = $this->input->post('id');
 		$this->M_informasi->delete($id);
-		// redirect('administrator/informasi');
-	}
-
-	// Upload Informasi Panel Admin
-	function upload_informasi()
-	{
-		$config['upload_path']   = FCPATH . '/assets/upload/informasi/';
-		$config['allowed_types'] = 'pdf';
-		$this->load->library('upload', $config);
-
-		if ($this->upload->do_upload('fileinformasi')) {
-			$fileinformasi = $this->upload->data('file_name');
-			$judulinformasi = $this->input->post('judulinformasi');
-			$this->db->insert('informasi', array('file' => $fileinformasi, 'judul' => $judulinformasi));
-		}
-	}
-
-	public function pengaturan()
-	{
-		$data['_view'] = 'admin/pengaturan';
-		$this->load->view('admin/layout', $data);
-	}
-
-
-
-
-	// Upload Informasi Panel Admin
-	function uploadinformasi()
-	{
-		$config['upload_path']   = FCPATH . '/assets/upload/informasi/';
-		$config['allowed_types'] = 'pdf';
-		$this->load->library('upload', $config);
-
-		if ($this->upload->do_upload('fileinformasi')) {
-			$fileinformasi = $this->upload->data('file_name');
-			$judulinformasi = $this->input->post('namask');
-			$this->db->insert('informasi', array('file' => $fileinformasi, 'judul' => $judulinformasi));
-		}
-	}
-
-	// public function saveagenda()
-	// {
-	// 	$params = array(
-	// 		'judul' => $this->input->post('judulagenda'),
-	// 		'isi_agenda' => $this->input->post('isiagenda'),
-	// 		'waktu' => date("Y-m-d H:i:s"),
-	// 		'id' => $this->input->post('id'),
-	// 	);
-
-	// 	$this->M_agenda->add_agenda($params);
-
-	// 	$this->session->set_flashdata('message', '<div class="alert alert-success d-flex align-items-center" role="alert">
-	//        <svg class="bi flex-shrink-0 me-2" width="24"  height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
-	//        <div>
-	//         Agenda telah berhasil ditambah.
-	//        </div>
-	//      </div>');
-	// 	echo json_encode(array('status' => TRUE));
-	// }
-
-	
-
-	public function ref_namasmta()
-	{
-		$this->load->model('M_namasmta');
-
-		$data['linkform'] = "administrator/tambah_smta";
-		$data['namasmta'] = $this->M_namasmta->get_all();
-		$data['provinsi'] = $this->M_wilayah->get_all_provinsi();
-		$data['_view'] = 'admin/ref_namasmta';
-		$this->load->view('admin/layout', $data);
-	}
-
-	public function tambah_smta()
-	{
-		$this->load->model('M_namasmta');
-		$data = array( 
-			'nama_smta'  => $this->input->post('namasmta'),
-			'alamat_smta'  => $this->input->post('alamatsmta'),
-			'npsn_smta'  => $this->input->post('npsnsmta'),
-			'provinsi_smta'  => $this->input->post('provinsismta'),
-			'kabupaten_smta'  => $this->input->post('kabupatensmta'),
-			'kecamatan_smta'  => $this->input->post('kecamatansmta'),
-		);
-		$this->M_namasmta->add($data);
 		echo json_encode(array("statusCode" => 1));
 
-	}
-
-	public function simpan_editsmta()
-	{
-		$this->load->model('M_namasmta');
-		$idsmta = $this->input->post('idsmta');
-		$data = array(
-			'nama_smta'  => $this->input->post('namasmta'),
-			'alamat_smta'  => $this->input->post('alamatsmta'),
-			'npsn_smta'  => $this->input->post('npsnsmta'),
-			'provinsi_smta'  => $this->input->post('provinsismta'),
-			'kabupaten_smta'  => $this->input->post('kabupatensmta'),
-			'kecamatan_smta'  => $this->input->post('kecamatansmta'),
-		);
-		$this->M_namasmta->edit($data, $idsmta);
-		echo json_encode(array("statusCode" => 1));
-
-
-	}
-
-	public function hapus_smta()
-	{
-		$this->load->model('M_namasmta');
-
-		$id = $this->input->post('idsmta');
-		$this->M_namasmta->delete($id);
-		echo json_encode(array("statusCode" => 1));
-		
 	}
 
 	public function export_pendaftar_excel()

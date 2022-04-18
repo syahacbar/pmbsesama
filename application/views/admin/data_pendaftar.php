@@ -1418,6 +1418,7 @@
     				$('.tempatfoto').show();
     				$('.unggahfoto').hide();
 
+					Dropzone.forElement(".editFoto").removeAllFiles(true);
     				var username = $(this).data('username');
     				$.ajax({
     					type: "POST",
@@ -1427,15 +1428,15 @@
     					},
     					success: function(response) {
     						var json = $.parseJSON(response);
-    						var fotoprofil;
-    						if(json.fotoprofil = "null")
-    						{
-    							fotoprofil = "profil_default.svg";
-    						}
-    						else
-    						{
-    							fotoprofil = json.fotoprofil;
-    						}
+    						var fotoprofil = json.fotoprofil;
+    						
+							if(json.fotoprofil == null)
+							{
+								var fotoprofil = "profil_default.svg";
+							} else {
+								var fotoprofil = json.fotoprofil;
+							}
+							console.log(fotoprofil);
     						$("#fotopas").attr("src", "<?php echo base_url('assets/upload/profile/'); ?>" + fotoprofil);
 
     						$('input[name="username"]').val(json.username);
@@ -1679,8 +1680,10 @@
     							$('.tempatfoto').show();
     							$('.unggahfoto').hide();
 
+								//console.log(dataResult.datapendaftar.fotoprofil);
+
     							reload_table();
-    							$("#fotopas").attr("src", "<?php echo base_url('assets/upload/profile/'); ?>" + dataResult.fotoprofil);
+    							$("#fotopas").attr("src", "<?php echo base_url('assets/upload/profile/'); ?>" + dataResult.datapendaftar.fotoprofil);
 
     						} else {
     							alert("Error occured !");
@@ -1820,7 +1823,7 @@
 
     			var edit_fotoprofil = new Dropzone(".editFoto", {
     				autoProcessQueue: true,
-    				url: "<?php echo site_url('administrator/editFoto') ?>",
+    				url: "<?php echo site_url('administrator/edit_pendaftar_foto') ?>",
     				maxFilesize: 2,
     				maxFiles: 1,
     				method: "post",
@@ -1830,23 +1833,17 @@
     				addRemoveLinks: true,
     			});
 
-
     			edit_fotoprofil.on("sending", function(file, xhr, formData) {
-    				// Will send the filesize along with the file as POST data.
-    				// formData.append("filesize", file.size);
-    				// formData.append("username", "<?php //echo $row['username']; 
-													?>");
     				formData.append("username", $("input[name='username']").val());
-
     			}); 
 
     			var unggah_rapor = new Dropzone(".rapor", {
     				autoProcessQueue: true,
-    				url: "<?php echo site_url('register/uploadrapor') ?>",
-    				maxFilesize: 2,
+    				url: "<?php echo site_url('administrator/edit_pendaftar_rapor') ?>",
+    				maxFilesize: 10,
     				method: "post",
     				acceptedFiles: ".pdf",
-    				paramName: "rapor",
+    				paramName: "filerapor",
     				dictInvalidFileType: "Type file ini tidak dizinkan",
     				addRemoveLinks: true,
     			});

@@ -98,6 +98,9 @@
                 <div class="modal-content modal-lg">
                     <div class="modal-header">
                         <h5 class="modal-title" id="newAgendaLabel">Buat Agenda Baru</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <!-- <?php // echo $this->session->flashdata('message'); 
                             ?> -->
@@ -149,7 +152,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Simpan</button>
-
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     </div>
                     <?php echo form_close(); ?>
                 </div>
@@ -163,6 +166,9 @@
                 <div class="modal-content modal-lg">
                     <div class="modal-header">
                         <h5 class="modal-title" id="editAgendaLabel">Ubah Data Agenda</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <?php echo form_open_multipart('', array('id' => 'formEditAgenda')); ?>
                     <div class="modal-body">
@@ -225,7 +231,7 @@
                     </div>
                     <div class="modal-footer">
                         <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Simpan</button>
-
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Batal</button>
                     </div>
                     <?php echo form_close(); ?>
                 </div>
@@ -278,11 +284,6 @@
                     e.preventDefault();
                     gbr_agenda.processQueue();
                 });
-
-
-
-
-
 
 
                 var editgbr_agenda = new Dropzone(".EditgbrAgenda", {

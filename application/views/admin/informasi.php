@@ -58,7 +58,7 @@
                     <form id="forminformasi" method="post">
                         <div class="form-group">
                             <label>Judul</label>
-                            <input id="judulinformasi" type="text" class="form-control" name="judulinformasi" placeholder="Judul Informasi" required>
+                            <input id="judulinformasi" type="text" class="form-control" name="judulinformasi" placeholder="Judul Informasi">
                         </div>
                         <div class="form-group">
                             <label>File</label>
@@ -86,29 +86,58 @@
     $(document).ready(function() {
 
         $(document).on('click', '.deletedata', function() {
-            var id = $(this).data("id");
-           
-            $.ajax({
-                url: "<?php echo site_url(); ?>administrator/hapus_informasi",
-                method: "POST",
-                data: {
-                    id: id,
-                },
-                success: function(data) {
-                    Swal.fire({
-                        title: 'Berhasil!',
-                        text: "Anda telah menghapus informasi!",
-                        icon: 'success',
-                        showCancelButton: false,
-                        confirmButtonText: 'Tutup',
-                    })
-                    location.reload();
-                }
-            });
+            
+            Swal.fire({
+                title: 'Apakah yakin akan menghapus informasi?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var id = $(this).data("id");
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>/administrator/hapus_informasi",
+                        method: "POST",
+                        data: {
+                            id: id
+                        },
+                        success: function(data) {
+                            var dataResult = JSON.parse(data);
+                            if (dataResult.statusCode == 1) {
+                                Swal.fire({
+                                    title: "Berhasil",
+                                    text: "Menghapus informasi!",
+                                    icon: "success",
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    }
+                                });
+                            }  else {
+                                Swal.fire({
+                                    title: "Berhasil",
+                                    text: "Menghapus slider!",
+                                    icon: "error",
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    } 
+                                });
+                            }
+                        }
+                    });
+                             
+                };                             
+                        
+            })
         });
 
         // Unggah Infromasi di halaman admin panel
         var upload_informasi = new Dropzone(".informasi", {
+            autoProcessQueue: false,
             url: "<?php echo site_url('administrator/informasi') ?>",
             maxFilesize: 2,
             method: "post",
@@ -124,24 +153,22 @@
         });
 
 
+
         // Simpan Informasi
         $(document).on('click', '.saveInformasi', function(e) {
-
-            Swal.fire({
-                title: "Berhasil",
-                text: "Anda telah menambah informasi baru!",
-                icon: "success",
-                buttons: [
-                    'NO',
-                    'YES'
-                ],
-            }).then(function(isConfirm) {
-                if (isConfirm) {
-                    location.reload();
-                } else {
-                    //if no clicked => do something else
-                }
-            });
+            var judulinformasi = $("input[name='judulinformasi']").val();
+            if(judulinformasi == null || judulinformasi == '')
+            {
+                Swal.fire({
+                    title: "Peringatan!",
+                    text: "Judul Informasi wajib diisi",
+                    icon: "error",
+                });
+            }
+            else
+            {
+                upload_informasi.processQueue();
+            }
         })
 
     });
