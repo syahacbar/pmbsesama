@@ -159,11 +159,6 @@
                 };                             
                         
             })
-
-
-
-            
-           
         });
     });
 </script>
@@ -188,10 +183,6 @@
                 title: "Berhasil",
                 text: "Anda menambah slider baru!",
                 icon: "success",
-                buttons: [
-                    'NO',
-                    'YES'
-                ],
             }).then(function(isConfirm) {
                 if (isConfirm) {
                     location.reload();

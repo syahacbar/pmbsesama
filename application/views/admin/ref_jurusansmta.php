@@ -85,34 +85,51 @@
             $('#formjurusansmta').attr('action', '<?php echo site_url('administrator/edit_jurusansmta'); ?>');
         });
 
-        $(document).on('click', '.deletedata', function() {
-            var idjurusansmta = $(this).data("idjurusansmta");
-            Swal.fire({
-                title: 'Apakah Anda Yakin akan menghapus?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya',
-                cancelButtonText: 'Tidak'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: "<?php echo site_url(); ?>administrator/hapus_jurusansmta",
-                        method: "POST",
-                        data: {
-                            idjurusansmta: idjurusansmta
-                        },
-
-                        success: function(data) {
-                            Swal.fire(
-                                'Tersimpan!',
-                                'Data SMTA telah berhasil ditambah.'
-                            )
-                            table.ajax.reload();
-                        }
-                    });         
-            })
+        $(document).on("click", ".deletedata", function() {
+            var idjurusansmta = $(this).data('idjurusansmta');
+            $.ajax({
+                type: "POST",
+                url: '<?php echo site_url() ?>/administrator/hapus_jurusansmta/',
+                data: {
+                    idjurusansmta: idjurusansmta
+                },
+                success: function(data) {
+                    var dataResult = JSON.parse(data);
+                    if (dataResult.statusCode == 1) {
+                        Swal.fire({
+                            title: 'Apakah yakin akan menghapus SMTA?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Ya',
+                            cancelButtonText: 'Tidak',
+                        }).then((result) => {
+                            if (result.isConfirmed) {  
+                                Swal.fire({
+                                    title: "Berhasil",
+                                    text: "Menghapus slider!",
+                                    icon: "success",
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    } else {
+                                        //if no clicked => do something else
+                                    }
+                                });
+                            };     
+                        })
+                    }    
+                },
+                error: function() {
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Maaf...',
+                        text: 'Ada yang salah!',
+                        confirmButtonText: 'Kembali',
+                    })
+                }
+            });
         });
     });
 </script>
