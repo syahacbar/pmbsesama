@@ -43,6 +43,8 @@ class Administrator extends CI_Controller
 		$this->load->view('admin/layout', $data);
 	}
 
+	// referensi data agama
+
 	public function ref_agama()
 	{
 		$this->load->model('M_agama');
@@ -77,6 +79,7 @@ class Administrator extends CI_Controller
 		// redirect('administrator/ref_agama');
 	}
 
+	//referensi data status menikah
 
 	public function ref_statusmenikah()
 	{
@@ -112,6 +115,8 @@ class Administrator extends CI_Controller
 		$this->M_statusmenikah->delete($id);
 		redirect('administrator/ref_statusmenikah');
 	}
+
+	// referensi data jenis smta
 
 
 	public function ref_jenissmta()
@@ -150,6 +155,8 @@ class Administrator extends CI_Controller
 		// redirect('administrator/ref_jenissmta');
 	}
 
+	//referensi data jurusan smta
+
 	public function ref_jurusansmta()
 	{
 		$this->load->model('M_jurusansmta');
@@ -186,6 +193,7 @@ class Administrator extends CI_Controller
 		// redirect('administrator/ref_jurusansmta');
 	}
 	
+	//referensi data pekerjaan ortu
 
 	public function ref_pekerjaanortu()
 	{
@@ -223,6 +231,8 @@ class Administrator extends CI_Controller
 		// redirect('administrator/ref_pekerjaanortu');
 	}
 
+	//referensi data pendidikan ortu
+
 	public function ref_pendidikanortu()
 	{
 		$this->load->model('M_pendidikanortu');
@@ -257,6 +267,8 @@ class Administrator extends CI_Controller
 		$this->M_pendidikanortu->delete($id);
 		redirect('administrator/ref_pendidikanortu');
 	}
+
+	//referensi data penghasilan ortu
 
 	public function ref_penghasilanortu()
 	{
@@ -294,6 +306,8 @@ class Administrator extends CI_Controller
 		// redirect('administrator/ref_penghasilanortu');
 	}
 
+	//referensi data fakultas
+
 	public function ref_fakultas()
 	{
 		$data['linkform'] = "administrator/tambah_fakultas";
@@ -329,6 +343,8 @@ class Administrator extends CI_Controller
 		$this->M_fakultas->delete($id);
 		redirect('administrator/ref_fakultas');
 	}
+
+	//referensi data prodi
 
 	public function ref_prodi()
 	{
@@ -372,6 +388,8 @@ class Administrator extends CI_Controller
 		redirect('administrator/ref_prodi');	
 	}
 
+	//referensi data wilayah
+
 	public function ref_prov()
 	{
 		$data['_view'] = 'admin/ref_prov';
@@ -402,7 +420,7 @@ class Administrator extends CI_Controller
 		$this->load->view('admin/layout', $data);
 	}
 
-	// DATA DI BAGIAN PENDAFTAR LIST
+	// data pendaftar
 	public function datapendaftar()
 	{
 		$this->load->model(['M_prodi', 'M_register', 'M_pendaftar', 'M_informasi']);
@@ -535,6 +553,8 @@ class Administrator extends CI_Controller
 		$this->load->view('pendaftar/konfirmasi_pendaftaran_pdf', $data); 
 	}
 
+	//referensi data slider
+
 	public function slider()
 	{
 		$config['upload_path']   = FCPATH . '/assets/upload/slider/';
@@ -578,7 +598,8 @@ class Administrator extends CI_Controller
 		$data['_view'] = 'admin/slider';
 		$this->load->view('admin/layout', $data);
 	}
-
+	
+	//data agenda
 	public function agenda()
 	{
 
@@ -611,6 +632,8 @@ class Administrator extends CI_Controller
 		$this->M_agenda->delete($id);
 		echo json_encode(array("statusCode" => 1));
 	}
+
+	
 
 	public function informasi()
 	{
