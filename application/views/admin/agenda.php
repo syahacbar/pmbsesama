@@ -241,7 +241,7 @@
 
                 var gbr_agenda = new Dropzone(".gbrAgenda", {
                     autoProcessQueue: false,
-                    url: "<?php echo site_url('administrator/unggahagenda') ?>",
+                    url: "<?php echo site_url('administrator/tambah_agenda') ?>",
                     maxFilesize: 2,
                     maxFiles: 1,
                     method: "post",
@@ -258,20 +258,36 @@
                     c.append("isiagenda", a.isiagenda);
                 });
 
+
                 gbr_agenda.on("complete", function(file) {
-                    location.reload();
+                    if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+                        Swal.fire({
+                            title: "Berhasil",
+                            text: "Anda menambah slider baru!",
+                            icon: "success",
+                        }).then(function(isConfirm) {
+                            if (isConfirm) {
+                                location.reload();
+                            }
+                        });
+                    }
                 });
 
 
                 $('#formInputAgenda').submit(function(e) {
                     e.preventDefault();
                     gbr_agenda.processQueue();
-
                 });
+
+
+
+
+
+
 
                 var editgbr_agenda = new Dropzone(".EditgbrAgenda", {
                     autoProcessQueue: false,
-                    url: "<?php echo site_url('administrator/editagenda') ?>",
+                    url: "<?php echo site_url('administrator/editagenda_gambar') ?>",
                     maxFilesize: 2,
                     maxFiles: 1,
                     method: "post",
@@ -293,14 +309,50 @@
                 editgbr_agenda.on("complete", function(file) {
                     location.reload();
                 });
-
-
+                
                 $('#formEditAgenda').submit(function(e) {
-                    e.preventDefault();
-                    editgbr_agenda.processQueue();
+                    if (editgbr_agenda.getUploadingFiles().length === 0 && editgbr_agenda.getQueuedFiles().length === 0) {
+                        var judulagenda = $("input[name='judul']").val();
+                        var isiagenda = $("textarea[name='isi']").val();
+                        var idagenda = $("input[name='idagenda']").val();
 
-                    // alert("Berhasil simpan");
-                    // location.reload();
+                        $.ajax({
+                            url: "<?php echo site_url('administrator/editagenda_nogambar') ?>",
+                            type: "POST",
+                            data: {
+                                judulagenda: judulagenda,
+                                isiagenda: isiagenda,
+                                idagenda: idagenda
+                            },
+                            success: function(data) {
+                                var dataResult = JSON.parse(data);
+                                if (dataResult.statusCode == 1) {
+                                    Swal.fire({
+                                        title: "Berhasil",
+                                        text: "Anda mengubah agenda!",
+                                        icon: "success",
+                                    }).then(function(isConfirm) {
+                                        if (isConfirm) {
+                                            location.reload();
+                                        }
+                                    });
+                                } else {
+                                    Swal.fire({
+                                        title: "Gagal",
+                                        text: "Anda gagal mengubah agenda!",
+                                        icon: "error",
+                                    }).then(function(isConfirm) {
+                                        if (isConfirm) {
+                                            location.reload();
+                                        }
+                                    });
+                                }
+                            }
+                        });
+                    }
+                    else {
+                        editgbr_agenda.processQueue();
+                    }
 
                 });
 
@@ -330,21 +382,25 @@
                                             title: "Berhasil",
                                             text: "Menghapus agenda!",
                                             icon: "success",
-                                            buttons: [
-                                                'NO',
-                                                'YES'
-                                            ],
                                         }).then(function(isConfirm) {
                                             if (isConfirm) {
                                                 location.reload();
-                                            } else {
-                                                //if no clicked => do something else
-                                            }
+                                            } 
                                         });
                                         
                                     };      
                                 })
-                            }  
+                            }  else {
+                                Swal.fire({
+                                    title: "Gagal",
+                                    text: "Menghapus agenda!",
+                                    icon: "error",
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    } 
+                                });
+                            }
                         }
                     });
                 });
@@ -356,27 +412,22 @@
             tinymce.init({
                 selector: '#tinymce'
             });
+            
+            tinymce.init({
+                selector: '#isi'
+            });
         </script>
 
-        <script>
-            ClassicEditor
-                .create(document.querySelector('#isi'))
-                .catch(error => {
-                    console.error(error);
-                });
-        </script>
         <script>
             $(document).ready(function() {
                 $(document).on('click', '#ubahAgenda', function() {
                     var id = $(this).data('id');
                     var judulagenda = $(this).data('judulagenda');
                     var isiagenda = $(this).data('isiagenda');
-                    // var gbr = $(this).data('gbr');
 
                     $('#formEditAgenda #idagenda').val(id);
                     $('#judul').val(judulagenda);
-                    $('#isi').val(isiagenda);
-                    // $('#gambar').attr("src", "/assets/upload/agenda/" + gbr);
+                    $(tinymce.get('isi').getBody()).html(isiagenda);
 
                     var gbr = $(this).data('gbr');
                     const img = document.getElementById("gambar");

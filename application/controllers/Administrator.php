@@ -26,6 +26,7 @@ class Administrator extends CI_Controller
 		$this->load->model('M_fakultas');
 		$this->load->model('M_prodi');
 		$this->load->model('M_namasmta');
+		$this->load->model('M_slider');
 
 	}
 
@@ -557,6 +558,13 @@ class Administrator extends CI_Controller
 
 	public function slider()
 	{
+		$data['slider'] = $this->M_slider->get_all();
+		$data['_view'] = 'admin/slider';
+		$this->load->view('admin/layout', $data);
+	}
+
+	public function tambah_slider()
+	{
 		$config['upload_path']   = FCPATH . '/assets/upload/slider/';
 		$config['allowed_types'] = 'gif|jpg|jpeg|png|ico';
 
@@ -566,64 +574,81 @@ class Administrator extends CI_Controller
 			$nama = $this->upload->data('file_name');
 			$this->db->insert('slider', array('gambar' => $nama));
 		}
-
-		$this->load->model('M_slider');
-
-		if ($this->uri->segment(3) == "") {
-			$data['linkform'] = "administrator/slider/add";
-			$data['slider'] = $this->M_slider->get_all();
-		} else if ($this->uri->segment(3) == "add") {
-			$data = array(
-				'gambar'  => $this->input->post('gambar'),
-			);
-
-			$this->M_slider->add($data);
-
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil ditambahkan <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/slider');
-		} else if ($this->uri->segment(3) == "edit") {
-			$id = $this->input->post('id');
-			$data = array(
-				'gambar'  => $this->input->post('gambar')
-			);
-			$this->M_slider->edit($data, $id);
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/slider');
-		} else if ($this->uri->segment(3) == "delete") {
-			$id = $this->input->post('id');
-			$this->M_slider->delete($id);
-			redirect('administrator/slider');
-		}
-		$data['slider'] = $this->M_slider->get_all();
-		$data['_view'] = 'admin/slider';
-		$this->load->view('admin/layout', $data);
 	}
-	
+
+	public function hapus_slider()
+	{
+		$id = $this->input->post('id');
+		if ($this->M_slider->delete($id))
+		{
+			echo json_encode(array("statusCode" => 1));
+		} else {
+			echo json_encode(array("statusCode" => 0));
+		}
+
+	}
+
 	//data agenda
 	public function agenda()
 	{
-
-		$this->load->model('M_agenda');
-
-		if ($this->uri->segment(3) == "") {
-			$data['agenda'] = $this->M_agenda->get_all();
-		} else if ($this->uri->segment(3) == "delete") {
-			$id = $this->input->post('id');
-			$this->M_agenda->delete($id);
-			redirect('administrator/agenda');
-		} else if ($this->uri->segment(3) == "edit") {
-			$id = $this->input->post('id');
-			$data = array(
-				'agenda'  => $this->input->post('agenda')
-			);
-			$this->M_agenda->edit($data, $id);
-			$this->session->set_flashdata('notif', '<div class="alert alert-success" role="alert"> Data Berhasil diubah <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button></div>');
-			redirect('administrator/agenda');
-		}
-
 		$data['agenda'] = $this->M_agenda->get_all();
 		$data['_view'] = 'admin/agenda';
 		$this->load->view('admin/layout', $data);
+	}
+
+	public function tambah_agenda()
+	{
+		$config['upload_path']   = FCPATH . 'assets/upload/agenda/';
+		$config['allowed_types'] = '*';
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('gbr_agenda')) {
+			$namafile = $this->upload->data('file_name');
+			$judulagenda = $this->input->post('judulagenda');
+			$isiagenda = $this->input->post('isiagenda');
+			$uploaded_on = date("Y-m-d H:i:s");
+			$this->db->insert('agenda', array(
+				'judul' => $judulagenda,
+				'isi_agenda' => $isiagenda,
+				'waktu' => $uploaded_on,
+				'gambar' => $namafile
+			));
+		} 
+	}
+
+	public function editagenda_gambar()
+	{
+		$config['upload_path']   = FCPATH . 'assets/upload/agenda/';
+		$config['allowed_types'] = '*';
+		$this->load->library('upload', $config);
+
+		if ($this->upload->do_upload('editgbr_agenda')) {
+			$namafile = $this->upload->data('file_name');
+			$judulagenda = $this->input->post('judulagenda');
+			$isiagenda = $this->input->post('isiagenda');
+			$uploaded_on = date("Y-m-d H:i:s");
+			$this->db->where('id', $this->input->post('idagenda'));
+			$this->db->update('agenda', array(
+				'gambar' => $namafile,
+				'isi_agenda' => $isiagenda,
+				'judul' => $judulagenda,
+				'waktu' => $uploaded_on
+			));
+		}
+	}
+
+	public function editagenda_nogambar()
+	{
+		$judulagenda = $this->input->post('judulagenda');
+		$isiagenda = $this->input->post('isiagenda');
+		$uploaded_on = date("Y-m-d H:i:s");
+		$this->db->where('id', $this->input->post('idagenda'));
+		$this->db->update('agenda', array(
+			'isi_agenda' => $isiagenda,
+			'judul' => $judulagenda,
+			'waktu' => $uploaded_on
+		));
+		echo json_encode(array("statusCode" => 1));
 	}
 
 	public function hapus_agenda()
@@ -728,45 +753,7 @@ class Administrator extends CI_Controller
 	}
 
 
-	public function unggahagenda()
-	{
-		$config['upload_path']   = FCPATH . 'assets/upload/agenda/';
-		$config['allowed_types'] = '*';
-		$this->load->library('upload', $config);
 
-		if ($this->upload->do_upload('gbr_agenda')) {
-			$namafile = $this->upload->data('file_name');
-			$judulagenda = $this->input->post('judulagenda');
-			$isiagenda = $this->input->post('isiagenda');
-			$uploaded_on = date("Y-m-d H:i:s");
-			$this->db->insert('agenda', array(
-				'gambar' => $namafile,
-				'isi_agenda' => $isiagenda,
-				'judul' => $judulagenda,
-				'waktu' => $uploaded_on
-			));
-		} 
-	}
-
-	public function editagenda()
-	{
-		$config['upload_path']   = FCPATH . 'assets/upload/agenda/';
-		$config['allowed_types'] = '*';
-		$this->load->library('upload', $config);
-
-		if ($this->upload->do_upload('editgbr_agenda')) {
-			$namafile = $this->upload->data('file_name');
-			$judulagenda = $this->input->post('judulagenda');
-			$isiagenda = $this->input->post('isiagenda');
-			$uploaded_on = date("Y-m-d H:i:s");
-			$this->db->update('agenda', array(
-				'gambar' => $namafile,
-				'isi_agenda' => $isiagenda,
-				'judul' => $judulagenda,
-				'waktu' => $uploaded_on
-			));
-		}
-	}
 
 	// Upload Informasi Panel Admin
 	function uploadinformasi()

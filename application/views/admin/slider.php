@@ -105,26 +105,26 @@
         var table = $('#dataTable').DataTable();
 
         $(document).on('click', '.deletedata', function() {
-            var id = $(this).data("idslider");
-            $.ajax({
-                url: "<?php echo site_url(); ?>/administrator/slider/delete",
-                method: "POST",
-                data: {
-                    id: id
-                },
-                success: function(data) {
-                    var dataResult = JSON.parse(data);
-                    if (dataResult.statusCode == 1) {
-                        Swal.fire({
-                            title: 'Apakah yakin akan menghapus slider?',
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Ya',
-                            cancelButtonText: 'Tidak',
-                        }).then((result) => {
-                            if (result.isConfirmed) {
+            Swal.fire({
+                title: 'Apakah yakin akan menghapus slider?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var id = $(this).data("idslider");
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>/administrator/hapus_slider",
+                        method: "POST",
+                        data: {
+                            id: id
+                        },
+                        success: function(data) {
+                            var dataResult = JSON.parse(data);
+                            if (dataResult.statusCode == 1) {
                                 Swal.fire({
                                     title: "Berhasil",
                                     text: "Menghapus slider!",
@@ -136,17 +136,34 @@
                                 }).then(function(isConfirm) {
                                     if (isConfirm) {
                                         location.reload();
-                                    } else {
-                                        //if no clicked => do something else
                                     }
                                 });
-                                
-                            };                             
-                                 
-                        })
-                    }  
-                }
-            });
+                            }  else {
+                                Swal.fire({
+                                    title: "Berhasil",
+                                    text: "Menghapus slider!",
+                                    icon: "error",
+                                    buttons: [
+                                        'NO',
+                                        'YES'
+                                    ],
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    } 
+                                });
+                            }
+                        }
+                    });
+                             
+                };                             
+                        
+            })
+
+
+
+            
+           
         });
     });
 </script>
@@ -155,39 +172,37 @@
     Dropzone.autoDiscover = false;
 
     var upload_slider = new Dropzone(".gambarslider", {
-        url: "<?php echo site_url('administrator/slider') ?>",
-        maxFilesize: 2,
+        url: "<?php echo site_url('administrator/tambah_slider') ?>",
+        maxFilesize: 5,
         method: "post",
         acceptedFiles: ".jpeg,.jpg,.png,.gif",
         paramName: "slider",
         dictInvalidFileType: "Type file ini tidak dizinkan",
         addRemoveLinks: true,
+        autoProcessQueue: false,
     });
 
-
-    upload_slider.on("sending", function(file, xhr, formData) {
-        formData.append("gambar", "gambar");
+    upload_slider.on("complete", function(file) {
+        if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+            Swal.fire({
+                title: "Berhasil",
+                text: "Anda menambah slider baru!",
+                icon: "success",
+                buttons: [
+                    'NO',
+                    'YES'
+                ],
+            }).then(function(isConfirm) {
+                if (isConfirm) {
+                    location.reload();
+                }
+            });
+        }
     });
-
 
     // Simpan Slider
     $(document).on('click', '.saveSlider', function(e) {
-
-        Swal.fire({
-            title: "Berhasil",
-            text: "Anda menambah slider baru!",
-            icon: "success",
-            buttons: [
-                'NO',
-                'YES'
-            ],
-        }).then(function(isConfirm) {
-            if (isConfirm) {
-                location.reload();
-            } else {
-                //if no clicked => do something else
-            }
-        });
+        upload_slider.processQueue();        
     })
 
     $(function() {
