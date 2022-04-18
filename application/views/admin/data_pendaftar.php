@@ -1427,8 +1427,16 @@
     					},
     					success: function(response) {
     						var json = $.parseJSON(response);
-
-    						$("#fotopas").attr("src", "<?php echo base_url('assets/upload/profile/'); ?>" + json.fotoprofil);
+    						var fotoprofil;
+    						if(json.fotoprofil = "null")
+    						{
+    							fotoprofil = "profil_default.svg";
+    						}
+    						else
+    						{
+    							fotoprofil = json.fotoprofil;
+    						}
+    						$("#fotopas").attr("src", "<?php echo base_url('assets/upload/profile/'); ?>" + fotoprofil);
 
     						$('input[name="username"]').val(json.username);
     						$('input[name="namalengkap"]').val(json.namalengkap);
@@ -1779,14 +1787,21 @@
 		                        }).then((result) => {
 		                            if (result.isConfirmed) {
 			                            Swal.fire({
-											title: 'Berhasil!',
-											text: "Anda telah menghapus pendaftar!",
-											icon: 'success',
-											showCancelButton: false,
-											confirmButtonText: 'Tutup',
-										})                          
-		                                reload_table();
-		                            };     
+			                                title: "Berhasil",
+			                                text: "Menghapus pendaftar!",
+			                                icon: "success",
+			                                buttons: [
+			                                    'NO',
+			                                    'YES'
+			                                ],
+			                            }).then(function(isConfirm) {
+			                                if (isConfirm) {
+			                                    reload_table();
+			                                } else {
+			                                    //if no clicked => do something else
+			                                }
+			                            });
+		                            };                  
 		                        })
 		                    }    
 						},
@@ -1823,11 +1838,11 @@
 													?>");
     				formData.append("username", $("input[name='username']").val());
 
-    			});
+    			}); 
 
     			var unggah_rapor = new Dropzone(".rapor", {
     				autoProcessQueue: true,
-    				url: "<?php echo site_url('administrator/uploadrapor') ?>",
+    				url: "<?php echo site_url('register/uploadrapor') ?>",
     				maxFilesize: 2,
     				method: "post",
     				acceptedFiles: ".pdf",

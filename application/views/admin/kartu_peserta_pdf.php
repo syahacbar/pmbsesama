@@ -14,6 +14,7 @@ $pdf->SetMargins(20, 20, 20, true);
 $pdf->AddPage('P', 'A4');
 $CI = &get_instance();
 $CI->load->model(['M_prodi']);
+
 $html = '
 <style>
 	span.kop {
@@ -47,7 +48,7 @@ $html = '
 <br><br>
 <table border="0" width="100%">
 	<tr>
-		<td width="20%"><img src="'.base_url('assets/upload/profile/') . $peserta->fotoprofil.'" width="50"></td>
+		<td width="20%"><img src="'.base_url('assets/upload/profile/').'profil_default.svg" width="50"></td>
 		<td width="80%"> 
 			<table border="0" align="left" width="100%">
 				<tr>

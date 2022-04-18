@@ -605,6 +605,13 @@ class Administrator extends CI_Controller
 		$this->load->view('admin/layout', $data);
 	}
 
+	public function hapus_agenda()
+	{
+		$id = $this->input->post('id');
+		$this->M_agenda->delete($id);
+		echo json_encode(array("statusCode" => 1));
+	}
+
 	public function informasi()
 	{
 		$config['upload_path']   = FCPATH . '/assets/upload/informasi/';

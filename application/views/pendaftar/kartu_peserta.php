@@ -15,6 +15,14 @@
 <?php
 $CI = &get_instance();
 $CI->load->model(['M_prodi']);
+if($peserta->fotoprofil == NULL)
+{
+    $fotoprofil = "profil_default.svg";
+}
+else
+{
+    $fotoprofil = $peserta->fotoprofil;
+}
 ?>
 
 <body class='snippet-body' onload="window.print();">
@@ -39,7 +47,7 @@ $CI->load->model(['M_prodi']);
                     <section class="identitas">
                         <div class="row identitaspeserta">
                             <div class="col-md-3">
-                                <img src="<?php echo base_url('assets/upload/profile/') . $peserta->fotoprofil; ?>" class="img-thumbnail" alt="foto_pas_mahasiswa">
+                                <img src="<?php echo base_url('assets/upload/profile/').$fotoprofil;?>" class="img-thumbnail" alt="foto_pas_mahasiswa">
                             </div>
                             <div class="col-md-9">
                                 <h5>KARTU TANDA PESERTA SESAMA <br>Tahun Akademik <?php echo $peserta->tahunakademik; ?></h5>

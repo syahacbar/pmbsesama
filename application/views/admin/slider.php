@@ -113,19 +113,38 @@
                     id: id
                 },
                 success: function(data) {
-                    Swal.fire({
-                        title: "Berhasil",
-                        text: "Slider telah dihapus",
-                        icon: "success",
-                        buttons: [
-                            'NO',
-                            'YES'
-                        ],
-                    }).then(function(isConfirm) {
-                        if (isConfirm) {
-                            location.reload();
-                        }
-                    });
+                    var dataResult = JSON.parse(data);
+                    if (dataResult.statusCode == 1) {
+                        Swal.fire({
+                            title: 'Apakah yakin akan menghapus slider?',
+                            icon: 'warning',
+                            showCancelButton: true,
+                            confirmButtonColor: '#3085d6',
+                            cancelButtonColor: '#d33',
+                            confirmButtonText: 'Ya',
+                            cancelButtonText: 'Tidak',
+                        }).then((result) => {
+                            if (result.isConfirmed) {
+                                Swal.fire({
+                                    title: "Berhasil",
+                                    text: "Menghapus slider!",
+                                    icon: "success",
+                                    buttons: [
+                                        'NO',
+                                        'YES'
+                                    ],
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    } else {
+                                        //if no clicked => do something else
+                                    }
+                                });
+                                
+                            };                             
+                                 
+                        })
+                    }  
                 }
             });
         });

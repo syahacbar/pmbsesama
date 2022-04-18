@@ -238,40 +238,6 @@
         <script>
             Dropzone.autoDiscover = false;
             $(document).ready(function() {
-                // $('#formInputAgenda').submit(function(e) {
-                //     e.preventDefault();
-                //     var judulagenda = $("input[name='judulagenda']").val();
-                //     var isiagenda = $("textarea[name='isiagenda']").val();
-                //     var idagenda = $("input[name='idagenda']").val();
-
-                //     $.ajax({
-                //         url: "<?php // echo site_url('administrator/saveagenda') 
-                                    ?>",
-                //         type: "POST",
-                //         data: {
-                //             judulagenda: judulagenda,
-                //             isiagenda: isiagenda,
-                //             idagenda: idagenda,
-                //         },
-
-                //         error: function() {
-                //             console.log('Tidak berhasil simpan data');
-                //         },
-                //         success: function(data) {
-                //             Swal.fire({
-                //                 title: "Berhasil",
-                //                 text: "Anda menambah 1 agenda baru",
-                //                 icon: "success",
-                //                 showCancelButton: false,
-                //             }).then(function(isConfirm) {
-                //                 if (isConfirm) {
-                //                     location.reload();
-                //                 }
-                //             });
-                //         }
-                //     });
-
-                // });
 
                 var gbr_agenda = new Dropzone(".gbrAgenda", {
                     autoProcessQueue: false,
@@ -300,9 +266,6 @@
                 $('#formInputAgenda').submit(function(e) {
                     e.preventDefault();
                     gbr_agenda.processQueue();
-
-                    // alert("Berhasil simpan");
-                    // location.reload();
 
                 });
 
@@ -351,16 +314,37 @@
                             id: id
                         },
                         success: function(data) {
-                            Swal.fire({
-                                title: "Berhasil",
-                                text: "Slider telah dihapus",
-                                icon: "success",
-                                showCancelButton: false,
-                            }).then(function(isConfirm) {
-                                if (isConfirm) {
-                                    location.reload();
-                                }
-                            });
+                            var dataResult = JSON.parse(data);
+                            if (dataResult.statusCode == 1) {
+                                Swal.fire({
+                                    title: 'Apakah yakin akan menghapus agenda?',
+                                    icon: 'warning',
+                                    showCancelButton: true,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Ya',
+                                    cancelButtonText: 'Tidak',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        Swal.fire({
+                                            title: "Berhasil",
+                                            text: "Menghapus agenda!",
+                                            icon: "success",
+                                            buttons: [
+                                                'NO',
+                                                'YES'
+                                            ],
+                                        }).then(function(isConfirm) {
+                                            if (isConfirm) {
+                                                location.reload();
+                                            } else {
+                                                //if no clicked => do something else
+                                            }
+                                        });
+                                        
+                                    };      
+                                })
+                            }  
                         }
                     });
                 });

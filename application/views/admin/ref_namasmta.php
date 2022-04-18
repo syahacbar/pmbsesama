@@ -473,8 +473,22 @@
                             confirmButtonText: 'Ya',
                             cancelButtonText: 'Tidak',
                         }).then((result) => {
-                            if (result.isConfirmed) {                          
-                                reload_table();
+                            if (result.isConfirmed) {  
+                                Swal.fire({
+                                    title: "Berhasil",
+                                    text: "Menghapus slider!",
+                                    icon: "success",
+                                    buttons: [
+                                        'NO',
+                                        'YES'
+                                    ],
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        reload_table();
+                                    } else {
+                                        //if no clicked => do something else
+                                    }
+                                });
                             };     
                         })
                     }    
