@@ -20,9 +20,4 @@ class Agenda extends CI_Controller
         $data['detail'] = $this->M_agenda->get_by_id($id);
         $this->load->view('agenda/detail', $data);
     }
-
-    // public function get_gbrdokumentasi($gambar)
-    // {
-    //     $data['agenda'] = $this->M_agenda->gbr_agenda($gambar);
-    // }
 }
