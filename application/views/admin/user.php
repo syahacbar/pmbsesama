@@ -304,6 +304,7 @@
             </div>
         </div>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+        <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
 
         <script>
             $(document).ready(function() {
@@ -467,7 +468,7 @@
                                 perusahan: perusahan,
                                 surel: surel,
                                 nohp: nohp,
-                                katansandi: katansandi
+                                katasandi: katasandi
                             },
                             success: function(response) {
                                 var result = $.parseJSON(response);
@@ -502,8 +503,6 @@
                     }
                 }
             })
-
-
         });
     </script>
 </body>
