@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
 
     <meta charset="utf-8">
@@ -551,53 +551,78 @@
 
                 if (password == '' || password == 'null')
                 {
-                    console.log('update tanpa password');
-
                     $.ajax({
-    					url: "<?php echo site_url('user/edit_admin'); ?>",
     					type: "POST",
+    					url: '<?php echo site_url('user/edit_admin') ?>',
     					data: {
-    						first_name: first_name,
     						iduser: iduser,
-    						company: company,
-    						email: email,
-    						phone: phone,
+                            firstname:firstname,
+                            company:company,
+                            email:email,
+                            phone:phone
     					},
+    					success: function(response) {
+                            var result = $.parseJSON(response);
+                            if(result.statusCode == 1) 
+                            {
+                                Swal.fire({
+                                    title: "Berhasil",
+                                    text: "Ubah profil user.",
+                                    icon: "success",
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    } 
+                                });
 
-    					//cache: false,
-    					success: function(dataResult) {
-    						//var result = JSON.parse(dataResult);
-    						//if (dataResult.statusCode == 1) {
-    							console.log('jhewhej');
-    						//} else {
-    							//alert("Error occured !");
-    						//}
-    					}
-    			    });
-                } else {
+                            }
+                            else
+                            {
+                                Swal.fire({
+                                    title: "Peringatan!",
+                                    text: "Gagal ubah profil user",
+                                    icon: "error",
+                                });
+                            }
+                        }
+                });
+             } else {
                     if (password == confirm_password) {
-                        console.log('password sama jalankan update');
                         $.ajax({
-    					url: "<?php echo site_url('user/edit_admin'); ?>",
-    					type: "POST",
-    					data: {
-    						first_name: first_name,
-    						iduser: iduser,
-    						company: company,
-    						email: email,
-    						phone: phone,
-    					},
-
-    					//cache: false,
-    					success: function(dataResult) {
-    						//var result = JSON.parse(dataResult);
-    						//if (dataResult.statusCode == 1) {
-    							console.log('jhewhej');
-    						//} else {
-    							//alert("Error occured !");
-    						//}
-    					}
-    			    });
+                            type: "POST",
+                            url: '<?php echo site_url('user/edit_admin') ?>',
+                            data: {
+                                iduser: iduser,
+                                firstname:firstname,
+                                company:company,
+                                email:email,
+                                phone:phone,
+                                password:password
+                            },
+                            success: function(response) {
+                                var result = $.parseJSON(response);
+                                if(result.statusCode == 1) 
+                                {
+                                    Swal.fire({
+                                        title: "Berhasil",
+                                        text: "Ubah profil user.",
+                                        icon: "success",
+                                    }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        window.location.href = "<?php echo site_url('auth/logout/admin');?>";
+                                    } 
+                                });
+                                }
+                                else
+                                {
+                                    Swal.fire({
+                                        title: "Peringatan!",
+                                        text: "Gagal ubah profil user",
+                                        icon: "error",
+                                    });
+                                }
+                            }
+                        });
                     } else {
                         Swal.fire({
                             title: "Peringatan!",
@@ -606,29 +631,6 @@
                         });
                     }
                 }
-                // $.ajax({
-    			// 		url: "<?php // echo site_url('administrator/edit_pendaftar'); ?>",
-    			// 		type: "POST",
-    			// 		data: {
-    			// 			first_name: first_name,
-    			// 			identity: identity,
-    			// 			company: company,
-    			// 			email: email,
-    			// 			phone: phone,
-    			// 			password: password,
-    			// 			confirm_password: confirm_password
-    			// 		},
-
-    			// 		//cache: false,
-    			// 		success: function(dataResult) {
-    			// 			var dataResult = JSON.parse(dataResult);
-    			// 			if (dataResult.statusCode == 1) {
-    			// 				
-    			// 			} else {
-    			// 				alert("Error occured !");
-    			// 			}
-    			// 		}
-    			// });
             })
 
 

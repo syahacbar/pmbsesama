@@ -13,7 +13,7 @@ class User extends CI_Controller
         $this->load->model('M_user');
         $this->load->model('M_register');
         $this->load->model('Ion_auth_model');
-        $this->load->library(['ion_auth', 'form_validation']);
+        $this->load->library('ion_auth');
     }
 
     public function reset_password($userawal,$userakhir)
@@ -200,45 +200,25 @@ class User extends CI_Controller
 
     public function edit_admin()
     {
-                  echo json_encode(array("statusCode" => 1));
+        if (isset($_POST) && !empty($_POST)) 
+        {
+            $iduser = $this->input->post('iduser');
+            $data = [
+                'first_name' => $this->input->post('firstname'),
+                'company' => $this->input->post('company'),
+                'phone' => $this->input->post('phone'),
+                'email' => $this->input->post('email')
+            ];
+                // update the password if it was posted
+            if ($this->input->post('password')) {
+                $data['password'] = $this->input->post('password');
+            }
 
-    //     $id = $this->input->post('iduser');
-
-    //     if (!$this->ion_auth->logged_in() || (!$this->ion_auth->is_admin() && !($this->ion_auth->user()->row()->id == $id))) {
-    //         redirect('auth', 'refresh');
-    //     }
-
-    //     $user = $this->ion_auth->user($id)->row();
-    //     $groups = $this->ion_auth->groups()->result_array();
-    //     $currentGroups = $this->ion_auth->get_users_groups($id)->result_array();
-       
-    //     if (isset($_POST) && !empty($_POST)) {
-
-    //             $data = [
-    //                 'first_name' => $this->input->post('first_name'),
-    //                 //'last_name' => $this->input->post('last_name'),
-    //                 'company' => $this->input->post('company'),
-    //                 'phone' => $this->input->post('phone'),
-    //                 'email' => $this->input->post('email'),
-    //             ];
-
-    //             // update the password if it was posted
-    //             if ($this->input->post('password')) {
-    //                 $data['password'] = $this->input->post('password');
-    //             }
-
-    //             // check to see if we are updating the user
-    //             if ($this->ion_auth->update($user->id, $data)) {
-    //                 // redirect them back to the admin page if admin, or to the base url if non admin
-    //                 $this->session->set_flashdata('message', $this->ion_auth->messages());
-    //                 echo json_encode(array("statusCode" => 1));
-
-    //             } else {
-    //                 // redirect them back to the admin page if admin, or to the base url if non admin
-    //                 $this->session->set_flashdata('message', $this->ion_auth->errors());
-    //                 echo json_encode(array("statusCode" => 0));
-    //             }
-    //     }
-
+            if ($this->ion_auth->update($iduser, $data)) {
+                echo json_encode(array("statusCode" => 1));
+            } else {
+                echo json_encode(array("statusCode" => 0));
+            }
+        }        
     }
 }

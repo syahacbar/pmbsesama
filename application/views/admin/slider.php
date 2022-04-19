@@ -128,11 +128,7 @@
                                 Swal.fire({
                                     title: "Berhasil",
                                     text: "Menghapus slider!",
-                                    icon: "success",
-                                    buttons: [
-                                        'NO',
-                                        'YES'
-                                    ],
+                                    icon: "success"
                                 }).then(function(isConfirm) {
                                     if (isConfirm) {
                                         location.reload();
@@ -142,11 +138,7 @@
                                 Swal.fire({
                                     title: "Berhasil",
                                     text: "Menghapus slider!",
-                                    icon: "error",
-                                    buttons: [
-                                        'NO',
-                                        'YES'
-                                    ],
+                                    icon: "error"
                                 }).then(function(isConfirm) {
                                     if (isConfirm) {
                                         location.reload();
