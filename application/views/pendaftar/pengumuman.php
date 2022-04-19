@@ -21,6 +21,11 @@
   <link href="<?php echo base_url(); ?>assets/frontend/css/register-page.css" rel="stylesheet" />
   <link href="<?php echo base_url(); ?>assets/frontend/css/agendainfoannounce.css" rel="stylesheet" />
 
+  <style>
+.modal-dialog.modal-lg {
+    max-width: 600px;
+}
+  </style>
 </head>
 
 <body class='snippet-body'>
@@ -48,31 +53,19 @@
       </div>
 
       <div class="row pengumuman">
-        <div class="col-lg-12">
-          <h6 class="card-title">Pengumuman Hasil Test PMB Jalur SESAMA untuk Periode Ganjil - 2022/2023</h6>
-        </div>
-        <div class="col-lg-6 mb-2">
-          <div class="card px-0 py-0">
-            <div class="card-body px-2 py-2">
-              <strong class="card-title">Jalur Masuk</strong>
-              <input type="text" name="jalurmasuk" class="form-control mt-2" id="jalurmasuk" placeholder="SESAMA" disabled>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-6">
-          <div class="card px-0 py-0">
-            <div class="card-body px-2 py-2">
+        <div class="col-lg-12 mb-4 d-flex justify-content-center">
+          <div class="card px-2 py-2 w-75">
               <strong class="card-title">No. Pendaftaran</strong>
               <div class="row d-flex">
                 <div class="col-lg-8 mt-2">
+                  <!-- <i class="fas fa-user"></i> -->
                   <input type="text" name="nomortes" class="form-control" id="nomortes" placeholder="Ketik nomor tes Anda di sini">
                 </div>
                 <div class="col-lg-4 mt-2">
-                  <button type="submit" class="btn btn-info btn-icon-split btn-sm lihatHasil">Lihat Hasil</button>
+                  <button type="submit" class="btn btn-info btn-icon-split btn-sm lihatHasil" data-toggle="modal" data-target="#cekPengumuman">Lihat Hasil</button>
                 </div>
               </div>
 
-            </div>
           </div>
         </div>
 
@@ -111,11 +104,69 @@
       </div>
     <?php }  ?>
 
-
-
   </div>
   </div>
 
+      <!-- Modal Edit User -->
+      <div class="modal fade" id="cekPengumuman" tabindex="-1" role="dialog" aria-labelledby="cekPengumumanLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content modal-lg">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="cekPengumumanLabel">PESERTA LULUS SELEKSI JALUR SESAMA UNIPA TAHUN 2022</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                    <div class="modal-body">
+                        <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group d-flex">
+                                            <label class="col-sm-3" for="username">Nomor Peserta</label>
+                                            <input type="text" class="form-control" id="username" name="username" value="" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group d-flex">
+                                            <label class="col-sm-3" for="first_name">Nama Lengkap</label>
+                                            <input type="text" class="form-control" id="namauser" name="first_name" value="" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group d-flex">
+                                            <label class="col-sm-3" for="sekolah">Asal Sekolah</label>
+                                            <input type="text" class="form-control" id="sekolah" name="sekolah"  value="" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group d-flex">
+                                            <label class="col-sm-3" for="prodi">Program Studi</label>
+                                            <input type="prodi" class="form-control" id="prodi" name="prodi"  value="" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group d-flex">
+                                            <label class="col-sm-3" for="jenjang">Jenjang</label>
+                                            <input type="text" class="form-control col-sm-9" id="jenjang" name="jenjang"  value="" readonly>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group d-flex">
+                                            <label class="col-sm-3" for="fakultas">Fakultas</label>
+                                            <input type="fakultas" class="form-control" id="fakultas" name="fakultas" readonly>
+                                        </div>
+                                    </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Cetak</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
+                    </div>
+            </div>
+        </div>
+    </div>
   <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
