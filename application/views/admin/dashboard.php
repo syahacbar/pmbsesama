@@ -259,7 +259,7 @@ Highcharts.chart('container2', {
         text: 'Grafik Peminatan Pilihan Program Studi'
     },
     tooltip: {
-        pointFormat: '{series.name}: <b>{point.y} orang</b>'
+        pointFormat: '{series.name}: <b>{point.y} orang ({point.percentage:.1f}%)</b>'
     },
     accessibility: {
         point: {
