@@ -360,7 +360,7 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item"  href="#" data-toggle="modal" data-target="#detailProfil">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -435,6 +435,88 @@
         </div>
     </div>
 
+        <!-- Modal Detail User -->
+        <div class="modal fade" id="detailProfil" tabindex="-1" role="dialog" aria-labelledby="detailProfilLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="modal-content modal-lg">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="detailProfilLabel">Detail User</h5>
+                </div>
+                <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
+                <form method="post" action="<?php echo site_url('user/edit_user'); ?>">
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="first_name">Nama Depan</label>
+                                            <input type="text" class="form-control" id="namalengkap" name="first_name" value="<?php echo $user->first_name; ?>">
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="identity">Username</label>
+                                            <input type="text" class="form-control" id="namauser" name="identity" value="<?php echo $user->username; ?>" readonly>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="company">Nama Instansi</label>
+                                            <input type="text" class="form-control" id="sekolah" name="company"  value="<?php echo $user->company; ?>" required>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="email">Email</label>
+                                            <input type="email" class="form-control" id="surel" name="email"  value="<?php echo $user->email; ?>" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="row">
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="phone">Nomor HP/WA</label>
+                                            <input type="text" class="form-control" id="nohp" name="phone"  value="<?php echo $user->phone; ?>" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="password">Kata Sandi</label>
+                                            <input type="password" class="form-control" id="sandi" name="password" required>
+                                        </div>
+                                    </div>
+
+                                    <div class="col-md-12">
+                                        <div class="form-group">
+                                            <label for="confirm_password">Konfirmasi Kata Sandi</label>
+                                            <input type="password" class="form-control" id="katasandi" name="confirm_password" required>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $user->id; ?>">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-footer">
+                        <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Simpan</button>
+                    </div>
+                    <?php echo form_close(); ?>
+            </div>
+        </div>
+    </div>
+
+
     <!-- Bootstrap core JavaScript-->
     <script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/vendor/jquery/jquery.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
@@ -454,8 +536,6 @@
     <script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/js/demo/datatables-demo.js"></script>
     <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/custom-sweetalert.js"></script>
-
-
 </body>
 
 </html>
