@@ -697,6 +697,7 @@ class Administrator extends CI_Controller
 		$config['upload_path']   = FCPATH . 'assets/upload/agenda/';
 		$config['allowed_types'] = '*';
 		$this->load->library('upload', $config);
+		// $this->session->set_flashdata('notif', 'Data Berhasil ditambah');
 
 		if ($this->upload->do_upload('gbr_agenda')) {
 			$namafile = $this->upload->data('file_name');
@@ -765,12 +766,12 @@ class Administrator extends CI_Controller
 			$file = $this->upload->data('file_name');
 			$judulinformasi = $this->input->post('judulinformasi');
 			$this->db->insert('informasi', array('judul' => $judulinformasi, 'file' => $file));
+			// $this->session->set_flashdata('notif', 'Data Berhasil ditambah');
 		}
 
 		$data['informasi'] = $this->M_informasi->get_all();
 		$data['_view'] = 'admin/informasi';
 		$this->load->view('admin/layout', $data);
-
 	
 	}
 	

@@ -11,6 +11,13 @@
             display: flex;
             justify-content: space-around;
         }
+
+        /* span.btn.btn-success.btn-sm.statusaktif {
+            pointer-events: none;
+            padding: 0 20px;
+            border-radius: 30px;
+        } */
+
     </style>
 </head>
 
@@ -56,7 +63,8 @@
                                             <td><?php echo $u->phone; ?></td>
                                             <td><?php echo $u->company; ?></td>
                                             <td>
-                                                <?php echo ($u->active == '1') ? "Aktif" : "Tidak Aktif"; ?>
+                                                <!-- <?php // echo ($u->active == '1') ? '<span class="btn btn-success btn-sm statusaktif" >Aktif</span>' : '<span class="btn btn-danger btn-sm statusnonaktif" >Tidak Aktif</span>'; ?> -->
+                                                <?php echo ($u->active == '1') ? "Aktif" : "Nonaktif"; ?>
                                             </td>
 
                                             <td>
@@ -283,7 +291,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Buat</button>
+                            <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Simpan</button>
 
                         </div>
                         <?php echo form_close(); ?>
@@ -299,16 +307,35 @@
                 $("#tabelUser").on("click", ".btnNonaktif", function() {
                     var iduser = $(this).attr("data-iduser");
                     var namauser = $(this).attr("data-namauser");
+                    // $.ajax({
+                    //     url: '<?php // echo site_url(); ?>user/nonaktifkanuser',
+                    //     method: 'post',
+                    //     data: {
+                    //         iduser: iduser
+                    //     },
+                    //     success: function(data) {
+                    //         var objData = jQuery.parseJSON(data);
+                    //         console.log(objData.status);
+                    //         location.reload();
+                    //     }
+                    // });
+
                     $.ajax({
                         url: '<?php echo site_url(); ?>user/nonaktifkanuser',
-                        method: 'post',
+                        type: "POST",
                         data: {
                             iduser: iduser
                         },
                         success: function(data) {
-                            var objData = jQuery.parseJSON(data);
-                            console.log(objData.status);
-                            location.reload();
+                                Swal.fire({
+                                    title: "Berhasil",
+                                    text: "User telah dinonaktifkan!",
+                                    icon: "success",
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    }
+                                });
                         }
                     });
                 });
@@ -316,16 +343,35 @@
                 $("#tabelUser").on("click", ".btnAktif", function() {
                     var iduser = $(this).attr("data-iduser");
                     var namauser = $(this).attr("data-namauser");
+                    // $.ajax({
+                    //     url: '<?php // echo site_url(); ?>user/aktifkanuser',
+                    //     method: 'post',
+                    //     data: {
+                    //         iduser: iduser
+                    //     },
+                    //     success: function(data) {
+                    //         var objData = jQuery.parseJSON(data);
+                    //         console.log(objData.status);
+                    //         location.reload();
+                    //     }
+                    // });
+
                     $.ajax({
                         url: '<?php echo site_url(); ?>user/aktifkanuser',
-                        method: 'post',
+                        type: "POST",
                         data: {
                             iduser: iduser
                         },
                         success: function(data) {
-                            var objData = jQuery.parseJSON(data);
-                            console.log(objData.status);
-                            location.reload();
+                                Swal.fire({
+                                    title: "Berhasil",
+                                    text: "User telah diaktifkan!",
+                                    icon: "success",
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    }
+                                });
                         }
                     });
                 });

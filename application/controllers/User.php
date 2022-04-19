@@ -71,7 +71,7 @@ class User extends CI_Controller
         if ($this->ion_auth->register($identity, $password, $email, $additional_data, $group)) {
             // check to see if we are creating the user
             // redirect them back to the admin page
-		    $this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
+		    $this->session->set_flashdata('notif', 'User Berhasil ditambahkan');
             $this->session->set_flashdata('message', $this->ion_auth->messages());
             redirect("user", 'refresh');
         } else {
@@ -143,6 +143,11 @@ class User extends CI_Controller
                 $this->data['users'][$k]->groups = $this->ion_auth->get_users_groups($user->id)->result();
             }
 
+            // update the password if it was posted
+            if ($this->input->post('password')) {
+                $this->form_validation->set_rules('password', $this->lang->line('edit_user_validation_password_label'), 'required|min_length[' . $this->config->item('min_password_length', 'ion_auth') . ']|matches[password_confirm]');
+                $this->form_validation->set_rules('password_confirm', $this->lang->line('edit_user_validation_password_confirm_label'), 'required');
+            }
 
             $groups = $this->ion_auth->groups()->result_array();
             $this->data['groups'] = $groups;
@@ -220,6 +225,7 @@ class User extends CI_Controller
             // if ($this->_valid_csrf_nonce() === FALSE || $id != $this->input->post('id')) {
             //     show_error($this->lang->line('error_csrf'));
             // }
+
 
             // update the password if it was posted
             if ($this->input->post('password')) {
