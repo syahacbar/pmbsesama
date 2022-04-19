@@ -43,6 +43,8 @@ class Administrator extends CI_Controller
 		$data['t_biodata'] = $this->M_pendaftar->get_all();
 		$data['fakultas'] = $this->M_fakultas->get_all_fakultas_value();
 		$data['prodi'] = $this->M_prodi->get_all_prodi_value();
+		$data['jurusansmta'] = $this->M_jurusansmta->get_all_jurusansmta_value();
+		$data['jenissmta'] = $this->M_jenissmta->get_all_jenissmta_value();
 
 		$data['_view'] = 'admin/dashboard';
 		$this->load->view('admin/layout', $data);

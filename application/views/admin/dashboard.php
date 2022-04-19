@@ -177,6 +177,33 @@
         </div>
     </div>
     <div class="row">
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                <figure class="highcharts-figure3">
+                    <div id="container3"></div>
+                </figure>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                <figure class="highcharts-figure4">
+                    <div id="container4"></div>
+                </figure>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-4 col-md-6 mb-4">
+            <div class="card border-left-primary shadow h-100 py-2">
+                <div class="card-body">
+                <figure class="highcharts-figure5">
+                    <div id="container5"></div>
+                </figure>
+                </div>
+            </div>
+        </div>
         
     </div>
 </div>
@@ -289,6 +316,145 @@ Highcharts.chart('container2', {
             y: <?php echo $p->peminat1;?>,
         },
         <?php  endforeach?>
+       ]
+    }]
+});
+
+Highcharts.chart('container3', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Grafik Peminatan Berdasarkan Suku'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.y} orang ({point.percentage:.1f}%)</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Peminat',
+        colorByPoint: true,
+        data: [
+        {
+            name: 'Papua',
+            y: <?php echo $count_oap;?>,
+            color: '#00008B'
+        },
+        {
+            name: 'Non Papua',
+            y: <?php echo $count_noap;?>,
+            color: '#8B0000'
+        },
+       ]
+    }]
+});
+
+Highcharts.chart('container4', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Grafik Peminatan Berdasarkan Jurusan SMTA'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.y} orang ({point.percentage:.1f}%)</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Peminat',
+        colorByPoint: true,
+        data: [
+        <?php foreach($jurusansmta as $jur) : ?>
+        {
+            name: '<?php echo $jur->namajurusan?>',
+            y: <?php echo $jur->peminat; ?>
+        },
+        <?php  endforeach ?>
+       ]
+    }]
+});
+
+Highcharts.chart('container5', {
+    chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        type: 'pie'
+    },
+    title: {
+        text: 'Grafik Peminatan Berdasarkan Jenis SMTA'
+    },
+    tooltip: {
+        pointFormat: '{series.name}: <b>{point.y} orang ({point.percentage:.1f}%)</b>'
+    },
+    accessibility: {
+        point: {
+            valueSuffix: '%'
+        }
+    },
+    plotOptions: {
+        pie: {
+            allowPointSelect: true,
+            cursor: 'pointer',
+            dataLabels: {
+                enabled: true,
+                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+            }
+        }
+    },
+    credits: {
+        enabled: false
+    },
+    series: [{
+        name: 'Peminat',
+        colorByPoint: true,
+        data: [
+        <?php foreach($jenissmta as $js) : ?>
+        {
+            name: '<?php echo $js->namajenissmta?>',
+            y: <?php echo $js->peminat; ?>
+        },
+        <?php  endforeach ?>
        ]
     }]
 });

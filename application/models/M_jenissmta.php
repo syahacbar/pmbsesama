@@ -8,6 +8,14 @@ class M_jenissmta extends CI_Model
         return $query->result_array();
     }
 
+    function get_all_jenissmta_value()
+    {
+        $query = $this->db->query("SELECT js.namajenissmta,
+            COUNT(tb.jenissmta) AS peminat
+            FROM t_biodata tb JOIN jenissmta js ON js.idjenissmta=tb.jenissmta GROUP BY js.namajenissmta");
+        return $query->result();
+    }
+
     function add($data)
     {
         $this->db->insert('jenissmta', $data);
