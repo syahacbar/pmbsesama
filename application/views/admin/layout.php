@@ -443,7 +443,7 @@
                     <h5 class="modal-title" id="detailProfilLabel">Detail User</h5>
                 </div>
                 <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
-                <form method="post" action="<?php echo site_url('user/edit_user'); ?>">
+                <form method="post" action="">
                     <div class="modal-body">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
@@ -451,25 +451,25 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="first_name">Nama Depan</label>
-                                            <input type="text" class="form-control" id="namalengkap" name="first_name" value="<?php echo $user->first_name; ?>">
+                                            <input type="text" class="form-control" id="first_name" name="first_name" value="<?php echo $user->first_name; ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="identity">Username</label>
-                                            <input type="text" class="form-control" id="namauser" name="identity" value="<?php echo $user->username; ?>" readonly>
+                                            <input type="text" class="form-control" id="identity" name="identity" value="<?php echo $user->username; ?>" readonly>
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="company">Nama Instansi</label>
-                                            <input type="text" class="form-control" id="sekolah" name="company"  value="<?php echo $user->company; ?>" required>
+                                            <input type="text" class="form-control" id="company" name="company"  value="<?php echo $user->company; ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control" id="surel" name="email"  value="<?php echo $user->email; ?>" required>
+                                            <input type="email" class="form-control" id="email" name="email"  value="<?php echo $user->email; ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -480,21 +480,21 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="phone">Nomor HP/WA</label>
-                                            <input type="text" class="form-control" id="nohp" name="phone"  value="<?php echo $user->phone; ?>" required>
+                                            <input type="text" class="form-control" id="phone" name="phone"  value="<?php echo $user->phone; ?>">
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="password">Kata Sandi</label>
-                                            <input type="password" class="form-control" id="sandi" name="password" required>
+                                            <input type="password" class="form-control" id="password" name="password">
                                         </div>
                                     </div>
 
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="confirm_password">Konfirmasi Kata Sandi</label>
-                                            <input type="password" class="form-control" id="katasandi" name="confirm_password" required>
+                                            <input type="password" class="form-control" id="confirm_password" name="confirm_password">
                                         </div>
                                     </div>
                                 </div>
@@ -502,14 +502,14 @@
 
                             <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                 <div class="form-group">
-                                    <input type="hidden" class="form-control" id="id" name="id" value="<?php echo $user->id; ?>">
+                                    <input type="hidden" class="form-control" id="iduser" name="iduser" value="<?php echo $user->id; ?>">
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Simpan</button>
+                        <button type="button" name="btnUbahUser" id="btnUbahUser" class="btn btn-primary">Simpan</button>
                     </div>
                     <?php echo form_close(); ?>
             </div>
@@ -536,6 +536,104 @@
     <script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/js/demo/datatables-demo.js"></script>
     <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/custom-sweetalert.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $(document).on('click', '#btnUbahUser', function() {
+                var firstname = $("input[name='first_name']").val();
+                var identity = $("input[name='identity']").val();
+                var company = $("input[name='company']").val();
+                var email = $("input[name='email']").val();
+                var phone = $("input[name='phone']").val();
+                var password = $("input[name='password']").val();
+                var confirm_password = $("input[name='confirm_password']").val();
+                var iduser = $("input[name='iduser']").val();
+
+                if (password == '' || password == 'null')
+                {
+                    console.log('update tanpa password');
+
+                    $.ajax({
+    					url: "<?php echo site_url('user/edit_admin'); ?>",
+    					type: "POST",
+    					data: {
+    						first_name: first_name,
+    						iduser: iduser,
+    						company: company,
+    						email: email,
+    						phone: phone,
+    					},
+
+    					//cache: false,
+    					success: function(dataResult) {
+    						//var result = JSON.parse(dataResult);
+    						//if (dataResult.statusCode == 1) {
+    							console.log('jhewhej');
+    						//} else {
+    							//alert("Error occured !");
+    						//}
+    					}
+    			    });
+                } else {
+                    if (password == confirm_password) {
+                        console.log('password sama jalankan update');
+                        $.ajax({
+    					url: "<?php echo site_url('user/edit_admin'); ?>",
+    					type: "POST",
+    					data: {
+    						first_name: first_name,
+    						iduser: iduser,
+    						company: company,
+    						email: email,
+    						phone: phone,
+    					},
+
+    					//cache: false,
+    					success: function(dataResult) {
+    						//var result = JSON.parse(dataResult);
+    						//if (dataResult.statusCode == 1) {
+    							console.log('jhewhej');
+    						//} else {
+    							//alert("Error occured !");
+    						//}
+    					}
+    			    });
+                    } else {
+                        Swal.fire({
+                            title: "Peringatan!",
+                            text: "Kata sandi tidak sama, periksa kembali!",
+                            icon: "error",
+                        });
+                    }
+                }
+                // $.ajax({
+    			// 		url: "<?php // echo site_url('administrator/edit_pendaftar'); ?>",
+    			// 		type: "POST",
+    			// 		data: {
+    			// 			first_name: first_name,
+    			// 			identity: identity,
+    			// 			company: company,
+    			// 			email: email,
+    			// 			phone: phone,
+    			// 			password: password,
+    			// 			confirm_password: confirm_password
+    			// 		},
+
+    			// 		//cache: false,
+    			// 		success: function(dataResult) {
+    			// 			var dataResult = JSON.parse(dataResult);
+    			// 			if (dataResult.statusCode == 1) {
+    			// 				
+    			// 			} else {
+    			// 				alert("Error occured !");
+    			// 			}
+    			// 		}
+    			// });
+            })
+
+
+        });
+    </script>
 </body>
 
 </html>

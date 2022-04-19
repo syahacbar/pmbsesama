@@ -199,7 +199,7 @@ class Auth extends CI_Controller
 	/**
 	 * Log the user out
 	 */
-	public function logout($usertype)
+	public function logout($usertype = null)
 	{
 		$this->data['title'] = "Logout";
 
