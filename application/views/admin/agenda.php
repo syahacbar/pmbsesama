@@ -269,7 +269,7 @@
                     if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
                         Swal.fire({
                             title: "Berhasil",
-                            text: "Anda menambah slider baru!",
+                            text: "Anda menambah agenda baru!",
                             icon: "success",
                         }).then(function(isConfirm) {
                             if (isConfirm) {

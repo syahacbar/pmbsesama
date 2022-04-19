@@ -55,7 +55,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Penghasilan Orang Tua</h6>
                 </div>
                 <div class="card-body">
-                    <?php echo $this->session->flashdata('notif'); ?>
+                <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
                     <form id="formpenghasilanortu" action="<?php echo site_url($linkform); ?>" method="post">
                         <div class="form-group">
                             <label>Penghasilan Orang Tua</label>

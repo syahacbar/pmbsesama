@@ -9,7 +9,7 @@
 					<h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Wilayah Kelurahan/Desa</h6>
 				</div>
 				<div class="card-body">
-					<?php echo $this->session->flashdata('notif'); ?>
+				<div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
 					<form id="formdesa" method="POST" class="row g-3">
 						<div class="col-md-2">
                             <label for="optProvinsi" class="form-label">Pilih Provinsi</label>

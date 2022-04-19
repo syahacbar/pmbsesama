@@ -54,7 +54,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Informasi</h6>
                 </div>
                 <div class="card-body">
-                    <?php echo $this->session->flashdata('notif'); ?>
+                <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
                     <form id="forminformasi" method="post">
                         <div class="form-group">
                             <label>Judul</label>

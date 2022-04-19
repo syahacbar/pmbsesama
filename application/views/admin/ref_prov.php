@@ -11,7 +11,7 @@
 					<h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Wilayah Provinsi</h6>
 				</div>
 				<div class="card-body">
-					<?php echo $this->session->flashdata('notif'); ?>
+				<div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
 					<form id="formprovinsi" class="row g-3" method="POST">
 						<div class="col-md-3">
 							<label>Kode Provinsi</label>
