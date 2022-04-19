@@ -68,7 +68,13 @@
                                             </td>
 
                                             <td>
-                                                <a id="ubahData" class="btn btn-info btn-sm mb-1" href="" title="Edit User" data-toggle="modal" data-target="#editUser" data-firstname="<?php echo $u->first_name; ?>" data-identity="<?php echo $u->username; ?>" data-company="<?php echo $u->company; ?>" data-email="<?php echo $u->email; ?>" data-phone="<?php echo $u->phone; ?>">
+                                                <a id="ubahData" class="btn btn-info btn-sm mb-1" href="" title="Edit User" data-toggle="modal" data-target="#editUser"
+                                                data-idoperator="<?php echo $u->id; ?>"
+                                                data-firstname="<?php echo $u->first_name; ?>"
+                                                data-identity="<?php echo $u->username; ?>"
+                                                data-company="<?php echo $u->company; ?>"
+                                                data-email="<?php echo $u->email; ?>"
+                                                data-phone="<?php echo $u->phone; ?>">
                                                     <i class="fas fa-edit" title="Ubah"></i>
                                                 </a>
 
@@ -203,7 +209,7 @@
                         <h5 class="modal-title" id="editUserLabel">Edit User</h5>
                     </div>
                     <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
-                    <form method="post" action="<?php echo site_url('user/edit_user'); ?>">
+                    <form method="post" action="">
                         <div class="modal-body">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -215,26 +221,26 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="first_name">Nama Depan</label>
-                                                <input type="text" class="form-control" id="namalengkap" name="first_name" required>
+                                                <label for="namadepan">Nama Depan</label>
+                                                <input type="text" class="form-control" id="namadepan" name="namadepan">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="identity">Username</label>
-                                                <input type="text" class="form-control" id="namauser" name="identity" readonly>
+                                                <label for="identitas">Username</label>
+                                                <input type="text" class="form-control" id="identitas" name="identitas" readonly>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="company">Nama Instansi</label>
-                                                <input type="text" class="form-control" id="sekolah" name="company" readonly>
+                                                <label for="perusahan">Nama Instansi</label>
+                                                <input type="text" class="form-control" id="perusahan" name="perusahan">
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="email" class="form-control" id="surel" name="email" required>
+                                                <label for="surel">Email</label>
+                                                <input type="email" class="form-control" id="surel" name="surel">
                                             </div>
                                         </div>
 
@@ -262,22 +268,22 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="phone">Nomor HP/WA</label>
-                                                <input type="text" class="form-control" id="nohp" name="phone" required>
+                                                <label for="nohp">Nomor HP/WA</label>
+                                                <input type="text" class="form-control" id="nohp" name="nohp">
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="password">Kata Sandi</label>
-                                                <input type="password" class="form-control" id="sandi" name="password" required>
+                                                <label for="katasandi">Kata Sandi</label>
+                                                <input type="password" class="form-control" id="katasandi" name="katasandi">
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="confirm_password">Konfirmasi Kata Sandi</label>
-                                                <input type="password" class="form-control" id="katasandi" name="confirm_password" required>
+                                                <label for="confirm_katasandi">Konfirmasi Kata Sandi</label>
+                                                <input type="password" class="form-control" id="confirm_katasandi" name="confirm_katasandi">
                                             </div>
                                         </div>
                                     </div>
@@ -285,14 +291,13 @@
 
                                 <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
                                     <div class="form-group">
-                                        <input type="hidden" class="form-control" id="id" name="id" value="">
+                                        <input type="hidden" class="form-control" id="idoperator" name="idoperator" value="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Simpan</button>
-
+                            <button type="submit" name="submit" id="btnUbahOperator" class="btn btn-primary">Simpan</button>
                         </div>
                         <?php echo form_close(); ?>
                 </div>
@@ -381,24 +386,126 @@
         <script>
             $(document).ready(function() {
                 $(document).on('click', '#ubahData', function() {
-                    var firstname = $(this).data('firstname');
-                    var identity = $(this).data('identity');
-                    var company = $(this).data('company');
-                    var email = $(this).data('email');
-                    var phone = $(this).data('phone');
-                    var sandi = $(this).data('sandi');
-                    var katasandi = $(this).data('katasandi');
+                    var idoperator = $(this).data('idoperator');
+                    var namadepan = $(this).data('firstname');
+                    var identitas = $(this).data('identity');
+                    var perusahan = $(this).data('company');
+                    var surel = $(this).data('email');
+                    var nohp = $(this).data('phone');
+                    // var password = $(this).data('password');
+                    // var confirm_password = $(this).data('confirm_password');
 
-                    $('#namalengkap').val(firstname);
-                    $('#namauser').val(identity);
-                    $('#sekolah').val(company);
-                    $('#surel').val(email);
-                    $('#nohp').val(phone);
-                    $('#sandi').val(sandi);
-                    $('#katasandi').val(katasandi);
+                    $('#idoperator').val(idoperator);
+                    $('#namadepan').val(namadepan);
+                    $('#identitas').val(identitas);
+                    $('#perusahan').val(perusahan);
+                    $('#surel').val(surel);
+                    $('#nohp').val(nohp);
+                    // $('#password').val(password);
+                    // $('#confirm_password').val(confirm_password);
                 })
             })
         </script>
+        
+        <script>
+        $(document).ready(function() {
+            $(document).on('click', '#btnUbahOperator', function() {
+                var namadepan = $("input[name='namadepan']").val();
+                var identitas = $("input[name='identitas']").val();
+                var perusahan = $("input[name='perusahan']").val();
+                var surel = $("input[name='surel']").val();
+                var nohp = $("input[name='nohp']").val();
+                var katasandi = $("input[name='katasandi']").val();
+                var confirm_katasandi = $("input[name='confirm_katasandi']").val();
+                var idoperator = $("input[name='idoperator']").val();
+
+                if (katasandi == '' || katasandi == 'null')
+                {
+                    $.ajax({
+    					type: "POST",
+    					url: '<?php echo site_url('user/edit_operator') ?>',
+    					data: {
+                            namadepan: namadepan,
+                            identitas: identitas,
+                            perusahan: perusahan,
+                            surel: surel,
+                            nohp: nohp,
+    						idoperator: idoperator
+    					},
+    					success: function(response) {
+                            var result = $.parseJSON(response);
+                            if (result.statusCode == 1) 
+                            {
+                                Swal.fire({
+                                    title: "Berhasil",
+                                    text: "Ubah profil user.",
+                                    icon: "success",
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    } 
+                                });
+
+                            } else {
+                                Swal.fire({
+                                    title: "Peringatan!",
+                                    text: "Gagal ubah profil user",
+                                    icon: "error",
+                                });
+                            }
+                        }
+                });
+             } else {
+                    if (katasandi == confirm_katasandi) {
+                        $.ajax({
+                            type: "POST",
+                            url: '<?php echo site_url('user/edit_operator') ?>',
+                            data: {
+                                idoperator: idoperator,
+                                namadepan: namadepan,
+                                identitas: identitas,
+                                perusahan: perusahan,
+                                surel: surel,
+                                nohp: nohp,
+                                katansandi: katansandi
+                            },
+                            success: function(response) {
+                                var result = $.parseJSON(response);
+                                if(result.statusCode == 1) 
+                                {
+                                    Swal.fire({
+                                        title: "Berhasil",
+                                        text: "Ubah profil user.",
+                                        icon: "success",
+                                    }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        window.location.href = "<?php echo site_url('auth/logout/admin');?>";
+                                    } 
+                                });
+                                }
+                                else
+                                {
+                                    Swal.fire({
+                                        title: "Peringatan!",
+                                        text: "Gagal ubah profil user",
+                                        icon: "error",
+                                    });
+                                }
+                            }
+                        });
+                    } else {
+                        Swal.fire({
+                            title: "Peringatan!",
+                            text: "Kata sandi tidak sama, periksa kembali!",
+                            icon: "error",
+                        });
+                    }
+                }
+            })
+
+
+        });
+    </script>
 </body>
 
 </html>
