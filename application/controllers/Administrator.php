@@ -34,12 +34,15 @@ class Administrator extends CI_Controller
 
 	public function index()
 	{
+		$data['count_all'] = $this->M_pendaftar->count_all();
 		$data['count_oap'] = $this->M_pendaftar->count_by_suku('Papua')->num_rows();
 		$data['count_noap'] = $this->M_pendaftar->count_by_suku('Non Papua')->num_rows();
 		$data['menunggu'] = $this->M_pendaftar->count_by_status('Menunggu')->num_rows();
 		$data['diterima'] = $this->M_pendaftar->count_by_status('Diterima')->num_rows();
 		$data['ditolak'] = $this->M_pendaftar->count_by_status('Ditolak')->num_rows();
 		$data['t_biodata'] = $this->M_pendaftar->get_all();
+		$data['fakultas'] = $this->M_fakultas->get_all_fakultas_value();
+		$data['prodi'] = $this->M_prodi->get_all_prodi_value();
 
 		$data['_view'] = 'admin/dashboard';
 		$this->load->view('admin/layout', $data);
