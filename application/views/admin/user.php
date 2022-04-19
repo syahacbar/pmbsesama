@@ -297,7 +297,7 @@
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" name="submit" id="btnUbahOperator" class="btn btn-primary">Simpan</button>
+                            <button type="button" name="submit" id="btnUbahOperator" class="btn btn-primary">Simpan</button>
                         </div>
                         <?php echo form_close(); ?>
                 </div>
@@ -480,7 +480,7 @@
                                         icon: "success",
                                     }).then(function(isConfirm) {
                                     if (isConfirm) {
-                                        window.location.href = "<?php echo site_url('auth/logout/admin');?>";
+                                        location.reload();
                                     } 
                                 });
                                 }
