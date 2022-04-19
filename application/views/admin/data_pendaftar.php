@@ -1295,7 +1295,7 @@
 
     		$(document).ready(function() {
     			var tablePendaftar = $('#tablePendaftar').DataTable({
-
+					"stateSave": true,
     				"language": {
     					"emptyTable": "Tidak ada data yang ditampilkan. Pilih salah satu Program Studi"
     				},
@@ -1327,10 +1327,6 @@
     							"className": "text-center"
     						}
     					],
-    					// "scrollY":        "300px",
-    					//       "scrollX":        true,
-    					//"scrollCollapse": true,
-    					//"paging":         false,
     					"fixedColumns": {
     						"left": 1,
     						"right": 1

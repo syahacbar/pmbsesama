@@ -5,7 +5,7 @@ class M_pendaftar extends CI_Model
     //set nama tabel yang akan kita tampilkan datanya
     var $table = 't_biodata';
     //set kolom order, kolom pertama saya null untuk kolom edit dan hapus
-    var $column_order = array(NULL, 'namalengkap', 'namalengkap');
+    var $column_order = array(NULL, NULL, 'status','tb. username','namalengkap','pilihan1','pilihan2','pilihan3','suku');
 
     var $column_search = array('namalengkap','u.username');
     // default order 
