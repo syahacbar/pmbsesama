@@ -259,7 +259,7 @@ Highcharts.chart('container2', {
         text: 'Grafik Peminatan Pilihan Program Studi'
     },
     tooltip: {
-        pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
+        pointFormat: '{series.name}: <b>{point.y} orang</b>'
     },
     accessibility: {
         point: {
@@ -276,8 +276,11 @@ Highcharts.chart('container2', {
             }
         }
     },
+    credits: {
+        enabled: false
+    },
     series: [{
-        name: 'Brands',
+        name: 'Peminat',
         colorByPoint: true,
         data: [
         <?php foreach($prodi AS $p): ?>
