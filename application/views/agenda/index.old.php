@@ -123,22 +123,6 @@
     bottom: 0;
 }
 
-.card-agenda {
-  padding: 2rem 0 1rem 0 !important;
-}
-
-.col-sm-4.p-1.justify-content-space-between {
-  padding: .25rem !important;
-}
-
-img.card-img-top {
-    height: 110px;
-    object-fit: cover;
-}
-
-.col-lg-12.p-0.infoAgenda {
-    padding: 5px !important;
-}
   </style>
 </head> 
 
@@ -150,43 +134,67 @@ img.card-img-top {
       <?php $this->load->view('pendaftar/navbar'); ?>
 
 
-      <div class="row w-100 m-0">
-        <div class="col-sm-12 p-0">
-          <div class="row w-100 m-0 mt-3">
-            <div class="col-lg-12 p-0 infoAgenda">
-              <div class="card2 card border-0 p-1 w-100 m-0 card-agenda">
-                <h4 class="mb-0 mr-4 mt-2 mb-3">Agenda Penerimaan Mahasiswa Baru</h4>
-                <div class="alert alert-info alert-dismissible fade show" role="alert">
-                  Berikut beberapa agenda yang berkaitan dengan Penerimaan Mahasiswa Baru Jalur Sesama
-                  <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+      <div class="row d-flex">
+        <div class="col-lg-12 infoAgenda">
+          <div class="card2 card border-0 px-0 py-0">
+            <h4 class="mb-0 mr-4 mt-2 mb-3">Agenda Penerimaan Mahasiswa Baru</h4>
+            <div class="alert alert-info alert-dismissible fade show" role="alert">
+              Berikut beberapa agenda yang berkaitan dengan Penerimaan Mahasiswa Baru Jalur Sesama
+              <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row mx-2 mb-3 infoAgenda">
+        <?php foreach ($agenda as $ag) { ?>
+          <div class="col-md-12 mb-3">
+            <div class="border-top">
+              <div class="row mt-3 ms-1">
+                <div class=" col-md-3 mb-lg-0 mb-2 ms-0 photo"> <img src="<?php echo base_url('assets/upload/agenda/') . $ag['gambar']; ?>" alt="" class="w-100 h-100"> </div>
+                <div class="col-md-8 col-12 d-flex flex-column px-0">
+                  <h5><?php echo $ag['judul']; ?></h5>
+                  <div class="px-lg-2 pb-4 textmuted"><?php echo $ag['isi_agenda']; ?>
+                    <a href="<?php echo base_url('agenda/') . $ag['id']; ?>" target="_blank" class="btn btn-info btn-icon-split btn-sm btnAgenda">
+                      <span class="text">Selengkapnya </span>
+                      <span class="icon text-white-50 fasbtnAgenda">
+                        <i class="fas fa-arrow-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                  <!-- 
+                <div class="d-flex align-items-center justify-content-center ms-auto">
+                </div> -->
                 </div>
               </div>
             </div>
           </div>
+        <?php } ?>
+      </div>
 
-          <div class="row w-100 m-0">
-            <?php foreach ($agenda as $ag) { ?>
-            <div class="col-sm-4 p-1 justify-content-space-between">
-                  <div class="card">
-                    <img class="card-img-top" src="<?php echo base_url('assets/upload/agenda/') . $ag['gambar']; ?>" alt="Card image cap">
-                    <div class="card-body p-2">
-                      <h5 class="card-title"><?php echo $ag['judul']; ?></h5>
-                      <p class="card-text"><?php echo $ag['isi_agenda']; ?></p>
-                    </div>
-                    <div class="card-footer">
-                    <a href="<?php echo base_url('agenda/') . $ag['id']; ?>" target="_blank" class="btn btn-info">
-                          <span class="text">Selengkapnya </span>
-                          <span class="icon text-white-50 fasbtnAgenda">
-                            <i class="fas fa-arrow-right"></i>
-                          </span>
-                        </a>
-                    </div>
+      <div class="row">
+        <div class="card-deck">
+          <?php foreach ($agenda as $ag) { ?>
+          <div class="col-sm-3 p-0">
+                <div class="card m-0">
+                  <img class="card-img-top" src="<?php echo base_url('assets/upload/agenda/') . $ag['gambar']; ?>" alt="Card image cap">
+                  <div class="card-body">
+                    <h5 class="card-title"><?php echo $ag['judul']; ?></h5>
+                    <p class="card-text"><?php echo $ag['isi_agenda']; ?></p>
                   </div>
-              </div>
-            <?php } ?>
-          </div>
+                  <div class="card-footer">
+                  <a href="<?php echo base_url('agenda/') . $ag['id']; ?>" target="_blank" class="btn btn-info">
+                        <span class="text">Selengkapnya </span>
+                        <span class="icon text-white-50 fasbtnAgenda">
+                          <i class="fas fa-arrow-right"></i>
+                        </span>
+                      </a>
+                    <!-- <small class="text-muted">Last updated 3 mins ago</small> -->
+                  </div>
+                </div>
+            </div>
+          <?php } ?>
         </div>
       </div>
 
