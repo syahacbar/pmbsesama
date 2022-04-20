@@ -112,6 +112,16 @@
     .infoAgenda .col-md-3.mb-lg-0.mb-2.ms-0.photo {
       padding-left: 0;
     }
+
+    .bg-blue.py-4.bagianfoter {
+    background-color: #673ab7;
+    box-shadow: 0px 4px 8px 0px #757575;
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    bottom: 0;
+}
   </style>
 </head> 
 
