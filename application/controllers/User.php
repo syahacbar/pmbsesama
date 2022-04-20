@@ -221,4 +221,28 @@ class User extends CI_Controller
             }
         }        
     }
+
+    public function edit_operator()
+    {
+        if (isset($_POST) && !empty($_POST)) 
+        {
+            $idoperator = $this->input->post('idoperator');
+            $data = [
+                'first_name' => $this->input->post('namadepan'),
+                'company' => $this->input->post('perusahan'),
+                'phone' => $this->input->post('nohp'),
+                'email' => $this->input->post('surel')
+            ];
+                // update the password if it was posted
+            if ($this->input->post('katasandi')) {
+                $data['password'] = $this->input->post('katasandi');
+            }
+
+            if ($this->ion_auth->update($idoperator, $data)) {
+                echo json_encode(array("statusCode" => 1));
+            } else {
+                echo json_encode(array("statusCode" => 0));
+            }
+        }        
+    }
 }
