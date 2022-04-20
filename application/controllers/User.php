@@ -173,13 +173,6 @@ class User extends CI_Controller
         echo "<script>window.location='" . site_url('user') . "';</script>";
     }
 
-    // public function edit()
-    // {
-    //     $id = $this->input->post('iduser');
-    //     $data['hasil'] = $id;
-    //     $this->load->view('admin/formedituser', $data);
-    // }
-
     public function nonaktifkanuser()
     {
         $id = $this->input->post('iduser');

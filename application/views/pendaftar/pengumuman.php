@@ -25,6 +25,32 @@
 .modal-dialog.modal-lg {
     max-width: 600px;
 }
+
+.bg-blue.py-4.bagianfoter {
+    background-color: #673ab7;
+    box-shadow: 0px 4px 8px 0px #757575;
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    bottom: 0;
+}
+
+.row.pengumuman {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+div#cekPengumuman .modal-dialog.modal-lg {
+    margin-top: 6rem !important;
+}
+
+.col-lg-8 .card {
+    padding: 25px !important;
+    margin-bottom: 250px;
+}
+
   </style>
 </head>
 
@@ -41,7 +67,7 @@
           <div class="col-lg-12">
             <div class="card2 card border-0 px-0 py-0">
               <h4 class="mb-0 mr-4 mt-2 mb-3">Pengumuman Test Penerimaan Mahasiswa Baru (PMB) </h4>
-              <div class="alert alert-info alert-dismissible fade show" role="alert">
+              <div class="alert alert-info alert-dismissible text-muted fade show" role="alert">
                 <strong>Penting!</strong> Untuk mengecek pengumuman kelulusan, silakan ketikkan nomor Pendaftaran Anda di kolom No. Pendaftaran berikut ini.
                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                   <span aria-hidden="true">&times;</span>
@@ -53,15 +79,15 @@
       </div>
 
       <div class="row pengumuman">
-        <div class="col-lg-12 mb-4 d-flex justify-content-center">
-          <div class="card px-2 py-2 w-75">
+        <div class="col-lg-8 col-md-10 col-sm-12 col-xm-12 mb-4 d-flex justify-content-center">
+          <div class="card px-2 py-2">
               <strong class="card-title">No. Pendaftaran</strong>
               <div class="row d-flex">
-                <div class="col-lg-8 mt-2">
+                <div class="col-lg-12">
                   <!-- <i class="fas fa-user"></i> -->
                   <input type="text" name="nomortes" class="form-control" id="nomortes" placeholder="Ketik nomor tes Anda di sini">
                 </div>
-                <div class="col-lg-4 mt-2">
+                <div class="col-lg-12 mt-3">
                   <button type="submit" class="btn btn-info btn-icon-split btn-sm lihatHasil" data-toggle="modal" data-target="#cekPengumuman">Lihat Hasil</button>
                 </div>
               </div>

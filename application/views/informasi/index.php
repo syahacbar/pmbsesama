@@ -16,10 +16,21 @@
 
   <script src='https://www.google.com/recaptcha/api.js'></script>
   <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-
   <!-- Custom CSS -->
   <link href="<?php echo base_url(); ?>assets/frontend/css/register-page.css" rel="stylesheet" />
   <link href="<?php echo base_url(); ?>assets/frontend/css/agendainfoannounce.css" rel="stylesheet" />
+  <style>
+    .bg-blue.py-4.bagianfoter {
+    background-color: #673ab7;
+    box-shadow: 0px 4px 8px 0px #757575;
+    position: fixed;
+    width: 100%;
+    margin: 0;
+    left: 0;
+    bottom: 0;
+}
+  </style>
+</head>
 
 <body class='snippet-body'>
   <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">

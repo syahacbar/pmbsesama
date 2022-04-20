@@ -150,7 +150,7 @@
                     </div>
                     <div class="modal-body">
                     <div class="card-body">
-                            <?php echo $this->session->flashdata('notif'); ?>
+                    <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
                             <form id="formnamasmta" action="<?php echo site_url($linkform); ?>" method="post">
                                 <div class="row">
                                     <div class="col-sm-6">
