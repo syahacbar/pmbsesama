@@ -26,6 +26,12 @@
     max-width: 600px;
 }
 
+.row.pengumuman .lihatHasil,
+button#btnSubmit {
+    background-color: #673ab7;
+    border: 0;
+}
+
 .bg-blue.py-4.bagianfoter {
     background-color: #673ab7;
     box-shadow: 0px 4px 8px 0px #757575;
@@ -42,15 +48,42 @@
     align-items: center;
 }
 
-div#cekPengumuman .modal-dialog.modal-lg {
-    margin-top: 6rem !important;
-}
-
 .col-lg-8 .card {
     padding: 25px !important;
     margin-bottom: 250px;
 }
 
+.input-group {
+  position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ced4da;
+    padding: 0 0 0 10px;
+    border-radius: 5px 0 0 5px;
+}
+
+
+/* style glyph */
+.input-group .fas.fa-map-marker-alt {
+  position: absolute;
+  padding: 10px;
+  pointer-events: none;
+}
+
+.fa-user {
+    margin-right: 10px;
+    color: #fff;
+}
+
+.modal-header {
+    background-color: #673ab7;
+}
+
+.modal-header h6,
+.modal-header span {
+  color: #fff;
+}
   </style>
 </head>
 
@@ -84,11 +117,15 @@ div#cekPengumuman .modal-dialog.modal-lg {
               <strong class="card-title">No. Pendaftaran</strong>
               <div class="row d-flex">
                 <div class="col-lg-12">
-                  <!-- <i class="fas fa-user"></i> -->
-                  <input type="text" name="nomortes" class="form-control" id="nomortes" placeholder="Ketik nomor tes Anda di sini">
+                  <div class="input-group left-addon">
+                    <i class="fas fa-user"></i>     
+                    <input type="text" name="nomortes" class="form-control" id="nomortes" placeholder="Ketik nomor tes Anda di sini">
+                  </div>
                 </div>
                 <div class="col-lg-12 mt-3">
-                  <button type="submit" class="btn btn-info btn-icon-split btn-sm lihatHasil" data-toggle="modal" data-target="#cekPengumuman">Lihat Hasil</button>
+                  <button type="submit" class="btn btn-info btn-icon-split lihatHasil" data-toggle="modal" data-target="#cekPengumuman">
+                    <i class="fas fa-search"></i> Lihat Hasil
+                  </button>
                 </div>
               </div>
 
@@ -135,59 +172,59 @@ div#cekPengumuman .modal-dialog.modal-lg {
 
       <!-- Modal Edit User -->
       <div class="modal fade" id="cekPengumuman" tabindex="-1" role="dialog" aria-labelledby="cekPengumumanLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content modal-lg">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="cekPengumumanLabel">PESERTA LULUS SELEKSI JALUR SESAMA UNIPA TAHUN 2022</h5>
+                    <h6 class="modal-title" id="cekPengumumanLabel">PESERTA LULUS SELEKSI JALUR SESAMA UNIPA TAHUN 2022</h6>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                       <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                     <div class="modal-body">
                         <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="form-group d-flex">
-                                            <label class="col-sm-3" for="username">Nomor Peserta</label>
-                                            <input type="text" class="form-control" id="username" name="username" value="" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group d-flex">
-                                            <label class="col-sm-3" for="first_name">Nama Lengkap</label>
-                                            <input type="text" class="form-control" id="namauser" name="first_name" value="" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group d-flex">
-                                            <label class="col-sm-3" for="sekolah">Asal Sekolah</label>
-                                            <input type="text" class="form-control" id="sekolah" name="sekolah"  value="" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-12">
-                                        <div class="form-group d-flex">
-                                            <label class="col-sm-3" for="prodi">Program Studi</label>
-                                            <input type="prodi" class="form-control" id="prodi" name="prodi"  value="" readonly>
-                                        </div>
-                                    </div>
+                            <div class="col-md-12">
+                                <div class="form-group d-flex align-items-center">
+                                    <label class="col-sm-3 m-0" for="username">Nomor Peserta</label>
+                                    <input type="text" class="form-control" id="username" name="username" value="" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group d-flex align-items-center">
+                                    <label class="col-sm-3 m-0" for="first_name">Nama Lengkap</label>
+                                    <input type="text" class="form-control" id="namauser" name="first_name" value="" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group d-flex align-items-center">
+                                    <label class="col-sm-3 m-0" for="sekolah">Asal Sekolah</label>
+                                    <input type="text" class="form-control" id="sekolah" name="sekolah"  value="" readonly>
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <div class="form-group d-flex align-items-center">
+                                    <label class="col-sm-3 m-0" for="prodi">Program Studi</label>
+                                    <input type="prodi" class="form-control" id="prodi" name="prodi"  value="" readonly>
+                                </div>
+                            </div>
 
-                                    <div class="col-md-12">
-                                        <div class="form-group d-flex">
-                                            <label class="col-sm-3" for="jenjang">Jenjang</label>
-                                            <input type="text" class="form-control col-sm-9" id="jenjang" name="jenjang"  value="" readonly>
-                                        </div>
-                                    </div>
+                            <div class="col-md-12">
+                                <div class="form-group d-flex align-items-center">
+                                    <label class="col-sm-3 m-0" for="jenjang">Jenjang</label>
+                                    <input type="text" class="form-control" id="jenjang" name="jenjang"  value="" readonly>
+                                </div>
+                            </div>
 
-                                    <div class="col-md-12">
-                                        <div class="form-group d-flex">
-                                            <label class="col-sm-3" for="fakultas">Fakultas</label>
-                                            <input type="fakultas" class="form-control" id="fakultas" name="fakultas" readonly>
-                                        </div>
-                                    </div>
+                            <div class="col-md-12">
+                                <div class="form-group d-flex align-items-center">
+                                    <label class="col-sm-3 m-0" for="fakultas">Fakultas</label>
+                                    <input type="fakultas" class="form-control" id="fakultas" name="fakultas" readonly>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
                     <div class="modal-footer">
-                        <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Cetak</button>
+                        <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary"><i class="fas fa-print"></i> Cetak</button>
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                     </div>
             </div>
