@@ -1236,7 +1236,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat Wali</label>
-                                                <textarea name="alamatwali" id="alamatwali" type="text" rows="2" class="form-control" placeholder="" value="<?php echo $row['alamat_wali']; ?>"></textarea>
+                                                <textarea name="alamatwali" id="alamatwali" type="text" rows="2" class="form-control" ><?php echo $row['alamat_wali']; ?></textarea>
                                                 <small>Alamat wali saat ini. Maksimal 50 karakter.</small>
                                             </div>
                                         </div>

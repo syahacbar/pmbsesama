@@ -93,8 +93,6 @@ button#btnSubmit {
 
       <!-- Navigation-->
       <?php $this->load->view('pendaftar/navbar'); ?>
-
-
       <div class="content-pengumuman">
         <div class="row">
           <div class="col-lg-12">
@@ -128,7 +126,6 @@ button#btnSubmit {
                   </button>
                 </div>
               </div>
-
           </div>
         </div>
 
@@ -147,7 +144,6 @@ button#btnSubmit {
     </div>
 
     <?php if ($this->ion_auth->logged_in()) { ?>
-      <!-- Modal Logout -->
       <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
           <div class="modal-content">
@@ -166,7 +162,6 @@ button#btnSubmit {
         </div>
       </div>
     <?php }  ?>
-
   </div>
   </div>
 
@@ -206,14 +201,12 @@ button#btnSubmit {
                                     <input type="prodi" class="form-control" id="prodi" name="prodi"  value="" readonly>
                                 </div>
                             </div>
-
                             <div class="col-md-12">
                                 <div class="form-group d-flex align-items-center">
                                     <label class="col-sm-3 m-0" for="jenjang">Jenjang</label>
                                     <input type="text" class="form-control" id="jenjang" name="jenjang"  value="" readonly>
                                 </div>
                             </div>
-
                             <div class="col-md-12">
                                 <div class="form-group d-flex align-items-center">
                                     <label class="col-sm-3 m-0" for="fakultas">Fakultas</label>

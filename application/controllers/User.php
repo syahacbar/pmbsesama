@@ -164,13 +164,13 @@ class User extends CI_Controller
 
     public function hapus_user()
     {
-        $id = $this->input->post('id');
-        $this->Ion_auth_model->delete_user($id);
-
-        if ($this->db->affected_rows() > 0) {
-            echo "<script>alert('Data Berhasil Dihapus')</script>";
+        $id = $this->input->post('iduser');
+        if ($this->ion_auth->delete_user($id))
+        {
+            echo json_encode(array('status' => TRUE));
+        } else {
+            echo json_encode(array('status' => FALSE));
         }
-        echo "<script>window.location='" . site_url('user') . "';</script>";
     }
 
     public function nonaktifkanuser()

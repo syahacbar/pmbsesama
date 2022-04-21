@@ -89,7 +89,7 @@ $autoload['drivers'] = array();
 |
 |	$autoload['helper'] = array('url', 'file');
 */
-$autoload['helper'] = array('form', 'url', 'file','tgl_indo');
+$autoload['helper'] = array('form', 'url', 'file','tgl_indo', 'text');
 
 /*
 | -------------------------------------------------------------------

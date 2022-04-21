@@ -173,7 +173,7 @@ img.card-img-top {
                     <img class="card-img-top" src="<?php echo base_url('assets/upload/agenda/') . $ag['gambar']; ?>" alt="Card image cap">
                     <div class="card-body p-2">
                       <h5 class="card-title"><?php echo $ag['judul']; ?></h5>
-                      <p class="card-text"><?php echo $ag['isi_agenda']; ?></p>
+                      <p class="card-text"><?php echo word_limiter($ag['isi_agenda'], 20); ?></p>
                     </div>
                     <div class="card-footer">
                     <a href="<?php echo base_url('agenda/') . $ag['id']; ?>" target="_blank" class="btn btn-info">
