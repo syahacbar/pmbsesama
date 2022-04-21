@@ -310,18 +310,6 @@
                 $("#tabelUser").on("click", ".btnNonaktif", function() {
                     var iduser = $(this).attr("data-iduser");
                     var namauser = $(this).attr("data-namauser");
-                    // $.ajax({
-                    //     url: '<?php // echo site_url(); ?>user/nonaktifkanuser',
-                    //     method: 'post',
-                    //     data: {
-                    //         iduser: iduser
-                    //     },
-                    //     success: function(data) {
-                    //         var objData = jQuery.parseJSON(data);
-                    //         console.log(objData.status);
-                    //         location.reload();
-                    //     }
-                    // });
 
                     $.ajax({
                         url: '<?php echo site_url(); ?>user/nonaktifkanuser',
@@ -346,18 +334,6 @@
                 $("#tabelUser").on("click", ".btnAktif", function() {
                     var iduser = $(this).attr("data-iduser");
                     var namauser = $(this).attr("data-namauser");
-                    // $.ajax({
-                    //     url: '<?php // echo site_url(); ?>user/aktifkanuser',
-                    //     method: 'post',
-                    //     data: {
-                    //         iduser: iduser
-                    //     },
-                    //     success: function(data) {
-                    //         var objData = jQuery.parseJSON(data);
-                    //         console.log(objData.status);
-                    //         location.reload();
-                    //     }
-                    // });
 
                     $.ajax({
                         url: '<?php echo site_url(); ?>user/aktifkanuser',
@@ -418,7 +394,7 @@
                 cancelButtonText: 'Tidak',
             }).then((result) => {
                 if (result.isConfirmed) {
-                    var id = $(this).data("iduser");
+                    var iduser = $(this).data("iduser");
                     $.ajax({
                         url: "<?php echo site_url(); ?>user/hapus_user",
                         method: "POST",
