@@ -68,7 +68,7 @@
                                             </td>
 
                                             <td>
-                                                <a id="ubahData" class="btn btn-info btn-sm mb-1" href="" title="Edit User" data-toggle="modal" data-target="#editUser"
+                                                <button id="ubahData" class="btn btn-info btn-sm" href="" title="Edit User" data-toggle="modal" data-target="#editUser"
                                                 data-idoperator="<?php echo $u->id; ?>"
                                                 data-firstname="<?php echo $u->first_name; ?>"
                                                 data-identity="<?php echo $u->username; ?>"
@@ -76,7 +76,7 @@
                                                 data-email="<?php echo $u->email; ?>"
                                                 data-phone="<?php echo $u->phone; ?>">
                                                     <i class="fas fa-edit" title="Ubah"></i>
-                                                </a>
+                                                </button>
 
                                                 <?php
                                                 if ($u->active == '1') {
@@ -85,10 +85,7 @@
                                                     echo '<button data-iduser="' . $u->id . '" data-namauser="' . $u->username . '" class="btn btn-success btn-sm btnAktif" title="Aktifkan" href=""><i class="fas fa-ban"></i></button>';
                                                 }
                                                 ?>
-                                                <form action="<?php echo base_url('user/hapus_user') ?>" method="POST">
-                                                    <input type="hidden" name="id" value="<?php echo $u->id; ?>">
-                                                    <button onclick="return confirm('Anda yakin ingin menghapus user ini?')" class="btn btn-danger btn-sm" title="Hapus"><i class="fas fa-trash"></i></button>
-                                                </form>
+                                                <button  class="btn btn-danger btn-sm btnHapus" data-iduser="<?php echo $u->id; ?>" title="Hapus"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -410,6 +407,60 @@
         
         <script>
         $(document).ready(function() {
+            $(document).on('click', '.btnHapus', function() {
+                Swal.fire({
+                title: 'Apakah yakin akan menghapus user ini?',
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Ya',
+                cancelButtonText: 'Tidak',
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    var id = $(this).data("iduser");
+                    $.ajax({
+                        url: "<?php echo site_url(); ?>user/hapus_user",
+                        method: "POST",
+                        data: {
+                            iduser: iduser
+                        },
+                        success: function(data) {
+                            var dataResult = JSON.parse(data);
+                            if (dataResult.status) {
+                                Swal.fire({
+                                    title: "Berhasil",
+                                    text: "Menghapus user!",
+                                    icon: "success"
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    }
+                                });
+                            }  else {
+                                Swal.fire({
+                                    title: "Gagal",
+                                    text: "Menghapus user!",
+                                    icon: "error"
+                                }).then(function(isConfirm) {
+                                    if (isConfirm) {
+                                        location.reload();
+                                    } 
+                                });
+                            }
+                        }
+                    });
+                             
+                };                             
+                        
+            })
+            });
+
+
+
+
+
+
             $(document).on('click', '#btnUbahOperator', function() {
                 var namadepan = $("input[name='namadepan']").val();
                 var identitas = $("input[name='identitas']").val();

@@ -136,7 +136,7 @@
                                 });
                             }  else {
                                 Swal.fire({
-                                    title: "Berhasil",
+                                    title: "Gagal",
                                     text: "Menghapus slider!",
                                     icon: "error"
                                 }).then(function(isConfirm) {

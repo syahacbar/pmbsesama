@@ -441,6 +441,9 @@
             <div class="modal-content modal-lg">
                 <div class="modal-header">
                     <h5 class="modal-title" id="detailProfilLabel">Detail User</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
                 <form method="post" action="">
@@ -510,6 +513,7 @@
 
                     <div class="modal-footer">
                         <button type="button" name="btnUbahUser" id="btnUbahUser" class="btn btn-primary">Simpan</button>
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
                     </div>
                     <?php echo form_close(); ?>
             </div>
