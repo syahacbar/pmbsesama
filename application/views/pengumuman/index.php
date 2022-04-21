@@ -12,6 +12,10 @@
   <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
 
   <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
+  
+  <link href="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.css" rel="stylesheet">
+    <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
+    <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/custom-sweetalert.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
 
   <script src='https://www.google.com/recaptcha/api.js'></script>
@@ -117,11 +121,11 @@ button#btnSubmit {
                 <div class="col-lg-12">
                   <div class="input-group left-addon">
                     <i class="fas fa-user"></i>     
-                    <input type="text" name="nomortes" class="form-control" id="nomortes" placeholder="Ketik nomor tes Anda di sini">
+                    <input type="text" name="nopendaftar" class="form-control" id="nopendaftar" placeholder="Ketik Nomor Pendaftaran Anda Di Sini">
                   </div>
                 </div>
                 <div class="col-lg-12 mt-3">
-                  <button type="submit" class="btn btn-info btn-icon-split lihatHasil" data-toggle="modal" data-target="#cekPengumuman">
+                  <button type="button" class="btn btn-info btn-icon-split btnlihatHasil">
                     <i class="fas fa-search"></i> Lihat Hasil
                   </button>
                 </div>
@@ -230,3 +234,36 @@ button#btnSubmit {
 </body>
 
 </html>
+
+<script type="text/javascript">
+  $(document).ready(function() {
+    $(document).on("click", ".btnlihatHasil", function() {
+			var nopendaftar = $('input[name="nopendaftar"]').val();
+      $.ajax({
+				url: "<?php echo site_url('pengumuman/cekhasil'); ?>",
+				type: "POST",
+				data: { nopendaftar:nopendaftar },
+        success: function(dataResult) {
+					var res = JSON.parse(dataResult);
+					if (res.statusCode == 1) {
+						$('#cekPengumuman').modal('show');
+            $('input[name="username"]').val(res.pendaftar.username);
+            $('input[name="namauser"]').val(res.pendaftar.username);
+            $('input[name="sekolah"]').val(res.pendaftar.username);
+            $('input[name="prodi"]').val(res.pendaftar.username);
+            $('input[name="jenjang"]').val(res.pendaftar.username);
+            $('input[name="fakultas"]').val(res.pendaftar.username);
+					} else {
+						Swal.fire({
+              text: 'No. Pendaftaran Tidak Ditemukan!',
+              icon: 'error',
+              showCancelButton: false,
+            });
+					} 
+				}
+      });
+    });
+  });
+
+
+</script>
