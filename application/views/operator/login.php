@@ -53,12 +53,13 @@
             background-image: url(http://simunipa.unipa.ac.id/gtakademik/assets/versi_3.0/img/grid.png);
             background-position: center;
         }
+
     </style>
 </head>
 
 <body class="text-center">
     <?php echo $this->session->flashdata('message'); ?></p>
-    <?php echo form_open("auth/login", array('class' => 'form-signin'));  ?>
+    <?php echo form_open("auth/login1", array('class' => 'form-signin'));  ?>
     <!-- <form class="form-signin"> -->
     <img class="mb-4" src="http://simunipa.unipa.ac.id/gtakademik/images/logo_client.png" alt="" width="72" height="72">
     <h1 class="h3 mb-5 font-weight-bold">Login Panel Admin PMB Sesama</h1>

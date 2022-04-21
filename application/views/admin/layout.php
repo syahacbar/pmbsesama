@@ -59,12 +59,13 @@
                         <i class="fas fa-fw fa-users"></i>
                         <span>Pendaftaran</span>
                     </a>
-                    <div id="collapsePendaftaran" class="collapse <?php echo ($this->uri->segment(2) == "datapendaftar" || $this->uri->segment(2) == "slider" || $this->uri->segment(2) == "agenda" || $this->uri->segment(2) == "informasi") ? "show" : ""; ?>" aria-labelledby="headingPendaftaran" data-parent="#accordionSidebar">
+                    <div id="collapsePendaftaran" class="collapse <?php echo ($this->uri->segment(2) == "datapendaftar" || $this->uri->segment(2) == "slider" || $this->uri->segment(2) == "agenda" || $this->uri->segment(2) == "informasi" || $this->uri->segment(2) == "pengaturan") ? "show" : ""; ?>" aria-labelledby="headingPendaftaran" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item <?php echo ($this->uri->segment(2) == "datapendaftar") ? "active" : ""; ?>" href="<?php echo site_url('administrator/datapendaftar'); ?>">Data Pendaftar</a>
                             <a class="collapse-item <?php echo ($this->uri->segment(2) == "slider") ? "active" : ""; ?>" href="<?php echo site_url('administrator/slider'); ?>">Slider Depan</a>
                             <a class="collapse-item <?php echo ($this->uri->segment(2) == "agenda") ? "active" : ""; ?>" href="<?php echo site_url('administrator/agenda'); ?>">Agenda Penerimaan</a>
                             <a class="collapse-item <?php echo ($this->uri->segment(2) == "informasi") ? "active" : ""; ?>" href="<?php echo site_url('administrator/informasi'); ?>">Informasi</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "pengaturan") ? "active" : ""; ?>" href="<?php echo site_url('administrator/pengaturan'); ?>">Pengaturan</a>
                         </div>
                     </div>
                 </li>

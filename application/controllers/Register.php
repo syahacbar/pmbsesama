@@ -24,6 +24,14 @@ class Register extends CI_Controller
 		$this->load->model('M_namasmta');
 		$this->load->model('M_slider');
 		$this->load->library('recaptcha');
+		$this->load->model('M_pengaturan');
+
+		$sesidaftar = $this->M_pengaturan->get_sesidaftar()->nilai;
+		if($sesidaftar == '0')
+		{
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pendaftaran tealah ditutup!</div>');
+			redirect('/');
+		}
 	}
 
 	function generateRandomString($length)
@@ -170,6 +178,10 @@ class Register extends CI_Controller
 
 	public function next1()
 	{
+		if (!$this->ion_auth->logged_in()) {
+			// redirect them to the login page
+			redirect('auth/login', 'refresh');
+		}
 		$user = $this->ion_auth->user()->row();
 		
 		if (!empty($this->input->post('prodipilihan2')) && $this->input->post('prodipilihan2') != "0") {
@@ -215,6 +227,10 @@ class Register extends CI_Controller
 
 	public function next2()
 	{
+		if (!$this->ion_auth->logged_in()) {
+			// redirect them to the login page
+			redirect('auth/login', 'refresh');
+		}
 
 		$user = $this->ion_auth->user()->row();
 		$params2 = array(
@@ -232,6 +248,10 @@ class Register extends CI_Controller
 
 	public function next3()
 	{
+		if (!$this->ion_auth->logged_in()) {
+			// redirect them to the login page
+			redirect('auth/login', 'refresh');
+		}
 
 		$user = $this->ion_auth->user()->row();
 		$params3 = array(
@@ -259,6 +279,10 @@ class Register extends CI_Controller
 
 	public function next4()
 	{
+		if (!$this->ion_auth->logged_in()) {
+			// redirect them to the login page
+			redirect('auth/login', 'refresh');
+		}
 
 		$user = $this->ion_auth->user()->row();
 		$params4 = array(
@@ -273,6 +297,10 @@ class Register extends CI_Controller
 
 	public function next5()
 	{
+		if (!$this->ion_auth->logged_in()) {
+			// redirect them to the login page
+			redirect('auth/login', 'refresh');
+		}
 
 		$user = $this->ion_auth->user()->row();
 		$this->M_register->update_biodata($user->username);
