@@ -114,33 +114,33 @@
     }
 
     .bg-blue.py-4.bagianfoter {
-    background-color: #673ab7;
-    box-shadow: 0px 4px 8px 0px #757575;
-    position: fixed;
-    width: 100%;
-    margin: 0;
-    left: 0;
-    bottom: 0;
-}
+      background-color: #673ab7;
+      box-shadow: 0px 4px 8px 0px #757575;
+      position: fixed;
+      width: 100%;
+      margin: 0;
+      left: 0;
+      bottom: 0;
+    }
 
-.card-agenda {
-  padding: 2rem 0 1rem 0 !important;
-}
+    .card-agenda {
+      padding: 2rem 0 1rem 0 !important;
+    }
 
-.col-sm-4.p-1.justify-content-space-between {
-  padding: .25rem !important;
-}
+    .col-sm-4.p-1.justify-content-space-between {
+      padding: .25rem !important;
+    }
 
-img.card-img-top {
-    height: 200px;
-    object-fit: cover;
-}
+    img.card-img-top {
+      height: 200px;
+      object-fit: cover;
+    }
 
-.col-lg-12.p-0.infoAgenda {
-    padding: 5px !important;
-}
+    .col-lg-12.p-0.infoAgenda {
+      padding: 5px !important;
+    }
   </style>
-</head> 
+</head>
 
 <body class='snippet-body'>
   <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
@@ -168,22 +168,22 @@ img.card-img-top {
 
           <div class="row w-100 m-0">
             <?php foreach ($agenda as $ag) { ?>
-            <div class="col-sm-4 p-1 justify-content-space-between">
-                  <div class="card">
-                    <img class="card-img-top" src="<?php echo base_url('assets/upload/agenda/') . $ag['gambar']; ?>" alt="Card image cap">
-                    <div class="card-body p-2">
-                      <h5 class="card-title"><?php echo $ag['judul']; ?></h5>
-                      <p class="card-text"><?php echo word_limiter($ag['isi_agenda'], 20); ?></p>
-                    </div>
-                    <div class="card-footer">
-                    <a href="<?php echo base_url('agenda/') . $ag['id']; ?>" target="_blank" class="btn btn-info">
-                          <span class="text">Selengkapnya </span>
-                          <span class="icon text-white-50 fasbtnAgenda">
-                            <i class="fas fa-arrow-right"></i>
-                          </span>
-                        </a>
-                    </div>
+              <div class="col-sm-4 p-1 justify-content-space-between">
+                <div class="card">
+                  <img class="card-img-top" src="<?php echo base_url('assets/upload/agenda/') . $ag['gambar']; ?>" alt="Card image cap">
+                  <div class="card-body p-2">
+                    <h5 class="card-title"><?php echo $ag['judul']; ?></h5>
+                    <p class="card-text"><?php echo word_limiter($ag['isi_agenda'], 20); ?></p>
                   </div>
+                  <div class="card-footer">
+                    <a href="<?php echo base_url('agenda/') . $ag['id']; ?>" target="_blank" class="btn btn-info">
+                      <span class="text">Selengkapnya </span>
+                      <span class="icon text-white-50 fasbtnAgenda">
+                        <i class="fas fa-arrow-right"></i>
+                      </span>
+                    </a>
+                  </div>
+                </div>
               </div>
             <?php } ?>
           </div>
@@ -223,13 +223,13 @@ img.card-img-top {
       </div>
 
 
-    
 
 
-      </div>  
+
+    </div>
   </div>
 
-  
+
 
   <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>

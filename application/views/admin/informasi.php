@@ -54,7 +54,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Informasi</h6>
                 </div>
                 <div class="card-body">
-                <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
+                    <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
                     <form id="forminformasi" method="post">
                         <div class="form-group">
                             <label>Judul</label>
@@ -86,7 +86,7 @@
     $(document).ready(function() {
 
         $(document).on('click', '.deletedata', function() {
-            
+
             Swal.fire({
                 title: 'Apakah yakin akan menghapus informasi?',
                 icon: 'warning',
@@ -105,7 +105,7 @@
                             id: id
                         },
                         success: function(data) {
-                            var dataResult = JSON.parse(data);
+                            var hasil = JSON.parse(data);
                             if (hasil.statusCode == 1) {
                                 Swal.fire({
                                     title: "Berhasil",
@@ -116,7 +116,7 @@
                                         location.reload();
                                     }
                                 });
-                            }  else {
+                            } else {
                                 Swal.fire({
                                     title: "Berhasil",
                                     text: "Menghapus slider!",
@@ -124,14 +124,14 @@
                                 }).then(function(isConfirm) {
                                     if (isConfirm) {
                                         location.reload();
-                                    } 
+                                    }
                                 });
                             }
                         }
                     });
-                             
-                };                             
-                        
+
+                };
+
             })
         });
 
@@ -157,16 +157,13 @@
         // Simpan Informasi
         $(document).on('click', '.saveInformasi', function(e) {
             var judulinformasi = $("input[name='judulinformasi']").val();
-            if(judulinformasi == null || judulinformasi == '')
-            {
+            if (judulinformasi == null || judulinformasi == '') {
                 Swal.fire({
                     title: "Peringatan!",
                     text: "Judul Informasi wajib diisi",
                     icon: "error",
                 });
-            }
-            else
-            {
+            } else {
                 upload_informasi.processQueue();
             }
         })

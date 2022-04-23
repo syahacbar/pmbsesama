@@ -55,7 +55,7 @@
                     <h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Jurusan SMTA</h6>
                 </div>
                 <div class="card-body">
-                <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
+                    <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
                     <form id="formjurusansmta" action="<?php echo site_url($linkform); ?>" method="post">
                         <div class="form-group">
                             <label>Jurusan SMTA</label>
@@ -78,7 +78,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var table = $('#dataTable').DataTable();
-        $("#dataTable").on("click", ".editform", function(){
+        $("#dataTable").on("click", ".editform", function() {
             event.preventDefault();
             $("input#txtJurusansmta").val($(this).data('jurusansmta'));
             $("input#idjurusansmta").val($(this).data('idjurusansmta'));
@@ -94,7 +94,7 @@
                     idjurusansmta: idjurusansmta
                 },
                 success: function(data) {
-                    var dataResult = JSON.parse(data);
+                    var hasil = JSON.parse(data);
                     if (hasil.statusCode == 1) {
                         Swal.fire({
                             title: 'Apakah yakin akan menghapus SMTA?',
@@ -105,7 +105,7 @@
                             confirmButtonText: 'Ya',
                             cancelButtonText: 'Tidak',
                         }).then((result) => {
-                            if (result.isConfirmed) {  
+                            if (result.isConfirmed) {
                                 Swal.fire({
                                     title: "Berhasil",
                                     text: "Menghapus slider!",
@@ -117,9 +117,9 @@
                                         //if no clicked => do something else
                                     }
                                 });
-                            };     
+                            };
                         })
-                    }    
+                    }
                 },
                 error: function() {
                     Swal.fire({

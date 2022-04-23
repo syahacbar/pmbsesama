@@ -11,7 +11,7 @@
 
   <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" type="text/css" />
-  <link rel="stylesheet" href="<?php echo base_url();?>assets/frontend/css/select2-bootstrap.min.css">
+  <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/select2-bootstrap.min.css">
 
   <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -66,8 +66,8 @@
             <div class="row px-3 mb-4">
               <small class="text-left">Bidang/isian yang bertanda bintang (*) wajib untuk diisi. Pastikan semua data yang Anda isi sudah benar karena tidak dapat diubah setelah terkirim.</small>
             </div>
-            <?php if($message != ''){ ?>
-            <div class="alert alert-danger" role="alert"><?php echo $message;?></div>
+            <?php if ($message != '') { ?>
+              <div class="alert alert-danger" role="alert"><?php echo $message; ?></div>
             <?php } ?>
             <form method="post" action="<?php echo site_url('auth/create_user'); ?>">
               <div class="row px-3">
@@ -156,27 +156,27 @@
           <div class="card2 card border-0 px-4 py-5 gambarSlider">
             <div id="demo" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
-                <?php 
-                    $i = 0;
-                    foreach ($slider as $sl) { 
-                    $i++;
+                <?php
+                $i = 0;
+                foreach ($slider as $sl) {
+                  $i++;
                 ?>
-                  <div class="carousel-item <?php echo ($i==1) ? 'active' : ''; ?>">
+                  <div class="carousel-item <?php echo ($i == 1) ? 'active' : ''; ?>">
                     <div class="carousel-caption">
-                      <?php  if ($sl) { 
+                      <?php if ($sl) {
                       ?>
-                        <img class="img-thumbnail img-fluid" src="<?php  echo base_url('assets/upload/slider/') . $sl['gambar'];?>">
-                      <?php  } else { 
+                        <img class="img-thumbnail img-fluid" src="<?php echo base_url('assets/upload/slider/') . $sl['gambar']; ?>">
+                      <?php  } else {
                       ?>
-                        <img width="100" height="150" src="<?php  echo base_url('assets/upload/slider/no-image.png');?>" alt="">
-                      <?php  } 
+                        <img width="100" height="150" src="<?php echo base_url('assets/upload/slider/no-image.png'); ?>" alt="">
+                      <?php  }
                       ?>
 
                     </div>
                   </div>
-                <?php  } 
+                <?php  }
                 ?>
-              </div> 
+              </div>
 
 
               <a class="carousel-control-prev" href="#demo" data-slide="prev"><i class='fas fa-arrow-left'></i></a>
@@ -200,7 +200,7 @@
     </div>
   </div>
 
-  <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>  
+  <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
@@ -208,23 +208,23 @@
   <script>
     $(document).ready(function() {
       $("#namasmta").select2({
-            theme: "bootstrap",
-            placeholder: '-- Pilih SMTA --',
-            minimumInputLength: 1,
-            ajax: {
-                url: "<?php echo site_url('register/searchSMTA');?>",
-                dataType: 'json',
-                delay: 250,
-                processResults: function (data) {
-                    return {
-                        results: data
-                    };
-                },
-                cache: true
-            }
-        });
+        theme: "bootstrap",
+        placeholder: '-- Pilih SMTA --',
+        minimumInputLength: 1,
+        ajax: {
+          url: "<?php echo site_url('register/searchSMTA'); ?>",
+          dataType: 'json',
+          delay: 250,
+          processResults: function(data) {
+            return {
+              results: data
+            };
+          },
+          cache: true
+        }
       });
-    </script>
+    });
+  </script>
 
 </body>
 

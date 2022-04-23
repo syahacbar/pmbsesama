@@ -294,11 +294,10 @@
     	.text-muted {
     		font-size: 12px;
     	}
-    	
     </style>
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
     <!-- Begin Page Content -->
-    
+
 
     <div class="container-fluid">
     	<div class="row">
@@ -309,11 +308,11 @@
     				<div class="card-header py-3">
     					<div class="row">
     						<div class="col-sm-6">
-	    						<h4 class="m-0 font-weight-bold text-primary">Data Pendaftar Jalur SESAMA</h4>
-	    					</div>
-	    					<div class="col-sm-6 d-flex justify-content-end">
-	    						<a href="<?php echo site_url('administrator/export_pendaftar_excel'); ?>" id="btnExporExcel" type="button" class="btn btn-primary btn-sm"><i class="fas fa-file-alt"></i> &nbsp; Export Excel</a>  
-	    					</div>  						
+    							<h4 class="m-0 font-weight-bold text-primary">Data Pendaftar Jalur SESAMA</h4>
+    						</div>
+    						<div class="col-sm-6 d-flex justify-content-end">
+    							<a href="<?php echo site_url('administrator/export_pendaftar_excel'); ?>" id="btnExporExcel" type="button" class="btn btn-primary btn-sm"><i class="fas fa-file-alt"></i> &nbsp; Export Excel</a>
+    						</div>
     					</div>
     				</div>
     				<div class="card-body">
@@ -346,7 +345,7 @@
     						</div>
     					</form>
     				</div>
-    		
+
     				<div class="card-body">
     					<div class="table-responsive">
     						<table class="table table-bordered" id="tablePendaftar" cellspacing="0">
@@ -839,7 +838,7 @@
     												</div>
     											</div>
 
-    											
+
 
     											<div class="col-sm-12 mt-4">
     												<div class="form-group">
@@ -1295,7 +1294,7 @@
 
     		$(document).ready(function() {
     			var tablePendaftar = $('#tablePendaftar').DataTable({
-					"stateSave": true,
+    				"stateSave": true,
     				"language": {
     					"emptyTable": "Tidak ada data yang ditampilkan. Pilih salah satu Program Studi"
     				},
@@ -1320,7 +1319,7 @@
     							"targets": 1,
     							"orderable": false,
     						},
-    						{ 
+    						{
     							"targets": -1,
     							"orderable": false,
     							"width": "15%",
@@ -1414,7 +1413,7 @@
     				$('.tempatfoto').show();
     				$('.unggahfoto').hide();
 
-					Dropzone.forElement(".editFoto").removeAllFiles(true);
+    				Dropzone.forElement(".editFoto").removeAllFiles(true);
     				var username = $(this).data('username');
     				$.ajax({
     					type: "POST",
@@ -1425,14 +1424,13 @@
     					success: function(response) {
     						var json = $.parseJSON(response);
     						var fotoprofil = json.fotoprofil;
-    						
-							if(json.fotoprofil == null)
-							{
-								var fotoprofil = "profil_default.svg";
-							} else {
-								var fotoprofil = json.fotoprofil;
-							}
-							console.log(fotoprofil);
+
+    						if (json.fotoprofil == null) {
+    							var fotoprofil = "profil_default.svg";
+    						} else {
+    							var fotoprofil = json.fotoprofil;
+    						}
+    						console.log(fotoprofil);
     						$("#fotopas").attr("src", "<?php echo base_url('assets/upload/profile/'); ?>" + fotoprofil);
 
     						$('input[name="username"]').val(json.username);
@@ -1678,7 +1676,7 @@
     							$("#fotopas").attr("src", "<?php echo base_url('assets/upload/profile/'); ?>" + hasil.datapendaftar.fotoprofil);
 
     						} else {
-								Swal.fire({
+    							Swal.fire({
     								text: "Gagal memperbarui data",
     								icon: 'error',
     								showCancelButton: false,
@@ -1759,55 +1757,54 @@
     			});
 
     			$("#tablePendaftar").on("click", ".btnHapus", function() {
-					var idt_biodata = $(this).attr('idt_biodata');
-					$.ajax({
-						type: "POST",
-						url: '<?php echo site_url() ?>/datatables/deletependaftar/',
-						data: {
-							idt_biodata: idt_biodata
-						},
-						success: function(data) {
-							var dataResult = JSON.parse(data);
-		                    if (hasil.statusCode == 1) {
-		                        Swal.fire({
-		                            title: 'Apakah yakin akan menghapus pendaftar?',
-		                            icon: 'warning',
-		                            showCancelButton: true,
-		                            confirmButtonColor: '#3085d6',
-		                            cancelButtonColor: '#d33',
-		                            confirmButtonText: 'Ya',
-		                            cancelButtonText: 'Tidak',
-		                        }).then((result) => {
-		                            if (result.isConfirmed) {
-			                            Swal.fire({
-			                                title: "Berhasil",
-			                                text: "Menghapus pendaftar!",
-			                                icon: "success",
-			                                buttons: [
-			                                    'NO',
-			                                    'YES'
-			                                ],
-			                            }).then(function(isConfirm) {
-			                                if (isConfirm) {
-			                                    reload_table();
-			                                } else {
-			                                }
-			                            });
-		                            };                  
-		                        })
-		                    }    
-						},
-						error: function() {
-							Swal.fire({
-								icon: 'error',
-								title: 'Maaf...',
-								text: 'Ada yang salah!',
-								confirmButtonText: 'Kembali',
-							})
-						}
-					});
-		    	});
- 
+    				var idt_biodata = $(this).attr('idt_biodata');
+    				$.ajax({
+    					type: "POST",
+    					url: '<?php echo site_url() ?>/datatables/deletependaftar/',
+    					data: {
+    						idt_biodata: idt_biodata
+    					},
+    					success: function(data) {
+    						var hasil = JSON.parse(data);
+    						if (hasil.statusCode == 1) {
+    							Swal.fire({
+    								title: 'Apakah yakin akan menghapus pendaftar?',
+    								icon: 'warning',
+    								showCancelButton: true,
+    								confirmButtonColor: '#3085d6',
+    								cancelButtonColor: '#d33',
+    								confirmButtonText: 'Ya',
+    								cancelButtonText: 'Tidak',
+    							}).then((result) => {
+    								if (result.isConfirmed) {
+    									Swal.fire({
+    										title: "Berhasil",
+    										text: "Menghapus pendaftar!",
+    										icon: "success",
+    										buttons: [
+    											'NO',
+    											'YES'
+    										],
+    									}).then(function(isConfirm) {
+    										if (isConfirm) {
+    											reload_table();
+    										} else {}
+    									});
+    								};
+    							})
+    						}
+    					},
+    					error: function() {
+    						Swal.fire({
+    							icon: 'error',
+    							title: 'Maaf...',
+    							text: 'Ada yang salah!',
+    							confirmButtonText: 'Kembali',
+    						})
+    					}
+    				});
+    			});
+
 
     			var edit_fotoprofil = new Dropzone(".editFoto", {
     				autoProcessQueue: true,
@@ -1823,7 +1820,7 @@
 
     			edit_fotoprofil.on("sending", function(file, xhr, formData) {
     				formData.append("username", $("input[name='username']").val());
-    			}); 
+    			});
 
     			var unggah_rapor = new Dropzone(".rapor", {
     				autoProcessQueue: true,
@@ -1857,4 +1854,3 @@
     			return false;
     		})
     	</script>
-

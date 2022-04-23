@@ -8,8 +8,8 @@ class User extends CI_Controller
     {
         parent::__construct();
         if (!$this->ion_auth->logged_in()) {
-			redirect('auth/login', 'refresh');
-		}
+            redirect('auth/login', 'refresh');
+        }
         $this->load->model('M_user');
         $this->load->model('M_register');
         $this->load->model('Ion_auth_model');
@@ -17,23 +17,21 @@ class User extends CI_Controller
         $this->load->library('ion_auth');
     }
 
-    public function reset_password($userawal,$userakhir)
+    public function reset_password($userawal, $userakhir)
     {
-        for ($i=$userawal; $i<=$userakhir; $i++)
-        {
+        for ($i = $userawal; $i <= $userakhir; $i++) {
             //update di tabel users
             $this->ion_auth->reset_password($i, 'SESAMA2022');
 
-            $this->M_register->update_biodata($i,array('pass'=>'SESAMA2022'));
+            $this->M_register->update_biodata($i, array('pass' => 'SESAMA2022'));
 
-            echo "Reset pass user ".$i." berhasil ! <br>";
+            echo "Reset pass user " . $i . " berhasil ! <br>";
         }
-        
     }
 
     public function index()
     {
-        $data['pengguna'] = $this->M_user->get_all(); 
+        $data['pengguna'] = $this->M_user->get_all();
         // $data['pengguna'] = $this->ion_auth->users('sekolah')->result();
         $data['grup'] = $this->M_user->group();
 
@@ -55,24 +53,24 @@ class User extends CI_Controller
         $identity_column = $this->config->item('identity', 'ion_auth');
         $this->data['identity_column'] = $identity_column;
 
-        
-            $email = strtolower($this->input->post('email'));
-            $identity = ($identity_column === 'email') ? $email : $this->input->post('identity');
-            $password = $this->input->post('password');
 
-            $additional_data = [
-                'first_name' => $this->input->post('first_name'),
-                'last_name' => $this->input->post('last_name'),
-                'company' => $this->input->post('company'),
-                'phone' => $this->input->post('phone'),
-            ];
+        $email = strtolower($this->input->post('email'));
+        $identity = ($identity_column === 'email') ? $email : $this->input->post('identity');
+        $password = $this->input->post('password');
 
-            $group = array("3");
-        
+        $additional_data = [
+            'first_name' => $this->input->post('first_name'),
+            'last_name' => $this->input->post('last_name'),
+            'company' => $this->input->post('company'),
+            'phone' => $this->input->post('phone'),
+        ];
+
+        $group = array("3");
+
         if ($this->ion_auth->register($identity, $password, $email, $additional_data, $group)) {
             // check to see if we are creating the user
             // redirect them back to the admin page
-		    $this->session->set_flashdata('notif', 'User Berhasil ditambahkan');
+            $this->session->set_flashdata('notif', 'User Berhasil ditambahkan');
             $this->session->set_flashdata('message', $this->ion_auth->messages());
             redirect("user", 'refresh');
         } else {
@@ -161,13 +159,12 @@ class User extends CI_Controller
 
             //$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
         }
-    } 
+    }
 
     public function hapus_user()
     {
         $id = $this->input->post('iduser');
-        if ($this->ion_auth->delete_user($id))
-        {
+        if ($this->ion_auth->delete_user($id)) {
             echo json_encode(array('status' => TRUE));
         } else {
             echo json_encode(array('status' => FALSE));
@@ -194,8 +191,7 @@ class User extends CI_Controller
 
     public function edit_admin()
     {
-        if (isset($_POST) && !empty($_POST)) 
-        {
+        if (isset($_POST) && !empty($_POST)) {
             $iduser = $this->input->post('iduser');
             $data = [
                 'first_name' => $this->input->post('firstname'),
@@ -203,7 +199,7 @@ class User extends CI_Controller
                 'phone' => $this->input->post('phone'),
                 'email' => $this->input->post('email')
             ];
-                // update the password if it was posted
+            // update the password if it was posted
             if ($this->input->post('password')) {
                 $data['password'] = $this->input->post('password');
             }
@@ -213,32 +209,29 @@ class User extends CI_Controller
             } else {
                 echo json_encode(array("statusCode" => 0));
             }
-        }        
+        }
     }
 
     public function tambah_operator()
     {
-        $additional_data = array(   
+        $additional_data = array(
             'first_name' => $this->input->post('first_name'),
             'phone' => $this->input->post('phone'),
             'id_sekolah' => $this->input->post('id_sekolah'),
         );
 
         $group = array("3");
-        if ($this->ion_auth->register($this->input->post('identity'), $this->input->post('password'), $this->input->post('email'), $additional_data, $group))
-        {
+        if ($this->ion_auth->register($this->input->post('identity'), $this->input->post('password'), $this->input->post('email'), $additional_data, $group)) {
             echo json_encode(array('statusCode' => 1));
         } else {
             echo json_encode(array('statusCode' => 0));
         }
-
     }
 
 
     public function edit_operator()
     {
-        if (isset($_POST) && !empty($_POST)) 
-        {
+        if (isset($_POST) && !empty($_POST)) {
             $idoperator = $this->input->post('idoperator');
             $data = [
                 'first_name' => $this->input->post('namadepan'),
@@ -246,7 +239,7 @@ class User extends CI_Controller
                 'phone' => $this->input->post('nohp'),
                 'email' => $this->input->post('surel')
             ];
-                // update the password if it was posted
+            // update the password if it was posted
             if ($this->input->post('katasandi')) {
                 $data['password'] = $this->input->post('katasandi');
             }
@@ -256,12 +249,12 @@ class User extends CI_Controller
             } else {
                 echo json_encode(array("statusCode" => 0));
             }
-        }        
+        }
     }
 
-    public function searchSMTA()
-    {
-        $q = $this->input->get('q');
-        echo json_encode($this->M_namasmta->getSMTA($q));
-    }
+    // public function searchSMTA()
+    // {
+    //     $q = $this->input->get('q');
+    //     echo json_encode($this->M_namasmta->getSMTA($q));
+    // }
 }

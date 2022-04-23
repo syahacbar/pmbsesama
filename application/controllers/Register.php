@@ -27,8 +27,7 @@ class Register extends CI_Controller
 		$this->load->model('M_pengaturan');
 
 		$sesidaftar = $this->M_pengaturan->get_sesidaftar()->nilai;
-		if($sesidaftar == '0')
-		{
+		if ($sesidaftar == '0') {
 			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pendaftaran tealah ditutup!</div>');
 			redirect('/');
 		}
@@ -46,79 +45,70 @@ class Register extends CI_Controller
 	}
 
 	function searchSMTA()
-    {
-        $q = $this->input->get('q');
-        echo json_encode($this->M_namasmta->getSMTA($q));
-    }
+	{
+		$q = $this->input->get('q');
+		echo json_encode($this->M_namasmta->getSMTA($q));
+	}
 
-    function tesautocomplete()
-    {
-    	$this->load->view('pendaftar/tesautocomplete');
-    }
+	function tesautocomplete()
+	{
+		$this->load->view('pendaftar/tesautocomplete');
+	}
 
-	function add_ajax_kab($id,$selected=NULL)
+	function add_ajax_kab($id, $selected = NULL)
 	{
 		$query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 5 AND LEFT(kode,2) = '$id' ORDER BY kode ASC");
 		$data = "<option value=''> - Pilih Kabupaten/Kota - </option>";
 		foreach ($query->result() as $value) {
 			$add_attr = "";
-			if($selected != NULL)
-			{
-				if($selected == $value->kode)
-				{
+			if ($selected != NULL) {
+				if ($selected == $value->kode) {
 					$add_attr = "selected";
-				} else
-				{
+				} else {
 					$add_attr = "";
 				}
 			}
-			 
-			$data .= "<option value='" . $value->kode . "' ".$add_attr.">" . $value->nama . "</option>";
+
+			$data .= "<option value='" . $value->kode . "' " . $add_attr . ">" . $value->nama . "</option>";
 		}
 
 		echo $data;
 	}
 
-	function add_ajax_kec($id,$selected=NULL)
+	function add_ajax_kec($id, $selected = NULL)
 	{
 		$query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 8 AND LEFT(kode,5) = '$id' ORDER BY kode ASC");
 		$data = "<option value=''> - Pilih Kecamatan/Distrik - </option>";
 		foreach ($query->result() as $value) {
 			$add_attr = "";
-			if($selected != NULL)
-			{
-				if($selected == $value->kode)
-				{
+			if ($selected != NULL) {
+				if ($selected == $value->kode) {
 					$add_attr = "selected";
-				} else
-				{
+				} else {
 					$add_attr = "";
 				}
 			}
 
-			$data .= "<option value='" . $value->kode . "' ".$add_attr.">" . $value->nama . "</option>";
+			$data .= "<option value='" . $value->kode . "' " . $add_attr . ">" . $value->nama . "</option>";
 		};
 		$data .= "<option value='Lainnya'>Lainnya</option>";
 		echo $data;
 	}
 
-	function add_ajax_des($id,$selected=NULL)
+	function add_ajax_des($id, $selected = NULL)
 	{
 		$query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 13 AND LEFT(kode,8) = '$id' ORDER BY kode ASC");
 		$data = "<option value=''> - Pilih Kelurahan/Desa - </option>";
 		foreach ($query->result() as $value) {
 			$add_attr = "";
-			if($selected != NULL)
-			{
-				if($selected == $value->kode)
-				{
+			if ($selected != NULL) {
+				if ($selected == $value->kode) {
 					$add_attr = "selected";
-				} else
-				{
+				} else {
 					$add_attr = "";
 				}
 			}
-			$data .= "<option value='" . $value->kode . "' ".$add_attr.">" . $value->nama . "</option>";
+			$data .= "<option value='" . $value->kode . "' " . $add_attr . ">" . $value->nama . "</option>";
 		};
 		$data .= "<option value='Lainnya'>Lainnya</option>";
 		echo $data;
@@ -135,7 +125,7 @@ class Register extends CI_Controller
 			'nama_lengkap' => '',
 			'nohpregister' => '',
 			'email' => '',
-			'message' => '', 
+			'message' => '',
 			'slider' => $this->M_slider->get_all(),
 		);
 		$this->load->view('pendaftar/register', $data);
@@ -183,7 +173,7 @@ class Register extends CI_Controller
 			redirect('auth/login', 'refresh');
 		}
 		$user = $this->ion_auth->user()->row();
-		
+
 		if (!empty($this->input->post('prodipilihan2')) && $this->input->post('prodipilihan2') != "0") {
 			$prodi2 = $this->input->post('prodipilihan2');
 		} else {

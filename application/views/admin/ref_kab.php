@@ -9,17 +9,18 @@
 					<h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Wilayah Kabupaten/Kota</h6>
 				</div>
 				<div class="card-body">
-				<!-- <div class="flash-data" data-flashdata="<?php // echo $this->session->flashdata('notif'); ?>"></div> -->
+					<!-- <div class="flash-data" data-flashdata="<?php // echo $this->session->flashdata('notif'); 
+																	?>"></div> -->
 					<form id="formkabupaten" method="POST" class="row g-3">
 						<div class="col-md-3">
-                            <label for="optProvinsi" class="form-label">Pilih Provinsi</label>
-                            <select name="optProvinsi" id="optProvinsi" class="form-control">
-                                <option>Pilih Provinsi</option>
-                                <?php foreach ($provinsi AS $pr) : ?>
-                                <option value="<?php echo $pr['kode'];?>"><?php echo $pr['nama'];?></option>
-                            <?php endforeach; ?>
-                            </select>
-                        </div> 
+							<label for="optProvinsi" class="form-label">Pilih Provinsi</label>
+							<select name="optProvinsi" id="optProvinsi" class="form-control">
+								<option>Pilih Provinsi</option>
+								<?php foreach ($provinsi as $pr) : ?>
+									<option value="<?php echo $pr['kode']; ?>"><?php echo $pr['nama']; ?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
 						<div class="col-md-3">
 							<label for="txtKodeKabupaten" class="form-label">Kode Kabupaten/Kota</label>
 							<div class="input-group mb-3">
@@ -33,17 +34,17 @@
 						<div class="col-md-3">
 							<label for="txtKabupaten" class="form-label">Kabupaten/Kota</label>
 							<input id="txtNamaKabupaten" type="text" class="form-control" name="txtNamaKabupaten" placeholder="Kabupaten/Kota" required>
-						</div>    
+						</div>
 
 						<div class="col-md-3">
-						<label class="text-white">Label</label><br>
-							<input type="hidden" id="kodewilayah" name="kodewilayah">                 
+							<label class="text-white">Label</label><br>
+							<input type="hidden" id="kodewilayah" name="kodewilayah">
 							<button type="reset" class="btn btn-secondary btn-sm">Reset</button>&nbsp;&nbsp;&nbsp;
 							<button type="submit" class="btn btn-primary btn-sm">Save</button>
 						</div>
-						
+
 					</form>
-	
+
 				</div>
 			</div>
 		</div>
@@ -84,7 +85,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function() {
 		var tableKabupaten = $('#tableKabupaten').DataTable({
 			"language": {
 				"url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Indonesian.json"
@@ -93,56 +94,61 @@
 			"serverSide": true,
 			"stateSave": true,
 			"order": [],
-			"columnDefs": [ {
-				"targets": 0,
-				"orderable": false
-			},
-			{
-				"targets": -1,
-				"orderable": false,
-				"width": "15%", 
-				"className": "text-center"
-			}  ],
+			"columnDefs": [{
+					"targets": 0,
+					"orderable": false
+				},
+				{
+					"targets": -1,
+					"orderable": false,
+					"width": "15%",
+					"className": "text-center"
+				}
+			],
 			"ajax": {
-                //panggil method ajax list dengan ajax
-                "url": '<?php echo site_url('Datatables/kabupaten_list');?>',
-                "type": "POST"
-            },
+				//panggil method ajax list dengan ajax
+				"url": '<?php echo site_url('Datatables/kabupaten_list'); ?>',
+				"type": "POST"
+			},
 
-        });
+		});
 
-        $("form#formkabupaten").submit(function (event) {
-        	var kodeprov = $('input#kodeprovinsi').val();
-		    var kodekab = $('input#txtKodeKabupaten').val();
-            var namakab = $('input#txtNamaKabupaten').val();
-		    var kodewilayah = $('input#kodewilayah').val();
+		$("form#formkabupaten").submit(function(event) {
+			var kodeprov = $('input#kodeprovinsi').val();
+			var kodekab = $('input#txtKodeKabupaten').val();
+			var namakab = $('input#txtNamaKabupaten').val();
+			var kodewilayah = $('input#kodewilayah').val();
 
-		    $.ajax({
-		      type: "POST",
-		      url: "<?php echo site_url() ?>Datatables/kabupaten_save/"+kodewilayah,
-		      data: {kodeprov:kodeprov,kodekab:kodekab,namakab:namakab,kodewilayah:kodewilayah},
-		      dataType: "json",
-		      encode: true,
-		      success:function(data)
-		      {
-		      	tableProvinsi.ajax.reload(null,false);
-		      }
-		    });
+			$.ajax({
+				type: "POST",
+				url: "<?php echo site_url() ?>Datatables/kabupaten_save/" + kodewilayah,
+				data: {
+					kodeprov: kodeprov,
+					kodekab: kodekab,
+					namakab: namakab,
+					kodewilayah: kodewilayah
+				},
+				dataType: "json",
+				encode: true,
+				success: function(data) {
+					tableProvinsi.ajax.reload(null, false);
+				}
+			});
 		});
 
 		$('select#optProvinsi').on('change', function() {
-		  $("span#kodeprovinsi").html($('select#optProvinsi').val()+".");
-		  $("input#kodeprovinsi").val($('select#optProvinsi').val());
+			$("span#kodeprovinsi").html($('select#optProvinsi').val() + ".");
+			$("input#kodeprovinsi").val($('select#optProvinsi').val());
 		});
 
-		$("#tableKabupaten").on("click", ".editdata", function(){
+		$("#tableKabupaten").on("click", ".editdata", function() {
 			$("select#optProvinsi").val($(this).data('kodeprovinsi')).change();
-			$("span#kodeprovinsi").html($(this).data('kodeprovinsi')+".");
+			$("span#kodeprovinsi").html($(this).data('kodeprovinsi') + ".");
 			$("input#kodeprovinsi").val($(this).data('kodeprovinsi'));
-        	$("input#txtKodeKabupaten").val($(this).data('kodekabupaten')); 
-		 	$("input#txtNamaKabupaten").val($(this).data('namakabupaten'));
-		 	$("input#kodewilayah").val($(this).data('kodewilayah'));
-        });
+			$("input#txtKodeKabupaten").val($(this).data('kodekabupaten'));
+			$("input#txtNamaKabupaten").val($(this).data('namakabupaten'));
+			$("input#kodewilayah").val($(this).data('kodewilayah'));
+		});
 
 
 		// $("#tableKabupaten").on('click', '.deletedata', function(){  
@@ -150,7 +156,8 @@
 		// 	if(confirm("Are you sure you want to delete this?"))  
 		// 	{  
 		// 		$.ajax({  
-		// 			url:"<?php // echo site_url(); ?>Datatables/kabupaten_delete",  
+		// 			url:"<?php // echo site_url(); 
+							?>Datatables/kabupaten_delete",  
 		// 			method:"POST",  
 		// 			data:{kodekab:kodekab},  
 		// 			success:function(data)  
@@ -171,7 +178,7 @@
 
 		// Hapus kabupaten
 		$("#tableKabupaten").on('click', '.deletedata', function() {
-			var kodekab = $(this).data("kodekabupaten"); 
+			var kodekab = $(this).data("kodekabupaten");
 			$.ajax({
 				url: "<?php echo site_url(); ?>Datatables/kabupaten_delete",
 				method: "POST",
@@ -179,7 +186,7 @@
 					kodekab: kodekab
 				},
 				success: function(dataResult) {
-					var dataResult = JSON.parse(dataResult);
+					var hasil = JSON.parse(dataResult);
 					if (hasil.statusCode == 1) {
 						Swal.fire({
 							title: 'Anda yakin ingin menghapus kabupaten ini?',
@@ -198,12 +205,12 @@
 								}).then(function(isConfirm) {
 									if (isConfirm) {
 										location.reload();
-									} 
+									}
 								});
-								
-							};      
+
+							};
 						})
-					}  else {
+					} else {
 						Swal.fire({
 							title: "Gagal",
 							text: "Menghapus kabupaten!",
@@ -211,12 +218,11 @@
 						}).then(function(isConfirm) {
 							if (isConfirm) {
 								location.reload();
-							} 
+							}
 						});
 					}
 				}
 			});
 		});
 	});
-
 </script>
