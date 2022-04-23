@@ -90,7 +90,7 @@
 
 
         <!-- Modal Tambah User-->
-        <div class="modal fade" id="newUser" tabindex="-1" role="dialog" aria-labelledby="newUserLabel" aria-hidden="true">
+        <div class="modal fade" id="newUser" role="dialog" aria-labelledby="newUserLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content modal-lg">
                     <div class="modal-header">
@@ -109,35 +109,29 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="first_name">Nama Lengkap</label>
-                                                <input type="text" class="form-control" id="first_name" name="first_name" required>
+                                                <label for="op_first_name">Nama Lengkap</label>
+                                                <input type="text" class="form-control" id="op_first_name" name="op_first_name" required>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="identity">Username</label>
-                                                <input type="text" class="form-control" id="identity" name="identity" required>
+                                                <label for="op_identity">Username</label>
+                                                <input type="text" class="form-control" id="op_identity" name="op_identity" required>
                                             </div>
                                         </div>
-                                        <!-- <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="company">Nama Sekolah</label>
-                                                <input type="text" class="form-control" id="company" name="company" required>
-                                            </div>
-                                        </div> -->
                                         
                                         <div class="col-sm-12">
                                             <label>Nama Sekolah</label>
                                             <div class="form-group">
-                                                <select name="namasekolah" id="namasekolah" class="form-select">
+                                                <select name="op_namasekolah" id="op_namasekolah" class="form-select">
                                                 </select>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="group">Level</label>
-                                                <input type="text" class="form-control" id="groups" name="groups" value="Operator Sekolah" readonly>
+                                                <label for="op_groups">Level</label>
+                                                <input type="text" class="form-control" id="op_groups" name="op_groups" value="Operator Sekolah" readonly>
                                                 
                                             </div>
                                         </div>
@@ -149,42 +143,36 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+                                                <label for="op_email">Email</label>
+                                                <input type="email" class="form-control" id="op_email" name="op_email" aria-describedby="emailHelp" required>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="phone">Nomor HP/WA</label>
-                                                <input type="text" class="form-control" id="phone" name="phone" required>
+                                                <label for="op_phone">Nomor HP/WA</label>
+                                                <input type="text" class="form-control" id="op_phone" name="op_phone" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="password">Kata Sandi</label>
-                                                <input type="password" class="form-control" id="password" name="password" required>
+                                                <label for="op_password">Kata Sandi</label>
+                                                <input type="password" class="form-control" id="op_password" name="op_password" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="password_confirm">Konfirmasi Kata Sandi</label>
-                                                <input type="password" class="form-control" id="password_confirm" name="password_confirm" required>
+                                                <label for="op_password_confirm">Konfirmasi Kata Sandi</label>
+                                                <input type="password" class="form-control" id="op_password_confirm" name="op_password_confirm" required>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <input type="hidden" class="form-control" id="id" name="id" value="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Buat</button>
+                            <button type="button" name="btnSimpanTambahOp" id="btnSimpanTambahOp" class="btn btn-primary">Buat</button>
 
                         </div>
                         <?php echo form_close(); ?>
@@ -282,6 +270,10 @@
 
     <script>
     $(document).ready(function() {
+        function reload_table() {
+            $('#tabelUser').DataTable().ajax.reload(null, false);
+        };
+
         var tabelUser = $('#tabelUser').DataTable();
         $("#tabelUser").on("click", ".btnNonaktif", function() {
             var iduser = $(this).attr("data-iduser");
@@ -345,7 +337,7 @@
             $('#perusahan').val(perusahan);
             $('#surel').val(surel);
             $('#nohp').val(nohp);
-        })
+        });
 
         $(document).on('click', '.btnHapus', function() {
                 Swal.fire({
@@ -394,7 +386,7 @@
                 };                             
                         
             })
-            });
+        });
 
 
         $(document).on('click', '#btnUbahOperator', function() {
@@ -489,24 +481,51 @@
                     });
                 }
             }
-        })
-
-        $("#namasekolah").select2({
-            theme: "bootstrap",
-            placeholder: '-- Pilih Sekolah --',
-            minimumInputLength: 1,
-            ajax: {
-                url: "<?php echo site_url('user/searchSMTA');?>",
-                dataType: 'json',
-                delay: 250,
-                processResults: function (data) {
-                    return {
-                        results: data
-                    };
-                },
-                cache: true
-            }
         });
+
+        $(document).on('click', '#btnSimpanTambahOp', function() {
+            var identity = $("#op_identity").val();
+            var first_name = $("#op_first_name").val();
+            var email = $("#op_email").val();
+            var phone = $("#op_phone").val();
+            var password = $("#op_password").val();
+            var password_confirm = $("#op_password_confirm").val();
+            var id_sekolah = $("#op_namasekolah").val();
+
+             $.ajax({
+                url: "<?php echo site_url(); ?>user/tambah_operator",
+                method: "POST",
+                data: {
+                    identity: identity,
+                    first_name: first_name,
+                    email: email,
+                    phone: phone,
+                    password: password,
+                    password_confirm: password_confirm,
+                    id_sekolah: id_sekolah
+                },
+
+                success: function(data) {
+                    var hasil = JSON.parse(data);
+                        if (hasil.statusCode == 1) {
+                            Swal.fire({
+                                title: 'Berhasil tambah operator sekolah',
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Ya',
+                            }).then((result) => {
+                                if (result.isConfirmed) {  
+                                     $('#newUser').modal('hide');                         
+                                    location.reload();
+                                };     
+                            })
+                        }       
+                },
+            });
+        });
+
       });
     </script>
 </body>

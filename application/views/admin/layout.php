@@ -644,7 +644,24 @@
                         });
                     }
                 }
-            })
+            });
+
+            $("#op_namasekolah").select2({
+            theme: "bootstrap",
+            placeholder: '-- Pilih Sekolah --',
+            minimumInputLength: 1,
+            ajax: {
+                url: "<?php echo site_url('register/searchSMTA');?>",
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            }
+        });
 
 
         });

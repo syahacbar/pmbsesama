@@ -216,6 +216,25 @@ class User extends CI_Controller
         }        
     }
 
+    public function tambah_operator()
+    {
+        $additional_data = array(   
+            'first_name' => $this->input->post('first_name'),
+            'phone' => $this->input->post('phone'),
+            'id_sekolah' => $this->input->post('id_sekolah'),
+        );
+
+        $group = array("3");
+        if ($this->ion_auth->register($this->input->post('identity'), $this->input->post('password'), $this->input->post('email'), $additional_data, $group))
+        {
+            echo json_encode(array('statusCode' => 1));
+        } else {
+            echo json_encode(array('statusCode' => 0));
+        }
+
+    }
+
+
     public function edit_operator()
     {
         if (isset($_POST) && !empty($_POST)) 

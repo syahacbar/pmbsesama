@@ -43,4 +43,10 @@ class M_user extends CI_Model
 
         return $this->db->affected_rows();
     }
+
+    public function tambah_operator($data)
+    {
+        
+    }
+
 }
