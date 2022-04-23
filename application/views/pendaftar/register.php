@@ -11,8 +11,7 @@
 
   <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
   <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/frontend/css/select2-bootstrap.min.css">
-
+  <link rel="stylesheet" href="<?php echo base_url();?>assets/frontend/css/select2-bootstrap.min.css">
 
   <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" crossorigin="anonymous"></script>
@@ -157,27 +156,6 @@
           <div class="card2 card border-0 px-4 py-5 gambarSlider">
             <div id="demo" class="carousel slide" data-ride="carousel">
               <div class="carousel-inner">
-              <!--   <div class="carousel-item active">
-                  <div class="carousel-caption">
-                    <img src="<?php //echo base_url(); ?>/assets/upload/slider/rektorat_unipa.jpg" alt="login">
-                  </div>
-                </div>
- 
-                <div class="carousel-item">
-                  <div class="carousel-caption">
-                    <img src="<?php //echo base_url(); ?>/assets/upload/slider/banner2-1-scaled.jpg" alt="login1">
-                  </div>
-                </div>
-
-                <div class="carousel-item">
-                  <div class="carousel-caption">
-                    <img src="<?php //echo base_url(); ?>/assets/upload/slider/banner-scaled1.jpg" alt="login2">
-                  </div>
-                </div>
-              </div> -->
-
-              <div class="carousel-inner">
-
                 <?php 
                     $i = 0;
                     foreach ($slider as $sl) { 
@@ -206,6 +184,7 @@
             </div>
           </div>
         </div>
+
       </div>
 
       <div class="bg-blue py-4 bagianfoter">
@@ -222,7 +201,7 @@
   </div>
 
   <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>  
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
   <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>

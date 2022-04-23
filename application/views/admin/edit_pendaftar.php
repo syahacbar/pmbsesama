@@ -1022,11 +1022,15 @@
 
                     //cache: false,
                     success: function(dataResult) {
-                        var dataResult = JSON.parse(dataResult);
-                        if (dataResult.statusCode == 1) {
+                        var hasil = JSON.parse(dataResult);
+                        if (hasil.statusCode == 1) {
                             location.reload();
                         } else {
-                            alert("Error occured !");
+                            Swal.fire({
+								icon: 'error',
+								text: 'Terjadi kesalahan',
+								confirmButtonText: 'Kembali',
+							})
                         }
                     }
                 });
@@ -1064,11 +1068,15 @@
 
                     //cache: false,
                     success: function(dataResult) {
-                        var dataResult = JSON.parse(dataResult);
-                        if (dataResult.statusCode == 1) {
+                        var hasil = JSON.parse(dataResult);
+                        if (hasil.statusCode == 1) {
                             location.reload();
                         } else {
-                            alert("Error occured !");
+                            Swal.fire({
+								icon: 'error',
+								text: 'Terjadi kesalahan',
+								confirmButtonText: 'Kembali',
+							})
                         }
                     }
                 });
@@ -1120,11 +1128,15 @@
                     },
                     //cache: false,
                     success: function(dataResult) {
-                        var dataResult = JSON.parse(dataResult);
-                        if (dataResult.statusCode == 1) {
+                        var hasil = JSON.parse(dataResult);
+                        if (hasil.statusCode == 1) {
                             location.reload();
                         } else {
-                            alert("Error occured !");
+                            Swal.fire({
+								icon: 'error',
+								text: 'Terjadi kesalahan',
+								confirmButtonText: 'Kembali',
+							})
                         }
                     }
                 });
@@ -1151,11 +1163,15 @@
                     },
                     //cache: false,
                     success: function(dataResult) {
-                        var dataResult = JSON.parse(dataResult);
-                        if (dataResult.statusCode == 1) {
+                        var hasil = JSON.parse(dataResult);
+                        if (hasil.statusCode == 1) {
                             location.reload();
                         } else {
-                            alert("Error occured !");
+                            Swal.fire({
+								icon: 'error',
+								text: 'Terjadi kesalahan',
+								confirmButtonText: 'Kembali',
+							})
                         }
                     }
                 });
@@ -1177,10 +1193,6 @@
             });
 
             foto_upload.on("sending", function(file, xhr, formData) {
-                // Will send the filesize along with the file as POST data.
-                // formData.append("filesize", file.size);
-                // formData.append("username", "<?php // echo $row['username']; 
-                                                ?>");
             });
 
 

@@ -103,11 +103,8 @@
                         data: {
                             idfakultas: idfakultas
                         },
-
                         
                         success: function(data) {
-                            // alert("Data Berhasil Dihapus");
-                            // location.reload();
                         }
                     });
 

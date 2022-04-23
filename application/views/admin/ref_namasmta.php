@@ -346,7 +346,7 @@
 
                 success: function(data) {
                     var dataResult = JSON.parse(data);
-                        if (dataResult.statusCode == 1) {
+                        if (hasil.statusCode == 1) {
                             Swal.fire({
                                 title: 'Berhasil tambah SMTA',
                                 icon: 'success',
@@ -433,7 +433,7 @@
 
                 success: function(data) {
                     var dataResult = JSON.parse(data);
-                    if (dataResult.statusCode == 1) {
+                    if (hasil.statusCode == 1) {
                         Swal.fire({
                             title: 'SMTA berhasil diubah',
                             icon: 'success',
@@ -463,7 +463,7 @@
                 },
                 success: function(data) {
                     var dataResult = JSON.parse(data);
-                    if (dataResult.statusCode == 1) {
+                    if (hasil.statusCode == 1) {
                         Swal.fire({
                             title: 'Apakah yakin akan menghapus SMTA?',
                             icon: 'warning',

@@ -106,7 +106,7 @@
                         },
                         success: function(data) {
                             var dataResult = JSON.parse(data);
-                            if (dataResult.statusCode == 1) {
+                            if (hasil.statusCode == 1) {
                                 Swal.fire({
                                     title: "Berhasil",
                                     text: "Menghapus informasi!",

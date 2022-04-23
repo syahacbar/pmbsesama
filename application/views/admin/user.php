@@ -2,7 +2,6 @@
 <html lang="en">
 
 <head>
-
     <link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
 
@@ -11,13 +10,6 @@
             display: flex;
             justify-content: space-around;
         }
-
-        /* span.btn.btn-success.btn-sm.statusaktif {
-            pointer-events: none;
-            padding: 0 20px;
-            border-radius: 30px;
-        } */
-
     </style>
 </head>
 
@@ -43,11 +35,11 @@
                                 <thead>
                                     <tr>
                                         <th width="10">No.</th>
+                                        <th>Sekolah</th>
                                         <th>Nama Lengkap</th>
                                         <th>Username</th>
                                         <th>Email</th>
                                         <th>No. HP</th>
-                                        <th>Grup</th>
                                         <th>Status</th>
                                         <th width="150">Aksi</th>
                                     </tr>
@@ -57,13 +49,12 @@
                                     foreach ($pengguna as $u) { ?>
                                         <tr>
                                             <td><?php echo $no++; ?></td>
+                                            <td><?php echo $u->nama_smta; ?></td>
                                             <td><?php echo $u->first_name . " " . $u->last_name; ?></td>
                                             <td><?php echo $u->username; ?></td>
                                             <td><?php echo $u->email; ?></td>
                                             <td><?php echo $u->phone; ?></td>
-                                            <td><?php echo $u->company; ?></td>
                                             <td>
-                                                <!-- <?php // echo ($u->active == '1') ? '<span class="btn btn-success btn-sm statusaktif" >Aktif</span>' : '<span class="btn btn-danger btn-sm statusnonaktif" >Tidak Aktif</span>'; ?> -->
                                                 <?php echo ($u->active == '1') ? "Aktif" : "Nonaktif"; ?>
                                             </td>
 
@@ -99,7 +90,7 @@
 
 
         <!-- Modal Tambah User-->
-        <div class="modal fade" id="newUser" tabindex="-1" role="dialog" aria-labelledby="newUserLabel" aria-hidden="true">
+        <div class="modal fade" id="newUser" role="dialog" aria-labelledby="newUserLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content modal-lg">
                     <div class="modal-header">
@@ -118,33 +109,30 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="first_name">Nama Lengkap</label>
-                                                <input type="text" class="form-control" id="first_name" name="first_name" required>
+                                                <label for="op_first_name">Nama Lengkap</label>
+                                                <input type="text" class="form-control" id="op_first_name" name="op_first_name" required>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="identity">Username</label>
-                                                <input type="text" class="form-control" id="identity" name="identity" required>
+                                                <label for="op_identity">Username</label>
+                                                <input type="text" class="form-control" id="op_identity" name="op_identity" required>
                                             </div>
                                         </div>
-                                        <div class="col-md-12">
+                                        
+                                        <div class="col-sm-12">
+                                            <label>Nama Sekolah</label>
                                             <div class="form-group">
-                                                <label for="company">Nama Instansi</label>
-                                                <input type="text" class="form-control" id="company" name="company" required>
-                                            </div>
-                                        </div>
-
-                                        <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="group">Grup</label>
-                                                <select name="groups" class="form-control">
-                                                    <option value="">-- Pilih Group --</option>
-                                                    <?php foreach ($grup as $g) : ?>
-                                                        <option value="<?php echo $g['id']; ?>"><?php echo htmlspecialchars($g['description'], ENT_QUOTES, 'UTF-8'); ?></option>
-                                                    <?php endforeach ?>
-
+                                                <select name="op_namasekolah" id="op_namasekolah" class="form-select">
                                                 </select>
+                                            </div>
+                                        </div>
+
+                                        <div class="col-md-12">
+                                            <div class="form-group">
+                                                <label for="op_groups">Level</label>
+                                                <input type="text" class="form-control" id="op_groups" name="op_groups" value="Operator Sekolah" readonly>
+                                                
                                             </div>
                                         </div>
 
@@ -155,42 +143,36 @@
                                     <div class="row">
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="email">Email</label>
-                                                <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" required>
+                                                <label for="op_email">Email</label>
+                                                <input type="email" class="form-control" id="op_email" name="op_email" aria-describedby="emailHelp" required>
                                             </div>
                                         </div>
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="phone">Nomor HP/WA</label>
-                                                <input type="text" class="form-control" id="phone" name="phone" required>
+                                                <label for="op_phone">Nomor HP/WA</label>
+                                                <input type="text" class="form-control" id="op_phone" name="op_phone" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="password">Kata Sandi</label>
-                                                <input type="password" class="form-control" id="password" name="password" required>
+                                                <label for="op_password">Kata Sandi</label>
+                                                <input type="password" class="form-control" id="op_password" name="op_password" required>
                                             </div>
                                         </div>
 
                                         <div class="col-md-12">
                                             <div class="form-group">
-                                                <label for="password_confirm">Konfirmasi Kata Sandi</label>
-                                                <input type="password" class="form-control" id="password_confirm" name="password_confirm" required>
+                                                <label for="op_password_confirm">Konfirmasi Kata Sandi</label>
+                                                <input type="password" class="form-control" id="op_password_confirm" name="op_password_confirm" required>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-
-                                <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12">
-                                    <div class="form-group">
-                                        <input type="hidden" class="form-control" id="id" name="id" value="">
                                     </div>
                                 </div>
                             </div>
                         </div>
                         <div class="modal-footer">
-                            <button type="submit" name="submit" id="btnSubmit" class="btn btn-primary">Buat</button>
+                            <button type="button" name="btnSimpanTambahOp" id="btnSimpanTambahOp" class="btn btn-primary">Buat</button>
 
                         </div>
                         <?php echo form_close(); ?>
@@ -241,23 +223,6 @@
                                             </div>
                                         </div>
 
-                                        <!-- <div class="col-md-12">
-                                            <div class="form-group">
-                                                <label for="group">Grup</label>
-                                                <select name="groups" class="form-control">
-                                                    <option value="">-- Pilih Group --</option>
-                                                    <?php // foreach ($grup as $g) : 
-                                                    ?>
-                                                        <option value="<?php // echo $g['name']; 
-                                                                        ?>"><?php // echo htmlspecialchars($g['description'], ENT_QUOTES, 'UTF-8'); 
-                                                                            ?></option>
-                                                    <?php // endforeach 
-                                                    ?>
-
-                                                </select>
-                                            </div>
-                                        </div> -->
-
                                     </div>
                                 </div>
 
@@ -303,87 +268,78 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
 
-        <script>
-            $(document).ready(function() {
-                var tabelUser = $('#tabelUser').DataTable();
+    <script>
+    $(document).ready(function() {
+        function reload_table() {
+            $('#tabelUser').DataTable().ajax.reload(null, false);
+        };
 
-                $("#tabelUser").on("click", ".btnNonaktif", function() {
-                    var iduser = $(this).attr("data-iduser");
-                    var namauser = $(this).attr("data-namauser");
+        var tabelUser = $('#tabelUser').DataTable();
+        $("#tabelUser").on("click", ".btnNonaktif", function() {
+            var iduser = $(this).attr("data-iduser");
+            var namauser = $(this).attr("data-namauser");
 
-                    $.ajax({
-                        url: '<?php echo site_url(); ?>user/nonaktifkanuser',
-                        type: "POST",
-                        data: {
-                            iduser: iduser
-                        },
-                        success: function(data) {
-                                Swal.fire({
-                                    title: "Berhasil",
-                                    text: "User telah dinonaktifkan!",
-                                    icon: "success",
-                                }).then(function(isConfirm) {
-                                    if (isConfirm) {
-                                        location.reload();
-                                    }
-                                });
-                        }
-                    });
-                });
-
-                $("#tabelUser").on("click", ".btnAktif", function() {
-                    var iduser = $(this).attr("data-iduser");
-                    var namauser = $(this).attr("data-namauser");
-
-                    $.ajax({
-                        url: '<?php echo site_url(); ?>user/aktifkanuser',
-                        type: "POST",
-                        data: {
-                            iduser: iduser
-                        },
-                        success: function(data) {
-                                Swal.fire({
-                                    title: "Berhasil",
-                                    text: "User telah diaktifkan!",
-                                    icon: "success",
-                                }).then(function(isConfirm) {
-                                    if (isConfirm) {
-                                        location.reload();
-                                    }
-                                });
-                        }
-                    });
-                });
-
+            $.ajax({
+                url: '<?php echo site_url(); ?>user/nonaktifkanuser',
+                type: "POST",
+                data: {
+                    iduser: iduser
+                },
+                success: function(data) {
+                        Swal.fire({
+                            title: "Berhasil",
+                            text: "User telah dinonaktifkan!",
+                            icon: "success",
+                        }).then(function(isConfirm) {
+                            if (isConfirm) {
+                                location.reload();
+                            }
+                        });
+                }
             });
-        </script>
-        <script>
-            $(document).ready(function() {
-                $(document).on('click', '#ubahData', function() {
-                    var idoperator = $(this).data('idoperator');
-                    var namadepan = $(this).data('firstname');
-                    var identitas = $(this).data('identity');
-                    var perusahan = $(this).data('company');
-                    var surel = $(this).data('email');
-                    var nohp = $(this).data('phone');
-                    // var password = $(this).data('password');
-                    // var confirm_password = $(this).data('confirm_password');
+        });
 
-                    $('#idoperator').val(idoperator);
-                    $('#namadepan').val(namadepan);
-                    $('#identitas').val(identitas);
-                    $('#perusahan').val(perusahan);
-                    $('#surel').val(surel);
-                    $('#nohp').val(nohp);
-                    // $('#password').val(password);
-                    // $('#confirm_password').val(confirm_password);
-                })
-            })
-        </script>
-        
-        <script>
-        $(document).ready(function() {
-            $(document).on('click', '.btnHapus', function() {
+        $("#tabelUser").on("click", ".btnAktif", function() {
+            var iduser = $(this).attr("data-iduser");
+            var namauser = $(this).attr("data-namauser");
+
+            $.ajax({
+                url: '<?php echo site_url(); ?>user/aktifkanuser',
+                type: "POST",
+                data: {
+                    iduser: iduser
+                },
+                success: function(data) {
+                        Swal.fire({
+                            title: "Berhasil",
+                            text: "User telah diaktifkan!",
+                            icon: "success",
+                        }).then(function(isConfirm) {
+                            if (isConfirm) {
+                                location.reload();
+                            }
+                        });
+                }
+            });
+        });
+
+        $(document).on('click', '#ubahData', function() {
+            var idoperator = $(this).data('idoperator');
+            var namadepan = $(this).data('firstname');
+            var identitas = $(this).data('identity');
+            var perusahan = $(this).data('company');
+            var surel = $(this).data('email');
+            var nohp = $(this).data('phone');
+
+            $('#idoperator').val(idoperator);
+            $('#namadepan').val(namadepan);
+            $('#identitas').val(identitas);
+            $('#perusahan').val(perusahan);
+            $('#surel').val(surel);
+            $('#nohp').val(nohp);
+        });
+
+        $(document).on('click', '.btnHapus', function() {
                 Swal.fire({
                 title: 'Apakah yakin akan menghapus user ini?',
                 icon: 'warning',
@@ -403,7 +359,7 @@
                         },
                         success: function(data) {
                             var dataResult = JSON.parse(data);
-                            if (dataResult.status) {
+                            if (hasil.status) {
                                 Swal.fire({
                                     title: "Berhasil",
                                     text: "Menghapus user!",
@@ -430,51 +386,85 @@
                 };                             
                         
             })
+        });
+
+
+        $(document).on('click', '#btnUbahOperator', function() {
+            var namadepan = $("input[name='namadepan']").val();
+            var identitas = $("input[name='identitas']").val();
+            var perusahan = $("input[name='perusahan']").val();
+            var surel = $("input[name='surel']").val();
+            var nohp = $("input[name='nohp']").val();
+            var katasandi = $("input[name='katasandi']").val();
+            var confirm_katasandi = $("input[name='confirm_katasandi']").val();
+            var idoperator = $("input[name='idoperator']").val();
+
+            if (katasandi == '' || katasandi == 'null')
+            {
+                $.ajax({
+                    type: "POST",
+                    url: '<?php echo site_url('user/edit_operator') ?>',
+                    data: {
+                        namadepan: namadepan,
+                        identitas: identitas,
+                        perusahan: perusahan,
+                        surel: surel,
+                        nohp: nohp,
+                        idoperator: idoperator
+                    },
+                    success: function(response) {
+                        var hasil = $.parseJSON(response);
+                        if (result.statusCode == 1) 
+                        {
+                            Swal.fire({
+                                title: "Berhasil",
+                                text: "Ubah profil user.",
+                                icon: "success",
+                            }).then(function(isConfirm) {
+                                if (isConfirm) {
+                                    location.reload();
+                                } 
+                            });
+
+                        } else {
+                            Swal.fire({
+                                title: "Peringatan!",
+                                text: "Gagal ubah profil user",
+                                icon: "error",
+                            });
+                        }
+                    }
             });
-
-
-
-
-
-
-            $(document).on('click', '#btnUbahOperator', function() {
-                var namadepan = $("input[name='namadepan']").val();
-                var identitas = $("input[name='identitas']").val();
-                var perusahan = $("input[name='perusahan']").val();
-                var surel = $("input[name='surel']").val();
-                var nohp = $("input[name='nohp']").val();
-                var katasandi = $("input[name='katasandi']").val();
-                var confirm_katasandi = $("input[name='confirm_katasandi']").val();
-                var idoperator = $("input[name='idoperator']").val();
-
-                if (katasandi == '' || katasandi == 'null')
-                {
+            } else {
+                if (katasandi == confirm_katasandi) {
                     $.ajax({
-    					type: "POST",
-    					url: '<?php echo site_url('user/edit_operator') ?>',
-    					data: {
+                        type: "POST",
+                        url: '<?php echo site_url('user/edit_operator') ?>',
+                        data: {
+                            idoperator: idoperator,
                             namadepan: namadepan,
                             identitas: identitas,
                             perusahan: perusahan,
                             surel: surel,
                             nohp: nohp,
-    						idoperator: idoperator
-    					},
-    					success: function(response) {
-                            var result = $.parseJSON(response);
-                            if (result.statusCode == 1) 
+                            katasandi: katasandi
+                        },
+                        success: function(response) {
+                            var hasil = $.parseJSON(response);
+                            if(result.statusCode == 1) 
                             {
                                 Swal.fire({
                                     title: "Berhasil",
                                     text: "Ubah profil user.",
                                     icon: "success",
                                 }).then(function(isConfirm) {
-                                    if (isConfirm) {
-                                        location.reload();
-                                    } 
-                                });
-
-                            } else {
+                                if (isConfirm) {
+                                    location.reload();
+                                } 
+                            });
+                            }
+                            else
+                            {
                                 Swal.fire({
                                     title: "Peringatan!",
                                     text: "Gagal ubah profil user",
@@ -482,55 +472,61 @@
                                 });
                             }
                         }
-                });
-             } else {
-                    if (katasandi == confirm_katasandi) {
-                        $.ajax({
-                            type: "POST",
-                            url: '<?php echo site_url('user/edit_operator') ?>',
-                            data: {
-                                idoperator: idoperator,
-                                namadepan: namadepan,
-                                identitas: identitas,
-                                perusahan: perusahan,
-                                surel: surel,
-                                nohp: nohp,
-                                katasandi: katasandi
-                            },
-                            success: function(response) {
-                                var result = $.parseJSON(response);
-                                if(result.statusCode == 1) 
-                                {
-                                    Swal.fire({
-                                        title: "Berhasil",
-                                        text: "Ubah profil user.",
-                                        icon: "success",
-                                    }).then(function(isConfirm) {
-                                    if (isConfirm) {
-                                        location.reload();
-                                    } 
-                                });
-                                }
-                                else
-                                {
-                                    Swal.fire({
-                                        title: "Peringatan!",
-                                        text: "Gagal ubah profil user",
-                                        icon: "error",
-                                    });
-                                }
-                            }
-                        });
-                    } else {
-                        Swal.fire({
-                            title: "Peringatan!",
-                            text: "Kata sandi tidak sama, periksa kembali!",
-                            icon: "error",
-                        });
-                    }
+                    });
+                } else {
+                    Swal.fire({
+                        title: "Peringatan!",
+                        text: "Kata sandi tidak sama, periksa kembali!",
+                        icon: "error",
+                    });
                 }
-            })
+            }
         });
+
+        $(document).on('click', '#btnSimpanTambahOp', function() {
+            var identity = $("#op_identity").val();
+            var first_name = $("#op_first_name").val();
+            var email = $("#op_email").val();
+            var phone = $("#op_phone").val();
+            var password = $("#op_password").val();
+            var password_confirm = $("#op_password_confirm").val();
+            var id_sekolah = $("#op_namasekolah").val();
+
+             $.ajax({
+                url: "<?php echo site_url(); ?>user/tambah_operator",
+                method: "POST",
+                data: {
+                    identity: identity,
+                    first_name: first_name,
+                    email: email,
+                    phone: phone,
+                    password: password,
+                    password_confirm: password_confirm,
+                    id_sekolah: id_sekolah
+                },
+
+                success: function(data) {
+                    var hasil = JSON.parse(data);
+                        if (hasil.statusCode == 1) {
+                            Swal.fire({
+                                title: 'Berhasil tambah operator sekolah',
+                                icon: 'success',
+                                showCancelButton: false,
+                                confirmButtonColor: '#3085d6',
+                                cancelButtonColor: '#d33',
+                                confirmButtonText: 'Ya',
+                            }).then((result) => {
+                                if (result.isConfirmed) {  
+                                     $('#newUser').modal('hide');                         
+                                    location.reload();
+                                };     
+                            })
+                        }       
+                },
+            });
+        });
+
+      });
     </script>
 </body>
 

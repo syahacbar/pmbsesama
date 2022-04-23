@@ -9,7 +9,7 @@
 					<h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Wilayah Kecamatan/Distrik</h6>
 				</div>
 				<div class="card-body">
-				<div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
+				<!-- <div class="flash-data" data-flashdata="<?php // echo $this->session->flashdata('notif'); ?>"></div> -->
 					<form id="formkecamatan" method="POST" class="row g-3">
 						<div class="col-md-2">
                             <label for="optProvinsi" class="form-label">Pilih Provinsi</label>
@@ -157,30 +157,55 @@
 		  $("span#kodekabupaten").html($('select#optKabupaten').val()+".");
 		  $("input#kodekabupaten").val($('select#optKabupaten').val());
 		});
-
-		$("#tableKecamatan").on('click', '.deletedata', function(){    
-			var kodekec = $(this).data("kodekecamatan");  
-			if(confirm("Are you sure you want to delete this?"))  
-			{  
-				$.ajax({  
-					url:"<?php echo site_url(); ?>Datatables/kecamatan_delete",  
-					method:"POST",  
-					data:{kodekec:kodekec},  
-					success:function(data)  
-					{  
-						$('#alert').html('<div class="alert alert-warning alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Data berhasil dihapus.</div>');
-						tableKecamatan.ajax.reload(null,false);
-						$(".alert").fadeTo(5000, 0).slideUp(100, function(){
-			                $(this).remove();
-			            });      
-					}  
-				});  
-			}  
-			else  
-			{  
-				return false;       
-			}  
-		});   
+		
+		// Hapus kecamatan
+		$("#tableKecamatan").on('click', '.deletedata', function() {
+			var kodekec = $(this).data("kodekecamatan"); 
+			$.ajax({
+				url: "<?php echo site_url(); ?>Datatables/kecamatan_delete",
+				method: "POST",
+				data: {
+					kodekec: kodekec
+				},
+				success: function(dataResult) {
+					var dataResult = JSON.parse(dataResult);
+					if (hasil.statusCode == 1) {
+						Swal.fire({
+							title: 'Anda yakin ingin menghapus kecamatan ini?',
+							icon: 'warning',
+							showCancelButton: true,
+							confirmButtonColor: '#3085d6',
+							cancelButtonColor: '#d33',
+							confirmButtonText: 'Ya',
+							cancelButtonText: 'Tidak',
+						}).then((result) => {
+							if (result.isConfirmed) {
+								Swal.fire({
+									title: "Berhasil",
+									text: "Menghapus kecamatan!",
+									icon: "success",
+								}).then(function(isConfirm) {
+									if (isConfirm) {
+										location.reload();
+									} 
+								});
+								
+							};      
+						})
+					}  else {
+						Swal.fire({
+							title: "Gagal",
+							text: "Menghapus kecamatan!",
+							icon: "error",
+						}).then(function(isConfirm) {
+							if (isConfirm) {
+								location.reload();
+							} 
+						});
+					}
+				}
+			});
+		});
 	});
 
 </script>

@@ -16,7 +16,7 @@ class Auth extends CI_Controller
 		$this->load->library(['ion_auth', 'form_validation']);
 		$this->load->helper(['url', 'language']);
 		$this->load->library(['recaptcha']);
-		$this->load->model(['M_informasi', 'M_agenda', 'M_slider']);
+		$this->load->model(['M_informasi', 'M_agenda', 'M_slider', 'M_pengaturan']);
 
 
 		$this->form_validation->set_error_delimiters($this->config->item('error_start_delimiter', 'ion_auth'), $this->config->item('error_end_delimiter', 'ion_auth'));
@@ -81,8 +81,8 @@ class Auth extends CI_Controller
 					redirect('administrator');
 				} else {
 					if ($this->ion_auth->in_group('members')) {
-						$this->session->set_flashdata('message', $this->ion_auth->messages());
-						redirect('register/isibiodata');
+						$this->session->set_flashdata('message', 'Anda tidak diizinkan mengakses halaman ini!');
+						redirect('auth/logout');
 					} 
 					else if($this->ion_auth->in_group('sekolah')) {
 						$this->session->set_flashdata('message', $this->ion_auth->messages());
@@ -164,7 +164,7 @@ class Auth extends CI_Controller
 				// if the login was un-successful
 				// redirect them back to the login page
 				// $this->session->set_flashdata('message', $this->ion_auth->errors());
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username/Password salah</div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Nomor pendaftaran atau kata sandi Anda salah. Silakan input ulang!</div>');
 				redirect('auth/login', 'refresh');
 				
 			}
@@ -185,11 +185,12 @@ class Auth extends CI_Controller
 				'id' => 'password',
 				'type' => 'password',
 			];
-
+			
+			// $this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pendaftaran dibuka</div>');
 			$this->data['agenda'] = $this->M_agenda->get_all(2);
 			$this->data['informasi'] = $this->M_informasi->get_all(3);
 			$this->data['slider'] = $this->M_slider->get_all();
-
+			$this->data['sesidaftar'] = $this->M_pengaturan->get_sesidaftar()->nilai;
 
 			//$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'login', $this->data);
 			$this->data['_view'] = 'pendaftar/navbar';
@@ -204,10 +205,11 @@ class Auth extends CI_Controller
 	{
 		$this->data['title'] = "Logout";
 
+		$this->session->set_flashdata('message', 'Anda berhasil Logout');
 		// log the user out
 		$this->ion_auth->logout();
 
-		if (isset($usertype) && $usertype)
+		if ($usertype != null)
 		{
 			if($usertype == "operator" || $usertype == "admin")
 			{
@@ -219,6 +221,8 @@ class Auth extends CI_Controller
 				// redirect them to the login page
 				redirect('/', 'refresh');
 			}
+		} else {
+			redirect('/', 'refresh');
 		}
 	}
 

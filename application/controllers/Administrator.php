@@ -28,6 +28,7 @@ class Administrator extends CI_Controller
 		$this->load->model('M_namasmta');
 		$this->load->model('M_slider');
 		$this->load->model('M_informasi');
+		$this->load->model('M_pengaturan');
 
 	}
 
@@ -974,6 +975,24 @@ class Administrator extends CI_Controller
 	    header('Cache-Control: max-age=0');
 	    $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
 	    $write->save('php://output');
+	}
+
+	public function pengaturan()
+	{
+		$data['sesidaftar'] = $this->M_pengaturan->get_sesidaftar();
+		$data['_view'] = 'admin/pengaturan';
+		$this->load->view('admin/layout', $data);
+	}
+
+	public function ubah_sesidaftar()
+	{
+		$sesidaftar = $this->input->post('sesidaftar');
+		if ($this->M_pengaturan->ubah_sesidaftar($sesidaftar))
+		{
+			echo json_encode(array("statusCode" => 1));
+		} else {
+			echo json_encode(array("statusCode" => 0));
+		}
 	}
 
 }

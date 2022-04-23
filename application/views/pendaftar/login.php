@@ -78,6 +78,15 @@
                             </div>
                         </div>
                     </div>
+                    <?php 
+                        $disable = '';
+                        if ($sesidaftar == '1')
+                        {
+                            $disable = '';
+                        } else {
+                            $disable = 'disabled';
+                        }
+                    ?>
                     <div class="col-lg-6">
                         <div class="card2 card border-0 px-4 py-5 loginPage">
                             <div class="row mb-4 px-3">
@@ -86,33 +95,43 @@
                             <p><?php echo $this->session->flashdata('message'); ?></p>
                             <?php echo form_open("auth/login"); ?>
                             <div class="row px-3 mb-4">
-                                <small class="text-center">Silakan Login Untuk Melengkapi Formulir Pendaftaran</small>
+                            <?php if ($sesidaftar == '1') { 
+                                echo '<div class="text-muted w-100">Silakan login untuk melengkapi formulir pendaftaran</div>';
+                            } else {
+                                echo '<div class="alert alert-warning w-100" role="alert">Pendaftar telah ditutup!</div>';
+                            }                             
+                            ?>
+                            
                             </div>
                             <div class="row px-3">
                                 <label class="mb-1">
                                     <h6 class="mb-0 text-sm">Nomor Pendaftaran</h6>
                                 </label>
-                                <input class="mb-4" type="text" name="identity" placeholder="Ketik nomor pendaftaran di sini">
+                                <input class="mb-4" type="text" name="identity" placeholder="Ketik nomor pendaftaran di sini" <?php echo $disable; ?>>
                             </div>
                             <div class="row px-3">
                                 <label class="mb-1">
                                     <h6 class="mb-0 text-sm">Kata Sandi</h6>
                                 </label>
-                                <input type="password" name="password" placeholder="Ketik kata sandi di sini">
+                                <input type="password" name="password" placeholder="Ketik kata sandi di sini" <?php echo $disable; ?>>
                             </div>
 
                             <div class="row px-3 remember-password">
                                 <div class="custom-control custom-checkbox custom-control-inline">
-                                    <input id="chk1" type="checkbox" name="chk" class="custom-control-input">
+                                    <input id="chk1" type="checkbox" name="chk" class="custom-control-input" <?php echo $disable; ?>>
                                     <label for="chk1" class="custom-control-label text-sm">Ingatkan Saya</label>
                                 </div>
+                                <?php if ($sesidaftar == '1') { ?>
                                 <a href="<?php echo base_url('auth/forgot_password') ?>" class="ml-auto mb-0 text-sm">Lupas kata sandi?</a>
+                                <?php } ?>
                             </div>
 
                             <div class="row px-3 loginRegister">
-                                <button type="submit" class="btn btn-blue text-center">MASUK</button>
+                                <button type="submit" class="btn btn-blue text-center" <?php echo $disable; ?>>MASUK</button>
+                                <?php if ($sesidaftar == '1') { ?>
                                 <small class="font-weight-bold">Belum punya akun? <a href="<?php echo site_url('register'); ?>" class="text-danger" target="_blank
                                 ">DAFTAR DI SINI</a></small>
+                                <?php } ?>
                             </div>
                             <?php echo form_close(); ?>
 

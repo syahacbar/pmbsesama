@@ -9,7 +9,7 @@
 					<h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Wilayah Kabupaten/Kota</h6>
 				</div>
 				<div class="card-body">
-				<div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
+				<!-- <div class="flash-data" data-flashdata="<?php // echo $this->session->flashdata('notif'); ?>"></div> -->
 					<form id="formkabupaten" method="POST" class="row g-3">
 						<div class="col-md-3">
                             <label for="optProvinsi" class="form-label">Pilih Provinsi</label>
@@ -145,29 +145,78 @@
         });
 
 
-		$("#tableKabupaten").on('click', '.deletedata', function(){  
-			var kodekab = $(this).data("kodekabupaten");  
-			if(confirm("Are you sure you want to delete this?"))  
-			{  
-				$.ajax({  
-					url:"<?php echo site_url(); ?>Datatables/kabupaten_delete",  
-					method:"POST",  
-					data:{kodekab:kodekab},  
-					success:function(data)  
-					{  
-						$('#alert').html('<div class="alert alert-warning alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Data berhasil dihapus.</div>');
-						tableKabupaten.ajax.reload(null,false);
-						$(".alert").fadeTo(5000, 0).slideUp(100, function(){
-			                $(this).remove();
-			            });   
-					}  
-				});  
-			}  
-			else  
-			{  
-				return false;       
-			}  
-		});   
+		// $("#tableKabupaten").on('click', '.deletedata', function(){  
+		// 	var kodekab = $(this).data("kodekabupaten");  
+		// 	if(confirm("Are you sure you want to delete this?"))  
+		// 	{  
+		// 		$.ajax({  
+		// 			url:"<?php // echo site_url(); ?>Datatables/kabupaten_delete",  
+		// 			method:"POST",  
+		// 			data:{kodekab:kodekab},  
+		// 			success:function(data)  
+		// 			{  
+		// 				$('#alert').html('<div class="alert alert-warning alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Data berhasil dihapus.</div>');
+		// 				tableKabupaten.ajax.reload(null,false);
+		// 				$(".alert").fadeTo(5000, 0).slideUp(100, function(){
+		// 	                $(this).remove();
+		// 	            });   
+		// 			}  
+		// 		});  
+		// 	}  
+		// 	else  
+		// 	{  
+		// 		return false;       
+		// 	}  x
+		// });   
+
+		// Hapus kabupaten
+		$("#tableKabupaten").on('click', '.deletedata', function() {
+			var kodekab = $(this).data("kodekabupaten"); 
+			$.ajax({
+				url: "<?php echo site_url(); ?>Datatables/kabupaten_delete",
+				method: "POST",
+				data: {
+					kodekab: kodekab
+				},
+				success: function(dataResult) {
+					var dataResult = JSON.parse(dataResult);
+					if (hasil.statusCode == 1) {
+						Swal.fire({
+							title: 'Anda yakin ingin menghapus kabupaten ini?',
+							icon: 'warning',
+							showCancelButton: true,
+							confirmButtonColor: '#3085d6',
+							cancelButtonColor: '#d33',
+							confirmButtonText: 'Ya',
+							cancelButtonText: 'Tidak',
+						}).then((result) => {
+							if (result.isConfirmed) {
+								Swal.fire({
+									title: "Berhasil",
+									text: "Menghapus kabupaten!",
+									icon: "success",
+								}).then(function(isConfirm) {
+									if (isConfirm) {
+										location.reload();
+									} 
+								});
+								
+							};      
+						})
+					}  else {
+						Swal.fire({
+							title: "Gagal",
+							text: "Menghapus kabupaten!",
+							icon: "error",
+						}).then(function(isConfirm) {
+							if (isConfirm) {
+								location.reload();
+							} 
+						});
+					}
+				}
+			});
+		});
 	});
 
 </script>

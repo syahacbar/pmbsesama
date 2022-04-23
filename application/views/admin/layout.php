@@ -20,6 +20,11 @@
     <!-- Custom styles for this page -->
     <link href="<?php echo base_url(); ?>/assets/backend/startbootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- Select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/frontend/css/select2-bootstrap.min.css">
+
     <style type="text/css">
         .alert.alert-server {
             margin-bottom: 0;
@@ -59,12 +64,13 @@
                         <i class="fas fa-fw fa-users"></i>
                         <span>Pendaftaran</span>
                     </a>
-                    <div id="collapsePendaftaran" class="collapse <?php echo ($this->uri->segment(2) == "datapendaftar" || $this->uri->segment(2) == "slider" || $this->uri->segment(2) == "agenda" || $this->uri->segment(2) == "informasi") ? "show" : ""; ?>" aria-labelledby="headingPendaftaran" data-parent="#accordionSidebar">
+                    <div id="collapsePendaftaran" class="collapse <?php echo ($this->uri->segment(2) == "datapendaftar" || $this->uri->segment(2) == "slider" || $this->uri->segment(2) == "agenda" || $this->uri->segment(2) == "informasi" || $this->uri->segment(2) == "pengaturan") ? "show" : ""; ?>" aria-labelledby="headingPendaftaran" data-parent="#accordionSidebar">
                         <div class="bg-white py-2 collapse-inner rounded">
                             <a class="collapse-item <?php echo ($this->uri->segment(2) == "datapendaftar") ? "active" : ""; ?>" href="<?php echo site_url('administrator/datapendaftar'); ?>">Data Pendaftar</a>
                             <a class="collapse-item <?php echo ($this->uri->segment(2) == "slider") ? "active" : ""; ?>" href="<?php echo site_url('administrator/slider'); ?>">Slider Depan</a>
                             <a class="collapse-item <?php echo ($this->uri->segment(2) == "agenda") ? "active" : ""; ?>" href="<?php echo site_url('administrator/agenda'); ?>">Agenda Penerimaan</a>
                             <a class="collapse-item <?php echo ($this->uri->segment(2) == "informasi") ? "active" : ""; ?>" href="<?php echo site_url('administrator/informasi'); ?>">Informasi</a>
+                            <a class="collapse-item <?php echo ($this->uri->segment(2) == "pengaturan") ? "active" : ""; ?>" href="<?php echo site_url('administrator/pengaturan'); ?>">Pengaturan</a>
                         </div>
                     </div>
                 </li>
@@ -541,6 +547,9 @@
     <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/custom-sweetalert.js"></script>
 
+    <!-- Select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
     <script>
         $(document).ready(function() {
             $(document).on('click', '#btnUbahUser', function() {
@@ -566,7 +575,7 @@
                             phone:phone
     					},
     					success: function(response) {
-                            var result = $.parseJSON(response);
+                            var hasil = $.parseJSON(response);
                             if(result.statusCode == 1) 
                             {
                                 Swal.fire({
@@ -604,7 +613,7 @@
                                 password:password
                             },
                             success: function(response) {
-                                var result = $.parseJSON(response);
+                                var hasil = $.parseJSON(response);
                                 if(result.statusCode == 1) 
                                 {
                                     Swal.fire({
@@ -635,7 +644,24 @@
                         });
                     }
                 }
-            })
+            });
+
+            $("#op_namasekolah").select2({
+            theme: "bootstrap",
+            placeholder: '-- Pilih Sekolah --',
+            minimumInputLength: 1,
+            ajax: {
+                url: "<?php echo site_url('register/searchSMTA');?>",
+                dataType: 'json',
+                delay: 250,
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            }
+        });
 
 
         });

@@ -4,8 +4,10 @@ class M_user extends CI_Model
 {
     function get_all()
     {
-        $query = $this->db->get('users');
-        return $query->result_array();
+        $query = $this->db->query("SELECT u.*,
+        (SELECT tsm.nama_smta FROM t_smta tsm WHERE tsm.id=u.id_sekolah) AS nama_smta
+        FROM users u, users_groups ug, groups g WHERE u.id=ug.users_id AND ug.group_id=g.id AND g.name='sekolah'");
+        return $query->result();
     }
 
     function add($data)
@@ -14,20 +16,12 @@ class M_user extends CI_Model
         return TRUE;
     }
 
-    // function edit($data, $id)
-    // {
-    //     $this->db->where('id', $id);
-    //     $this->db->update('users', $data);
-    //     return TRUE;
-    // }
-
     function delete($id)
     {
         $this->db->where("id", $id);
         $this->db->delete("users");
         return true;
     }
-
 
     function group()
     {
@@ -49,4 +43,10 @@ class M_user extends CI_Model
 
         return $this->db->affected_rows();
     }
+
+    public function tambah_operator($data)
+    {
+        
+    }
+
 }
