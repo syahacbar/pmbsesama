@@ -326,7 +326,7 @@
                             },
                             success: function(data) {
                                 var dataResult = JSON.parse(data);
-                                if (dataResult.statusCode == 1) {
+                                if (hasil.statusCode == 1) {
                                     Swal.fire({
                                         title: "Berhasil",
                                         text: "Anda mengubah agenda!",
@@ -367,7 +367,7 @@
                         },
                         success: function(data) {
                             var dataResult = JSON.parse(data);
-                            if (dataResult.statusCode == 1) {
+                            if (hasil.statusCode == 1) {
                                 Swal.fire({
                                     title: 'Apakah yakin akan menghapus agenda?',
                                     icon: 'warning',

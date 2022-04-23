@@ -273,10 +273,6 @@
 				<h4 class="m-0 font-weight-bold text-primary modal-title" id="modalDetailLabel">
 					Detail Data Pendaftar: <span id="usernamependaftar"></span></h4>
 			</div>
-			<!-- <?php // // echo $this->session->flashdata('message'); 
-					?> -->
-			<?php // echo form_open_multipart('', array('id' => 'formInputAgenda')); 
-			?>
 			<div class="modal-body">
 				<div id="detailPendaftarx"></div>
 			</div>
@@ -359,22 +355,6 @@
 													</div>
 
 												</div>
-
-												<!-- <div class="col-sm-6 fotoprofil">
-													<div class="row">
-														<div class="col-sm-12 d-flex justify-content-flex-start">
-															<div class="form-group">
-															</div>
-
-															<div class="form-group tombol">
-																<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#unggahFoto">Ubah Foto</button>
-															</div>
-														</div>
-														<div class="col-sm-12 d-flex justify-content-flex-start">
-														</div>
-													</div>
-
-												</div> -->
 											</div>
 										</div>
 
@@ -594,9 +574,7 @@
 												<input name="alamatlaintempattinggal" id="alamatlaintempattinggal" type="text" class="form-control" placeholder="" value="" required></input>
 											</div>
 										</div>
-
 									</div>
-
 
 									<div class="row">
 										<div class="col-12 mt-4">
@@ -697,8 +675,6 @@
 											</div> 
 										</div>
 
-										
-
 										<div class="col-sm-12 mt-4">
 											<div class="form-group">
 												<h5 class="fs-title">Nilai Rata-Rata Rapor</h5>
@@ -753,9 +729,6 @@
 												</div>
 
 											</div>
-
-
-
 
 										</div>
 									</div>
@@ -1041,7 +1014,6 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 
-
 		$("#provtempatlahir").change(function() {
 			var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
 			$('#kabtempatlahir').load(url);
@@ -1178,10 +1150,7 @@
 						"className": "text-center"
 					}
 				],
-				// "scrollY":        "300px",
-				//       "scrollX":        true,
-				//"scrollCollapse": true,
-				//"paging":         false,
+
 				"fixedColumns": {
 					"left": 1,
 					"right": 1
@@ -1214,7 +1183,6 @@
 			} else {
 				load_data();
 			}
-			//tablePendaftar.search('').draw();
 		});
 
 		$(document).on('change', '#pilihprodi', function() {
@@ -1225,7 +1193,6 @@
 			tablePendaftar.destroy();
 			if (prodi != '') {
 				load_data(tahunakademik, prodi, suku);
-				//tablePendaftar.search('').draw();
 			} else {
 				load_data();
 			}
@@ -1502,8 +1469,8 @@
 
 				//cache: false,
 				success: function(dataResult) {
-					var dataResult = JSON.parse(dataResult);
-					if (dataResult.statusCode == 1) {
+					var hasil = JSON.parse(dataResult);
+					if (hasil.statusCode == 1) {
 						Swal.fire({
 							title: 'Berhasil!',
 							text: "Anda telah memperbarui data",
@@ -1514,7 +1481,11 @@
 						//tablePendaftar.draw(false);
 						reload_table();
 					} else {
-						alert("Error occured !");
+						Swal.fire({
+							icon: 'error',
+							text: 'Terjadi kesalahan',
+							confirmButtonText: 'Kembali',
+						})
 					} 
 				}
 			});
@@ -1534,7 +1505,6 @@
 					idt_biodata: idt_biodata
 				},
 				success: function(data) {
-					// alert('Anda Menerima Laporan : ' + username);
 					Swal.fire({
 						title: 'Berhasil!',
 						text: "Anda telah menerima pendaftar!",
@@ -1542,11 +1512,9 @@
 						showCancelButton: false,
 						confirmButtonText: 'Kembali',
 					})
-					//tablePendaftar.draw(false);
 					reload_table();
 				},
 				error: function() {
-					// alert('Gagal Merubah Status Laporan : ' + username);
 					Swal.fire({
 						icon: 'error',
 						title: 'Maaf...',
@@ -1576,11 +1544,9 @@
 						showCancelButton: false,
 						confirmButtonText: 'Kembali',
 					})
-					//tablePendaftar.draw(false);
 					reload_table();
 				},
 				error: function() {
-					// alert('Gagal Merubah Status Laporan : ' + username);
 					Swal.fire({
 						icon: 'error',
 						title: 'Maaf...',
@@ -1601,7 +1567,7 @@
 				},
 				success: function(data) {
 					var dataResult = JSON.parse(data);
-                    if (dataResult.statusCode == 1) {
+                    if (hasil.statusCode == 1) {
                         Swal.fire({
                             title: 'Apakah yakin akan menghapus pendaftar?',
                             icon: 'warning',
@@ -1625,7 +1591,6 @@
                     }    
 				},
 				error: function() {
-					// alert('Gagal Merubah Status Laporan : ' + username);
 					Swal.fire({
 						icon: 'error',
 						title: 'Maaf...',

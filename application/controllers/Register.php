@@ -328,7 +328,6 @@ class Register extends CI_Controller
 		}
 	}
 
-
 	public function uploadrapor()
 	{
 		$config['upload_path']   = FCPATH . '/assets/upload/rapor/';

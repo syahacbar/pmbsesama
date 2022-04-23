@@ -1508,7 +1508,6 @@
                     $('#kectempattinggal').load(url);
                 }
 
-
                 $("#kectempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_des'); ?>/" + $(this).val();
                     $('#destempattinggal').load(url);
@@ -1587,8 +1586,8 @@
                         },
                         //cache: false,
                         success: function(dataResult) {
-                            var dataResult = JSON.parse(dataResult);
-                            if (dataResult.statusCode == 1) {
+                            var hasil = JSON.parse(dataResult);
+                            if (result.statusCode == 1) {
                                 $("#next1").removeAttr("disabled");
                                 $('#fupForm').find('input:text').val('');
                                 $("#success").show();
@@ -1597,7 +1596,11 @@
                                 $(".BoxLulus").hide();
                                 $(".BoxBelumLulus").hide();
                             } else {
-                                alert("Error occured !");
+                                Swal.fire({
+                                    icon: 'error',
+                                    text: 'Ada yang salah!',
+                                    confirmButtonText: 'Kembali',
+                                })
                             }
 
                         }
@@ -1610,14 +1613,9 @@
                     var tahunlulussmta = $("select[name='tahunlulussmta']").val();
                     var jurusansmta = $("select[name='jurusansmta']").val();
                     var jenissmta = $("select[name='jenissmta']").val();
-                    // var namasmta = $("select[name='namasmta']").val();
-                    // var nisnsmta = $("input[name='nisnsmta']").val();
-                    // var provinsismta = $("input[name='provinsismta']").val();
-                    // var alamatsmta = $("textarea[name='alamatsmta']").val();
                     var nrapor1 = $("input[name='nrapor1']").val();
                     var nrapor2 = $("input[name='nrapor2']").val();
                     var nrapor3 = $("input[name='nrapor3']").val();
-
 
                     $.ajax({
                         url: "<?php echo site_url('register/next2'); ?>",
@@ -1626,37 +1624,30 @@
                             tahunlulussmta: tahunlulussmta,
                             jurusansmta: jurusansmta,
                             jenissmta: jenissmta,
-                            // namasmta: namasmta,
-                            // nisnsmta: nisnsmta,
-                            // provinsismta: provinsismta,
-                            // alamatsmta: alamatsmta,
-                            // lulussmta: lulussmta,
-                            // nomorijazah: nomorijazah,
-                            // uanmtk: uanmtk,
-                            // uanbing: uanbing,
-                            // uanbind: uanbind,
                             nrapor1: nrapor1,
                             nrapor2: nrapor2,
                             nrapor3: nrapor3,
-
-
                         },
+
                         //cache: false,
                         success: function(dataResult) {
-                            var dataResult = JSON.parse(dataResult);
-                            if (dataResult.statusCode == 1) {
+                            var hasil = JSON.parse(dataResult);
+                            if (result.statusCode == 1) {
                                 $("#next2").removeAttr("disabled");
                                 $('#fupForm').find('input:text').val('');
                                 $("#success").show();
                                 $('#success').html('Data added successfully !');
                             } else {
-                                alert("Error occured !");
+                                Swal.fire({
+                                    icon: 'error',
+                                    text: 'Ada yang salah!',
+                                    confirmButtonText: 'Kembali',
+                                })
                             }
 
                         }
                     });
                 });
-
 
                 $('#next3').on('click', function() {
                     $("#next3").attr("disabled", "disabled");
@@ -1676,7 +1667,6 @@
                     var kecamatan_ortu = $("select[name='kecamatanortu']").val();
                     var kodepos_ortu = $("input[name='kodeposortu']").val();
                     var nohp_ortu = $("input[name='nohportu']").val();
-
 
                     $.ajax({
                         url: "<?php echo site_url('register/next3'); ?>",
@@ -1698,21 +1688,23 @@
                             kecamatan_ortu: kecamatan_ortu,
                             kodepos_ortu: kodepos_ortu,
                             nohp_ortu: nohp_ortu,
-
-
                         },
+
                         //cache: false,
                         success: function(dataResult) {
-                            var dataResult = JSON.parse(dataResult);
-                            if (dataResult.statusCode == 1) {
+                            var hasil = JSON.parse(dataResult);
+                            if (result.statusCode == 1) {
                                 $("#next3").removeAttr("disabled");
                                 $('#fupForm').find('input:text').val('');
                                 $("#success").show();
                                 $('#success').html('Data added successfully !');
                             } else {
-                                alert("Error occured !");
+                                Swal.fire({
+                                    icon: 'error',
+                                    text: 'Ada yang salah!',
+                                    confirmButtonText: 'Kembali',
+                                })
                             }
-
                         }
                     });
                 });
@@ -1725,7 +1717,6 @@
                     var alamat_wali = $("textarea[name='alamatwali']").val();
                     var nohp_wali = $("input[name='nohp_wali']").val();
 
-
                     $.ajax({
                         url: "<?php echo site_url('register/next4'); ?>",
                         type: "POST",
@@ -1736,26 +1727,30 @@
                             alamat_wali: alamat_wali,
                             nohp_wali: nohp_wali,
 
+                            //bah hp mu ga bs d telp WA kah?
+
                         },
                         //cache: false,
                         success: function(dataResult) {
-                            var dataResult = JSON.parse(dataResult);
-                            if (dataResult.statusCode == 1) {
+                            var hasil = JSON.parse(dataResult);
+                            if (hasil.statusCode == 1) {
                                 $("#next4").removeAttr("disabled");
                                 $('#fupForm').find('input:text').val('');
                                 $("#success").show();
                                 $('#success').html('Data added successfully !');
 
                             } else {
-                                alert("Error occured !");
+                                Swal.fire({
+                                    icon: 'error',
+                                    text: 'Ada yang salah!',
+                                    confirmButtonText: 'Kembali',
+                                })
                             }
 
                         }
                     });
                 });
 
-
-               
 
                 $('#next5').on('click', function() {
                     Swal.fire({
@@ -1798,8 +1793,6 @@
             });
 
             foto_upload.on("sending", function(file, xhr, formData) {
-                // Will send the filesize along with the file as POST data.
-                // formData.append("filesize", file.size);
                 formData.append("username", "<?php echo $username; ?>");
             });
 

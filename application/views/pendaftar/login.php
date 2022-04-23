@@ -96,9 +96,9 @@
                             <?php echo form_open("auth/login"); ?>
                             <div class="row px-3 mb-4">
                             <?php if ($sesidaftar == '1') { 
-                                echo '<small class="text-center">Silakan Login Untuk Melengkapi Formulir Pendaftaran</small>';
+                                echo '<div class="text-muted w-100">Silakan login untuk melengkapi formulir pendaftaran</div>';
                             } else {
-                                echo '<small class="text-center text-danger">Pendaftar telah ditutup!</small>';
+                                echo '<div class="alert alert-warning w-100" role="alert">Pendaftar telah ditutup!</div>';
                             }                             
                             ?>
                             

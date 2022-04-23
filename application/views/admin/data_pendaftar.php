@@ -1320,7 +1320,7 @@
     							"targets": 1,
     							"orderable": false,
     						},
-    						{
+    						{ 
     							"targets": -1,
     							"orderable": false,
     							"width": "15%",
@@ -1663,26 +1663,26 @@
 
     					//cache: false,
     					success: function(dataResult) {
-    						var dataResult = JSON.parse(dataResult);
-    						if (dataResult.statusCode == 1) {
+    						var hasil = JSON.parse(dataResult);
+    						if (hasil.statusCode == 1) {
     							Swal.fire({
     								title: 'Berhasil!',
     								text: "Anda telah memperbarui data",
     								icon: 'success',
     								showCancelButton: false,
-    								// confirmButtonText: 'Kembali',
     							});
-    							//tablePendaftar.draw(false);
     							$('.tempatfoto').show();
     							$('.unggahfoto').hide();
 
-								//console.log(dataResult.datapendaftar.fotoprofil);
-
     							reload_table();
-    							$("#fotopas").attr("src", "<?php echo base_url('assets/upload/profile/'); ?>" + dataResult.datapendaftar.fotoprofil);
+    							$("#fotopas").attr("src", "<?php echo base_url('assets/upload/profile/'); ?>" + hasil.datapendaftar.fotoprofil);
 
     						} else {
-    							alert("Error occured !");
+								Swal.fire({
+    								text: "Gagal memperbarui data",
+    								icon: 'error',
+    								showCancelButton: false,
+    							});
     						}
     					}
     				});
@@ -1698,7 +1698,6 @@
     				var status = 'Diterima';
     				var username = $(this).attr('idt_biodata');
 
-    				//username.classList.add("disabled");
     				$.ajax({
     					type: "POST",
     					url: '<?php echo site_url() ?>/datatables/proseslaporan/' + idt_biodata,
@@ -1707,7 +1706,6 @@
     						idt_biodata: idt_biodata
     					},
     					success: function(data) {
-    						// alert('Anda Menerima Laporan : ' + username);
     						Swal.fire({
     							title: 'Berhasil!',
     							text: "Anda telah menerima pendaftar!",
@@ -1715,11 +1713,9 @@
     							showCancelButton: false,
     							confirmButtonText: 'Kembali',
     						})
-    						//tablePendaftar.draw(false);
     						reload_table();
     					},
     					error: function() {
-    						// alert('Gagal Merubah Status Laporan : ' + username);
     						Swal.fire({
     							icon: 'error',
     							title: 'Maaf...',
@@ -1749,11 +1745,9 @@
     							showCancelButton: false,
     							confirmButtonText: 'Kembali',
     						})
-    						//tablePendaftar.draw(false);
     						reload_table();
     					},
     					error: function() {
-    						// alert('Gagal Merubah Status Laporan : ' + username);
     						Swal.fire({
     							icon: 'error',
     							title: 'Maaf...',
@@ -1774,7 +1768,7 @@
 						},
 						success: function(data) {
 							var dataResult = JSON.parse(data);
-		                    if (dataResult.statusCode == 1) {
+		                    if (hasil.statusCode == 1) {
 		                        Swal.fire({
 		                            title: 'Apakah yakin akan menghapus pendaftar?',
 		                            icon: 'warning',
@@ -1797,7 +1791,6 @@
 			                                if (isConfirm) {
 			                                    reload_table();
 			                                } else {
-			                                    //if no clicked => do something else
 			                                }
 			                            });
 		                            };                  
@@ -1805,7 +1798,6 @@
 		                    }    
 						},
 						error: function() {
-							// alert('Gagal Merubah Status Laporan : ' + username);
 							Swal.fire({
 								icon: 'error',
 								title: 'Maaf...',
@@ -1862,7 +1854,6 @@
     			e.preventDefault();
     			addImage(5);
     			$('#modalEdit').modal('hide');
-    			//$(this).tab('show')
     			return false;
     		})
     	</script>

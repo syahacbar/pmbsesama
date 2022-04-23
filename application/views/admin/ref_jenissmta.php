@@ -105,10 +105,7 @@
                             idjenissmta: idjenissmta
                         },
 
-                        
                         success: function(data) {
-                            // alert("Data Berhasil Dihapus");
-                            // location.reload();
                         }
                     });
 

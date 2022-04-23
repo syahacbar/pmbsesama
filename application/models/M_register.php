@@ -36,13 +36,6 @@ class M_register extends CI_Model
         return $query;
     }
 
-    // function get_biodata_by_username($username)
-    // {
-    //     $query = $this->db->get_where('t_biodata', array('username' => $username));
-    //     return $query;
-    // }
-
-
     function update_biodata($username, $params)
     {
         $this->db->where('username', $username);
@@ -69,13 +62,6 @@ class M_register extends CI_Model
         $query = $this->db->query("SELECT * FROM t_biodata tb JOIN users u ON u.username=tb.username WHERE tb.username='$username'");
         return $query;
     }
-
-    // function proseslaporan($id,$status)
-    // {
-    //     return $this->db
-    //            ->where('id', $id)
-    //            ->update('t_biodata', array('status' => $status));
-    // }
 
     function proseslaporan($idt_biodata, $status)
     {

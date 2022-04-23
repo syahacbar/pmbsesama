@@ -50,6 +50,17 @@ class M_wilayah extends CI_Model
             $this->db->select('(SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprov');      
             $this->db->from('wilayah_2020 w');
             $this->db->where('LENGTH(kode)', '13');
+            //$this->db->where('LEFT(kode,2)', '92');
+
+            if (isset($_POST['is_provinsi']) && $_POST['is_provinsi'] != "0") {
+                $this->db->where('LEFT(kode,2)', $_POST['is_provinsi']);
+            }
+            if (isset($_POST['is_kabupaten']) && $_POST['is_kabupaten'] != "0") {
+                $this->db->where('LEFT(kode,5)', $_POST['is_kabupaten']);
+            }
+            if (isset($_POST['is_kecamatan']) && $_POST['is_kecamatan'] != "0") {
+                $this->db->where('LEFT(kode,8)', $_POST['is_kecamatan']);
+            }
 
             $column_order = array(NULL,'kode','namades','namakec','namakab','namaprov');
         } 
@@ -102,10 +113,6 @@ class M_wilayah extends CI_Model
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
-
-
-
-
 
     function get_all_provinsi()
     {

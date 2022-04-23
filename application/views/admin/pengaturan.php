@@ -49,8 +49,8 @@
                 },
 
                 success: function(dataResult) {
-                    var dataResult = JSON.parse(dataResult);
-                    if (dataResult.statusCode == 1) {
+                    var hasil = JSON.parse(dataResult);
+                    if (hasil.statusCode == 1) {
                         Swal.fire({
                             title: 'Berhasil!',
                             text: "Anda telah menyimpan pengaturan",

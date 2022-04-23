@@ -20,6 +20,11 @@
     <!-- Custom styles for this page -->
     <link href="<?php echo base_url(); ?>/assets/backend/startbootstrap/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
     <link href="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.css" rel="stylesheet">
+
+    <!-- Select2 -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="<?php echo base_url();?>assets/frontend/css/select2-bootstrap.min.css">
+
     <style type="text/css">
         .alert.alert-server {
             margin-bottom: 0;
@@ -542,6 +547,9 @@
     <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
     <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/custom-sweetalert.js"></script>
 
+    <!-- Select2 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
     <script>
         $(document).ready(function() {
             $(document).on('click', '#btnUbahUser', function() {
@@ -567,7 +575,7 @@
                             phone:phone
     					},
     					success: function(response) {
-                            var result = $.parseJSON(response);
+                            var hasil = $.parseJSON(response);
                             if(result.statusCode == 1) 
                             {
                                 Swal.fire({
@@ -605,7 +613,7 @@
                                 password:password
                             },
                             success: function(response) {
-                                var result = $.parseJSON(response);
+                                var hasil = $.parseJSON(response);
                                 if(result.statusCode == 1) 
                                 {
                                     Swal.fire({

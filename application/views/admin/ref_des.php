@@ -100,30 +100,43 @@
 <script type="text/javascript">
 	$(document).ready(function(){
 		var tableDesa = $('#tableDesa').DataTable({
-			"language": {
-				"url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Indonesian.json"
-			},
-			"processing": true,
-			"serverSide": true,
 			"stateSave": true,
-			"order": [],
-			"columnDefs": [ {
-				"targets": 0,
-				"orderable": false
+			"language": {
+				"emptyTable": "Tidak ada data yang ditampilkan. Pilih salah satu opsi diatas"
 			},
-			{
-				"targets": -1,
-				"orderable": false,
-				"width": "15%", 
-				"className": "text-center"
-			}  ],
-			"ajax": {
-                //panggil method ajax list dengan ajax
-                "url": '<?php echo site_url('Datatables/desa_list');?>',
-                "type": "POST"
-            },
+		});
+		function load_data(is_provinsi, is_kabupaten) {
+			var tableDesa = $('#tableDesa').DataTable({
+				"language": {
+					"url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Indonesian.json"
+				},
+				"processing": true,
+				"serverSide": true,
+				"stateSave": true,
+				"order": [],
+				"columnDefs": [ {
+					"targets": 0,
+					"orderable": false
+				},
+				{
+					"targets": -1,
+					"orderable": false,
+					"width": "15%", 
+					"className": "text-center"
+				}  ],
+				"ajax": {
+					//panggil method ajax list dengan ajax
+					"url": '<?php echo site_url('Datatables/desa_list');?>',
+					"type": "POST",
+					"data": {
+						is_provinsi: is_provinsi,
+						is_kabupaten: is_kabupaten
+					}
+				},
 
-        });
+			});
+			tableDesa.search('').draw();
+    	}
         $("#dataTable").on("click", ".editform", function(){
 			event.preventDefault();
 			$("input#kodewilayah").val($(this).data('kodewilayah'));
@@ -136,15 +149,33 @@
 		});
 
 		$('select#optProvinsi').on('change', function() {
-		  var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
-	      $('#optKabupaten').load(url);
-	      return false;
+			var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
+			$('#optKabupaten').load(url);
+			// return false;
+
+			var pilihprovinsi = $('select#optProvinsi').val();
+			tableDesa.destroy();
+			if (pilihprovinsi != '' && pilihprovinsi != null) {
+				load_data(pilihprovinsi);
+				tableDesa.search('').draw();
+			} else {
+				load_data();
+			}
 		});
 
 		$('select#optKabupaten').on('change', function() {
 		  var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
 	      $('#optKecamatan').load(url);
-	      return false;
+	    //   return false;
+			var pilihprovinsi = $('select#optProvinsi').val();
+			var pilihkabupaten = $('select#optKabupaten').val();
+			tableDesa.destroy();
+			if (pilihkabupaten != '' && pilihkabupaten != null) {
+				load_data(pilihprovinsi,pilihkabupaten);
+				tableDesa.search('').draw();
+			} else {
+				load_data();
+			}
 		});
 
 		$('select#optKecamatan').on('change', function() {
@@ -152,25 +183,81 @@
 		  $("input#kodedesa").val($('select#optKecamatan').val());
 		});
 
-		$(document).on('click', '.deletedata', function(){  
-			var kode = $(this).data("kodewilayah");  
-			if(confirm("Are you sure you want to delete this?"))  
-			{  
-				$.ajax({  
-					url:"<?php echo site_url(); ?>administrator/ref_kab/delete",  
-					method:"POST",  
-					data:{kode:kode},  
-					success:function(data)  
-					{  
-						alert("Data Berhasil Dihapus");   
-					}  
-				});  
-			}  
-			else  
-			{  
-				return false;       
-			}  
-		});   
+		// $(document).on('click', '.deletedata', function(){  
+		// 	var kode = $(this).data("kodewilayah");  
+		// 	if(confirm("Are you sure you want to delete this?"))  
+		// 	{  
+		// 		$.ajax({  
+		// 			url:"<?php echo site_url(); ?>administrator/ref_kab/delete",  
+		// 			method:"POST",  
+		// 			data:{kode:kode},  
+		// 			success:function(data)  
+		// 			{  
+		// 			Swal.fire({
+		// 					icon: 'success',
+		// 					title: 'Berhasil',
+		// 					text: 'Data berhasil dihapus',
+		// 					confirmButtonText: 'Kembali',
+		// 				})
+		// 			}  
+		// 		});  
+		// 	}  
+		// 	else  
+		// 	{  
+		// 		return false;       
+		// 	}  
+		// }); 
+
+		
+		// Hapus provinsi
+		$("#tableDesa").on('click', '.deletedata', function() {
+			var kode = $(this).data("kodewilayah"); 
+			$.ajax({
+				url: "<?php echo site_url(); ?>Datatables/desa_delete",
+				method: "POST",
+				data: {
+					kode: kode
+				},
+				success: function(dataResult) {
+					var hasil = JSON.parse(dataResult);
+					if (hasil.statusCode == 1) {
+						Swal.fire({
+							title: 'Anda yakin ingin menghapus desa ini?',
+							icon: 'warning',
+							showCancelButton: true,
+							confirmButtonColor: '#3085d6',
+							cancelButtonColor: '#d33',
+							confirmButtonText: 'Ya',
+							cancelButtonText: 'Tidak',
+						}).then((result) => {
+							if (result.isConfirmed) {
+								Swal.fire({
+									title: "Berhasil",
+									text: "Menghapus desa!",
+									icon: "success",
+								}).then(function(isConfirm) {
+									if (isConfirm) {
+										location.reload();
+									} 
+								});
+								
+							};      
+						})
+					}  else {
+						Swal.fire({
+							title: "Gagal",
+							text: "Menghapus desa!",
+							icon: "error",
+						}).then(function(isConfirm) {
+							if (isConfirm) {
+								location.reload();
+							} 
+						});
+					}
+				}
+			});
+		});
+
 	});
 
 </script>

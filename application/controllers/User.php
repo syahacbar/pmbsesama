@@ -13,6 +13,7 @@ class User extends CI_Controller
         $this->load->model('M_user');
         $this->load->model('M_register');
         $this->load->model('Ion_auth_model');
+        $this->load->model('M_namasmta');
         $this->load->library('ion_auth');
     }
 
@@ -32,8 +33,8 @@ class User extends CI_Controller
 
     public function index()
     {
-        //$data['pengguna'] = $this->M_user->get_all(); 
-        $data['pengguna'] = $this->ion_auth->users('sekolah')->result();
+        $data['pengguna'] = $this->M_user->get_all(); 
+        // $data['pengguna'] = $this->ion_auth->users('sekolah')->result();
         $data['grup'] = $this->M_user->group();
 
         $data['_view'] = 'admin/user';
@@ -237,5 +238,11 @@ class User extends CI_Controller
                 echo json_encode(array("statusCode" => 0));
             }
         }        
+    }
+
+    public function searchSMTA()
+    {
+        $q = $this->input->get('q');
+        echo json_encode($this->M_namasmta->getSMTA($q));
     }
 }

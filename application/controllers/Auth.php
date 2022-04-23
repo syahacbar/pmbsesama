@@ -164,7 +164,7 @@ class Auth extends CI_Controller
 				// if the login was un-successful
 				// redirect them back to the login page
 				// $this->session->set_flashdata('message', $this->ion_auth->errors());
-				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Username/Password salah</div>');
+				$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Nomor pendaftaran atau kata sandi Anda salah. Silakan input ulang!</div>');
 				redirect('auth/login', 'refresh');
 				
 			}
