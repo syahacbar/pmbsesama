@@ -250,9 +250,9 @@
           if (res.statusCode == 1) {
             $('#cekPengumuman').modal('show');
             $('input[name="username"]').val(res.pendaftar.username);
-            $('input[name="namauser"]').val(res.pendaftar.username);
-            $('input[name="sekolah"]').val(res.pendaftar.username);
-            $('input[name="prodi"]').val(res.pendaftar.username);
+            $('input[name="namauser"]').val(res.pendaftar.namalengkap);
+            $('input[name="sekolah"]').val(res.pendaftar.nama_smta);
+            $('input[name="prodi"]').val(res.pendaftar.prodipilihan1);
             $('input[name="jenjang"]').val(res.pendaftar.username);
             $('input[name="fakultas"]').val(res.pendaftar.username);
           } else {
