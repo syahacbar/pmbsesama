@@ -101,11 +101,6 @@
             justify-content: end !important;
         }
 
-        /* .row.mt-3.ms-1 {
-            box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%);
-            padding: 10px;
-        } */
-
         .detailAgenda .alert.alert-info.alert-dismissible.fade.show {
             margin-bottom: 0;
         }
@@ -120,6 +115,16 @@
 
         .detailAgenda .col-md-3.mb-lg-0.ms-0.photo {
             padding-left: 0;
+        }
+
+        .bg-blue.py-4.bagianfoter {
+            background-color: #673ab7;
+            box-shadow: 0px 4px 8px 0px #757575;
+            position: fixed;
+            width: 100%;
+            margin: 0;
+            left: 0;
+            bottom: 0;
         }
     </style>
 </head>
@@ -164,7 +169,7 @@
                     </div>
                 </div>
             </div>
- 
+
             <div class="row mx-2 mb-3 detailAgenda">
                 <div class=" col-md-3 mb-lg-0 ms-0 photo">
                     <img src="<?php echo base_url('assets/upload/agenda/') . $detail->gambar; ?>" alt="" class="w-100 h-100">

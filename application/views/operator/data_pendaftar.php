@@ -212,12 +212,12 @@
 							<label for="pilihprodi" class="form-label">Pilih Program Studi</label>
 							<select class="form-control" id="pilihprodi" name="pilihprodi">
 								<option value="0">-- Semua Program Studi --</option>
-								<?php foreach ($listprodi as $pr) : 
+								<?php foreach ($listprodi as $pr) :
 								?>
-								<option value="<?php echo $pr['idprodi']; 
-												?>"><?php echo $pr['namaprodi']; 
-													?></option>
-								<?php endforeach; 
+									<option value="<?php echo $pr['idprodi'];
+													?>"><?php echo $pr['namaprodi'];
+														?></option>
+								<?php endforeach;
 								?>
 							</select>
 						</div>
@@ -672,7 +672,7 @@
 												<label>Nama SMTA *</label>
 												<input name="namasmta" id="namasmta" type="text" class="form-control" placeholder="" value="" required>
 												<small>Ketik nama SMTA Anda.</small>
-											</div> 
+											</div>
 										</div>
 
 										<div class="col-sm-12 mt-4">
@@ -1486,7 +1486,7 @@
 							text: 'Terjadi kesalahan',
 							confirmButtonText: 'Kembali',
 						})
-					} 
+					}
 				}
 			});
 		});
@@ -1566,29 +1566,29 @@
 					idt_biodata: idt_biodata
 				},
 				success: function(data) {
-					var dataResult = JSON.parse(data);
-                    if (hasil.statusCode == 1) {
-                        Swal.fire({
-                            title: 'Apakah yakin akan menghapus pendaftar?',
-                            icon: 'warning',
-                            showCancelButton: true,
-                            confirmButtonColor: '#3085d6',
-                            cancelButtonColor: '#d33',
-                            confirmButtonText: 'Ya',
-                            cancelButtonText: 'Tidak',
-                        }).then((result) => {
-                            if (result.isConfirmed) {
-	                            Swal.fire({
+					var hasil = JSON.parse(data);
+					if (hasil.statusCode == 1) {
+						Swal.fire({
+							title: 'Apakah yakin akan menghapus pendaftar?',
+							icon: 'warning',
+							showCancelButton: true,
+							confirmButtonColor: '#3085d6',
+							cancelButtonColor: '#d33',
+							confirmButtonText: 'Ya',
+							cancelButtonText: 'Tidak',
+						}).then((result) => {
+							if (result.isConfirmed) {
+								Swal.fire({
 									title: 'Berhasil!',
 									text: "Anda telah menghapus pendaftar!",
 									icon: 'success',
 									showCancelButton: false,
 									confirmButtonText: 'Tutup',
-								})                          
-                                reload_table();
-                            };     
-                        })
-                    }    
+								})
+								reload_table();
+							};
+						})
+					}
 				},
 				error: function() {
 					Swal.fire({
@@ -1599,7 +1599,7 @@
 					})
 				}
 			});
-    	});
+		});
 	});
 </script>
 

@@ -20,15 +20,15 @@
     <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
 
     <style>
-.bg-blue.py-4.bagianfoter {
-    background-color: #673ab7;
-    box-shadow: 0px 4px 8px 0px #757575;
-    position: fixed;
-    width: 100%;
-    margin: 0;
-    left: 0;
-    bottom: 0;
-}
+        .bg-blue.py-4.bagianfoter {
+            background-color: #673ab7;
+            box-shadow: 0px 4px 8px 0px #757575;
+            position: fixed;
+            width: 100%;
+            margin: 0;
+            left: 0;
+            bottom: 0;
+        }
     </style>
 </head>
 
@@ -48,23 +48,22 @@
                         <div class="card2 card border-0 px-4 py-5 gambarSlider">
                             <div id="demo" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
-                                    <?php 
-                                        if(!empty($slider))
-                                        {
-                                            $i = 0;
-                                            foreach ($slider as $sl) { 
+                                    <?php
+                                    if (!empty($slider)) {
+                                        $i = 0;
+                                        foreach ($slider as $sl) {
                                             $i++;
                                     ?>
-                                        <div class="carousel-item <?php echo ($i==1) ? 'active' : ''; ?>">
-                                            <div class="carousel-caption">
-                                                <img class="img-thumbnail img-fluid" src="<?php echo base_url('assets/upload/slider/') . $sl['gambar']; ?>">
-                                                
+                                            <div class="carousel-item <?php echo ($i == 1) ? 'active' : ''; ?>">
+                                                <div class="carousel-caption">
+                                                    <img class="img-thumbnail img-fluid" src="<?php echo base_url('assets/upload/slider/') . $sl['gambar']; ?>">
+
+                                                </div>
                                             </div>
-                                        </div>
-                                    <?php 
-                                            }
-                                        } else {
-                                    ?>
+                                        <?php
+                                        }
+                                    } else {
+                                        ?>
                                         <div class="carousel-item active">
                                             <div class="carousel-caption">
                                                 <img width="100" height="150" src="<?php echo base_url('assets/frontend/img/noimage.png'); ?>" alt="">
@@ -78,14 +77,13 @@
                             </div>
                         </div>
                     </div>
-                    <?php 
+                    <?php
+                    $disable = '';
+                    if ($sesidaftar == '1') {
                         $disable = '';
-                        if ($sesidaftar == '1')
-                        {
-                            $disable = '';
-                        } else {
-                            $disable = 'disabled';
-                        }
+                    } else {
+                        $disable = 'disabled';
+                    }
                     ?>
                     <div class="col-lg-6">
                         <div class="card2 card border-0 px-4 py-5 loginPage">
@@ -95,13 +93,13 @@
                             <p><?php echo $this->session->flashdata('message'); ?></p>
                             <?php echo form_open("auth/login"); ?>
                             <div class="row px-3 mb-4">
-                            <?php if ($sesidaftar == '1') { 
-                                echo '<div class="text-muted w-100">Silakan login untuk melengkapi formulir pendaftaran</div>';
-                            } else {
-                                echo '<div class="alert alert-warning w-100" role="alert">Pendaftar telah ditutup!</div>';
-                            }                             
-                            ?>
-                            
+                                <?php if ($sesidaftar == '1') {
+                                    echo '<div class="text-muted w-100">Silakan login untuk melengkapi formulir pendaftaran</div>';
+                                } else {
+                                    echo '<div class="alert alert-warning w-100" role="alert">Pendaftar telah ditutup!</div>';
+                                }
+                                ?>
+
                             </div>
                             <div class="row px-3">
                                 <label class="mb-1">
@@ -122,14 +120,14 @@
                                     <label for="chk1" class="custom-control-label text-sm">Ingatkan Saya</label>
                                 </div>
                                 <?php if ($sesidaftar == '1') { ?>
-                                <a href="<?php echo base_url('auth/forgot_password') ?>" class="ml-auto mb-0 text-sm">Lupas kata sandi?</a>
+                                    <a href="<?php echo base_url('auth/forgot_password') ?>" class="ml-auto mb-0 text-sm">Lupas kata sandi?</a>
                                 <?php } ?>
                             </div>
 
                             <div class="row px-3 loginRegister">
                                 <button type="submit" class="btn btn-blue text-center" <?php echo $disable; ?>>MASUK</button>
                                 <?php if ($sesidaftar == '1') { ?>
-                                <small class="font-weight-bold">Belum punya akun? <a href="<?php echo site_url('register'); ?>" class="text-danger" target="_blank
+                                    <small class="font-weight-bold">Belum punya akun? <a href="<?php echo site_url('register'); ?>" class="text-danger" target="_blank
                                 ">DAFTAR DI SINI</a></small>
                                 <?php } ?>
                             </div>
@@ -146,32 +144,31 @@
                         <div class="card2 card border-0 px-4 py-5 gambarSlider">
                             <div id="demo" class="carousel slide" data-ride="carousel">
                                 <div class="carousel-inner">
-                                      <?php 
-                                      if(!empty($slider))
-                                      {
+                                    <?php
+                                    if (!empty($slider)) {
                                         $i = 0;
-                                        foreach ($slider as $sl) { 
-                                        $i++;
-                                        ?>
-                                        <div class="carousel-item <?php echo ($i==1) ? 'active' : ''; ?>">
-                                            <div class="carousel-caption">
-                                                    <img alt="<?php echo $i;?>" src="<?php echo base_url().'assets/upload/slider/'.$sl['gambar']; ?>">
-                                                
+                                        foreach ($slider as $sl) {
+                                            $i++;
+                                    ?>
+                                            <div class="carousel-item <?php echo ($i == 1) ? 'active' : ''; ?>">
+                                                <div class="carousel-caption">
+                                                    <img alt="<?php echo $i; ?>" src="<?php echo base_url() . 'assets/upload/slider/' . $sl['gambar']; ?>">
 
+
+                                                </div>
                                             </div>
-                                        </div>
-                                     <?php
-                                 }
-                                      } else {
+                                        <?php
+                                        }
+                                    } else {
                                         ?>
                                         <div class="carousel-item active">
                                             <div class="carousel-caption">
-                                                    <img width="100" height="150" src="<?php echo base_url('assets/frontend/img/noimage.png'); ?>" alt="">
+                                                <img width="100" height="150" src="<?php echo base_url('assets/frontend/img/noimage.png'); ?>" alt="">
 
                                             </div>
                                         </div>
-                                <?php } ?>
-                                    
+                                    <?php } ?>
+
                                 </div>
 
                                 <a class="carousel-control-prev" href="#demo" data-slide="prev"><i class='fas fa-arrow-left'></i></a>
@@ -272,7 +269,7 @@
                         </table>
                         <div class="row px-3 mb-4">
                             <div>
-                                <a href="<?php echo site_url('informasi') ?>" >Informasi Lainnya ...</a>
+                                <a href="<?php echo site_url('informasi') ?>">Informasi Lainnya ...</a>
                             </div>
                         </div>
                     </div>

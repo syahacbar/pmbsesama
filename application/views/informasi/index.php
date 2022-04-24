@@ -21,14 +21,14 @@
   <link href="<?php echo base_url(); ?>assets/frontend/css/agendainfoannounce.css" rel="stylesheet" />
   <style>
     .bg-blue.py-4.bagianfoter {
-    background-color: #673ab7;
-    box-shadow: 0px 4px 8px 0px #757575;
-    position: fixed;
-    width: 100%;
-    margin: 0;
-    left: 0;
-    bottom: 0;
-}
+      background-color: #673ab7;
+      box-shadow: 0px 4px 8px 0px #757575;
+      position: fixed;
+      width: 100%;
+      margin: 0;
+      left: 0;
+      bottom: 0;
+    }
   </style>
 </head>
 
@@ -71,30 +71,6 @@
                   </td>
                 <?php } ?>
                 </tr>
-                <!-- <tr>
-                <th width="20px" scope="row">2</th>
-                <td>Informasi Panduan Penerimaan Mahasiswa Baru (PMB)</td>
-                <td width="110px">
-                  <a href="#" class="btn btn-info btn-icon-split btn-sm downloadform">
-                    <span class="icon text-white-50">
-                      <i class="fas fa-download"></i>
-                    </span>
-                    <span class="text">Unduh</span>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <th width="20px" scope="row">3</th>
-                <td>Informasi Panduan Penerimaan Mahasiswa Baru (PMB)</td>
-                <td width="110px">
-                  <a href="#" class="btn btn-info btn-icon-split btn-sm downloadform">
-                    <span class="icon text-white-50">
-                      <i class="fas fa-download"></i>
-                    </span>
-                    <span class="text">Unduh</span>
-                  </a>
-                </td>
-              </tr> -->
             </tbody>
           </table>
         </div>

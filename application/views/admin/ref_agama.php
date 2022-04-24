@@ -22,10 +22,10 @@
 							<tbody>
 								<?php
 								$no = 1;
-								foreach ($agama AS $r) : ?>
+								foreach ($agama as $r) : ?>
 									<tr>
-										<td><?php echo $no++;?></td>
-										<td><?php echo $r['agama'];?></td>
+										<td><?php echo $no++; ?></td>
+										<td><?php echo $r['agama']; ?></td>
 										<td>
 											<a href="#" class="btn btn-info btn-icon-split btn-sm editform" data-agama="<?php echo $r['agama'] ?>" data-idagama="<?php echo $r['idagama'] ?>">
 												<span class="icon text-white-50">
@@ -56,8 +56,8 @@
 					<h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Agama</h6>
 				</div>
 				<div class="card-body">
-				<div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
-					<form id="formagama" action="<?php echo site_url($linkform);?>" method="post">
+					<div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
+					<form id="formagama" action="<?php echo site_url($linkform); ?>" method="post">
 						<div class="form-group">
 							<label>Agama</label>
 							<input id="txtAgama" type="text" class="form-control" name="agama" placeholder="Agama" required>
@@ -77,51 +77,49 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function() {
 		var tableAgama = $('#tableAgama').DataTable();
-        $("#tableAgama").on("click", ".editform", function(){
+		$("#tableAgama").on("click", ".editform", function() {
 			event.preventDefault();
-			$("input#txtAgama").val($(this).data('agama')); 
-			$("input#idagama").val($(this).data('idagama')); 
-			$('#formagama').attr('action', '<?php echo site_url('administrator/edit_agama');?>');
+			$("input#txtAgama").val($(this).data('agama'));
+			$("input#idagama").val($(this).data('idagama'));
+			$('#formagama').attr('action', '<?php echo site_url('administrator/edit_agama'); ?>');
 		});
 
-		$("#tableAgama").on('click', '.deletedata', function(){ 
-			var idagama = $(this).data("idagama");  
+		$("#tableAgama").on('click', '.deletedata', function() {
+			var idagama = $(this).data("idagama");
 			Swal.fire({
-                title: 'Apakah Anda Yakin akan menghapus?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya',
-                cancelButtonText: 'Tidak'
-                }).then((result) => {
-                if (result.isConfirmed) {
-                    $.ajax({
-                        url: "<?php echo site_url(); ?>administrator/hapus_agama",
-                        method: "POST",
-                        data: {
-                            idagama: idagama
-                        },
+				title: 'Apakah Anda Yakin akan menghapus?',
+				icon: 'warning',
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Ya',
+				cancelButtonText: 'Tidak'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					$.ajax({
+						url: "<?php echo site_url(); ?>administrator/hapus_agama",
+						method: "POST",
+						data: {
+							idagama: idagama
+						},
 
-                        success: function(data) {
-                        }
-                    });
+						success: function(data) {}
+					});
 
-                    Swal.fire(
-                        'Terhapus!',
-                        )
-                    };
-                    
-                    location.reload();            
-            }) 
-		});  
+					Swal.fire(
+						'Terhapus!',
+					)
+				};
+
+				location.reload();
+			})
+		});
 		window.setTimeout(function() {
-            $(".alert").fadeTo(5000, 0).slideUp(100, function(){
-                $(this).remove();
-            });
-        }, 4000);  
+			$(".alert").fadeTo(5000, 0).slideUp(100, function() {
+				$(this).remove();
+			});
+		}, 4000);
 	});
-
 </script>

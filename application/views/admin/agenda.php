@@ -169,7 +169,7 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-				<div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
+                    <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
                     <?php echo form_open_multipart('', array('id' => 'formEditAgenda')); ?>
                     <div class="modal-body">
                         <div class="row">
@@ -309,7 +309,7 @@
                 editgbr_agenda.on("complete", function(file) {
                     location.reload();
                 });
-                
+
                 $('#formEditAgenda').submit(function(e) {
                     if (editgbr_agenda.getUploadingFiles().length === 0 && editgbr_agenda.getQueuedFiles().length === 0) {
                         var judulagenda = $("input[name='judul']").val();
@@ -325,7 +325,7 @@
                                 idagenda: idagenda
                             },
                             success: function(data) {
-                                var dataResult = JSON.parse(data);
+                                var hasil = JSON.parse(data);
                                 if (hasil.statusCode == 1) {
                                     Swal.fire({
                                         title: "Berhasil",
@@ -349,8 +349,7 @@
                                 }
                             }
                         });
-                    }
-                    else {
+                    } else {
                         editgbr_agenda.processQueue();
                     }
 
@@ -358,51 +357,52 @@
 
                 // Hapus Agenda
                 $(document).on('click', '.deletedata', function() {
-                    var id = $(this).data("id"); 
-                    $.ajax({
-                        url: "<?php echo site_url(); ?>administrator/hapus_agenda",
-                        method: "POST",
-                        data: {
-                            id: id
-                        },
-                        success: function(data) {
-                            var dataResult = JSON.parse(data);
-                            if (hasil.statusCode == 1) {
-                                Swal.fire({
-                                    title: 'Apakah yakin akan menghapus agenda?',
-                                    icon: 'warning',
-                                    showCancelButton: true,
-                                    confirmButtonColor: '#3085d6',
-                                    cancelButtonColor: '#d33',
-                                    confirmButtonText: 'Ya',
-                                    cancelButtonText: 'Tidak',
-                                }).then((result) => {
-                                    if (result.isConfirmed) {
+                    Swal.fire({
+                        title: 'Apakah yakin akan menghapus agenda ini?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya',
+                        cancelButtonText: 'Tidak',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            var id = $(this).data("id");
+                            $.ajax({
+                                url: "<?php echo site_url(); ?>administrator/hapus_agenda",
+                                method: "POST",
+                                data: {
+                                    id: id
+                                },
+                                success: function(data) {
+                                    var hasil = JSON.parse(data);
+                                    if (hasil.statusCode == 1) {
                                         Swal.fire({
                                             title: "Berhasil",
                                             text: "Menghapus agenda!",
-                                            icon: "success",
+                                            icon: "success"
                                         }).then(function(isConfirm) {
                                             if (isConfirm) {
                                                 location.reload();
-                                            } 
+                                            }
                                         });
-                                        
-                                    };      
-                                })
-                            }  else {
-                                Swal.fire({
-                                    title: "Gagal",
-                                    text: "Menghapus agenda!",
-                                    icon: "error",
-                                }).then(function(isConfirm) {
-                                    if (isConfirm) {
-                                        location.reload();
-                                    } 
-                                });
-                            }
-                        }
-                    });
+                                    } else {
+                                        Swal.fire({
+                                            title: "Gagal",
+                                            text: "Menghapus agenda!",
+                                            icon: "error"
+                                        }).then(function(isConfirm) {
+                                            if (isConfirm) {
+                                                location.reload();
+                                            }
+                                        });
+                                    }
+                                }
+                            });
+
+                        };
+
+                    })
                 });
 
             });
@@ -412,7 +412,7 @@
             tinymce.init({
                 selector: '#tinymce'
             });
-            
+
             tinymce.init({
                 selector: '#isi'
             });

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
- 
+
 <head>
 
     <meta charset="utf-8">
@@ -23,7 +23,7 @@
 
     <!-- Select2 -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/frontend/css/select2-bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/select2-bootstrap.min.css">
 
     <style type="text/css">
         .alert.alert-server {
@@ -137,7 +137,7 @@
                 </li>
 
                 <!-- Identitas Sekolah Asal -->
-                <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_jenissmta" || $this->uri->segment(2) == "ref_jurusansmta"|| $this->uri->segment(2) == "ref_namasmta") ? "active" : ""; ?>">
+                <li class="nav-item <?php echo ($this->uri->segment(2) == "ref_jenissmta" || $this->uri->segment(2) == "ref_jurusansmta" || $this->uri->segment(2) == "ref_namasmta") ? "active" : ""; ?>">
                     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseIdentitasSekolah" aria-expanded="true" aria-controls="collapseIdentitasSekolah">
                         <i class="fas fa-fw fa-school"></i>
                         <span>Identitas Sekolah</span>
@@ -166,17 +166,17 @@
                     </div>
                 </li>
                 <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
-            <!-- Heading -->
-            <div class="sidebar-heading">
-                Manajemen Akun
-            </div>
+                <hr class="sidebar-divider d-none d-md-block">
+                <!-- Heading -->
+                <div class="sidebar-heading">
+                    Manajemen Akun
+                </div>
 
-            <li class="nav-item <?php echo ($this->uri->segment(1) == "user") ? "active" : ""; ?>">
-                <a class="nav-link" href="<?php echo site_url('user'); ?>">
-                    <i class="fas fa-fw fa-laptop"></i>
-                    <span>Operator Sekolah</span></a>
-            </li>
+                <li class="nav-item <?php echo ($this->uri->segment(1) == "user") ? "active" : ""; ?>">
+                    <a class="nav-link" href="<?php echo site_url('user'); ?>">
+                        <i class="fas fa-fw fa-laptop"></i>
+                        <span>Operator Sekolah</span></a>
+                </li>
             <?php } else { ?>
                 <div class="sidebar-heading">
                     Pendaftaran
@@ -187,10 +187,10 @@
                         <i class="fas fa-fw fa-users"></i>
                         <span>Data Pendaftar</span></a>
                 </li>
-            
+
 
             <?php } ?>
-            
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -366,7 +366,7 @@
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item"  href="#" data-toggle="modal" data-target="#detailProfil">
+                                <a class="dropdown-item" href="#" data-toggle="modal" data-target="#detailProfil">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -438,8 +438,8 @@
         </div>
     </div>
 
-        <!-- Modal Detail User -->
-        <div class="modal fade" id="detailProfil" tabindex="-1" role="dialog" aria-labelledby="detailProfilLabel" aria-hidden="true">
+    <!-- Modal Detail User -->
+    <div class="modal fade" id="detailProfil" tabindex="-1" role="dialog" aria-labelledby="detailProfilLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg" role="document">
             <div class="modal-content modal-lg">
                 <div class="modal-header">
@@ -469,13 +469,13 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="company">Nama Instansi</label>
-                                            <input type="text" class="form-control" id="company" name="company"  value="<?php echo $user->company; ?>">
+                                            <input type="text" class="form-control" id="company" name="company" value="<?php echo $user->company; ?>">
                                         </div>
                                     </div>
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="email">Email</label>
-                                            <input type="email" class="form-control" id="email" name="email"  value="<?php echo $user->email; ?>">
+                                            <input type="email" class="form-control" id="email" name="email" value="<?php echo $user->email; ?>">
                                         </div>
                                     </div>
                                 </div>
@@ -486,7 +486,7 @@
                                     <div class="col-md-12">
                                         <div class="form-group">
                                             <label for="phone">Nomor HP/WA</label>
-                                            <input type="text" class="form-control" id="phone" name="phone"  value="<?php echo $user->phone; ?>">
+                                            <input type="text" class="form-control" id="phone" name="phone" value="<?php echo $user->phone; ?>">
                                         </div>
                                     </div>
 
@@ -559,22 +559,20 @@
                 var confirm_password = $("input[name='confirm_password']").val();
                 var iduser = $("input[name='iduser']").val();
 
-                if (password == '' || password == 'null')
-                {
+                if (password == '' || password == 'null') {
                     $.ajax({
-    					type: "POST",
-    					url: '<?php echo site_url('user/edit_admin') ?>',
-    					data: {
-    						iduser: iduser,
-                            firstname:firstname,
-                            company:company,
-                            email:email,
-                            phone:phone
-    					},
-    					success: function(response) {
+                        type: "POST",
+                        url: '<?php echo site_url('user/edit_admin') ?>',
+                        data: {
+                            iduser: iduser,
+                            firstname: firstname,
+                            company: company,
+                            email: email,
+                            phone: phone
+                        },
+                        success: function(response) {
                             var hasil = $.parseJSON(response);
-                            if(result.statusCode == 1) 
-                            {
+                            if (result.statusCode == 1) {
                                 Swal.fire({
                                     title: "Berhasil",
                                     text: "Ubah profil user.",
@@ -582,12 +580,10 @@
                                 }).then(function(isConfirm) {
                                     if (isConfirm) {
                                         location.reload();
-                                    } 
+                                    }
                                 });
 
-                            }
-                            else
-                            {
+                            } else {
                                 Swal.fire({
                                     title: "Peringatan!",
                                     text: "Gagal ubah profil user",
@@ -595,36 +591,33 @@
                                 });
                             }
                         }
-                });
-             } else {
+                    });
+                } else {
                     if (password == confirm_password) {
                         $.ajax({
                             type: "POST",
                             url: '<?php echo site_url('user/edit_admin') ?>',
                             data: {
                                 iduser: iduser,
-                                firstname:firstname,
-                                company:company,
-                                email:email,
-                                phone:phone,
-                                password:password
+                                firstname: firstname,
+                                company: company,
+                                email: email,
+                                phone: phone,
+                                password: password
                             },
                             success: function(response) {
                                 var hasil = $.parseJSON(response);
-                                if(result.statusCode == 1) 
-                                {
+                                if (result.statusCode == 1) {
                                     Swal.fire({
                                         title: "Berhasil",
                                         text: "Ubah profil user.",
                                         icon: "success",
                                     }).then(function(isConfirm) {
-                                    if (isConfirm) {
-                                        window.location.href = "<?php echo site_url('auth/logout/admin');?>";
-                                    } 
-                                });
-                                }
-                                else
-                                {
+                                        if (isConfirm) {
+                                            window.location.href = "<?php echo site_url('auth/logout/admin'); ?>";
+                                        }
+                                    });
+                                } else {
                                     Swal.fire({
                                         title: "Peringatan!",
                                         text: "Gagal ubah profil user",
@@ -644,21 +637,21 @@
             });
 
             $("#op_namasekolah").select2({
-            theme: "bootstrap",
-            placeholder: '-- Pilih Sekolah --',
-            minimumInputLength: 1,
-            ajax: {
-                url: "<?php echo site_url('register/searchSMTA');?>",
-                dataType: 'json',
-                delay: 250,
-                processResults: function (data) {
-                    return {
-                        results: data
-                    };
-                },
-                cache: true
-            }
-        });
+                theme: "bootstrap",
+                placeholder: '-- Pilih Sekolah --',
+                minimumInputLength: 1,
+                ajax: {
+                    url: "<?php echo site_url('register/searchSMTA'); ?>",
+                    dataType: 'json',
+                    delay: 250,
+                    processResults: function(data) {
+                        return {
+                            results: data
+                        };
+                    },
+                    cache: true
+                }
+            });
 
 
         });

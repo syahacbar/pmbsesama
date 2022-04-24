@@ -17,8 +17,12 @@
                     <h6 class="m-0 font-weight-bold text-primary">Slider</h6>
                 </div>
                 <div class="card-body">
-                    <!-- <div id="flash" data-flash="<?php // echo $this->session->flasdata('success'); 
-                                                        ?>"></div> -->
+                    <div class="alert alert-info alert-dismissible fade show" role="alert">
+                        <strong>Info!</strong> Klik gambar untuk memperbesar.
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
                     <div class="table-responsive">
                         <table class="table table-bordered" id="tableSlider" width="100%" cellspacing="0">
                             <thead>
@@ -34,8 +38,6 @@
                                 foreach ($slider as $sl) { ?>
                                     <tr>
                                         <td><?php echo $no++; ?></td>
-                                        <!-- <td><?php // echo $sl['nama_gambar']; 
-                                                    ?></td> -->
                                         <td><?php echo $sl['gambar']; ?></td>
                                         <td>
                                             <a href="#" class="pop">
@@ -88,11 +90,19 @@
 </div>
 
 <div class="modal fade" id="imagemodal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
+    <div class="modal-dialog modal-dialog-centered modal-lg">
         <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
             <div class="modal-body">
-                <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button>
+                <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
                 <img src="" class="imagepreview" style="width: 100%;">
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
             </div>
         </div>
     </div>
@@ -123,7 +133,7 @@
                             id: id
                         },
                         success: function(data) {
-                            var dataResult = JSON.parse(data);
+                            var hasil = JSON.parse(data);
                             if (hasil.statusCode == 1) {
                                 Swal.fire({
                                     title: "Berhasil",
@@ -134,7 +144,7 @@
                                         location.reload();
                                     }
                                 });
-                            }  else {
+                            } else {
                                 Swal.fire({
                                     title: "Gagal",
                                     text: "Menghapus slider!",
@@ -142,14 +152,14 @@
                                 }).then(function(isConfirm) {
                                     if (isConfirm) {
                                         location.reload();
-                                    } 
+                                    }
                                 });
                             }
                         }
                     });
-                             
-                };                             
-                        
+
+                };
+
             })
         });
     });
@@ -185,7 +195,7 @@
 
     // Simpan Slider
     $(document).on('click', '.saveSlider', function(e) {
-        upload_slider.processQueue();        
+        upload_slider.processQueue();
     })
 
     $(function() {

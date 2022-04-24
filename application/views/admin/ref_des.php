@@ -9,29 +9,29 @@
 					<h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Wilayah Kelurahan/Desa</h6>
 				</div>
 				<div class="card-body">
-				<div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
+					<div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
 					<form id="formdesa" method="POST" class="row g-3">
 						<div class="col-md-2">
-                            <label for="optProvinsi" class="form-label">Pilih Provinsi</label>
-                            <select name="optProvinsi" id="optProvinsi" class="form-control">
-                                <option>Pilih Provinsi</option>
-                                <?php foreach ($provinsi AS $pr) : ?>
-                                <option value="<?php echo $pr['kode'];?>"><?php echo $pr['nama'];?></option>
-                            <?php endforeach; ?>
-                            </select>
-                        </div> 
+							<label for="optProvinsi" class="form-label">Pilih Provinsi</label>
+							<select name="optProvinsi" id="optProvinsi" class="form-control">
+								<option>Pilih Provinsi</option>
+								<?php foreach ($provinsi as $pr) : ?>
+									<option value="<?php echo $pr['kode']; ?>"><?php echo $pr['nama']; ?></option>
+								<?php endforeach; ?>
+							</select>
+						</div>
 						<div class="col-md-2">
-                            <label for="optKabupaten" class="form-label">Pilih Kabupaten</label>
-                            <select name="optKabupaten" id="optKabupaten" class="form-control">
-                                <option>Pilih Kabupaten</option>
-                            </select>
-                        </div> 
-                        <div class="col-md-2">
-                            <label for="optKecamatan" class="form-label">Pilih Kabupaten</label>
-                            <select name="optKecamatan" id="optKecamatan" class="form-control">
-                                <option>Pilih Kecamatan/Distrik</option>
-                            </select>
-                        </div> 
+							<label for="optKabupaten" class="form-label">Pilih Kabupaten</label>
+							<select name="optKabupaten" id="optKabupaten" class="form-control">
+								<option>Pilih Kabupaten</option>
+							</select>
+						</div>
+						<div class="col-md-2">
+							<label for="optKecamatan" class="form-label">Pilih Kabupaten</label>
+							<select name="optKecamatan" id="optKecamatan" class="form-control">
+								<option>Pilih Kecamatan/Distrik</option>
+							</select>
+						</div>
 						<div class="col-md-3">
 							<label for="txtKodeKabupaten" class="form-label">Kode Kelurahan/Desa</label>
 							<div class="input-group mb-3">
@@ -46,17 +46,17 @@
 						<div class="col-md-3">
 							<label for="txtKabupaten" class="form-label">Kelurahan/Desa</label>
 							<input id="txtKabupaten" type="text" class="form-control" name="wilayah" placeholder="Kelurahan/Desa" required>
-						</div>  
+						</div>
 
 						<div class="col-md-3">
-						<label class="text-white">Label</label><br>   
-							<input type="hidden" id="kodewilayah" name="kodewilayah">                 
+							<label class="text-white">Label</label><br>
+							<input type="hidden" id="kodewilayah" name="kodewilayah">
 							<button type="reset" class="btn btn-secondary btn-sm">Reset</button>&nbsp;&nbsp;&nbsp;
 							<button type="submit" class="btn btn-primary btn-sm">Save</button>
 						</div>
-						
+
 					</form>
-	
+
 				</div>
 			</div>
 		</div>
@@ -98,13 +98,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script type="text/javascript">
-	$(document).ready(function(){
+	$(document).ready(function() {
 		var tableDesa = $('#tableDesa').DataTable({
 			"stateSave": true,
 			"language": {
 				"emptyTable": "Tidak ada data yang ditampilkan. Pilih salah satu opsi diatas"
 			},
 		});
+
 		function load_data(is_provinsi, is_kabupaten) {
 			var tableDesa = $('#tableDesa').DataTable({
 				"language": {
@@ -114,19 +115,20 @@
 				"serverSide": true,
 				"stateSave": true,
 				"order": [],
-				"columnDefs": [ {
-					"targets": 0,
-					"orderable": false
-				},
-				{
-					"targets": -1,
-					"orderable": false,
-					"width": "15%", 
-					"className": "text-center"
-				}  ],
+				"columnDefs": [{
+						"targets": 0,
+						"orderable": false
+					},
+					{
+						"targets": -1,
+						"orderable": false,
+						"width": "15%",
+						"className": "text-center"
+					}
+				],
 				"ajax": {
 					//panggil method ajax list dengan ajax
-					"url": '<?php echo site_url('Datatables/desa_list');?>',
+					"url": '<?php echo site_url('Datatables/desa_list'); ?>',
 					"type": "POST",
 					"data": {
 						is_provinsi: is_provinsi,
@@ -136,16 +138,16 @@
 
 			});
 			tableDesa.search('').draw();
-    	}
-        $("#dataTable").on("click", ".editform", function(){
+		}
+		$("#dataTable").on("click", ".editform", function() {
 			event.preventDefault();
 			$("input#kodewilayah").val($(this).data('kodewilayah'));
-			$("span#kodeprovinsi").html($(this).data('kodeprovinsi')+"."); 
-			$("input#txtKodeKabupaten").val($(this).data('kodekabupaten')); 
+			$("span#kodeprovinsi").html($(this).data('kodeprovinsi') + ".");
+			$("input#txtKodeKabupaten").val($(this).data('kodekabupaten'));
 			$("input#txtKabupaten").val($(this).data('wilayah'));
-            $("select#optProvinsi").val($(this).data('kodeprovinsi')).change();
-		  	$("input#kodeprovinsi").val($('select#optProvinsi').val());
-			$('#formdesa').attr('action', '<?php echo site_url('administrator/ref_kab/edit');?>');
+			$("select#optProvinsi").val($(this).data('kodeprovinsi')).change();
+			$("input#kodeprovinsi").val($('select#optProvinsi').val());
+			$('#formdesa').attr('action', '<?php echo site_url('administrator/ref_kab/edit'); ?>');
 		});
 
 		$('select#optProvinsi').on('change', function() {
@@ -164,14 +166,14 @@
 		});
 
 		$('select#optKabupaten').on('change', function() {
-		  var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
-	      $('#optKecamatan').load(url);
-	    //   return false;
+			var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
+			$('#optKecamatan').load(url);
+			//   return false;
 			var pilihprovinsi = $('select#optProvinsi').val();
 			var pilihkabupaten = $('select#optKabupaten').val();
 			tableDesa.destroy();
 			if (pilihkabupaten != '' && pilihkabupaten != null) {
-				load_data(pilihprovinsi,pilihkabupaten);
+				load_data(pilihprovinsi, pilihkabupaten);
 				tableDesa.search('').draw();
 			} else {
 				load_data();
@@ -179,8 +181,8 @@
 		});
 
 		$('select#optKecamatan').on('change', function() {
-		  $("span#kodedesa").html($('select#optKecamatan').val()+".");
-		  $("input#kodedesa").val($('select#optKecamatan').val());
+			$("span#kodedesa").html($('select#optKecamatan').val() + ".");
+			$("input#kodedesa").val($('select#optKecamatan').val());
 		});
 
 		// $(document).on('click', '.deletedata', function(){  
@@ -208,10 +210,10 @@
 		// 	}  
 		// }); 
 
-		
+
 		// Hapus provinsi
 		$("#tableDesa").on('click', '.deletedata', function() {
-			var kode = $(this).data("kodewilayah"); 
+			var kode = $(this).data("kodewilayah");
 			$.ajax({
 				url: "<?php echo site_url(); ?>Datatables/desa_delete",
 				method: "POST",
@@ -238,12 +240,12 @@
 								}).then(function(isConfirm) {
 									if (isConfirm) {
 										location.reload();
-									} 
+									}
 								});
-								
-							};      
+
+							};
 						})
-					}  else {
+					} else {
 						Swal.fire({
 							title: "Gagal",
 							text: "Menghapus desa!",
@@ -251,7 +253,7 @@
 						}).then(function(isConfirm) {
 							if (isConfirm) {
 								location.reload();
-							} 
+							}
 						});
 					}
 				}
@@ -259,5 +261,4 @@
 		});
 
 	});
-
 </script>

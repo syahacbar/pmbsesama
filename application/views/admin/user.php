@@ -59,13 +59,7 @@
                                             </td>
 
                                             <td>
-                                                <button id="ubahData" class="btn btn-info btn-sm" href="" title="Edit User" data-toggle="modal" data-target="#editUser"
-                                                data-idoperator="<?php echo $u->id; ?>"
-                                                data-firstname="<?php echo $u->first_name; ?>"
-                                                data-identity="<?php echo $u->username; ?>"
-                                                data-company="<?php echo $u->company; ?>"
-                                                data-email="<?php echo $u->email; ?>"
-                                                data-phone="<?php echo $u->phone; ?>">
+                                                <button id="ubahData" class="btn btn-info btn-sm" href="" title="Edit User" data-toggle="modal" data-target="#editUser" data-idoperator="<?php echo $u->id; ?>" data-firstname="<?php echo $u->first_name; ?>" data-identity="<?php echo $u->username; ?>" data-company="<?php echo $u->company; ?>" data-email="<?php echo $u->email; ?>" data-phone="<?php echo $u->phone; ?>">
                                                     <i class="fas fa-edit" title="Ubah"></i>
                                                 </button>
 
@@ -76,7 +70,7 @@
                                                     echo '<button data-iduser="' . $u->id . '" data-namauser="' . $u->username . '" class="btn btn-success btn-sm btnAktif" title="Aktifkan" href=""><i class="fas fa-ban"></i></button>';
                                                 }
                                                 ?>
-                                                <button  class="btn btn-danger btn-sm btnHapus" data-iduser="<?php echo $u->id; ?>" title="Hapus"><i class="fas fa-trash"></i></button>
+                                                <button class="btn btn-danger btn-sm btnHapus" data-iduser="<?php echo $u->id; ?>" title="Hapus"><i class="fas fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     <?php } ?>
@@ -119,7 +113,7 @@
                                                 <input type="text" class="form-control" id="op_identity" name="op_identity" required>
                                             </div>
                                         </div>
-                                        
+
                                         <div class="col-sm-12">
                                             <label>Nama Sekolah</label>
                                             <div class="form-group">
@@ -132,7 +126,7 @@
                                             <div class="form-group">
                                                 <label for="op_groups">Level</label>
                                                 <input type="text" class="form-control" id="op_groups" name="op_groups" value="Operator Sekolah" readonly>
-                                                
+
                                             </div>
                                         </div>
 
@@ -268,266 +262,261 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
         <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
 
-    <script>
-    $(document).ready(function() {
-        function reload_table() {
-            $('#tabelUser').DataTable().ajax.reload(null, false);
-        };
+        <script>
+            $(document).ready(function() {
+                function reload_table() {
+                    $('#tabelUser').DataTable().ajax.reload(null, false);
+                };
 
-        var tabelUser = $('#tabelUser').DataTable();
-        $("#tabelUser").on("click", ".btnNonaktif", function() {
-            var iduser = $(this).attr("data-iduser");
-            var namauser = $(this).attr("data-namauser");
+                var tabelUser = $('#tabelUser').DataTable();
+                $("#tabelUser").on("click", ".btnNonaktif", function() {
+                    var iduser = $(this).attr("data-iduser");
+                    var namauser = $(this).attr("data-namauser");
 
-            $.ajax({
-                url: '<?php echo site_url(); ?>user/nonaktifkanuser',
-                type: "POST",
-                data: {
-                    iduser: iduser
-                },
-                success: function(data) {
-                        Swal.fire({
-                            title: "Berhasil",
-                            text: "User telah dinonaktifkan!",
-                            icon: "success",
-                        }).then(function(isConfirm) {
-                            if (isConfirm) {
-                                location.reload();
-                            }
-                        });
-                }
-            });
-        });
-
-        $("#tabelUser").on("click", ".btnAktif", function() {
-            var iduser = $(this).attr("data-iduser");
-            var namauser = $(this).attr("data-namauser");
-
-            $.ajax({
-                url: '<?php echo site_url(); ?>user/aktifkanuser',
-                type: "POST",
-                data: {
-                    iduser: iduser
-                },
-                success: function(data) {
-                        Swal.fire({
-                            title: "Berhasil",
-                            text: "User telah diaktifkan!",
-                            icon: "success",
-                        }).then(function(isConfirm) {
-                            if (isConfirm) {
-                                location.reload();
-                            }
-                        });
-                }
-            });
-        });
-
-        $(document).on('click', '#ubahData', function() {
-            var idoperator = $(this).data('idoperator');
-            var namadepan = $(this).data('firstname');
-            var identitas = $(this).data('identity');
-            var perusahan = $(this).data('company');
-            var surel = $(this).data('email');
-            var nohp = $(this).data('phone');
-
-            $('#idoperator').val(idoperator);
-            $('#namadepan').val(namadepan);
-            $('#identitas').val(identitas);
-            $('#perusahan').val(perusahan);
-            $('#surel').val(surel);
-            $('#nohp').val(nohp);
-        });
-
-        $(document).on('click', '.btnHapus', function() {
-                Swal.fire({
-                title: 'Apakah yakin akan menghapus user ini?',
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Ya',
-                cancelButtonText: 'Tidak',
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    var iduser = $(this).data("iduser");
                     $.ajax({
-                        url: "<?php echo site_url(); ?>user/hapus_user",
-                        method: "POST",
+                        url: '<?php echo site_url(); ?>user/nonaktifkanuser',
+                        type: "POST",
                         data: {
                             iduser: iduser
                         },
                         success: function(data) {
-                            var dataResult = JSON.parse(data);
-                            if (hasil.status) {
-                                Swal.fire({
-                                    title: "Berhasil",
-                                    text: "Menghapus user!",
-                                    icon: "success"
-                                }).then(function(isConfirm) {
-                                    if (isConfirm) {
-                                        location.reload();
-                                    }
-                                });
-                            }  else {
-                                Swal.fire({
-                                    title: "Gagal",
-                                    text: "Menghapus user!",
-                                    icon: "error"
-                                }).then(function(isConfirm) {
-                                    if (isConfirm) {
-                                        location.reload();
-                                    } 
-                                });
-                            }
-                        }
-                    });
-                             
-                };                             
-                        
-            })
-        });
-
-
-        $(document).on('click', '#btnUbahOperator', function() {
-            var namadepan = $("input[name='namadepan']").val();
-            var identitas = $("input[name='identitas']").val();
-            var perusahan = $("input[name='perusahan']").val();
-            var surel = $("input[name='surel']").val();
-            var nohp = $("input[name='nohp']").val();
-            var katasandi = $("input[name='katasandi']").val();
-            var confirm_katasandi = $("input[name='confirm_katasandi']").val();
-            var idoperator = $("input[name='idoperator']").val();
-
-            if (katasandi == '' || katasandi == 'null')
-            {
-                $.ajax({
-                    type: "POST",
-                    url: '<?php echo site_url('user/edit_operator') ?>',
-                    data: {
-                        namadepan: namadepan,
-                        identitas: identitas,
-                        perusahan: perusahan,
-                        surel: surel,
-                        nohp: nohp,
-                        idoperator: idoperator
-                    },
-                    success: function(response) {
-                        var hasil = $.parseJSON(response);
-                        if (result.statusCode == 1) 
-                        {
                             Swal.fire({
                                 title: "Berhasil",
-                                text: "Ubah profil user.",
+                                text: "User telah dinonaktifkan!",
                                 icon: "success",
                             }).then(function(isConfirm) {
                                 if (isConfirm) {
                                     location.reload();
-                                } 
+                                }
+                            });
+                        }
+                    });
+                });
+
+                $("#tabelUser").on("click", ".btnAktif", function() {
+                    var iduser = $(this).attr("data-iduser");
+                    var namauser = $(this).attr("data-namauser");
+
+                    $.ajax({
+                        url: '<?php echo site_url(); ?>user/aktifkanuser',
+                        type: "POST",
+                        data: {
+                            iduser: iduser
+                        },
+                        success: function(data) {
+                            Swal.fire({
+                                title: "Berhasil",
+                                text: "User telah diaktifkan!",
+                                icon: "success",
+                            }).then(function(isConfirm) {
+                                if (isConfirm) {
+                                    location.reload();
+                                }
+                            });
+                        }
+                    });
+                });
+
+                $(document).on('click', '#ubahData', function() {
+                    var idoperator = $(this).data('idoperator');
+                    var namadepan = $(this).data('firstname');
+                    var identitas = $(this).data('identity');
+                    var perusahan = $(this).data('company');
+                    var surel = $(this).data('email');
+                    var nohp = $(this).data('phone');
+
+                    $('#idoperator').val(idoperator);
+                    $('#namadepan').val(namadepan);
+                    $('#identitas').val(identitas);
+                    $('#perusahan').val(perusahan);
+                    $('#surel').val(surel);
+                    $('#nohp').val(nohp);
+                });
+
+                $(document).on('click', '.btnHapus', function() {
+                    Swal.fire({
+                        title: 'Apakah yakin akan menghapus user ini?',
+                        icon: 'warning',
+                        showCancelButton: true,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Ya',
+                        cancelButtonText: 'Tidak',
+                    }).then((result) => {
+                        if (result.isConfirmed) {
+                            var iduser = $(this).data("iduser");
+                            $.ajax({
+                                url: "<?php echo site_url(); ?>user/hapus_user",
+                                method: "POST",
+                                data: {
+                                    iduser: iduser
+                                },
+                                success: function(data) {
+                                    var hasil = JSON.parse(data);
+                                    if (hasil.status) {
+                                        Swal.fire({
+                                            title: "Berhasil",
+                                            text: "Menghapus user!",
+                                            icon: "success"
+                                        }).then(function(isConfirm) {
+                                            if (isConfirm) {
+                                                location.reload();
+                                            }
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            title: "Gagal",
+                                            text: "Menghapus user!",
+                                            icon: "error"
+                                        }).then(function(isConfirm) {
+                                            if (isConfirm) {
+                                                location.reload();
+                                            }
+                                        });
+                                    }
+                                }
                             });
 
+                        };
+
+                    })
+                });
+
+
+                $(document).on('click', '#btnUbahOperator', function() {
+                    var namadepan = $("input[name='namadepan']").val();
+                    var identitas = $("input[name='identitas']").val();
+                    var perusahan = $("input[name='perusahan']").val();
+                    var surel = $("input[name='surel']").val();
+                    var nohp = $("input[name='nohp']").val();
+                    var katasandi = $("input[name='katasandi']").val();
+                    var confirm_katasandi = $("input[name='confirm_katasandi']").val();
+                    var idoperator = $("input[name='idoperator']").val();
+
+                    if (katasandi == '' || katasandi == 'null') {
+                        $.ajax({
+                            type: "POST",
+                            url: '<?php echo site_url('user/edit_operator') ?>',
+                            data: {
+                                namadepan: namadepan,
+                                identitas: identitas,
+                                perusahan: perusahan,
+                                surel: surel,
+                                nohp: nohp,
+                                idoperator: idoperator
+                            },
+                            success: function(response) {
+                                var hasil = $.parseJSON(response);
+                                if (result.statusCode == 1) {
+                                    Swal.fire({
+                                        title: "Berhasil",
+                                        text: "Ubah profil user.",
+                                        icon: "success",
+                                    }).then(function(isConfirm) {
+                                        if (isConfirm) {
+                                            location.reload();
+                                        }
+                                    });
+
+                                } else {
+                                    Swal.fire({
+                                        title: "Peringatan!",
+                                        text: "Gagal ubah profil user",
+                                        icon: "error",
+                                    });
+                                }
+                            }
+                        });
+                    } else {
+                        if (katasandi == confirm_katasandi) {
+                            $.ajax({
+                                type: "POST",
+                                url: '<?php echo site_url('user/edit_operator') ?>',
+                                data: {
+                                    idoperator: idoperator,
+                                    namadepan: namadepan,
+                                    identitas: identitas,
+                                    perusahan: perusahan,
+                                    surel: surel,
+                                    nohp: nohp,
+                                    katasandi: katasandi
+                                },
+                                success: function(response) {
+                                    var hasil = $.parseJSON(response);
+                                    if (result.statusCode == 1) {
+                                        Swal.fire({
+                                            title: "Berhasil",
+                                            text: "Ubah profil user.",
+                                            icon: "success",
+                                        }).then(function(isConfirm) {
+                                            if (isConfirm) {
+                                                location.reload();
+                                            }
+                                        });
+                                    } else {
+                                        Swal.fire({
+                                            title: "Peringatan!",
+                                            text: "Gagal ubah profil user",
+                                            icon: "error",
+                                        });
+                                    }
+                                }
+                            });
                         } else {
                             Swal.fire({
                                 title: "Peringatan!",
-                                text: "Gagal ubah profil user",
+                                text: "Kata sandi tidak sama, periksa kembali!",
                                 icon: "error",
                             });
                         }
                     }
-            });
-            } else {
-                if (katasandi == confirm_katasandi) {
+                });
+
+                $(document).on('click', '#btnSimpanTambahOp', function() {
+                    var identity = $("#op_identity").val();
+                    var first_name = $("#op_first_name").val();
+                    var email = $("#op_email").val();
+                    var phone = $("#op_phone").val();
+                    var password = $("#op_password").val();
+                    var password_confirm = $("#op_password_confirm").val();
+                    var id_sekolah = $("#op_namasekolah").val();
+
                     $.ajax({
-                        type: "POST",
-                        url: '<?php echo site_url('user/edit_operator') ?>',
+                        url: "<?php echo site_url(); ?>user/tambah_operator",
+                        method: "POST",
                         data: {
-                            idoperator: idoperator,
-                            namadepan: namadepan,
-                            identitas: identitas,
-                            perusahan: perusahan,
-                            surel: surel,
-                            nohp: nohp,
-                            katasandi: katasandi
+                            identity: identity,
+                            first_name: first_name,
+                            email: email,
+                            phone: phone,
+                            password: password,
+                            password_confirm: password_confirm,
+                            id_sekolah: id_sekolah
                         },
-                        success: function(response) {
-                            var hasil = $.parseJSON(response);
-                            if(result.statusCode == 1) 
-                            {
+
+                        success: function(data) {
+                            var hasil = JSON.parse(data);
+                            if (hasil.statusCode == 1) {
                                 Swal.fire({
-                                    title: "Berhasil",
-                                    text: "Ubah profil user.",
-                                    icon: "success",
-                                }).then(function(isConfirm) {
-                                if (isConfirm) {
-                                    location.reload();
-                                } 
-                            });
+                                    title: 'Berhasil tambah operator sekolah',
+                                    icon: 'success',
+                                    showCancelButton: false,
+                                    confirmButtonColor: '#3085d6',
+                                    cancelButtonColor: '#d33',
+                                    confirmButtonText: 'Ya',
+                                }).then((result) => {
+                                    if (result.isConfirmed) {
+                                        $('#newUser').modal('hide');
+                                        location.reload();
+                                    };
+                                })
                             }
-                            else
-                            {
-                                Swal.fire({
-                                    title: "Peringatan!",
-                                    text: "Gagal ubah profil user",
-                                    icon: "error",
-                                });
-                            }
-                        }
+                        },
                     });
-                } else {
-                    Swal.fire({
-                        title: "Peringatan!",
-                        text: "Kata sandi tidak sama, periksa kembali!",
-                        icon: "error",
-                    });
-                }
-            }
-        });
+                });
 
-        $(document).on('click', '#btnSimpanTambahOp', function() {
-            var identity = $("#op_identity").val();
-            var first_name = $("#op_first_name").val();
-            var email = $("#op_email").val();
-            var phone = $("#op_phone").val();
-            var password = $("#op_password").val();
-            var password_confirm = $("#op_password_confirm").val();
-            var id_sekolah = $("#op_namasekolah").val();
-
-             $.ajax({
-                url: "<?php echo site_url(); ?>user/tambah_operator",
-                method: "POST",
-                data: {
-                    identity: identity,
-                    first_name: first_name,
-                    email: email,
-                    phone: phone,
-                    password: password,
-                    password_confirm: password_confirm,
-                    id_sekolah: id_sekolah
-                },
-
-                success: function(data) {
-                    var hasil = JSON.parse(data);
-                        if (hasil.statusCode == 1) {
-                            Swal.fire({
-                                title: 'Berhasil tambah operator sekolah',
-                                icon: 'success',
-                                showCancelButton: false,
-                                confirmButtonColor: '#3085d6',
-                                cancelButtonColor: '#d33',
-                                confirmButtonText: 'Ya',
-                            }).then((result) => {
-                                if (result.isConfirmed) {  
-                                     $('#newUser').modal('hide');                         
-                                    location.reload();
-                                };     
-                            })
-                        }       
-                },
             });
-        });
-
-      });
-    </script>
+        </script>
 </body>
 
 </html>
