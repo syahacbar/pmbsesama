@@ -5,11 +5,11 @@
     <meta charset='utf-8'>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <title>Formulir - Portal PMB Oline UNIPA</title>
-    
+
     <link href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css' rel='stylesheet'>
     <link href='https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.0.3/css/font-awesome.css' rel='stylesheet'>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" type="text/css" />
-    <link rel="stylesheet" href="<?php echo base_url();?>assets/frontend/css/select2-bootstrap.min.css">
+    <link rel="stylesheet" href="<?php echo base_url(); ?>assets/frontend/css/select2-bootstrap.min.css">
 
     <link href="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.css" rel="stylesheet">
     <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
@@ -22,11 +22,10 @@
 
     <link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
-  <script src='https://www.google.com/recaptcha/api.js?hl=id'></script>
+    <script src='https://www.google.com/recaptcha/api.js?hl=id'></script>
 
 
     <style>
-
         img.img-profile {
             width: 75px;
             display: flex;
@@ -691,7 +690,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Kabupaten/Kota *</label>
-                                                <input type="hidden" name="h_kabtempatlahir" id="h_kabtempatlahir" value="<?php echo $row['kab_tempatlahir'];?>">
+                                                <input type="hidden" name="h_kabtempatlahir" id="h_kabtempatlahir" value="<?php echo $row['kab_tempatlahir']; ?>">
                                                 <select name="kabtempatlahir" id="kabtempatlahir" class="form-select" aria-label="Default select example">
                                                     <option value=""></option>
                                                 </select>
@@ -746,7 +745,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Kabupaten/Kota *</label>
-                                                <input type="hidden" name="h_kabtempattinggal" id="h_kabtempattinggal" value="<?php echo $row['kab_tempattinggal'];?>">
+                                                <input type="hidden" name="h_kabtempattinggal" id="h_kabtempattinggal" value="<?php echo $row['kab_tempattinggal']; ?>">
                                                 <select name="kabtempattinggal" id="kabtempattinggal" class="form-select" aria-label="Default select example">
                                                     <option value=""></option>
                                                 </select>
@@ -756,7 +755,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Kecamatan/Distrik *</label>
-                                                <input type="hidden" name="h_kectempattinggal" id="h_kectempattinggal" value="<?php echo $row['kec_tempattinggal'];?>">
+                                                <input type="hidden" name="h_kectempattinggal" id="h_kectempattinggal" value="<?php echo $row['kec_tempattinggal']; ?>">
                                                 <select name="kectempattinggal" id="kectempattinggal" class="form-select" aria-label="Default select example">
                                                     <option value=""></option>
                                                 </select>
@@ -766,7 +765,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Kelurahan/Desa *</label>
-                                                <input type="hidden" name="h_destempattinggal" id="h_destempattinggal" value="<?php echo $row['des_tempattinggal'];?>">
+                                                <input type="hidden" name="h_destempattinggal" id="h_destempattinggal" value="<?php echo $row['des_tempattinggal']; ?>">
                                                 <select name="destempattinggal" id="destempattinggal" class="form-select" aria-label="Default select example">
                                                     <option value=""></option>
                                                 </select>
@@ -928,7 +927,7 @@
                                             </div>
                                         </div>
 
-                                        
+
 
                                         <div class="col-sm-12">
                                             <div class="form-group">
@@ -1126,7 +1125,7 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Kabupaten/Kota *</label>
-                                                        <input type="hidden" name="h_kabupatenortu" id="h_kabupatenortu" value="<?php echo $row['kab_tempattinggalortu'];?>">
+                                                        <input type="hidden" name="h_kabupatenortu" id="h_kabupatenortu" value="<?php echo $row['kab_tempattinggalortu']; ?>">
                                                         <select name="kabupatenortu" id="kabupatenortu" class="form-select" aria-label="Default select example">
                                                             <option value=""></option>
                                                         </select>
@@ -1136,9 +1135,9 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Kecamatan/Distrik *</label>
-                                                        <input type="hidden" name="h_kecamatanortu" id="h_kecamatanortu" value="<?php echo $row['kec_tempattinggalortu'];?>">
+                                                        <input type="hidden" name="h_kecamatanortu" id="h_kecamatanortu" value="<?php echo $row['kec_tempattinggalortu']; ?>">
                                                         <select name="kecamatanortu" id="kecamatanortu" class="form-select" aria-label="Default select example">
-                                                           <option value=""></option>
+                                                            <option value=""></option>
                                                         </select>
                                                     </div>
                                                 </div>
@@ -1236,7 +1235,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>Alamat Wali</label>
-                                                <textarea name="alamatwali" id="alamatwali" type="text" rows="2" class="form-control" ><?php echo $row['alamat_wali']; ?></textarea>
+                                                <textarea name="alamatwali" id="alamatwali" type="text" rows="2" class="form-control"><?php echo $row['alamat_wali']; ?></textarea>
                                                 <small>Alamat wali saat ini. Maksimal 50 karakter.</small>
                                             </div>
                                         </div>
@@ -1268,7 +1267,7 @@
                                                         <small id="captchahelp" class="form-text text-danger"><?php echo ($errorcaptcha != NULL) ? $errorcaptcha : ""; ?></small>
                                                     </td>
                                                 </tr>
-                                                
+
                                                 <tr>
                                                     <td>Kebijakan</td>
                                                     <td>:</td>
@@ -1285,7 +1284,7 @@
 
                                 </div>
 
-                                <input type="button" name="next5" id="next5"  class="next action-button btn btn-primary" value="Simpan">
+                                <input type="button" name="next5" id="next5" class="next action-button btn btn-primary" value="Simpan">
 
                                 <input type="button" name="previous" class="previous action-button-previous" value="Kembali" />
                             </fieldset>
@@ -1432,8 +1431,8 @@
             });
         </script>
 
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+        <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
         <script>
             $(document).ready(function() {
 
@@ -1444,13 +1443,12 @@
                 });
 
                 var provtempatlahir = $("#provtempatlahir").val();
-                if (provtempatlahir != "0")
-                {
+                if (provtempatlahir != "0") {
                     //set selected kab by data from db
-                    var url = "<?php  echo site_url('register/add_ajax_kab'); ?>/" + provtempatlahir +"/" + $("#h_kabtempatlahir").val();
+                    var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + provtempatlahir + "/" + $("#h_kabtempatlahir").val();
                     $('#kabtempatlahir').load(url);
                 }
-               
+
 
                 $("#provtempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
@@ -1459,10 +1457,9 @@
                 });
 
                 var provtempattinggal = $("#provtempattinggal").val();
-                if (provtempattinggal != "0")
-                {
+                if (provtempattinggal != "0") {
                     //set selected kab by data from db
-                    var url = "<?php  echo site_url('register/add_ajax_kab'); ?>/" + provtempattinggal +"/" + $("#h_kabtempattinggal").val();
+                    var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + provtempattinggal + "/" + $("#h_kabtempattinggal").val();
                     $('#kabtempattinggal').load(url);
                 }
 
@@ -1473,13 +1470,12 @@
                 });
 
                 var provortu = $("#provortu").val();
-                if (provortu != "0")
-                {
-                //set selected kab by data from db
-                    var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + provortu +"/" + $("#h_kabupatenortu").val();
+                if (provortu != "0") {
+                    //set selected kab by data from db
+                    var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + provortu + "/" + $("#h_kabupatenortu").val();
                     $('#kabupatenortu').load(url);
                 }
-                
+
                 $("#kabupatenortu").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
                     $('#kecamatanortu').load(url);
@@ -1487,13 +1483,12 @@
                 });
 
                 var h_kabupatenortu = $("#h_kabupatenortu").val();
-                if (h_kabupatenortu != "")
-                {
-                //set selected kec by data from db
-                    var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + h_kabupatenortu +"/" + $("#h_kecamatanortu").val();
-                        $('#kecamatanortu').load(url);
+                if (h_kabupatenortu != "") {
+                    //set selected kec by data from db
+                    var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + h_kabupatenortu + "/" + $("#h_kecamatanortu").val();
+                    $('#kecamatanortu').load(url);
                 }
-                
+
                 $("#kabtempattinggal").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + $(this).val();
                     $('#kectempattinggal').load(url);
@@ -1501,10 +1496,9 @@
                 });
 
                 var h_kabtempattinggal = $("#h_kabtempattinggal").val();
-                if (h_kabtempattinggal != "")
-                {
-                //set selected kec by data from db
-                    var url = "<?php  echo site_url('register/add_ajax_kec'); ?>/" + h_kabtempattinggal +"/" + $("#h_kectempattinggal").val();
+                if (h_kabtempattinggal != "") {
+                    //set selected kec by data from db
+                    var url = "<?php echo site_url('register/add_ajax_kec'); ?>/" + h_kabtempattinggal + "/" + $("#h_kectempattinggal").val();
                     $('#kectempattinggal').load(url);
                 }
 
@@ -1515,12 +1509,11 @@
                 });
 
                 var h_kectempattinggal = $("#h_kectempattinggal").val();
-                if (h_kectempattinggal != "")
-                {
+                if (h_kectempattinggal != "") {
                     //set selected kec by data from db
-                    var url = "<?php  echo site_url('register/add_ajax_des'); ?>/" + h_kectempattinggal +"/" + $("#h_destempattinggal").val();
+                    var url = "<?php echo site_url('register/add_ajax_des'); ?>/" + h_kectempattinggal + "/" + $("#h_destempattinggal").val();
                     $('#destempattinggal').load(url);
-                }                
+                }
 
                 $('#next1').on('click', function() {
                     $("#next1").attr("disabled", "disabled");
@@ -1754,20 +1747,20 @@
 
                 $('#next5').on('click', function() {
                     Swal.fire({
-                      title: 'Berhasil menyimpan biodata !',
-                      text: "Untuk mengetahui hasil seleksi jalur SESAMA, silahkan akses menu pengumuman pada website https://pmb.unipa.ac.id/pmbsesama",
-                      icon: 'success',
-                      showCancelButton: false,
-                      confirmButtonColor: '#3085d6',
-                      cancelButtonColor: '#d33',
-                      confirmButtonText: 'Keluar'
+                        title: 'Berhasil menyimpan biodata !',
+                        text: "Untuk mengetahui hasil seleksi jalur SESAMA, silahkan akses menu pengumuman pada website https://pmb.unipa.ac.id/pmbsesama",
+                        icon: 'success',
+                        showCancelButton: false,
+                        confirmButtonColor: '#3085d6',
+                        cancelButtonColor: '#d33',
+                        confirmButtonText: 'Keluar'
                     }).then((result) => {
-                      if (result.isConfirmed) {
-                        window.location.href= "<?php echo site_url('auth/logout/pendaftar'); ?>";
-                      }
+                        if (result.isConfirmed) {
+                            window.location.href = "<?php echo site_url('auth/logout/pendaftar'); ?>";
+                        }
                     })
-                });                
-                
+                });
+
                 $('#closeModal').click(function() {
                     $('.modal').modal('hide');
                 });

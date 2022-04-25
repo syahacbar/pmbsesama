@@ -13,15 +13,10 @@ class Pengumuman extends CI_Controller
     {
         $nopendafar = $this->input->post('nopendaftar');
         $pendaftar = $this->db->query("SELECT * FROM t_biodata WHERE username='$nopendafar'");
-        if($pendaftar->num_rows() >= 1)
-        {
-            echo json_encode(array('statusCode' => 1,'pendaftar'=>$pendaftar->row()));
-        }
-        else
-        {
+        if ($pendaftar->num_rows() >= 1) {
+            echo json_encode(array('statusCode' => 1, 'pendaftar' => $pendaftar->row()));
+        } else {
             echo json_encode(array('statusCode' => 0));
         }
-        
-
     }
 }

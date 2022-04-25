@@ -4,7 +4,6 @@ class M_namasmta extends CI_Model
 {
     function get_all()
     {
-        //$query = $this->db->get('t_smta');
         $query = $this->db->query("SELECT ts.*, w.kode AS kodeprovinsi, w.nama AS provinsi_smta FROM t_smta ts, wilayah_2020 w WHERE ts.provinsi_smta=w.kode");
         return $query->result_array();
     }
@@ -54,38 +53,19 @@ class M_namasmta extends CI_Model
 
     private function _get_datatables_query()
     {
-        //$this->db->query("SELECT ts.*, w.nama AS provinsismta FROM t_smta ts, wilayah_2020 w WHERE w.kode=ts.provinsi_smta ");
         $this->db->select('*');
         $this->db->from('t_smta');
-        //$this->db->join('wilayah_2020 w', 'w.kode = ts.provinsi_smta');
-        //$this->db->where('ts.provinsi_smta','w.kode');
-        // $this->db->group_start();
 
-            if (isset($_POST['is_provinsi']) && $_POST['is_provinsi'] != "0") {
-                $this->db->where('provinsi_smta', $_POST['is_provinsi']);
-            }
-            if (isset($_POST['is_kabupaten']) && $_POST['is_kabupaten'] != "0") {
-                $this->db->where('kabupaten_smta', $_POST['is_kabupaten']);
-            }
-            if (isset($_POST['is_kecamatan']) && $_POST['is_kecamatan'] != "0") {
-                $this->db->where('kecamatan_smta', $_POST['is_kecamatan']);
-            }
+        if (isset($_POST['is_provinsi']) && $_POST['is_provinsi'] != "0") {
+            $this->db->where('provinsi_smta', $_POST['is_provinsi']);
+        }
+        if (isset($_POST['is_kabupaten']) && $_POST['is_kabupaten'] != "0") {
+            $this->db->where('kabupaten_smta', $_POST['is_kabupaten']);
+        }
+        if (isset($_POST['is_kecamatan']) && $_POST['is_kecamatan'] != "0") {
+            $this->db->where('kecamatan_smta', $_POST['is_kecamatan']);
+        }
 
-        // $this->db->group_end();
-        
-        // if (isset($_POST['is_prodi']) && $_POST['is_prodi'] != "0") {
-        //     $this->db->group_start();
-        //     $this->db->where('prodipilihan1', $_POST['is_prodi']);
-        //     $this->db->or_where('prodipilihan2', $_POST['is_prodi']);
-        //     $this->db->or_where('prodipilihan3', $_POST['is_prodi']);
-        //     $this->db->group_end();
-        // }
-
-        // if (isset($_POST['is_suku']) && $_POST['is_suku'] != '0') {
-        //     $this->db->where('suku', $_POST['is_suku']);
-        // }
-
-        //$this->db->group_end();
         $i = 0;
         foreach ($this->column_search as $item) // loop kolom 
         {
@@ -134,5 +114,4 @@ class M_namasmta extends CI_Model
         $this->db->from($this->table);
         return $this->db->count_all_results();
     }
-
 }

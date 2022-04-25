@@ -35,5 +35,4 @@ class M_jurusansmta extends CI_Model
         $this->db->delete("jurusansmta");
         return true;
     }
-    
 }

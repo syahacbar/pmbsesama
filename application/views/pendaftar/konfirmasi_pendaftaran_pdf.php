@@ -1,6 +1,6 @@
 <?php
 $pdf = new Pdf(PDF_PAGE_ORIENTATION, PDF_UNIT, PDF_PAGE_FORMAT, true, 'UTF-8', false);
-$pdf->SetTitle('Kartu Akun '.$username.' - Portal PMB Online UNIPA');
+$pdf->SetTitle('Kartu Akun ' . $username . ' - Portal PMB Online UNIPA');
 $pdf->SetHeaderMargin(20);
 $pdf->SetTopMargin(10);
 $pdf->setFooterMargin(15);
@@ -8,7 +8,6 @@ $pdf->SetAutoPageBreak(true, 20);
 $pdf->SetAuthor('Author');
 $pdf->SetDisplayMode('real', 'default');
 $pdf->setPrintHeader(false);
-//$pdf->setPrintFooter(false);
 $pdf->SetMargins(20, 20, 20, true);
 
 $pdf->AddPage('P', 'A4');
@@ -26,7 +25,7 @@ $html = '
 </style>
 <table border=0 align="center" width="100%" cellspacing="5">
 	<tr>
-		<td align="left" width="15%"><img src="'.base_url().'assets/frontend/img/unipa.png" width="50"></td>
+		<td align="left" width="15%"><img src="' . base_url() . 'assets/frontend/img/unipa.png" width="50"></td>
 		<td align="left" width="85%">
 			<span class="kop">UNIVERSITAS PAPUA</span>
 			<br>Jl. Gunung Salju Amban Manokwari Papua Barat <br>Kode Pos 98314 MANOKWARI
@@ -53,27 +52,27 @@ $html = '
 	<tr align="left">
 		<td width="25%">Nama Lengkap</td>
 		<td width="3%">:</td>
-		<td>'.strtoupper($namalengkap).'</td>
+		<td>' . strtoupper($namalengkap) . '</td>
 	</tr>
 	<tr align="left">
 		<td>Username</td>
 		<td>:</td>
-		<td><strong>'.$username.'</strong></td>
+		<td><strong>' . $username . '</strong></td>
 	</tr>
 	<tr align="left">
 		<td>Password</td>
 		<td>:</td>
-		<td><strong>'.$password.'</strong></td>
+		<td><strong>' . $password . '</strong></td>
 	</tr>
 	<tr align="left">
 		<td>Email</td>
 		<td>:</td>
-		<td>'.$email.'</td>
+		<td>' . $email . '</td>
 	</tr>
 	<tr align="left">
 		<td>Nomor HP</td>
 		<td>:</td>
-		<td>'.$nohp.'</td>
+		<td>' . $nohp . '</td>
 	</tr>
 </table>
 <table border=0 align="center" width="100%" cellspacing="10px">
@@ -86,4 +85,4 @@ $html = '
 </table>
 ';
 $pdf->writeHTML($html, true, false, true, false, '');
-$pdf->Output('Kartu Akun '.$username.'- Portal PMB Online UNIPA.pdf', 'I');
+$pdf->Output('Kartu Akun ' . $username . '- Portal PMB Online UNIPA.pdf', 'I');

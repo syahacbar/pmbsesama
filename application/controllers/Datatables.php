@@ -12,7 +12,7 @@ class Datatables extends CI_Controller
         if ($this->ion_auth->in_group('members')) {
             redirect('auth/login', 'refresh');
         }
-        $this->load->model(['M_wilayah', 'M_pendaftar', 'M_prodi', 'M_register','M_namasmta']);
+        $this->load->model(['M_wilayah', 'M_pendaftar', 'M_prodi', 'M_register', 'M_namasmta']);
     }
 
 
@@ -65,8 +65,7 @@ class Datatables extends CI_Controller
     {
         $id = $this->input->post('kodeprov');
         $this->M_wilayah->delete($id);
-		echo json_encode(array("statusCode" => 1));
-
+        echo json_encode(array("statusCode" => 1));
     }
 
     function kabupaten_list()
@@ -120,7 +119,7 @@ class Datatables extends CI_Controller
     {
         $id = $this->input->post('kodekab');
         $this->M_wilayah->delete($id);
-		echo json_encode(array("statusCode" => 1));
+        echo json_encode(array("statusCode" => 1));
     }
 
     function kecamatan_list()
@@ -176,9 +175,9 @@ class Datatables extends CI_Controller
     {
         $id = $this->input->post('kodekec');
         $this->M_wilayah->delete($id);
-		echo json_encode(array("statusCode" => 1));
+        echo json_encode(array("statusCode" => 1));
     }
- 
+
     function desa_list()
     {
         header('Content-Type: application/json');
@@ -209,7 +208,7 @@ class Datatables extends CI_Controller
         //output to json format
         $this->output->set_output(json_encode($output));
     }
-    
+
 
     // Update 22 April
     function desa_save($id = NULL)
@@ -302,7 +301,7 @@ class Datatables extends CI_Controller
     {
         $data['data_pendaftar'] = $this->M_pendaftar->data_pendaftar($username)->result_array();
         $this->load->view('admin/detail_pendaftar', $data);
-    } 
+    }
 
     public function editpendaftar($username)
     {

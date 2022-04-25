@@ -40,10 +40,7 @@
               <li class="nav-item"><a class="nav-link" href="<?php echo site_url('agenda'); ?>"><i class="fa fa-calendar-o"></i> Agenda</a></li>
               <li class="nav-item"><a class="nav-link" href="<?php echo site_url('informasi'); ?>"><i class="fa fa-info-circle"></i> Informasi</a></li>
               <li class="nav-item"><a class="nav-link" href="<?php echo site_url('pengumuman'); ?>"><i class="fa fa-bullhorn"></i> Pengumuman</a></li>
-
-
               <?php if ($this->ion_auth->logged_in()) { ?>
-
                 <li class="nav-item">
                   <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">
                     <i class="fas fa-sign-out-alt fa-sm fa-fw text-gray-400"></i>
@@ -51,7 +48,6 @@
                   </a>
                 </li>
               <?php }  ?>
-
             </ul>
           </div>
         </nav>

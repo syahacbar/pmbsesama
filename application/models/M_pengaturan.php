@@ -13,5 +13,4 @@ class M_pengaturan extends CI_Model
         $query = $this->db->query("UPDATE pengaturan SET nilai = '$data' WHERE parameter = 'sesidaftar'");
         return TRUE;
     }
-
 }

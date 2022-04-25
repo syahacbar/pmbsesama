@@ -25,15 +25,9 @@
 </head>
 
 <body id="page-top">
-
-	<!-- Page Wrapper -->
 	<div id="wrapper">
-
-		<!-- Content Wrapper -->
 		<div id="content-wrapper" class="d-flex flex-column">
-			<!-- Main Content -->
 			<div id="content">
-				<!-- Begin Page Content -->
 				<div class="row">
 					<?php foreach ($data_pendaftar as $p) : ?>
 						<div class="col-lg-12">
@@ -382,7 +376,7 @@
 															Lampiran Rapor Kelas XI semeseter 1
 														</div>
 														<div class="col-sm-6">
-															: <a href="<?php echo base_url('assets/upload/rapor/') . $p['file_rapor']; 
+															: <a href="<?php echo base_url('assets/upload/rapor/') . $p['file_rapor'];
 																		?>" target="_blank" class="btn btn-info btn-icon-split btn-sm downloadform" target="_blank">
 																<span class="icon text-white-50">
 																	<i class="fas fa-download"></i>
@@ -584,17 +578,12 @@
 									</div>
 								</div>
 							</div>
-
 						</div>
 					<?php endforeach; ?>
 				</div>
-
 			</div>
-			<!-- End of Main Content -->
 		</div>
-		<!-- End of Content Wrapper -->
 	</div>
-	<!-- End of Page Wrapper -->
 
 </body>
 

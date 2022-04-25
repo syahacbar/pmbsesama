@@ -53,7 +53,6 @@
             background-image: url(http://simunipa.unipa.ac.id/gtakademik/assets/versi_3.0/img/grid.png);
             background-position: center;
         }
-
     </style>
 </head>
 
@@ -67,10 +66,10 @@
     <input name="identity" type="text" id="inputEmail" class="form-control mb-4 mt-4" placeholder="Username" required autofocus>
     <label for="inputPassword" class="sr-only">Password</label>
     <input name="password" type="password" id="inputPassword" class="form-control  mb-4 mt-4" placeholder="Password" required>
-  
+
     <button class="btn btn-lg btn-primary btn-block" type="submit">Masuk</button>
     <br>
-    <a href="<?php echo site_url();?>">Kembali ke halaman utama</a>
+    <a href="<?php echo site_url(); ?>">Kembali ke halaman utama</a>
     <p class="mt-5 mb-3 text-muted text-small">Portal PMB Unipa &copy; 2021. Hak Cipta Dilindungi Undang-Undang.</p>
     <!-- </form> -->
     <?php echo form_close(); ?>

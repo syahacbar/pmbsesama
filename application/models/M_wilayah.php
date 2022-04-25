@@ -1,11 +1,11 @@
 <?php
- 
-class M_wilayah extends CI_Model 
+
+class M_wilayah extends CI_Model
 {
     //set nama tabel yang akan kita tampilkan datanya
     var $table = 'wilayah_2020';
     //set kolom order, kolom pertama saya null untuk kolom edit dan hapus
-    var $column_order = array(NULL,'kode','nama');
+    var $column_order = array(NULL, 'kode', 'nama');
 
     var $column_search = array('nama');
     // default order 
@@ -13,44 +13,35 @@ class M_wilayah extends CI_Model
 
     private function _get_datatables_query($wil)
     {
-        if ($wil == "provinsi")
-        {
-            $this->db->select('w.kode'); 
-            $this->db->select('w.nama AS namaprov');      
+        if ($wil == "provinsi") {
+            $this->db->select('w.kode');
+            $this->db->select('w.nama AS namaprov');
             $this->db->from('wilayah_2020 w');
             $this->db->where('LENGTH(kode)', '2');
-            $column_order = array(NULL,'kode','namaprov');
-        }
-        elseif ($wil == "kabupaten")
-        {
+            $column_order = array(NULL, 'kode', 'namaprov');
+        } elseif ($wil == "kabupaten") {
             $this->db->select('w.kode');
-            $this->db->select('w.nama AS namakab');  
-            $this->db->select('(SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprov');       
+            $this->db->select('w.nama AS namakab');
+            $this->db->select('(SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprov');
             $this->db->from('wilayah_2020 w');
             $this->db->where('LENGTH(kode)', '5');
-            $column_order = array(NULL,'kode','namakab','namaprov');
-            
-        }  
-        elseif ($wil == "kecamatan")
-        {
+            $column_order = array(NULL, 'kode', 'namakab', 'namaprov');
+        } elseif ($wil == "kecamatan") {
             $this->db->select('w.kode');
-            $this->db->select('w.nama AS namakec');  
-            $this->db->select('(SELECT kab.nama FROM wilayah_2020 kab WHERE kab.kode = LEFT(w.kode,5)) AS namakab');   
-            $this->db->select('(SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprov');    
+            $this->db->select('w.nama AS namakec');
+            $this->db->select('(SELECT kab.nama FROM wilayah_2020 kab WHERE kab.kode = LEFT(w.kode,5)) AS namakab');
+            $this->db->select('(SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprov');
             $this->db->from('wilayah_2020 w');
-            $this->db->where('LENGTH(kode)', '8'); 
-            $column_order = array(NULL,'kode','namakec','namakab','namaprov');
-        }  
-        elseif ($wil == "desa")
-        {
+            $this->db->where('LENGTH(kode)', '8');
+            $column_order = array(NULL, 'kode', 'namakec', 'namakab', 'namaprov');
+        } elseif ($wil == "desa") {
             $this->db->select('w.kode');
-            $this->db->select('w.nama AS namades');  
-            $this->db->select('(SELECT des.nama FROM wilayah_2020 des WHERE des.kode = LEFT(w.kode,8)) AS namakec');  
-            $this->db->select('(SELECT kab.nama FROM wilayah_2020 kab WHERE kab.kode = LEFT(w.kode,5)) AS namakab');   
-            $this->db->select('(SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprov');      
+            $this->db->select('w.nama AS namades');
+            $this->db->select('(SELECT des.nama FROM wilayah_2020 des WHERE des.kode = LEFT(w.kode,8)) AS namakec');
+            $this->db->select('(SELECT kab.nama FROM wilayah_2020 kab WHERE kab.kode = LEFT(w.kode,5)) AS namakab');
+            $this->db->select('(SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprov');
             $this->db->from('wilayah_2020 w');
             $this->db->where('LENGTH(kode)', '13');
-            //$this->db->where('LEFT(kode,2)', '92');
 
             if (isset($_POST['is_provinsi']) && $_POST['is_provinsi'] != "0") {
                 $this->db->where('LEFT(kode,2)', $_POST['is_provinsi']);
@@ -62,8 +53,8 @@ class M_wilayah extends CI_Model
                 $this->db->where('LEFT(kode,8)', $_POST['is_kecamatan']);
             }
 
-            $column_order = array(NULL,'kode','namades','namakec','namakab','namaprov');
-        } 
+            $column_order = array(NULL, 'kode', 'namades', 'namakec', 'namakab', 'namaprov');
+        }
 
         $i = 0;
         foreach ($this->column_search as $item) // loop kolom 
@@ -116,30 +107,28 @@ class M_wilayah extends CI_Model
 
     function get_all_provinsi()
     {
-        $query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 2 ORDER BY kode ASC"); 
+        $query = $this->db->query("SELECT * FROM wilayah_2020 WHERE LENGTH(kode) = 2 ORDER BY kode ASC");
         return $query->result_array();
     }
 
     function get_all_kabupaten()
     {
-        $query = $this->db->query("SELECT w.kode, w.nama AS namakabupaten,(SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprovinsi FROM wilayah_2020 w WHERE LENGTH(kode) = 5 ORDER BY kode ASC"); 
+        $query = $this->db->query("SELECT w.kode, w.nama AS namakabupaten,(SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprovinsi FROM wilayah_2020 w WHERE LENGTH(kode) = 5 ORDER BY kode ASC");
         return $query->result_array();
     }
 
     function get_all_kecamatan()
     {
-        $query = $this->db->query("SELECT w.kode, w.nama AS namakecamatan,(SELECT kab.nama FROM wilayah_2020 kab WHERE kab.kode = LEFT(w.kode,5)) AS namakabupaten, (SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprovinsi FROM wilayah_2020 w WHERE LENGTH(kode) = 8 ORDER BY kode ASC"); 
+        $query = $this->db->query("SELECT w.kode, w.nama AS namakecamatan,(SELECT kab.nama FROM wilayah_2020 kab WHERE kab.kode = LEFT(w.kode,5)) AS namakabupaten, (SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprovinsi FROM wilayah_2020 w WHERE LENGTH(kode) = 8 ORDER BY kode ASC");
         return $query->result_array();
     }
 
     function get_all_desa()
     {
         $query = $this->db->query("SELECT w.kode, w.nama AS namadesa,
-                                    (SELECT des.nama FROM wilayah_2020 des WHERE des.kode = LEFT(w.kode,8)) AS namakecamatan,
-                                    (SELECT kab.nama FROM wilayah_2020 kab WHERE kab.kode = LEFT(w.kode,5)) AS namakabupaten,
-                                    (SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprovinsi
-                                    FROM wilayah_2020 w
-                                    WHERE LENGTH(kode) = 13 ORDER BY kode ASC"); 
+                (SELECT des.nama FROM wilayah_2020 des WHERE des.kode = LEFT(w.kode,8)) AS namakecamatan,
+                (SELECT kab.nama FROM wilayah_2020 kab WHERE kab.kode = LEFT(w.kode,5)) AS namakabupaten,
+                (SELECT pr.nama FROM wilayah_2020 pr WHERE pr.kode = LEFT(w.kode,2)) AS namaprovinsi FROM wilayah_2020 w WHERE LENGTH(kode) = 13 ORDER BY kode ASC");
         return $query->result_array();
     }
 
@@ -149,8 +138,9 @@ class M_wilayah extends CI_Model
         return TRUE;
     }
 
-    function edit($data, $id){
-        $this->db->where('kode',$id);
+    function edit($data, $id)
+    {
+        $this->db->where('kode', $id);
         $this->db->update('wilayah_2020', $data);
         return TRUE;
     }

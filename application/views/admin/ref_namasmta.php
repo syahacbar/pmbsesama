@@ -1,6 +1,5 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 
-    <!-- Begin Page Content -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
@@ -47,7 +46,6 @@
         </div>
         <div class="row">
             <div class="col-lg-12">
-                <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                     <div class="card-body">
                         <?php echo $this->session->flashdata('notif'); ?>
@@ -71,7 +69,6 @@
             </div>
         </div>
     </div>
-    <!-- /.container-fluid -->
 
     <!-- Modal Tambah SMTA -->
     <div class="modal fade" id="newDataSMTA" tabindex="-1" role="dialog" aria-labelledby="newDataSMTALabel" aria-hidden="true">
@@ -276,8 +273,6 @@
 
                 var tableSMTA = $('#tableSMTA').DataTable();
                 var is_provinsi = $('#optProvinsi').val();
-                // var is_kabupaten = $('#optKabupaten').val();
-                // var is_kecamatan = $('#optKecamatan').val();
 
                 tableSMTA.destroy();
                 if (is_provinsi != '') {
@@ -298,7 +293,6 @@
                 var tableSMTA = $('#tableSMTA').DataTable();
                 var is_provinsi = $('#optProvinsi').val();
                 var is_kabupaten = $('#optKabupaten').val();
-                // var is_kecamatan = $('#optKecamatan').val();
 
                 tableSMTA.destroy();
                 if (is_kabupaten != '') {
@@ -380,7 +374,6 @@
                         $('input[name="edit_namasmta"]').val(json.nama_smta);
                         $('input[name="edit_npsnsmta"]').val(json.npsn_smta);
                         $('select[name="edit_provinsismta"]').val(json.provinsi_smta).attr('selected', 'selected');
-                        //$('select[name="edit_kabupatensmta"]').val(json.kabupaten_smta).attr('selected', 'selected');
 
                         $("#edit_provinsismta").change(function() {
                             var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();

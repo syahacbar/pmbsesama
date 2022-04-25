@@ -90,16 +90,9 @@
 </head>
 
 <body id="page-top">
-
-    <!-- Page Wrapper -->
     <div id="wrapper">
-        <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
-
-            <!-- Main Content -->
             <div id="content">
-
-                <!-- Begin Page Content -->
                 <div class="container-fluid">
                     <div class="row">
                         <?php foreach ($editpendaftar as $ep) : ?>
@@ -179,8 +172,6 @@
                                                                             <div class="row">
                                                                                 <div class="col-sm-12 d-flex justify-content-flex-start">
                                                                                     <div class="form-group">
-                                                                                        <?php // form_open_multipart('user/next1')
-                                                                                        ?>
                                                                                         <?php if ($ep['fotoprofil'] == NULL) { ?>
                                                                                             <img width="120" height="150" class="img-profile" src="<?php echo base_url('assets/upload/profile/profil_default.svg'); ?>">
                                                                                         <?php } else { ?>
@@ -413,7 +404,6 @@
 
                                                             </div>
 
-
                                                             <div class="row">
                                                                 <div class="col-12 mt-4">
                                                                     <h5 class="fs-title">Data Tambahan</h5>
@@ -449,9 +439,7 @@
                                                                         <small>Satuan kg. Contoh: 60</small>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
-
                                                         </div>
                                                         <div class="d-flex justify-content-end mt-3">
 
@@ -460,7 +448,6 @@
                                                     </div>
                                             </div>
                                             </fieldset>
-
 
                                             <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                                 <fieldset id="editDataSekolah1">
@@ -569,7 +556,6 @@
                                                                             </div>
                                                                         </div>
 
-
                                                                         <div class="col-sm-12">
                                                                             <div class="form-group">
                                                                                 <label>Kelas XI semeseter 2</label>
@@ -601,17 +587,11 @@
                                                                                         <h6> Klik atau Drop file PDF ke sini</h6>
                                                                                     </div>
                                                                                 </div>
-
                                                                             </div>
                                                                         </div>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
-
-
-
-
                                                         </div>
                                                     </div>
                                                     <div class="d-flex justify-content-end mt-3">
@@ -626,7 +606,6 @@
                                                         <div class="row">
                                                             <div class="col-sm-12 mt-4">
                                                                 <h5 class="fs-title">Biodata Ayah</h5>
-
                                                             </div>
 
                                                             <div class="col-sm-4 col-md-3 col-lg-3">
@@ -667,7 +646,6 @@
                                                                     </select>
                                                                 </div>
                                                             </div>
-
 
                                                             <div class="col-sm-4 col-md-3 col-lg-3">
                                                                 <div class="form-group">
@@ -868,7 +846,6 @@
                 </div>
             </div>
         </div>
-
     </div>
 
     <!-- Modal Update Foto Profil -->
@@ -901,7 +878,7 @@
             </div>
         </div>
     </div>
-    <!-- End of Main Content -->
+
     <script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/vendor/jquery/jquery.min.js"></script>
 
     <script>
@@ -1027,10 +1004,10 @@
                             location.reload();
                         } else {
                             Swal.fire({
-								icon: 'error',
-								text: 'Terjadi kesalahan',
-								confirmButtonText: 'Kembali',
-							})
+                                icon: 'error',
+                                text: 'Terjadi kesalahan',
+                                confirmButtonText: 'Kembali',
+                            })
                         }
                     }
                 });
@@ -1073,10 +1050,10 @@
                             location.reload();
                         } else {
                             Swal.fire({
-								icon: 'error',
-								text: 'Terjadi kesalahan',
-								confirmButtonText: 'Kembali',
-							})
+                                icon: 'error',
+                                text: 'Terjadi kesalahan',
+                                confirmButtonText: 'Kembali',
+                            })
                         }
                     }
                 });
@@ -1133,10 +1110,10 @@
                             location.reload();
                         } else {
                             Swal.fire({
-								icon: 'error',
-								text: 'Terjadi kesalahan',
-								confirmButtonText: 'Kembali',
-							})
+                                icon: 'error',
+                                text: 'Terjadi kesalahan',
+                                confirmButtonText: 'Kembali',
+                            })
                         }
                     }
                 });
@@ -1168,10 +1145,10 @@
                             location.reload();
                         } else {
                             Swal.fire({
-								icon: 'error',
-								text: 'Terjadi kesalahan',
-								confirmButtonText: 'Kembali',
-							})
+                                icon: 'error',
+                                text: 'Terjadi kesalahan',
+                                confirmButtonText: 'Kembali',
+                            })
                         }
                     }
                 });
@@ -1192,9 +1169,7 @@
                 foto_upload.processQueue();
             });
 
-            foto_upload.on("sending", function(file, xhr, formData) {
-            });
-
+            foto_upload.on("sending", function(file, xhr, formData) {});
 
         });
     </script>
