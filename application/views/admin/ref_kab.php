@@ -1,16 +1,11 @@
-<!-- Begin Page Content -->
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-12">
-			<!-- DataTales Example -->
 			<div class="card shadow mb-4">
-
 				<div class="card-header py-3">
 					<h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Wilayah Kabupaten/Kota</h6>
 				</div>
 				<div class="card-body">
-					<!-- <div class="flash-data" data-flashdata="<?php // echo $this->session->flashdata('notif'); 
-																	?>"></div> -->
 					<form id="formkabupaten" method="POST" class="row g-3">
 						<div class="col-md-3">
 							<label for="optProvinsi" class="form-label">Pilih Provinsi</label>
@@ -51,9 +46,7 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
-			<!-- DataTales Example -->
 			<div class="card shadow mb-4">
-
 				<div class="card-header py-3">
 					<h6 class="m-0 font-weight-bold text-primary">Referensi Data Wilayah Kabupaten/Kota</h6>
 				</div>
@@ -79,8 +72,6 @@
 		</div>
 	</div>
 </div>
-<!-- /.container-fluid -->
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
@@ -149,32 +140,6 @@
 			$("input#txtNamaKabupaten").val($(this).data('namakabupaten'));
 			$("input#kodewilayah").val($(this).data('kodewilayah'));
 		});
-
-
-		// $("#tableKabupaten").on('click', '.deletedata', function(){  
-		// 	var kodekab = $(this).data("kodekabupaten");  
-		// 	if(confirm("Are you sure you want to delete this?"))  
-		// 	{  
-		// 		$.ajax({  
-		// 			url:"<?php // echo site_url(); 
-							?>Datatables/kabupaten_delete",  
-		// 			method:"POST",  
-		// 			data:{kodekab:kodekab},  
-		// 			success:function(data)  
-		// 			{  
-		// 				$('#alert').html('<div class="alert alert-warning alert-dismissible" role="alert"> <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>Data berhasil dihapus.</div>');
-		// 				tableKabupaten.ajax.reload(null,false);
-		// 				$(".alert").fadeTo(5000, 0).slideUp(100, function(){
-		// 	                $(this).remove();
-		// 	            });   
-		// 			}  
-		// 		});  
-		// 	}  
-		// 	else  
-		// 	{  
-		// 		return false;       
-		// 	}  x
-		// });   
 
 		// Hapus kabupaten
 		$("#tableKabupaten").on('click', '.deletedata', function() {

@@ -1,10 +1,8 @@
-
 <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
-<!-- Begin Page Content -->
+
 <div class="container-fluid">
 	<div class="row">
 		<div class="col-lg-12">
-			<!-- DataTales Example -->
 			<div class="card shadow mb-4">
 
 				<div class="card-header py-3">
@@ -21,10 +19,10 @@
 							<input id="txtNamaProvinsi" type="text" class="form-control" name="txtNamaProvinsi" placeholder="Provinsi" required>
 						</div>
 						<div class="col-md-3">
-						<label class="text-white">Label</label><br>
-						<input type="hidden" id="kodewilayah" name="kodewilayah" value="">
-						<button type="reset" class="btn btn-secondary btn-sm" data-dismiss="modal">Reset</button>&nbsp;&nbsp;&nbsp;
-						<input type="submit" class="btn btn-primary btn-sm btnSave" value="Save">
+							<label class="text-white">Label</label><br>
+							<input type="hidden" id="kodewilayah" name="kodewilayah" value="">
+							<button type="reset" class="btn btn-secondary btn-sm" data-dismiss="modal">Reset</button>&nbsp;&nbsp;&nbsp;
+							<input type="submit" class="btn btn-primary btn-sm btnSave" value="Save">
 						</div>
 
 					</form>
@@ -34,9 +32,7 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-12">
-			<!-- DataTales Example -->
 			<div class="card shadow mb-4">
-
 				<div class="card-header py-3">
 					<h6 class="m-0 font-weight-bold text-primary">Referensi Data Wilayah Provinsi</h6>
 				</div>
@@ -52,7 +48,7 @@
 									<th width="150">Aksi</th>
 								</tr>
 							</thead>
-							<tbody>							
+							<tbody>
 							</tbody>
 						</table>
 					</div>
@@ -61,11 +57,11 @@
 		</div>
 	</div>
 </div>
-<!-- /.container-fluid -->
+
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>=
 <script>
-	$(document).ready(function(){
+	$(document).ready(function() {
 		var tableProvinsi = $('#tableProvinsi').DataTable({
 			"language": {
 				"url": "//cdn.datatables.net/plug-ins/1.10.24/i18n/Indonesian.json"
@@ -74,53 +70,57 @@
 			"serverSide": true,
 			"stateSave": true,
 			"order": [],
-			"columnDefs": [ {
-				"targets": 0,
-				"orderable": false,
-			},
-			{
-				"targets": -1,
-				"orderable": false,
-				"width": "15%", 
-				"className": "text-center"
-			}  ],
+			"columnDefs": [{
+					"targets": 0,
+					"orderable": false,
+				},
+				{
+					"targets": -1,
+					"orderable": false,
+					"width": "15%",
+					"className": "text-center"
+				}
+			],
 			"ajax": {
-                //panggil method ajax list dengan ajax
-                "url": '<?php echo site_url('Datatables/provinsi_list');?>',
-                "type": "POST"
-            },
+				//panggil method ajax list dengan ajax
+				"url": '<?php echo site_url('Datatables/provinsi_list'); ?>',
+				"type": "POST"
+			},
 
-        });
-        
-
-        $("form#formprovinsi").submit(function (event) {
-		    var kodeprov = $('input#txtKodeProvinsi').val();
-            var namaprov = $('input#txtNamaProvinsi').val();
-		    var kodewilayah = $('input#kodewilayah').val();
-
-		    $.ajax({
-		      type: "POST",
-		      url: "<?php echo site_url() ?>Datatables/provinsi_save/"+kodewilayah,
-		      data: {kodeprov:kodeprov,namaprov:namaprov,kodewilayah:kodewilayah},
-		      dataType: "json",
-		      encode: true,
-		      success:function(data)
-		      {
-		      	tableProvinsi.ajax.reload(null,false);
-		      }
-		    });
 		});
 
-        $("#tableProvinsi").on("click", ".editdata", function(){
-        	$("input#txtKodeProvinsi").val($(this).data('kodeprovinsi')); 
-		 	$("input#txtNamaProvinsi").val($(this).data('namaprovinsi'));
-		 	$("input#kodewilayah").val($(this).data('kodewilayah'));
-        });
 
-		
+		$("form#formprovinsi").submit(function(event) {
+			var kodeprov = $('input#txtKodeProvinsi').val();
+			var namaprov = $('input#txtNamaProvinsi').val();
+			var kodewilayah = $('input#kodewilayah').val();
+
+			$.ajax({
+				type: "POST",
+				url: "<?php echo site_url() ?>Datatables/provinsi_save/" + kodewilayah,
+				data: {
+					kodeprov: kodeprov,
+					namaprov: namaprov,
+					kodewilayah: kodewilayah
+				},
+				dataType: "json",
+				encode: true,
+				success: function(data) {
+					tableProvinsi.ajax.reload(null, false);
+				}
+			});
+		});
+
+		$("#tableProvinsi").on("click", ".editdata", function() {
+			$("input#txtKodeProvinsi").val($(this).data('kodeprovinsi'));
+			$("input#txtNamaProvinsi").val($(this).data('namaprovinsi'));
+			$("input#kodewilayah").val($(this).data('kodewilayah'));
+		});
+
+
 		// Hapus provinsi
 		$("#tableProvinsi").on('click', '.deletedata', function() {
-			var kodeprov = $(this).data("kodeprovinsi"); 
+			var kodeprov = $(this).data("kodeprovinsi");
 			$.ajax({
 				url: "<?php echo site_url(); ?>Datatables/provinsi_delete",
 				method: "POST",
@@ -147,12 +147,12 @@
 								}).then(function(isConfirm) {
 									if (isConfirm) {
 										location.reload();
-									} 
+									}
 								});
-								
-							};      
+
+							};
 						})
-					}  else {
+					} else {
 						Swal.fire({
 							title: "Gagal",
 							text: "Menghapus provinsi!",
@@ -160,14 +160,11 @@
 						}).then(function(isConfirm) {
 							if (isConfirm) {
 								location.reload();
-							} 
+							}
 						});
 					}
 				}
 			});
 		});
 	});
-
-
-
 </script>

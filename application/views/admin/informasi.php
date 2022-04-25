@@ -1,12 +1,10 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
-<!-- Begin Page Content -->
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-8">
-            <!-- DataTales Example -->
             <div class="card shadow mb-4">
-
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Informasi</h6>
                 </div>
@@ -47,9 +45,7 @@
         </div>
 
         <div class="col-lg-4">
-            <!-- DataTales Example -->
             <div class="card shadow mb-4">
-
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Informasi</h6>
                 </div>
@@ -151,8 +147,6 @@
             a.judulinformasi = $("input[name='judulinformasi']").val();
             c.append("judulinformasi", a.judulinformasi);
         });
-
-
 
         // Simpan Informasi
         $(document).on('click', '.saveInformasi', function(e) {

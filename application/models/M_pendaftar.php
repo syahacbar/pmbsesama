@@ -1,13 +1,13 @@
 <?php
 
 class M_pendaftar extends CI_Model
-{ 
+{
     //set nama tabel yang akan kita tampilkan datanya
     var $table = 't_biodata';
     //set kolom order, kolom pertama saya null untuk kolom edit dan hapus
-    var $column_order = array(NULL, NULL, 'status','tb. username','namalengkap','pilihan1','pilihan2','pilihan3','suku');
+    var $column_order = array(NULL, NULL, 'status', 'tb. username', 'namalengkap', 'pilihan1', 'pilihan2', 'pilihan3', 'suku');
 
-    var $column_search = array('namalengkap','u.username');
+    var $column_search = array('namalengkap', 'u.username');
     // default order 
     var $order = array('idt_biodata' => 'ASC');
 
@@ -16,8 +16,6 @@ class M_pendaftar extends CI_Model
         $this->db->select('*,(SELECT p1.namaprodi FROM prodi p1 WHERE p1.idprodi=tb.prodipilihan1) AS pilihan1, (SELECT p2.namaprodi FROM prodi p2 WHERE p2.idprodi=tb.prodipilihan2) AS pilihan2, (SELECT p3.namaprodi FROM prodi p3 WHERE p3.idprodi=tb.prodipilihan3) AS pilihan3');
         $this->db->from('users u');
         $this->db->join('t_biodata tb', 'tb.username = u.username');
-
-        //$this->db->group_start();
 
         if (isset($_POST['is_tahunakademik']) && $_POST['is_tahunakademik'] != "0") {
             $this->db->where('tahunakademik', $_POST['is_tahunakademik']);
@@ -34,8 +32,6 @@ class M_pendaftar extends CI_Model
         if (isset($_POST['is_suku']) && $_POST['is_suku'] != '0') {
             $this->db->where('suku', $_POST['is_suku']);
         }
-
-        //$this->db->group_end();
 
         $i = 0;
         foreach ($this->column_search as $item) // loop kolom 
@@ -169,9 +165,6 @@ class M_pendaftar extends CI_Model
 
     public function edit_pendaftar($username)
     {
-        // $query = $this->db->query("SELECT * FROM t_biodata WHERE username=$username");
-        // return $query;
-        // $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil FROM t_biodata tb LEFT JOIN upload_data u ON u.username=tb.username WHERE tb.username=$username ORDER BY u.id DESC LIMIT 1");
         $this->db->select('tb.*, u.email AS email, u.phone AS nohp,
         (SELECT ud.namafile FROM upload_data ud WHERE ud.username=tb.username ORDER BY id DESC LIMIT 1) AS fotoprofil,
         (SELECT p1.namaprodi FROM prodi p1 WHERE p1.idprodi=tb.prodipilihan1) AS pilihan1,
@@ -199,12 +192,6 @@ class M_pendaftar extends CI_Model
         return $query;
     }
 
-    // public function edit_pendaftar($username)
-    // {
-    //     $query = $this->db->query("SELECT * FROM t_biodata WHERE username=$username");
-    //     return $query;
-    // }
-
     // hapus data pendaftar
     function hapus_data($idt_biodata)
     {
@@ -223,8 +210,7 @@ class M_pendaftar extends CI_Model
     {
         $query = $this->db->query("SELECT * FROM t_biodata WHERE suku='$suku'");
         return $query;
-    } 
-
+    }
 
     public function get_status()
     {

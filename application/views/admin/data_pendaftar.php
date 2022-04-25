@@ -1,7 +1,8 @@
     <link href='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.css' type='text/css' rel='stylesheet'>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.4.0/dropzone.js' type='text/javascript'></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
 
-    <style type="text/css">
+    <style>
     	fieldset {
     		display: none
     	}
@@ -201,16 +202,6 @@
     	}
 
     	/* Foto Profil */
-    	/*	.tempatfoto {
-  position: relative;
-  width: 125px;
-  height: 125px;
-  border-radius: 50%;
-  overflow: hidden;
-  background-color: #111;
-  margin: 0 auto;
-}*/
-
     	.tempatfoto .col-sm-12 {
     		padding: 0;
     	}
@@ -295,16 +286,11 @@
     		font-size: 12px;
     	}
     </style>
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.24/css/dataTables.bootstrap4.min.css">
-    <!-- Begin Page Content -->
-
 
     <div class="container-fluid">
     	<div class="row">
     		<div class="col-lg-12">
-    			<!-- DataTales Example -->
     			<div class="card shadow mb-4">
-
     				<div class="card-header py-3">
     					<div class="row">
     						<div class="col-sm-6">
@@ -414,12 +400,9 @@
     							<div class="row tempatfoto">
     								<div class="col-sm-12">
     									<img src="" id="fotopas"><br>
-    									<!-- <button class="btnUnggahfoto">Ubah Foto</button> -->
     									<div class="unggah">
     										<span class="icon_edit"><i class="fas fa-edit"></i></span>
     										<button class="btnUnggahfoto tombol btn btn-primary">Ubah Foto</button>
-
-    										<!-- <span class="tombol">Edit Profile</span> -->
     									</div>
     								</div>
     							</div>
@@ -440,7 +423,6 @@
     						</div>
     					</div>
     					<div role="tabpanel" class="mt-4">
-    						<!-- Nav tabs -->
     						<ul class="nav nav-tabs" role="tablist">
     							<li role="presentation" class="active">
     								<a class="active" href="#infoPribadi" aria-controls="infoPribadi" role="tab" data-toggle="tab">Identitas Pendaftar</a>
@@ -455,7 +437,6 @@
     								<a href="#infoWali" aria-controls="infoWali" role="tab" data-toggle="tab">Data Wali</a>
     							</li>
     						</ul>
-    						<!-- Tab panes -->
     						<div class="tab-content">
     							<div role="tabpanel" class="tab-pane active" id="infoPribadi">
     								<div class="col-md-12">
@@ -500,22 +481,6 @@
     														</div>
 
     													</div>
-
-    													<!-- <div class="col-sm-6 fotoprofil">
-													<div class="row">
-														<div class="col-sm-12 d-flex justify-content-flex-start">
-															<div class="form-group">
-															</div>
-
-															<div class="form-group tombol">
-																<button type="button" class="btn btn-primary btn-sm" data-toggle="modal" data-target="#unggahFoto">Ubah Foto</button>
-															</div>
-														</div>
-														<div class="col-sm-12 d-flex justify-content-flex-start">
-														</div>
-													</div>
-
-												</div> -->
     												</div>
     											</div>
 
@@ -735,9 +700,7 @@
     													<textarea name="alamatlaintempattinggal" id="alamatlaintempattinggal" type="text" class="form-control" placeholder="" value="" required></textarea>
     												</div>
     											</div>
-
     										</div>
-
 
     										<div class="row">
     											<div class="col-12 mt-4">
@@ -838,8 +801,6 @@
     												</div>
     											</div>
 
-
-
     											<div class="col-sm-12 mt-4">
     												<div class="form-group">
     													<h5 class="fs-title">Nilai Rata-Rata Rapor</h5>
@@ -854,7 +815,6 @@
     																	<input name="nrapor1" id="nrapor1" type="text" class="form-control" placeholder="" value="" required></input>
     																</div>
     															</div>
-
 
     															<div class="col-sm-12">
     																<div class="form-group">
@@ -892,12 +852,7 @@
     															</div>
     														</div>
     													</div>
-
     												</div>
-
-
-
-
     											</div>
     										</div>
     									</div>
@@ -1082,7 +1037,6 @@
     																<small>Nomor telp atau handphone yang bisa dihubungi</small>
     															</div>
     														</div>
-
     													</div>
     												</div>
     											</div>
@@ -1161,8 +1115,7 @@
     				</div>
     				<div class="modal-body">
     					<form class="dropzone uploadfoto" id="image-upload">
-    						<div class="alert alert-primary alert-dismissible
-	fade show" role="alert"> <small>Rasio Foto : 4 x 6, atau max resolusi
+    						<div class="alert alert-primary alert-dismissible fade show" role="alert"> <small>Rasio Foto : 4 x 6, atau max resolusi
     								300px x 450px, dengan max size : 200kb, Tipe file : jpg, jpeg,
     								png.</small> <button type="button" class="close" data-dismiss="alert" aria-label="Close"> <span aria-hidden="true">&times;</span> </button>
     						</div>
@@ -1173,20 +1126,23 @@
     					</form>
     				</div>
     				<div class="modal-footer"> <button id="uploadFile" type="button" class="btn btn-primary">Upload</button>
-    					<button id="closeModal" type="button" class="btn
-	btn-default">Kembali</button>
+    					<button id="closeModal" type="button" class="btn btn-default">Kembali</button>
     				</div>
     			</div>
     		</div>
     	</div>
     	<!-- Akhir Modal Update Foto Profil -->
+
     	<script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/vendor/jquery/jquery.min.js"></script>>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 
     	<script type="text/javascript">
     		$(document).ready(function() {
+    			var save_method; //for save method string
+    			var tablePendaftar;
 
+    			Dropzone.autoDiscover = false;
 
     			$("#provtempatlahir").change(function() {
     				var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
@@ -1254,7 +1210,6 @@
     			});
 
     			$(".edit").click(function() {
-
     				$(".edit").removeClass("tampil");
     				$(".edit h6").removeClass("font-weight-bold");
     				$(".edit h6").addClass("text-muted");
@@ -1283,16 +1238,6 @@
     				});
     			});
 
-    		});
-    	</script>
-
-    	<script type="text/javascript">
-    		var save_method; //for save method string
-    		var tablePendaftar;
-
-    		Dropzone.autoDiscover = false;
-
-    		$(document).ready(function() {
     			var tablePendaftar = $('#tablePendaftar').DataTable({
     				"stateSave": true,
     				"language": {
@@ -1805,7 +1750,6 @@
     				});
     			});
 
-
     			var edit_fotoprofil = new Dropzone(".editFoto", {
     				autoProcessQueue: true,
     				url: "<?php echo site_url('administrator/edit_pendaftar_foto') ?>",
@@ -1840,9 +1784,7 @@
     			});
 
     		});
-    	</script>
 
-    	<script>
     		function addImage(pk) {
     			alert("addImage: " + pk);
     		}

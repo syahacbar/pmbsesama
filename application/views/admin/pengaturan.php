@@ -24,11 +24,11 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <button class="btn btn-primary btnSimpan" type="button">Simpan</button>
                 </div>
             </div>
-        </div>   
+        </div>
     </div>
 </div>
 
@@ -39,7 +39,6 @@
 
         $(document).on("click", ".btnSimpan", function() {
             var sesidaftar = $(".sesidaftar:checked").val();
-
 
             $.ajax({
                 url: "<?php echo site_url('administrator/ubah_sesidaftar'); ?>",

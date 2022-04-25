@@ -31,7 +31,6 @@ class M_register extends CI_Model
         }
 
         $username = date('Y') . "33" . $nourut;
-
         $query = $this->db->query("UPDATE t_akun SET username='$username' WHERE id='$id'");
         return $query;
     }
@@ -42,7 +41,6 @@ class M_register extends CI_Model
         $this->db->update('t_biodata', $params);
     }
 
-
     function get_user_username($username)
     {
         $query = $this->db->query("SELECT * FROM users WHERE username = $username");
@@ -51,9 +49,7 @@ class M_register extends CI_Model
 
     function get_biodata_by_username($username)
     {
-
         $query = $this->db->query("SELECT tb.*, u.namafile AS fotoprofil, ts.nama_smta AS namasmta, ts.npsn_smta AS npsnsmta, ts.alamat_smta AS alamatsmta, w.nama AS provinsismta FROM t_biodata tb LEFT JOIN upload_data u ON u.username=tb.username LEFT JOIN t_smta ts ON ts.id=tb.nama_smta LEFT JOIN wilayah_2020 w ON w.kode=ts.provinsi_smta WHERE tb.username='$username' ORDER BY u.id DESC LIMIT 1");
-
         return $query;
     }
 

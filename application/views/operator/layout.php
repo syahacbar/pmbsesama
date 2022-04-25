@@ -48,18 +48,18 @@
 
             <!-- Divider -->
             <hr class="sidebar-divider">
-            <?php //if ($this->ion_auth->in_group('sekolah')) { ?>
-                <!-- Heading -->
-                <div class="sidebar-heading">
-                    Pendaftaran
-                </div>
-                <li class="nav-item <?php echo ($this->uri->segment(3) == "pendaftar") ? "active" : ""; ?>">
-                    <a class="nav-link" href="<?php echo site_url('operator/pendaftar'); ?>">
-                        <i class="fas fa-fw fa-laptop"></i>
-                        <span>Data Pendaftar</span></a>
-                </li>
-                <?php //} ?>
-                
+            <!-- Heading -->
+            <div class="sidebar-heading">
+                Pendaftaran
+            </div>
+            <li class="nav-item <?php echo ($this->uri->segment(3) == "pendaftar") ? "active" : ""; ?>">
+                <a class="nav-link" href="<?php echo site_url('operator/pendaftar'); ?>">
+                    <i class="fas fa-fw fa-laptop"></i>
+                    <span>Data Pendaftar</span></a>
+            </li>
+            <?php //} 
+            ?>
+
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>
@@ -231,7 +231,10 @@
 
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $user->first_name; ?></span>
+                                <div class="nama_sekolah d-flex flex-column">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $user->first_name; ?></span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $user->username; ?></span>
+                                </div>
                                 <img class="img-profile rounded-circle" src="<?php echo base_url(); ?>/assets/backend/startbootstrap/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -328,10 +331,6 @@
     <!-- Page level custom scripts -->
     <script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/js/demo/datatables-demo.js"></script>
     <script src="<?php echo base_url(); ?>/assets/backend/sweetalert2/sweetalert2.min.js"></script>
-
-    <script>
-        // var flash = $('#flash').data('flash');
-    </script>
 
 </body>
 

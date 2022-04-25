@@ -31,13 +31,10 @@
 </head>
 
 <body>
-    <!-- Begin Page Content -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <!-- DataTales Example -->
                 <div class="card shadow mb-4">
-
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Agenda Penerimaan</h6>
                     </div>
@@ -90,7 +87,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Modal Tambah Agenda -->
         <div class="modal fade" id="newAgenda" tabindex="-1" role="dialog" aria-labelledby="newAgendaLabel" aria-hidden="true">
@@ -405,21 +401,15 @@
                     })
                 });
 
-            });
-        </script>
+                // Tini MCE Editor
+                tinymce.init({
+                    selector: '#tinymce'
+                });
 
-        <script>
-            tinymce.init({
-                selector: '#tinymce'
-            });
+                tinymce.init({
+                    selector: '#isi'
+                });
 
-            tinymce.init({
-                selector: '#isi'
-            });
-        </script>
-
-        <script>
-            $(document).ready(function() {
                 $(document).on('click', '#ubahAgenda', function() {
                     var id = $(this).data('id');
                     var judulagenda = $(this).data('judulagenda');
@@ -433,7 +423,7 @@
                     const img = document.getElementById("gambar");
                     img.src = "<?php echo base_url('assets/upload/agenda/'); ?>" + gbr;
                 })
-            })
+            });
         </script>
 </body>
 

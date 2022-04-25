@@ -89,7 +89,6 @@
     .row.mx-2.mb-3.infoAgenda {
       margin: 10px 0 !important;
       padding: 0 !important;
-      /* box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%); */
     }
 
     .row.mx-2.mb-3.infoAgenda .border-top {
@@ -145,11 +144,8 @@
 <body class='snippet-body'>
   <div class="container-fluid px-1 px-md-5 px-lg-1 px-xl-5 py-5 mx-auto">
     <div class="card card0 border-0">
-
       <!-- Navigation-->
       <?php $this->load->view('pendaftar/navbar'); ?>
-
-
       <div class="row w-100 m-0">
         <div class="col-sm-12 p-0">
           <div class="row w-100 m-0 mt-3">
@@ -221,15 +217,8 @@
           </div>
         </div>
       </div>
-
-
-
-
-
     </div>
   </div>
-
-
 
   <script type='text/javascript' src='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js'></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>

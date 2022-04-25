@@ -32,7 +32,6 @@ class User extends CI_Controller
     public function index()
     {
         $data['pengguna'] = $this->M_user->get_all();
-        // $data['pengguna'] = $this->ion_auth->users('sekolah')->result();
         $data['grup'] = $this->M_user->group();
 
         $data['_view'] = 'admin/user';
@@ -156,8 +155,6 @@ class User extends CI_Controller
 
             $this->data['_view'] = 'admin/user';
             $this->load->view('admin/layout', $this->data);
-
-            //$this->_render_page('auth' . DIRECTORY_SEPARATOR . 'create_user', $this->data);
         }
     }
 
@@ -228,7 +225,6 @@ class User extends CI_Controller
         }
     }
 
-
     public function edit_operator()
     {
         if (isset($_POST) && !empty($_POST)) {
@@ -251,10 +247,4 @@ class User extends CI_Controller
             }
         }
     }
-
-    // public function searchSMTA()
-    // {
-    //     $q = $this->input->get('q');
-    //     echo json_encode($this->M_namasmta->getSMTA($q));
-    // }
 }

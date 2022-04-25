@@ -171,31 +171,6 @@
                         </div>
                     </div>
                 </div>
-                <!-- 
-                <div class="col-md-6">
-                    <div class="card2 card border-0 px-4 py-5 informasiTerbaru">
-                        <div class="row mb-4 px-3">
-                            <h4 class="mb-0 mr-4 mt-2">Informasi</h4>
-                        </div>
-                        <div class="row px-3 mb-4">
-                            <div>
-                                <h6>SK Penetapan Kelulusan Lokal 2021</h6>
-                                <button class="btn btn-info"><i class="fa fa-download"></i> Download</button>
-                            </div>
-                        </div>
-                        <div class="row px-3 mb-4">
-                            <div>
-                                <h6>Prosedur Registrasi Ulang Calon Mahasiswa Jalur Lokal 2021</h6>
-                                <button class="btn btn-info"><i class="fa fa-download"></i> Download</button>
-                            </div>
-                        </div>
-                        <div class="row px-3 mb-4">
-                            <div>
-                                <a href="#">Selengkapnya ...</a>
-                            </div>
-                        </div>
-                    </div>
-                </div> -->
 
                 <div class="col-md-6">
                     <div class="card2 card border-0 px-4 py-5 informasiTerbaru">
@@ -270,12 +245,6 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- SimpleLightbox plugin JS-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <!-- * *                               SB Forms JS                               * *-->
-    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 

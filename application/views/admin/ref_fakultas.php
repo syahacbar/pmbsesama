@@ -1,8 +1,6 @@
-<!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6">
-            <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
@@ -48,7 +46,6 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
@@ -70,15 +67,13 @@
         </div>
     </div>
 </div>
-<!-- /.container-fluid -->
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
 <script type="text/javascript">
     $(document).ready(function() {
         var table = $('#dataTable').DataTable();
-        $("#dataTable").on("click", ".editform", function(){
+        $("#dataTable").on("click", ".editform", function() {
             event.preventDefault();
             $("input#txtFakultas").val($(this).data('fakultas'));
             $("input#idfakultas").val($(this).data('idfakultas'));
@@ -95,7 +90,7 @@
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Ya',
                 cancelButtonText: 'Tidak'
-                }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
                         url: "<?php echo site_url(); ?>administrator/hapus_fakultas",
@@ -103,17 +98,16 @@
                         data: {
                             idfakultas: idfakultas
                         },
-                        
-                        success: function(data) {
-                        }
+
+                        success: function(data) {}
                     });
 
                     Swal.fire(
                         'Terhapus!',
-                        )
-                    };
-                    
-                    location.reload();            
+                    )
+                };
+
+                location.reload();
             })
         });
     });

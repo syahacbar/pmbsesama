@@ -14,13 +14,10 @@
 </head>
 
 <body>
-    <!-- Begin Page Content -->
     <div class="container-fluid">
         <div class="row">
             <div class="col-lg-12">
-                <!-- DataTales Example -->
                 <div class="card shadow mb-4">
-
                     <div class="card-header py-3">
                         <h6 class="m-0 font-weight-bold text-primary">Operator Sekolah</h6>
                     </div>
@@ -81,7 +78,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Modal Tambah User-->
         <div class="modal fade" id="newUser" role="dialog" aria-labelledby="newUserLabel" aria-hidden="true">

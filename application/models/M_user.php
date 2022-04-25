@@ -38,15 +38,11 @@ class M_user extends CI_Model
     public function edit($data)
     {
         $sql = "UPDATE users SET first_name='" . $data['first_name'] . "', username='" . $data['username'] . "', company='" . $data['company'] . "', email ='" . $data['email '] . "',phone='" . $data['phone'] . "' WHERE id='" . $data['id'] . "'";
-
         $this->db->query($sql);
-
         return $this->db->affected_rows();
     }
 
     public function tambah_operator($data)
     {
-        
     }
-
 }

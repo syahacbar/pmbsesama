@@ -1,8 +1,6 @@
-<!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6">
-            <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
@@ -48,9 +46,7 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <!-- DataTales Example -->
             <div class="card shadow mb-4">
-
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Jurusan SMTA</h6>
                 </div>
@@ -70,8 +66,6 @@
         </div>
     </div>
 </div>
-<!-- /.container-fluid -->
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 

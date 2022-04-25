@@ -90,7 +90,6 @@
         .row.mx-2.mb-3.detailAgenda {
             margin: 10px 0 !important;
             padding: 0 !important;
-            /* box-shadow: 0 2px 3px rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 10%); */
         }
 
         .row.mx-2.mb-3.detailAgenda .border-top {

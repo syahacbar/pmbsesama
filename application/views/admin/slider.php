@@ -1,16 +1,15 @@
 <link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.0.1/min/dropzone.min.css" rel="stylesheet">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/4.2.0/min/dropzone.min.js"></script>
-<!-- Begin Page Content -->
 <style>
     .img-thumbnail {
         width: 60%;
         margin: 0 20%;
     }
 </style>
+
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-8">
-            <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
@@ -63,9 +62,7 @@
         </div>
 
         <div class="col-lg-4">
-            <!-- DataTales Example -->
             <div class="card shadow mb-4">
-
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Tambah Slider</h6>
                 </div>
@@ -98,7 +95,6 @@
                 </button>
             </div>
             <div class="modal-body">
-                <!-- <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">&times;</span><span class="sr-only">Close</span></button> -->
                 <img src="" class="imagepreview" style="width: 100%;">
             </div>
             <div class="modal-footer">
@@ -112,6 +108,8 @@
 
 <script type="text/javascript">
     $(document).ready(function() {
+        Dropzone.autoDiscover = false;
+
         var table = $('#dataTable').DataTable();
 
         $(document).on('click', '.deletedata', function() {
@@ -162,46 +160,42 @@
 
             })
         });
-    });
-</script>
-
-<script type="text/javascript">
-    Dropzone.autoDiscover = false;
-
-    var upload_slider = new Dropzone(".gambarslider", {
-        url: "<?php echo site_url('administrator/tambah_slider') ?>",
-        maxFilesize: 5,
-        method: "post",
-        acceptedFiles: ".jpeg,.jpg,.png,.gif",
-        paramName: "slider",
-        dictInvalidFileType: "Type file ini tidak dizinkan",
-        addRemoveLinks: true,
-        autoProcessQueue: false,
-    });
-
-    upload_slider.on("complete", function(file) {
-        if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
-            Swal.fire({
-                title: "Berhasil",
-                text: "Anda menambah slider baru!",
-                icon: "success",
-            }).then(function(isConfirm) {
-                if (isConfirm) {
-                    location.reload();
-                }
-            });
-        }
-    });
-
-    // Simpan Slider
-    $(document).on('click', '.saveSlider', function(e) {
-        upload_slider.processQueue();
-    })
-
-    $(function() {
-        $('.pop').on('click', function() {
-            $('.imagepreview').attr('src', $(this).find('img').attr('src'));
-            $('#imagemodal').modal('show');
+        var upload_slider = new Dropzone(".gambarslider", {
+            url: "<?php echo site_url('administrator/tambah_slider') ?>",
+            maxFilesize: 5,
+            method: "post",
+            acceptedFiles: ".jpeg,.jpg,.png,.gif",
+            paramName: "slider",
+            dictInvalidFileType: "Type file ini tidak dizinkan",
+            addRemoveLinks: true,
+            autoProcessQueue: false,
         });
+
+        upload_slider.on("complete", function(file) {
+            if (this.getUploadingFiles().length === 0 && this.getQueuedFiles().length === 0) {
+                Swal.fire({
+                    title: "Berhasil",
+                    text: "Anda menambah slider baru!",
+                    icon: "success",
+                }).then(function(isConfirm) {
+                    if (isConfirm) {
+                        location.reload();
+                    }
+                });
+            }
+        });
+
+        // Simpan Slider
+        $(document).on('click', '.saveSlider', function(e) {
+            upload_slider.processQueue();
+        });
+
+        $(function() {
+            $('.pop').on('click', function() {
+                $('.imagepreview').attr('src', $(this).find('img').attr('src'));
+                $('#imagemodal').modal('show');
+            });
+        });
+
     });
 </script>

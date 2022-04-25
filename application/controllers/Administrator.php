@@ -29,9 +29,7 @@ class Administrator extends CI_Controller
 		$this->load->model('M_slider');
 		$this->load->model('M_informasi');
 		$this->load->model('M_pengaturan');
-
 	}
-
 
 	public function index()
 	{
@@ -62,7 +60,8 @@ class Administrator extends CI_Controller
 		$this->load->view('admin/layout', $data);
 	}
 
-	public function tambah_agama() {
+	public function tambah_agama()
+	{
 		$data = array(
 			'agama'  => $this->input->post('agama'),
 		);
@@ -70,9 +69,10 @@ class Administrator extends CI_Controller
 		$this->M_agama->add($data);
 
 		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
-		redirect('administrator/ref_agama');	
+		redirect('administrator/ref_agama');
 	}
-	public function edit_agama() {
+	public function edit_agama()
+	{
 		$id = $this->input->post('idagama');
 		$data = array(
 			'agama'  => $this->input->post('agama')
@@ -81,10 +81,10 @@ class Administrator extends CI_Controller
 		$this->session->set_flashdata('notif', 'Data Berhasil diubah');
 		redirect('administrator/ref_agama');
 	}
-	public function hapus_agama() {
+	public function hapus_agama()
+	{
 		$id = $this->input->post('idagama');
 		$this->M_agama->delete($id);
-		// redirect('administrator/ref_agama');
 	}
 
 	//referensi data status menikah
@@ -98,17 +98,19 @@ class Administrator extends CI_Controller
 		$this->load->view('admin/layout', $data);
 	}
 
-	public function tambah_statusmenikah() {
+	public function tambah_statusmenikah()
+	{
 		$data = array(
 			'status'  => $this->input->post('statusmenikah'),
 		);
 
 		$this->M_statusmenikah->add($data);
 		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
-		redirect('administrator/ref_statusmenikah');	
+		redirect('administrator/ref_statusmenikah');
 	}
 
-	public function edit_statusmenikah() {
+	public function edit_statusmenikah()
+	{
 		$id = $this->input->post('idstatusmenikah');
 		$data = array(
 			'status'  => $this->input->post('statusmenikah')
@@ -118,7 +120,8 @@ class Administrator extends CI_Controller
 		redirect('administrator/ref_statusmenikah');
 	}
 
-	public function hapus_statusmenikah() {
+	public function hapus_statusmenikah()
+	{
 		$id = $this->input->post('idstatusmenikah');
 		$this->M_statusmenikah->delete($id);
 		redirect('administrator/ref_statusmenikah');
@@ -136,7 +139,8 @@ class Administrator extends CI_Controller
 		$this->load->view('admin/layout', $data);
 	}
 
-	public function tambah_jenissmta() {
+	public function tambah_jenissmta()
+	{
 		$data = array(
 			'namajenissmta'  => $this->input->post('jenissmta'),
 		);
@@ -144,10 +148,11 @@ class Administrator extends CI_Controller
 		$this->M_jenissmta->add($data);
 
 		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
-		redirect('administrator/ref_jenissmta');	
+		redirect('administrator/ref_jenissmta');
 	}
 
-	public function edit_jenissmta() {
+	public function edit_jenissmta()
+	{
 		$id = $this->input->post('idjenissmta');
 		$data = array(
 			'namajenissmta'  => $this->input->post('jenissmta')
@@ -157,10 +162,10 @@ class Administrator extends CI_Controller
 		redirect('administrator/ref_jenissmta');
 	}
 
-	public function hapus_jenissmta() {
+	public function hapus_jenissmta()
+	{
 		$id = $this->input->post('idjenissmta');
 		$this->M_jenissmta->delete($id);
-		// redirect('administrator/ref_jenissmta');
 	}
 
 	//referensi data jurusan smta
@@ -175,36 +180,35 @@ class Administrator extends CI_Controller
 		$this->load->view('admin/layout', $data);
 	}
 
-	public function tambah_jurusansmta() {
+	public function tambah_jurusansmta()
+	{
 		$data = array(
 			'namajurusan'  => $this->input->post('jurusansmta'),
-		); 
+		);
 
 		$this->M_jurusansmta->add($data);
 		$this->session->set_flashdata('notif', 'Data Berhasil ditambahkan');
 		redirect('administrator/ref_jurusansmta');
 	}
 
-	public function edit_jurusansmta() {
+	public function edit_jurusansmta()
+	{
 		$id = $this->input->post('idjurusansmta');
 		$data = array(
 			'namajurusan'  => $this->input->post('jurusansmta')
 		);
 		$this->M_jurusansmta->edit($data, $id);
 		$this->session->set_flashdata('notif', 'Data Berhasil diubah');
-		// echo json_encode(array("statusCode" => 1));
 		redirect('administrator/ref_jurusansmta');
-
 	}
 
-	public function hapus_jurusansmta() {
+	public function hapus_jurusansmta()
+	{
 		$id = $this->input->post('idjurusansmta');
 		$this->M_jurusansmta->delete($id);
 		echo json_encode(array("statusCode" => 1));
 	}
-	
 
-	
 	public function ref_namasmta()
 	{
 		$this->load->model('M_namasmta');
@@ -219,7 +223,7 @@ class Administrator extends CI_Controller
 	public function tambah_smta()
 	{
 		$this->load->model('M_namasmta');
-		$data = array( 
+		$data = array(
 			'nama_smta'  => $this->input->post('namasmta'),
 			'alamat_smta'  => $this->input->post('alamatsmta'),
 			'npsn_smta'  => $this->input->post('npsnsmta'),
@@ -229,7 +233,6 @@ class Administrator extends CI_Controller
 		);
 		$this->M_namasmta->add($data);
 		echo json_encode(array("statusCode" => 1));
-
 	}
 
 	public function simpan_editsmta()
@@ -246,8 +249,6 @@ class Administrator extends CI_Controller
 		);
 		$this->M_namasmta->edit($data, $idsmta);
 		echo json_encode(array("statusCode" => 1));
-
-
 	}
 
 	public function hapus_smta()
@@ -257,7 +258,6 @@ class Administrator extends CI_Controller
 		$id = $this->input->post('idsmta');
 		$this->M_namasmta->delete($id);
 		echo json_encode(array("statusCode" => 1));
-		
 	}
 
 
@@ -272,7 +272,8 @@ class Administrator extends CI_Controller
 		$this->load->view('admin/layout', $data);
 	}
 
-	public function tambah_pekerjaanortu() {
+	public function tambah_pekerjaanortu()
+	{
 		$data = array(
 			'namapekerjaan'  => $this->input->post('pekerjaanortu'),
 		);
@@ -283,7 +284,8 @@ class Administrator extends CI_Controller
 		redirect('administrator/ref_pekerjaanortu');
 	}
 
-	public function edit_pekerjaanortu() {
+	public function edit_pekerjaanortu()
+	{
 		$id = $this->input->post('idpekerjaan');
 		$data = array(
 			'namapekerjaan'  => $this->input->post('pekerjaanortu')
@@ -293,10 +295,10 @@ class Administrator extends CI_Controller
 		redirect('administrator/ref_pekerjaanortu');
 	}
 
-	public function hapus_pekerjaanortu() {
+	public function hapus_pekerjaanortu()
+	{
 		$id = $this->input->post('idpekerjaan');
 		$this->M_pekerjaanortu->delete($id);
-		// redirect('administrator/ref_pekerjaanortu');
 	}
 
 	//referensi data pendidikan ortu
@@ -304,14 +306,15 @@ class Administrator extends CI_Controller
 	public function ref_pendidikanortu()
 	{
 		$this->load->model('M_pendidikanortu');
-			$data['linkform'] = "administrator/tambah_pendidikanortu";
-			$data['pendidikanortu'] = $this->M_pendidikanortu->get_all();
+		$data['linkform'] = "administrator/tambah_pendidikanortu";
+		$data['pendidikanortu'] = $this->M_pendidikanortu->get_all();
 
 		$data['_view'] = 'admin/ref_pendidikanortu';
 		$this->load->view('admin/layout', $data);
 	}
 
-	public function tambah_pendidikanortu() {
+	public function tambah_pendidikanortu()
+	{
 		$data = array(
 			'namajenjang'  => $this->input->post('pendidikanortu'),
 		);
@@ -321,7 +324,8 @@ class Administrator extends CI_Controller
 		redirect('administrator/ref_pendidikanortu');
 	}
 
-	public function edit_pendidikanortu() {
+	public function edit_pendidikanortu()
+	{
 		$id = $this->input->post('idpendidikan');
 		$data = array(
 			'namajenjang'  => $this->input->post('pendidikanortu')
@@ -330,7 +334,8 @@ class Administrator extends CI_Controller
 		$this->session->set_flashdata('notif', 'Data Berhasil diubah');
 		redirect('administrator/ref_pendidikanortu');
 	}
-	public function hapus_pendidikanortu() {
+	public function hapus_pendidikanortu()
+	{
 		$id = $this->input->post('idpendidikan');
 		$this->M_pendidikanortu->delete($id);
 		redirect('administrator/ref_pendidikanortu');
@@ -347,7 +352,8 @@ class Administrator extends CI_Controller
 		$this->load->view('admin/layout', $data);
 	}
 
-	public function tambah_penghasilanortu() {
+	public function tambah_penghasilanortu()
+	{
 		$data = array(
 			'penghasilan'  => $this->input->post('penghasilanortu'),
 		);
@@ -358,7 +364,8 @@ class Administrator extends CI_Controller
 		redirect('administrator/ref_penghasilanortu');
 	}
 
-	public function edit_penghasilanortu() {
+	public function edit_penghasilanortu()
+	{
 		$id = $this->input->post('idpenghasilan');
 		$data = array(
 			'penghasilan'  => $this->input->post('penghasilanortu')
@@ -368,10 +375,10 @@ class Administrator extends CI_Controller
 		redirect('administrator/ref_penghasilanortu');
 	}
 
-	public function hapus_penghasilanortu() {
+	public function hapus_penghasilanortu()
+	{
 		$id = $this->input->post('idpenghasilan');
 		$this->M_penghasilanortu->delete($id);
-		// redirect('administrator/ref_penghasilanortu');
 	}
 
 	//referensi data fakultas
@@ -454,9 +461,8 @@ class Administrator extends CI_Controller
 	{
 		$id = $this->input->post('idprodi');
 		$this->M_prodi->delete($id);
-		
-		echo json_encode(array("statusCode" => 1));
 
+		echo json_encode(array("statusCode" => 1));
 	}
 
 	//referensi data wilayah
@@ -513,7 +519,6 @@ class Administrator extends CI_Controller
 
 		$data['_view'] = 'admin/data_pendaftar';
 		$this->load->view('admin/layout', $data);
-
 	}
 	public function edit_pendaftar()
 	{
@@ -642,10 +647,8 @@ class Administrator extends CI_Controller
 	public function kartupendaftaran($username)
 	{
 		$this->load->library('Pdf');
-		//$msg = $this->session->flashdata('msg');
 		$r = $this->M_register->get_kartupendaftaran($username)->row();
 
-		
 		$data = array(
 			'username' => $r->username,
 			'password' => $r->pass,
@@ -653,7 +656,7 @@ class Administrator extends CI_Controller
 			'email' => $r->email,
 			'nohp' => $r->phone,
 		);
-		$this->load->view('pendaftar/konfirmasi_pendaftaran_pdf', $data); 
+		$this->load->view('pendaftar/konfirmasi_pendaftaran_pdf', $data);
 	}
 
 	//referensi data slider
@@ -681,13 +684,11 @@ class Administrator extends CI_Controller
 	public function hapus_slider()
 	{
 		$id = $this->input->post('id');
-		if ($this->M_slider->delete($id))
-		{
+		if ($this->M_slider->delete($id)) {
 			echo json_encode(array("statusCode" => 1));
 		} else {
 			echo json_encode(array("statusCode" => 0));
 		}
-
 	}
 
 	//data agenda
@@ -716,7 +717,7 @@ class Administrator extends CI_Controller
 				'waktu' => $uploaded_on,
 				'gambar' => $namafile
 			));
-		} 
+		}
 	}
 
 	public function editagenda_gambar()
@@ -772,16 +773,15 @@ class Administrator extends CI_Controller
 			$file = $this->upload->data('file_name');
 			$judulinformasi = $this->input->post('judulinformasi');
 			$this->db->insert('informasi', array('judul' => $judulinformasi, 'file' => $file));
-			// $this->session->set_flashdata('notif', 'Data Berhasil ditambah');
 		}
 
 		$data['informasi'] = $this->M_informasi->get_all();
 		$data['_view'] = 'admin/informasi';
 		$this->load->view('admin/layout', $data);
-	
 	}
-	
-	public function hapus_informasi() {
+
+	public function hapus_informasi()
+	{
 		$id = $this->input->post('id');
 		$this->M_informasi->delete($id);
 		echo json_encode(array("statusCode" => 1));
@@ -789,192 +789,186 @@ class Administrator extends CI_Controller
 
 	public function export_pendaftar_excel()
 	{
-		include APPPATH.'third_party/PHPExcel/PHPExcel.php';
+		include APPPATH . 'third_party/PHPExcel/PHPExcel.php';
 		$excel = new PHPExcel();
-	    // Settingan awal fil excel
-	    $excel->getProperties()->setCreator('Admin PMB Sesama')
-	                 ->setLastModifiedBy('Admin PMB Sesama')
-	                 ->setTitle("Data Pendaftar SESAMA 2022-2023")
-	                 ->setSubject("Pendaftar")
-	                 ->setDescription("Data Pendaftar SESAMA 2022-2023")
-	                 ->setKeywords("Data Pendaftar SESAMA 2022-2023");
-	    // Buat sebuah variabel untuk menampung pengaturan style dari header tabel
-	    $style_col = array(
-	      'font' => array('bold' => true), // Set font nya jadi bold
-	      'alignment' => array(
-	        'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
-	        'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
-	      ),
-	      'borders' => array(
-	        'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border top dengan garis tipis
-	        'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  // Set border right dengan garis tipis
-	        'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border bottom dengan garis tipis
-	        'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
-	      ),
-	      'fill' => array(
-            'type' => PHPExcel_Style_Fill::FILL_SOLID,
-            'color' => array('rgb' => 'D9D9D9')
-          )
-	    );
+		// Settingan awal fil excel
+		$excel->getProperties()->setCreator('Admin PMB Sesama')
+			->setLastModifiedBy('Admin PMB Sesama')
+			->setTitle("Data Pendaftar SESAMA 2022-2023")
+			->setSubject("Pendaftar")
+			->setDescription("Data Pendaftar SESAMA 2022-2023")
+			->setKeywords("Data Pendaftar SESAMA 2022-2023");
+		// Buat sebuah variabel untuk menampung pengaturan style dari header tabel
+		$style_col = array(
+			'font' => array('bold' => true), // Set font nya jadi bold
+			'alignment' => array(
+				'horizontal' => PHPExcel_Style_Alignment::HORIZONTAL_CENTER, // Set text jadi ditengah secara horizontal (center)
+				'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+			),
+			'borders' => array(
+				'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border top dengan garis tipis
+				'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  // Set border right dengan garis tipis
+				'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border bottom dengan garis tipis
+				'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
+			),
+			'fill' => array(
+				'type' => PHPExcel_Style_Fill::FILL_SOLID,
+				'color' => array('rgb' => 'D9D9D9')
+			)
+		);
 
-	    // Buat sebuah variabel untuk menampung pengaturan style dari isi tabel
-	    $style_row = array(
-	      'alignment' => array(
-	        'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
-	      ),
-	      'borders' => array(
-	        'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border top dengan garis tipis
-	        'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  // Set border right dengan garis tipis
-	        'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border bottom dengan garis tipis
-	        'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
-	      )
-	    );
+		// Buat sebuah variabel untuk menampung pengaturan style dari isi tabel
+		$style_row = array(
+			'alignment' => array(
+				'vertical' => PHPExcel_Style_Alignment::VERTICAL_CENTER // Set text jadi di tengah secara vertical (middle)
+			),
+			'borders' => array(
+				'top' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border top dengan garis tipis
+				'right' => array('style'  => PHPExcel_Style_Border::BORDER_THIN),  // Set border right dengan garis tipis
+				'bottom' => array('style'  => PHPExcel_Style_Border::BORDER_THIN), // Set border bottom dengan garis tipis
+				'left' => array('style'  => PHPExcel_Style_Border::BORDER_THIN) // Set border left dengan garis tipis
+			)
+		);
 
-	    $excel->setActiveSheetIndex(0)->setCellValue('A1', "Data Pendaftar SESAMA 2022-2023"); 
-	    $excel->getActiveSheet()->mergeCells('A1:BH1'); 
-	    $excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE); // Set bold kolom A1
-	    $excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15); // Set font size 15 untuk kolom A1
-	    $excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT); // Set text center untuk kolom A1
+		$excel->setActiveSheetIndex(0)->setCellValue('A1', "Data Pendaftar SESAMA 2022-2023");
+		$excel->getActiveSheet()->mergeCells('A1:BH1');
+		$excel->getActiveSheet()->getStyle('A1')->getFont()->setBold(TRUE); // Set bold kolom A1
+		$excel->getActiveSheet()->getStyle('A1')->getFont()->setSize(15); // Set font size 15 untuk kolom A1
+		$excel->getActiveSheet()->getStyle('A1')->getAlignment()->setHorizontal(PHPExcel_Style_Alignment::HORIZONTAL_LEFT); // Set text center untuk kolom A1
 
-	    $excel->setActiveSheetIndex(0)->setCellValue('A3', "No."); 
-	    $excel->getActiveSheet()->mergeCells('A3:A4'); 
+		$excel->setActiveSheetIndex(0)->setCellValue('A3', "No.");
+		$excel->getActiveSheet()->mergeCells('A3:A4');
 
-	    $excel->setActiveSheetIndex(0)->setCellValue('B3', "Identitas Pendaftar"); 
-	    $excel->getActiveSheet()->mergeCells('B3:AB3'); 
+		$excel->setActiveSheetIndex(0)->setCellValue('B3', "Identitas Pendaftar");
+		$excel->getActiveSheet()->mergeCells('B3:AB3');
 
-	    $excel->setActiveSheetIndex(0)->setCellValue('AC3', "Data Sekolah"); 
-	    $excel->getActiveSheet()->mergeCells('AC3:AL3'); 
+		$excel->setActiveSheetIndex(0)->setCellValue('AC3', "Data Sekolah");
+		$excel->getActiveSheet()->mergeCells('AC3:AL3');
 
-	    $excel->setActiveSheetIndex(0)->setCellValue('AM3', "Data Orang Tua"); 
-	    $excel->getActiveSheet()->mergeCells('AM3:BB3'); 
+		$excel->setActiveSheetIndex(0)->setCellValue('AM3', "Data Orang Tua");
+		$excel->getActiveSheet()->mergeCells('AM3:BB3');
 
-	    $excel->setActiveSheetIndex(0)->setCellValue('BC3', "Data Wali"); 
-	    $excel->getActiveSheet()->mergeCells('BC3:BG3'); 
+		$excel->setActiveSheetIndex(0)->setCellValue('BC3', "Data Wali");
+		$excel->getActiveSheet()->mergeCells('BC3:BG3');
 
-	    $excel->setActiveSheetIndex(0)->setCellValue('BH3', "Tgl. Pendaftaran"); 
-	    $excel->getActiveSheet()->mergeCells('BH3:BH4'); 
+		$excel->setActiveSheetIndex(0)->setCellValue('BH3', "Tgl. Pendaftaran");
+		$excel->getActiveSheet()->mergeCells('BH3:BH4');
 
 
-	    $excel->setActiveSheetIndex(0);
-	    $excel->getActiveSheet()->getRowDimension('4')->setRowHeight(40);
-	    // Buat header tabel nya pada baris ke 3
-	    $table_columns = array("No. Pendaftaran","NISN","NIK/No. KTP","Nama Lengkap","Jenis Kelamin","Agama","Suku","Status Menikah","Telp","Email","Tinggi Badan (cm)","Berat Badan (kg)","Prov. Tempat Lahir","Kab/Kota Tempat Lahir","Tempat Lahir","Tanggal Lahir","Pilihan I","Pilihan II","Pilihan III","Negara Tempat Tinggal","Provinsi","Kab/Kota","Kec/Distrik","Kel/Desa","Kode Pos","Alamat 1","Alamat 2","Tahun Lulus SMTA","Jurusan SMTA","Jenis SMTA","Nama SMTA","NPSN SMTA","Prov. SMTA","Kab/Kota SMTA","Rapor Sem 3","Rapor Sem 4","Rapor Sem 5","NIK Ayah","Nama Ayah","Pekerjaan Ayah","Pendidikan Ayah","Alamat Kantor Ayah","NIK Ibu","Nama Ibu","Pekerjaan Ibu","Pendidikan Ibu","Penghasilan Orang Tua","Provinsi Orang Tua","Kab/Kota Orang Tua","Kec/Distrik Orang Tua","Alamat Orang Tua","Kode Pos Orang Tua","No. Telp Orang Tua","Nama Wali","Pekerjaan Wali","Penghasilan Wali","No. HP Wali","Alamat Wali");
-	    $column = 1;
-	    foreach($table_columns as $field){
-	        $excel->getActiveSheet()->setCellValueByColumnAndRow($column, 4, $field);
-	        $column++;
-	      }
-
-	    for ($i = 'A'; $i !==   $excel->getActiveSheet()->getHighestColumn(); $i++) {
-			$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
-			$excel->getActiveSheet()->getStyle($i.'3')->applyFromArray($style_col);
-			$excel->getActiveSheet()->getStyle($i.'4')->applyFromArray($style_col);
+		$excel->setActiveSheetIndex(0);
+		$excel->getActiveSheet()->getRowDimension('4')->setRowHeight(40);
+		// Buat header tabel nya pada baris ke 3
+		$table_columns = array("No. Pendaftaran", "NISN", "NIK/No. KTP", "Nama Lengkap", "Jenis Kelamin", "Agama", "Suku", "Status Menikah", "Telp", "Email", "Tinggi Badan (cm)", "Berat Badan (kg)", "Prov. Tempat Lahir", "Kab/Kota Tempat Lahir", "Tempat Lahir", "Tanggal Lahir", "Pilihan I", "Pilihan II", "Pilihan III", "Negara Tempat Tinggal", "Provinsi", "Kab/Kota", "Kec/Distrik", "Kel/Desa", "Kode Pos", "Alamat 1", "Alamat 2", "Tahun Lulus SMTA", "Jurusan SMTA", "Jenis SMTA", "Nama SMTA", "NPSN SMTA", "Prov. SMTA", "Kab/Kota SMTA", "Rapor Sem 3", "Rapor Sem 4", "Rapor Sem 5", "NIK Ayah", "Nama Ayah", "Pekerjaan Ayah", "Pendidikan Ayah", "Alamat Kantor Ayah", "NIK Ibu", "Nama Ibu", "Pekerjaan Ibu", "Pendidikan Ibu", "Penghasilan Orang Tua", "Provinsi Orang Tua", "Kab/Kota Orang Tua", "Kec/Distrik Orang Tua", "Alamat Orang Tua", "Kode Pos Orang Tua", "No. Telp Orang Tua", "Nama Wali", "Pekerjaan Wali", "Penghasilan Wali", "No. HP Wali", "Alamat Wali");
+		$column = 1;
+		foreach ($table_columns as $field) {
+			$excel->getActiveSheet()->setCellValueByColumnAndRow($column, 4, $field);
+			$column++;
 		}
-		
+
+		for ($i = 'A'; $i !==   $excel->getActiveSheet()->getHighestColumn(); $i++) {
+			$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
+			$excel->getActiveSheet()->getStyle($i . '3')->applyFromArray($style_col);
+			$excel->getActiveSheet()->getStyle($i . '4')->applyFromArray($style_col);
+		}
+
 
 		$excel->getActiveSheet()->getColumnDimension('BH')->setWidth(15);
 		$excel->getActiveSheet()->getStyle('BH3:BH4')->applyFromArray($style_col);
 
-	    // Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
-	    $pendaftar = $this->M_pendaftar->get_export_excel();
-	    $no = 1; // Untuk penomoran tabel, di awal set dengan 1
-	    $numrow = 5; // Set baris pertama untuk isi tabel adalah baris ke 4
+		// Panggil function view yang ada di SiswaModel untuk menampilkan semua data siswanya
+		$pendaftar = $this->M_pendaftar->get_export_excel();
+		$no = 1; // Untuk penomoran tabel, di awal set dengan 1
+		$numrow = 5; // Set baris pertama untuk isi tabel adalah baris ke 4
 
-	    foreach($pendaftar as $r){ // Lakukan looping pada variabel siswa
-			$excel->setActiveSheetIndex(0)->setCellValue('A'.$numrow, $no);
-			$excel->setActiveSheetIndex(0)->setCellValue('B'.$numrow, $r->username);
-			$excel->getActiveSheet()->setCellValueExplicit('C'.$numrow, $r->nisn_pendaftar, PHPExcel_Cell_DataType::TYPE_STRING);
-			$excel->getActiveSheet()->setCellValueExplicit('D'.$numrow, $r->nik, PHPExcel_Cell_DataType::TYPE_STRING);
+		foreach ($pendaftar as $r) { // Lakukan looping pada variabel siswa
+			$excel->setActiveSheetIndex(0)->setCellValue('A' . $numrow, $no);
+			$excel->setActiveSheetIndex(0)->setCellValue('B' . $numrow, $r->username);
+			$excel->getActiveSheet()->setCellValueExplicit('C' . $numrow, $r->nisn_pendaftar, PHPExcel_Cell_DataType::TYPE_STRING);
+			$excel->getActiveSheet()->setCellValueExplicit('D' . $numrow, $r->nik, PHPExcel_Cell_DataType::TYPE_STRING);
 
-			$excel->setActiveSheetIndex(0)->setCellValue('E'.$numrow,strtoupper($r->namalengkap));
-			$excel->setActiveSheetIndex(0)->setCellValue('F'.$numrow,strtoupper($r->jeniskelamin));
-	        $excel->setActiveSheetIndex(0)->setCellValue('G'.$numrow,strtoupper($r->agama));
-	        $excel->setActiveSheetIndex(0)->setCellValue('H'.$numrow,strtoupper($r->suku));
-	        $excel->setActiveSheetIndex(0)->setCellValue('I'.$numrow,strtoupper($r->statusmenikah));
-	        $excel->getActiveSheet()->setCellValueExplicit('J'.$numrow,$r->phone, PHPExcel_Cell_DataType::TYPE_STRING);
-	        $excel->setActiveSheetIndex(0)->setCellValue('K'.$numrow,$r->email);
-	        $excel->setActiveSheetIndex(0)->setCellValue('L'.$numrow,$r->tinggibadan);
-	        $excel->setActiveSheetIndex(0)->setCellValue('M'.$numrow,$r->beratbadan);
-	        $excel->setActiveSheetIndex(0)->setCellValue('N'.$numrow,strtoupper($r->prov_tempatlahir));
-	        $excel->setActiveSheetIndex(0)->setCellValue('O'.$numrow,strtoupper($r->kab_tempatlahir));
-	        $excel->setActiveSheetIndex(0)->setCellValue('P'.$numrow,strtoupper($r->lokasi_tempatlahir));
-		    if ($r->tgl_lahir != '')
-			{
-				$excel->setActiveSheetIndex(0)->setCellValue('Q'.$numrow,shortdate_indo($r->tgl_lahir));
+			$excel->setActiveSheetIndex(0)->setCellValue('E' . $numrow, strtoupper($r->namalengkap));
+			$excel->setActiveSheetIndex(0)->setCellValue('F' . $numrow, strtoupper($r->jeniskelamin));
+			$excel->setActiveSheetIndex(0)->setCellValue('G' . $numrow, strtoupper($r->agama));
+			$excel->setActiveSheetIndex(0)->setCellValue('H' . $numrow, strtoupper($r->suku));
+			$excel->setActiveSheetIndex(0)->setCellValue('I' . $numrow, strtoupper($r->statusmenikah));
+			$excel->getActiveSheet()->setCellValueExplicit('J' . $numrow, $r->phone, PHPExcel_Cell_DataType::TYPE_STRING);
+			$excel->setActiveSheetIndex(0)->setCellValue('K' . $numrow, $r->email);
+			$excel->setActiveSheetIndex(0)->setCellValue('L' . $numrow, $r->tinggibadan);
+			$excel->setActiveSheetIndex(0)->setCellValue('M' . $numrow, $r->beratbadan);
+			$excel->setActiveSheetIndex(0)->setCellValue('N' . $numrow, strtoupper($r->prov_tempatlahir));
+			$excel->setActiveSheetIndex(0)->setCellValue('O' . $numrow, strtoupper($r->kab_tempatlahir));
+			$excel->setActiveSheetIndex(0)->setCellValue('P' . $numrow, strtoupper($r->lokasi_tempatlahir));
+			if ($r->tgl_lahir != '') {
+				$excel->setActiveSheetIndex(0)->setCellValue('Q' . $numrow, shortdate_indo($r->tgl_lahir));
 			} else {
-				$excel->setActiveSheetIndex(0)->setCellValue('Q'.$numrow,'');
+				$excel->setActiveSheetIndex(0)->setCellValue('Q' . $numrow, '');
 			}
-			$excel->setActiveSheetIndex(0)->setCellValue('R'.$numrow,strtoupper($r->prodipilihan1));
-	        $excel->setActiveSheetIndex(0)->setCellValue('S'.$numrow,strtoupper($r->prodipilihan2));
-	        $excel->setActiveSheetIndex(0)->setCellValue('T'.$numrow,strtoupper($r->prodipilihan3));
-	        $excel->setActiveSheetIndex(0)->setCellValue('U'.$numrow,strtoupper($r->negara_tempattinggal));
-	        $excel->setActiveSheetIndex(0)->setCellValue('V'.$numrow,strtoupper($r->prov_tempattinggal));
-	        $excel->setActiveSheetIndex(0)->setCellValue('W'.$numrow,strtoupper($r->kab_tempattinggal));
-	        $excel->setActiveSheetIndex(0)->setCellValue('X'.$numrow,strtoupper($r->kec_tempattinggal));
-	        $excel->setActiveSheetIndex(0)->setCellValue('Y'.$numrow,strtoupper($r->des_tempattinggal));
-	        $excel->setActiveSheetIndex(0)->setCellValue('Z'.$numrow,strtoupper($r->kodepos_tempattinggal));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AA'.$numrow,strtoupper($r->alamat_tempattinggal));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AB'.$numrow,strtoupper($r->alamatlain_tempattinggal));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AC'.$numrow,$r->tahunlulus_smta);
-	        $excel->setActiveSheetIndex(0)->setCellValue('AD'.$numrow,strtoupper($r->jurusansmta));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AE'.$numrow,strtoupper($r->jenissmta));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AF'.$numrow,strtoupper($r->nama_smta));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AG'.$numrow,$r->npsn_smta);
-	        $excel->setActiveSheetIndex(0)->setCellValue('AH'.$numrow,strtoupper($r->prov_smta));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AI'.$numrow,strtoupper($r->kab_smta));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AJ'.$numrow,$r->nrapor1);
-	        $excel->setActiveSheetIndex(0)->setCellValue('AK'.$numrow,$r->nrapor2);
-	        $excel->setActiveSheetIndex(0)->setCellValue('AL'.$numrow,$r->nrapor3);
-	        $excel->getActiveSheet()->setCellValueExplicit('AM'.$numrow,$r->nik_ayah, PHPExcel_Cell_DataType::TYPE_STRING);
-	        $excel->setActiveSheetIndex(0)->setCellValue('AN'.$numrow,strtoupper($r->nama_ayah));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AO'.$numrow,strtoupper($r->pekerjaan_ayah));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AP'.$numrow,strtoupper($r->pendidikan_ayah));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AQ'.$numrow,strtoupper($r->alamatkantor_ayah));
-	        $excel->getActiveSheet()->setCellValueExplicit('AR'.$numrow,$r->nik_ibu, PHPExcel_Cell_DataType::TYPE_STRING);
-	        $excel->setActiveSheetIndex(0)->setCellValue('AS'.$numrow,strtoupper($r->nama_ibu));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AT'.$numrow,strtoupper($r->pekerjaan_ibu));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AU'.$numrow,strtoupper($r->pendidikan_ibu));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AV'.$numrow,$r->penghasilan_ortu);
-	        $excel->setActiveSheetIndex(0)->setCellValue('AW'.$numrow,strtoupper($r->provinsi_tempattinggalortu));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AX'.$numrow,strtoupper($r->kab_tempattinggalortu));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AY'.$numrow,strtoupper($r->kec_tempattinggalortu));
-	        $excel->setActiveSheetIndex(0)->setCellValue('AZ'.$numrow,strtoupper($r->alamat_ortu));
-	        $excel->setActiveSheetIndex(0)->setCellValue('BA'.$numrow,$r->kodepost_tempattinggalortu);
-	        $excel->setActiveSheetIndex(0)->setCellValue('BB'.$numrow,$r->nohp_ortu);
-	        $excel->setActiveSheetIndex(0)->setCellValue('BC'.$numrow,strtoupper($r->nama_wali));
-	        $excel->setActiveSheetIndex(0)->setCellValue('BD'.$numrow,strtoupper($r->pekerjaan_wali));
-	        $excel->setActiveSheetIndex(0)->setCellValue('BE'.$numrow,strtoupper($r->penghasilan_wali));
-	        $excel->getActiveSheet()->setCellValueExplicit('BF'.$numrow,$r->nohp_wali, PHPExcel_Cell_DataType::TYPE_STRING);
-	        $excel->setActiveSheetIndex(0)->setCellValue('BG'.$numrow,strtoupper($r->alamat_wali));
-	        $excel->setActiveSheetIndex(0)->setCellValue('BH'.$numrow,date("d-m-Y",$r->created_on));
-	      	
-	        for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
-	        	$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
-				$excel->getActiveSheet()->getStyle($i.$numrow)->applyFromArray($style_row);
-			}
-	      
-	      $no++; // Tambah 1 setiap kali looping
-	      $numrow++; // Tambah 1 setiap kali looping
-	    }
+			$excel->setActiveSheetIndex(0)->setCellValue('R' . $numrow, strtoupper($r->prodipilihan1));
+			$excel->setActiveSheetIndex(0)->setCellValue('S' . $numrow, strtoupper($r->prodipilihan2));
+			$excel->setActiveSheetIndex(0)->setCellValue('T' . $numrow, strtoupper($r->prodipilihan3));
+			$excel->setActiveSheetIndex(0)->setCellValue('U' . $numrow, strtoupper($r->negara_tempattinggal));
+			$excel->setActiveSheetIndex(0)->setCellValue('V' . $numrow, strtoupper($r->prov_tempattinggal));
+			$excel->setActiveSheetIndex(0)->setCellValue('W' . $numrow, strtoupper($r->kab_tempattinggal));
+			$excel->setActiveSheetIndex(0)->setCellValue('X' . $numrow, strtoupper($r->kec_tempattinggal));
+			$excel->setActiveSheetIndex(0)->setCellValue('Y' . $numrow, strtoupper($r->des_tempattinggal));
+			$excel->setActiveSheetIndex(0)->setCellValue('Z' . $numrow, strtoupper($r->kodepos_tempattinggal));
+			$excel->setActiveSheetIndex(0)->setCellValue('AA' . $numrow, strtoupper($r->alamat_tempattinggal));
+			$excel->setActiveSheetIndex(0)->setCellValue('AB' . $numrow, strtoupper($r->alamatlain_tempattinggal));
+			$excel->setActiveSheetIndex(0)->setCellValue('AC' . $numrow, $r->tahunlulus_smta);
+			$excel->setActiveSheetIndex(0)->setCellValue('AD' . $numrow, strtoupper($r->jurusansmta));
+			$excel->setActiveSheetIndex(0)->setCellValue('AE' . $numrow, strtoupper($r->jenissmta));
+			$excel->setActiveSheetIndex(0)->setCellValue('AF' . $numrow, strtoupper($r->nama_smta));
+			$excel->setActiveSheetIndex(0)->setCellValue('AG' . $numrow, $r->npsn_smta);
+			$excel->setActiveSheetIndex(0)->setCellValue('AH' . $numrow, strtoupper($r->prov_smta));
+			$excel->setActiveSheetIndex(0)->setCellValue('AI' . $numrow, strtoupper($r->kab_smta));
+			$excel->setActiveSheetIndex(0)->setCellValue('AJ' . $numrow, $r->nrapor1);
+			$excel->setActiveSheetIndex(0)->setCellValue('AK' . $numrow, $r->nrapor2);
+			$excel->setActiveSheetIndex(0)->setCellValue('AL' . $numrow, $r->nrapor3);
+			$excel->getActiveSheet()->setCellValueExplicit('AM' . $numrow, $r->nik_ayah, PHPExcel_Cell_DataType::TYPE_STRING);
+			$excel->setActiveSheetIndex(0)->setCellValue('AN' . $numrow, strtoupper($r->nama_ayah));
+			$excel->setActiveSheetIndex(0)->setCellValue('AO' . $numrow, strtoupper($r->pekerjaan_ayah));
+			$excel->setActiveSheetIndex(0)->setCellValue('AP' . $numrow, strtoupper($r->pendidikan_ayah));
+			$excel->setActiveSheetIndex(0)->setCellValue('AQ' . $numrow, strtoupper($r->alamatkantor_ayah));
+			$excel->getActiveSheet()->setCellValueExplicit('AR' . $numrow, $r->nik_ibu, PHPExcel_Cell_DataType::TYPE_STRING);
+			$excel->setActiveSheetIndex(0)->setCellValue('AS' . $numrow, strtoupper($r->nama_ibu));
+			$excel->setActiveSheetIndex(0)->setCellValue('AT' . $numrow, strtoupper($r->pekerjaan_ibu));
+			$excel->setActiveSheetIndex(0)->setCellValue('AU' . $numrow, strtoupper($r->pendidikan_ibu));
+			$excel->setActiveSheetIndex(0)->setCellValue('AV' . $numrow, $r->penghasilan_ortu);
+			$excel->setActiveSheetIndex(0)->setCellValue('AW' . $numrow, strtoupper($r->provinsi_tempattinggalortu));
+			$excel->setActiveSheetIndex(0)->setCellValue('AX' . $numrow, strtoupper($r->kab_tempattinggalortu));
+			$excel->setActiveSheetIndex(0)->setCellValue('AY' . $numrow, strtoupper($r->kec_tempattinggalortu));
+			$excel->setActiveSheetIndex(0)->setCellValue('AZ' . $numrow, strtoupper($r->alamat_ortu));
+			$excel->setActiveSheetIndex(0)->setCellValue('BA' . $numrow, $r->kodepost_tempattinggalortu);
+			$excel->setActiveSheetIndex(0)->setCellValue('BB' . $numrow, $r->nohp_ortu);
+			$excel->setActiveSheetIndex(0)->setCellValue('BC' . $numrow, strtoupper($r->nama_wali));
+			$excel->setActiveSheetIndex(0)->setCellValue('BD' . $numrow, strtoupper($r->pekerjaan_wali));
+			$excel->setActiveSheetIndex(0)->setCellValue('BE' . $numrow, strtoupper($r->penghasilan_wali));
+			$excel->getActiveSheet()->setCellValueExplicit('BF' . $numrow, $r->nohp_wali, PHPExcel_Cell_DataType::TYPE_STRING);
+			$excel->setActiveSheetIndex(0)->setCellValue('BG' . $numrow, strtoupper($r->alamat_wali));
+			$excel->setActiveSheetIndex(0)->setCellValue('BH' . $numrow, date("d-m-Y", $r->created_on));
 
-		// for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
-		// 	$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
-		// }
-	    
-	    
-	    // Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
-	    $excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
-	    // Set orientasi kertas jadi LANDSCAPE
-	    $excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
-	    // Set judul file excel nya
-	    $excel->getActiveSheet(0)->setTitle("Data Pendaftar SESAMA 2022-2023");
-	    $excel->setActiveSheetIndex(0);
-	    // Proses file excel
-	    header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
-	    header('Content-Disposition: attachment; filename="Data Pendaftar SESAMA 2022-2023.xlsx"'); // Set nama file excel nya
-	    header('Cache-Control: max-age=0');
-	    $write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
-	    $write->save('php://output');
+			for ($i = 'A'; $i !=  $excel->getActiveSheet()->getHighestColumn(); $i++) {
+				$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
+				$excel->getActiveSheet()->getStyle($i . $numrow)->applyFromArray($style_row);
+			}
+
+			$no++; // Tambah 1 setiap kali looping
+			$numrow++; // Tambah 1 setiap kali looping
+		}
+
+		// Set height semua kolom menjadi auto (mengikuti height isi dari kolommnya, jadi otomatis)
+		$excel->getActiveSheet()->getDefaultRowDimension()->setRowHeight(-1);
+		// Set orientasi kertas jadi LANDSCAPE
+		$excel->getActiveSheet()->getPageSetup()->setOrientation(PHPExcel_Worksheet_PageSetup::ORIENTATION_LANDSCAPE);
+		// Set judul file excel nya
+		$excel->getActiveSheet(0)->setTitle("Data Pendaftar SESAMA 2022-2023");
+		$excel->setActiveSheetIndex(0);
+		// Proses file excel
+		header('Content-Type: application/vnd.openxmlformats-officedocument.spreadsheetml.sheet');
+		header('Content-Disposition: attachment; filename="Data Pendaftar SESAMA 2022-2023.xlsx"'); // Set nama file excel nya
+		header('Cache-Control: max-age=0');
+		$write = PHPExcel_IOFactory::createWriter($excel, 'Excel2007');
+		$write->save('php://output');
 	}
 
 	public function pengaturan()
@@ -987,12 +981,10 @@ class Administrator extends CI_Controller
 	public function ubah_sesidaftar()
 	{
 		$sesidaftar = $this->input->post('sesidaftar');
-		if ($this->M_pengaturan->ubah_sesidaftar($sesidaftar))
-		{
+		if ($this->M_pengaturan->ubah_sesidaftar($sesidaftar)) {
 			echo json_encode(array("statusCode" => 1));
 		} else {
 			echo json_encode(array("statusCode" => 0));
 		}
 	}
-
 }

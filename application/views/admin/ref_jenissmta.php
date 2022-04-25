@@ -1,8 +1,6 @@
-<!-- Begin Page Content -->
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-6">
-            <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
@@ -48,14 +46,13 @@
             </div>
         </div>
         <div class="col-lg-6">
-            <!-- DataTales Example -->
             <div class="card shadow mb-4">
 
                 <div class="card-header py-3">
                     <h6 class="m-0 font-weight-bold text-primary">Tambah/Edit Data Jenis SMTA</h6>
                 </div>
                 <div class="card-body">
-                <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
+                    <div class="flash-data" data-flashdata="<?php echo $this->session->flashdata('notif'); ?>"></div>
                     <form id="formjenissmta" action="<?php echo site_url($linkform); ?>" method="post">
                         <div class="form-group">
                             <label>Jenis SMTA</label>
@@ -70,8 +67,6 @@
         </div>
     </div>
 </div>
-<!-- /.container-fluid -->
-
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script src="https://cdn.datatables.net/plug-ins/1.11.5/api/fnReloadAjax.js"></script>
@@ -79,7 +74,7 @@
 <script type="text/javascript">
     $(document).ready(function() {
         var table = $('#dataTable').DataTable();
-        $("#dataTable").on("click", ".editform", function(){
+        $("#dataTable").on("click", ".editform", function() {
             event.preventDefault();
             $("input#txtJenissmta").val($(this).data('jenissmta'));
             $("input#idjenissmta").val($(this).data('idjenissmta'));
@@ -96,7 +91,7 @@
                 cancelButtonColor: '#d33',
                 confirmButtonText: 'Ya',
                 cancelButtonText: 'Tidak'
-                }).then((result) => {
+            }).then((result) => {
                 if (result.isConfirmed) {
                     $.ajax({
                         url: "<?php echo site_url(); ?>administrator/hapus_jenissmta",
@@ -105,16 +100,15 @@
                             idjenissmta: idjenissmta
                         },
 
-                        success: function(data) {
-                        }
+                        success: function(data) {}
                     });
 
                     Swal.fire(
                         'Terhapus!',
-                        )
-                    };
-                    
-                    location.reload();            
+                    )
+                };
+
+                location.reload();
             })
         });
     });

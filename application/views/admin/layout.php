@@ -361,7 +361,10 @@
 
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $user->first_name; ?></span>
+                                <div class="nama_sekolah d-flex flex-column">
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $user->first_name; ?></span>
+                                    <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $user->username; ?></span>
+                                </div>
                                 <img class="img-profile rounded-circle" src="<?php echo base_url(); ?>/assets/backend/startbootstrap/img/undraw_profile.svg">
                             </a>
                             <!-- Dropdown - User Information -->
@@ -572,7 +575,7 @@
                         },
                         success: function(response) {
                             var hasil = $.parseJSON(response);
-                            if (result.statusCode == 1) {
+                            if (hasil.statusCode == 1) {
                                 Swal.fire({
                                     title: "Berhasil",
                                     text: "Ubah profil user.",
@@ -607,7 +610,7 @@
                             },
                             success: function(response) {
                                 var hasil = $.parseJSON(response);
-                                if (result.statusCode == 1) {
+                                if (hasil.statusCode == 1) {
                                     Swal.fire({
                                         title: "Berhasil",
                                         text: "Ubah profil user.",

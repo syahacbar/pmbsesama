@@ -1,10 +1,10 @@
 <?php
- 
+
 class M_fakultas extends CI_Model
 {
     function get_all()
     {
-        $query = $this->db->get('fakultas');  
+        $query = $this->db->get('fakultas');
         return $query->result_array();
     }
 
