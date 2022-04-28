@@ -869,7 +869,7 @@ class Administrator extends CI_Controller
 			$excel->getActiveSheet()->getColumnDimension($i)->setAutoSize(TRUE);
 			$excel->getActiveSheet()->getStyle($i.'3')->applyFromArray($style_col);
 			$excel->getActiveSheet()->getStyle($i.'4')->applyFromArray($style_col);
-		}
+		} 
 		
 
 		$excel->getActiveSheet()->getColumnDimension('BH')->setWidth(15);

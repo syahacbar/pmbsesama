@@ -102,7 +102,7 @@ class M_pendaftar extends CI_Model
             (SELECT nama FROM wilayah_2020 WHERE kode=tb.provinsi_tempattinggalortu) AS provinsi_tempattinggalortu,
             (SELECT nama FROM wilayah_2020 WHERE kode=tb.kab_tempattinggalortu) AS kab_tempattinggalortu,
             (SELECT nama FROM wilayah_2020 WHERE kode=tb.kec_tempattinggalortu) AS kec_tempattinggalortu
-            FROM users u JOIN t_biodata tb ON u.username=tb.username JOIN t_smta ts ON ts.id = tb.nama_smta
+            FROM users u JOIN t_biodata tb ON u.username=tb.username LEFT JOIN t_smta ts ON ts.id = tb.nama_smta
         ");
         return $query->result();
     }
