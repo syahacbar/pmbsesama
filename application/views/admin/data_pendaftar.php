@@ -392,7 +392,7 @@
     	<!-- Akhir Modal Detail Pendaftar -->
 
     	<!-- Modal Ubah Data Pendaftar -->
-    	<div class="modal fade" id="modalEdit" tabindex="-1" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
+    	<div class="modal fade" id="modalEdit" role="dialog" aria-labelledby="modalEditLabel" aria-hidden="true">
     		<div class="modal-dialog modal-lg" role="document">
     			<div class="modal-content modal-lg">
     				<div class="modal-header">
@@ -832,8 +832,9 @@
 
     											<div class="col-sm-6 col-md-6 col-lg-6">
     												<div class="form-group">
-    													<label>Nama SMTA *</label>
-    													<input name="namasmta" id="namasmta" type="text" class="form-control" placeholder="" value="" required>
+    													<label>Nama SMTA *</label> 
+    													<select name="namasmta" id="namasmta" class="form-select">
+														</select>
     													<small>Ketik nama SMTA Anda.</small>
     												</div>
     											</div>
@@ -1183,11 +1184,30 @@
     	<script src="<?php echo base_url(); ?>/assets/backend/startbootstrap/vendor/jquery/jquery.min.js"></script>>
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+		<script>
+			$(document).ready(function() {
+			$("#namasmta").select2({
+				theme: "bootstrap",
+				placeholder: '-- Pilih SMTA --',
+				minimumInputLength: 1,
+				ajax: {
+				url: "<?php echo site_url('register/searchSMTA'); ?>",
+				dataType: 'json',
+				delay: 250,
+				processResults: function(data) {
+					return {
+					results: data
+					};
+				},
+				cache: true
+				}
+			});
+			});
+		</script>
 
     	<script type="text/javascript">
     		$(document).ready(function() {
-
-
     			$("#provtempatlahir").change(function() {
     				var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
     				$('#kabtempatlahir').load(url);
@@ -1478,7 +1498,10 @@
     						$('select[name="tahunlulussmta"]').val(json.tahunlulus_smta).attr('selected', 'selected');
     						$('select[name="jurusansmta"]').val(json.jurusansmta).attr('selected', 'selected');
     						$('select[name="jenissmta"]').val(json.jenissmta).attr('selected', 'selected');
-    						$('input[name="namasmta"]').val(json.nama_smta);
+    						// $('select[name="namasmta"]').val(json.nama_smta).attr('selected', 'selected');
+							// $('select[name="namasmta"]').val(json.nama_smta).trigger('change');
+							var $newOption = $("<option selected='selected'></option>").val(json.nama_smta).text(json.nama_smta_text);
+							$("#namasmta").append($newOption).trigger('change');
     						$('input[name="nisnsmta"]').val(json.nisn_smta);
     						$('select[name="provinsismta"]').val(json.prov_smta).attr('selected', 'selected');
     						$('textarea[name="alamatsmta"]').val(json.alamat_smta);
