@@ -553,7 +553,7 @@ class Administrator extends CI_Controller
 			'alamatlain_tempattinggal' => $this->input->post('alamatlain_tempattinggal'),
 			'tinggibadan' => $this->input->post('tinggibadan'),
 			'beratbadan' => $this->input->post('beratbadan'),
-
+			'nama_smta' => $this->input->post('namasmta'),
 			'tahunlulus_smta' => $this->input->post('tahunlulussmta'),
 			'jurusansmta' => $this->input->post('jurusansmta'),
 			'jenissmta' => $this->input->post('jenissmta'),
