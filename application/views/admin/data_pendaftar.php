@@ -1412,7 +1412,7 @@
     				$('#tablePendaftar').DataTable().ajax.reload(null, false);
     			}
 
-    			$("#tablePendaftar").on("click", ".btnDetail", function() {
+    			$("body").on("click", ".btnDetail", function() {
     				var username = $(this).data('username');
     				$.ajax({
     					type: "POST",
@@ -1429,7 +1429,7 @@
 
     			});
 
-    			$("#tablePendaftar").on("click", ".btnEdit", function() {
+    			$("body").on("click", ".btnEdit", function() {
     				$('.tempatfoto').show();
     				$('.unggahfoto').hide();
 

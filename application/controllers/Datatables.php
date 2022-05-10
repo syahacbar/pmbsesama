@@ -308,7 +308,7 @@ class Datatables extends CI_Controller
     {
         $data = $this->M_pendaftar->edit_pendaftar($username)->row();
 
-        echo json_encode($data);
+        echo json_encode($data); 
     }
 
     public function deletependaftar()
