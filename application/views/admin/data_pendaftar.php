@@ -1577,7 +1577,7 @@
     				var tahunlulussmta = $("select[name='tahunlulussmta']").val();
     				var jurusansmta = $("select[name='jurusansmta']").val();
     				var jenissmta = $("select[name='jenissmta']").val();
-    				var namasmta = $("input[name='namasmta']").val();
+    				var namasmta = $("select[name='namasmta']").val();
     				var nisnsmta = $("input[name='nisnsmta']").val();
     				var provinsismta = $("select[name='provinsismta']").val();
     				var alamatsmta = $("textarea[name='alamatsmta']").val();
