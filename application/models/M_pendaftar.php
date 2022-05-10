@@ -161,7 +161,7 @@ class M_pendaftar extends CI_Model
         (SELECT nama FROM wilayah_2020 WHERE kode=ts.provinsi_smta) AS prov_smta');
         $this->db->from('users u');
         $this->db->join('t_biodata tb', 'tb.username = u.username');
-        $this->db->join('t_smta ts', 'ts.id = tb.nama_smta');
+        $this->db->join('t_smta ts', 'ts.id = tb.nama_smta','left');
         $this->db->where('u.username', $username);
         $query = $this->db->get();
         return $query;
@@ -194,7 +194,7 @@ class M_pendaftar extends CI_Model
         (SELECT kode FROM wilayah_2020 WHERE kode=tb.prov_smta) AS prov_smta');
         $this->db->from('users u');
         $this->db->join('t_biodata tb', 'tb.username = u.username');
-        $this->db->join('t_smta ts', 'ts.id = tb.nama_smta');
+        $this->db->join('t_smta ts', 'ts.id = tb.nama_smta','left');
         $this->db->where('u.username', $username);
         $query = $this->db->get();
         return $query;
