@@ -283,10 +283,10 @@ Highcharts.chart('container2', {
         type: 'pie'
     },
     title: {
-        text: 'Grafik Peminatan Pilihan Program Studi'
+        text: 'Grafik Peminatan Program Studi Pilihan 1'
     },
     tooltip: {
-        pointFormat: '{series.name}: <b>{point.y} orang ({point.percentage:.1f}%)</b>'
+        pointFormat: '{series.name}: <b>{point.y} orang ({point.percentage:.2f}%)</b>'
     },
     accessibility: {
         point: {
@@ -299,7 +299,7 @@ Highcharts.chart('container2', {
             cursor: 'pointer',
             dataLabels: {
                 enabled: true,
-                format: '<b>{point.name}</b>: {point.percentage:.1f} %'
+                format: '<b>{point.name}</b>: {point.percentage:.2f} %'
             }
         }
     },
