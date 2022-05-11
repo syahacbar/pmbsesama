@@ -1351,41 +1351,24 @@
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/SimpleLightbox/2.1.0/simpleLightbox.min.js"></script>
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <!-- Date Picker - Tanggal lahir -->
+        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+        <script>
+            $('.datepicker').datepicker({
+                uiLibrary: 'bootstrap4'
+            });
+        </script>
 
-
-        <script type='text/javascript'>
+    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+        <script>
             $(document).ready(function() {
                 var current_fs, next_fs, previous_fs; //fieldsets
                 var opacity;
                 var current = 1;
                 var steps = $("fieldset").length;
                 setProgressBar(current);
-                $(".next").click(function() {
-                    current_fs = $(this).parent();
-                    next_fs = $(this).parent().next();
-                    //Add Class Active
-                    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
-                    //show the next fieldset
-                    next_fs.show();
-                    //hide the current fieldset with style
-                    current_fs.animate({
-                        opacity: 0
-                    }, {
-                        step: function(now) {
-                            // for making fielset appear animation
-                            opacity = 1 - now;
-                            current_fs.css({
-                                'display': 'none',
-                                'position': 'relative'
-                            });
-                            next_fs.css({
-                                'opacity': opacity
-                            });
-                        },
-                        duration: 500
-                    });
-                    setProgressBar(++current);
-                });
+
                 $(".previous").click(function() {
                     current_fs = $(this).parent();
                     previous_fs = $(this).parent().prev();
@@ -1417,25 +1400,12 @@
                     var percent = parseFloat(100 / steps) * curStep;
                     percent = percent.toFixed();
                     $(".progress-bar").css("width", percent + "%")
-                }
+                };
+
+               
                 $(".submit").click(function() {
                     return false;
-                })
-            });
-        </script>
-
-        <!-- Date Picker - Tanggal lahir -->
-        <script src="https://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
-        <script>
-            $('.datepicker').datepicker({
-                uiLibrary: 'bootstrap4'
-            });
-        </script>
-
-    <script src="https://code.jquery.com/jquery-2.1.1.min.js" type="text/javascript"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-        <script>
-            $(document).ready(function() {
+                });
 
                 $("#provtempatlahir").change(function() {
                     var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
@@ -1523,7 +1493,8 @@
                 }                
 
                 $('#next1').on('click', function() {
-                    $("#next1").attr("disabled", "disabled");
+                    setProgressBar(current);
+
                     var jenkel = $(".jenkel:checked").val();
                     var nik = $("input[name='nik']").val();
                     var nisn_pendaftar = $("input[name='nisn_pendaftar']").val();
@@ -1550,61 +1521,126 @@
                     var tinggibadan = $("input[name='tinggibadan']").val();
                     var beratbadan = $("input[name='beratbadan']").val();
 
+                    //menampung pesan error kalau ada form yang belum diisi
+                    const errorMsg = [];
+                    if(! $("input[name='jeniskelamin']").is(':checked')) 
+                    {
+                        errorMsg.push("Jenis kelamin belum dipilih");
+                    } 
 
-                    $.ajax({
-                        url: "<?php echo site_url('register/next1'); ?>",
-                        type: "POST",
-                        data: {
-                            nisn_pendaftar: nisn_pendaftar,
-                            jenkel: jenkel,
-                            nik: nik,
-                            agama: agama,
-                            suku: suku,
-                            statusmenikah: statusmenikah,
-                            nohp: nohp,
-                            email: email,
-                            prodipilihan1: prodipilihan1,
-                            prodipilihan2: prodipilihan2,
-                            prodipilihan3: prodipilihan3,
-                            prov_tempatlahir: prov_tempatlahir,
-                            kab_tempatlahir: kab_tempatlahir,
-                            lokasi_tempatlahir: lokasi_tempatlahir,
-                            tgl_lahir: tgl_lahir,
-                            negara_tempattinggal: negara_tempattinggal,
-                            prov_tempattinggal: prov_tempattinggal,
-                            kab_tempattinggal: kab_tempattinggal,
-                            kec_tempattinggal: kec_tempattinggal,
-                            des_tempattinggal: des_tempattinggal,
-                            kodepos_tempattinggal: kodepos_tempattinggal,
-                            alamat_tempattinggal: alamat_tempattinggal,
-                            alamatlain_tempattinggal: alamatlain_tempattinggal,
-                            tinggibadan: tinggibadan,
-                            beratbadan: beratbadan,
+                    //cek apabila ada form kosong
+
+                    if(nik == '')
+                    {
+                        errorMsg.push("NIK wajib diisi");
+                    }
+                    if(nisn_pendaftar == '')
+                    {
+                        errorMsg.push("NISN Pendaftar wajib diisi");
+                    }
+
+                    //cek apakah ada pesan error atau tidak
+
+                    if(errorMsg.length > 0)
+                    {
+                        var pesanError = errorMsg.map(function(item) { 
+                            return "<span class='text-danger'>" + item + "</span><br>";
+                        }).join('');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Data belum lengkap!',
+                            html: pesanError,
+                            confirmButtonText: 'Tutup',
+                        })
+                    }
+
+                    // jika tidak ada pesan error maka lanjut ke next berikutnya
+                    else {
+                        current_fs = $(this).parent();
+                        next_fs = $(this).parent().next();
+                        //Add Class Active
+                        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                        //show the next fieldset
+                        next_fs.show();
+                        //hide the current fieldset with style
+                        current_fs.animate({
+                            opacity: 0
+                        }, {
+                            step: function(now) {
+                                // for making fielset appear animation
+                                opacity = 1 - now;
+                                current_fs.css({
+                                    'display': 'none',
+                                    'position': 'relative'
+                                });
+                                next_fs.css({
+                                    'opacity': opacity
+                                });
+                            },
+                            duration: 500
+                        });
+
+                        setProgressBar(++current);
+
+
+                        $("#next1").attr("disabled", "disabled");
+
+                        $.ajax({
+                            url: "<?php echo site_url('register/next1'); ?>",
+                            type: "POST",
+                            data: {
+                                nisn_pendaftar: nisn_pendaftar,
+                                jenkel: jenkel,
+                                nik: nik,
+                                agama: agama,
+                                suku: suku,
+                                statusmenikah: statusmenikah,
+                                nohp: nohp,
+                                email: email,
+                                prodipilihan1: prodipilihan1,
+                                prodipilihan2: prodipilihan2,
+                                prodipilihan3: prodipilihan3,
+                                prov_tempatlahir: prov_tempatlahir,
+                                kab_tempatlahir: kab_tempatlahir,
+                                lokasi_tempatlahir: lokasi_tempatlahir,
+                                tgl_lahir: tgl_lahir,
+                                negara_tempattinggal: negara_tempattinggal,
+                                prov_tempattinggal: prov_tempattinggal,
+                                kab_tempattinggal: kab_tempattinggal,
+                                kec_tempattinggal: kec_tempattinggal,
+                                des_tempattinggal: des_tempattinggal,
+                                kodepos_tempattinggal: kodepos_tempattinggal,
+                                alamat_tempattinggal: alamat_tempattinggal,
+                                alamatlain_tempattinggal: alamatlain_tempattinggal,
+                                tinggibadan: tinggibadan,
+                                beratbadan: beratbadan,
 
 
 
-                        },
-                        //cache: false,
-                        success: function(dataResult) {
-                            var hasil = JSON.parse(dataResult);
-                            if (result.statusCode == 1) {
-                                $("#next1").removeAttr("disabled");
-                                $('#fupForm').find('input:text').val('');
-                                $("#success").show();
-                                $('#success').html('Data added successfully !');
+                            },
+                            //cache: false,
+                            success: function(dataResult) {
+                                var hasil = JSON.parse(dataResult);
+                                if (result.statusCode == 1) {
+                                    $("#next1").removeAttr("disabled");
+                                    $('#fupForm').find('input:text').val('');
+                                    $("#success").show();
+                                    $('#success').html('Data added successfully !');
 
-                                $(".BoxLulus").hide();
-                                $(".BoxBelumLulus").hide();
-                            } else {
-                                Swal.fire({
-                                    icon: 'error',
-                                    text: 'Ada yang salah!',
-                                    confirmButtonText: 'Kembali',
-                                })
+                                    $(".BoxLulus").hide();
+                                    $(".BoxBelumLulus").hide();
+                                } else {
+                                    Swal.fire({
+                                        icon: 'error',
+                                        text: 'Ada yang salah!',
+                                        confirmButtonText: 'Kembali',
+                                    })
+                                }
+
                             }
-
-                        }
-                    });
+                        });
+                    }
                 });
 
 
