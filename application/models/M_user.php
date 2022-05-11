@@ -6,7 +6,7 @@ class M_user extends CI_Model
     {
         $query = $this->db->query("SELECT u.*,
         (SELECT tsm.nama_smta FROM t_smta tsm WHERE tsm.id=u.id_sekolah) AS nama_smta
-        FROM users u, users_groups ug, groups g WHERE u.id=ug.users_id AND ug.group_id=g.id AND g.name='sekolah'");
+        FROM users u, users_groups ug, db_pmbsesama.groups g WHERE u.id=ug.users_id AND ug.group_id=g.id AND g.name='sekolah'");
         return $query->result();
     }
 
