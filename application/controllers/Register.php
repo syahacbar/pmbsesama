@@ -26,11 +26,7 @@ class Register extends CI_Controller
 		$this->load->library('recaptcha');
 		$this->load->model('M_pengaturan');
 
-		$sesidaftar = $this->M_pengaturan->get_sesidaftar()->nilai;
-		if ($sesidaftar == '0') {
-			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pendaftaran tealah ditutup!</div>');
-			redirect('/');
-		}
+		
 	}
 
 	function generateRandomString($length)
@@ -116,6 +112,12 @@ class Register extends CI_Controller
 
 	public function index()
 	{
+		$sesidaftar = $this->M_pengaturan->get_sesidaftar()->nilai;
+		if ($sesidaftar == '0') {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pendaftaran tealah ditutup!</div>');
+			redirect('/');
+		}
+
 		$data = array(
 			'jalurmasuk' => $this->M_jalurmasuk->get_all(),
 			'gelombang' => $this->M_gelombang->get_all(),
@@ -134,6 +136,12 @@ class Register extends CI_Controller
 
 	public function isibiodata()
 	{
+		$sesidaftar = $this->M_pengaturan->get_sesidaftar()->nilai;
+		if ($sesidaftar == '0') {
+			$this->session->set_flashdata('message', '<div class="alert alert-danger" role="alert">Pendaftaran tealah ditutup!</div>');
+			redirect('/');
+		}
+
 		$this->load->model('M_namasmta');
 		if (!$this->ion_auth->logged_in()) {
 			// redirect them to the login page
@@ -168,6 +176,7 @@ class Register extends CI_Controller
 
 	public function next1()
 	{
+		
 		if (!$this->ion_auth->logged_in()) {
 			// redirect them to the login page
 			redirect('auth/login', 'refresh');
