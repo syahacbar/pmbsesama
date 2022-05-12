@@ -513,7 +513,7 @@
                                         <div class="col-12">
                                             <h2 class="fs-title">Data Pribadi</h2>
                                             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                                Pastikan data yang Anda isi telah sesuai dengan data yang tercantum pada ijazah. Bidang/isian yang bertanda bintang (*) wajib untuk diisi.
+                                                Pastikan data yang Anda isi telah sesuai dengan data yang tercantum pada ijazah. Bidang/isian yang bertanda bintang (<span class="text-danger">*</span>) wajib untuk diisi.
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -541,14 +541,14 @@
 
                                         <div class=" col-sm-6">
                                             <div class="form-group">
-                                                <label>Nama Lengkap *</label>
+                                                <label>Nama Lengkap <span class="text-danger">*</span></label>
                                                 <input name="namalengkap" type="text" class="form-control" placeholder="" value="<?php echo strtoupper($row['namalengkap']); ?>" readonly>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>NISN (Nomor Induk Siswa Nasional) *</label>
+                                                <label>NISN (Nomor Induk Siswa Nasional) <span class="text-danger">*</span></label>
                                                 <input name="nisn_pendaftar" id="nisn_pendaftar" type="text" class="form-control" placeholder="" value="<?php echo $row['nisn_pendaftar']; ?>" required>
                                                 <small>Ketik NISN Anda.</small>
                                             </div>
@@ -575,14 +575,14 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>NIK/No. KTP *</label>
+                                                <label>NIK/No. KTP <span class="text-danger">*</span></label>
                                                 <input id="nik" name="nik" type="text" class="form-control" placeholder="" required value="<?php echo $row['nik']; ?>">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Agama</label>
+                                                <label>Agama <span class="text-danger">*</span></label>
                                                 <select id="agama" name="agama" class="form-select" aria-label="Default select example">
                                                     <option value="0" <?php echo ($row['agama'] == '0') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($agama as $ag) : ?>
@@ -594,7 +594,7 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Suku *</label>
+                                                <label>Suku <span class="text-danger">*</span></label>
                                                 <select name="suku" id="suku" class="form-select" aria-label="Default select example" required>
                                                     <option value="0" <?php echo ($row['suku'] == '0') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <option value="Papua" <?= $row['suku'] == 'Papua' ? ' selected="selected"' : ''; ?>>Papua</option>
@@ -605,7 +605,7 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Status Menikah *</label>
+                                                <label>Status Menikah <span class="text-danger">*</span></label>
                                                 <select id="statusmenikah" name="statusmenikah" class="form-select" aria-label="Default select example">
                                                     <option value="0" <?php echo ($row['statusmenikah'] == '0') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($statusmenikah as $sm) : ?>
@@ -621,7 +621,7 @@
                                         <div class="col-12">
                                             <h2 class="fs-title">Pilihan Program Studi</h2>
                                             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                                Bidang/isian yang bertanda bintang (*) wajib untuk diisi.
+                                                Bidang/isian yang bertanda bintang (<span class="text-danger">*</span>) wajib untuk diisi.
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -630,7 +630,7 @@
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Pilihan 1 *</label>
+                                                <label>Pilihan 1 <span class="text-danger">*</span></label>
                                                 <select id="prodipilihan1" name="prodipilihan1" class="form-select" aria-label="Default select example">
                                                     <option <?php echo ($row['prodipilihan1'] == '0') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                     <?php foreach ($prodi as $pr1) : ?>
@@ -678,7 +678,7 @@
 
                                         <div class=" col-sm-4">
                                             <div class="form-group">
-                                                <label>Provinsi *</label>
+                                                <label>Provinsi <span class="text-danger">*</span></label>
                                                 <select name="provtempatlahir" id="provtempatlahir" class="form-select" aria-label="Default select example">
                                                     <option <?php echo ($row['prov_tempatlahir'] == '0') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                     <?php foreach ($provinsi as $prov) : ?>
@@ -690,7 +690,7 @@
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Kabupaten/Kota *</label>
+                                                <label>Kabupaten/Kota <span class="text-danger">*</span></label>
                                                 <input type="hidden" name="h_kabtempatlahir" id="h_kabtempatlahir" value="<?php echo $row['kab_tempatlahir'];?>">
                                                 <select name="kabtempatlahir" id="kabtempatlahir" class="form-select" aria-label="Default select example">
                                                     <option value=""></option>
@@ -700,14 +700,14 @@
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Tempat Lahir *</label>
+                                                <label>Tempat Lahir <span class="text-danger">*</span></label>
                                                 <input name="lokasi_tempatlahir" id="lokasi_tempatlahir" type="text" class="form-control" value="<?php echo $row['lokasi_tempatlahir']; ?>" required>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Tanggal Lahir *</label><br>
+                                                <label>Tanggal Lahir <span class="text-danger">*</span></label><br>
                                                 <input type="date" name="tanggallahir" id="tanggallahir" class="datepicker" data-date-format="yyyy-MM-dd" value="<?php echo $row['tgl_lahir']; ?>">
                                             </div>
                                         </div>
@@ -718,7 +718,7 @@
                                         <div class="col-12">
                                             <h2 class="fs-title">Tempat Tinggal</h2>
                                             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                                Bidang/isian yang bertanda bintang (*) wajib untuk diisi.
+                                                Bidang/isian yang bertanda bintang (<span class="text-danger">*</span>) wajib untuk diisi.
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -726,14 +726,14 @@
                                         </div>
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Negara Tinggal *</label>
+                                                <label>Negara Tinggal <span class="text-danger">*</span></label>
                                                 <input name="negaratinggal" id="negaratinggal" type="text" class="form-control" placeholder="" required value="<?php echo $row['negara_tempattinggal']; ?>">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Provinsi *</label>
+                                                <label>Provinsi <span class="text-danger">*</span></label>
                                                 <select name="provtempattinggal" id="provtempattinggal" class="form-select" aria-label="Default select example">
                                                     <option <?php echo ($row['prov_tempattinggal'] == '0') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                     <?php foreach ($provinsi as $prov) : ?>
@@ -745,7 +745,7 @@
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Kabupaten/Kota *</label>
+                                                <label>Kabupaten/Kota <span class="text-danger">*</span></label>
                                                 <input type="hidden" name="h_kabtempattinggal" id="h_kabtempattinggal" value="<?php echo $row['kab_tempattinggal'];?>">
                                                 <select name="kabtempattinggal" id="kabtempattinggal" class="form-select" aria-label="Default select example">
                                                     <option value=""></option>
@@ -755,7 +755,7 @@
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Kecamatan/Distrik *</label>
+                                                <label>Kecamatan/Distrik <span class="text-danger">*</span></label>
                                                 <input type="hidden" name="h_kectempattinggal" id="h_kectempattinggal" value="<?php echo $row['kec_tempattinggal'];?>">
                                                 <select name="kectempattinggal" id="kectempattinggal" class="form-select" aria-label="Default select example">
                                                     <option value=""></option>
@@ -765,7 +765,7 @@
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Kelurahan/Desa *</label>
+                                                <label>Kelurahan/Desa <span class="text-danger">*</span></label>
                                                 <input type="hidden" name="h_destempattinggal" id="h_destempattinggal" value="<?php echo $row['des_tempattinggal'];?>">
                                                 <select name="destempattinggal" id="destempattinggal" class="form-select" aria-label="Default select example">
                                                     <option value=""></option>
@@ -775,14 +775,14 @@
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Kode Pos</label>
+                                                <label>Kode Pos<span class="text-danger">*</span></label>
                                                 <input name="kodepos" id="kodepos" type="text" class="form-control" placeholder="" value="<?php echo $row['kodepos_tempattinggal']; ?>" required>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Alamat *</label>
+                                                <label>Alamat <span class="text-danger">*</span></label>
                                                 <textarea name="alamattempattinggal" id="alamattempattinggal" row="2" type="text" class="form-control" placeholder="" required><?php echo $row['alamat_tempattinggal']; ?></textarea>
                                             </div>
                                         </div>
@@ -800,7 +800,7 @@
                                         <div class="col-12">
                                             <h2 class="fs-title">Data Tambahan</h2>
                                             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                                Bidang/isian yang bertanda bintang (*) wajib untuk diisi.
+                                                Bidang/isian yang bertanda bintang (<span class="text-danger">*</span>) wajib untuk diisi.
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -809,14 +809,14 @@
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>No. Telp./HP *</label>
+                                                <label>No. Telp./HP <span class="text-danger">*</span></label>
                                                 <input name="nohp" id="nohp" type="text" class="form-control" placeholder="" required value="<?php echo $nohp; ?>">
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Alamat Email *</label>
+                                                <label>Alamat Email <span class="text-danger">*</span></label>
                                                 <input name="email" id="email" type="email" class="form-control" placeholder="" required value="<?php echo $email; ?>">
                                                 <small>Email Aktif</small>
                                             </div>
@@ -824,7 +824,7 @@
 
                                         <div class="col-sm-2">
                                             <div class="form-group">
-                                                <label>Tinggi Badan *</label>
+                                                <label>Tinggi Badan <span class="text-danger">*</span></label>
                                                 <input name="tinggibadan" id="tinggibadan" type="text" class="form-control" placeholder="" value="<?php echo $row['tinggibadan']; ?>" required>
                                                 <small>Satuan cm. Contoh: 165</small>
                                             </div>
@@ -832,7 +832,7 @@
 
                                         <div class="col-sm-2">
                                             <div class="form-group">
-                                                <label>Berat Badan *</label>
+                                                <label>Berat Badan <span class="text-danger">*</span></label>
                                                 <input name="beratbadan" id="beratbadan" type="text" class="form-control" placeholder="" value="<?php echo $row['beratbadan']; ?>" required>
                                                 <small>Satuan kg. Contoh: 60</small>
                                             </div>
@@ -852,7 +852,7 @@
                                         <div class="col-12">
                                             <h2 class="fs-title">Identitas Sekolah:</h2>
                                             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                                Bidang/isian yang bertanda bintang (*) wajib untuk diisi.
+                                                Bidang/isian yang bertanda bintang (<span class="text-danger">*</span>) wajib untuk diisi.
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -861,7 +861,7 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Tahun Lulus SMTA *</label>
+                                                <label>Tahun Lulus SMTA <span class="text-danger">*</span></label>
                                                 <select name="tahunlulussmta" id="tahunlulussmta" class="form-select" aria-label="Default select example" required>
                                                     <option value="" <?php echo ($row['tahunlulus_smta'] == '0') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php
@@ -878,7 +878,7 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Jurusan SMTA *</label>
+                                                <label>Jurusan SMTA <span class="text-danger">*</span></label>
                                                 <select class="form-select" name="jurusansmta" id="jurusansmta" aria-label="Default select example">
                                                     <option value="0" <?php echo ($row['jurusansmta'] == '0') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($jurusansmta as $jur) : ?>
@@ -890,7 +890,7 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Jenis SMTA *</label>
+                                                <label>Jenis SMTA <span class="text-danger">*</span></label>
                                                 <select name="jenissmta" id="jenissmta" class="form-select" aria-label="Default select example">
                                                     <option value="0" <?php echo ($row['jenissmta'] == '0') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($jenissmta as $jen) : ?>
@@ -938,21 +938,21 @@
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Kelas XI semeseter 1</label>
+                                                <label>Kelas XI semeseter 1<span class="text-danger">*</span></label>
                                                 <input name="nrapor1" id="nrapor1" type="text" class="form-control" placeholder="" value="<?php echo $row['nrapor1']; ?>" required></input>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Kelas XI semeseter 2</label>
+                                                <label>Kelas XI semeseter 2<span class="text-danger">*</span></label>
                                                 <input name="nrapor2" id="nrapor2" type="text" class="form-control" placeholder="" value="<?php echo $row['nrapor2']; ?>" required></input>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Kelas XII semeseter 1</label>
+                                                <label>Kelas XII semeseter 1<span class="text-danger">*</span></label>
                                                 <input name="nrapor3" id="nrapor3" type="text" class="form-control" placeholder="" value="<?php echo $row['nrapor3']; ?>" required></input>
                                             </div>
                                         </div>
@@ -985,7 +985,7 @@
                                         <div class="col-12">
                                             <h2 class="fs-title">Biodata Orang Tua</h2>
                                             <div class="alert alert-primary alert-dismissible fade show" role="alert">
-                                                Silakan isi data orang tua Anda sesuai dengan bidang-bidang yang diminta.
+                                                Silakan isi data orang tua Anda sesuai dengan bidang-bidang yang diminta. Bidang isian yang bertanda bintang (<span class="text-danger">*</span>) wajib diisi.
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                     <span aria-hidden="true">&times;</span>
                                                 </button>
@@ -998,21 +998,21 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>NIK/No. KTP Ayah</label>
+                                                <label>NIK/No. KTP Ayah<span class="text-danger">*</span></label>
                                                 <input name="nikayah" id="nikayah" type="text" class="form-control" placeholder="" value="<?php echo $row['nik_ayah']; ?>" required>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Nama Ayah *</label>
+                                                <label>Nama Ayah <span class="text-danger">*</span></label>
                                                 <input name="namaayah" id="namaayah" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_ayah']; ?>" required>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Pendidikan Ayah *</label>
+                                                <label>Pendidikan Ayah <span class="text-danger">*</span></label>
                                                 <select name="pendidikanayah" id="pendidikanayah" class="form-select" aria-label="Default select example">
                                                     <option value="0" <?php echo ($row['pendidikan_ayah'] == '0') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($pendidikanortu as $pd) : ?>
@@ -1025,7 +1025,7 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Pekerjaan Ayah *</label>
+                                                <label>Pekerjaan Ayah <span class="text-danger">*</span></label>
                                                 <select name="pekerjaanayah" id="pekerjaanayah" class="form-select" aria-label="Default select example">
                                                     <option value="" <?php echo ($row['pekerjaan_ayah'] == '0') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($pekerjaanortu as $pk) : ?>
@@ -1053,21 +1053,21 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>NIK/No. KTP Ibu</label>
+                                                <label>NIK/No. KTP Ibu <span class="text-danger">*</span></label>
                                                 <input name="nikibu" type="text" class="form-control" placeholder="" value="<?php echo $row['nik_ibu']; ?>" required>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Nama Ibu *</label>
+                                                <label>Nama Ibu <span class="text-danger">*</span></label>
                                                 <input name="namaibu" id="namaibu" type="text" class="form-control" placeholder="" value="<?php echo $row['nama_ibu']; ?>" required>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Pendidikan Ibu *</label>
+                                                <label>Pendidikan Ibu <span class="text-danger">*</span></label>
                                                 <select name="pendidikanibu" id="pendidikanibu" class="form-select" aria-label="Default select example">
                                                     <option value="" <?php echo ($row['pendidikan_ibu'] == '0') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($pendidikanortu as $pd) : ?>
@@ -1080,7 +1080,7 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Pekerjaan Ibu *</label>
+                                                <label>Pekerjaan Ibu <span class="text-danger">*</span></label>
                                                 <select name="pekerjaanibu" id="pekerjaanibu" class="form-select" aria-label="Default select example">
                                                     <option value="" <?php echo ($row['pekerjaan_ibu'] == '0') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($pekerjaanortu as $pk) : ?>
@@ -1092,7 +1092,7 @@
 
                                         <div class="col-sm-6">
                                             <div class="form-group">
-                                                <label>Penghasilan Orang Tua*</label>
+                                                <label>Penghasilan Orang Tua <span class="text-danger">*</span></label>
                                                 <select name="penghasilanortu" id="penghasilanortu" class="form-select" aria-label="Default select example">
                                                     <option value="0" <?php echo ($row['penghasilan_ortu'] == '0') ? 'selected' : ''; ?>> -- Pilih -- </option>
                                                     <?php foreach ($penghasilanortu as $ph) : ?>
@@ -1113,7 +1113,7 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
-                                                        <label>Provinsi *</label>
+                                                        <label>Provinsi <span class="text-danger">*</span></label>
                                                         <select name="provortu" id="provortu" class="form-select" aria-label="Default select example">
                                                             <option value="" <?php echo ($row['provinsi_tempattinggalortu'] == '0') ? 'selected' : ''; ?> value="0"> -- Pilih -- </option>
                                                             <?php foreach ($provinsi as $prov) : ?>
@@ -1125,7 +1125,7 @@
 
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
-                                                        <label>Kabupaten/Kota *</label>
+                                                        <label>Kabupaten/Kota <span class="text-danger">*</span></label>
                                                         <input type="hidden" name="h_kabupatenortu" id="h_kabupatenortu" value="<?php echo $row['kab_tempattinggalortu'];?>">
                                                         <select name="kabupatenortu" id="kabupatenortu" class="form-select" aria-label="Default select example">
                                                             <option value=""></option>
@@ -1135,7 +1135,7 @@
 
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
-                                                        <label>Kecamatan/Distrik *</label>
+                                                        <label>Kecamatan/Distrik <span class="text-danger">*</span></label>
                                                         <input type="hidden" name="h_kecamatanortu" id="h_kecamatanortu" value="<?php echo $row['kec_tempattinggalortu'];?>">
                                                         <select name="kecamatanortu" id="kecamatanortu" class="form-select" aria-label="Default select example">
                                                            <option value=""></option>
@@ -1145,7 +1145,7 @@
 
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
-                                                        <label>Kode Pos *</label>
+                                                        <label>Kode Pos <span class="text-danger">*</span></label>
                                                         <input name="kodeposortu" id="kodeposortu" type="text" class="form-control" placeholder="" value="<?php echo $row['kodepost_tempattinggalortu']; ?>" required>
                                                         <small>Kode pos tempat tinggal orang tua saat ini</small>
                                                     </div>
@@ -1157,7 +1157,7 @@
                                             <div class="row">
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
-                                                        <label>Alamat Orang Tua *</label>
+                                                        <label>Alamat Orang Tua <span class="text-danger">*</span></label>
                                                         <textarea name="alamatortu" id="alamatortu" type="text" class="form-control" placeholder="" value="<?php echo $row['alamat_ortu']; ?>" required><?php echo $row['alamat_ortu']; ?></textarea>
                                                         <small>Alamat tinggal orang tua saat ini. Maksimal 50 karakter.</small>
                                                     </div>
@@ -1165,7 +1165,7 @@
 
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
-                                                        <label>No. Telp./HP *</label>
+                                                        <label>No. Telp./HP <span class="text-danger">*</span></label>
                                                         <input name="nohportu" id="nohportu" type="text" class="form-control" placeholder="" value="<?php echo $row['nohp_ortu']; ?>" required>
                                                         <small>Nomor telp atau handphone orang tua yang bisa dihubungi</small>
                                                     </div>
@@ -1327,7 +1327,6 @@
                 </div>
             </div>
         </div>
-
 
         <!-- Modal Logout -->
         <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModalLabel" aria-hidden="true">
@@ -1538,7 +1537,115 @@
                     {
                         errorMsg.push("NISN Pendaftar wajib diisi");
                     }
+                    if(agama == '0')
+                    {
+                        errorMsg.push("Agama wajib dipilih");
+                    }
 
+                    if(suku == '0')
+                    {
+                        errorMsg.push("Suku belum dipilih");
+                    }
+
+                    if(statusmenikah == '0')
+                    {
+                        errorMsg.push("Status menikah belum dipilih");
+                    }
+
+                    if(nohp == '')
+                    {
+                        errorMsg.push("No HP wajib diisi");
+                    }
+
+                    if(email == '')
+                    {
+                        errorMsg.push("Email wajib diisi");
+                    }
+
+                    if(prodipilihan1 == '0')
+                    {
+                        errorMsg.push("Program pendidikan 1 belum dipilih");
+                    }
+
+                    // if(prodipilihan2 == '0')
+                    // {
+                    //     errorMsg.push("Program pendidikan 2 belum dipilih");
+                    // }
+
+                    // if(prodipilihan3 == '0')
+                    // {
+                    //     errorMsg.push("Program pendidikan 3 belum dipilih");
+                    // }
+
+                    if(prov_tempatlahir == '0')
+                    {
+                        errorMsg.push("Provinsi tempat lahir belum dipilih");
+                    }
+
+                    if(kab_tempatlahir == '0')
+                    {
+                        errorMsg.push("Kabupaten tempat lahir belum dipilih");
+                    }
+
+                    if(lokasi_tempatlahir == '')
+                    {
+                        errorMsg.push("Lokasi tempat lahir wajib diisi");
+                    }
+
+                    if(tgl_lahir == '')
+                    {
+                        errorMsg.push("Tanggal lahir wajib diisi");
+                    }
+
+                    if(negara_tempattinggal == '')
+                    {
+                        errorMsg.push("Negara tempat tinggal wajib diisi");
+                    }
+
+                    if(prov_tempattinggal == '0')
+                    {
+                        errorMsg.push("Provinsi tempat tinggal belum dipilih");
+                    }
+
+                    if(kab_tempatlahir == '0')
+                    {
+                        errorMsg.push("Kabupaten tempat tinggal belum dipilih");
+                    }
+
+                    if(kec_tempattinggal == '0')
+                    {
+                        errorMsg.push("Kecamatan tempat tinggal belum dipilih");
+                    }
+
+                    if(des_tempattinggal == '0')
+                    {
+                        errorMsg.push("Desa tempat tinggal belum dipilih");
+                    }
+
+                    if(kodepos_tempattinggal == '')
+                    {
+                        errorMsg.push("Kode pos tempat tinggal wajib diisi");
+                    }
+
+                    if(alamat_tempattinggal == '')
+                    {
+                        errorMsg.push("Alamat tempat tinggal wajib diisi");
+                    }
+
+                    // if(alamatlain_tempattinggal == '')
+                    // {
+                    //     errorMsg.push("Alamat lain tempat tinggal wajib diisi");
+                    // }
+
+                    if(tinggibadan == '')
+                    {
+                        errorMsg.push("Tinggi badan wajib diisi");
+                    }
+
+                    if(beratbadan == '')
+                    {
+                        errorMsg.push("Berat badan wajib diisi");
+                    }
                     //cek apakah ada pesan error atau tidak
 
                     if(errorMsg.length > 0)
@@ -1615,9 +1722,6 @@
                                 alamatlain_tempattinggal: alamatlain_tempattinggal,
                                 tinggibadan: tinggibadan,
                                 beratbadan: beratbadan,
-
-
-
                             },
                             //cache: false,
                             success: function(dataResult) {
@@ -1645,6 +1749,8 @@
 
 
                 $('#next2').on('click', function() {
+                    setProgressBar(current);
+
                     $("#next2").attr("disabled", "disabled");
                     var tahunlulussmta = $("select[name='tahunlulussmta']").val();
                     var jurusansmta = $("select[name='jurusansmta']").val();
@@ -1653,6 +1759,79 @@
                     var nrapor2 = $("input[name='nrapor2']").val();
                     var nrapor3 = $("input[name='nrapor3']").val();
 
+                    //menampung pesan error kalau ada form yang belum diisi
+                    const errorMsg = [];
+                    if(tahunlulussmta == '') 
+                    {
+                        errorMsg.push("Tahun lulus SMTA belum dipilih");
+                    }
+
+                    if(jurusansmta == '0')
+                    {
+                        errorMsg.push("Jurusan SMTA belum dipilih");
+                    }
+
+                    if(jenissmta == '0')
+                    {
+                        errorMsg.push("Jenis SMTA belum dipilih");
+                    }
+
+                    if(nrapor1 == '')
+                    {
+                        errorMsg.push("Nilai rapor 1 belum diisi");
+                    }
+
+                    if(nrapor2 == '')
+                    {
+                        errorMsg.push("Nilai rapor 2 belum diisi");
+                    }
+
+                    if(nrapor3 == '')
+                    {
+                        errorMsg.push("Nilai rapor 3 belum diisi");
+                    }
+
+
+                    if(errorMsg.length > 0)
+                    {
+                        var pesanError = errorMsg.map(function(item) { 
+                            return "<span class='text-danger'>" + item + "</span><br>";
+                        }).join('');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Data belum lengkap!',
+                            html: pesanError,
+                            confirmButtonText: 'Tutup',
+                        })
+                    }
+
+                    else{
+                        current_fs = $(this).parent();
+                        next_fs = $(this).parent().next();
+                        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                        next_fs.show();
+                        current_fs.animate({
+                            opacity: 0
+                        }, {
+                            step: function(now) {
+                                opacity = 1 - now;
+                                current_fs.css({
+                                    'display': 'none',
+                                    'position': 'relative'
+                                });
+                                next_fs.css({
+                                    'opacity': opacity
+                                });
+                            },
+                            duration: 500
+                        });
+
+                    }
+
+                    setProgressBar(++current);
+
+                    $("#next2").removeAttr("disabled");
                     $.ajax({
                         url: "<?php echo site_url('register/next2'); ?>",
                         type: "POST",
@@ -1686,6 +1865,8 @@
                 });
 
                 $('#next3').on('click', function() {
+                    setProgressBar(current);
+
                     $("#next3").attr("disabled", "disabled");
                     var nik_ayah = $("input[name='nikayah']").val();
                     var nama_ayah = $("input[name='namaayah']").val();
@@ -1703,6 +1884,125 @@
                     var kecamatan_ortu = $("select[name='kecamatanortu']").val();
                     var kodepos_ortu = $("input[name='kodeposortu']").val();
                     var nohp_ortu = $("input[name='nohportu']").val();
+
+                    //menampung pesan error kalau ada form yang belum diisi
+                    const errorMsg = [];
+
+                    if(nik_ayah == '')
+                    {
+                        errorMsg.push("NIK Ayah belum diisi");
+                    }
+
+                    if(nama_ayah == '')
+                    {
+                    errorMsg.push ("Nama Ayah belum diisi");
+                    }
+
+                    if(pendidikanayah == '0')
+                    {
+                        errorMsg.push("Pendidikan Ayah belum dipilih");
+                    }
+
+                    if(pekerjaanayah == '')
+                    {
+                        errorMsg.push("Pekerjaan Ayah belum dipilih");
+                    }
+
+                    if(nik_ibu == '')
+                    {
+                        errorMsg.push("NIK ibu belum diisi");
+                    }
+
+                    if(nama_ibu == '')
+                    {
+                        errorMsg.push ("Nama ibu belum diisi");
+                    }
+
+                    if(pendidikanibu == '')
+                    {
+                        errorMsg.push("Pendidikan ibu belum dipilih");
+                    }
+
+                    if(pekerjaanibu == '')
+                    {
+                        errorMsg.push("Pekerjaan ibu belum dipilih");
+                    }
+
+                    if(penghasilanortu == '0')
+                    {
+                        errorMsg.push("Penghasilan ortu belum dipilih");
+                    }
+
+                    if(alamat_ortu == '')
+                    {
+                        errorMsg.push("Alamat ortu belum diisi");
+                    }
+
+                    if(provinsi_ortu == '0')
+                    {
+                        errorMsg.push("Provinsi ortu belum dipilih");
+                    }
+
+                    if(kabupaten_ortu == '0')
+                    {
+                        errorMsg.push("Kabupaten ortu belum dipilih");
+                    }
+
+                    if(kecamatan_ortu == '0')
+                    {
+                        errorMsg.push("Kecamatan ortu belum dipilih");
+                    }
+
+                    if(kodepos_ortu == '')
+                    {
+                        errorMsg.push("Kode pos ortu belum diisi");
+                    }
+
+                    if(nohp_ortu == '')
+                    {
+                        errorMsg.push("No HP ortu belum diisi");
+                    }
+                    
+                    if(errorMsg.length > 0)
+                    {
+                        var pesanError = errorMsg.map(function(item) { 
+                            return "<span class='text-danger'>" + item + "</span><br>";
+                        }).join('');
+
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Data belum lengkap!',
+                            html: pesanError,
+                            confirmButtonText: 'Tutup',
+                        })
+                    }
+
+                    else{
+                        current_fs = $(this).parent();
+                        next_fs = $(this).parent().next();
+                        $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                        next_fs.show();
+                        current_fs.animate({
+                            opacity: 0
+                        }, {
+                            step: function(now) {
+                                opacity = 1 - now;
+                                current_fs.css({
+                                    'display': 'none',
+                                    'position': 'relative'
+                                });
+                                next_fs.css({
+                                    'opacity': opacity
+                                });
+                            },
+                            duration: 500
+                        });
+
+                    }
+
+                    setProgressBar(++current);
+
+                    $("#next3").removeAttr("disabled");
 
                     $.ajax({
                         url: "<?php echo site_url('register/next3'); ?>",
@@ -1746,6 +2046,8 @@
                 });
 
                 $('#next4').on('click', function() {
+                    setProgressBar(current);
+
                     $("#next4").attr("disabled", "disabled");
                     var nama_wali = $("input[name='namawali']").val();
                     var pekerjaanwali = $("select[name='pekerjaanwali']").val();
@@ -1753,6 +2055,29 @@
                     var alamat_wali = $("textarea[name='alamatwali']").val();
                     var nohp_wali = $("input[name='nohp_wali']").val();
 
+                    current_fs = $(this).parent();
+                    next_fs = $(this).parent().next();
+                    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
+                    next_fs.show();
+                    current_fs.animate({
+                        opacity: 0
+                    }, {
+                        step: function(now) {
+                            opacity = 1 - now;
+                            current_fs.css({
+                                'display': 'none',
+                                'position': 'relative'
+                            });
+                            next_fs.css({
+                                'opacity': opacity
+                            });
+                        },
+                        duration: 500
+                    });
+
+                    setProgressBar(++current);
+
+                    $("#next2").removeAttr("disabled");
                     $.ajax({
                         url: "<?php echo site_url('register/next4'); ?>",
                         type: "POST",
@@ -1762,9 +2087,6 @@
                             penghasilanwali: penghasilanwali,
                             alamat_wali: alamat_wali,
                             nohp_wali: nohp_wali,
-
-                            //bah hp mu ga bs d telp WA kah?
-
                         },
                         //cache: false,
                         success: function(dataResult) {

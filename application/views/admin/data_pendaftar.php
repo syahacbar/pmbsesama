@@ -1185,29 +1185,26 @@
     	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     	<script src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.min.js"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
-		<script>
-			$(document).ready(function() {
-			$("#namasmta").select2({
-				theme: "bootstrap",
-				placeholder: '-- Pilih SMTA --',
-				minimumInputLength: 1,
-				ajax: {
-				url: "<?php echo site_url('register/searchSMTA'); ?>",
-				dataType: 'json',
-				delay: 250,
-				processResults: function(data) {
-					return {
-					results: data
-					};
-				},
-				cache: true
-				}
-			});
-			});
-		</script>
-
     	<script type="text/javascript">
     		$(document).ready(function() {
+
+				$("#namasmta").select2({
+					theme: "bootstrap",
+					placeholder: '-- Pilih SMTA --',
+					minimumInputLength: 1,
+					ajax: {
+					url: "<?php echo site_url('register/searchSMTA'); ?>",
+					dataType: 'json',
+					delay: 250,
+					processResults: function(data) {
+						return {
+						results: data
+						};
+					},
+					cache: true
+					}
+				});
+				
     			$("#provtempatlahir").change(function() {
     				var url = "<?php echo site_url('register/add_ajax_kab'); ?>/" + $(this).val();
     				$('#kabtempatlahir').load(url);
@@ -1378,7 +1375,6 @@
     				} else {
     					load_data();
     				}
-    				//tablePendaftar.search('').draw();
     			});
 
     			$(document).on('change', '#pilihprodi', function() {
@@ -1389,7 +1385,6 @@
     				tablePendaftar.destroy();
     				if (prodi != '') {
     					load_data(tahunakademik, prodi, suku);
-    					//tablePendaftar.search('').draw();
     				} else {
     					load_data();
     				}
@@ -1498,8 +1493,7 @@
     						$('select[name="tahunlulussmta"]').val(json.tahunlulus_smta).attr('selected', 'selected');
     						$('select[name="jurusansmta"]').val(json.jurusansmta).attr('selected', 'selected');
     						$('select[name="jenissmta"]').val(json.jenissmta).attr('selected', 'selected');
-    						// $('select[name="namasmta"]').val(json.nama_smta).attr('selected', 'selected');
-							// $('select[name="namasmta"]').val(json.nama_smta).trigger('change');
+
 							var $newOption = $("<option selected='selected'></option>").val(json.nama_smta).text(json.nama_smta_text);
 							$("#namasmta").append($newOption).trigger('change');
     						$('input[name="nisnsmta"]').val(json.nisn_smta);
