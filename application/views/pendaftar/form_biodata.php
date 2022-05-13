@@ -435,6 +435,18 @@
         .nama-smta span.select2-selection.select2-selection--single {
             height: 40px !important;
         }
+
+                /* Chrome, Safari, Edge, Opera */
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+        }
+
+        /* Firefox */
+        input[type=number] {
+        -moz-appearance: textfield;
+        }
     </style>
 </head>
 
@@ -549,7 +561,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>NISN (Nomor Induk Siswa Nasional) <span class="text-danger">*</span></label>
-                                                <input name="nisn_pendaftar" id="nisn_pendaftar" type="text" class="form-control" placeholder="" value="<?php echo $row['nisn_pendaftar']; ?>" required>
+                                                <input name="nisn_pendaftar" id="nisn_pendaftar" type="number" class="form-control" placeholder="" value="<?php echo $row['nisn_pendaftar']; ?>" required>
                                                 <small>Ketik NISN Anda.</small>
                                             </div>
                                         </div>
@@ -576,7 +588,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>NIK/No. KTP <span class="text-danger">*</span></label>
-                                                <input id="nik" name="nik" type="text" class="form-control" placeholder="" required value="<?php echo $row['nik']; ?>">
+                                                <input id="nik" name="nik" type="number" onKeyPress="return check(event,value)" onInput="checkLength()" class="form-control" placeholder="" required value="<?php echo $row['nik']; ?>">
                                             </div>
                                         </div>
 
@@ -775,8 +787,8 @@
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
-                                                <label>Kode Pos<span class="text-danger">*</span></label>
-                                                <input name="kodepos" id="kodepos" type="text" class="form-control" placeholder="" value="<?php echo $row['kodepos_tempattinggal']; ?>" required>
+                                                <label>Kode Pos <span class="text-danger">*</span></label>
+                                                <input name="kodepos" id="kodepos" type="number" class="form-control" placeholder="" value="<?php echo $row['kodepos_tempattinggal']; ?>" required>
                                             </div>
                                         </div>
 
@@ -810,7 +822,7 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>No. Telp./HP <span class="text-danger">*</span></label>
-                                                <input name="nohp" id="nohp" type="text" class="form-control" placeholder="" required value="<?php echo $nohp; ?>">
+                                                <input name="nohp" id="nohp" type="number" class="form-control" placeholder="" required value="<?php echo $nohp; ?>">
                                             </div>
                                         </div>
 
@@ -825,7 +837,7 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <label>Tinggi Badan <span class="text-danger">*</span></label>
-                                                <input name="tinggibadan" id="tinggibadan" type="text" class="form-control" placeholder="" value="<?php echo $row['tinggibadan']; ?>" required>
+                                                <input name="tinggibadan" id="tinggibadan" type="number" class="form-control" placeholder="" value="<?php echo $row['tinggibadan']; ?>" required>
                                                 <small>Satuan cm. Contoh: 165</small>
                                             </div>
                                         </div>
@@ -833,7 +845,7 @@
                                         <div class="col-sm-2">
                                             <div class="form-group">
                                                 <label>Berat Badan <span class="text-danger">*</span></label>
-                                                <input name="beratbadan" id="beratbadan" type="text" class="form-control" placeholder="" value="<?php echo $row['beratbadan']; ?>" required>
+                                                <input name="beratbadan" id="beratbadan" type="number" class="form-control" placeholder="" value="<?php echo $row['beratbadan']; ?>" required>
                                                 <small>Satuan kg. Contoh: 60</small>
                                             </div>
                                         </div>
@@ -910,7 +922,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>NPSN (Nomor Pokok Sekolah Nasional)</label>
-                                                <input name="npsnsmta" id="npsnsmta" type="text" class="form-control" value="<?php echo $row['npsnsmta']; ?>" readonly>
+                                                <input name="npsnsmta" id="npsnsmta" type="number" class="form-control" value="<?php echo $row['npsnsmta']; ?>" readonly>
                                             </div>
                                         </div>
 
@@ -939,21 +951,21 @@
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Kelas XI semeseter 1<span class="text-danger">*</span></label>
-                                                <input name="nrapor1" id="nrapor1" type="text" class="form-control" placeholder="" value="<?php echo $row['nrapor1']; ?>" required></input>
+                                                <input name="nrapor1" id="nrapor1" type="number" class="form-control" placeholder="" value="<?php echo $row['nrapor1']; ?>" required></input>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Kelas XI semeseter 2<span class="text-danger">*</span></label>
-                                                <input name="nrapor2" id="nrapor2" type="text" class="form-control" placeholder="" value="<?php echo $row['nrapor2']; ?>" required></input>
+                                                <input name="nrapor2" id="nrapor2" type="number" class="form-control" placeholder="" value="<?php echo $row['nrapor2']; ?>" required></input>
                                             </div>
                                         </div>
 
                                         <div class="col-sm-4">
                                             <div class="form-group">
                                                 <label>Kelas XII semeseter 1<span class="text-danger">*</span></label>
-                                                <input name="nrapor3" id="nrapor3" type="text" class="form-control" placeholder="" value="<?php echo $row['nrapor3']; ?>" required></input>
+                                                <input name="nrapor3" id="nrapor3" type="number" class="form-control" placeholder="" value="<?php echo $row['nrapor3']; ?>" required></input>
                                             </div>
                                         </div>
 
@@ -999,7 +1011,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>NIK/No. KTP Ayah<span class="text-danger">*</span></label>
-                                                <input name="nikayah" id="nikayah" type="text" class="form-control" placeholder="" value="<?php echo $row['nik_ayah']; ?>" required>
+                                                <input name="nikayah" id="nikayah" type="number" class="form-control" placeholder="" value="<?php echo $row['nik_ayah']; ?>" required>
                                             </div>
                                         </div>
 
@@ -1054,7 +1066,7 @@
                                         <div class="col-sm-6">
                                             <div class="form-group">
                                                 <label>NIK/No. KTP Ibu <span class="text-danger">*</span></label>
-                                                <input name="nikibu" type="text" class="form-control" placeholder="" value="<?php echo $row['nik_ibu']; ?>" required>
+                                                <input name="nikibu" type="number" class="form-control" placeholder="" value="<?php echo $row['nik_ibu']; ?>" required>
                                             </div>
                                         </div>
 
@@ -1146,7 +1158,7 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>Kode Pos <span class="text-danger">*</span></label>
-                                                        <input name="kodeposortu" id="kodeposortu" type="text" class="form-control" placeholder="" value="<?php echo $row['kodepost_tempattinggalortu']; ?>" required>
+                                                        <input name="kodeposortu" id="kodeposortu" type="number" class="form-control" placeholder="" value="<?php echo $row['kodepost_tempattinggalortu']; ?>" required>
                                                         <small>Kode pos tempat tinggal orang tua saat ini</small>
                                                     </div>
                                                 </div>
@@ -1166,7 +1178,7 @@
                                                 <div class="col-sm-12">
                                                     <div class="form-group">
                                                         <label>No. Telp./HP <span class="text-danger">*</span></label>
-                                                        <input name="nohportu" id="nohportu" type="text" class="form-control" placeholder="" value="<?php echo $row['nohp_ortu']; ?>" required>
+                                                        <input name="nohportu" id="nohportu" type="number" class="form-control" placeholder="" value="<?php echo $row['nohp_ortu']; ?>" required>
                                                         <small>Nomor telp atau handphone orang tua yang bisa dihubungi</small>
                                                     </div>
                                                 </div>
@@ -1567,16 +1579,6 @@
                         errorMsg.push("Program pendidikan 1 belum dipilih");
                     }
 
-                    // if(prodipilihan2 == '0')
-                    // {
-                    //     errorMsg.push("Program pendidikan 2 belum dipilih");
-                    // }
-
-                    // if(prodipilihan3 == '0')
-                    // {
-                    //     errorMsg.push("Program pendidikan 3 belum dipilih");
-                    // }
-
                     if(prov_tempatlahir == '0')
                     {
                         errorMsg.push("Provinsi tempat lahir belum dipilih");
@@ -1631,11 +1633,6 @@
                     {
                         errorMsg.push("Alamat tempat tinggal wajib diisi");
                     }
-
-                    // if(alamatlain_tempattinggal == '')
-                    // {
-                    //     errorMsg.push("Alamat lain tempat tinggal wajib diisi");
-                    // }
 
                     if(tinggibadan == '')
                     {
@@ -2174,6 +2171,32 @@
                 formData.append("username", <?php echo $username; ?>);
             });
         </script>
+
+<script>
+    function check(e,value){
+    //Check Charater
+        var unicode=e.charCode? e.charCode : e.keyCode;
+        if (value.indexOf(".") != -1)
+        if( unicode == 46 )
+            return false;
+        if (unicode!=8)
+        if((unicode<48||unicode>57)&&unicode!=46)
+        return false;
+    }
+    function checkLength(){
+    var fieldLength = document.getElementById('nik').value.length;
+    //Suppose u want 4 number of character
+    if(fieldLength <= 16){
+        return true;
+    }
+    else
+    {
+        var str = document.getElementById('nik').value;
+        str = str.substring(0, str.length - 1);
+    document.getElementById('nik').value = str;
+    }
+    }
+</script>
 
 </body>
 
